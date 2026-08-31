@@ -421,7 +421,7 @@ function pageTemplate(config, rendered) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/styles.css?v=agency-24">
-  <link rel="stylesheet" href="../assets/guides.css?v=agency-24">
+  <link rel="stylesheet" href="../assets/guides.css?v=agency-25">
   <script id="guidePageData" type="application/json">${pageData}</script>
   <script src="../assets/guides.js?v=agency-24" defer></script>
 </head>
