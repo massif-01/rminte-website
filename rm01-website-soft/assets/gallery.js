@@ -95,10 +95,21 @@
     return button;
   });
 
-  galleryItems.forEach((item) => {
+  const requestedImages = new Set([galleryItems[0].src]);
+
+  function preloadImage(index) {
+    const item = galleryItems[(index + galleryItems.length) % galleryItems.length];
+    if (requestedImages.has(item.src)) return;
+    requestedImages.add(item.src);
     const preload = new Image();
+    preload.decoding = 'async';
     preload.src = item.src;
-  });
+  }
+
+  function preloadNeighbors(index) {
+    preloadImage(index - 1);
+    preloadImage(index + 1);
+  }
 
   function updateImageCopy() {
     const item = galleryItems[currentIndex];
@@ -149,6 +160,7 @@
       currentCount.textContent = formatIndex(currentIndex);
       progressItems.forEach((progress, index) => progress.classList.toggle('active', index === currentIndex));
       stage.classList.remove('is-changing');
+      preloadNeighbors(currentIndex);
       window.setTimeout(() => {
         transitionLocked = false;
       }, 420);
@@ -195,4 +207,5 @@
   });
 
   applyLanguage(lang);
+  preloadNeighbors(currentIndex);
 })();
