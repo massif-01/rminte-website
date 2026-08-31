@@ -367,6 +367,7 @@ function siteNavigationTemplate() {
       <img src="../assets/images/img3.png" alt="RMinte">
     </a>
     <nav class="nav-island" aria-label="页面导航">
+      <a href="../gallery/index.html" data-guide-text data-zh="图册" data-en="Gallery">图册</a>
       <a href="../index.html#product" data-guide-text data-zh="产品" data-en="Product">产品</a>
       <a href="../index.html#hardware" data-guide-text data-zh="架构" data-en="Architecture">架构</a>
       <a href="../index.html#proof" data-guide-text data-zh="验证" data-en="Proof">验证</a>
@@ -389,6 +390,7 @@ function siteNavigationTemplate() {
         <button class="ghost-button" type="button" data-menu-close data-guide-text data-zh="关闭" data-en="Close">关闭</button>
       </div>
       <nav class="mobile-links" aria-label="移动导航">
+        <a href="../gallery/index.html" data-guide-text data-zh="图册" data-en="Gallery">图册</a>
         <a href="../index.html#product" data-guide-text data-zh="产品" data-en="Product">产品</a>
         <a href="../index.html#hardware" data-guide-text data-zh="架构" data-en="Architecture">架构</a>
         <a href="../index.html#proof" data-guide-text data-zh="验证" data-en="Proof">验证</a>
@@ -415,8 +417,8 @@ function pageTemplate(config, rendered) {
   <meta property="og:description" content="${escapeHtml(config.description.zh)}">
   <meta property="og:image" content="../assets/images/img4.png">
   <meta name="theme-color" content="#050606">
-  <title>${escapeHtml(config.title.zh)} - 泛灵人工智能</title>
-  <link rel="icon" href="../assets/images/img3.png">
+  <title>RMinte - RM-01 - Portable AI Supercomputer - 泛灵人工智能</title>
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">

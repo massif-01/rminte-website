@@ -215,7 +215,7 @@
   function render() {
     const item = currentCase();
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
-    document.title = `${t(item.name)} - ${lang === 'zh' ? '泛灵人工智能' : 'RMinte AI'}`;
+    document.title = 'RMinte - RM-01 - Portable AI Supercomputer - 泛灵人工智能';
 
     const root = $('#caseRoot');
     root.replaceChildren(renderNav(), renderHero(item), renderContent(item), renderFooter());

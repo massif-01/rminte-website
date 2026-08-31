@@ -77,12 +77,7 @@
         : (isOpen ? 'Close menu' : 'Open menu'));
     });
 
-    const data = pageData();
-    if (data?.title) {
-      document.title = `${data.title[lang]} - ${lang === 'zh' ? '泛灵人工智能' : 'RMinte AI'}`;
-    } else {
-      document.title = lang === 'zh' ? '使用指南 - 泛灵人工智能' : 'Guides - RMinte AI';
-    }
+    document.title = 'RMinte - RM-01 - Portable AI Supercomputer - 泛灵人工智能';
 
     refreshSearch();
 
