@@ -13,30 +13,73 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/styles.css?v=agency-22">
-  <link rel="stylesheet" href="../assets/guides.css?v=agency-22">
-  <script src="../assets/guides.js?v=agency-22" defer></script>
+  <link rel="stylesheet" href="../assets/styles.css?v=agency-24">
+  <link rel="stylesheet" href="../assets/guides.css?v=agency-24">
+  <script src="../assets/guides.js?v=agency-24" defer></script>
 </head>
 <body class="guide-body">
   <a class="skip-link" href="#guideMain" data-guide-text data-zh="跳至指南内容" data-en="Skip to guide content">跳至指南内容</a>
   <div class="ambient-field" aria-hidden="true"></div>
 
-  <header class="guide-shell" aria-label="指南导航">
-    <a class="guide-brand" href="../index.html" aria-label="RMinte 首页">
+  <header class="site-shell" aria-label="主导航">
+    <a class="brand-mark" href="../index.html#hero" aria-label="RMinte 首页">
       <img src="../assets/images/img3.png" alt="RMinte">
     </a>
-    <nav class="guide-top-nav" aria-label="指南导航">
-      <a href="../index.html" data-guide-text data-zh="首页" data-en="Home">首页</a>
+    <nav class="nav-island" aria-label="页面导航">
+      <a href="../index.html#product" data-guide-text data-zh="产品" data-en="Product">产品</a>
+      <a href="../index.html#hardware" data-guide-text data-zh="架构" data-en="Architecture">架构</a>
+      <a href="../index.html#proof" data-guide-text data-zh="验证" data-en="Proof">验证</a>
+      <a href="../index.html#applications" data-guide-text data-zh="应用" data-en="Use Cases">应用</a>
       <a class="active" href="index.html" aria-current="page" data-guide-text data-zh="指南" data-en="Guides">指南</a>
     </nav>
-    <button class="language-toggle" type="button" data-guide-lang-toggle>EN</button>
+    <div class="nav-actions">
+      <button class="language-toggle" type="button" data-guide-lang-toggle>EN</button>
+      <button class="menu-button" type="button" aria-label="打开菜单" aria-controls="mobileOverlay" aria-expanded="false" data-menu-toggle>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </header>
+
+  <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true">
+    <div class="mobile-overlay-panel">
+      <div class="mobile-overlay-top">
+        <span>RMinte</span>
+        <button class="ghost-button" type="button" data-menu-close data-guide-text data-zh="关闭" data-en="Close">关闭</button>
+      </div>
+      <nav class="mobile-links" aria-label="移动导航">
+        <a href="../index.html#product" data-guide-text data-zh="产品" data-en="Product">产品</a>
+        <a href="../index.html#hardware" data-guide-text data-zh="架构" data-en="Architecture">架构</a>
+        <a href="../index.html#proof" data-guide-text data-zh="验证" data-en="Proof">验证</a>
+        <a href="../index.html#applications" data-guide-text data-zh="应用" data-en="Use Cases">应用</a>
+        <a class="active" href="index.html" aria-current="page" data-guide-text data-zh="指南" data-en="Guides">指南</a>
+      </nav>
+    </div>
+  </div>
 
   <main class="guide-home-main" id="guideMain">
     <section class="guide-home-hero" aria-labelledby="guideTitle">
       <p class="eyebrow">TIANSHANOS · DOCUMENTATION</p>
       <h1 id="guideTitle" data-guide-text data-zh="选择你的使用角色" data-en="Choose your operating role">选择你的使用角色</h1>
       <p class="guide-home-lead" data-guide-text data-zh="从日常设备管理到系统级运维，按权限进入对应指南。页面只呈现该角色真正需要的操作范围。" data-en="From daily device administration to system-level operations, choose the guide that matches your account permissions and responsibilities.">从日常设备管理到系统级运维，按权限进入对应指南。页面只呈现该角色真正需要的操作范围。</p>
+    </section>
+
+    <section class="guide-search" data-guide-search>
+      <form class="guide-search-form" role="search" data-guide-search-form>
+        <label class="guide-search-field">
+          <span class="guide-search-kicker" data-guide-text data-zh="搜索指南" data-en="Search guides">搜索指南</span>
+          <input type="search" autocomplete="off" spellcheck="false" data-guide-search-input data-guide-placeholder data-zh="输入功能，例如：OTA、SSH 密钥、风扇" data-en="Search a feature, for example: OTA, SSH key, fan" placeholder="输入功能，例如：OTA、SSH 密钥、风扇">
+        </label>
+        <button type="submit" data-guide-text data-zh="搜索" data-en="Search">搜索</button>
+      </form>
+      <p class="guide-search-hint" data-guide-text data-zh="试试：OTA 更新、远程主机、HTTPS 证书、自动化规则" data-en="Try: OTA update, remote host, HTTPS certificate, automation rule">试试：OTA 更新、远程主机、HTTPS 证书、自动化规则</p>
+      <div class="guide-search-results" data-guide-search-results hidden aria-live="polite">
+        <div class="guide-search-results-head">
+          <p data-guide-search-summary></p>
+          <button type="button" data-guide-search-clear data-guide-text data-zh="清除" data-en="Clear">清除</button>
+        </div>
+        <div class="guide-search-result-list" data-guide-search-result-list></div>
+      </div>
     </section>
 
     <div class="guide-list-label" aria-hidden="true">
@@ -82,7 +125,6 @@
   <footer class="guide-footer">
     <img src="../assets/images/img3.png" alt="RMinte">
     <div>
-      <p data-guide-text data-zh="让 AI 成为现实" data-en="Make AI real">让 AI 成为现实</p>
       <span>© 2026 RMinte AI</span>
     </div>
   </footer>

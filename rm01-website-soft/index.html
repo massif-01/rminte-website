@@ -16,14 +16,15 @@
   <script>
     (function () {
       if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-      if (window.location.hash) {
+      const sectionLinks = new Set(['#product', '#hardware', '#proof', '#applications']);
+      if (window.location.hash && !sectionLinks.has(window.location.hash)) {
         history.replaceState(null, '', window.location.pathname + window.location.search);
       }
     })();
   </script>
   <link rel="stylesheet" href="assets/styles.css?v=agency-20">
   <script src="assets/site-data.js?v=agency-21" defer></script>
-  <script src="assets/main.js?v=agency-21" defer></script>
+  <script src="assets/main.js?v=agency-24" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳至主要内容</a>

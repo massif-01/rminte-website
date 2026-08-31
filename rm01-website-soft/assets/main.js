@@ -152,6 +152,32 @@
     [80, 240, 520].forEach((delay) => window.setTimeout(restore, delay));
   }
 
+  function restoreInitialLocation() {
+    const id = window.location.hash.slice(1);
+    const target = id ? document.getElementById(id) : null;
+    if (!target) {
+      forceInitialTop();
+      return;
+    }
+
+    const html = document.documentElement;
+    const previousBehavior = html.style.scrollBehavior;
+    html.style.scrollBehavior = 'auto';
+    const restore = () => target.scrollIntoView({ block: 'start' });
+    restore();
+    requestAnimationFrame(() => {
+      restore();
+      requestAnimationFrame(() => {
+        restore();
+        html.style.scrollBehavior = previousBehavior;
+      });
+    });
+    [140, 360, 700].forEach((delay) => window.setTimeout(restore, delay));
+    $$('[data-nav-target]').forEach((link) => {
+      link.classList.toggle('active', link.dataset.navTarget === id);
+    });
+  }
+
   function renderMetrics() {
     const root = $('#heroMetrics');
     if (!root) return;
@@ -680,6 +706,6 @@
     renderAll();
     setupControls();
     setupTeardownSequence();
-    forceInitialTop();
+    restoreInitialLocation();
   });
 })();

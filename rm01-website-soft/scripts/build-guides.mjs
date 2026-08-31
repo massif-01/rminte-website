@@ -263,6 +263,66 @@ function documentBody(markdown) {
   return lines.join('\n');
 }
 
+function plainSearchText(value) {
+  return value
+    .replace(/^\s*(?:>\s*)?/, '')
+    .replace(/^\s*(?:[-+*]|\d+\.)\s+/, '')
+    .replace(/^\s*\|?|\|?\s*$/g, '')
+    .replace(/\|/g, ' ')
+    .replace(/!\[[^\]]*]\([^)]*\)/g, ' ')
+    .replace(/\[([^\]]+)]\([^)]+\)/g, '$1')
+    .replace(/[*_`]/g, '')
+    .replace(/\\([.()\-])/g, '$1')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function buildSearchEntries(source, lang, slug, config) {
+  const lines = source.replaceAll('\r\n', '\n').split('\n');
+  const entries = [];
+  let current = null;
+  let headingIndex = 0;
+  let inCode = false;
+
+  function flush() {
+    if (!current) return;
+    current.text = current.parts.join(' ').replace(/\s+/g, ' ').trim();
+    delete current.parts;
+    entries.push(current);
+  }
+
+  lines.forEach((line) => {
+    if (line.startsWith('```')) {
+      inCode = !inCode;
+      return;
+    }
+
+    const headingMatch = !inCode && line.match(/^(#{2,5})\s+(.*)$/);
+    if (headingMatch) {
+      flush();
+      headingIndex += 1;
+      current = {
+        lang,
+        guide: slug,
+        guideTitle: config.title[lang],
+        guideLabel: config.label[lang],
+        title: plainSearchText(headingMatch[2]),
+        level: headingMatch[1].length,
+        href: `${slug}.html#${lang}-section-${headingIndex}`,
+        parts: []
+      };
+      return;
+    }
+
+    if (!current || /^\s*(?:---+|___+|\*\*\*+|\|?(?:\s*:?-+:?\s*\|)+)\s*$/.test(line)) return;
+    const text = plainSearchText(line);
+    if (text) current.parts.push(text);
+  });
+
+  flush();
+  return entries;
+}
+
 function tocItems(headings, lang) {
   const minimumLevel = Math.min(...headings.map(({ level }) => level));
   const visible = headings.filter(({ level }) => level <= minimumLevel + 1);
@@ -277,6 +337,66 @@ function renderLanguagePane(lang, rendered) {
           <article class="guide-article lang-pane" data-lang-pane="${lang}"${lang === 'en' ? ' hidden' : ''}>
 ${rendered.html}
           </article>`;
+}
+
+function searchTemplate() {
+  return `
+    <section class="guide-search" data-guide-search>
+      <form class="guide-search-form" role="search" data-guide-search-form>
+        <label class="guide-search-field">
+          <span class="guide-search-kicker" data-guide-text data-zh="搜索指南" data-en="Search guides">搜索指南</span>
+          <input type="search" autocomplete="off" spellcheck="false" data-guide-search-input data-guide-placeholder data-zh="输入功能，例如：OTA、SSH 密钥、风扇" data-en="Search a feature, for example: OTA, SSH key, fan" placeholder="输入功能，例如：OTA、SSH 密钥、风扇">
+        </label>
+        <button type="submit" data-guide-text data-zh="搜索" data-en="Search">搜索</button>
+      </form>
+      <p class="guide-search-hint" data-guide-text data-zh="试试：OTA 更新、远程主机、HTTPS 证书、自动化规则" data-en="Try: OTA update, remote host, HTTPS certificate, automation rule">试试：OTA 更新、远程主机、HTTPS 证书、自动化规则</p>
+      <div class="guide-search-results" data-guide-search-results hidden aria-live="polite">
+        <div class="guide-search-results-head">
+          <p data-guide-search-summary></p>
+          <button type="button" data-guide-search-clear data-guide-text data-zh="清除" data-en="Clear">清除</button>
+        </div>
+        <div class="guide-search-result-list" data-guide-search-result-list></div>
+      </div>
+    </section>`;
+}
+
+function siteNavigationTemplate() {
+  return `
+  <header class="site-shell" aria-label="主导航">
+    <a class="brand-mark" href="../index.html#hero" aria-label="RMinte 首页">
+      <img src="../assets/images/img3.png" alt="RMinte">
+    </a>
+    <nav class="nav-island" aria-label="页面导航">
+      <a href="../index.html#product" data-guide-text data-zh="产品" data-en="Product">产品</a>
+      <a href="../index.html#hardware" data-guide-text data-zh="架构" data-en="Architecture">架构</a>
+      <a href="../index.html#proof" data-guide-text data-zh="验证" data-en="Proof">验证</a>
+      <a href="../index.html#applications" data-guide-text data-zh="应用" data-en="Use Cases">应用</a>
+      <a class="active" href="index.html" aria-current="page" data-guide-text data-zh="指南" data-en="Guides">指南</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="language-toggle" type="button" data-guide-lang-toggle>EN</button>
+      <button class="menu-button" type="button" aria-label="打开菜单" aria-controls="mobileOverlay" aria-expanded="false" data-menu-toggle>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true">
+    <div class="mobile-overlay-panel">
+      <div class="mobile-overlay-top">
+        <span>RMinte</span>
+        <button class="ghost-button" type="button" data-menu-close data-guide-text data-zh="关闭" data-en="Close">关闭</button>
+      </div>
+      <nav class="mobile-links" aria-label="移动导航">
+        <a href="../index.html#product" data-guide-text data-zh="产品" data-en="Product">产品</a>
+        <a href="../index.html#hardware" data-guide-text data-zh="架构" data-en="Architecture">架构</a>
+        <a href="../index.html#proof" data-guide-text data-zh="验证" data-en="Proof">验证</a>
+        <a href="../index.html#applications" data-guide-text data-zh="应用" data-en="Use Cases">应用</a>
+        <a class="active" href="index.html" aria-current="page" data-guide-text data-zh="指南" data-en="Guides">指南</a>
+      </nav>
+    </div>
+  </div>`;
 }
 
 function pageTemplate(config, rendered) {
@@ -300,24 +420,15 @@ function pageTemplate(config, rendered) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/styles.css?v=agency-22">
-  <link rel="stylesheet" href="../assets/guides.css?v=agency-22">
+  <link rel="stylesheet" href="../assets/styles.css?v=agency-24">
+  <link rel="stylesheet" href="../assets/guides.css?v=agency-24">
   <script id="guidePageData" type="application/json">${pageData}</script>
-  <script src="../assets/guides.js?v=agency-22" defer></script>
+  <script src="../assets/guides.js?v=agency-24" defer></script>
 </head>
 <body class="guide-body guide-doc-body guide-accent-${config.accent}">
   <a class="skip-link" href="#guideContent" data-guide-text data-zh="跳至指南正文" data-en="Skip to guide content">跳至指南正文</a>
   <div class="ambient-field" aria-hidden="true"></div>
-  <header class="guide-shell" aria-label="指南导航">
-    <a class="guide-brand" href="../index.html" aria-label="RMinte 首页">
-      <img src="../assets/images/img3.png" alt="RMinte">
-    </a>
-    <nav class="guide-top-nav" aria-label="指南导航">
-      <a href="../index.html" data-guide-text data-zh="首页" data-en="Home">首页</a>
-      <a class="active" href="index.html" data-guide-text data-zh="指南" data-en="Guides">指南</a>
-    </nav>
-    <button class="language-toggle" type="button" data-guide-lang-toggle>EN</button>
-  </header>
+${siteNavigationTemplate()}
 
   <main id="guideContent" class="guide-doc-main">
     <section class="guide-doc-hero">
@@ -331,6 +442,7 @@ function pageTemplate(config, rendered) {
         <span>TianshanOS</span>
       </div>
     </section>
+${searchTemplate()}
 
     <details class="guide-mobile-toc">
       <summary data-guide-text data-zh="展开本页目录" data-en="Open page contents">展开本页目录</summary>
@@ -373,7 +485,6 @@ ${renderLanguagePane('en', rendered.en)}
   <footer class="guide-footer">
     <img src="../assets/images/img3.png" alt="RMinte">
     <div>
-      <p data-guide-text data-zh="让 AI 成为现实" data-en="Make AI real">让 AI 成为现实</p>
       <span>© 2026 RMinte AI</span>
     </div>
   </footer>
@@ -382,7 +493,9 @@ ${renderLanguagePane('en', rendered.en)}
 `;
 }
 
-for (const config of Object.values(guideConfig)) {
+const searchEntries = [];
+
+for (const [slug, config] of Object.entries(guideConfig)) {
   const split = typeof config.source === 'string'
     ? splitLanguages(readFileSync(config.source, 'utf8'))
     : {
@@ -396,6 +509,13 @@ for (const config of Object.values(guideConfig)) {
   if (rendered.zh.headings.length !== rendered.en.headings.length) {
     throw new Error(`${config.output}: Chinese and English heading counts differ.`);
   }
+  searchEntries.push(
+    ...buildSearchEntries(split.zh, 'zh', slug, config),
+    ...buildSearchEntries(split.en, 'en', slug, config)
+  );
   writeFileSync(config.output, pageTemplate(config, rendered));
   console.log(`Built ${config.output} (${rendered.zh.headings.length} headings per language)`);
 }
+
+writeFileSync(join(guidesDir, 'search-index.json'), `${JSON.stringify({ version: 1, entries: searchEntries }, null, 2)}\n`);
+console.log(`Built search index (${searchEntries.length} sections)`);
