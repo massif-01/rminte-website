@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TianshanOS Admin、Root 与安全指南入口。">
+  <meta property="og:title" content="TianshanOS 使用指南">
+  <meta property="og:description" content="根据账户权限选择对应的 TianshanOS 使用与运维指南。">
+  <meta property="og:image" content="../assets/images/img4.png">
+  <meta name="theme-color" content="#050606">
+  <title>使用指南 - 泛灵人工智能</title>
+  <link rel="icon" href="../assets/images/img3.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css?v=agency-22">
+  <link rel="stylesheet" href="../assets/guides.css?v=agency-22">
+  <script src="../assets/guides.js?v=agency-22" defer></script>
+</head>
+<body class="guide-body">
+  <a class="skip-link" href="#guideMain" data-guide-text data-zh="跳至指南内容" data-en="Skip to guide content">跳至指南内容</a>
+  <div class="ambient-field" aria-hidden="true"></div>
+
+  <header class="guide-shell" aria-label="指南导航">
+    <a class="guide-brand" href="../index.html" aria-label="RMinte 首页">
+      <img src="../assets/images/img3.png" alt="RMinte">
+    </a>
+    <nav class="guide-top-nav" aria-label="指南导航">
+      <a href="../index.html" data-guide-text data-zh="首页" data-en="Home">首页</a>
+      <a class="active" href="index.html" aria-current="page" data-guide-text data-zh="指南" data-en="Guides">指南</a>
+    </nav>
+    <button class="language-toggle" type="button" data-guide-lang-toggle>EN</button>
+  </header>
+
+  <main class="guide-home-main" id="guideMain">
+    <section class="guide-home-hero" aria-labelledby="guideTitle">
+      <p class="eyebrow">TIANSHANOS · DOCUMENTATION</p>
+      <h1 id="guideTitle" data-guide-text data-zh="选择你的使用角色" data-en="Choose your operating role">选择你的使用角色</h1>
+      <p class="guide-home-lead" data-guide-text data-zh="从日常设备管理到系统级运维，按权限进入对应指南。页面只呈现该角色真正需要的操作范围。" data-en="From daily device administration to system-level operations, choose the guide that matches your account permissions and responsibilities.">从日常设备管理到系统级运维，按权限进入对应指南。页面只呈现该角色真正需要的操作范围。</p>
+    </section>
+
+    <div class="guide-list-label" aria-hidden="true">
+      <span data-guide-text data-zh="角色指南" data-en="Role guides">角色指南</span>
+      <span>03</span>
+    </div>
+
+    <section class="guide-card-grid" aria-label="角色指南列表">
+      <a class="guide-card guide-card-admin" href="admin.html">
+        <span class="guide-card-index">01 / DAILY USE</span>
+        <h2>Admin</h2>
+        <p class="guide-card-copy" data-guide-text data-zh="面向设备管理员。覆盖系统状态、设备面板、风扇、LED、网络、文件与 OTA 更新。" data-en="For device administrators. Covers system status, device panels, fans, LEDs, networking, files, and OTA updates.">面向设备管理员。覆盖系统状态、设备面板、风扇、LED、网络、文件与 OTA 更新。</p>
+        <div class="guide-card-bottom">
+          <span class="guide-card-meta" data-guide-text data-zh="9 个章节 · 中英双语" data-en="9 chapters · Chinese and English">9 个章节 · 中英双语</span>
+          <span class="guide-card-arrow" aria-hidden="true">↗</span>
+        </div>
+      </a>
+
+      <a class="guide-card guide-card-root" href="root.html">
+        <span class="guide-card-index">02 / OPERATIONS</span>
+        <h2>Root</h2>
+        <p class="guide-card-copy" data-guide-text data-zh="面向系统运维人员。在日常能力之外，增加终端、远程指令与自动化管理。" data-en="For system operators. Adds terminal, remote command, and automation management to the shared daily capabilities.">面向系统运维人员。在日常能力之外，增加终端、远程指令与自动化管理。</p>
+        <div class="guide-card-bottom">
+          <span class="guide-card-meta" data-guide-text data-zh="12 个章节 · 高权限操作" data-en="12 chapters · Privileged operations">12 个章节 · 高权限操作</span>
+          <span class="guide-card-arrow" aria-hidden="true">↗</span>
+        </div>
+      </a>
+
+      <a class="guide-card guide-card-security" href="security.html">
+        <span class="guide-card-index">03 / SECURITY</span>
+        <h2 data-guide-text data-zh="安全指南" data-en="Security guide">安全指南</h2>
+        <p class="guide-card-copy" data-guide-text data-zh="面向个人用户与安全管理员。覆盖账号安全、SSH 密钥、主机指纹、HTTPS、mTLS 与 Config Pack。" data-en="For individual users and security administrators. Covers account security, SSH keys, host fingerprints, HTTPS, mTLS, and Config Pack.">面向个人用户与安全管理员。覆盖账号安全、SSH 密钥、主机指纹、HTTPS、mTLS 与 Config Pack。</p>
+        <div class="guide-card-bottom">
+          <span class="guide-card-meta" data-guide-text data-zh="8 个章节 · 安全操作" data-en="8 chapters · Security operations">8 个章节 · 安全操作</span>
+          <span class="guide-card-arrow" aria-hidden="true">↗</span>
+        </div>
+      </a>
+    </section>
+
+    <p class="guide-home-note" data-guide-text data-zh="Root 权限可能改变设备、远程主机和自动化流程。请根据实际职责选择指南。" data-en="Root privileges can change devices, remote hosts, and automation workflows. Choose the guide that matches your responsibilities.">Root 权限可能改变设备、远程主机和自动化流程。请根据实际职责选择指南。</p>
+  </main>
+
+  <footer class="guide-footer">
+    <img src="../assets/images/img3.png" alt="RMinte">
+    <div>
+      <p data-guide-text data-zh="让 AI 成为现实" data-en="Make AI real">让 AI 成为现实</p>
+      <span>© 2026 RMinte AI</span>
+    </div>
+  </footer>
+</body>
+</html>

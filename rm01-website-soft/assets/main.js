@@ -82,25 +82,29 @@
     desktop.replaceChildren();
     mobile.replaceChildren();
 
-    data.nav.forEach(([id, label]) => {
+    data.nav.forEach(([id, label, options = {}]) => {
       const desktopLink = document.createElement('a');
-      desktopLink.href = `#${id}`;
+      desktopLink.href = options.href || `#${id}`;
       desktopLink.textContent = t(label);
-      desktopLink.dataset.navTarget = id;
-      desktopLink.addEventListener('click', (event) => {
-        event.preventDefault();
-        goToSection(id);
-      });
+      if (!options.href) {
+        desktopLink.dataset.navTarget = id;
+        desktopLink.addEventListener('click', (event) => {
+          event.preventDefault();
+          goToSection(id);
+        });
+      }
       desktop.append(desktopLink);
 
       const mobileLink = document.createElement('a');
-      mobileLink.href = `#${id}`;
+      mobileLink.href = options.href || `#${id}`;
       mobileLink.textContent = t(label);
-      mobileLink.addEventListener('click', (event) => {
-        event.preventDefault();
-        closeMenu();
-        goToSection(id);
-      });
+      if (!options.href) {
+        mobileLink.addEventListener('click', (event) => {
+          event.preventDefault();
+          closeMenu();
+          goToSection(id);
+        });
+      }
       mobile.append(mobileLink);
     });
   }
