@@ -1,6 +1,6 @@
 (function () {
   const data = window.RM_SOFT;
-  const imageBase = '../../rm01-website/images/';
+  const imageBase = '../assets/images/';
   let lang = localStorage.getItem('rm-soft-lang') || 'zh';
   let revealObserver;
 

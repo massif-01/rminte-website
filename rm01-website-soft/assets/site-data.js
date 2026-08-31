@@ -1,5 +1,5 @@
 window.RM_SOFT = {
-  assetBase: '../rm01-website/images/',
+  assetBase: 'assets/images/',
   nav: [
     ['product', { zh: '产品', en: 'Product' }],
     ['hardware', { zh: '架构', en: 'Architecture' }],
