@@ -110,19 +110,33 @@ p {
 .skip-link {
   position: fixed;
   z-index: 40;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link:focus-visible {
   top: 16px;
   left: 16px;
-  transform: translateY(-150%);
+  width: auto;
+  height: auto;
+  margin: 0;
   border-radius: 999px;
   padding: 10px 14px;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
   color: #04100e;
   background: var(--accent);
   font-weight: 750;
-  transition: transform 520ms var(--motion);
-}
-
-.skip-link:focus {
-  transform: translateY(0);
 }
 
 .ambient-field {
@@ -742,8 +756,7 @@ html[lang="en"] .hero-copy h1 {
 
 .pillar-number,
 .feature-number,
-.module-number,
-.team-number {
+.module-number {
   display: inline-flex;
   margin-bottom: 24px;
   color: var(--accent);
@@ -1209,36 +1222,8 @@ html[lang="en"] .hero-copy h1 {
   background: rgba(117, 240, 220, 0.15);
 }
 
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: 70px;
-}
-
-.team-card:nth-child(2),
-.team-card:nth-child(4) {
-  margin-top: 40px;
-}
-
-.team-role {
-  color: var(--accent) !important;
-  font-weight: 780;
-}
-
-.team-focus {
+.case-partner {
   color: var(--ink-soft) !important;
-}
-
-.team-quote {
-  width: min(760px, 100%);
-  margin: 70px auto 0;
-  border-radius: 32px;
-  padding: 30px;
-  color: var(--warm);
-  text-align: center;
-  background: rgba(196, 177, 255, 0.075);
-  box-shadow: inset 0 0 0 1px rgba(196, 177, 255, 0.16);
 }
 
 .footer {
@@ -1605,7 +1590,6 @@ html[lang="en"] .hero-copy h1 {
   .module-bento,
   .engine-rail,
   .honor-grid,
-  .team-grid,
   .case-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1627,8 +1611,6 @@ html[lang="en"] .hero-copy h1 {
   .engine-card:nth-child(3),
   .honor-card:nth-child(1),
   .honor-card:nth-child(4),
-  .team-card:nth-child(2),
-  .team-card:nth-child(4),
   .pillar-card:nth-child(3),
   .media-bezel.offset {
     margin-top: 0;
@@ -1724,7 +1706,6 @@ html[lang="en"] .hero-copy h1 {
   .module-bento,
   .engine-rail,
   .honor-grid,
-  .team-grid,
   .case-grid,
   .thermal-visuals {
     grid-template-columns: 1fr;

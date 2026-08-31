@@ -321,22 +321,6 @@
     });
   }
 
-  function renderTeam() {
-    const root = $('#teamGrid');
-    if (!root) return;
-    root.replaceChildren(...data.teams.map((member, index) => {
-      const card = cardShell([
-        textEl('span', String(index + 1).padStart(2, '0'), 'team-number'),
-        textEl('h3', t(member.name)),
-        textEl('p', t(member.role), 'team-role'),
-        textEl('p', t(member.focus), 'team-focus'),
-        textEl('p', t(member.bio))
-      ], 'team-card reveal');
-      card.dataset.revealDelay = String(index * 70);
-      return card;
-    }));
-  }
-
   function setupReveal() {
     if (revealObserver) revealObserver.disconnect();
     revealObserver = new IntersectionObserver((entries) => {
@@ -684,7 +668,6 @@
     renderEngine();
     renderHonors();
     renderCases();
-    renderTeam();
     setupReveal();
     setupActiveNav();
   }

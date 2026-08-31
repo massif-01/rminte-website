@@ -4,8 +4,7 @@ window.RM_SOFT = {
     ['product', { zh: '产品', en: 'Product' }],
     ['hardware', { zh: '架构', en: 'Architecture' }],
     ['proof', { zh: '验证', en: 'Proof' }],
-    ['applications', { zh: '应用', en: 'Use Cases' }],
-    ['team', { zh: '团队', en: 'Team' }]
+    ['applications', { zh: '应用', en: 'Use Cases' }]
   ],
   metrics: [
     { value: '140W', label: { zh: '整机功耗', en: 'total power' } },
@@ -80,12 +79,6 @@ window.RM_SOFT = {
     { image: 'poster-1.png', title: { zh: '金熊猫大赛', en: 'Golden Panda' }, text: { zh: '2025 金熊猫全球创新创业大赛，从 2 万 5 千支队伍中脱颖而出，荣获第二名。', en: 'Second place in the 2025 Golden Panda Global Innovation and Entrepreneurship Competition among 25,000 teams.' } },
     { image: 'imgimage169.png', title: { zh: 'CCC 认证', en: 'CCC certified' }, text: { zh: '获得中国国家强制性产品认证，具备量产能力并通过质量与安规标准。', en: 'Passed China Compulsory Certification with mass-production readiness and safety compliance.' } },
     { image: 'poster-5.png', title: { zh: '国家级示范工程', en: 'National projects' }, text: { zh: '承担三项国家级示范工程人工智能部分建设，由国投、海峡富汇与泛灵人工智能联合打造。', en: 'Undertakes the AI portion of three national demonstration projects with SDIC and Haixia Fuhui.' } }
-  ],
-  teams: [
-    { name: { zh: '徐子景', en: 'Xu Zijing' }, role: { zh: 'CEO · 联合创始人', en: 'CEO · Co-Founder' }, focus: { zh: '战略、融资、产品、海外市场', en: 'Strategy, financing, product, overseas markets' }, bio: { zh: '多伦多大学、布朗大学计算机科学背景。', en: 'Computer science background from University of Toronto and Brown University.' } },
-    { name: { zh: '朱杰', en: 'Zhu Jie' }, role: { zh: 'COO · 联合创始人', en: 'COO · Co-Founder' }, focus: { zh: '供应链、销售、运营、量产交付', en: 'Supply chain, sales, operations, production delivery' }, bio: { zh: '近 20 年一线消费电子供应链经验。', en: 'Nearly 20 years of frontline consumer electronics supply-chain experience.' } },
-    { name: { zh: '唐云峰', en: 'Tang Yunfeng' }, role: { zh: 'CTO · 联合创始人', en: 'CTO · Co-Founder' }, focus: { zh: '技术架构、推理引擎、生态构建', en: 'Technical architecture, inference engine, ecosystem' }, bio: { zh: '全栈 AI 系统架构师，主导 RMInte 推理引擎与 RM-01 硬件设计。', en: 'Full-stack AI systems architect leading the RMInte inference engine and RM-01 hardware design.' } },
-    { name: { zh: '石一', en: 'Shi Yi' }, role: { zh: 'CDO · 联合创始人', en: 'CDO · Co-Founder' }, focus: { zh: '工业设计、产品定义、应用适配', en: 'Industrial design, product definition, application fit' }, bio: { zh: '近 20 年国际消费电子工业设计经验。', en: 'Nearly 20 years of international consumer electronics industrial-design experience.' } }
   ],
   cases: [
     {
@@ -231,8 +224,6 @@ window.RM_SOFT = {
       industry: '行业应用',
       platform: 'AI 能力平台',
       learn: '进入案例',
-      teamTitle: '四位合伙人，覆盖从推理内核到规模化交付的完整链条。',
-      quote: '一支具备 AI 硬件核心技术，拥有从 0 到 1 自主研发实力的硬科技团队。',
       footer: '泛灵（成都）人工智能科技有限公司',
       copyright: '© 2026 泛灵人工智能 · RM-01 便携 AI 超算',
       contactButton: '联系我们',
@@ -279,8 +270,6 @@ window.RM_SOFT = {
       industry: 'Industry applications',
       platform: 'AI capability platform',
       learn: 'Open case',
-      teamTitle: 'Four partners covering the full chain from inference kernel to scaled delivery.',
-      quote: 'A hard-tech team with core AI-hardware capability and proven 0-to-1 self-development.',
       footer: 'RMinte AI (Chengdu) Technology Co., Ltd.',
       copyright: '© 2026 RMinte AI · RM-01 Portable AI Supercomputer',
       contactButton: 'Contact',

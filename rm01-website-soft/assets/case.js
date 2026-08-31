@@ -127,7 +127,7 @@
 
     const partners = cardShell([
       textEl('h2', ui('partners')),
-      ...item.partners.map((partner) => textEl('p', t(partner), 'team-focus'))
+      ...item.partners.map((partner) => textEl('p', t(partner), 'case-partner'))
     ], 'case-info-card reveal');
     partners.dataset.revealDelay = '140';
 
