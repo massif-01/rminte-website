@@ -10,7 +10,7 @@
 
     while ((node = walker.nextNode())) {
       const parent = node.parentElement;
-      if (!parent || parent.closest('.rm-mark, script, style')) continue;
+      if (!parent || parent.closest('.rm-mark, [data-brand-font="ui"], script, style')) continue;
       if (/RM-01|TianShanOS|TianshanOS/.test(node.nodeValue)) textNodes.push(node);
     }
 
