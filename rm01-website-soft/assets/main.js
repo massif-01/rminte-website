@@ -455,7 +455,7 @@
     };
 
     const resizeCanvas = () => {
-      const dpr = 1;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const width = Math.max(1, Math.round(canvas.clientWidth * dpr));
       const height = Math.max(1, Math.round(canvas.clientHeight * dpr));
       if (canvas.width !== width || canvas.height !== height) {
@@ -526,7 +526,7 @@
     const decodeFrame = async (index) => {
       try {
         let image;
-        if ('createImageBitmap' in window && 'fetch' in window) {
+        if (window.location.protocol !== 'file:' && 'createImageBitmap' in window && 'fetch' in window) {
           const response = await fetch(frameSrc(index), { cache: 'force-cache' });
           const blob = await response.blob();
           image = await createImageBitmap(blob);
