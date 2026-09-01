@@ -56,10 +56,10 @@ const guideConfig = {
     label: { zh: '网络连接', en: 'Network connectivity' },
     title: { zh: 'RM-01 网络配置指南', en: 'RM-01 Network Configuration Guide' },
     description: {
-      zh: '说明 C1 与 C3 两条网络连接路径，以及用户设备接入、互联网共享和整机接入上层网络的方法。',
-      en: 'Explains the C1 and C3 network paths, device access, internet sharing, and how to connect the complete RM-01 system to an upstream network.'
+      zh: '说明 C1 与 C3 两条网络连接路径，以及用户设备接入、AI 辅助网络共享和整机接入上层网络的方法。',
+      en: 'Explains the C1 and C3 network paths, device access, AI-assisted internet sharing, and how to connect the complete RM-01 system to an upstream network.'
     },
-    chapterCount: { zh: '6 个章节', en: '6 chapters' },
+    chapterCount: { zh: '7 个章节', en: '7 chapters' },
     sourceLink: {
       href: 'https://github.com/RMinte-AI/lpmu-agx-network-setup',
       zh: '在 GitHub 查看网络自动化项目',
@@ -456,9 +456,9 @@ function pageTemplate(config, rendered) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/styles.css?v=agency-24">
-  <link rel="stylesheet" href="../assets/guides.css?v=agency-30">
+  <link rel="stylesheet" href="../assets/guides.css?v=agency-33">
   <script id="guidePageData" type="application/json">${pageData}</script>
-  <script src="../assets/guides.js?v=agency-31" defer></script>
+  <script src="../assets/guides.js?v=agency-32" defer></script>
 </head>
 <body class="guide-body guide-doc-body guide-accent-${config.accent}">
   <a class="skip-link" href="#guideContent" data-guide-text data-zh="跳至指南正文" data-en="Skip to guide content">跳至指南正文</a>

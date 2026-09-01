@@ -55,7 +55,66 @@ Windows 家庭版当前不受支持。
 
 > 网络连接工具会修改用户设备的网络地址、路由和共享设置，运行时可能短暂中断现有连接。开始前请保存正在进行的下载、远程会话和其他依赖网络的工作。
 
-## 5. 通过 C3 将 RM-01 接入上层网络
+## 5. 使用 AI 配置 C1 网络共享
+
+具备本机命令执行能力的 Agent Harness（如 Codex、Hermes）可以根据自然语言检查网络拓扑，并帮助配置从用户电脑到 RM-01 内部网络的转发与共享。这里的 AI 必须能够在目标电脑上执行系统命令；普通对话式 AI 只能提供操作建议，不能直接完成配置。
+
+### 在哪里运行 AI Agent
+
+建议直接在连接 C1 的用户电脑上运行 Agent。因为互联网出口、默认路由和共享规则都由这台电脑管理，Agent 需要获得该电脑的管理员权限才能完成配置。
+
+如果 Codex、Hermes 或其他 Agent 运行在 RM-01 内部，则必须事先获得对用户电脑的远程命令执行权限和管理员授权；否则它无法修改用户电脑上的网络共享、路由与防火墙设置。
+
+### 执行前确认
+
+- 用户电脑已经通过 C1 接入 RM-01，并能看到名为 `AX88179` 或 USB Ethernet 的网络接口。
+- 用户电脑的 C1 地址为 `10.10.99.100/24`，RM-01 内部节点仍使用 `10.10.99.99`、`10.10.99.98` 和 `10.10.99.97`。
+- 用户电脑已经通过 Wi-Fi、以太网或其他接口正常访问互联网。
+- Agent Harness 可以在用户电脑上执行命令，并可在需要时请求管理员权限。
+- 已保存下载、远程会话及其他依赖网络的工作，并能够在本机恢复网络配置。
+
+### 可直接发送给 Agent 的提示词
+
+下面的提示词保留了 RM-01 的出厂网络拓扑，同时要求 Agent 先检查、再修改，并给出验证与回滚方法。可以直接复制到 Codex、Hermes 或其他具备命令执行能力的 Agent Harness：
+
+```text
+你正在帮助我为 RM-01 配置 C1 网络共享。请先检查当前系统、网络接口、地址、默认路由和防火墙状态，确认实际情况与下述拓扑一致后再执行修改；不要仅凭接口名称猜测，也不要改动 RM-01 内部节点的固定地址。
+
+当前拓扑如下：
+- 用户电脑通过 USB-C 连接 RM-01 的 C1 接口；该连接在用户电脑上通常显示为 AX88179 或 USB Ethernet，地址为 10.10.99.100/24。
+- RM-01 内部网络为 10.10.99.0/24。
+- 应用计算机（LPMU）地址为 10.10.99.99。
+- 推理计算机（AGX）地址为 10.10.99.98。
+- 带外管理计算机地址为 10.10.99.97。
+- 用户电脑还通过另一个网络接口连接互联网。
+
+我的目标是：保留用户电脑现有的互联网连接，并把该连接通过 C1 对应的 AX88179 / USB Ethernet 接口共享给 RM-01 内部网络，使 10.10.99.99、10.10.99.98 和 10.10.99.97 能够访问互联网。
+
+请按以下约束操作：
+1. 先识别操作系统、实际互联网出口接口和 C1 对应接口，并向我说明准备修改的项目。
+2. 使用当前操作系统原生且改动最小的网络共享方式，配置必要的 IP 转发、NAT、路由或 Internet Connection Sharing。
+3. 不要改变用户电脑现有互联网接口的优先级和默认路由，不要改动上述 RM-01 节点地址，也不要清空或覆盖无关的防火墙规则。
+4. 如需管理员权限，请明确说明用途后再请求；如果当前系统或权限无法安全完成配置，请停止并说明原因。
+5. 完成后验证：用户电脑仍可访问互联网；10.10.99.99、10.10.99.98、10.10.99.97 可达；RM-01 内部节点可以访问公网 IP，并能正常解析域名。
+6. 最后列出实际执行的命令或修改项、验证结果，以及恢复原配置的回滚步骤。
+```
+
+macOS 通常使用“互联网共享”及系统路由机制；Linux 通常使用 IP 转发与 nftables 或 iptables；Windows 专业版通常使用 Internet Connection Sharing（ICS）。具体命令和接口名称应以 Agent 在当前电脑上的检查结果为准。Windows 家庭版当前不受支持。
+
+### 如何判断配置成功
+
+配置完成后，应同时满足以下条件：
+
+1. 用户电脑原有的互联网连接保持可用。
+2. 用户电脑可以访问 `10.10.99.99`、`10.10.99.98` 和 `10.10.99.97`。
+3. RM-01 内部节点既能访问公网 IP，也能解析并访问域名。
+4. Agent 已给出实际修改项和可执行的回滚步骤，而不是只报告“配置成功”。
+
+### 安全提示
+
+> 允许 Agent 以管理员或 root 权限配置网络，会使其能够修改路由、IP 转发、NAT、Internet Connection Sharing 和防火墙规则。只使用可信的 Agent Harness，并在授权前核对其操作计划。若用户电脑正承担远程连接或其他关键网络任务，请先确保可以在本机恢复配置。
+
+## 6. 通过 C3 将 RM-01 接入上层网络
 
 这里的“上层网络”是指用户已有的局域网，例如交换机或路由器所在的网络。
 
@@ -77,7 +136,7 @@ Windows 家庭版当前不受支持。
 
 切换顶部 USB 目标时，当前连接可能短暂断开。请勿在接口正在传输数据时切换目标。
 
-## 6. 通过 LPMU 完成整机联网
+## 7. 通过 LPMU 完成整机联网
 
 RM-01 出厂时已在 LPMU 中预制网络自动化配置项目。LPMU 取得上层网络连接后，会通过内部路由与 NAT 为 AGX 等内部节点转发流量，使整机接入用户的上层网络。
 
@@ -212,7 +271,66 @@ Windows Home is not currently supported.
 
 > The network connection tool changes network addressing, routing, and sharing settings on the user device. Existing connections may be interrupted briefly. Save active downloads, remote sessions, and other network-dependent work before starting.
 
-## 5. Connect RM-01 to an Upstream Network through C3
+## 5. Configure C1 Internet Sharing with AI
+
+An Agent Harness with local command-execution capability, such as Codex or Hermes, can inspect the network topology from natural-language instructions and help configure forwarding and internet sharing from the user computer to the RM-01 internal network. The AI must be able to execute system commands on the target computer. A chat-only AI can provide instructions but cannot apply the configuration.
+
+### Where to run the AI agent
+
+Run the agent directly on the user computer connected to C1 whenever possible. That computer owns the internet uplink, default route, and sharing rules, so the agent needs administrator access on that computer to perform the configuration.
+
+If Codex, Hermes, or another agent runs inside RM-01, it must already have authorized remote command execution and administrator access to the user computer. Without that access, it cannot change network sharing, routing, or firewall settings on the user computer.
+
+### Confirm before starting
+
+- The user computer is connected to RM-01 through C1 and can see a network interface named `AX88179` or USB Ethernet.
+- The C1 address on the user computer is `10.10.99.100/24`, while the RM-01 internal nodes remain at `10.10.99.99`, `10.10.99.98`, and `10.10.99.97`.
+- The user computer already has working internet access through Wi-Fi, Ethernet, or another interface.
+- The Agent Harness can execute commands on the user computer and request administrator privileges when required.
+- Active downloads, remote sessions, and other network-dependent work have been saved, and the network can be recovered locally if needed.
+
+### Prompt to send directly to the agent
+
+The following prompt preserves the factory RM-01 topology, requires inspection before modification, and asks for validation and rollback instructions. Copy it into Codex, Hermes, or another command-capable Agent Harness:
+
+```text
+You are helping me configure C1 internet sharing for RM-01. First inspect the current operating system, network interfaces, addresses, default routes, and firewall state. Make changes only after confirming that the actual configuration matches the topology below. Do not infer interface roles from names alone, and do not change the fixed addresses of the RM-01 internal nodes.
+
+Current topology:
+- The user computer is connected by USB-C to the C1 port on RM-01. On the user computer, this connection normally appears as AX88179 or USB Ethernet and uses 10.10.99.100/24.
+- The RM-01 internal network is 10.10.99.0/24.
+- The application computer (LPMU) is 10.10.99.99.
+- The inference computer (AGX) is 10.10.99.98.
+- The out-of-band management computer is 10.10.99.97.
+- The user computer also has internet access through a separate network interface.
+
+My goal is to preserve the user computer's existing internet connection and share it through the AX88179 / USB Ethernet interface associated with C1, allowing 10.10.99.99, 10.10.99.98, and 10.10.99.97 to access the internet.
+
+Follow these constraints:
+1. Identify the operating system, the actual internet uplink, and the interface associated with C1, then explain what you plan to change.
+2. Use the operating system's native, least-invasive sharing method to configure only the necessary IP forwarding, NAT, routing, or Internet Connection Sharing.
+3. Do not change the priority or default route of the user computer's existing internet interface. Do not change the RM-01 node addresses above, and do not flush or overwrite unrelated firewall rules.
+4. If administrator privileges are required, explain why before requesting them. If the current system or permissions cannot complete the configuration safely, stop and report the reason.
+5. After applying the configuration, verify that the user computer still has internet access; 10.10.99.99, 10.10.99.98, and 10.10.99.97 are reachable; and the RM-01 internal nodes can reach a public IP address and resolve DNS names.
+6. Finally, list the commands or settings actually changed, the validation results, and the rollback steps required to restore the original configuration.
+```
+
+macOS normally uses Internet Sharing and system routing facilities; Linux typically uses IP forwarding with nftables or iptables; and Windows Pro normally uses Internet Connection Sharing (ICS). Exact commands and interface names must follow the agent's inspection of the current computer. Windows Home is not currently supported.
+
+### How to confirm that it worked
+
+All of the following conditions should be true after configuration:
+
+1. The user computer's original internet connection remains available.
+2. The user computer can reach `10.10.99.99`, `10.10.99.98`, and `10.10.99.97`.
+3. RM-01 internal nodes can reach both public IP addresses and internet hostnames through DNS.
+4. The agent reports the exact changes made and provides executable rollback steps instead of only stating that the configuration succeeded.
+
+### Security notice
+
+> Granting an agent administrator or root access for network configuration allows it to change routes, IP forwarding, NAT, Internet Connection Sharing, and firewall rules. Use only a trusted Agent Harness and review its proposed actions before authorizing them. If the user computer carries a remote session or other critical network workload, make sure the configuration can be recovered locally first.
+
+## 6. Connect RM-01 to an Upstream Network through C3
 
 In this guide, “upstream network” means the user's existing local network, such as a network provided by a switch or router.
 
@@ -234,7 +352,7 @@ Connect the USB-C end to C3, then connect the RJ45 cable to the user's switch or
 
 Switching the top USB target may disconnect the current link briefly. Do not switch targets while data is being transferred through the port.
 
-## 6. Bring the Complete System Online through LPMU
+## 7. Bring the Complete System Online through LPMU
 
 RM-01 ships with the network automation project preloaded on LPMU. After LPMU obtains upstream connectivity, it uses internal routing and NAT to forward traffic for AGX and the other internal nodes, bringing the complete system onto the user's upstream network.
 
