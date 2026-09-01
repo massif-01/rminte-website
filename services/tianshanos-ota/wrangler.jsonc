@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tianshanos-ota",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-01",
+  "routes": [
+    {
+      "pattern": "ota.rminte.com",
+      "custom_domain": true
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "DOWNLOADS",
+      "bucket_name": "rminte-downloads"
+    }
+  ]
+}
