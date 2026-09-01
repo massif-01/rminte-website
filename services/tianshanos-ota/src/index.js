@@ -70,7 +70,9 @@ function homePage(origin) {
     @font-face { font-family:"Quantify RM"; src:url("https://rminte.com/assets/fonts/Quantify-Bold.ttf") format("truetype"); font-weight:700; font-style:normal; font-display:swap; }
     * { box-sizing:border-box; }
     body { margin:0; min-height:100vh; font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; color:var(--ink); background:radial-gradient(circle at 12% 8%,rgba(31,127,110,.24),transparent 34%),radial-gradient(circle at 88% 82%,rgba(126,95,211,.18),transparent 35%),#080b0a; }
-    main { width:min(880px,calc(100% - 36px)); margin:0 auto; padding:clamp(64px,10vw,112px) 0; }
+    main { width:min(880px,calc(100% - 36px)); margin:0 auto; padding:clamp(88px,12vw,132px) 0 clamp(64px,10vw,112px); }
+    .lang-toggle { position:absolute; top:28px; right:max(18px,calc((100vw - 880px)/2)); min-width:46px; border:1px solid var(--line); padding:11px 14px; color:var(--ink); background:rgba(255,255,255,.045); }
+    .lang-toggle:hover { border-color:rgba(117,240,220,.45); background:rgba(117,240,220,.09); }
     .eyebrow { color:var(--accent); font-size:.72rem; font-weight:800; letter-spacing:.16em; }
     h1 { margin:18px 0 0; font-size:clamp(2.8rem,7vw,5.4rem); line-height:.95; letter-spacing:-.055em; }
     .lead { max-width:650px; margin:26px 0 0; color:var(--muted); line-height:1.8; }
@@ -89,23 +91,66 @@ function homePage(origin) {
   </style>
 </head>
 <body>
+  <button class="lang-toggle" id="langToggle" type="button" aria-label="切换到英文">EN</button>
   <main>
     <div class="eyebrow"><span class="brand-name">RM-01</span> · OTA SERVICE</div>
-    <h1><span class="brand-name">TianShanOS</span><br>OTA 更新服务</h1>
-    <p class="lead">为 <span class="brand-name">RM-01</span> 本机的 <span class="brand-name">TianShanOS</span> OTA 页面提供正式固件与 WebUI 更新文件。刷写操作仍在设备自己的管理页面中完成。</p>
+    <h1 data-i18n-html="title"><span class="brand-name">TianShanOS</span><br>OTA 更新服务</h1>
+    <p class="lead" data-i18n-html="lead">为 <span class="brand-name">RM-01</span> 本机的 <span class="brand-name">TianShanOS</span> OTA 页面提供正式固件与 WebUI 更新文件。刷写操作仍在设备自己的管理页面中完成。</p>
     <section class="card">
-      <div class="status"><span class="dot"></span>服务在线 · ${RELEASE.version}</div>
-      <div class="url"><code id="serviceUrl">${serviceUrl}</code><button type="button" onclick="navigator.clipboard.writeText(document.getElementById('serviceUrl').textContent).then(()=>this.textContent='已复制')">复制地址</button></div>
+      <div class="status"><span class="dot"></span><span data-i18n="online">服务在线</span> · ${RELEASE.version}</div>
+      <div class="url"><code id="serviceUrl">${serviceUrl}</code><button id="copyButton" type="button" data-i18n="copy">复制地址</button></div>
       <ol>
-        <li>让电脑或平板连接 <span class="brand-name">RM-01</span> 所在网络。</li>
-        <li>打开 <span class="brand-name">RM-01</span> 的 <span class="brand-name">TianShanOS</span> WebUI，并进入<strong>“OTA 升级”</strong>。</li>
-        <li>把上面的地址填入<strong>“OTA 服务器”</strong>并保存。</li>
-        <li>点击<strong>“检查更新”</strong>，确认版本后开始升级。</li>
+        <li data-i18n-html="step1">让电脑或平板连接 <span class="brand-name">RM-01</span> 所在网络。</li>
+        <li data-i18n-html="step2">打开 <span class="brand-name">RM-01</span> 的 <span class="brand-name">TianShanOS</span> WebUI，并进入<strong>“OTA 升级”</strong>。</li>
+        <li data-i18n-html="step3">把上面的地址填入<strong>“OTA 服务器”</strong>并保存。</li>
+        <li data-i18n-html="step4">点击<strong>“检查更新”</strong>，确认版本后开始升级。</li>
       </ol>
-      <div class="meta">固件 ${RELEASE.firmware.name} · ${(RELEASE.firmware.size / 1024 / 1024).toFixed(1)} MB　 WebUI ${RELEASE.www.name} · ${(RELEASE.www.size / 1024 / 1024).toFixed(1)} MB</div>
-      <div class="links"><a href="/version">查看版本信息</a><a href="/health">服务健康状态</a></div>
+      <div class="meta"><span data-i18n="firmware">固件</span> ${RELEASE.firmware.name} · ${(RELEASE.firmware.size / 1024 / 1024).toFixed(1)} MB　 WebUI ${RELEASE.www.name} · ${(RELEASE.www.size / 1024 / 1024).toFixed(1)} MB</div>
+      <div class="links"><a href="/version" data-i18n="versionInfo">查看版本信息</a><a href="/health" data-i18n="health">服务健康状态</a></div>
     </section>
   </main>
+  <script>
+    const translations = {
+      zh: {
+        title: '<span class="brand-name">TianShanOS</span><br>OTA 更新服务',
+        lead: '为 <span class="brand-name">RM-01</span> 本机的 <span class="brand-name">TianShanOS</span> OTA 页面提供正式固件与 WebUI 更新文件。刷写操作仍在设备自己的管理页面中完成。',
+        online: '服务在线', copy: '复制地址', copied: '已复制', firmware: '固件', versionInfo: '查看版本信息', health: '服务健康状态',
+        step1: '让电脑或平板连接 <span class="brand-name">RM-01</span> 所在网络。',
+        step2: '打开 <span class="brand-name">RM-01</span> 的 <span class="brand-name">TianShanOS</span> WebUI，并进入<strong>“OTA 升级”</strong>。',
+        step3: '把上面的地址填入<strong>“OTA 服务器”</strong>并保存。',
+        step4: '点击<strong>“检查更新”</strong>，确认版本后开始升级。'
+      },
+      en: {
+        title: '<span class="brand-name">TianShanOS</span><br>OTA Update Service',
+        lead: 'Provides official firmware and WebUI updates to the <span class="brand-name">TianShanOS</span> OTA page hosted on your <span class="brand-name">RM-01</span>. Flashing remains securely controlled by the device’s own management interface.',
+        online: 'Service online', copy: 'Copy address', copied: 'Copied', firmware: 'Firmware', versionInfo: 'View version information', health: 'Service health',
+        step1: 'Connect your computer or tablet to the same network as the <span class="brand-name">RM-01</span>.',
+        step2: 'Open the <span class="brand-name">TianShanOS</span> WebUI on your <span class="brand-name">RM-01</span>, then go to <strong>OTA Update</strong>.',
+        step3: 'Enter the address above under <strong>OTA Server</strong>, then save it.',
+        step4: 'Select <strong>Check for Updates</strong>, confirm the version, and start the update.'
+      }
+    };
+    let currentLang = localStorage.getItem('rm-ota-lang') === 'en' ? 'en' : 'zh';
+    const langToggle = document.getElementById('langToggle');
+    const copyButton = document.getElementById('copyButton');
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('rm-ota-lang', lang);
+      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+      document.querySelectorAll('[data-i18n]').forEach((element) => { element.textContent = translations[lang][element.dataset.i18n]; });
+      document.querySelectorAll('[data-i18n-html]').forEach((element) => { element.innerHTML = translations[lang][element.dataset.i18nHtml]; });
+      langToggle.textContent = lang === 'zh' ? 'EN' : '中';
+      langToggle.setAttribute('aria-label', lang === 'zh' ? '切换到英文' : 'Switch to Chinese');
+    }
+
+    langToggle.addEventListener('click', () => applyLanguage(currentLang === 'zh' ? 'en' : 'zh'));
+    copyButton.addEventListener('click', async () => {
+      await navigator.clipboard.writeText(document.getElementById('serviceUrl').textContent);
+      copyButton.textContent = translations[currentLang].copied;
+    });
+    applyLanguage(currentLang);
+  </script>
 </body>
 </html>`;
 }
