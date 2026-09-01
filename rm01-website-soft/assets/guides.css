@@ -533,7 +533,7 @@ a.guide-card:active {
   gap: 9px;
 }
 
-.guide-doc-meta span {
+.guide-doc-meta > span {
   border-radius: 10px;
   padding: 9px 12px;
   color: var(--muted);
@@ -1204,7 +1204,7 @@ a.guide-card:active {
     font-size: clamp(2.15rem, 8.8vw, 2.8rem);
   }
 
-  .guide-doc-meta span {
+  .guide-doc-meta > span {
     padding: 8px 10px;
   }
 
