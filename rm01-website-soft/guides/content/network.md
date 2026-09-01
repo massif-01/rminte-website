@@ -79,9 +79,29 @@ Windows 家庭版当前不受支持。
 
 ## 6. 通过 LPMU 完成整机联网
 
-RM-01 出厂时已在 LPMU 中内置网络自动化配置程序。LPMU 会为 RM-01 的其他内部节点提供路由，因此完成以下操作后，整机可以接入用户的上层网络。
+RM-01 出厂时已在 LPMU 中预制网络自动化配置项目。LPMU 取得上层网络连接后，会通过内部路由与 NAT 为 AGX 等内部节点转发流量，使整机接入用户的上层网络。
 
-### 运行内置网络配置程序
+### 项目位置和用户需要做什么
+
+项目位于 **LPMU 当前用户的主目录**，预制路径为 `~/network-setup/`，其中面向 LPMU 的脚本位于 `~/network-setup/lpmu/`。
+
+出厂设备不需要重新下载项目，也不需要重复执行 README 中面向工程部署的 `scp`、`chmod` 或安装步骤。普通用户应从 TianshanOS 运行配置；只有在故障诊断或二次开发时，才需要进入项目目录检查脚本与日志。
+
+> 请勿随意移动、重命名或删除 `~/network-setup/`。TianshanOS 的网络配置功能依赖出厂预制的项目路径和脚本。
+
+### 自动化项目会完成什么
+
+执行配置后，项目会在 LPMU 上依次完成以下工作：
+
+1. 检测具有网关的网络接口，并通过连通性测试选择可用的上层网络出口。
+2. 重新设置 LPMU 的默认路由，使流量通过选定的上层网络接口发送。
+3. 启用 IPv4 转发，并配置 `iptables` 的 NAT 与 FORWARD 规则。
+4. 使内部 AGX（默认地址 `10.10.99.98`）通过 LPMU（内部地址 `10.10.99.99`）访问上层网络。
+5. 配置用于访问 AGX 的端口转发规则。
+
+项目还包含可选的智能路由监控服务。启用后，服务每 30 秒检查一次当前网络出口，在连接失效时尝试切换至其他可用接口，并在首选接口恢复后切换回来。
+
+### 通过 TianshanOS 运行
 
 1. 确认 C3 已通过 USB-C ↔ RJ45 以太网适配器连接至交换机或路由器。
 2. 确认 TianshanOS 首页中的顶部 USB 目标已经切换至 `LPMU`。
@@ -90,19 +110,50 @@ RM-01 出厂时已在 LPMU 中内置网络自动化配置程序。LPMU 会为 RM
 5. 点击“通过LPMU接入”。
 6. 等待状态从“处理中”变为“成功”或“失败”。处理期间不要重复启动。
 
-状态显示“成功”后，LPMU 会取得上层网络连接，并通过内部路由为 RM-01 的其他计算节点提供网络。
+状态显示“成功”表示脚本已找到可用的上层网络出口、完成 LPMU 路由配置，并执行内部网络转发与 NAT 配置。此时仍建议验证 AGX 的 IP 连通性和 DNS 解析，而不是仅以按钮状态作为最终判断。
+
+### 如何确认联网成功
+
+首先确认 TianshanOS 显示“成功”。如果用户拥有 AGX 终端权限，可在 AGX 中依次执行：
+
+```bash
+ping -c 3 10.10.99.99  # 验证 AGX 到 LPMU
+ping -c 3 8.8.8.8       # 验证互联网 IP 连通性
+ping -c 3 google.com    # 验证 DNS 解析
+```
+
+三项测试分别验证内部链路、互联网转发和 DNS。第一项失败通常表示内部连接或地址配置异常；第一项成功而第二项失败，应检查 LPMU 的上层网络、默认路由和 NAT；前两项成功而第三项失败，则应检查 DNS 配置。
+
+### 端口转发与安全边界
+
+当前项目会在 LPMU 的上层网络接口配置以下转发：
+
+| LPMU 入口 | 转发目标 | 用途 |
+| --- | --- | --- |
+| TCP `58022` | AGX TCP `22` | 通过 LPMU 访问 AGX 的 SSH 服务 |
+| TCP/UDP `58000–58999` | AGX 相同端口 | 访问运行在 AGX 上的应用服务 |
+
+例如，SSH 客户端连接的是 LPMU 的上层网络地址，但用户名和认证凭据属于 AGX：
+
+```bash
+ssh -p 58022 <AGX_USERNAME>@<LPMU_IP>
+```
+
+> 端口转发会扩大 AGX 服务在上层网络中的可访问范围。只应在可信局域网中启用，并结合交换机、路由器或上层防火墙限制来源地址；不要把这些端口直接暴露到公共互联网。
 
 ### 风险与故障排查
 
-> “通过LPMU接入”会调整 LPMU 的网络接口、DHCP、默认路由、IP 转发、NAT 和防火墙规则，可能中断正在进行的远程连接，也可能覆盖已有的自定义网络规则。若 LPMU 已进行过自定义网络或防火墙配置，请先记录现有配置再执行。
+> “通过LPMU接入”会删除 LPMU 的旧默认路由，清空现有 `iptables` NAT 表和 FORWARD 链规则，并把 FORWARD 默认策略设置为 DROP，随后再写入 RM-01 所需的路由、NAT 与端口转发规则。该过程可能立即中断远程连接，也会覆盖已有的自定义网络和防火墙配置。若 LPMU 做过定制，请先导出路由表与防火墙规则，并确保具备本地恢复方式。
 
 如果接入失败，请依次检查：
 
 1. C3 使用的 USB-C ↔ RJ45 适配器和网线是否连接牢固。
 2. 交换机或路由器端口是否已经启用。
 3. TianshanOS 首页显示的顶部 USB 目标是否为 `LPMU`。
-4. “接入上层网络”区域显示的错误和输出信息。
-5. LPMU 中是否存在会阻止 DHCP、路由、NAT 或防火墙配置的自定义规则。
+4. 上层网络是否能向 LPMU 提供有效地址、网关和 DNS。
+5. “接入上层网络”区域显示的错误和输出信息。
+6. AGX 是否仍可访问 LPMU 内部地址 `10.10.99.99`。
+7. LPMU 中是否存在与默认路由、NAT、FORWARD 链或端口转发冲突的自定义规则。
 
 # RM-01 Network Configuration Guide
 
@@ -185,9 +236,29 @@ Switching the top USB target may disconnect the current link briefly. Do not swi
 
 ## 6. Bring the Complete System Online through LPMU
 
-The LPMU ships with the RM-01 automated network configuration program. LPMU routes traffic for the other internal RM-01 nodes, so the complete system can join the user's upstream network after the following procedure is completed.
+RM-01 ships with the network automation project preloaded on LPMU. After LPMU obtains upstream connectivity, it uses internal routing and NAT to forward traffic for AGX and the other internal nodes, bringing the complete system onto the user's upstream network.
 
-### Run the built-in network configuration program
+### Project location and what the user needs to do
+
+The project is stored in the **home directory of the current LPMU user** at `~/network-setup/`. LPMU-specific scripts are located in `~/network-setup/lpmu/`.
+
+On a factory-configured device, do not download the project again or repeat the engineering deployment steps in the repository README, such as `scp`, `chmod`, or service installation. Regular users should start the configuration from TianshanOS. Enter the project directory only for troubleshooting or development.
+
+> Do not move, rename, or delete `~/network-setup/`. The TianshanOS network configuration workflow depends on the factory project path and scripts.
+
+### What the automation project configures
+
+When started, the project performs the following work on LPMU:
+
+1. Detects interfaces with gateways and runs connectivity tests to select a usable upstream path.
+2. Replaces the LPMU default route so traffic uses the selected upstream interface.
+3. Enables IPv4 forwarding and configures `iptables` NAT and FORWARD rules.
+4. Allows the internal AGX, at the default address `10.10.99.98`, to reach the upstream network through LPMU at `10.10.99.99`.
+5. Adds port-forwarding rules for services hosted on AGX.
+
+The project also includes an optional smart-route monitoring service. When enabled, it checks the current upstream path every 30 seconds, attempts to fail over when connectivity is lost, and returns to the preferred interface when that interface recovers.
+
+### Run the configuration from TianshanOS
 
 1. Confirm that C3 is connected to the switch or router through the USB-C-to-RJ45 Ethernet adapter.
 2. Confirm that the top USB target on the TianshanOS home page is set to `LPMU`.
@@ -196,16 +267,47 @@ The LPMU ships with the RM-01 automated network configuration program. LPMU rout
 5. Select “Access via LPMU.”
 6. Wait for the state to change from “Processing” to “Success” or “Failed.” Do not start the operation again while it is processing.
 
-After the state changes to “Success,” LPMU has obtained upstream connectivity and provides network access to the other RM-01 compute nodes through internal routing.
+“Success” means that the script found a usable upstream path, configured the LPMU route, and ran the internal forwarding and NAT configuration. Verify AGX IP connectivity and DNS resolution afterward instead of treating the button state as the only proof of connectivity.
+
+### Confirm that the connection works
+
+First confirm that TianshanOS reports “Success.” If the user has AGX terminal access, run these checks on AGX:
+
+```bash
+ping -c 3 10.10.99.99  # Verify AGX-to-LPMU connectivity
+ping -c 3 8.8.8.8       # Verify internet IP connectivity
+ping -c 3 google.com    # Verify DNS resolution
+```
+
+These checks isolate the internal link, internet forwarding, and DNS. If the first test fails, inspect the internal link and addressing. If the first succeeds but the second fails, inspect the LPMU upstream connection, default route, and NAT. If only the third fails, inspect DNS configuration.
+
+### Port forwarding and the security boundary
+
+The current project configures these forwards on the LPMU upstream interface:
+
+| LPMU entry | Forwarding target | Purpose |
+| --- | --- | --- |
+| TCP `58022` | AGX TCP `22` | Reach the AGX SSH service through LPMU |
+| TCP/UDP `58000–58999` | The same ports on AGX | Reach application services running on AGX |
+
+For SSH, the client connects to the LPMU upstream address, but the username and authentication credentials belong to AGX:
+
+```bash
+ssh -p 58022 <AGX_USERNAME>@<LPMU_IP>
+```
+
+> Port forwarding increases the reachability of AGX services from the upstream network. Enable it only on a trusted LAN and restrict source addresses with the switch, router, or upstream firewall. Do not expose these ports directly to the public internet.
 
 ### Risks and troubleshooting
 
-> “Access via LPMU” changes LPMU network interfaces, DHCP, default routes, IP forwarding, NAT, and firewall rules. It may interrupt active remote sessions and may overwrite existing custom network rules. If LPMU already has custom network or firewall configuration, record the current configuration before running this operation.
+> “Access via LPMU” deletes the previous LPMU default routes, flushes the existing `iptables` NAT table and FORWARD chain, sets the default FORWARD policy to DROP, and then writes the RM-01 routing, NAT, and port-forwarding rules. This can immediately interrupt remote sessions and overwrite custom network or firewall configuration. If LPMU has been customized, export the current routes and firewall rules first and make sure a local recovery path is available.
 
 If the operation fails, check the following in order:
 
 1. Confirm that the USB-C-to-RJ45 adapter and Ethernet cable connected to C3 are secure.
 2. Confirm that the switch or router port is enabled.
 3. Confirm that the TianshanOS home page shows `LPMU` as the current top USB target.
-4. Read the error and output shown in “Upstream Network Access.”
-5. Check whether custom LPMU rules are preventing DHCP, routing, NAT, or firewall configuration.
+4. Confirm that the upstream network provides LPMU with a valid address, gateway, and DNS configuration.
+5. Read the error and output shown in “Upstream Network Access.”
+6. Confirm that AGX can still reach the LPMU internal address `10.10.99.99`.
+7. Check for custom LPMU rules that conflict with the default route, NAT, FORWARD chain, or port forwarding.

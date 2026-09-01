@@ -48,6 +48,8 @@
   position: relative;
   min-height: 154px;
   padding: 28px;
+  color: inherit;
+  transition: background 220ms ease, box-shadow 220ms ease;
 }
 
 .download-overview-item + .download-overview-item {
@@ -71,12 +73,27 @@
   letter-spacing: -0.025em;
 }
 
+.download-overview-item:hover {
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.download-overview-item:focus-visible {
+  z-index: 1;
+  outline: 2px solid rgba(117, 240, 220, 0.78);
+  outline-offset: -3px;
+}
+
+.download-overview-item:active {
+  background: rgba(255, 255, 255, 0.055);
+}
+
 .download-overview-item:nth-child(1) strong { color: var(--accent); }
 .download-overview-item:nth-child(2) strong { color: var(--violet); }
 .download-overview-item:nth-child(3) strong { color: var(--warm); }
 
 .download-section {
   margin-top: clamp(76px, 9vw, 112px);
+  scroll-margin-top: 112px;
 }
 
 .download-section-head {

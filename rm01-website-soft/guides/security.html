@@ -14,9 +14,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/styles.css?v=agency-24">
-  <link rel="stylesheet" href="../assets/guides.css?v=agency-28">
+  <link rel="stylesheet" href="../assets/guides.css?v=agency-29">
   <script id="guidePageData" type="application/json">{"title":{"zh":"TianshanOS 安全页面完整操作指南","en":"TianshanOS Security Page Guide"},"copy":{"zh":"已复制","en":"Copied"},"copyDefault":{"zh":"复制","en":"Copy"}}</script>
-  <script src="../assets/guides.js?v=agency-28" defer></script>
+  <script src="../assets/guides.js?v=agency-29" defer></script>
 </head>
 <body class="guide-body guide-doc-body guide-accent-security">
   <a class="skip-link" href="#guideContent" data-guide-text data-zh="跳至指南正文" data-en="Skip to guide content">跳至指南正文</a>
@@ -396,6 +396,7 @@
 <p>在产品实现改变并完成重新核验之前，请以以下边界做风险判断：</p>
 <ol><li>完整 WebUI 通过 HTTP 工作，敏感内容可能明文经过网络。</li><li>SSH 密码认证发生在主机指纹验证之前；新主机默认自动信任。</li><li>已知主机 SD 卡文件是未签名明文，并在启动加载时优先于 NVS。</li><li>当前构建未启用 NVS Encryption、Flash Encryption 和 Secure Boot；不要宣称私钥已获得这些保护。</li><li>“隐藏密钥 ID”目前不构成保密或权限控制。</li><li>SSH 日志可能包含私钥开头片段。</li><li>通用 Web API 当前没有执行统一的登录和权限校验；<code>requires_auth</code> / <code>permission</code> 仅登记未执行。证书“安装成功”也不是完整 PKI 验证。</li><li>443 mTLS 服务不是完整 WebUI，安装到设备的 CA 用于验证客户端证书。</li><li>Config Pack 没有完成签名者证书链信任验证，“官方”标记不可信。</li><li>通用 Config Pack 导入与应用当前未闭环，不能用来证明配置已生效。</li></ol>
 <p>如果你的使用场景无法接受其中任何一项，请停止把设备放入该信任边界，并由安全负责人决定网络隔离、外部补偿控制或产品修复方案。</p>
+
           </article>
 
           <article class="guide-article lang-pane" data-lang-pane="en" hidden>
@@ -522,6 +523,7 @@
 <p>Until implementation changes and is reverified, use these boundaries for risk decisions:</p>
 <ol><li>The full WebUI runs over HTTP, so sensitive values can cross the network in plaintext.</li><li>SSH password authentication occurs before host-fingerprint verification, and new hosts are trusted automatically.</li><li>Known Host SD files are unsigned plaintext and take precedence over NVS during startup loading.</li><li>NVS Encryption, Flash Encryption, and Secure Boot are not enabled in the current build; do not claim these protections for private keys.</li><li>Hide Key ID is not currently secrecy or access control.</li><li>SSH logs may contain the beginning of private-key material.</li><li>The generic Web API does not currently enforce a unified login or permission check; <code>requires_auth</code> and <code>permission</code> are registered but not executed. Certificate installation is also not complete PKI validation.</li><li>The mTLS service on port 443 is not the full WebUI; the CA installed on the device validates client certificates.</li><li>Config Pack does not validate signer certificate-chain trust, and its Official marker is not trustworthy identity evidence.</li><li>Generic Config Pack import and application are incomplete and cannot prove configuration became active.</li></ol>
 <p>If your deployment cannot accept any of these limitations, do not place the device inside that trust boundary. Have the security owner choose network isolation, compensating controls, or a product implementation change.</p>
+
           </article>
         <a class="guide-next" href="admin.html">
           <span data-guide-text data-zh="下一步" data-en="Next">下一步</span>

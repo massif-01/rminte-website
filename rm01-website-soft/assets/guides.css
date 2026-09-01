@@ -954,6 +954,15 @@ a.guide-card:active {
   color: #8ec9ff;
 }
 
+.guide-github-link {
+  width: fit-content;
+  margin: 52px 0 8px;
+}
+
+.guide-github-link span {
+  color: inherit;
+}
+
 .guide-footer {
   position: relative;
   z-index: 2;
@@ -1201,6 +1210,10 @@ a.guide-card:active {
 
   .guide-notice {
     padding: 20px;
+  }
+
+  .guide-github-link {
+    width: 100%;
   }
 
   .guide-footer {

@@ -60,6 +60,11 @@ const guideConfig = {
       en: 'Explains the C1 and C3 network paths, device access, internet sharing, and how to connect the complete RM-01 system to an upstream network.'
     },
     chapterCount: { zh: '6 个章节', en: '6 chapters' },
+    sourceLink: {
+      href: 'https://github.com/RMinte-AI/lpmu-agx-network-setup',
+      zh: '在 GitHub 查看网络自动化项目',
+      en: 'View the network automation project on GitHub'
+    },
     next: { href: 'admin.html', zh: '继续阅读 Admin 指南', en: 'Continue to the Admin guide' }
   }
 };
@@ -345,10 +350,23 @@ function tocItems(headings, lang) {
   }).join('\n');
 }
 
-function renderLanguagePane(lang, rendered) {
+function sourceLinkTemplate(config, lang) {
+  if (!config.sourceLink) return '';
+  const label = config.sourceLink[lang];
+  return `
+            <a class="footer-github guide-github-link" href="${escapeHtml(config.sourceLink.href)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(label)}">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.38-3.37-1.38-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.3.1-2.72 0 0 .84-.27 2.75 1.05A9.35 9.35 0 0 1 12 6.94c.85 0 1.7.12 2.5.34 1.9-1.32 2.74-1.05 2.74-1.05.55 1.42.2 2.46.1 2.72.64.72 1.03 1.64 1.03 2.76 0 3.95-2.34 4.82-4.57 5.07.36.32.68.94.68 1.9 0 1.38-.01 2.48-.01 2.82 0 .28.18.6.69.5A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/>
+              </svg>
+              <span>${escapeHtml(label)}</span>
+            </a>`;
+}
+
+function renderLanguagePane(lang, rendered, config) {
   return `
           <article class="guide-article lang-pane" data-lang-pane="${lang}"${lang === 'en' ? ' hidden' : ''}>
 ${rendered.html}
+${sourceLinkTemplate(config, lang)}
           </article>`;
 }
 
@@ -438,9 +456,9 @@ function pageTemplate(config, rendered) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/styles.css?v=agency-24">
-  <link rel="stylesheet" href="../assets/guides.css?v=agency-28">
+  <link rel="stylesheet" href="../assets/guides.css?v=agency-29">
   <script id="guidePageData" type="application/json">${pageData}</script>
-  <script src="../assets/guides.js?v=agency-28" defer></script>
+  <script src="../assets/guides.js?v=agency-29" defer></script>
 </head>
 <body class="guide-body guide-doc-body guide-accent-${config.accent}">
   <a class="skip-link" href="#guideContent" data-guide-text data-zh="跳至指南正文" data-en="Skip to guide content">跳至指南正文</a>
@@ -483,8 +501,8 @@ ${tocItems(rendered.en.headings, 'en')}
       </aside>
 
       <div class="guide-article-column">
-${renderLanguagePane('zh', rendered.zh)}
-${renderLanguagePane('en', rendered.en)}
+${renderLanguagePane('zh', rendered.zh, config)}
+${renderLanguagePane('en', rendered.en, config)}
         <a class="guide-next" href="${config.next.href}">
           <span data-guide-text data-zh="下一步" data-en="Next">下一步</span>
           <strong data-guide-text data-zh="${escapeHtml(config.next.zh)}" data-en="${escapeHtml(config.next.en)}">${escapeHtml(config.next.zh)}</strong>
