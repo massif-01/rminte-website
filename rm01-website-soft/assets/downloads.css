@@ -36,7 +36,7 @@
 .download-overview {
   margin: clamp(52px, 7vw, 80px) 0 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   overflow: hidden;
   border-radius: 28px;
   background: rgba(246, 250, 244, 0.055);
@@ -90,6 +90,7 @@
 .download-overview-item:nth-child(1) strong { color: var(--accent); }
 .download-overview-item:nth-child(2) strong { color: var(--violet); }
 .download-overview-item:nth-child(3) strong { color: var(--warm); }
+.download-overview-item:nth-child(4) strong { color: var(--accent); }
 
 .download-section {
   margin-top: clamp(76px, 9vw, 112px);
@@ -174,6 +175,12 @@
   color: var(--warm);
   background: rgba(237, 228, 202, 0.065);
   box-shadow: inset 0 0 0 1px rgba(237, 228, 202, 0.16);
+}
+
+.download-section-tools .download-filetype {
+  color: var(--accent);
+  background: rgba(117, 240, 220, 0.065);
+  box-shadow: inset 0 0 0 1px rgba(117, 240, 220, 0.16);
 }
 
 .download-release-row {
