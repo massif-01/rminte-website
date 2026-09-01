@@ -12,6 +12,31 @@
   let scrollTicking = false;
   let refreshSearch = function () {};
 
+  function markBrandText(root = document.body) {
+    if (!root) return;
+    const matches = [];
+    root.querySelectorAll('*').forEach((element) => {
+      if (element.closest('.rm-mark, script, style, noscript, textarea')) return;
+      element.childNodes.forEach((node) => {
+        if (node.nodeType === 3 && /RM-01|TianshanOS/i.test(node.nodeValue)) matches.push(node);
+      });
+    });
+
+    matches.forEach((node) => {
+      const parts = node.nodeValue.split(/(RM-01|TianshanOS)/gi);
+      const fragment = document.createDocumentFragment();
+      parts.forEach((part) => {
+        if (/^(RM-01|TianshanOS)$/i.test(part)) {
+          const mark = document.createElement('span');
+          mark.className = 'rm-mark';
+          mark.textContent = part;
+          fragment.append(mark);
+        } else if (part) fragment.append(document.createTextNode(part));
+      });
+      node.replaceWith(fragment);
+    });
+  }
+
   function pageData() {
     const node = $('#guidePageData');
     if (!node) return null;
@@ -86,6 +111,7 @@
     document.title = 'RMinte - RM-01 - Portable AI Supercomputer - 泛灵人工智能';
 
     refreshSearch();
+    markBrandText();
 
     if (headingKey) {
       requestAnimationFrame(() => {
@@ -320,6 +346,7 @@
           : `${results.length} most relevant sections`;
         results.forEach((entry) => list.append(createResult(entry, normalizedQuery)));
       });
+      markBrandText();
     }
 
     roots.forEach((root) => {
