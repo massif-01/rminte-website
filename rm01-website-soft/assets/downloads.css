@@ -159,6 +159,69 @@
   box-shadow: inset 0 0 0 1px rgba(237, 228, 202, 0.16);
 }
 
+.download-release-row {
+  min-height: 166px;
+  padding: 30px 28px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 28px;
+  background:
+    radial-gradient(circle at 16% 18%, rgba(237, 228, 202, 0.09), transparent 38%),
+    rgba(237, 228, 202, 0.025);
+}
+
+.download-release-row + .download-row {
+  border-top: 1px solid var(--line);
+}
+
+.download-release-kicker {
+  color: var(--warm);
+  font-size: 0.66rem;
+  font-weight: 760;
+  letter-spacing: 0.12em;
+}
+
+.download-release-row h3 {
+  margin: 12px 0 0;
+  color: var(--ink);
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+
+.download-release-row p {
+  max-width: 650px;
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+
+.download-release-link {
+  border-radius: 999px;
+  padding: 11px 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--warm);
+  background: rgba(237, 228, 202, 0.055);
+  box-shadow: inset 0 0 0 1px rgba(237, 228, 202, 0.16);
+  font-size: 0.7rem;
+  font-weight: 720;
+  white-space: nowrap;
+}
+
+.download-row-compact {
+  min-height: 130px;
+}
+
+.download-action-secondary {
+  color: var(--warm);
+  background: rgba(237, 228, 202, 0.07);
+  box-shadow: inset 0 0 0 1px rgba(237, 228, 202, 0.18);
+}
+
 .download-copy h3 {
   margin: 0;
   color: var(--ink);
@@ -295,6 +358,16 @@
   .download-status,
   .download-action {
     grid-column: 2;
+    justify-self: start;
+  }
+
+  .download-release-row {
+    padding: 26px 24px;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .download-release-link {
     justify-self: start;
   }
 

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji2Pixel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 左侧控制面板 -->
+        <aside class="control-panel">
+            <header class="app-header">
+                <div class="app-title">
+                    <h1>🎨 Emoji2Pixel</h1>
+                </div>
+                <div class="app-lang">
+                    <select id="langSelect" class="lang-select"></select>
+                </div>
+            </header>
+
+            <!-- 输入区域 -->
+            <div class="input-section">
+                <div class="input-row">
+                    <button id="emojiFitToggle" class="emoji-fit-toggle" title="自动拟合" data-i18n-title="autoFit">A</button>
+                    <input type="text" id="emojiInput" placeholder="input emoji" data-i18n-placeholder="inputEmoji" maxlength="4">
+                    <button id="addImageBtn" class="btn btn-icon" title="导入图片" data-i18n-title="importImage" type="button">🖼</button>
+                    <button id="addEmojiBtn" class="btn btn-primary" style="min-width:60px;font-weight:bold;" type="button" title="添加关键帧" data-i18n-title="addFrame">+</button>
+                </div>
+                <input type="file" id="emojiImageInput" class="emoji-image-input" accept="image/*">
+                <div class="emoji-fit-row" id="emojiFitRow">
+                    <input type="range" id="emojiScaleInput" min="0.25" max="5" step="0.01" value="0.75">
+                    <span class="emoji-fit-value" id="emojiScaleValue">0.75x</span>
+                </div>
+                <input type="text" id="emojiSearchInput" class="emoji-search" placeholder="快速检索" data-i18n-placeholder="quickSearch">
+                <div class="emoji-nav" id="emojiNav"></div>
+                <div class="emoji-scroll" id="emojiGrid">
+                    <div class="emoji-loading" data-i18n="loadingEmoji">正在加载emoji...</div>
+                </div>
+            </div>
+
+            <!-- 关键帧列表 -->
+            <div class="frames-section">
+                <div class="frames-header">
+                    <span id="frameCount">关键帧 (0)</span>
+                    <div class="tween-setting">
+                        <label data-i18n="tweenLabel">过渡:</label>
+                        <input type="number" id="tweenFramesInput" min="0" max="20" step="1" value="5">
+                    </div>
+                    <button id="clearFramesBtn" class="btn btn-icon btn-danger" title="清空" data-i18n-title="clear">🗑</button>
+                </div>
+                <span class="tween-info" id="tweenInfo"></span>
+                <div class="frames-container" id="framesContainer">
+                    <div class="empty-frames" data-i18n="emptyFrames">添加emoji创建动画</div>
+                </div>
+            </div>
+
+            <!-- 动画控制 -->
+            <div class="animation-section">
+                <div class="anim-controls">
+                    <button id="playBtn" class="btn btn-icon" title="播放" data-i18n-title="play">▶</button>
+                    <button id="pauseBtn" class="btn btn-icon" title="暂停" data-i18n-title="pause">⏸</button>
+                    <input type="number" id="animSpeed" min="20" max="5000" step="50" value="500">
+                    <span id="speedValue">500ms</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 右侧预览区域 -->
+        <main class="preview-area">
+            <div class="preview-toolbar">
+                <!-- 画布设置 -->
+                <div class="canvas-settings">
+                    <div class="setting-item">
+                        <label data-i18n="size">尺寸</label>
+                        <div class="unit-field">
+                            <input type="number" id="displayWidthInput" min="50" max="300" step="0.1" value="160">
+                            <span class="unit-badge" data-unit-target="display">mm</span>
+                        </div>
+                        <span class="unit">W</span>
+                        <div class="unit-field">
+                            <input type="number" id="displayHeightInput" min="50" max="300" step="0.1" value="160">
+                            <span class="unit-badge" data-unit-target="display">mm</span>
+                        </div>
+                        <span class="unit">H</span>
+                    </div>
+                    <div class="setting-divider" aria-hidden="true"></div>
+                    <div class="setting-item">
+                        <label data-i18n="pixelSize">像素大小</label>
+                        <div class="unit-field">
+                            <input type="number" id="pixelSizeInput" min="1" max="10" step="0.1" value="4">
+                            <span class="unit-badge" data-unit-target="size">mm</span>
+                        </div>
+                    </div>
+                    <div class="setting-item">
+                        <label data-i18n="gap">间隙</label>
+                        <div class="unit-field">
+                            <input type="number" id="gapSizeInput" min="0" max="5" step="0.1" value="1">
+                            <span class="unit-badge" data-unit-target="size">mm</span>
+                        </div>
+                    </div>
+                    <div class="setting-divider" aria-hidden="true"></div>
+                    <div class="setting-item">
+                        <label data-i18n="unit">单位</label>
+                        <select id="unitSelect" class="unit-select">
+                            <option value="mm" selected>mm</option>
+                            <option value="in">in</option>
+                        </select>
+                    </div>
+                    <div class="setting-divider" aria-hidden="true"></div>
+                    <div class="setting-item">
+                        <label data-i18n="matrix">矩阵</label>
+                        <input type="number" id="gridWidthInput" min="8" max="128" step="1" value="32">
+                        <span class="unit">W</span>
+                        <input type="number" id="gridHeightInput" min="8" max="128" step="1" value="32">
+                        <span class="unit">H</span>
+                    </div>
+                    <div class="setting-item">
+                        <label data-i18n="mode">模式</label>
+                        <select id="renderModeSelect">
+                            <option value="ideal" selected data-i18n="renderIdeal">理想</option>
+                            <option value="bare" data-i18n="renderBare">裸显</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label data-i18n="shape">形状</label>
+                        <div class="pixel-style-toggle">
+                            <button class="style-btn active" data-style="rounded" title="圆角" data-i18n-title="shapeRounded">▢</button>
+                            <button class="style-btn" data-style="square" title="方形" data-i18n-title="shapeSquare">■</button>
+                            <button class="style-btn" data-style="circle" title="圆形" data-i18n-title="shapeCircle">●</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 导出按钮 -->
+                <div class="export-controls">
+                    <select id="exportTypeSelect">
+                        <option value="raw" selected data-i18n="exportRaw">原始像素</option>
+                        <option value="preview" data-i18n="exportPreview">预览图</option>
+                    </select>
+                    <button id="downloadBtn" class="btn btn-small" data-i18n="downloadPng">PNG</button>
+                    <button id="downloadGifBtn" class="btn btn-small btn-primary" data-i18n="downloadGif">GIF</button>
+                    <button id="copyBtn" class="btn btn-small" data-i18n="copy">复制</button>
+                </div>
+            </div>
+            <div class="canvas-container">
+                <canvas id="mainCanvas" width="640" height="640"></canvas>
+                <canvas id="selectionCanvas" width="640" height="640"></canvas>
+            </div>
+            <div class="canvas-hint" id="canvasHint" data-i18n="canvasHint">拖拽移动 | 滚轮缩放 | Shift+拖拽旋转</div>
+            <div class="preview-shortcuts">
+                <span class="keycap">A</span><span data-i18n="shortcutRect">框选</span>
+                <span class="keycap">I</span><span data-i18n="shortcutColor">按色</span>
+                <span class="keycap">F</span><span data-i18n="shortcutFill">填色</span>
+                <span class="keycap">Del</span><span data-i18n="shortcutDelete">清空</span>
+                <span class="keycap">Cmd/Ctrl+C</span><span data-i18n="shortcutCopy">复制</span>
+                <span class="keycap">Cmd/Ctrl+V</span><span data-i18n="shortcutPaste">粘贴</span>
+                <span class="keycap">Cmd/Ctrl+Z</span><span data-i18n="shortcutUndo">撤销</span>
+            </div>
+            <div class="preview-author">
+                <span data-i18n="authorBy">By Thomas</span>
+                <span style="margin: 0 8px; opacity: 0.5;">|</span>
+                <a href="https://github.com/thomas-hiddenpeak/emoji2pixel" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">
+                    <span style="opacity: 0.8;">⭐ GitHub</span>
+                </a>
+                <button id="tianshanUploadBtn" class="btn btn-small" data-i18n="exportTianshan">TianshanOS</button>
+            </div>
+            <div class="pixel-tools" id="pixelTools">
+                <div class="pixel-tools-header" data-i18n="tools">工具</div>
+                <div class="pixel-tools-section">
+                    <div class="pixel-tools-title" data-i18n="general">通用</div>
+                    <div class="tool-grid">
+                        <button id="clearSelectionBtn" class="tool-btn" type="button" title="取消选择 (Esc)" data-i18n-title="cancelSelect"><span class="tool-icon">✕</span><span class="tool-text" data-i18n="cancel">取消</span></button>
+                        <button id="bgUndoBtn" class="tool-btn" type="button" title="撤销 (Cmd/Ctrl+Z)" data-i18n-title="undo"><span class="tool-icon">↶</span><span class="tool-text" data-i18n="undo">撤销</span></button>
+                    </div>
+                </div>
+                <div class="pixel-tools-section">
+                    <div class="pixel-tools-title" data-i18n="select">选择</div>
+                    <div class="tool-grid">
+                        <button id="selectToggleBtn" class="tool-btn" type="button" title="框选 (A)" data-i18n-title="rectSelect"><span class="tool-icon">□</span><span class="tool-text" data-i18n="rectSelect">框选</span></button>
+                        <button id="colorSelectBtn" class="tool-btn" type="button" title="色选/吸管 (I)" data-i18n-title="colorSelect"><span class="tool-icon">⦿</span><span class="tool-text" data-i18n="colorSelect">色选/吸管</span></button>
+                    </div>
+                    <div class="tool-row tool-row-compact">
+                        <input type="color" id="bgColorInput" class="color-input-wide" value="#000000" title="目标颜色" data-i18n-title="targetColor">
+                        <input type="range" id="bgToleranceInput" min="0" max="100" step="1" value="15" title="容差" data-i18n-title="tolerance">
+                        <span id="bgToleranceValue">15</span>
+                    </div>
+                </div>
+                <div class="pixel-tools-section">
+                    <div class="pixel-tools-title" data-i18n="actions">操作</div>
+                    <div class="tool-grid">
+                        <button id="eraseSelectionBtn" class="tool-btn" type="button" title="删除选区 (Del)" data-i18n-title="delete"><span class="tool-icon">⌫</span><span class="tool-text" data-i18n="delete">删除</span></button>
+                        <button id="fillSelectionBtn" class="tool-btn" type="button" title="填充选区 (F)" data-i18n-title="fill"><span class="tool-icon">■</span><span class="tool-text" data-i18n="fill">填充</span></button>
+                        <button id="copySelectionBtn" class="tool-btn" type="button" title="复制 (Cmd/Ctrl+C)" data-i18n-title="copy"><span class="tool-icon">⧉</span><span class="tool-text" data-i18n="copy">复制</span></button>
+                        <button id="pasteSelectionBtn" class="tool-btn" type="button" title="粘贴 (Cmd/Ctrl+V)" data-i18n-title="paste"><span class="tool-icon">⎘</span><span class="tool-text" data-i18n="paste">粘贴</span></button>
+                    </div>
+                </div>
+                <div class="pixel-tools-section">
+                    <div class="pixel-tools-title" data-i18n="transform">变形</div>
+                    <div class="transform-bar">
+                        <div class="transform-item">
+                            <span data-i18n="scale">缩放</span>
+                            <input type="range" id="scaleSlider" min="50" max="150" value="100">
+                            <span id="scaleValue">100%</span>
+                        </div>
+                        <div class="transform-item">
+                            <span>X</span>
+                            <input type="range" id="offsetXSlider" min="-16" max="16" value="0">
+                            <span id="offsetXValue">0</span>
+                        </div>
+                        <div class="transform-item">
+                            <span>Y</span>
+                            <input type="range" id="offsetYSlider" min="-16" max="16" value="0">
+                            <span id="offsetYValue">0</span>
+                        </div>
+                        <div class="transform-item">
+                            <span data-i18n="rotate">旋转</span>
+                            <input type="range" id="rotateSlider" min="0" max="360" value="0">
+                            <span id="rotateValue">0°</span>
+                        </div>
+                        <button id="resetTransformBtn" class="btn btn-small" data-i18n="reset">重置</button>
+                    </div>
+                </div>
+                <div class="pixel-tools-section">
+                    <div class="pixel-tools-title" data-i18n="degrade">劣化</div>
+                    <div class="render-bar">
+                        <div class="render-item render-item-quantize">
+                            <label class="render-item-inline">
+                                <input type="checkbox" id="quantizeToggle">
+                                <span data-i18n="quantize">量化</span>
+                            </label>
+                            <span data-i18n="colors">颜色</span>
+                            <input type="range" id="quantizeColorsInput" min="2" max="256" step="1" value="64">
+                        </div>
+                        <div class="render-item">
+                            <span data-i18n="sharpen">锐化</span>
+                            <select id="sharpenModeSelect">
+                                <option value="none" selected data-i18n="sharpenNone">无</option>
+                                <option value="cross">邻域</option>
+                                <option value="unsharp">Unsharp</option>
+                            </select>
+                        </div>
+                        <div class="render-item">
+                            <span data-i18n="strength">强度</span>
+                            <input type="range" id="sharpenStrengthInput" min="0" max="100" step="5" value="40">
+                        </div>
+                        <label class="render-item render-item-center">
+                            <input type="checkbox" id="frameRenderToggle">
+                            <span data-i18n="currentFrame">当前帧</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="locales/locales.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

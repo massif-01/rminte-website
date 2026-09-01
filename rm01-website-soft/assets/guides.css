@@ -146,6 +146,10 @@
   backdrop-filter: blur(24px);
 }
 
+.lang-pane[hidden] {
+  display: none !important;
+}
+
 .guide-search-results-head {
   min-height: 52px;
   padding: 14px 18px;

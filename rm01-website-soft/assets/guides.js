@@ -1,8 +1,14 @@
 (function () {
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
-  const hashLang = window.location.hash.startsWith('#en-') ? 'en' : window.location.hash.startsWith('#zh-') ? 'zh' : null;
-  let lang = hashLang || (localStorage.getItem('rm-soft-lang') === 'en' ? 'en' : 'zh');
+
+  function languageFromHash(hash = window.location.hash) {
+    if (hash.startsWith('#en-')) return 'en';
+    if (hash.startsWith('#zh-')) return 'zh';
+    return null;
+  }
+
+  let lang = languageFromHash() || (localStorage.getItem('rm-soft-lang') === 'en' ? 'en' : 'zh');
   let scrollTicking = false;
   let refreshSearch = function () {};
 
@@ -85,6 +91,7 @@
       requestAnimationFrame(() => {
         const target = $(`[data-lang-pane="${lang}"].guide-article [data-heading-key="${headingKey}"]`);
         if (target) {
+          window.history.replaceState(null, '', `#${target.id}`);
           const top = target.getBoundingClientRect().top + window.scrollY - 132;
           window.scrollTo({ top, behavior: 'auto' });
         }
@@ -110,6 +117,12 @@
         applyLanguage(lang === 'zh' ? 'en' : 'zh', true);
       });
     });
+
+    window.addEventListener('hashchange', () => {
+      const hashLanguage = languageFromHash();
+      if (hashLanguage && hashLanguage !== lang) applyLanguage(hashLanguage);
+    });
+
     applyLanguage(lang);
   }
 
@@ -220,7 +233,7 @@
     let query = '';
     let firstResultHref = null;
 
-    const indexPromise = fetch('search-index.json?v=agency-24')
+    const indexPromise = fetch('search-index.json?v=agency-28')
       .then((response) => {
         if (!response.ok) throw new Error(`Search index returned ${response.status}`);
         return response.json();
