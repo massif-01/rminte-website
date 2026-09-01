@@ -14,6 +14,12 @@
   max-width: 800px;
 }
 
+.download-hero [data-brand-font="ui"] .rm-mark {
+  font-family: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+}
+
 .download-hero h1 {
   max-width: 9ch;
   margin: 0;
