@@ -1,21 +1,21 @@
 const RELEASE = {
-  version: "0.5.1+e62c99e.06111755",
+  version: "0.5.1+6565cb6.06111330",
   project_name: "TianShanOS",
   compile_date: "Jun 11 2026",
-  compile_time: "17:56:06",
+  compile_time: "13:31:16",
   idf_version: "v5.5.2",
   secure_version: 0,
   firmware: {
     key: "firmware/tianshanos/v0.5.1/TianShanOS.bin",
     name: "TianShanOS.bin",
     size: 2154096,
-    sha256: "fd09cc96e071ad90fd3f402d9ee1d69b53efd00a706c9b13484145b7c38efe58"
+    sha256: "2be50f856b829fef21cffd9ec1e4ee9416495b48daee9334a756b888e3a8785d"
   },
   www: {
     key: "firmware/tianshanos/v0.5.1/www.bin",
     name: "www.bin",
     size: 3145728,
-    sha256: "e928f782614dd37cb1704659dea00f772171020a5ba803a875173415e06e4284"
+    sha256: "4c320dcfd57325d63d56f932451f2d492d5d51fa806d5f4a6722e138802da82a"
   }
 };
 
