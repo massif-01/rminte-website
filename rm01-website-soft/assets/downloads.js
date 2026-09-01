@@ -3,6 +3,34 @@
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
   let lang = localStorage.getItem('rm-soft-lang') === 'en' ? 'en' : 'zh';
 
+  function applyBrandFonts(root = document.body) {
+    const textNodes = [];
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let node;
+
+    while ((node = walker.nextNode())) {
+      const parent = node.parentElement;
+      if (!parent || parent.closest('.rm-mark, script, style')) continue;
+      if (/RM-01|TianShanOS|TianshanOS/.test(node.nodeValue)) textNodes.push(node);
+    }
+
+    textNodes.forEach((textNode) => {
+      const parts = textNode.nodeValue.split(/(RM-01|TianShanOS|TianshanOS)/g);
+      const fragment = document.createDocumentFragment();
+      parts.forEach((part) => {
+        if (/^(RM-01|TianShanOS|TianshanOS)$/.test(part)) {
+          const mark = document.createElement('span');
+          mark.className = 'rm-mark';
+          mark.textContent = part;
+          fragment.appendChild(mark);
+        } else if (part) {
+          fragment.appendChild(document.createTextNode(part));
+        }
+      });
+      textNode.replaceWith(fragment);
+    });
+  }
+
   function applyLanguage(nextLang) {
     lang = nextLang;
     localStorage.setItem('rm-soft-lang', lang);
@@ -12,6 +40,7 @@
       const value = element.dataset[lang];
       if (value !== undefined) element.textContent = value;
     });
+    applyBrandFonts();
 
     $$('[data-download-lang-toggle]').forEach((button) => {
       button.textContent = lang === 'zh' ? 'EN' : '中';

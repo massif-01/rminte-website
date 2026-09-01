@@ -67,6 +67,7 @@ function homePage(origin) {
   <title>TianShanOS OTA Service · RMinte</title>
   <style>
     :root { color-scheme: dark; --ink:#f5f7f4; --muted:#929b96; --line:rgba(255,255,255,.12); --accent:#75f0dc; --violet:#c4b1ff; }
+    @font-face { font-family:"Quantify RM"; src:url("https://rminte.com/assets/fonts/Quantify-Bold.ttf") format("truetype"); font-weight:700; font-style:normal; font-display:swap; }
     * { box-sizing:border-box; }
     body { margin:0; min-height:100vh; font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; color:var(--ink); background:radial-gradient(circle at 12% 8%,rgba(31,127,110,.24),transparent 34%),radial-gradient(circle at 88% 82%,rgba(126,95,211,.18),transparent 35%),#080b0a; }
     main { width:min(880px,calc(100% - 36px)); margin:0 auto; padding:clamp(64px,10vw,112px) 0; }
@@ -81,6 +82,7 @@ function homePage(origin) {
     button { flex:none; border:0; border-radius:999px; padding:10px 15px; color:#101311; background:var(--accent); font-weight:760; cursor:pointer; }
     ol { margin:30px 0 0; padding-left:22px; color:var(--muted); line-height:1.9; }
     strong { color:var(--ink); }
+    .brand-name { font-family:"Quantify RM",Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-weight:700; letter-spacing:.035em; white-space:nowrap; }
     .meta { margin-top:30px; padding-top:22px; border-top:1px solid var(--line); color:var(--muted); font-size:.82rem; }
     .links { margin-top:18px; display:flex; flex-wrap:wrap; gap:12px; }
     a { color:var(--accent); text-decoration:none; }
@@ -88,15 +90,15 @@ function homePage(origin) {
 </head>
 <body>
   <main>
-    <div class="eyebrow">RM-01 · OTA SERVICE</div>
-    <h1>TianShanOS<br>OTA 更新服务</h1>
-    <p class="lead">为 RM-01 本机的 TianShanOS OTA 页面提供正式固件与 WebUI 更新文件。刷写操作仍在设备自己的管理页面中完成。</p>
+    <div class="eyebrow"><span class="brand-name">RM-01</span> · OTA SERVICE</div>
+    <h1><span class="brand-name">TianShanOS</span><br>OTA 更新服务</h1>
+    <p class="lead">为 <span class="brand-name">RM-01</span> 本机的 <span class="brand-name">TianShanOS</span> OTA 页面提供正式固件与 WebUI 更新文件。刷写操作仍在设备自己的管理页面中完成。</p>
     <section class="card">
       <div class="status"><span class="dot"></span>服务在线 · ${RELEASE.version}</div>
       <div class="url"><code id="serviceUrl">${serviceUrl}</code><button type="button" onclick="navigator.clipboard.writeText(document.getElementById('serviceUrl').textContent).then(()=>this.textContent='已复制')">复制地址</button></div>
       <ol>
-        <li>让电脑或平板连接 RM-01 所在网络。</li>
-        <li>打开 RM-01 的 TianShanOS WebUI，并进入<strong>“OTA 升级”</strong>。</li>
+        <li>让电脑或平板连接 <span class="brand-name">RM-01</span> 所在网络。</li>
+        <li>打开 <span class="brand-name">RM-01</span> 的 <span class="brand-name">TianShanOS</span> WebUI，并进入<strong>“OTA 升级”</strong>。</li>
         <li>把上面的地址填入<strong>“OTA 服务器”</strong>并保存。</li>
         <li>点击<strong>“检查更新”</strong>，确认版本后开始升级。</li>
       </ol>
