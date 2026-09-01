@@ -48,6 +48,19 @@ const guideConfig = {
     },
     chapterCount: { zh: '8 个章节', en: '8 chapters' },
     next: { href: 'admin.html', zh: '继续阅读 Admin 指南', en: 'Continue to the Admin guide' }
+  },
+  network: {
+    source: join(guidesDir, 'content', 'network.md'),
+    output: join(guidesDir, 'network.html'),
+    accent: 'network',
+    label: { zh: '网络连接', en: 'Network connectivity' },
+    title: { zh: 'RM-01 网络配置指南', en: 'RM-01 Network Configuration Guide' },
+    description: {
+      zh: '说明 C1 与 C3 两条网络连接路径，以及用户设备接入、互联网共享和整机接入上层网络的方法。',
+      en: 'Explains the C1 and C3 network paths, device access, internet sharing, and how to connect the complete RM-01 system to an upstream network.'
+    },
+    chapterCount: { zh: '6 个章节', en: '6 chapters' },
+    next: { href: 'admin.html', zh: '继续阅读 Admin 指南', en: 'Continue to the Admin guide' }
   }
 };
 
@@ -373,6 +386,7 @@ function siteNavigationTemplate() {
       <a href="../index.html#proof" data-guide-text data-zh="验证" data-en="Proof">验证</a>
       <a href="../index.html#applications" data-guide-text data-zh="应用" data-en="Use Cases">应用</a>
       <a class="active" href="index.html" aria-current="page" data-guide-text data-zh="指南" data-en="Guides">指南</a>
+      <a href="../downloads/index.html" data-guide-text data-zh="下载" data-en="Downloads">下载</a>
     </nav>
     <div class="nav-actions">
       <button class="language-toggle" type="button" data-guide-lang-toggle>EN</button>
@@ -396,6 +410,7 @@ function siteNavigationTemplate() {
         <a href="../index.html#proof" data-guide-text data-zh="验证" data-en="Proof">验证</a>
         <a href="../index.html#applications" data-guide-text data-zh="应用" data-en="Use Cases">应用</a>
         <a class="active" href="index.html" aria-current="page" data-guide-text data-zh="指南" data-en="Guides">指南</a>
+        <a href="../downloads/index.html" data-guide-text data-zh="下载" data-en="Downloads">下载</a>
       </nav>
     </div>
   </div>`;
@@ -423,7 +438,7 @@ function pageTemplate(config, rendered) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/styles.css?v=agency-24">
-  <link rel="stylesheet" href="../assets/guides.css?v=agency-26">
+  <link rel="stylesheet" href="../assets/guides.css?v=agency-27">
   <script id="guidePageData" type="application/json">${pageData}</script>
   <script src="../assets/guides.js?v=agency-24" defer></script>
 </head>

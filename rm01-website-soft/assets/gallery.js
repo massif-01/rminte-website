@@ -2,23 +2,23 @@
   const galleryItems = [
     {
       src: '../assets/gallery/DSC00043.jpg', tone: 'dark', layout: 'portrait', category: 'PRODUCT EXTERIOR',
-      label: { zh: '整机外观 · 3/4 视角', en: 'Full product · three-quarter view' },
-      alt: { zh: '黑色摄影背景中的 RM-01 银色机身', en: 'Silver RM-01 enclosure against a dark studio background' }
+      label: { zh: '整机实拍·3/4视角', en: 'Product photography · three-quarter view' },
+      alt: { zh: 'RM-01 整机实拍 3/4 视角', en: 'Three-quarter product photograph of RM-01' }
     },
     {
       src: '../assets/gallery/DSC00010.jpg', tone: 'light', layout: 'portrait', category: 'PRODUCT EXTERIOR',
-      label: { zh: '整机外观 · 正面', en: 'Full product · front view' },
-      alt: { zh: '浅色摄影背景中的 RM-01 正面外观', en: 'Front view of RM-01 against a light studio background' }
+      label: { zh: '整机实拍·正面', en: 'Product photography · front view' },
+      alt: { zh: 'RM-01 整机正面实拍', en: 'Front product photograph of RM-01' }
     },
     {
       src: '../assets/gallery/DSC00020.jpg', tone: 'light', layout: 'portrait', category: 'PRODUCT EXTERIOR',
-      label: { zh: '整机外观 · 侧前方', en: 'Full product · front-side view' },
-      alt: { zh: '浅色摄影背景中的 RM-01 侧前方外观', en: 'Front-side view of RM-01 against a light studio background' }
+      label: { zh: '整机实拍·亮场', en: 'Product photography · light studio' },
+      alt: { zh: '亮场中的 RM-01 整机实拍', en: 'RM-01 product photograph in a light studio' }
     },
     {
       src: '../assets/gallery/DSC00030.jpg', tone: 'light', layout: 'portrait', category: 'PRODUCT EXTERIOR',
-      label: { zh: '整机外观 · 接口侧', en: 'Full product · port side' },
-      alt: { zh: '浅色摄影背景中的 RM-01 接口侧外观', en: 'Port-side view of RM-01 against a light studio background' }
+      label: { zh: '整机实拍·侧后方', en: 'Product photography · rear-side view' },
+      alt: { zh: 'RM-01 整机侧后方实拍', en: 'Rear-side product photograph of RM-01' }
     },
     {
       src: '../assets/gallery/DSC0031.jpg', tone: 'light', layout: 'landscape', category: 'PORTS & AIRFLOW',
@@ -27,33 +27,33 @@
     },
     {
       src: '../assets/gallery/DSC00094.jpg', tone: 'dark', layout: 'landscape', category: 'STORAGE SLOT',
-      label: { zh: '插卡槽细节', en: 'Storage slot detail' },
-      alt: { zh: 'RM-01 插卡槽特写', en: 'Close-up of the RM-01 storage slot' }
+      label: { zh: 'CFe卡槽细节', en: 'CFe card slot detail' },
+      alt: { zh: 'RM-01 CFe 卡槽细节', en: 'Close-up of the RM-01 CFe card slot' }
     },
     {
       src: '../assets/gallery/DSC00120.jpg', tone: 'dark', layout: 'landscape', category: 'STATUS LIGHT',
-      label: { zh: '顶部状态灯', en: 'Top status light' },
-      alt: { zh: 'RM-01 顶部三角形状态灯特写', en: 'Close-up of the triangular status light on top of RM-01' }
+      label: { zh: '蓝宝石状态灯', en: 'Sapphire status light' },
+      alt: { zh: 'RM-01 蓝宝石状态灯细节', en: 'Close-up of the RM-01 sapphire status light' }
     },
     {
       src: '../assets/gallery/DSC00142.jpg', tone: 'dark', layout: 'portrait-detail', category: 'ENCLOSURE DETAIL',
-      label: { zh: '壳体层叠细节', en: 'Layered enclosure detail' },
-      alt: { zh: 'RM-01 壳体层叠结构特写', en: 'Close-up of the layered RM-01 enclosure' }
+      label: { zh: '铝合金工艺细节', en: 'Aluminum-alloy craftsmanship' },
+      alt: { zh: 'RM-01 铝合金工艺细节', en: 'Close-up of RM-01 aluminum-alloy craftsmanship' }
     },
     {
       src: '../assets/gallery/DSC00150.jpg', tone: 'dark', layout: 'landscape', category: 'THERMAL DETAIL',
-      label: { zh: '散热风道细节', en: 'Thermal channel detail' },
-      alt: { zh: 'RM-01 散热风道特写', en: 'Close-up of the RM-01 thermal channel' }
+      label: { zh: '设计与加工细节', en: 'Design and machining detail' },
+      alt: { zh: 'RM-01 设计与加工细节', en: 'Close-up of RM-01 design and machining details' }
     },
     {
       src: '../assets/gallery/DSC00126.jpg', tone: 'dark', layout: 'landscape', category: 'PANEL DETAIL',
-      label: { zh: '面板接缝细节', en: 'Panel seam detail' },
-      alt: { zh: 'RM-01 面板接缝特写', en: 'Close-up of an RM-01 panel seam' }
+      label: { zh: '玻璃与装配工艺', en: 'Glass and assembly craftsmanship' },
+      alt: { zh: 'RM-01 玻璃与装配工艺细节', en: 'Close-up of RM-01 glass and assembly craftsmanship' }
     },
     {
       src: '../assets/gallery/DSC00196.jpg', tone: 'dark', layout: 'landscape', category: 'PANEL DETAIL',
-      label: { zh: '面板边缘细节', en: 'Panel edge detail' },
-      alt: { zh: 'RM-01 面板边缘特写', en: 'Close-up of an RM-01 panel edge' }
+      label: { zh: 'R0.25圆角与装配工艺', en: 'R0.25 corner radius and assembly' },
+      alt: { zh: 'RM-01 R0.25 圆角与装配工艺细节', en: 'Close-up of the RM-01 R0.25 corner radius and assembly' }
     }
   ];
 
@@ -77,9 +77,31 @@
   let currentIndex = 0;
   let transitionLocked = false;
   let pointerStart = null;
+  const markedTermPattern = /RM-01/g;
 
   function t(value) {
     return value[lang] || value.zh;
+  }
+
+  function writeMarkedText(element, text) {
+    const value = text == null ? '' : String(text);
+    if (!value.includes('RM-01')) {
+      element.textContent = value;
+      return;
+    }
+
+    element.replaceChildren();
+    let cursor = 0;
+    value.replace(markedTermPattern, (match, index) => {
+      if (index > cursor) element.append(document.createTextNode(value.slice(cursor, index)));
+      const mark = document.createElement('span');
+      mark.className = 'rm-mark';
+      mark.textContent = match;
+      element.append(mark);
+      cursor = index + match.length;
+      return match;
+    });
+    if (cursor < value.length) element.append(document.createTextNode(value.slice(cursor)));
   }
 
   function formatIndex(index) {
@@ -114,7 +136,7 @@
   function updateImageCopy() {
     const item = galleryItems[currentIndex];
     productImage.alt = t(item.alt);
-    captionProduct.textContent = lang === 'zh' ? 'RM-01 便携 AI 超算' : 'RM-01 Portable AI Supercomputer';
+    writeMarkedText(captionProduct, lang === 'zh' ? 'RM-01 便携 AI 超算' : 'RM-01 Portable AI Supercomputer');
     captionLabel.textContent = t(item.label);
     captionCategory.textContent = item.category;
   }
@@ -125,7 +147,7 @@
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
     $$('[data-gallery-text]').forEach((element) => {
       const value = element.dataset[lang];
-      if (value !== undefined) element.textContent = value;
+      if (value !== undefined) writeMarkedText(element, value);
     });
     $$('[data-gallery-lang-toggle]').forEach((button) => {
       button.textContent = lang === 'zh' ? 'EN' : '中';

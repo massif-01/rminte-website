@@ -3,12 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RM-01 便携 AI 超算应用场景，展示本地 AI 算力在行业中的部署方式。">
+  <meta property="og:title" content="泛灵人工智能 - RM-01 应用场景">
+  <meta property="og:description" content="基于 RM-01 的本地 AI 应用交付案例。">
+  <meta property="og:image" content="../images/img3.png">
+  <link rel="icon" href="../images/img3.png">
   <title>AI 医疗 - 泛灵人工智能</title>
   <link rel="stylesheet" href="../style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=SF+Mono&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet">
 </head>
 <body>
+  <a href="#main" class="skip-link">跳至主要内容</a>
   <nav id="navbar">
     <div class="nav-inner">
       <div class="nav-links">
@@ -21,9 +28,22 @@
         <a href="../index.html#team" data-i18n="nav_team">创始团队</a>
       </div>
       <button class="lang-toggle" id="langToggle" title="切换语言">EN</button>
+      <button class="nav-hamburger" id="navHamburger" aria-label="打开导航菜单" aria-controls="navDropdown" aria-expanded="false" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-dropdown" id="navDropdown">
+      <a href="../index.html#product" data-i18n="nav_product" onclick="closeMenu()">产品概述</a>
+      <a href="../index.html#features" data-i18n="nav_features" onclick="closeMenu()">核心特性</a>
+      <a href="../index.html#hardware" data-i18n="nav_hardware" onclick="closeMenu()">硬件架构</a>
+      <a href="../index.html#tech" data-i18n="nav_tech" onclick="closeMenu()">核心技术</a>
+      <a href="../index.html#honor" data-i18n="nav_honor" onclick="closeMenu()">荣誉认证</a>
+      <a href="../index.html#applications" data-i18n="nav_apps" onclick="closeMenu()">应用场景</a>
+      <a href="../index.html#team" data-i18n="nav_team" onclick="closeMenu()">创始团队</a>
     </div>
   </nav>
 
+  <main id="main">
   <section class="detail-hero">
     <div class="container">
       <a href="../index.html#applications" class="detail-back">&larr; <span data-i18n="back_apps">返回应用场景</span></a>
@@ -67,6 +87,8 @@
     </div>
   </section>
 
+  </main>
+
   <footer class="footer">
     <div class="container">
       <div class="footer-inner">
@@ -75,7 +97,7 @@
           <p data-i18n="footer_company">泛灵（成都）人工智能科技有限公司</p>
         </div>
         <div class="footer-links">
-          <p data-i18n="footer_tagline">新一代生产级 AI 交付基座</p>
+          <p data-i18n="footer_tagline">生产级本地 AI 交付基座</p>
           <p data-i18n="footer_slogan">插卡即用 · 全栈交付</p>
         </div>
       </div>
@@ -102,7 +124,7 @@
         "detail_deploy": {"zh": "部署方式", "en": "Deployment"},
         "detail_deploy_text": {"zh": "系统可部署在医院内部，患者数据不出医院局域网。符合医疗数据安全法规，支持 HIPAA、等保三级等合规标准。", "en": "The system can be deployed within hospitals, with patient data staying within the hospital's local network. Complies with medical data security regulations, supporting HIPAA and other compliance standards."},
         "footer_company": {"zh": "泛灵（成都）人工智能科技有限公司", "en": "RMinte (Chengdu) Artificial Intelligence Technology Co., Ltd."},
-        "footer_tagline": {"zh": "新一代生产级 AI 交付基座", "en": "Next Generation Production-Ready AI Delivery Platform"},
+        "footer_tagline": {"zh": "生产级本地 AI 交付基座", "en": "Production local AI delivery platform"},
         "footer_slogan": {"zh": "插卡即用 · 全栈交付", "en": "Plug-in Ready, Full-Stack Delivery"},
         "footer_copy": {"zh": "© 2026 泛灵人工智能 · RM-01 便携 AI 超算", "en": "© 2026 RMinte AI · RM-01 Portable AI Supercomputer"},
         "detail_screenshots": {"zh": "案例展示", "en": "Case Studies"},
@@ -138,6 +160,28 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const navDropdown = document.getElementById('navDropdown');
+    const navHamburger = document.getElementById('navHamburger');
+
+    function setMenuState(isOpen) {
+      if (!navDropdown || !navHamburger) return;
+      navDropdown.classList.toggle('active', isOpen);
+      navHamburger.classList.toggle('active', isOpen);
+      navHamburger.setAttribute('aria-expanded', String(isOpen));
+    }
+
+    function toggleMenu() {
+      setMenuState(!navDropdown.classList.contains('active'));
+    }
+
+    function closeMenu() {
+      setMenuState(false);
+    }
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeMenu();
+    });
   </script>
 </body>
 </html>

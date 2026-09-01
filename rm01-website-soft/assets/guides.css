@@ -214,6 +214,10 @@
   color: var(--warm);
 }
 
+.guide-search-result-network .guide-search-result-meta {
+  color: #8ec9ff;
+}
+
 .guide-search-result strong {
   color: var(--ink);
   font-size: clamp(1rem, 1.8vw, 1.2rem);
@@ -324,6 +328,27 @@ a.guide-card:active {
   min-height: 254px;
 }
 
+.guide-topic-label {
+  margin-top: 28px;
+}
+
+.guide-topic-grid {
+  display: grid;
+}
+
+.guide-card-network {
+  min-height: 260px;
+}
+
+.guide-card-network::after {
+  top: -310px;
+  right: -70px;
+  width: 560px;
+  height: 560px;
+  opacity: 0.15;
+  background: #8ec9ff;
+}
+
 .guide-card-index {
   color: var(--muted);
   font-size: 0.72rem;
@@ -354,6 +379,12 @@ a.guide-card:active {
   margin-top: 38px;
   color: var(--warm);
   font-size: clamp(2rem, 3.6vw, 3.2rem);
+}
+
+.guide-card-network h2 {
+  margin-top: 42px;
+  color: #8ec9ff;
+  font-size: clamp(2.4rem, 4vw, 3.8rem);
 }
 
 .guide-card-copy {
@@ -398,6 +429,11 @@ a.guide-card:active {
 .guide-card-security .guide-card-arrow {
   color: #17130b;
   background: var(--warm);
+}
+
+.guide-card-network .guide-card-arrow {
+  color: #06101a;
+  background: #8ec9ff;
 }
 
 .guide-reserved {
@@ -470,6 +506,11 @@ a.guide-card:active {
 .guide-accent-security .guide-doc-hero h1,
 .guide-accent-security .guide-article h2 a {
   text-shadow: 0 0 46px rgba(237, 228, 202, 0.08);
+}
+
+.guide-accent-network .guide-doc-hero h1,
+.guide-accent-network .guide-article h2 a {
+  text-shadow: 0 0 46px rgba(142, 201, 255, 0.1);
 }
 
 .guide-doc-lead {
@@ -573,6 +614,11 @@ a.guide-card:active {
   box-shadow: 0 0 10px rgba(237, 228, 202, 0.72);
 }
 
+.guide-accent-network .toc-link.active::before {
+  background: #8ec9ff;
+  box-shadow: 0 0 10px rgba(142, 201, 255, 0.78);
+}
+
 .toc-depth-1 {
   padding-left: 20px;
   color: var(--dim);
@@ -672,6 +718,13 @@ a.guide-card:active {
   color: var(--warm);
 }
 
+.guide-accent-network .guide-article h2 a:hover,
+.guide-accent-network .guide-article h3 a:hover,
+.guide-accent-network .guide-article h4 a:hover,
+.guide-accent-network .guide-article h5 a:hover {
+  color: #8ec9ff;
+}
+
 .guide-article p,
 .guide-article li {
   color: var(--ink-soft);
@@ -707,6 +760,10 @@ a.guide-card:active {
   color: var(--warm);
 }
 
+.guide-accent-network .guide-article li::marker {
+  color: #8ec9ff;
+}
+
 .guide-article strong {
   color: var(--ink);
   font-weight: 680;
@@ -732,6 +789,12 @@ a.guide-card:active {
   color: var(--warm);
   background: rgba(237, 228, 202, 0.08);
   box-shadow: inset 0 0 0 1px rgba(237, 228, 202, 0.12);
+}
+
+.guide-accent-network .guide-article code {
+  color: #8ec9ff;
+  background: rgba(142, 201, 255, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(142, 201, 255, 0.13);
 }
 
 .guide-table-wrap {
@@ -883,6 +946,10 @@ a.guide-card:active {
   color: var(--warm);
 }
 
+.guide-accent-network .guide-next > span:last-child {
+  color: #8ec9ff;
+}
+
 .guide-footer {
   position: relative;
   z-index: 2;
@@ -981,6 +1048,10 @@ a.guide-card:active {
     min-height: 205px;
   }
 
+  .guide-card-network {
+    min-height: 230px;
+  }
+
   .guide-card h2,
   .guide-card-root h2,
   .guide-card-security h2 {
@@ -990,6 +1061,11 @@ a.guide-card:active {
 
   .guide-card-security h2 {
     margin-top: 28px;
+    font-size: 2.25rem;
+  }
+
+  .guide-card-network h2 {
+    margin-top: 34px;
     font-size: 2.25rem;
   }
 

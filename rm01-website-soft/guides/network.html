@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="说明 C1 与 C3 两条网络连接路径，以及用户设备接入、互联网共享和整机接入上层网络的方法。">
+  <meta property="og:title" content="RM-01 网络配置指南">
+  <meta property="og:description" content="说明 C1 与 C3 两条网络连接路径，以及用户设备接入、互联网共享和整机接入上层网络的方法。">
+  <meta property="og:image" content="../assets/images/img4.png">
+  <meta name="theme-color" content="#050606">
+  <title>RMinte - RM-01 - Portable AI Supercomputer - 泛灵人工智能</title>
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css?v=agency-24">
+  <link rel="stylesheet" href="../assets/guides.css?v=agency-27">
+  <script id="guidePageData" type="application/json">{"title":{"zh":"RM-01 网络配置指南","en":"RM-01 Network Configuration Guide"},"copy":{"zh":"已复制","en":"Copied"},"copyDefault":{"zh":"复制","en":"Copy"}}</script>
+  <script src="../assets/guides.js?v=agency-24" defer></script>
+</head>
+<body class="guide-body guide-doc-body guide-accent-network">
+  <a class="skip-link" href="#guideContent" data-guide-text data-zh="跳至指南正文" data-en="Skip to guide content">跳至指南正文</a>
+  <div class="ambient-field" aria-hidden="true"></div>
+
+  <header class="site-shell" aria-label="主导航">
+    <a class="brand-mark" href="../index.html#hero" aria-label="RMinte 首页">
+      <img src="../assets/images/img3.png" alt="RMinte">
+    </a>
+    <nav class="nav-island" aria-label="页面导航">
+      <a href="../gallery/index.html" data-guide-text data-zh="图册" data-en="Gallery">图册</a>
+      <a href="../index.html#product" data-guide-text data-zh="产品" data-en="Product">产品</a>
+      <a href="../index.html#hardware" data-guide-text data-zh="架构" data-en="Architecture">架构</a>
+      <a href="../index.html#proof" data-guide-text data-zh="验证" data-en="Proof">验证</a>
+      <a href="../index.html#applications" data-guide-text data-zh="应用" data-en="Use Cases">应用</a>
+      <a class="active" href="index.html" aria-current="page" data-guide-text data-zh="指南" data-en="Guides">指南</a>
+      <a href="../downloads/index.html" data-guide-text data-zh="下载" data-en="Downloads">下载</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="language-toggle" type="button" data-guide-lang-toggle>EN</button>
+      <button class="menu-button" type="button" aria-label="打开菜单" aria-controls="mobileOverlay" aria-expanded="false" data-menu-toggle>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true">
+    <div class="mobile-overlay-panel">
+      <div class="mobile-overlay-top">
+        <span>RMinte</span>
+        <button class="ghost-button" type="button" data-menu-close data-guide-text data-zh="关闭" data-en="Close">关闭</button>
+      </div>
+      <nav class="mobile-links" aria-label="移动导航">
+        <a href="../gallery/index.html" data-guide-text data-zh="图册" data-en="Gallery">图册</a>
+        <a href="../index.html#product" data-guide-text data-zh="产品" data-en="Product">产品</a>
+        <a href="../index.html#hardware" data-guide-text data-zh="架构" data-en="Architecture">架构</a>
+        <a href="../index.html#proof" data-guide-text data-zh="验证" data-en="Proof">验证</a>
+        <a href="../index.html#applications" data-guide-text data-zh="应用" data-en="Use Cases">应用</a>
+        <a class="active" href="index.html" aria-current="page" data-guide-text data-zh="指南" data-en="Guides">指南</a>
+        <a href="../downloads/index.html" data-guide-text data-zh="下载" data-en="Downloads">下载</a>
+      </nav>
+    </div>
+  </div>
+
+  <main id="guideContent" class="guide-doc-main">
+    <section class="guide-doc-hero">
+      <a class="guide-breadcrumb" href="index.html"><span aria-hidden="true">←</span><span data-guide-text data-zh="全部指南" data-en="All guides">全部指南</span></a>
+      <p class="eyebrow" data-guide-text data-zh="网络连接" data-en="Network connectivity">网络连接</p>
+      <h1 data-guide-text data-zh="RM-01 网络配置指南" data-en="RM-01 Network Configuration Guide">RM-01 网络配置指南</h1>
+      <p class="guide-doc-lead" data-guide-text data-zh="说明 C1 与 C3 两条网络连接路径，以及用户设备接入、互联网共享和整机接入上层网络的方法。" data-en="Explains the C1 and C3 network paths, device access, internet sharing, and how to connect the complete RM-01 system to an upstream network.">说明 C1 与 C3 两条网络连接路径，以及用户设备接入、互联网共享和整机接入上层网络的方法。</p>
+      <div class="guide-doc-meta">
+        <span data-guide-text data-zh="6 个章节" data-en="6 chapters">6 个章节</span>
+        <span data-guide-text data-zh="中英双语" data-en="Chinese and English">中英双语</span>
+        <span>TianshanOS</span>
+      </div>
+    </section>
+
+    <section class="guide-search" data-guide-search>
+      <form class="guide-search-form" role="search" data-guide-search-form>
+        <label class="guide-search-field">
+          <span class="guide-search-kicker" data-guide-text data-zh="搜索指南" data-en="Search guides">搜索指南</span>
+          <input type="search" autocomplete="off" spellcheck="false" data-guide-search-input data-guide-placeholder data-zh="输入功能，例如：OTA、SSH 密钥、风扇" data-en="Search a feature, for example: OTA, SSH key, fan" placeholder="输入功能，例如：OTA、SSH 密钥、风扇">
+        </label>
+        <button type="submit" data-guide-text data-zh="搜索" data-en="Search">搜索</button>
+      </form>
+      <p class="guide-search-hint" data-guide-text data-zh="试试：OTA 更新、远程主机、HTTPS 证书、自动化规则" data-en="Try: OTA update, remote host, HTTPS certificate, automation rule">试试：OTA 更新、远程主机、HTTPS 证书、自动化规则</p>
+      <div class="guide-search-results" data-guide-search-results hidden aria-live="polite">
+        <div class="guide-search-results-head">
+          <p data-guide-search-summary></p>
+          <button type="button" data-guide-search-clear data-guide-text data-zh="清除" data-en="Clear">清除</button>
+        </div>
+        <div class="guide-search-result-list" data-guide-search-result-list></div>
+      </div>
+    </section>
+
+    <details class="guide-mobile-toc">
+      <summary data-guide-text data-zh="展开本页目录" data-en="Open page contents">展开本页目录</summary>
+      <nav class="lang-pane" data-lang-pane="zh" aria-label="中文目录">
+<a class="toc-link toc-depth-0" href="#zh-section-1" data-toc-target="zh-section-1">1. 先了解两条网络连接路径</a>
+<a class="toc-link toc-depth-0" href="#zh-section-2" data-toc-target="zh-section-2">2. 识别 C1 与 C3</a>
+<a class="toc-link toc-depth-1" href="#zh-section-3" data-toc-target="zh-section-3">C1 接口</a>
+<a class="toc-link toc-depth-1" href="#zh-section-4" data-toc-target="zh-section-4">C3 接口</a>
+<a class="toc-link toc-depth-0" href="#zh-section-5" data-toc-target="zh-section-5">3. 通过 C1 将用户设备接入 RM-01</a>
+<a class="toc-link toc-depth-0" href="#zh-section-6" data-toc-target="zh-section-6">4. 保留互联网连接并向 RM-01 共享网络</a>
+<a class="toc-link toc-depth-1" href="#zh-section-7" data-toc-target="zh-section-7">用户设备的互联网连接可能发生什么</a>
+<a class="toc-link toc-depth-1" href="#zh-section-8" data-toc-target="zh-section-8">使用 RM-01 网络连接工具</a>
+<a class="toc-link toc-depth-0" href="#zh-section-9" data-toc-target="zh-section-9">5. 通过 C3 将 RM-01 接入上层网络</a>
+<a class="toc-link toc-depth-1" href="#zh-section-10" data-toc-target="zh-section-10">准备连接器</a>
+<a class="toc-link toc-depth-1" href="#zh-section-11" data-toc-target="zh-section-11">将顶部 USB 切换至 LPMU</a>
+<a class="toc-link toc-depth-0" href="#zh-section-12" data-toc-target="zh-section-12">6. 通过 LPMU 完成整机联网</a>
+<a class="toc-link toc-depth-1" href="#zh-section-13" data-toc-target="zh-section-13">运行内置网络配置程序</a>
+<a class="toc-link toc-depth-1" href="#zh-section-14" data-toc-target="zh-section-14">风险与故障排查</a>
+      </nav>
+      <nav class="lang-pane" data-lang-pane="en" aria-label="English contents" hidden>
+<a class="toc-link toc-depth-0" href="#en-section-1" data-toc-target="en-section-1">1. Understand the Two Network Paths</a>
+<a class="toc-link toc-depth-0" href="#en-section-2" data-toc-target="en-section-2">2. Identify C1 and C3</a>
+<a class="toc-link toc-depth-1" href="#en-section-3" data-toc-target="en-section-3">C1 port</a>
+<a class="toc-link toc-depth-1" href="#en-section-4" data-toc-target="en-section-4">C3 port</a>
+<a class="toc-link toc-depth-0" href="#en-section-5" data-toc-target="en-section-5">3. Connect a User Device through C1</a>
+<a class="toc-link toc-depth-0" href="#en-section-6" data-toc-target="en-section-6">4. Keep Internet Access and Share It with RM-01</a>
+<a class="toc-link toc-depth-1" href="#en-section-7" data-toc-target="en-section-7">What may happen to the user device's internet connection</a>
+<a class="toc-link toc-depth-1" href="#en-section-8" data-toc-target="en-section-8">Use the RM-01 Network Connection Tool</a>
+<a class="toc-link toc-depth-0" href="#en-section-9" data-toc-target="en-section-9">5. Connect RM-01 to an Upstream Network through C3</a>
+<a class="toc-link toc-depth-1" href="#en-section-10" data-toc-target="en-section-10">Prepare the adapter</a>
+<a class="toc-link toc-depth-1" href="#en-section-11" data-toc-target="en-section-11">Switch the top USB port to LPMU</a>
+<a class="toc-link toc-depth-0" href="#en-section-12" data-toc-target="en-section-12">6. Bring the Complete System Online through LPMU</a>
+<a class="toc-link toc-depth-1" href="#en-section-13" data-toc-target="en-section-13">Run the built-in network configuration program</a>
+<a class="toc-link toc-depth-1" href="#en-section-14" data-toc-target="en-section-14">Risks and troubleshooting</a>
+      </nav>
+    </details>
+
+    <div class="guide-doc-layout">
+      <aside class="guide-toc" aria-label="本页目录">
+        <p data-guide-text data-zh="本页目录" data-en="On this page">本页目录</p>
+        <nav class="lang-pane" data-lang-pane="zh">
+<a class="toc-link toc-depth-0" href="#zh-section-1" data-toc-target="zh-section-1">1. 先了解两条网络连接路径</a>
+<a class="toc-link toc-depth-0" href="#zh-section-2" data-toc-target="zh-section-2">2. 识别 C1 与 C3</a>
+<a class="toc-link toc-depth-1" href="#zh-section-3" data-toc-target="zh-section-3">C1 接口</a>
+<a class="toc-link toc-depth-1" href="#zh-section-4" data-toc-target="zh-section-4">C3 接口</a>
+<a class="toc-link toc-depth-0" href="#zh-section-5" data-toc-target="zh-section-5">3. 通过 C1 将用户设备接入 RM-01</a>
+<a class="toc-link toc-depth-0" href="#zh-section-6" data-toc-target="zh-section-6">4. 保留互联网连接并向 RM-01 共享网络</a>
+<a class="toc-link toc-depth-1" href="#zh-section-7" data-toc-target="zh-section-7">用户设备的互联网连接可能发生什么</a>
+<a class="toc-link toc-depth-1" href="#zh-section-8" data-toc-target="zh-section-8">使用 RM-01 网络连接工具</a>
+<a class="toc-link toc-depth-0" href="#zh-section-9" data-toc-target="zh-section-9">5. 通过 C3 将 RM-01 接入上层网络</a>
+<a class="toc-link toc-depth-1" href="#zh-section-10" data-toc-target="zh-section-10">准备连接器</a>
+<a class="toc-link toc-depth-1" href="#zh-section-11" data-toc-target="zh-section-11">将顶部 USB 切换至 LPMU</a>
+<a class="toc-link toc-depth-0" href="#zh-section-12" data-toc-target="zh-section-12">6. 通过 LPMU 完成整机联网</a>
+<a class="toc-link toc-depth-1" href="#zh-section-13" data-toc-target="zh-section-13">运行内置网络配置程序</a>
+<a class="toc-link toc-depth-1" href="#zh-section-14" data-toc-target="zh-section-14">风险与故障排查</a>
+        </nav>
+        <nav class="lang-pane" data-lang-pane="en" hidden>
+<a class="toc-link toc-depth-0" href="#en-section-1" data-toc-target="en-section-1">1. Understand the Two Network Paths</a>
+<a class="toc-link toc-depth-0" href="#en-section-2" data-toc-target="en-section-2">2. Identify C1 and C3</a>
+<a class="toc-link toc-depth-1" href="#en-section-3" data-toc-target="en-section-3">C1 port</a>
+<a class="toc-link toc-depth-1" href="#en-section-4" data-toc-target="en-section-4">C3 port</a>
+<a class="toc-link toc-depth-0" href="#en-section-5" data-toc-target="en-section-5">3. Connect a User Device through C1</a>
+<a class="toc-link toc-depth-0" href="#en-section-6" data-toc-target="en-section-6">4. Keep Internet Access and Share It with RM-01</a>
+<a class="toc-link toc-depth-1" href="#en-section-7" data-toc-target="en-section-7">What may happen to the user device's internet connection</a>
+<a class="toc-link toc-depth-1" href="#en-section-8" data-toc-target="en-section-8">Use the RM-01 Network Connection Tool</a>
+<a class="toc-link toc-depth-0" href="#en-section-9" data-toc-target="en-section-9">5. Connect RM-01 to an Upstream Network through C3</a>
+<a class="toc-link toc-depth-1" href="#en-section-10" data-toc-target="en-section-10">Prepare the adapter</a>
+<a class="toc-link toc-depth-1" href="#en-section-11" data-toc-target="en-section-11">Switch the top USB port to LPMU</a>
+<a class="toc-link toc-depth-0" href="#en-section-12" data-toc-target="en-section-12">6. Bring the Complete System Online through LPMU</a>
+<a class="toc-link toc-depth-1" href="#en-section-13" data-toc-target="en-section-13">Run the built-in network configuration program</a>
+<a class="toc-link toc-depth-1" href="#en-section-14" data-toc-target="en-section-14">Risks and troubleshooting</a>
+        </nav>
+      </aside>
+
+      <div class="guide-article-column">
+
+          <article class="guide-article lang-pane" data-lang-pane="zh">
+<h2 id="zh-section-1" data-heading-key="section-1"><a href="#zh-section-1">1. 先了解两条网络连接路径</a></h2>
+<p>RM-01 提供两条基于 USB-C 的网络连接路径，本文分别称为 <strong>C1 接口</strong>和 <strong>C3 接口</strong>。两者都能承载网络连接，但连接对象和网络拓扑不同：</p>
+<div class="guide-table-wrap"><table><thead><tr><th>接口</th><th>主要用途</th><th>连接后的网络关系</th></tr></thead><tbody><tr><td>C1</td><td>将电脑、平板或手机等用户设备接入 RM-01</td><td>用户设备加入 RM-01 内部交换机网络，成为内部网络中的一个节点</td></tr><tr><td>C3</td><td>将 RM-01 接入用户现有的局域网</td><td>通过 LPMU 为其他内部节点提供路由，使整机接入交换机或路由器所在的上层网络</td></tr></tbody></table></div>
+<h2 id="zh-section-2" data-heading-key="section-2"><a href="#zh-section-2">2. 识别 C1 与 C3</a></h2>
+<h3 id="zh-section-3" data-heading-key="section-3"><a href="#zh-section-3">C1 接口</a></h3>
+<p>C1 位于机身侧后方。面对上下排列的两个 USB-C 接口时，C1 是靠上的接口；接口下方刻有连接图样，可用于确认位置。</p>
+<h3 id="zh-section-4" data-heading-key="section-4"><a href="#zh-section-4">C3 接口</a></h3>
+<p>C3 位于机身顶部。掀开上方磁吸盖板后，可以看到该 USB-C 接口。C3 是顶部共享 USB 接口，可在 TianshanOS 中切换至 ESP、AGX 或 LPMU。</p>
+<h2 id="zh-section-5" data-heading-key="section-5"><a href="#zh-section-5">3. 通过 C1 将用户设备接入 RM-01</a></h2>
+<p>使用支持数据传输的 USB-C 线缆，将 iPad、电脑、手机或其他用户设备连接至 C1。连接后，RM-01 会自动完成 DHCP 地址分配，用户无需手动填写 IP 地址、网关或 DNS。</p>
+<p>用户设备通常会识别出一个名为 <code>AX88179</code> 或 USB Ethernet 的有线网络接口。该设备随后会加入 RM-01 内部交换机网络，并可以与内部网络中的设备通信。</p>
+<aside class="guide-notice"><span>重要提示</span><p>C1 会把用户设备直接接入 RM-01 内部网络。只连接可信设备；在公共或不受信任环境中，不要把未经管理的设备接入 C1。</p></aside>
+<h2 id="zh-section-6" data-heading-key="section-6"><a href="#zh-section-6">4. 保留互联网连接并向 RM-01 共享网络</a></h2>
+<h3 id="zh-section-7" data-heading-key="section-7"><a href="#zh-section-7">用户设备的互联网连接可能发生什么</a></h3>
+<aside class="guide-notice"><span>操作提示</span><p>连接 C1 后，部分操作系统可能把 <code>AX88179</code> 当作优先网络出口。由于 C1 首先用于访问 RM-01 内部网络，而不是直接提供互联网，用户设备原有的互联网连接可能暂时中断。</p></aside>
+<p>如果用户设备仍需通过 Wi-Fi、以太网或其他连接访问互联网，应确保原有互联网连接的优先级高于 <code>AX88179</code>：</p>
+<div class="guide-table-wrap"><table><thead><tr><th>系统</th><th>系统中的名称</th><th>设置原则</th></tr></thead><tbody><tr><td>macOS</td><td>网络服务顺序（Service Order）</td><td>将提供互联网的 Wi-Fi 或以太网置于 <code>AX88179</code> 之上</td></tr><tr><td>Windows</td><td>接口跃点数（Interface Metric）</td><td>数值越小优先级越高；使互联网接口的跃点数小于 <code>AX88179</code></td></tr><tr><td>Linux</td><td>路由 metric（Route Metric）</td><td>数值越小优先级越高；使互联网默认路由的 metric 小于 <code>AX88179</code></td></tr></tbody></table></div>
+<h3 id="zh-section-8" data-heading-key="section-8"><a href="#zh-section-8">使用 RM-01 网络连接工具</a></h3>
+<p>如果还需要把用户设备的互联网连接共享给 RM-01，请从网站的“下载”页面获取 <strong>RM-01 网络连接工具</strong>。该工具会配置用户设备与 C1 之间的 DHCP、路由和网络共享规则，使互联网流量能够从用户设备转发至 RM-01 内部网络。</p>
+<p>当前支持：</p>
+<ul><li>macOS</li><li>Linux</li><li>Windows 专业版</li></ul>
+<p>Windows 家庭版当前不受支持。</p>
+<aside class="guide-notice"><span>重要提示</span><p>网络连接工具会修改用户设备的网络地址、路由和共享设置，运行时可能短暂中断现有连接。开始前请保存正在进行的下载、远程会话和其他依赖网络的工作。</p></aside>
+<h2 id="zh-section-9" data-heading-key="section-9"><a href="#zh-section-9">5. 通过 C3 将 RM-01 接入上层网络</a></h2>
+<p>这里的“上层网络”是指用户已有的局域网，例如交换机或路由器所在的网络。</p>
+<h3 id="zh-section-10" data-heading-key="section-10"><a href="#zh-section-10">准备连接器</a></h3>
+<p>用户需自备以下连接设备：</p>
+<ul><li>一个 USB-C ↔ RJ45 以太网适配器</li><li>一根连接交换机或路由器的 RJ45 网线</li></ul>
+<p>将 USB-C 端连接至 C3，再将 RJ45 网线连接至用户的交换机或路由器。仅完成物理连接还不足以完成 DHCP 和路由配置，后续必须运行 RM-01 内置的网络配置程序。</p>
+<h3 id="zh-section-11" data-heading-key="section-11"><a href="#zh-section-11">将顶部 USB 切换至 LPMU</a></h3>
+<ol><li>打开 TianshanOS 首页。</li><li>找到“USB 切换”区域。</li><li>点击“USB”按钮，将顶部 USB 接口的当前目标切换至 <code>LPMU</code>。</li><li>确认页面显示的当前目标为 <code>LPMU</code> 后，再继续网络配置。</li></ol>
+<aside class="guide-notice"><span>操作提示</span><p>切换顶部 USB 目标时，当前连接可能短暂断开。请勿在接口正在传输数据时切换目标。</p></aside>
+<h2 id="zh-section-12" data-heading-key="section-12"><a href="#zh-section-12">6. 通过 LPMU 完成整机联网</a></h2>
+<p>RM-01 出厂时已在 LPMU 中内置网络自动化配置程序。LPMU 会为 RM-01 的其他内部节点提供路由，因此完成以下操作后，整机可以接入用户的上层网络。</p>
+<h3 id="zh-section-13" data-heading-key="section-13"><a href="#zh-section-13">运行内置网络配置程序</a></h3>
+<ol><li>确认 C3 已通过 USB-C ↔ RJ45 以太网适配器连接至交换机或路由器。</li><li>确认 TianshanOS 首页中的顶部 USB 目标已经切换至 <code>LPMU</code>。</li><li>在 TianshanOS 顶部导航中打开“网络”。</li><li>找到“接入上层网络”。</li><li>点击“通过LPMU接入”。</li><li>等待状态从“处理中”变为“成功”或“失败”。处理期间不要重复启动。</li></ol>
+<p>状态显示“成功”后，LPMU 会取得上层网络连接，并通过内部路由为 RM-01 的其他计算节点提供网络。</p>
+<h3 id="zh-section-14" data-heading-key="section-14"><a href="#zh-section-14">风险与故障排查</a></h3>
+<aside class="guide-notice"><span>重要提示</span><p>“通过LPMU接入”会调整 LPMU 的网络接口、DHCP、默认路由、IP 转发、NAT 和防火墙规则，可能中断正在进行的远程连接，也可能覆盖已有的自定义网络规则。若 LPMU 已进行过自定义网络或防火墙配置，请先记录现有配置再执行。</p></aside>
+<p>如果接入失败，请依次检查：</p>
+<ol><li>C3 使用的 USB-C ↔ RJ45 适配器和网线是否连接牢固。</li><li>交换机或路由器端口是否已经启用。</li><li>TianshanOS 首页显示的顶部 USB 目标是否为 <code>LPMU</code>。</li><li>“接入上层网络”区域显示的错误和输出信息。</li><li>LPMU 中是否存在会阻止 DHCP、路由、NAT 或防火墙配置的自定义规则。</li></ol>
+          </article>
+
+          <article class="guide-article lang-pane" data-lang-pane="en" hidden>
+<h2 id="en-section-1" data-heading-key="section-1"><a href="#en-section-1">1. Understand the Two Network Paths</a></h2>
+<p>RM-01 provides two USB-C-based network paths, referred to in this guide as the <strong>C1 port</strong> and the <strong>C3 port</strong>. Both carry network connections, but they connect different devices and create different network topologies:</p>
+<div class="guide-table-wrap"><table><thead><tr><th>Port</th><th>Primary purpose</th><th>Network relationship after connection</th></tr></thead><tbody><tr><td>C1</td><td>Connect a computer, tablet, phone, or other user device to RM-01</td><td>The user device joins the RM-01 internal switch network as an internal network node</td></tr><tr><td>C3</td><td>Connect RM-01 to the user's existing local network</td><td>LPMU routes traffic for the other internal nodes, allowing the complete system to join the upstream switch or router network</td></tr></tbody></table></div>
+<h2 id="en-section-2" data-heading-key="section-2"><a href="#en-section-2">2. Identify C1 and C3</a></h2>
+<h3 id="en-section-3" data-heading-key="section-3"><a href="#en-section-3">C1 port</a></h3>
+<p>C1 is on the rear side of the enclosure. Of the two vertically arranged USB-C ports, C1 is the upper port. A connection symbol engraved below the port helps identify it.</p>
+<h3 id="en-section-4" data-heading-key="section-4"><a href="#en-section-4">C3 port</a></h3>
+<p>C3 is on top of the enclosure. Lift the magnetic top cover to expose this USB-C port. C3 is the shared top USB port and can be switched among ESP, AGX, and LPMU in TianshanOS.</p>
+<h2 id="en-section-5" data-heading-key="section-5"><a href="#en-section-5">3. Connect a User Device through C1</a></h2>
+<p>Use a USB-C cable that supports data transfer to connect an iPad, computer, phone, or other user device to C1. RM-01 automatically provides DHCP configuration, so the user does not need to enter an IP address, gateway, or DNS server manually.</p>
+<p>The user device will normally detect a wired network interface named <code>AX88179</code> or USB Ethernet. The device then joins the RM-01 internal switch network and can communicate with devices on that network.</p>
+<aside class="guide-notice"><span>Important</span><p>C1 connects the user device directly to the RM-01 internal network. Connect only trusted devices, and do not attach unmanaged devices to C1 in public or untrusted environments.</p></aside>
+<h2 id="en-section-6" data-heading-key="section-6"><a href="#en-section-6">4. Keep Internet Access and Share It with RM-01</a></h2>
+<h3 id="en-section-7" data-heading-key="section-7"><a href="#en-section-7">What may happen to the user device's internet connection</a></h3>
+<p>After C1 is connected, some operating systems may treat <code>AX88179</code> as the preferred network path. Because C1 provides access to the RM-01 internal network rather than direct internet access, the user device's existing internet connection may be interrupted.</p>
+<p>If the user device must continue using Wi-Fi, Ethernet, or another connection for internet access, keep that internet connection at a higher priority than <code>AX88179</code>:</p>
+<div class="guide-table-wrap"><table><thead><tr><th>System</th><th>System terminology</th><th>Configuration principle</th></tr></thead><tbody><tr><td>macOS</td><td>Network service order (Service Order)</td><td>Place the internet-providing Wi-Fi or Ethernet service above <code>AX88179</code></td></tr><tr><td>Windows</td><td>Interface metric</td><td>Lower values have higher priority; use a lower metric for the internet interface than for <code>AX88179</code></td></tr><tr><td>Linux</td><td>Route metric</td><td>Lower values have higher priority; use a lower metric for the internet default route than for <code>AX88179</code></td></tr></tbody></table></div>
+<h3 id="en-section-8" data-heading-key="section-8"><a href="#en-section-8">Use the RM-01 Network Connection Tool</a></h3>
+<p>To share the user device's internet connection with RM-01, obtain the <strong>RM-01 Network Connection Tool</strong> from the website's Downloads page. The tool configures DHCP, routing, and network-sharing rules between the user device and C1 so internet traffic can be forwarded into the RM-01 internal network.</p>
+<p>Currently supported systems:</p>
+<ul><li>macOS</li><li>Linux</li><li>Windows Pro</li></ul>
+<p>Windows Home is not currently supported.</p>
+<aside class="guide-notice"><span>Important</span><p>The network connection tool changes network addressing, routing, and sharing settings on the user device. Existing connections may be interrupted briefly. Save active downloads, remote sessions, and other network-dependent work before starting.</p></aside>
+<h2 id="en-section-9" data-heading-key="section-9"><a href="#en-section-9">5. Connect RM-01 to an Upstream Network through C3</a></h2>
+<p>In this guide, “upstream network” means the user's existing local network, such as a network provided by a switch or router.</p>
+<h3 id="en-section-10" data-heading-key="section-10"><a href="#en-section-10">Prepare the adapter</a></h3>
+<p>The user must provide:</p>
+<ul><li>A USB-C-to-RJ45 Ethernet adapter</li><li>An RJ45 Ethernet cable connected to the switch or router</li></ul>
+<p>Connect the USB-C end to C3, then connect the RJ45 cable to the user's switch or router. The physical connection alone does not complete DHCP or routing configuration. The built-in RM-01 network configuration program must be run afterward.</p>
+<h3 id="en-section-11" data-heading-key="section-11"><a href="#en-section-11">Switch the top USB port to LPMU</a></h3>
+<ol><li>Open the TianshanOS home page.</li><li>Find “USB Switch.”</li><li>Select the “USB” button and switch the current target of the top USB port to <code>LPMU</code>.</li><li>Confirm that the page shows <code>LPMU</code> as the current target before continuing.</li></ol>
+<aside class="guide-notice"><span>Operational note</span><p>Switching the top USB target may disconnect the current link briefly. Do not switch targets while data is being transferred through the port.</p></aside>
+<h2 id="en-section-12" data-heading-key="section-12"><a href="#en-section-12">6. Bring the Complete System Online through LPMU</a></h2>
+<p>The LPMU ships with the RM-01 automated network configuration program. LPMU routes traffic for the other internal RM-01 nodes, so the complete system can join the user's upstream network after the following procedure is completed.</p>
+<h3 id="en-section-13" data-heading-key="section-13"><a href="#en-section-13">Run the built-in network configuration program</a></h3>
+<ol><li>Confirm that C3 is connected to the switch or router through the USB-C-to-RJ45 Ethernet adapter.</li><li>Confirm that the top USB target on the TianshanOS home page is set to <code>LPMU</code>.</li><li>Open “Network” from the top navigation in TianshanOS.</li><li>Find “Upstream Network Access.”</li><li>Select “Access via LPMU.”</li><li>Wait for the state to change from “Processing” to “Success” or “Failed.” Do not start the operation again while it is processing.</li></ol>
+<p>After the state changes to “Success,” LPMU has obtained upstream connectivity and provides network access to the other RM-01 compute nodes through internal routing.</p>
+<h3 id="en-section-14" data-heading-key="section-14"><a href="#en-section-14">Risks and troubleshooting</a></h3>
+<aside class="guide-notice"><span>Important</span><p>“Access via LPMU” changes LPMU network interfaces, DHCP, default routes, IP forwarding, NAT, and firewall rules. It may interrupt active remote sessions and may overwrite existing custom network rules. If LPMU already has custom network or firewall configuration, record the current configuration before running this operation.</p></aside>
+<p>If the operation fails, check the following in order:</p>
+<ol><li>Confirm that the USB-C-to-RJ45 adapter and Ethernet cable connected to C3 are secure.</li><li>Confirm that the switch or router port is enabled.</li><li>Confirm that the TianshanOS home page shows <code>LPMU</code> as the current top USB target.</li><li>Read the error and output shown in “Upstream Network Access.”</li><li>Check whether custom LPMU rules are preventing DHCP, routing, NAT, or firewall configuration.</li></ol>
+          </article>
+        <a class="guide-next" href="admin.html">
+          <span data-guide-text data-zh="下一步" data-en="Next">下一步</span>
+          <strong data-guide-text data-zh="继续阅读 Admin 指南" data-en="Continue to the Admin guide">继续阅读 Admin 指南</strong>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <aside class="guide-rail">
+        <p data-guide-text data-zh="阅读提示" data-en="Reading note">阅读提示</p>
+        <span data-guide-text data-zh="设备型号、硬件配置和当前状态会影响页面显示。以设备实际界面为准。" data-en="Device model, hardware configuration, and current state affect what the interface displays.">设备型号、硬件配置和当前状态会影响页面显示。以设备实际界面为准。</span>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="guide-footer">
+    <img src="../assets/images/img3.png" alt="RMinte">
+    <div>
+      <span>© 2026 RMinte AI</span>
+    </div>
+  </footer>
+</body>
+</html>

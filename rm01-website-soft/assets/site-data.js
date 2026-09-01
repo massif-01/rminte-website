@@ -6,7 +6,8 @@ window.RM_SOFT = {
     ['hardware', { zh: '架构', en: 'Architecture' }],
     ['proof', { zh: '验证', en: 'Proof' }],
     ['applications', { zh: '应用', en: 'Use Cases' }],
-    ['guides', { zh: '指南', en: 'Guides' }, { href: 'guides/index.html' }]
+    ['guides', { zh: '指南', en: 'Guides' }, { href: 'guides/index.html' }],
+    ['downloads', { zh: '下载', en: 'Downloads' }, { href: 'downloads/index.html' }]
   ],
   metrics: [
     { value: '140W', label: { zh: '整机功耗', en: 'total power' } },

@@ -2,13 +2,20 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RM-01 便携 AI 超算，面向本地部署、低功耗推理和生产级 AI 应用交付。">
+  <meta property="og:title" content="泛灵人工智能 - RM-01 便携 AI 超算">
+  <meta property="og:description" content="插卡即用，全栈交付。本地 AI 基础设施，面向真实业务部署。">
+  <meta property="og:image" content="images/img3.png">
   <title>泛灵人工智能 - RM-01 便携 AI 超算</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="images/img3.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=SF+Mono&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a href="#main" class="skip-link">跳至主要内容</a>
   <div class="scroll-progress" id="scrollProgress"></div>
 
   <nav id="navbar">
@@ -23,7 +30,7 @@
         <a href="#team" data-i18n="nav_team">创始团队</a>
       </div>
       <button class="lang-toggle" id="langToggle" title="切换语言">EN</button>
-      <button class="nav-hamburger" id="navHamburger" aria-label="Menu" onclick="toggleMenu()">
+      <button class="nav-hamburger" id="navHamburger" aria-label="打开导航菜单" aria-controls="navDropdown" aria-expanded="false" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -38,6 +45,7 @@
     </div>
   </nav>
 
+  <main id="main">
   <!-- Hero - Asymmetric Split Layout (NOT centered 4 elements) -->
   <section class="hero" id="hero">
     <video class="hero-video" autoplay muted loop playsinline>
@@ -47,9 +55,14 @@
       <div class="hero-text">
         <img src="images/img3.png" alt="RMinte" class="hero-logo">
         <div class="hero-line"></div>
-        <p class="hero-sub" data-i18n="hero_sub">新一代</p>
+        <p class="hero-sub" data-i18n="hero_sub">本地 AI 交付</p>
         <h1 class="hero-title" data-i18n="hero_title">生产级<br>AI 交付基座</h1>
         <p class="hero-tagline" data-i18n="hero_tagline">插卡即用，全栈交付</p>
+        <div class="hero-specs" aria-label="RM-01 核心参数">
+          <span><strong>140W</strong><em data-i18n="hero_spec_power">整机功耗</em></span>
+          <span><strong>64</strong><em data-i18n="hero_spec_concurrency">路峰值并发</em></span>
+          <span><strong>7x24</strong><em data-i18n="hero_spec_runtime">工业级运行</em></span>
+        </div>
         <a href="#product" class="hero-cta">
           <span data-i18n="hero_cta">探索 RM-01</span>
           <span class="hero-cta-arrow">→</span>
@@ -112,8 +125,8 @@
   <!-- Core Features - Zigzag Layout (NOT 3 equal cards - taste-skill ban) -->
   <section class="features" id="features">
     <div class="container">
-      <h2 class="section-title reveal" data-i18n="section_features">RM-01 重新定义本地 AI 基础设施</h2>
-      <p class="section-desc reveal" data-i18n="section_features_desc">三大核心卖点，重新定义便携 AI 计算</p>
+      <h2 class="section-title reveal" data-i18n="section_features">RM-01 本地 AI 基础设施</h2>
+      <p class="section-desc reveal" data-i18n="section_features_desc">即用、原生、强悍，服务真实部署</p>
 
       <div class="features-zigzag">
         <div class="feature-zigzag-item reveal">
@@ -213,8 +226,25 @@
         </div>
       </div>
 
-      <div class="hardware-explode reveal">
-        <img src="images/img4.png" alt="RM-01 硬件爆炸图">
+    </div>
+
+    <div class="hardware-scroll" id="hardwareScroll">
+      <div class="hardware-scroll-sticky">
+        <div class="hardware-scroll-frame">
+          <video
+            class="hardware-scroll-video"
+            id="hardwareScrollVideo"
+            src="https://downloads.rminte.com/media/hardware-scroll.mp4"
+            poster="images/img4.png"
+            muted
+            playsinline
+            preload="metadata"
+            aria-label="RM-01 硬件结构动态分解">
+          </video>
+        </div>
+        <div class="hardware-scroll-progress" aria-hidden="true">
+          <span id="hardwareScrollProgress"></span>
+        </div>
       </div>
     </div>
   </section>
@@ -405,7 +435,7 @@
         <a href="pages/app-graph.html" class="app-link reveal">
           <div class="app-card card-shell">
             <h4 data-i18n="app_graph">AI 知识图谱</h4>
-            <p>AI 知识图谱构建与推理。合作单位：电子科大 5G 实验室、公安部经济案件分析。</p>
+            <p data-i18n="app_graph_text">AI 知识图谱构建与推理。合作单位：电子科大 5G 实验室、公安部经济类案件分析。</p>
             <div class="app-cta" data-i18n="app_learn">了解详情 →</div>
           </div>
         </a>
@@ -458,6 +488,7 @@
       </div>
     </div>
   </section>
+  </main>
 
   <!-- Footer -->
   <footer class="footer">
@@ -468,7 +499,7 @@
           <p data-i18n="footer_company">泛灵（成都）人工智能科技有限公司</p>
         </div>
         <div class="footer-links">
-          <p data-i18n="footer_tagline">新一代生产级 AI 交付基座</p>
+          <p data-i18n="footer_tagline">生产级本地 AI 交付基座</p>
           <p data-i18n="footer_slogan">插卡即用 · 全栈交付</p>
         </div>
       </div>
@@ -478,7 +509,11 @@
 
   <script>
     // === i18n ===
-    const translations = {"nav_product": {"zh": "产品概述", "en": "Overview"}, "nav_features": {"zh": "核心特性", "en": "Features"}, "nav_hardware": {"zh": "硬件架构", "en": "Hardware"}, "nav_tech": {"zh": "核心技术", "en": "Technology"}, "nav_honor": {"zh": "荣誉认证", "en": "Honors"}, "nav_apps": {"zh": "应用场景", "en": "Applications"}, "nav_team": {"zh": "创始团队", "en": "Team"}, "hero_sub": {"zh": "新一代", "en": "Next Generation"}, "hero_title": {"zh": "生产级<br>AI 交付基座", "en": "Production-Ready<br>AI Delivery Platform"}, "hero_tagline": {"zh": "插卡即用，全栈交付", "en": "Plug-in Ready, Full-Stack Delivery"}, "hero_cta": {"zh": "探索 RM-01", "en": "Explore RM-01"}, "section_overview": {"zh": "产品概述", "en": "Product Overview"}, "section_overview_desc": {"zh": "从成立到愿景，了解泛灵人工智能的核心定位", "en": "From founding to vision, understand RMinte's core positioning"}, "overview_background": {"zh": "成立背景", "en": "Background"}, "overview_background_text": {"zh": "泛灵人工智能于 2025 年初在成都成立，海外主体成立于 2023 年。致力于打造\"带硬件壳体的软件分发平台\"，借鉴任天堂 Switch 的插卡逻辑，用户通过更换存储卡即可切换 AI 模型与应用。", "en": "RMinte AI was founded in Chengdu in early 2025, with its overseas entity established in 2023. Dedicated to building a \"software distribution platform with hardware shell,\" inspired by Nintendo Switch cartridge logic — users can switch AI models and apps simply by changing storage cards."}, "overview_product": {"zh": "核心产品", "en": "Core Product"}, "overview_product_text": {"zh": "RM-01 便携 AI 超算，聚焦\"极致轻量部署\"，小巧体积集成 AI 应用与模型。已获得 3C 认证，具备量产能力，已与大型客户签署框架协议。", "en": "RM-01 portable AI supercomputer, focused on \"extreme lightweight deployment,\" integrating AI applications and models in a compact form factor. Already 3C certified, with mass production capability, and framework agreements signed with major clients."}, "overview_vision": {"zh": "企业愿景", "en": "Corporate Vision"}, "overview_vision_text": {"zh": "桥接供需，解决 AI 落地\"最后一公里\"。连接开发者与企业用户，以技术先进、轻量部署、全球布局的优势，让 AI 技术简单高效地落地。", "en": "Bridging supply and demand to solve the \"last mile\" of AI deployment. Connecting developers and enterprise users, leveraging advanced technology, lightweight deployment, and global footprint to make AI adoption simple and efficient."}, "pillar_1_title": {"zh": "桥接供需", "en": "Bridge Supply & Demand"}, "pillar_1_text": {"zh": "连接开发者与企业用户", "en": "Connecting developers and enterprise users"}, "pillar_2_title": {"zh": "技术先进", "en": "Advanced Technology"}, "pillar_2_text": {"zh": "兼容架构，安全本地化数据处理", "en": "Compatible architecture, secure local data processing"}, "pillar_3_title": {"zh": "轻量部署", "en": "Lightweight Deployment"}, "pillar_3_text": {"zh": "软硬件协同，大幅降低客户 TCO", "en": "Hardware-software synergy, significantly reducing customer TCO"}, "pillar_4_title": {"zh": "全球布局", "en": "Global Footprint"}, "pillar_4_text": {"zh": "商业落地能力已获验证", "en": "Commercial deployment capability proven"}, "section_features": {"zh": "RM-01 重新定义本地 AI 基础设施", "en": "RM-01 Redefines Local AI Infrastructure"}, "section_features_desc": {"zh": "三大核心卖点，重新定义便携 AI 计算", "en": "Three core selling points, redefining portable AI computing"}, "feature_ready": {"zh": "即用", "en": "Ready"}, "feature_ready_sub": {"zh": "一插即用", "en": "Plug and Play"}, "feature_native": {"zh": "原生", "en": "Native"}, "feature_native_sub": {"zh": "为大模型而生", "en": "Born for Large Models"}, "feature_powerful": {"zh": "强悍", "en": "Powerful"}, "feature_powerful_sub": {"zh": "低功耗、高并发", "en": "Low Power, High Concurrency"}, "ficon_ai": {"zh": "AI 加速", "en": "AI Acceleration"}, "ficon_fullstack": {"zh": "全栈开发", "en": "Full-Stack Development"}, "ficon_arch": {"zh": "产品架构", "en": "Product Architecture"}, "ficon_network": {"zh": "全球网络", "en": "Global Network"}, "ficon_source": {"zh": "源码部署", "en": "Source Deployment"}, "ficon_security": {"zh": "安全认证", "en": "Security Certification"}, "section_hardware": {"zh": "RM-01 硬件架构", "en": "RM-01 Hardware Architecture"}, "section_hardware_desc": {"zh": "模块化层叠架构，核心模块满足服务器级设计标准，以便携形态提供完整、本地、可靠的 AI 算力基础设施。", "en": "Modular stacked architecture, with core modules meeting server-grade design standards, providing complete, local, and reliable AI computing infrastructure in a portable form factor."}, "hw_compute": {"zh": "计算模块", "en": "Compute Module"}, "hw_compute_text": {"zh": "工业级 Intel Core i3 处理器，ECC 内存，高速 NVMe SSD", "en": "Industrial-grade Intel Core i3 processor, ECC memory, high-speed NVMe SSD"}, "hw_ai": {"zh": "AI 推理模块", "en": "AI Inference Module"}, "hw_ai_text": {"zh": "集成高性能 AI 加速器，支持 NVIDIA 架构，针对 CUDA & TensorRT 优化", "en": "Integrated high-performance AI accelerator, supporting NVIDIA architecture, optimized for CUDA & TensorRT"}, "hw_crypto": {"zh": "加密模块", "en": "Crypto Module"}, "hw_crypto_text": {"zh": "内置 TPM 2.0 硬件信任根，支持 RSA & ECC 加密机制", "en": "Built-in TPM 2.0 hardware root of trust, supporting RSA & ECC encryption"}, "hw_network": {"zh": "网络模块", "en": "Network Module"}, "hw_network_text": {"zh": "统一 API 与轻量级任务调度框架，多模型并行负载均衡", "en": "Unified API and lightweight task scheduling framework, multi-model parallel load balancing"}, "hw_power": {"zh": "电源与热管理", "en": "Power & Thermal"}, "hw_power_text": {"zh": "服务器级电源时序与冗余保护，高效散热与智能气流设计", "en": "Server-grade power sequencing and redundancy protection, efficient cooling and intelligent airflow design"}, "section_tech": {"zh": "自研推理引擎，反向定义整机架构", "en": "Self-Developed Inference Engine, Redefining System Architecture"}, "section_tech_desc": {"zh": "重构本地大模型运行效率", "en": "Reconstructing local large model performance"}, "tech_frontend": {"zh": "以开源前端框架为入口，重构生产级推理服务基座", "en": "Using open-source frontends to reconstruct production-grade inference infrastructure"}, "tech_frontend_text": {"zh": "采用 vLLM 作为前端引擎，Hugging Face Transformers 加载模型。替换核心推理内核为自研版本，构建面向商业落地的生产级系统。", "en": "Using vLLM as the frontend engine and Hugging Face Transformers for model loading. Replaced core inference kernel with a self-developed version to build a production-grade system for commercial deployment."}, "tech_backend": {"zh": "深度优化推理路径，压榨 GPU 至极限", "en": "Deeply optimized inference paths, pushing GPU to the limit"}, "tech_backend_text": {"zh": "定制 CUDA 内核，优化 FlashAttention、FlashInfer、PagedAttention 技术。KV Cache 管理与持续批处理改进，GPU 利用率趋近 100%。", "en": "Custom CUDA kernels, optimized FlashAttention, FlashInfer, PagedAttention technologies. KV Cache management and continuous batch processing improvements, GPU utilization approaching 100%."}, "tech_arch": {"zh": "不止优化推理，更以引擎反向定义整机架构", "en": "Not just optimizing inference, but redefining system architecture with the engine"}, "tech_arch_text": {"zh": "聚焦主流 MoE 架构，内核级与融合层优化，专家并行加载与路由。基于软件优化反向设计高性能主板与整机协同架构。", "en": "Focusing on mainstream MoE architecture, kernel-level and fusion-layer optimization, expert parallel loading and routing. Based on software optimization to reverse-design high-performance motherboard and system architecture."}, "section_thermal": {"zh": "EricLake 封闭式热管理系统", "en": "EricLake Closed Thermal Management System"}, "thermal_features": {"zh": "核心特性", "en": "Core Features"}, "thermal_leaf": {"zh": "0.13mm 特制叶片、定制电机", "en": "0.13mm custom blades, custom motor"}, "thermal_airflow": {"zh": "Z 型风道 增压风道设计", "en": "Z-shaped pressurized airflow design"}, "thermal_cfd": {"zh": "CFD 优化 计算流体动力学优化设计", "en": "CFD optimized design"}, "thermal_temp": {"zh": "4500rpm 转速与 140W 功率温度分布", "en": "Temperature distribution at 4500rpm and 140W"}, "thermal_pressure": {"zh": "4500rpm 转速下压力分布", "en": "Pressure distribution at 4500rpm"}, "section_silent": {"zh": "让 AI 无声", "en": "Making AI Silent"}, "silent_quote": {"zh": "真正的便携，不是能带走，而是无声、无感，却随时可用。", "en": "True portability is not just carrying it — it is silent, imperceptible, yet always available."}, "section_arch": {"zh": "机柜级能力，背包级体积", "en": "Rack-Level Power, Backpack-Level Size"}, "section_arch_desc": {"zh": "RM-01 不是一台迷你 PC，也不是传统嵌入式设备，而是一套以数据中心服务器架构为基础打造的便携式 AI 超算系统。", "en": "RM-01 is not a mini PC nor a traditional embedded device — it is a portable AI supercomputer built on a data center server architecture."}, "arch_scenarios": {"zh": "专为以下复杂场景打造的本地 AI 基础设施：", "en": "Local AI infrastructure designed for these complex scenarios:"}, "arch_1": {"zh": "无机房野外部署", "en": "Field deployment without data center"}, "arch_2": {"zh": "无网或弱网环境", "en": "No-network or weak-network environments"}, "arch_3": {"zh": "临时供电", "en": "Temporary power supply"}, "arch_4": {"zh": "高温高湿", "en": "High temperature and humidity"}, "arch_5": {"zh": "车载部署", "en": "Vehicle-mounted deployment"}, "section_honor": {"zh": "荣誉与认证", "en": "Honors & Certifications"}, "section_honor_desc": {"zh": "从金熊猫大赛到国家级示范工程，商业落地能力已获验证", "en": "From Golden Panda Competition to national-level demonstration projects, commercial deployment capability proven"}, "honor_1": {"zh": "成都全制造", "en": "Made in Chengdu"}, "honor_1_text": {"zh": "全球首个便携 AI 超算。比 NVIDIA 和 AMD 同类产品提前 5 个月实现认证并商业交付。", "en": "The world's first portable AI supercomputer. Achieved certification and commercial delivery 5 months ahead of NVIDIA and AMD comparable products."}, "honor_2": {"zh": "金熊猫大赛", "en": "Golden Panda Competition"}, "honor_2_text": {"zh": "2025 金熊猫全球创新创业大赛。从 2 万 5 千支队伍中脱颖而出，荣获第二名。", "en": "2025 Golden Panda Global Innovation & Entrepreneurship Competition. Stood out among 25,000 teams, winning second place."}, "honor_3": {"zh": "CCC 认证", "en": "CCC Certification"}, "honor_3_text": {"zh": "中国国家强制性产品认证。获 3C 认证，具备量产能力，已通过国际质量与安规标准。", "en": "China mandatory product certification. 3C certified with mass production capability, meeting international quality and safety standards."}, "honor_4": {"zh": "国家级示范工程", "en": "National Demonstration Project"}, "honor_4_text": {"zh": "承担三项国家级示范工程人工智能部分建设。国投 + 海峡富汇 + 泛灵人工智能联合打造。", "en": "Undertaking AI construction for three national demonstration projects. Jointly developed by SDIC + Haixia Fuhui + RMinte AI."}, "section_apps": {"zh": "应用场景", "en": "Applications"}, "section_apps_desc": {"zh": "基于本地 AI 算力，覆盖多行业真实落地场景", "en": "Based on local AI computing power, covering real-world deployment scenarios across industries"}, "app_category_industry": {"zh": "行业应用", "en": "Industry Applications"}, "app_category_ai": {"zh": "AI 能力平台", "en": "AI Capability Platform"}, "app_learn": {"zh": "了解详情 →", "en": "Learn More →"}, "app_chem": {"zh": "化学材料", "en": "Chemical Materials"}, "app_chem_text": {"zh": "基于大模型的化学材料智能搜索。合作单位：四川能投、SBI 金鼎资产管理平台。", "en": "AI-powered chemical material search based on large models. Partners: Sichuan Energy Investment, SBI Jinding Asset Management."}, "app_pharma": {"zh": "药物发现", "en": "Drug Discovery"}, "app_pharma_text": {"zh": "分子相似性搜索加速药物研发。合作单位：四川益迅。", "en": "Molecular similarity search accelerating drug development. Partner: Sichuan Yixun."}, "app_logistics": {"zh": "智慧物流", "en": "Smart Logistics"}, "app_logistics_text": {"zh": "无人机配送路径规划，提升物流调度效率。合作单位：四川智飞。", "en": "UAV delivery route planning to improve logistics efficiency. Partner: Sichuan Zhifei."}, "app_medical": {"zh": "AI 医疗", "en": "AI Healthcare"}, "app_medical_text": {"zh": "肺结节 CT 智能检测与知识库辅助诊断。合作单位：北京思达新能。", "en": "Intelligent lung nodule CT detection and knowledge-based diagnostic assistance. Partner: Beijing Soda Xineng."}, "app_traffic": {"zh": "智慧交通", "en": "Smart Transportation"}, "app_traffic_text": {"zh": "多模态识别与智能分析。合作单位：杭州宜远。", "en": "Multimodal recognition and intelligent analysis. Partner: Hangzhou Yiyuan."}, "app_knowledge": {"zh": "知识库构建", "en": "Knowledge Base Construction"}, "app_knowledge_text": {"zh": "多领域知识库快速构建。合作单位：电子科大、重庆地震局、新疆交投等。", "en": "Rapid construction of multi-domain knowledge bases. Partners: UESTC, Chongqing Earthquake Agency, Xinjiang Communications Investment."}, "app_multimodal": {"zh": "多模态实时分析", "en": "Multimodal Real-Time Analysis"}, "app_multimodal_text": {"zh": "VLM 基多模态分析，支持校园防霸凌、交通执法、政务决策。合作单位：辽宁实验学校、杭州宜远。", "en": "VLM-based multimodal analysis supporting anti-bullying, traffic enforcement, and government decision-making. Partners: Liaoning Experimental School, Hangzhou Yiyuan."}, "app_energy": {"zh": "工业能源优化", "en": "Industrial Energy Optimization"}, "app_energy_text": {"zh": "AI 驱动的节能调节与园区能耗优化。合作单位：北京思达新能、四川商投。", "en": "AI-driven energy-saving regulation and park energy consumption optimization. Partners: Beijing Soda Xineng, Sichuan Commercial Investment."}, "app_graph": {"zh": "AI 知识图谱", "en": "AI Knowledge Graph"}, "app_graph_text": {"zh": "AI 知识图谱构建与推理。合作单位：电子科大 5G 实验室、公安部经济类案件分析。", "en": "AI knowledge graph construction and reasoning. Partners: UESTC 5G Lab, Ministry of Public Security economic crime analysis."}, "app_execution": {"zh": "自动化执行系统", "en": "Automated Execution System"}, "app_execution_text": {"zh": "持续进化的工作流编排与自动化执行。合作单位：电子科大软通学院。", "en": "Continuously evolving workflow orchestration and automated execution. Partner: UESTC SoftStone College."}, "section_team": {"zh": "创始团队", "en": "Founding Team"}, "section_team_desc": {"zh": "四位合伙人能力高度互补，覆盖 AI 系统架构、模型算子与推理算法、供应链与规模化交付、产品商业化、工业设计", "en": "Four partners with highly complementary capabilities, covering AI system architecture, model operators and inference algorithms, supply chain and scalable delivery, product commercialization, and industrial design"}, "team_xu": {"zh": "徐子景", "en": "Xu Zijing"}, "team_xu_role": {"zh": "CEO · 联合创始人", "en": "CEO · Co-Founder"}, "team_xu_focus": {"zh": "战略、融资、产品、海外市场", "en": "Strategy, financing, product, overseas markets"}, "team_xu_bg": {"zh": "多伦多大学、布朗大学计算机科学背景", "en": "Computer Science from University of Toronto and Brown University"}, "team_zhu": {"zh": "朱杰", "en": "Zhu Jie"}, "team_zhu_role": {"zh": "COO · 联合创始人", "en": "COO · Co-Founder"}, "team_zhu_focus": {"zh": "供应链、销售、运营、量产交付", "en": "Supply chain, sales, operations, mass production delivery"}, "team_zhu_bg": {"zh": "近 20 年一线消费电子供应链经验", "en": "Nearly 20 years of experience in consumer electronics supply chain"}, "team_tang": {"zh": "唐云峰", "en": "Tang Yunfeng"}, "team_tang_role": {"zh": "CTO · 联合创始人", "en": "CTO · Co-Founder"}, "team_tang_focus": {"zh": "技术架构、推理引擎、生态构建", "en": "Technology architecture, inference engine, ecosystem building"}, "team_tang_bg": {"zh": "全栈 AI 系统架构师，主导 RMInte 推理引擎与 RM-01 硬件设计", "en": "Full-stack AI system architect, leading RMInte inference engine and RM-01 hardware design"}, "team_shi": {"zh": "石一", "en": "Shi Yi"}, "team_shi_role": {"zh": "CDO · 联合创始人", "en": "CDO · Co-Founder"}, "team_shi_focus": {"zh": "工业设计、产品定义、应用适配", "en": "Industrial design, product definition, application adaptation"}, "team_shi_bg": {"zh": "近 20 年国际消费电子工业设计经验", "en": "Nearly 20 years of international consumer electronics industrial design experience"}, "team_quote": {"zh": "\"一支具备 AI 硬件核心技术，拥有从 0 到 1 自主研发实力的硬科技团队\"", "en": "\"A hard-tech team with core AI hardware capabilities and proven 0-to-1 self-development expertise\""}, "footer_tagline": {"zh": "新一代生产级 AI 交付基座", "en": "Next-Gen Production-Ready AI Delivery Platform"}, "footer_slogan": {"zh": "插卡即用 · 全栈交付", "en": "Plug-in Ready · Full-Stack Delivery"}, "footer_copy": {"zh": "© 2026 泛灵人工智能 · RM-01 便携 AI 超算", "en": "© 2026 RMinte AI · RM-01 Portable AI Supercomputer"}, "feat_r_1": {"zh": "仅需一根 USB-C 线缆", "en": "Only one USB-C cable needed"}, "feat_r_2": {"zh": "支持终端部署与机房调用", "en": "Supports endpoint and data center deployment"}, "feat_r_3": {"zh": "无需复杂操作或维护", "en": "No complex operation or maintenance required"}, "feat_n_1": {"zh": "基于大模型运行机制自主研发硬件架构", "en": "Self-developed hardware architecture based on large model运行机制"}, "feat_n_2": {"zh": "自研推理引擎，兼容 30B-200B 参数规模", "en": "Self-developed inference engine, supporting 30B-200B parameter scale"}, "feat_n_3": {"zh": "支持全开源模型与官方量化模型", "en": "Supports all open-source models and official quantized models"}, "feat_n_4": {"zh": "源码级原生部署，最大化模型精度", "en": "Source-level native deployment, maximizing model accuracy"}, "feat_p_1": {"zh": "毫秒级推理响应", "en": "Millisecond-level inference response"}, "feat_p_2": {"zh": "峰值 64 路并发", "en": "Peak 64 concurrent sessions"}, "feat_p_3": {"zh": "整机功耗仅 140W", "en": "Only 140W total power consumption"}, "feat_p_4": {"zh": "100% 工业级元器件", "en": "100% industrial-grade components"}, "feat_p_5": {"zh": "独立风道设计，适应恶劣环境", "en": "Independent air duct design, adaptable to harsh environments"}, "feat_p_6": {"zh": "7x24 无故障运行", "en": "7x24 fault-free operation"}, "tech_label_front": {"zh": "前端", "en": "Frontend"}, "tech_label_back": {"zh": "后端", "en": "Backend"}, "tech_label_arch": {"zh": "架构", "en": "Architecture"}, "footer_company": {"zh": "泛灵（成都）人工智能科技有限公司", "en": "RMinte AI (Chengdu) Technology Co., Ltd."}};
+    const translations = {"nav_product": {"zh": "产品概述", "en": "Overview"}, "nav_features": {"zh": "核心特性", "en": "Features"}, "nav_hardware": {"zh": "硬件架构", "en": "Hardware"}, "nav_tech": {"zh": "核心技术", "en": "Technology"}, "nav_honor": {"zh": "荣誉认证", "en": "Honors"}, "nav_apps": {"zh": "应用场景", "en": "Applications"}, "nav_team": {"zh": "创始团队", "en": "Team"}, "hero_sub": {"zh": "本地 AI 交付", "en": "Local AI delivery"}, "hero_title": {"zh": "生产级<br>AI 交付基座", "en": "Production-Ready<br>AI Delivery Platform"}, "hero_tagline": {"zh": "插卡即用，全栈交付", "en": "Plug-in Ready, Full-Stack Delivery"}, "hero_cta": {"zh": "探索 RM-01", "en": "Explore RM-01"}, "section_overview": {"zh": "产品概述", "en": "Product Overview"}, "section_overview_desc": {"zh": "从成立到愿景，了解泛灵人工智能的核心定位", "en": "From founding to vision, understand RMinte's core positioning"}, "overview_background": {"zh": "成立背景", "en": "Background"}, "overview_background_text": {"zh": "泛灵人工智能于 2025 年初在成都成立，海外主体成立于 2023 年。致力于打造\"带硬件壳体的软件分发平台\"，借鉴任天堂 Switch 的插卡逻辑，用户通过更换存储卡即可切换 AI 模型与应用。", "en": "RMinte AI was founded in Chengdu in early 2025, with its overseas entity established in 2023. Dedicated to building a \"software distribution platform with hardware shell,\" inspired by Nintendo Switch cartridge logic — users can switch AI models and apps simply by changing storage cards."}, "overview_product": {"zh": "核心产品", "en": "Core Product"}, "overview_product_text": {"zh": "RM-01 便携 AI 超算，聚焦\"极致轻量部署\"，小巧体积集成 AI 应用与模型。已获得 3C 认证，具备量产能力，已与大型客户签署框架协议。", "en": "RM-01 portable AI supercomputer, focused on \"extreme lightweight deployment,\" integrating AI applications and models in a compact form factor. Already 3C certified, with mass production capability, and framework agreements signed with major clients."}, "overview_vision": {"zh": "企业愿景", "en": "Corporate Vision"}, "overview_vision_text": {"zh": "桥接供需，解决 AI 落地\"最后一公里\"。连接开发者与企业用户，以技术先进、轻量部署、全球布局的优势，让 AI 技术简单高效地落地。", "en": "Bridging supply and demand to solve the \"last mile\" of AI deployment. Connecting developers and enterprise users, leveraging advanced technology, lightweight deployment, and global footprint to make AI adoption simple and efficient."}, "pillar_1_title": {"zh": "桥接供需", "en": "Bridge Supply & Demand"}, "pillar_1_text": {"zh": "连接开发者与企业用户", "en": "Connecting developers and enterprise users"}, "pillar_2_title": {"zh": "技术先进", "en": "Advanced Technology"}, "pillar_2_text": {"zh": "兼容架构，安全本地化数据处理", "en": "Compatible architecture, secure local data processing"}, "pillar_3_title": {"zh": "轻量部署", "en": "Lightweight Deployment"}, "pillar_3_text": {"zh": "软硬件协同，大幅降低客户 TCO", "en": "Hardware-software synergy, significantly reducing customer TCO"}, "pillar_4_title": {"zh": "全球布局", "en": "Global Footprint"}, "pillar_4_text": {"zh": "商业落地能力已获验证", "en": "Commercial deployment capability proven"}, "section_features": {"zh": "RM-01 本地 AI 基础设施", "en": "RM-01 local AI infrastructure"}, "section_features_desc": {"zh": "即用、原生、强悍，服务真实部署", "en": "Ready, native, and built for sustained deployment"}, "feature_ready": {"zh": "即用", "en": "Ready"}, "feature_ready_sub": {"zh": "一插即用", "en": "Plug and Play"}, "feature_native": {"zh": "原生", "en": "Native"}, "feature_native_sub": {"zh": "为大模型而生", "en": "Born for Large Models"}, "feature_powerful": {"zh": "强悍", "en": "Powerful"}, "feature_powerful_sub": {"zh": "低功耗、高并发", "en": "Low Power, High Concurrency"}, "ficon_ai": {"zh": "AI 加速", "en": "AI Acceleration"}, "ficon_fullstack": {"zh": "全栈开发", "en": "Full-Stack Development"}, "ficon_arch": {"zh": "产品架构", "en": "Product Architecture"}, "ficon_network": {"zh": "全球网络", "en": "Global Network"}, "ficon_source": {"zh": "源码部署", "en": "Source Deployment"}, "ficon_security": {"zh": "安全认证", "en": "Security Certification"}, "section_hardware": {"zh": "RM-01 硬件架构", "en": "RM-01 Hardware Architecture"}, "section_hardware_desc": {"zh": "模块化层叠架构，核心模块满足服务器级设计标准，以便携形态提供完整、本地、可靠的 AI 算力基础设施。", "en": "Modular stacked architecture, with core modules meeting server-grade design standards, providing complete, local, and reliable AI computing infrastructure in a portable form factor."}, "hw_compute": {"zh": "计算模块", "en": "Compute Module"}, "hw_compute_text": {"zh": "工业级 Intel Core i3 处理器，ECC 内存，高速 NVMe SSD", "en": "Industrial-grade Intel Core i3 processor, ECC memory, high-speed NVMe SSD"}, "hw_ai": {"zh": "AI 推理模块", "en": "AI Inference Module"}, "hw_ai_text": {"zh": "集成高性能 AI 加速器，支持 NVIDIA 架构，针对 CUDA & TensorRT 优化", "en": "Integrated high-performance AI accelerator, supporting NVIDIA architecture, optimized for CUDA & TensorRT"}, "hw_crypto": {"zh": "加密模块", "en": "Crypto Module"}, "hw_crypto_text": {"zh": "内置 TPM 2.0 硬件信任根，支持 RSA & ECC 加密机制", "en": "Built-in TPM 2.0 hardware root of trust, supporting RSA & ECC encryption"}, "hw_network": {"zh": "网络模块", "en": "Network Module"}, "hw_network_text": {"zh": "统一 API 与轻量级任务调度框架，多模型并行负载均衡", "en": "Unified API and lightweight task scheduling framework, multi-model parallel load balancing"}, "hw_power": {"zh": "电源与热管理", "en": "Power & Thermal"}, "hw_power_text": {"zh": "服务器级电源时序与冗余保护，高效散热与智能气流设计", "en": "Server-grade power sequencing and redundancy protection, efficient cooling and intelligent airflow design"}, "section_tech": {"zh": "自研推理引擎，反向定义整机架构", "en": "Self-Developed Inference Engine, Redefining System Architecture"}, "section_tech_desc": {"zh": "重构本地大模型运行效率", "en": "Reconstructing local large model performance"}, "tech_frontend": {"zh": "以开源前端框架为入口，重构生产级推理服务基座", "en": "Using open-source frontends to reconstruct production-grade inference infrastructure"}, "tech_frontend_text": {"zh": "采用 vLLM 作为前端引擎，Hugging Face Transformers 加载模型。替换核心推理内核为自研版本，构建面向商业落地的生产级系统。", "en": "Using vLLM as the frontend engine and Hugging Face Transformers for model loading. Replaced core inference kernel with a self-developed version to build a production-grade system for commercial deployment."}, "tech_backend": {"zh": "深度优化推理路径，压榨 GPU 至极限", "en": "Deeply optimized inference paths, pushing GPU to the limit"}, "tech_backend_text": {"zh": "定制 CUDA 内核，优化 FlashAttention、FlashInfer、PagedAttention 技术。KV Cache 管理与持续批处理改进，GPU 利用率趋近 100%。", "en": "Custom CUDA kernels, optimized FlashAttention, FlashInfer, PagedAttention technologies. KV Cache management and continuous batch processing improvements, GPU utilization approaching 100%."}, "tech_arch": {"zh": "不止优化推理，更以引擎反向定义整机架构", "en": "Not just optimizing inference, but redefining system architecture with the engine"}, "tech_arch_text": {"zh": "聚焦主流 MoE 架构，内核级与融合层优化，专家并行加载与路由。基于软件优化反向设计高性能主板与整机协同架构。", "en": "Focusing on mainstream MoE architecture, kernel-level and fusion-layer optimization, expert parallel loading and routing. Based on software optimization to reverse-design high-performance motherboard and system architecture."}, "section_thermal": {"zh": "EricLake 封闭式热管理系统", "en": "EricLake Closed Thermal Management System"}, "thermal_features": {"zh": "核心特性", "en": "Core Features"}, "thermal_leaf": {"zh": "0.13mm 特制叶片、定制电机", "en": "0.13mm custom blades, custom motor"}, "thermal_airflow": {"zh": "Z 型风道 增压风道设计", "en": "Z-shaped pressurized airflow design"}, "thermal_cfd": {"zh": "CFD 优化 计算流体动力学优化设计", "en": "CFD optimized design"}, "thermal_temp": {"zh": "4500rpm 转速与 140W 功率温度分布", "en": "Temperature distribution at 4500rpm and 140W"}, "thermal_pressure": {"zh": "4500rpm 转速下压力分布", "en": "Pressure distribution at 4500rpm"}, "section_silent": {"zh": "让 AI 无声", "en": "Making AI Silent"}, "silent_quote": {"zh": "真正的便携，不是能带走，而是无声、无感，却随时可用。", "en": "True portability is not just carrying it — it is silent, imperceptible, yet always available."}, "section_arch": {"zh": "机柜级能力，背包级体积", "en": "Rack-Level Power, Backpack-Level Size"}, "section_arch_desc": {"zh": "RM-01 不是一台迷你 PC，也不是传统嵌入式设备，而是一套以数据中心服务器架构为基础打造的便携式 AI 超算系统。", "en": "RM-01 is not a mini PC nor a traditional embedded device — it is a portable AI supercomputer built on a data center server architecture."}, "arch_scenarios": {"zh": "专为以下复杂场景打造的本地 AI 基础设施：", "en": "Local AI infrastructure designed for these complex scenarios:"}, "arch_1": {"zh": "无机房野外部署", "en": "Field deployment without data center"}, "arch_2": {"zh": "无网或弱网环境", "en": "No-network or weak-network environments"}, "arch_3": {"zh": "临时供电", "en": "Temporary power supply"}, "arch_4": {"zh": "高温高湿", "en": "High temperature and humidity"}, "arch_5": {"zh": "车载部署", "en": "Vehicle-mounted deployment"}, "section_honor": {"zh": "荣誉与认证", "en": "Honors & Certifications"}, "section_honor_desc": {"zh": "从金熊猫大赛到国家级示范工程，商业落地能力已获验证", "en": "From Golden Panda Competition to national-level demonstration projects, commercial deployment capability proven"}, "honor_1": {"zh": "成都全制造", "en": "Made in Chengdu"}, "honor_1_text": {"zh": "全球首个便携 AI 超算。比 NVIDIA 和 AMD 同类产品提前 5 个月实现认证并商业交付。", "en": "The world's first portable AI supercomputer. Achieved certification and commercial delivery 5 months ahead of NVIDIA and AMD comparable products."}, "honor_2": {"zh": "金熊猫大赛", "en": "Golden Panda Competition"}, "honor_2_text": {"zh": "2025 金熊猫全球创新创业大赛。从 2 万 5 千支队伍中脱颖而出，荣获第二名。", "en": "2025 Golden Panda Global Innovation & Entrepreneurship Competition. Stood out among 25,000 teams, winning second place."}, "honor_3": {"zh": "CCC 认证", "en": "CCC Certification"}, "honor_3_text": {"zh": "中国国家强制性产品认证。获 3C 认证，具备量产能力，已通过国际质量与安规标准。", "en": "China mandatory product certification. 3C certified with mass production capability, meeting international quality and safety standards."}, "honor_4": {"zh": "国家级示范工程", "en": "National Demonstration Project"}, "honor_4_text": {"zh": "承担三项国家级示范工程人工智能部分建设。国投 + 海峡富汇 + 泛灵人工智能联合打造。", "en": "Undertaking AI construction for three national demonstration projects. Jointly developed by SDIC + Haixia Fuhui + RMinte AI."}, "section_apps": {"zh": "应用场景", "en": "Applications"}, "section_apps_desc": {"zh": "基于本地 AI 算力，覆盖多行业真实落地场景", "en": "Based on local AI computing power, covering real-world deployment scenarios across industries"}, "app_category_industry": {"zh": "行业应用", "en": "Industry Applications"}, "app_category_ai": {"zh": "AI 能力平台", "en": "AI Capability Platform"}, "app_learn": {"zh": "了解详情 →", "en": "Learn More →"}, "app_chem": {"zh": "化学材料", "en": "Chemical Materials"}, "app_chem_text": {"zh": "基于大模型的化学材料智能搜索。合作单位：四川能投、SBI 金鼎资产管理平台。", "en": "AI-powered chemical material search based on large models. Partners: Sichuan Energy Investment, SBI Jinding Asset Management."}, "app_pharma": {"zh": "药物发现", "en": "Drug Discovery"}, "app_pharma_text": {"zh": "分子相似性搜索加速药物研发。合作单位：四川益迅。", "en": "Molecular similarity search accelerating drug development. Partner: Sichuan Yixun."}, "app_logistics": {"zh": "智慧物流", "en": "Smart Logistics"}, "app_logistics_text": {"zh": "无人机配送路径规划，提升物流调度效率。合作单位：四川智飞。", "en": "UAV delivery route planning to improve logistics efficiency. Partner: Sichuan Zhifei."}, "app_medical": {"zh": "AI 医疗", "en": "AI Healthcare"}, "app_medical_text": {"zh": "肺结节 CT 智能检测与知识库辅助诊断。合作单位：北京思达新能。", "en": "Intelligent lung nodule CT detection and knowledge-based diagnostic assistance. Partner: Beijing Soda Xineng."}, "app_traffic": {"zh": "智慧交通", "en": "Smart Transportation"}, "app_traffic_text": {"zh": "多模态识别与智能分析。合作单位：杭州宜远。", "en": "Multimodal recognition and intelligent analysis. Partner: Hangzhou Yiyuan."}, "app_knowledge": {"zh": "知识库构建", "en": "Knowledge Base Construction"}, "app_knowledge_text": {"zh": "多领域知识库快速构建。合作单位：电子科大、重庆地震局、新疆交投等。", "en": "Rapid construction of multi-domain knowledge bases. Partners: UESTC, Chongqing Earthquake Agency, Xinjiang Communications Investment."}, "app_multimodal": {"zh": "多模态实时分析", "en": "Multimodal Real-Time Analysis"}, "app_multimodal_text": {"zh": "VLM 基多模态分析，支持校园防霸凌、交通执法、政务决策。合作单位：辽宁实验学校、杭州宜远。", "en": "VLM-based multimodal analysis supporting anti-bullying, traffic enforcement, and government decision-making. Partners: Liaoning Experimental School, Hangzhou Yiyuan."}, "app_energy": {"zh": "工业能源优化", "en": "Industrial Energy Optimization"}, "app_energy_text": {"zh": "AI 驱动的节能调节与园区能耗优化。合作单位：北京思达新能、四川商投。", "en": "AI-driven energy-saving regulation and park energy consumption optimization. Partners: Beijing Soda Xineng, Sichuan Commercial Investment."}, "app_graph": {"zh": "AI 知识图谱", "en": "AI Knowledge Graph"}, "app_graph_text": {"zh": "AI 知识图谱构建与推理。合作单位：电子科大 5G 实验室、公安部经济类案件分析。", "en": "AI knowledge graph construction and reasoning. Partners: UESTC 5G Lab, Ministry of Public Security economic crime analysis."}, "app_execution": {"zh": "自动化执行系统", "en": "Automated Execution System"}, "app_execution_text": {"zh": "持续进化的工作流编排与自动化执行。合作单位：电子科大软通学院。", "en": "Continuously evolving workflow orchestration and automated execution. Partner: UESTC SoftStone College."}, "section_team": {"zh": "创始团队", "en": "Founding Team"}, "section_team_desc": {"zh": "四位合伙人能力高度互补，覆盖 AI 系统架构、模型算子与推理算法、供应链与规模化交付、产品商业化、工业设计", "en": "Four partners with highly complementary capabilities, covering AI system architecture, model operators and inference algorithms, supply chain and scalable delivery, product commercialization, and industrial design"}, "team_xu": {"zh": "徐子景", "en": "Xu Zijing"}, "team_xu_role": {"zh": "CEO · 联合创始人", "en": "CEO · Co-Founder"}, "team_xu_focus": {"zh": "战略、融资、产品、海外市场", "en": "Strategy, financing, product, overseas markets"}, "team_xu_bg": {"zh": "多伦多大学、布朗大学计算机科学背景", "en": "Computer Science from University of Toronto and Brown University"}, "team_zhu": {"zh": "朱杰", "en": "Zhu Jie"}, "team_zhu_role": {"zh": "COO · 联合创始人", "en": "COO · Co-Founder"}, "team_zhu_focus": {"zh": "供应链、销售、运营、量产交付", "en": "Supply chain, sales, operations, mass production delivery"}, "team_zhu_bg": {"zh": "近 20 年一线消费电子供应链经验", "en": "Nearly 20 years of experience in consumer electronics supply chain"}, "team_tang": {"zh": "唐云峰", "en": "Tang Yunfeng"}, "team_tang_role": {"zh": "CTO · 联合创始人", "en": "CTO · Co-Founder"}, "team_tang_focus": {"zh": "技术架构、推理引擎、生态构建", "en": "Technology architecture, inference engine, ecosystem building"}, "team_tang_bg": {"zh": "全栈 AI 系统架构师，主导 RMInte 推理引擎与 RM-01 硬件设计", "en": "Full-stack AI system architect, leading RMInte inference engine and RM-01 hardware design"}, "team_shi": {"zh": "石一", "en": "Shi Yi"}, "team_shi_role": {"zh": "CDO · 联合创始人", "en": "CDO · Co-Founder"}, "team_shi_focus": {"zh": "工业设计、产品定义、应用适配", "en": "Industrial design, product definition, application adaptation"}, "team_shi_bg": {"zh": "近 20 年国际消费电子工业设计经验", "en": "Nearly 20 years of international consumer electronics industrial design experience"}, "team_quote": {"zh": "\"一支具备 AI 硬件核心技术，拥有从 0 到 1 自主研发实力的硬科技团队\"", "en": "\"A hard-tech team with core AI hardware capabilities and proven 0-to-1 self-development expertise\""}, "footer_tagline": {"zh": "生产级本地 AI 交付基座", "en": "Production local AI delivery platform"}, "footer_slogan": {"zh": "插卡即用 · 全栈交付", "en": "Plug-in Ready · Full-Stack Delivery"}, "footer_copy": {"zh": "© 2026 泛灵人工智能 · RM-01 便携 AI 超算", "en": "© 2026 RMinte AI · RM-01 Portable AI Supercomputer"}, "feat_r_1": {"zh": "仅需一根 USB-C 线缆", "en": "Only one USB-C cable needed"}, "feat_r_2": {"zh": "支持终端部署与机房调用", "en": "Supports endpoint and data center deployment"}, "feat_r_3": {"zh": "无需复杂操作或维护", "en": "No complex operation or maintenance required"}, "feat_n_1": {"zh": "基于大模型运行机制自主研发硬件架构", "en": "Self-developed hardware architecture based on large model运行机制"}, "feat_n_2": {"zh": "自研推理引擎，兼容 30B-200B 参数规模", "en": "Self-developed inference engine, supporting 30B-200B parameter scale"}, "feat_n_3": {"zh": "支持全开源模型与官方量化模型", "en": "Supports all open-source models and official quantized models"}, "feat_n_4": {"zh": "源码级原生部署，最大化模型精度", "en": "Source-level native deployment, maximizing model accuracy"}, "feat_p_1": {"zh": "毫秒级推理响应", "en": "Millisecond-level inference response"}, "feat_p_2": {"zh": "峰值 64 路并发", "en": "Peak 64 concurrent sessions"}, "feat_p_3": {"zh": "整机功耗仅 140W", "en": "Only 140W total power consumption"}, "feat_p_4": {"zh": "100% 工业级元器件", "en": "100% industrial-grade components"}, "feat_p_5": {"zh": "独立风道设计，适应恶劣环境", "en": "Independent air duct design, adaptable to harsh environments"}, "feat_p_6": {"zh": "7x24 无故障运行", "en": "7x24 fault-free operation"}, "tech_label_front": {"zh": "前端", "en": "Frontend"}, "tech_label_back": {"zh": "后端", "en": "Backend"}, "tech_label_arch": {"zh": "架构", "en": "Architecture"}, "footer_company": {"zh": "泛灵（成都）人工智能科技有限公司", "en": "RMinte AI (Chengdu) Technology Co., Ltd."}};
+    translations.scroll_down = { zh: '向下滑动', en: 'Scroll' };
+    translations.hero_spec_power = { zh: '整机功耗', en: 'total power' };
+    translations.hero_spec_concurrency = { zh: '路峰值并发', en: 'peak concurrent sessions' };
+    translations.hero_spec_runtime = { zh: '工业级运行', en: 'industrial runtime' };
     let currentLang = 'zh';
 
     function applyTranslations(lang) {
@@ -515,6 +550,19 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+    const navSectionLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+    const navSectionMap = new Map(navSectionLinks.map(link => [link.getAttribute('href').slice(1), link]));
+    const navSectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        navSectionLinks.forEach(link => link.classList.remove('active'));
+        const activeLink = navSectionMap.get(entry.target.id);
+        if (activeLink) activeLink.classList.add('active');
+      });
+    }, { threshold: 0.35, rootMargin: '-18% 0px -62% 0px' });
+
+    document.querySelectorAll('main section[id]').forEach(section => navSectionObserver.observe(section));
+
     // Scroll progress bar
     const progressBar = document.getElementById('scrollProgress');
     let ticking = false;
@@ -523,43 +571,120 @@
         window.requestAnimationFrame(() => {
           const scrollTop = window.scrollY;
           const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-          const progress = scrollTop / docHeight;
+          const progress = docHeight > 0 ? scrollTop / docHeight : 0;
           progressBar.style.transform = `scaleX(${Math.min(progress, 1)})`;
           ticking = false;
         });
         ticking = true;
       }
     }, { passive: true });
-  </script>
 
-  <script>
-  function toggleMenu() {
-    document.getElementById('navDropdown').classList.toggle('active');
-    document.getElementById('navHamburger').classList.toggle('active');
-  }
-  function closeMenu() {
-    document.getElementById('navDropdown').classList.remove('active');
-    document.getElementById('navHamburger').classList.remove('active');
-  }
-  </script>
+    const hardwareScroll = document.getElementById('hardwareScroll');
+    const hardwareScrollVideo = document.getElementById('hardwareScrollVideo');
+    const hardwareScrollProgress = document.getElementById('hardwareScrollProgress');
+    let hardwareScrollTicking = false;
+    let hardwareScrollDuration = 0;
 
-  <script>
-  function toggleMenu() {
-    document.getElementById('navDropdown').classList.toggle('active');
-    document.getElementById('navHamburger').classList.toggle('active');
-  }
-  function closeMenu() {
-    document.getElementById('navDropdown').classList.remove('active');
-    document.getElementById('navHamburger').classList.remove('active');
-  }
-  </script>
+    function clampProgress(value) {
+      return Math.min(Math.max(value, 0), 1);
+    }
 
-  <script>
-  // Prevent pinch zoom
-  document.addEventListener('touchmove', function(e) {
-    if (e.touches.length > 1) e.preventDefault();
-  }, { passive: false });
-  document.addEventListener('gesturestart', function(e) { e.preventDefault(); });
+    function getHardwareScrollProgress() {
+      const rect = hardwareScroll.getBoundingClientRect();
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+      const travel = Math.max(rect.height - viewportHeight, 1);
+      const isBefore = rect.top > 0;
+      const isAfter = rect.bottom <= viewportHeight;
+
+      hardwareScroll.classList.toggle('is-before', isBefore);
+      hardwareScroll.classList.toggle('is-fixed', !isBefore && !isAfter);
+      hardwareScroll.classList.toggle('is-after', isAfter);
+      document.body.classList.toggle('hardware-scroll-lock', !isBefore && !isAfter);
+
+      if (isBefore) return 0;
+      if (isAfter) return 1;
+      return clampProgress((0 - rect.top) / travel);
+    }
+
+    function updateHardwareScrollVideo() {
+      hardwareScrollTicking = false;
+      if (!hardwareScroll || !hardwareScrollVideo) return;
+
+      const progress = getHardwareScrollProgress();
+      if (hardwareScrollProgress) {
+        hardwareScrollProgress.style.transform = `scaleX(${progress})`;
+      }
+
+      const duration = Number.isFinite(hardwareScrollVideo.duration) && hardwareScrollVideo.duration > 0
+        ? hardwareScrollVideo.duration
+        : hardwareScrollDuration;
+      if (!duration) return;
+
+      const targetTime = Math.min(Math.max(duration - 0.04, 0), duration * progress);
+      if (Math.abs(hardwareScrollVideo.currentTime - targetTime) > 0.035) {
+        try {
+          hardwareScrollVideo.currentTime = targetTime;
+        } catch (error) {
+          // Safari may reject a seek until metadata is ready; the next metadata/scroll event retries.
+        }
+      }
+    }
+
+    function requestHardwareScrollUpdate() {
+      if (!hardwareScrollTicking) {
+        window.requestAnimationFrame(updateHardwareScrollVideo);
+        hardwareScrollTicking = true;
+      }
+    }
+
+    if (hardwareScroll && hardwareScrollVideo) {
+      hardwareScrollVideo.pause();
+      hardwareScrollVideo.addEventListener('loadedmetadata', () => {
+        hardwareScrollDuration = hardwareScrollVideo.duration;
+        requestHardwareScrollUpdate();
+      });
+      hardwareScrollVideo.addEventListener('durationchange', () => {
+        hardwareScrollDuration = hardwareScrollVideo.duration;
+        requestHardwareScrollUpdate();
+      });
+      if ('IntersectionObserver' in window) {
+        const hardwareVideoPreloader = new IntersectionObserver((entries, observerInstance) => {
+          if (!entries.some(entry => entry.isIntersecting)) return;
+          hardwareScrollVideo.preload = 'auto';
+          hardwareScrollVideo.load();
+          requestHardwareScrollUpdate();
+          observerInstance.disconnect();
+        }, { rootMargin: '900px 0px' });
+        hardwareVideoPreloader.observe(hardwareScroll);
+      } else {
+        hardwareScrollVideo.preload = 'auto';
+        hardwareScrollVideo.load();
+      }
+      window.addEventListener('scroll', requestHardwareScrollUpdate, { passive: true });
+      window.addEventListener('resize', requestHardwareScrollUpdate, { passive: true });
+      requestHardwareScrollUpdate();
+    }
+
+    const navDropdown = document.getElementById('navDropdown');
+    const navHamburger = document.getElementById('navHamburger');
+
+    function setMenuState(isOpen) {
+      navDropdown.classList.toggle('active', isOpen);
+      navHamburger.classList.toggle('active', isOpen);
+      navHamburger.setAttribute('aria-expanded', String(isOpen));
+    }
+
+    function toggleMenu() {
+      setMenuState(!navDropdown.classList.contains('active'));
+    }
+
+    function closeMenu() {
+      setMenuState(false);
+    }
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeMenu();
+    });
   </script>
 
 </body>
