@@ -19,7 +19,7 @@ window.RM_SOFT = {
     },
     {
       title: { zh: '南北向设备控制', en: 'North-south device control' },
-      text: { zh: '北向管理 AGX 算力，南向管理 LPMU 通用计算与存储，让 RM-01 的内部设备协同工作。', en: 'It coordinates AGX compute northbound and LPMU compute/storage southbound so RM-01 behaves as one system.' }
+      text: { zh: '北向管理推理算力，南向管理通用计算与存储，让 RM-01 的内部设备协同工作。', en: 'It manages inference compute northbound and general-purpose compute and storage southbound, allowing RM-01’s internal devices to work together.' }
     },
     {
       title: { zh: '安全配置包', en: 'Secure config packs' },
