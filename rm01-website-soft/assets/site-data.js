@@ -31,11 +31,11 @@ window.RM_SOFT = {
     }
   ],
   modules: [
-    { name: { zh: '应用模组', en: 'Application module' }, spec: 'x86 / 8 核 8 线程 / 16GB–32GB ECC / 512GB–2TB NVMe', text: { zh: '通过独立 x86 应用模组承载客户应用、数据库与软件依赖，减少迁移适配与显存占用，缩短从开发到现场运行的时间。', en: 'A dedicated x86 module runs customer applications, databases, and software dependencies, reducing migration work and VRAM use while shortening the path from development to on-site operation.' }, icon: 'icon-application-module.svg' },
+    { name: { zh: '应用模组', en: 'Application module' }, spec: { zh: 'x86 / 8 核 8 线程 / 16GB–32GB ECC / 512GB–2TB NVMe', en: 'x86 / 8 cores, 8 threads / 16GB–32GB ECC / 512GB–2TB NVMe' }, text: { zh: '通过独立 x86 应用模组承载客户应用、数据库与软件依赖，减少迁移适配与显存占用，缩短从开发到现场运行的时间。', en: 'A dedicated x86 module runs customer applications, databases, and software dependencies, reducing migration work and VRAM use while shortening the path from development to on-site operation.' }, icon: 'icon-application-module.svg' },
     { name: { zh: '推理模组', en: 'Inference module' }, spec: '64GB / 128GB+128GB VRAM · 275 TOPS INT8 / 1200–2070 TFLOPS FP4', text: { zh: '通过自研推理引擎与自主设计的高速互联线路，将 GPU 与显存集中用于模型推理和 KV Cache，在有限资源中承载更大模型、更长上下文与更高并发。', en: 'A self-developed inference engine and in-house high-speed interconnect dedicate the GPU and VRAM to inference and KV Cache, supporting larger models, longer contexts, and higher concurrency within finite resources.' }, icon: 'icon-inference-module.svg' },
     { name: { zh: '加密模组', en: 'Encryption module' }, spec: 'TPM 2.0 / RSA / ECC', text: { zh: '通过硬件级非对称密钥保护，将私钥隔离在独立安全模组内，降低导出与复制风险，为客户的后训练模型、RAG 知识库、业务数据与应用代码建立设备级安全边界。', en: 'Hardware-backed asymmetric key protection isolates private keys within a dedicated security module, reducing export and duplication risks and establishing a device-level security boundary for post-trained models, RAG knowledge bases, business data, and application code.' }, icon: 'icon-encryption-module.svg' },
-    { name: { zh: '网络模组', en: 'Network module' }, spec: '内部交换 / 路由 / 统一 API', text: { zh: '通过内部交换、路由与统一 API 连接各个模组，让应用像调用云服务一样调用本地 AI，并减少扩展或维护时对整套系统的改动。', en: 'Internal switching, routing, and unified APIs connect every module, allowing applications to call local AI like a cloud service while reducing system-wide changes during expansion or maintenance.' }, icon: 'icon-network-module.svg' },
-    { name: { zh: '电源与热管理', en: 'Power and thermal management' }, spec: 'USB-C PD 3.1 / 最高 140W / Z 型独立风道', text: { zh: '通过统一供电、启动时序与 Z 型独立风道，降低频繁启停、高负载和积尘对稳定运行的影响，减少停机与现场维护。', en: 'Unified power delivery, startup sequencing, and a dedicated Z-shaped airflow path reduce the impact of frequent restarts, high loads, and dust buildup, limiting downtime and on-site maintenance.' }, icon: 'icon-power-thermal.svg' }
+    { name: { zh: '网络模组', en: 'Network module' }, spec: { zh: '内部交换 / 路由 / 统一 API', en: 'Internal switching / routing / unified API' }, text: { zh: '通过内部交换、路由与统一 API 连接各个模组，让应用像调用云服务一样调用本地 AI，并减少扩展或维护时对整套系统的改动。', en: 'Internal switching, routing, and unified APIs connect every module, allowing applications to call local AI like a cloud service while reducing system-wide changes during expansion or maintenance.' }, icon: 'icon-network-module.svg' },
+    { name: { zh: '电源与热管理', en: 'Power and thermal management' }, spec: { zh: 'USB-C PD 3.1 / 最高 140W / Z 型独立风道', en: 'USB-C PD 3.1 / up to 140W / independent Z-shaped air duct' }, text: { zh: '通过统一供电、启动时序与 Z 型独立风道，降低频繁启停、高负载和积尘对稳定运行的影响，减少停机与现场维护。', en: 'Unified power delivery, startup sequencing, and a dedicated Z-shaped airflow path reduce the impact of frequent restarts, high loads, and dust buildup, limiting downtime and on-site maintenance.' }, icon: 'icon-power-thermal.svg' }
   ],
   engine: [
     {
@@ -79,6 +79,9 @@ window.RM_SOFT = {
       engineLead: '让同一台设备完成更多推理任务，使用户以更少的硬件与能耗投入，获得更快响应、更高并发和更低的长期运行成本。',
       thermalTitle: 'EricLake 封闭式热管理系统',
       thermalLead: '0.13 mm 特制叶片、定制电机与经过计算流体力学仿真优化的 Z 型独立风道，在高并发推理时持续导出热量，并减少灰尘进入核心器件区域。稳定，不只经得起高负载，也经得起日复一日的运行。',
+      thermalPointBlade: '0.13mm',
+      thermalPointDuct: 'Z 型风道',
+      thermalPointCfd: 'CFD 优化',
       sapphireTitle: '蓝宝石亮起，智能开始工作',
       sapphireLead: '我们选择蓝宝石，不只因为它坚硬、纯净，更因为它能够承载一束清晰而持久的光。工作时，蓝宝石随之亮起，如同航海中的灯塔。',
       sapphireFactOne: '复杂切面',
@@ -128,6 +131,9 @@ window.RM_SOFT = {
       engineLead: 'RM-01 starts from the inference path rather than squeezing generic compute into a small box.',
       thermalTitle: 'EricLake closed thermal system',
       thermalLead: '0.13 mm custom blades, a purpose-built motor, and a Z-shaped independent air duct optimized through computational fluid dynamics simulation continuously remove heat during high-concurrency inference while reducing dust entering the core component area. Stability stands up not only to high loads, but to day after day of operation.',
+      thermalPointBlade: '0.13mm',
+      thermalPointDuct: 'Z-shaped duct',
+      thermalPointCfd: 'CFD optimized',
       sapphireTitle: 'When sapphire lights up, intelligence gets to work',
       sapphireLead: 'We chose sapphire not only for its hardness and purity, but for its ability to carry a clear, enduring light. When the system is at work, the sapphire illuminates with it, like a lighthouse at sea.',
       sapphireFactOne: 'Complex facets',

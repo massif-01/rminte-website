@@ -216,7 +216,7 @@
       img.alt = '';
       icon.append(img);
 
-      const spec = textEl('span', module.spec, 'module-spec');
+      const spec = textEl('span', t(module.spec), 'module-spec');
       const card = cardShell([
         icon,
         textEl('span', `0${index + 1}`, 'module-number'),
