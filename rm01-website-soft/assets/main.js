@@ -205,38 +205,6 @@
     }));
   }
 
-  function renderFeatures() {
-    const root = $('#featureCascade');
-    if (!root) return;
-    root.replaceChildren(...data.features.map((feature, index) => {
-      const visual = document.createElement('div');
-      visual.className = 'feature-visual';
-      const image = document.createElement('img');
-      image.src = asset(feature.image);
-      image.alt = t(feature.title);
-      visual.append(image);
-
-      const copy = document.createElement('div');
-      copy.className = 'feature-copy';
-      copy.append(
-        textEl('span', String(index + 1).padStart(2, '0'), 'feature-number'),
-        textEl('p', t(feature.kicker), 'eyebrow'),
-        textEl('h3', t(feature.title)),
-        textEl('p', t(feature.body))
-      );
-
-      const core = document.createElement('div');
-      core.className = 'card-core feature-core';
-      core.append(visual, copy);
-
-      const outer = document.createElement('article');
-      outer.className = 'bezel feature-card reveal';
-      outer.dataset.revealDelay = String(index * 80);
-      outer.append(core);
-      return outer;
-    }));
-  }
-
   function renderModules() {
     const root = $('#moduleBento');
     if (!root) return;
@@ -273,82 +241,6 @@
       card.dataset.revealDelay = String(index * 90);
       return card;
     }));
-  }
-
-  function renderHonors() {
-    const root = $('#honorGrid');
-    if (!root) return;
-    root.replaceChildren(...data.honors.map((honor, index) => {
-      const imageWrap = document.createElement('div');
-      imageWrap.className = 'honor-image';
-      const img = document.createElement('img');
-      img.src = asset(honor.image);
-      img.alt = t(honor.title);
-      imageWrap.append(img);
-
-      const card = cardShell([
-        imageWrap,
-        textEl('h3', t(honor.title)),
-        textEl('p', t(honor.text))
-      ], 'honor-card reveal');
-      card.dataset.revealDelay = String(index * 70);
-      return card;
-    }));
-  }
-
-  function renderCases() {
-    const root = $('#caseBoard');
-    if (!root) return;
-    root.replaceChildren();
-
-    const spotlight = data.cases.find((item) => item.images.length) || data.cases[0];
-    const spotlightLink = document.createElement('a');
-    spotlightLink.href = `pages/${spotlight.file}`;
-    spotlightLink.className = 'case-spotlight reveal';
-    const spotlightImage = document.createElement('img');
-    spotlightImage.src = spotlight.images.length ? asset(spotlight.images[0]) : asset('img4.png');
-    spotlightImage.alt = t(spotlight.name);
-    const spotlightCopy = document.createElement('div');
-    spotlightCopy.className = 'case-spotlight-copy';
-    spotlightCopy.append(
-      textEl('span', t(spotlight.category), 'case-category'),
-      textEl('h3', t(spotlight.name)),
-      textEl('p', t(spotlight.desc)),
-      textEl('strong', `${ui('learn')} →`, 'case-action-text')
-    );
-    spotlightLink.append(spotlightImage, spotlightCopy);
-    root.append(spotlightLink);
-
-    const groups = [
-      { key: 'industry', cases: data.cases.filter((item) => t(item.category) === (lang === 'zh' ? '行业应用' : 'Industry')) },
-      { key: 'platform', cases: data.cases.filter((item) => t(item.category) !== (lang === 'zh' ? '行业应用' : 'Industry')) }
-    ];
-
-    groups.forEach((group) => {
-      root.append(textEl('h3', ui(group.key), 'case-group-title reveal'));
-      const grid = document.createElement('div');
-      grid.className = 'case-grid';
-      group.cases.forEach((item, index) => {
-        if (item.id === spotlight.id) return;
-        const action = document.createElement('div');
-        action.className = 'case-action';
-        action.append(textEl('strong', ui('learn')), textEl('span', '→'));
-
-        const card = cardShell([
-          textEl('span', t(item.category), 'case-category'),
-          textEl('h3', t(item.name)),
-          textEl('p', t(item.desc)),
-          action
-        ], 'case-card reveal');
-        card.dataset.revealDelay = String(index * 55);
-
-        const link = document.createElement('a');
-        link.href = `pages/${item.file}`;
-        link.append(card);
-        grid.append(link);
-      });
-      root.append(grid);
-    });
   }
 
   function setupReveal() {
@@ -422,194 +314,6 @@
       window.removeEventListener('hashchange', onHashChange);
       activeNavCleanup = undefined;
     };
-  }
-
-  function setupTeardownSequence() {
-    const section = $('.teardown-section');
-    const canvas = $('.teardown-canvas');
-    if (!section || !canvas) return;
-
-    const context = canvas.getContext('2d', { alpha: false, desynchronized: true }) || canvas.getContext('2d');
-    if (!context) return;
-
-    const frameCount = Number(canvas.dataset.frameCount) || 0;
-    const framePad = Number(canvas.dataset.framePad) || 3;
-    const framePrefix = canvas.dataset.framePrefix || '';
-    const frameExt = canvas.dataset.frameExt || '.jpg';
-    const frames = new Array(frameCount);
-    const queued = new Set();
-    const failed = new Set();
-    const decodeQueue = [];
-    const maxConcurrentDecodes = 3;
-    let activeDecodes = 0;
-    let targetFrame = 0;
-    let displayedFrame = 0;
-    let renderedFrame = -1;
-    let animationRunning = false;
-    let updatePending = false;
-    let teardownActive = false;
-
-    const frameSrc = (index) => {
-      const number = String(index + 1).padStart(framePad, '0');
-      return `${framePrefix}${number}${frameExt}`;
-    };
-
-    const resizeCanvas = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const width = Math.max(1, Math.round(canvas.clientWidth * dpr));
-      const height = Math.max(1, Math.round(canvas.clientHeight * dpr));
-      if (canvas.width !== width || canvas.height !== height) {
-        canvas.width = width;
-        canvas.height = height;
-      }
-      return { width, height };
-    };
-
-    const setTeardownActive = (active) => {
-      if (teardownActive === active) return;
-      teardownActive = active;
-      document.body.classList.toggle('teardown-active', active);
-    };
-
-    const drawFrame = (image) => {
-      const { width, height } = resizeCanvas();
-      const sourceWidth = image.naturalWidth || image.width;
-      const sourceHeight = image.naturalHeight || image.height;
-      if (!sourceWidth || !sourceHeight) return;
-      const imageRatio = sourceWidth / sourceHeight;
-      const canvasRatio = width / height;
-      const fitScale = imageRatio > canvasRatio
-        ? width / sourceWidth
-        : height / sourceHeight;
-      const drawWidth = sourceWidth * fitScale;
-      const drawHeight = sourceHeight * fitScale;
-      const x = (width - drawWidth) / 2;
-      const y = (height - drawHeight) / 2;
-      context.fillStyle = '#030404';
-      context.fillRect(0, 0, width, height);
-      context.imageSmoothingEnabled = true;
-      context.imageSmoothingQuality = 'medium';
-      context.drawImage(image, x, y, drawWidth, drawHeight);
-      canvas.classList.add('is-ready');
-    };
-
-    const nearestLoadedFrame = (index) => {
-      for (let distance = 0; distance < frameCount; distance += 1) {
-        const before = index - distance;
-        const after = index + distance;
-        if (before >= 0 && frames[before]) return before;
-        if (after < frameCount && frames[after]) return after;
-      }
-      return -1;
-    };
-
-    const renderFrame = (index) => {
-      const image = frames[index];
-      if (!image) {
-        const nearest = nearestLoadedFrame(index);
-        if (nearest >= 0 && nearest !== renderedFrame) renderFrame(nearest);
-        return;
-      }
-      drawFrame(image);
-      renderedFrame = index;
-      canvas.dataset.currentFrame = String(index + 1);
-    };
-
-    const decodeWithImageElement = (index) => new Promise((resolve, reject) => {
-      const image = new Image();
-      image.decoding = 'async';
-      image.onload = () => resolve(image);
-      image.onerror = reject;
-      image.src = frameSrc(index);
-    });
-
-    const decodeFrame = async (index) => {
-      try {
-        let image;
-        if (window.location.protocol !== 'file:' && 'createImageBitmap' in window && 'fetch' in window) {
-          const response = await fetch(frameSrc(index), { cache: 'force-cache' });
-          const blob = await response.blob();
-          image = await createImageBitmap(blob);
-        } else {
-          image = await decodeWithImageElement(index);
-          if (image.decode) await image.decode();
-        }
-        frames[index] = image;
-        canvas.dataset.decodedFrames = String(frames.filter(Boolean).length);
-        if (index === Math.round(targetFrame) || renderedFrame < 0) requestUpdate();
-      } catch (error) {
-        failed.add(index);
-      }
-    };
-
-    const pumpQueue = () => {
-      while (activeDecodes < maxConcurrentDecodes && decodeQueue.length) {
-        const index = decodeQueue.shift();
-        activeDecodes += 1;
-        decodeFrame(index).finally(() => {
-          activeDecodes -= 1;
-          pumpQueue();
-        });
-      }
-    };
-
-    const queueFrame = (index, priority = false) => {
-      if (index < 0 || index >= frameCount || frames[index] || queued.has(index) || failed.has(index)) return;
-      queued.add(index);
-      if (priority) decodeQueue.unshift(index);
-      else decodeQueue.push(index);
-      pumpQueue();
-    };
-
-    const loadAround = (index) => {
-      for (let offset = -6; offset <= 9; offset += 1) queueFrame(index + offset, true);
-    };
-
-    const updateTargetFrame = () => {
-      const scrollRange = section.offsetHeight - window.innerHeight;
-      const rect = section.getBoundingClientRect();
-      const progress = scrollRange > 0
-        ? Math.min(1, Math.max(0, -rect.top / scrollRange))
-        : 0;
-      setTeardownActive(rect.top < window.innerHeight * 0.9 && rect.bottom > window.innerHeight * 0.1);
-      targetFrame = progress * (frameCount - 1);
-      if (progress) canvas.dataset.progress = progress.toFixed(3);
-      loadAround(Math.round(targetFrame));
-      startAnimation();
-      updatePending = false;
-    };
-
-    const animate = () => {
-      const distance = targetFrame - displayedFrame;
-      if (Math.abs(distance) < 0.035) {
-        displayedFrame = targetFrame;
-        renderFrame(Math.round(displayedFrame));
-        animationRunning = false;
-        return;
-      }
-      displayedFrame += distance * 0.24;
-      renderFrame(Math.round(displayedFrame));
-      window.requestAnimationFrame(animate);
-    };
-
-    const startAnimation = () => {
-      if (animationRunning) return;
-      animationRunning = true;
-      window.requestAnimationFrame(animate);
-    };
-
-    const requestUpdate = () => {
-      if (updatePending) return;
-      updatePending = true;
-      requestAnimationFrame(updateTargetFrame);
-    };
-
-    queueFrame(0, true);
-    loadAround(0);
-
-    window.addEventListener('scroll', requestUpdate, { passive: true });
-    window.addEventListener('resize', requestUpdate);
-    requestUpdate();
   }
 
   function openMenu() {
@@ -688,16 +392,106 @@
     });
   }
 
+  function setupLoopingMedia() {
+    const videos = $$('video[data-loop-media]');
+    if (!videos.length) return;
+
+    videos.forEach((video) => {
+      video.muted = true;
+      video.defaultMuted = true;
+
+      const start = () => {
+        const playback = video.play();
+        if (playback) playback.catch(() => {});
+      };
+
+      if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) start();
+      else video.addEventListener('canplay', start, { once: true });
+
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden && video.paused) start();
+      });
+    });
+  }
+
+  function setupOneShotMedia() {
+    const videos = $$('video[data-once-media]');
+    if (!videos.length) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    videos.forEach((video) => {
+      const section = video.closest('.cartridge-section');
+      const core = video.closest('.cartridge-video-core, .thermal-video-core, .teardown-film-core');
+      const returnFirstFrame = video.hasAttribute('data-return-first-frame');
+      let hasPlayed = false;
+      let replayTimer;
+
+      const showResult = () => {
+        if (returnFirstFrame) {
+          video.pause();
+          video.currentTime = 0;
+          return;
+        }
+        core?.classList.add('is-complete');
+        section?.classList.add('is-complete');
+      };
+
+      const playOnce = (afterTransition = false) => {
+        clearTimeout(replayTimer);
+        video.pause();
+        video.currentTime = 0;
+        core?.classList.remove('is-complete');
+        section?.classList.remove('is-complete');
+
+        const start = () => {
+          const playback = video.play();
+          if (playback) playback.catch(showResult);
+        };
+
+        if (afterTransition) replayTimer = window.setTimeout(start, 460);
+        else start();
+      };
+
+      const prepare = () => {
+        section?.classList.add('motion-ready');
+        if (reduceMotion) {
+          showResult();
+          return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+          if (!entries.some((entry) => entry.isIntersecting && entry.intersectionRatio >= 0.45)) return;
+          observer.disconnect();
+          if (!hasPlayed) {
+            hasPlayed = true;
+            playOnce();
+          }
+        }, { threshold: [0.45] });
+
+        observer.observe(video);
+      };
+
+      if (video.readyState >= HTMLMediaElement.HAVE_METADATA) prepare();
+      else video.addEventListener('loadedmetadata', prepare, { once: true });
+
+      video.addEventListener('ended', showResult);
+      core?.addEventListener('click', () => playOnce());
+      core?.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        playOnce();
+      });
+    });
+  }
+
   function renderAll() {
     setUiText();
     renderNav();
     renderMetrics();
     renderPillars();
-    renderFeatures();
     renderModules();
     renderEngine();
-    renderHonors();
-    renderCases();
     setupReveal();
     setupActiveNav();
   }
@@ -705,7 +499,8 @@
   document.addEventListener('DOMContentLoaded', () => {
     renderAll();
     setupControls();
-    setupTeardownSequence();
+    setupLoopingMedia();
+    setupOneShotMedia();
     restoreInitialLocation();
   });
 })();
