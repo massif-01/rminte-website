@@ -227,15 +227,13 @@ section[id] {
   text-align: center;
   transition:
     color 560ms var(--motion),
-    background 560ms var(--motion),
-    transform 560ms var(--motion);
+    background 560ms var(--motion);
 }
 
 .nav-island a:hover,
 .nav-island a.active {
   color: var(--ink);
   background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-1px);
 }
 
 .nav-actions {

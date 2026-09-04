@@ -269,7 +269,7 @@ window.RM_SOFT = {
       industry: 'Industry applications',
       platform: 'AI capability platform',
       learn: 'Open case',
-      footer: 'RMinte AI (Chengdu) Technology Co., Ltd.',
+      footer: 'RMinte AI',
       copyright: '2026 RMinte ( Chengdu ) Artificial Intelligence Technology Co., Ltd. · RM-01 Protable AI Supercomputer',
       contactButton: 'Contact',
       contactKicker: 'CONTACT',

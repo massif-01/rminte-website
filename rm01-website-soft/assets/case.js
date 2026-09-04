@@ -1,7 +1,7 @@
 (function () {
   const data = window.RM_SOFT;
   const imageBase = '../assets/images/';
-  let lang = localStorage.getItem('rm-soft-lang') || 'zh';
+  let lang = localStorage.getItem('rm-soft-lang') || window.RM_DEFAULT_LANG || 'en';
   let revealObserver;
 
   const $ = (selector, root = document) => root.querySelector(selector);

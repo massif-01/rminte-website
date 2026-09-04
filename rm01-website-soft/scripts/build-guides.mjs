@@ -458,7 +458,8 @@ function pageTemplate(config, rendered) {
   <link rel="stylesheet" href="../assets/styles.css?v=agency-24">
   <link rel="stylesheet" href="../assets/guides.css?v=agency-33">
   <script id="guidePageData" type="application/json">${pageData}</script>
-  <script src="../assets/guides.js?v=agency-32" defer></script>
+  <script src="../visitor-language.js" defer></script>
+  <script src="../assets/guides.js?v=ip-language-1" defer></script>
 </head>
 <body class="guide-body guide-doc-body guide-accent-${config.accent}">
   <a class="skip-link" href="#guideContent" data-guide-text data-zh="跳至指南正文" data-en="Skip to guide content">跳至指南正文</a>
