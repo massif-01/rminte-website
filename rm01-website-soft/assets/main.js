@@ -316,6 +316,194 @@
     };
   }
 
+  function setupTeardownSequence() {
+    const section = $('.teardown-section');
+    const canvas = $('.teardown-canvas');
+    if (!section || !canvas) return;
+
+    const context = canvas.getContext('2d', { alpha: false, desynchronized: true }) || canvas.getContext('2d');
+    if (!context) return;
+
+    const frameCount = Number(canvas.dataset.frameCount) || 0;
+    const framePad = Number(canvas.dataset.framePad) || 3;
+    const framePrefix = canvas.dataset.framePrefix || '';
+    const frameExt = canvas.dataset.frameExt || '.jpg';
+    const frames = new Array(frameCount);
+    const queued = new Set();
+    const failed = new Set();
+    const decodeQueue = [];
+    const maxConcurrentDecodes = 3;
+    let activeDecodes = 0;
+    let targetFrame = 0;
+    let displayedFrame = 0;
+    let renderedFrame = -1;
+    let animationRunning = false;
+    let updatePending = false;
+    let teardownActive = false;
+
+    const frameSrc = (index) => {
+      const number = String(index + 1).padStart(framePad, '0');
+      return `${framePrefix}${number}${frameExt}`;
+    };
+
+    const resizeCanvas = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const width = Math.max(1, Math.round(canvas.clientWidth * dpr));
+      const height = Math.max(1, Math.round(canvas.clientHeight * dpr));
+      if (canvas.width !== width || canvas.height !== height) {
+        canvas.width = width;
+        canvas.height = height;
+      }
+      return { width, height };
+    };
+
+    const setTeardownActive = (active) => {
+      if (teardownActive === active) return;
+      teardownActive = active;
+      document.body.classList.toggle('teardown-active', active);
+    };
+
+    const drawFrame = (image) => {
+      const { width, height } = resizeCanvas();
+      const sourceWidth = image.naturalWidth || image.width;
+      const sourceHeight = image.naturalHeight || image.height;
+      if (!sourceWidth || !sourceHeight) return;
+      const imageRatio = sourceWidth / sourceHeight;
+      const canvasRatio = width / height;
+      const fitScale = imageRatio > canvasRatio
+        ? width / sourceWidth
+        : height / sourceHeight;
+      const drawWidth = sourceWidth * fitScale;
+      const drawHeight = sourceHeight * fitScale;
+      const x = (width - drawWidth) / 2;
+      const y = (height - drawHeight) / 2;
+      context.fillStyle = '#030404';
+      context.fillRect(0, 0, width, height);
+      context.imageSmoothingEnabled = true;
+      context.imageSmoothingQuality = 'medium';
+      context.drawImage(image, x, y, drawWidth, drawHeight);
+      canvas.classList.add('is-ready');
+    };
+
+    const nearestLoadedFrame = (index) => {
+      for (let distance = 0; distance < frameCount; distance += 1) {
+        const before = index - distance;
+        const after = index + distance;
+        if (before >= 0 && frames[before]) return before;
+        if (after < frameCount && frames[after]) return after;
+      }
+      return -1;
+    };
+
+    const renderFrame = (index) => {
+      const image = frames[index];
+      if (!image) {
+        const nearest = nearestLoadedFrame(index);
+        if (nearest >= 0 && nearest !== renderedFrame) renderFrame(nearest);
+        return;
+      }
+      drawFrame(image);
+      renderedFrame = index;
+      canvas.dataset.currentFrame = String(index + 1);
+    };
+
+    const decodeWithImageElement = (index) => new Promise((resolve, reject) => {
+      const image = new Image();
+      image.decoding = 'async';
+      image.onload = () => resolve(image);
+      image.onerror = reject;
+      image.src = frameSrc(index);
+    });
+
+    const decodeFrame = async (index) => {
+      try {
+        let image;
+        if (window.location.protocol !== 'file:' && 'createImageBitmap' in window && 'fetch' in window) {
+          const response = await fetch(frameSrc(index), { cache: 'force-cache' });
+          const blob = await response.blob();
+          image = await createImageBitmap(blob);
+        } else {
+          image = await decodeWithImageElement(index);
+          if (image.decode) await image.decode();
+        }
+        frames[index] = image;
+        canvas.dataset.decodedFrames = String(frames.filter(Boolean).length);
+        if (index === Math.round(targetFrame) || renderedFrame < 0) requestUpdate();
+      } catch (error) {
+        failed.add(index);
+      }
+    };
+
+    const pumpQueue = () => {
+      while (activeDecodes < maxConcurrentDecodes && decodeQueue.length) {
+        const index = decodeQueue.shift();
+        activeDecodes += 1;
+        decodeFrame(index).finally(() => {
+          activeDecodes -= 1;
+          pumpQueue();
+        });
+      }
+    };
+
+    const queueFrame = (index, priority = false) => {
+      if (index < 0 || index >= frameCount || frames[index] || queued.has(index) || failed.has(index)) return;
+      queued.add(index);
+      if (priority) decodeQueue.unshift(index);
+      else decodeQueue.push(index);
+      pumpQueue();
+    };
+
+    const loadAround = (index) => {
+      for (let offset = -6; offset <= 9; offset += 1) queueFrame(index + offset, true);
+    };
+
+    const updateTargetFrame = () => {
+      const scrollRange = section.offsetHeight - window.innerHeight;
+      const rect = section.getBoundingClientRect();
+      const progress = scrollRange > 0
+        ? Math.min(1, Math.max(0, -rect.top / scrollRange))
+        : 0;
+      setTeardownActive(rect.top < window.innerHeight * 0.9 && rect.bottom > window.innerHeight * 0.1);
+      targetFrame = progress * (frameCount - 1);
+      if (progress) canvas.dataset.progress = progress.toFixed(3);
+      loadAround(Math.round(targetFrame));
+      startAnimation();
+      updatePending = false;
+    };
+
+    const animate = () => {
+      const distance = targetFrame - displayedFrame;
+      if (Math.abs(distance) < 0.035) {
+        displayedFrame = targetFrame;
+        renderFrame(Math.round(displayedFrame));
+        animationRunning = false;
+        return;
+      }
+      displayedFrame += distance * 0.24;
+      renderFrame(Math.round(displayedFrame));
+      window.requestAnimationFrame(animate);
+    };
+
+    const startAnimation = () => {
+      if (animationRunning) return;
+      animationRunning = true;
+      window.requestAnimationFrame(animate);
+    };
+
+    const requestUpdate = () => {
+      if (updatePending) return;
+      updatePending = true;
+      requestAnimationFrame(updateTargetFrame);
+    };
+
+    queueFrame(0, true);
+    loadAround(0);
+
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+    requestUpdate();
+  }
+
   function openMenu() {
     const overlay = $('#mobileOverlay');
     const button = $('[data-menu-toggle]');
@@ -499,6 +687,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     renderAll();
     setupControls();
+    setupTeardownSequence();
     setupLoopingMedia();
     setupOneShotMedia();
     restoreInitialLocation();

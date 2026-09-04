@@ -22,9 +22,9 @@
       }
     })();
   </script>
-  <link rel="stylesheet" href="assets/styles.css?v=agency-38">
-  <script src="assets/site-data.js?v=agency-39" defer></script>
-  <script src="assets/main.js?v=agency-34" defer></script>
+  <link rel="stylesheet" href="assets/styles.css?v=teardown-restore-1">
+  <script src="assets/site-data.js?v=teardown-restore-1" defer></script>
+  <script src="assets/main.js?v=teardown-restore-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳至主要内容</a>
@@ -109,22 +109,21 @@
           <div class="teardown-copy reveal">
             <p class="eyebrow">TEARDOWN FILM</p>
             <h2 id="filmTitle" data-ui="filmTitle">硬件结构动态分解</h2>
-            <p data-ui="filmLead">层叠架构不止于紧凑，更带来整机级的坚固与稳定，为高温、高湿、高海拔及野外部署而设计。</p>
+            <p data-ui="filmLead">用结构帧序列呈现 RM-01 的散热、主板、壳体和模块层叠关系。</p>
           </div>
-          <div class="teardown-film reveal" data-reveal-delay="120">
-            <div class="teardown-film-core" role="button" tabindex="0" aria-label="点击重新播放硬件结构分解演示">
-              <video
-                class="teardown-video"
-                muted
-                playsinline
-                preload="auto"
-                data-once-media
-                data-return-first-frame
-                poster="assets/images/teardown-poster.jpg"
-                aria-label="RM-01 硬件结构动态分解"
-              >
-                <source src="assets/images/teardown-loop.mp4?v=2" type="video/mp4">
-              </video>
+          <div class="teardown-film reveal" data-reveal-delay="120" data-teardown-sequence>
+            <div class="teardown-film-core">
+              <canvas
+                class="teardown-canvas"
+                width="1440"
+                height="810"
+                role="img"
+                aria-label="RM-01 硬件结构滚动帧动画"
+                data-frame-prefix="assets/teardown-frames-v2/frame-"
+                data-frame-count="120"
+                data-frame-pad="3"
+                data-frame-ext=".jpg"></canvas>
+              <img class="teardown-fallback" src="assets/teardown-frames-v2/frame-001.jpg" alt="RM-01 硬件结构动态分解">
             </div>
           </div>
         </div>
