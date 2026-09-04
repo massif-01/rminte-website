@@ -57,10 +57,10 @@ function versionPayload() {
   };
 }
 
-function homePage(origin) {
+function homePage(origin, defaultLang) {
   const serviceUrl = `${origin}`;
   return `<!doctype html>
-<html lang="zh-CN">
+<html lang="${defaultLang === 'zh' ? 'zh-CN' : 'en'}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -130,13 +130,13 @@ function homePage(origin) {
         step4: 'Select <strong>Check for Updates</strong>, confirm the version, and start the update.'
       }
     };
-    let currentLang = localStorage.getItem('rm-ota-lang') === 'en' ? 'en' : 'zh';
+    let currentLang = localStorage.getItem('rm-ota-lang') || ${JSON.stringify(defaultLang)};
     const langToggle = document.getElementById('langToggle');
     const copyButton = document.getElementById('copyButton');
 
-    function applyLanguage(lang) {
+    function applyLanguage(lang, remember = true) {
       currentLang = lang;
-      localStorage.setItem('rm-ota-lang', lang);
+      if (remember) localStorage.setItem('rm-ota-lang', lang);
       document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
       document.querySelectorAll('[data-i18n]').forEach((element) => { element.textContent = translations[lang][element.dataset.i18n]; });
       document.querySelectorAll('[data-i18n-html]').forEach((element) => { element.innerHTML = translations[lang][element.dataset.i18nHtml]; });
@@ -149,7 +149,7 @@ function homePage(origin) {
       await navigator.clipboard.writeText(document.getElementById('serviceUrl').textContent);
       copyButton.textContent = translations[currentLang].copied;
     });
-    applyLanguage(currentLang);
+    applyLanguage(currentLang, false);
   </script>
 </body>
 </html>`;
@@ -211,8 +211,9 @@ export default {
     }
 
     if (path === "/") {
+      const defaultLang = ['CN', 'HK', 'MO', 'TW'].includes(request.cf?.country) ? 'zh' : 'en';
       const headers = withCors(new Headers({ "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" }));
-      return new Response(request.method === "HEAD" ? null : homePage(url.origin), { status: 200, headers });
+      return new Response(request.method === "HEAD" ? null : homePage(url.origin, defaultLang), { status: 200, headers });
     }
     if (path === "/version" || path === "/info") return json(versionPayload());
     if (path === "/health") return json({ status: "ok", service: "TianShanOS OTA Server", version: RELEASE.version, firmware_available: true, www_available: true });
