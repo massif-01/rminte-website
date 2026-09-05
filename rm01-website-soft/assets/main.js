@@ -1,7 +1,7 @@
 (function () {
   const data = window.RM_SOFT;
   const imageBase = 'assets/images/';
-  let lang = localStorage.getItem('rm-soft-lang') || 'zh';
+  let lang = localStorage.getItem('rm-soft-lang') || window.RM_DEFAULT_LANG || 'en';
   let revealObserver;
   let activeNavCleanup;
 
@@ -14,11 +14,11 @@
   };
   const ui = (key) => data.ui[lang][key] || data.ui.zh[key] || '';
   const asset = (file) => imageBase + file;
-  const markedTermPattern = /(?:RM-01|TianshanOS)/g;
+  const markedTermPattern = /(?:RM-01|TianshanOS|EricLake)/g;
 
   function writeMarkedText(el, text) {
     const value = text == null ? '' : String(text);
-    if (!value.includes('RM-01') && !value.includes('TianshanOS')) {
+    if (!value.includes('RM-01') && !value.includes('TianshanOS') && !value.includes('EricLake')) {
       el.textContent = value;
       return;
     }
@@ -62,10 +62,7 @@
     });
     const title = $('[data-hero-title]');
     if (title) {
-      title.innerHTML = ui('heroTitle')
-        .split('\n')
-        .map((line) => `<span>${line}</span>`)
-        .join('<br>');
+      title.replaceChildren(...ui('heroTitle').split('\n').map((line) => textEl('span', line, 'hero-title-line')));
     }
     $$('[data-lang-toggle]').forEach((button) => {
       button.textContent = ui('langToggle');
@@ -140,7 +137,10 @@
     const html = document.documentElement;
     const previousBehavior = html.style.scrollBehavior;
     html.style.scrollBehavior = 'auto';
-    const restore = () => window.scrollTo(0, 0);
+    const initialHash = window.location.hash;
+    const restore = () => {
+      if (window.location.hash === initialHash) window.scrollTo(0, 0);
+    };
     restore();
     requestAnimationFrame(() => {
       restore();
@@ -163,7 +163,9 @@
     const html = document.documentElement;
     const previousBehavior = html.style.scrollBehavior;
     html.style.scrollBehavior = 'auto';
-    const restore = () => target.scrollIntoView({ block: 'start' });
+    const restore = () => {
+      if (window.location.hash.slice(1) === id) target.scrollIntoView({ block: 'start' });
+    };
     restore();
     requestAnimationFrame(() => {
       restore();
@@ -194,9 +196,7 @@
     const root = $('#pillarGrid');
     if (!root) return;
     root.replaceChildren(...data.pillars.map((pillar, index) => {
-      const number = textEl('span', String(index + 1).padStart(2, '0'), 'pillar-number');
       const card = cardShell([
-        number,
         textEl('h3', t(pillar.title)),
         textEl('p', t(pillar.text))
       ], 'pillar-card reveal');
@@ -209,17 +209,8 @@
     const root = $('#moduleBento');
     if (!root) return;
     root.replaceChildren(...data.modules.map((module, index) => {
-      const icon = document.createElement('div');
-      icon.className = 'module-icon';
-      const img = document.createElement('img');
-      img.src = asset(module.icon);
-      img.alt = '';
-      icon.append(img);
-
       const spec = textEl('span', t(module.spec), 'module-spec');
       const card = cardShell([
-        icon,
-        textEl('span', `0${index + 1}`, 'module-number'),
         textEl('h3', t(module.name)),
         textEl('p', t(module.text)),
         spec
@@ -234,7 +225,6 @@
     if (!root) return;
     root.replaceChildren(...data.engine.map((item, index) => {
       const card = cardShell([
-        textEl('span', t(item.label), 'engine-label'),
         textEl('h3', t(item.title)),
         textEl('p', t(item.text))
       ], 'engine-card reveal');
@@ -610,9 +600,9 @@
 
     videos.forEach((video) => {
       const section = video.closest('.cartridge-section');
-      const core = video.closest('.cartridge-video-core, .thermal-video-core, .teardown-film-core');
+      const core = video.closest('.cartridge-video-core, .teardown-film-core');
       const returnFirstFrame = video.hasAttribute('data-return-first-frame');
-      let hasPlayed = false;
+      let playedThisVisit = false;
       let replayTimer;
 
       const showResult = () => {
@@ -649,13 +639,19 @@
         }
 
         const observer = new IntersectionObserver((entries) => {
-          if (!entries.some((entry) => entry.isIntersecting && entry.intersectionRatio >= 0.45)) return;
-          observer.disconnect();
-          if (!hasPlayed) {
-            hasPlayed = true;
-            playOnce();
-          }
-        }, { threshold: [0.45] });
+          entries.forEach((entry) => {
+            // Rearm only after leaving the viewport, not while crossing the play threshold.
+            if (!entry.isIntersecting) {
+              video.pause();
+              playedThisVisit = false;
+              return;
+            }
+            if (entry.intersectionRatio >= 0.45 && !playedThisVisit) {
+              playedThisVisit = true;
+              playOnce();
+            }
+          });
+        }, { threshold: [0, 0.45] });
 
         observer.observe(video);
       };
@@ -664,6 +660,7 @@
       else video.addEventListener('loadedmetadata', prepare, { once: true });
 
       video.addEventListener('ended', showResult);
+      video.addEventListener('error', showResult);
       core?.addEventListener('click', () => playOnce());
       core?.addEventListener('keydown', (event) => {
         if (event.key !== 'Enter' && event.key !== ' ') return;
@@ -671,6 +668,59 @@
         playOnce();
       });
     });
+  }
+
+  function setupSapphireScroll() {
+    const section = $('#sapphire');
+    const image = $('.sapphire-light-image', section);
+    let frame;
+    const update = () => {
+      frame = undefined;
+      if (!image.naturalWidth) return;
+      const rect = image.getBoundingClientRect();
+      const scale = Math.max(rect.width / image.naturalWidth, rect.height / image.naturalHeight);
+      const positionY = parseFloat(getComputedStyle(image).objectPosition.split(' ')[1]) / 100;
+      // Center of the gemstone in the original 2000 x 1333 photo, not the section center.
+      const centerY = rect.top + (rect.height - image.naturalHeight * scale) * positionY + 574 * scale;
+      const position = centerY / window.innerHeight;
+      // Brighten only after the gemstone is visible; fade again as it passes the upper edge.
+      const glow = Math.max(0, Math.min(1, (0.78 - position) / 0.28, (position - 0.08) / 0.28));
+      image.style.setProperty('--sapphire-glow', glow.toFixed(3));
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    image.addEventListener('load', schedule);
+    schedule();
+  }
+
+  function setupCraftStory() {
+    const section = $('#craft');
+    const panels = $$('.craft-story-panel', section);
+    const progress = $('.craft-story-progress span', section);
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let frame;
+    const update = () => {
+      frame = undefined;
+      const enabled = !motion.matches && window.innerHeight >= 740;
+      section.classList.toggle('is-scroll-story', enabled);
+      const rect = section.getBoundingClientRect();
+      const distance = rect.height - window.innerHeight;
+      const fraction = enabled ? Math.max(0, Math.min(1, -rect.top / distance)) : 0;
+      const index = Math.min(panels.length - 1, Math.floor(fraction * panels.length));
+      panels.forEach((panel, i) => {
+        panel.classList.toggle('is-active', i === index);
+        panel.inert = enabled && i !== index;
+        if (enabled && i !== index) panel.setAttribute('aria-hidden', 'true');
+        else panel.removeAttribute('aria-hidden');
+      });
+      progress.style.width = enabled ? `${(index + 1) * 25}%` : '100%';
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    motion.addEventListener('change', schedule);
+    update();
   }
 
   function renderAll() {
@@ -687,6 +737,8 @@
   document.addEventListener('DOMContentLoaded', () => {
     renderAll();
     setupControls();
+    setupSapphireScroll();
+    setupCraftStory();
     setupTeardownSequence();
     setupLoopingMedia();
     setupOneShotMedia();

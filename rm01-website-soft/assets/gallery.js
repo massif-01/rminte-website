@@ -73,7 +73,7 @@
   const overlay = $('#mobileOverlay');
   const menuButton = $('[data-menu-toggle]');
   const closeButton = $('[data-menu-close]');
-  let lang = localStorage.getItem('rm-soft-lang') === 'en' ? 'en' : 'zh';
+  let lang = localStorage.getItem('rm-soft-lang') || window.RM_DEFAULT_LANG || 'en';
   let currentIndex = 0;
   let transitionLocked = false;
   let pointerStart = null;
@@ -141,9 +141,9 @@
     captionCategory.textContent = item.category;
   }
 
-  function applyLanguage(nextLang) {
+  function applyLanguage(nextLang, remember = true) {
     lang = nextLang;
-    localStorage.setItem('rm-soft-lang', lang);
+    if (remember) localStorage.setItem('rm-soft-lang', lang);
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
     $$('[data-gallery-text]').forEach((element) => {
       const value = element.dataset[lang];
@@ -228,6 +228,6 @@
     showImage(currentIndex + (deltaX < 0 ? 1 : -1));
   });
 
-  applyLanguage(lang);
+  applyLanguage(lang, false);
   preloadNeighbors(currentIndex);
 })();

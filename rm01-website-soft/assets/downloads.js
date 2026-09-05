@@ -1,7 +1,7 @@
 (function () {
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
-  let lang = localStorage.getItem('rm-soft-lang') === 'en' ? 'en' : 'zh';
+  let lang = localStorage.getItem('rm-soft-lang') || window.RM_DEFAULT_LANG || 'en';
 
   function applyBrandFonts(root = document.body) {
     const textNodes = [];
@@ -31,9 +31,9 @@
     });
   }
 
-  function applyLanguage(nextLang) {
+  function applyLanguage(nextLang, remember = true) {
     lang = nextLang;
-    localStorage.setItem('rm-soft-lang', lang);
+    if (remember) localStorage.setItem('rm-soft-lang', lang);
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
 
     $$('[data-download-text]').forEach((element) => {
@@ -62,7 +62,7 @@
     $$('[data-download-lang-toggle]').forEach((button) => {
       button.addEventListener('click', () => applyLanguage(lang === 'zh' ? 'en' : 'zh'));
     });
-    applyLanguage(lang);
+    applyLanguage(lang, false);
   }
 
   function setupMenu() {

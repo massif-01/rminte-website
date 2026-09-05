@@ -8,7 +8,7 @@
     return null;
   }
 
-  let lang = languageFromHash() || (localStorage.getItem('rm-soft-lang') === 'en' ? 'en' : 'zh');
+  let lang = languageFromHash() || (localStorage.getItem('rm-soft-lang') || window.RM_DEFAULT_LANG || 'en');
   let scrollTicking = false;
   let refreshSearch = function () {};
 
@@ -76,10 +76,10 @@
     });
   }
 
-  function applyLanguage(nextLang, preserveHeading = false) {
+  function applyLanguage(nextLang, preserveHeading = false, remember = true) {
     const headingKey = preserveHeading ? currentHeadingKey() : null;
     lang = nextLang;
-    localStorage.setItem('rm-soft-lang', lang);
+    if (remember) localStorage.setItem('rm-soft-lang', lang);
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
 
     $$('[data-guide-text]').forEach((element) => {
@@ -149,7 +149,7 @@
       if (hashLanguage && hashLanguage !== lang) applyLanguage(hashLanguage);
     });
 
-    applyLanguage(lang);
+    applyLanguage(lang, false, Boolean(languageFromHash()));
   }
 
   function setupToc() {

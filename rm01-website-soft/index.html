@@ -16,15 +16,20 @@
   <script>
     (function () {
       if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-      const sectionLinks = new Set(['#product', '#hardware', '#craft']);
+      if (window.location.hash === '#product') {
+        history.replaceState(null, '', window.location.pathname + window.location.search + '#engine');
+      }
+      const sectionLinks = new Set(['#hero', '#engine', '#tianshanos', '#hardware', '#teardown', '#thermal', '#sapphire', '#glass-touch', '#craft']);
       if (window.location.hash && !sectionLinks.has(window.location.hash)) {
         history.replaceState(null, '', window.location.pathname + window.location.search);
       }
     })();
   </script>
-  <link rel="stylesheet" href="assets/styles.css?v=teardown-restore-1">
-  <script src="assets/site-data.js?v=teardown-restore-1" defer></script>
-  <script src="assets/main.js?v=teardown-restore-1" defer></script>
+  <link rel="stylesheet" href="assets/styles.css?v=agent-hardcut-25">
+  <link rel="stylesheet" href="assets/detail-refinements.css?v=section-rhythm-14">
+  <script src="assets/site-data.js?v=agent-you-23" defer></script>
+  <script src="visitor-language.js" defer></script>
+  <script src="assets/main.js?v=cartridge-sequence-8" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳至主要内容</a>
@@ -62,10 +67,10 @@
       <div class="hero-shade" aria-hidden="true"></div>
       <div class="section-inner hero-grid reveal">
         <div class="hero-copy">
-          <h1 id="heroTitle" data-hero-title>生产级<br>AI 交付基座</h1>
-          <p class="hero-lead" data-ui="heroLead">RM-01 将大模型、推理引擎与工业级硬件压缩进可现场交付的便携单元，让企业在弱网、内网与高安全场景中直接获得本地 AI 生产力。</p>
+          <h1 id="heroTitle" data-hero-title><span class="hero-title-line"><span class="rm-mark">RM-01</span></span><span class="hero-title-line">让 AI 在本地，</span><span class="hero-title-line">为你工作</span></h1>
+          <p class="hero-lead" data-ui="heroLead">RM-01 是一款为大模型原生设计的 AI 本地推理硬件，从硬件架构、推理引擎到系统，都为 Agent 的自主执行而设计。</p>
           <div class="hero-actions">
-            <a class="cta-button" href="#hardware">
+            <a class="cta-button" href="#teardown">
               <span data-ui="explore">探索架构</span>
               <span class="cta-dot" aria-hidden="true">→</span>
             </a>
@@ -73,20 +78,29 @@
           <div class="hero-metrics-row" id="heroMetrics" aria-label="RM-01 核心指标"></div>
         </div>
       </div>
-      <a class="scroll-cue" href="#product">
+      <a class="scroll-cue" href="#engine">
         <span data-ui="scroll">继续向下</span>
         <span aria-hidden="true">↓</span>
       </a>
     </section>
 
-    <section class="section product-section" id="product" aria-labelledby="productTitle">
+    <section class="section engine-section" id="engine">
+      <div class="section-inner">
+        <div class="section-heading reveal">
+          <h2 data-ui="engineTitle" data-title-size="large">自研推理引擎</h2>
+          <p data-ui="engineLead">自研推理引擎优化算力与显存利用，让 Agent 以更少的资源消耗，持续推进更多任务。</p>
+        </div>
+        <div class="engine-rail" id="engineRail"></div>
+      </div>
+    </section>
+
+    <section class="section product-section" id="tianshanos" aria-labelledby="productTitle">
       <div class="section-inner split-copy">
         <div class="section-heading reveal">
-          <p class="eyebrow" data-ui="productKicker">PRODUCT LOGIC</p>
-          <h2 id="productTitle" data-ui="productTitle">不是一台迷你 PC，而是一套可交付的本地 AI 基础设施。</h2>
+          <h2 id="productTitle" data-ui="productTitle" data-title-size="large"><span class="rm-mark">TianshanOS</span> 让整机协同有序</h2>
         </div>
         <div class="long-copy reveal" data-reveal-delay="120">
-          <p data-ui="productLead">泛灵人工智能于 2025 年初在成都成立，海外主体成立于 2023 年。公司用“带硬件壳体的软件分发平台”解决 AI 落地最后一公里，让企业通过更换存储卡切换模型与应用。</p>
+          <p data-ui="productLead">面向复杂场景，RM-01 由 TianshanOS 驱动整机协同，无需专门建设供电、网络与机房环境，即可快速部署到业务现场。</p>
         </div>
       </div>
       <div class="section-inner pillar-grid" id="pillarGrid"></div>
@@ -95,10 +109,9 @@
     <section class="section hardware-section" id="hardware" aria-labelledby="hardwareTitle">
       <div class="section-inner split-copy">
         <div class="section-heading reveal">
-          <p class="eyebrow">MACHINED SYSTEM</p>
-          <h2 id="hardwareTitle" data-ui="hardwareTitle">让每一份算力，只做它最擅长的事</h2>
+          <h2 id="hardwareTitle" data-ui="hardwareTitle" data-title-size="large">各有所长，只为交付</h2>
         </div>
-        <p class="long-copy reveal" data-ui="hardwareLead">应用、推理、加密、网络与电源热管理各自独立，通过内部网络与统一 API 协同。客户应用运行在 x86 应用模组，显存集中用于模型推理和 KV Cache，维护范围也能收敛到单个模组。</p>
+        <p class="long-copy reveal" data-ui="hardwareLead">将模型、应用与运行环境整合交付，让客户拿到的，就是解决具体业务问题的本地 AI 方案。</p>
       </div>
       <div class="section-inner module-bento" id="moduleBento"></div>
     </section>
@@ -107,9 +120,8 @@
       <div class="teardown-stage">
         <div class="teardown-layout section-inner">
           <div class="teardown-copy reveal">
-            <p class="eyebrow">TEARDOWN FILM</p>
-            <h2 id="filmTitle" data-ui="filmTitle">硬件结构动态分解</h2>
-            <p data-ui="filmLead">用结构帧序列呈现 RM-01 的散热、主板、壳体和模块层叠关系。</p>
+            <h2 id="filmTitle" data-ui="filmTitle" data-title-size="large">硬件结构动态分解</h2>
+            <p data-ui="filmLead">紧凑机身之内，推理、应用、互联与散热各就其位，组成完整的本地 AI 运行体系。</p>
           </div>
           <div class="teardown-film reveal" data-reveal-delay="120" data-teardown-sequence>
             <div class="teardown-film-core">
@@ -130,199 +142,134 @@
       </div>
     </section>
 
-    <section class="section engine-section" id="engine">
-      <div class="section-inner">
-        <div class="section-heading reveal">
-          <p class="eyebrow">INFERENCE CORE</p>
-          <h2 data-ui="engineTitle">自研推理引擎</h2>
-          <p data-ui="engineLead">让同一台设备完成更多推理任务，使用户以更少的硬件与能耗投入，获得更快响应、更高并发和更低的长期运行成本。</p>
-        </div>
-        <div class="engine-rail" id="engineRail"></div>
-      </div>
-    </section>
-
-    <section class="section thermal-section" id="thermal">
-      <div class="section-inner thermal-grid">
+    <section class="thermal-section" id="thermal" aria-labelledby="thermalTitle">
+      <video class="thermal-bg-video" autoplay muted loop playsinline preload="metadata" poster="assets/images/thermal-airflow-poster.jpg" aria-hidden="true">
+        <source src="assets/images/thermal-airflow-loop-hd.mp4?v=3" type="video/mp4">
+      </video>
+      <div class="thermal-shade" aria-hidden="true"></div>
+      <div class="section-inner thermal-stage">
         <div class="thermal-copy reveal">
-          <p class="eyebrow">ERICLAKE</p>
-          <h2 data-ui="thermalTitle">EricLake 封闭式热管理系统</h2>
+          <h2 id="thermalTitle" data-ui="thermalTitle"><span class="rm-mark">EricLake</span><br>封闭式热管理系统</h2>
           <p data-ui="thermalLead">0.13 mm 特制叶片、定制电机与经过计算流体力学仿真优化的 Z 型独立风道，在高并发推理时持续导出热量，并减少灰尘进入核心器件区域。稳定，不只经得起高负载，也经得起日复一日的运行。</p>
-          <div class="thermal-points">
-            <span data-ui="thermalPointBlade">0.13mm</span>
-            <span data-ui="thermalPointDuct">Z 型风道</span>
-            <span data-ui="thermalPointCfd">CFD 优化</span>
-          </div>
         </div>
-        <div class="thermal-visuals reveal" data-reveal-delay="120">
-          <figure class="bezel media-bezel thermal-static-card thermal-simulation-card">
-            <div class="bezel-core">
-              <img src="assets/images/thermal-cooling-module-v2.png" alt="RM-01 EricLake 一体化风扇与散热鳍片模组">
-            </div>
-          </figure>
-          <figure class="bezel media-bezel thermal-static-card thermal-fan-card">
-            <div class="bezel-core">
-              <img src="assets/images/thermal-fan-blade.png" alt="RM-01 EricLake 特制散热风扇叶片">
-            </div>
-          </figure>
-          <figure class="bezel media-bezel thermal-motion-card">
-            <div class="bezel-core thermal-video-core" role="button" tabindex="0" aria-label="点击重新播放热管理气流演示">
-              <video
-                class="thermal-loop"
-                muted
-                playsinline
-                preload="auto"
-                data-once-media
-                data-return-first-frame
-                poster="assets/images/thermal-airflow-poster.jpg"
-                aria-label="RM-01 EricLake 热管理气流演示"
-              >
-                <source src="assets/images/thermal-airflow-loop.mp4?v=2" type="video/mp4">
-              </video>
-            </div>
-          </figure>
+        <figure class="thermal-detail">
+          <div class="thermal-detail-photo">
+            <img src="assets/images/thermal-fan-blade.png" alt="EricLake 定制风扇叶片微距特写" width="1254" height="1254" loading="lazy" decoding="async">
+          </div>
+          <figcaption><strong>0.13 <small>mm</small></strong><span data-ui="thermalDetailCaption">特制叶片，为持续散热而精细打造。</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="sapphire-section" id="sapphire" aria-labelledby="sapphireTitle">
+      <img class="sapphire-bg-image" src="assets/gallery/DSC00120.jpg" alt="" width="2000" height="1333" loading="lazy" decoding="async" aria-hidden="true">
+      <img class="sapphire-light-image" src="assets/gallery/DSC00120.jpg" alt="" width="2000" height="1333" loading="lazy" decoding="async" aria-hidden="true">
+      <div class="sapphire-shade" aria-hidden="true"></div>
+      <div class="section-inner sapphire-stage">
+        <div class="sapphire-copy reveal">
+          <h2 id="sapphireTitle" data-ui="sapphireTitle">蓝宝石亮起，
+智能开始工作</h2>
+          <p data-ui="sapphireLead">外复合工艺将蓝宝石贴合于机身表面，完整显露多重锐角切面。高硬度材质使成型与镜面抛光更加困难，良品率更低；56 小时雕琢与抛光，让光沿切面折射，在深色机身上显出克制的锋芒。</p>
         </div>
       </div>
     </section>
 
-    <section class="section sapphire-section" id="sapphire" aria-labelledby="sapphireTitle">
-      <div class="section-inner sapphire-grid">
-        <div class="sapphire-copy reveal">
-          <p class="eyebrow">MATERIAL JUNCTION</p>
-          <h2 id="sapphireTitle" data-ui="sapphireTitle">蓝宝石亮起，智能开始工作</h2>
-          <p data-ui="sapphireLead">我们选择蓝宝石，不只因为它坚硬、纯净，更因为它能够承载一束清晰而持久的光。工作时，蓝宝石随之亮起，如同航海中的灯塔。</p>
-          <div class="sapphire-facts" aria-label="蓝宝石结构特征">
-            <span data-ui="sapphireFactOne">复杂切面</span>
-            <span data-ui="sapphireFactTwo">异材直面</span>
-          </div>
-        </div>
-
-        <div class="sapphire-media-grid">
-          <figure class="bezel sapphire-media reveal" data-reveal-delay="120">
-            <div class="bezel-core">
-              <img src="assets/images/sapphire-pendant-source-square.jpg" alt="RM-01 蓝宝石复杂切面的超近景" width="1200" height="1200" loading="lazy" decoding="async">
-            </div>
-          </figure>
+    <section class="glass-touch-section" id="glass-touch" aria-labelledby="glassTouchTitle">
+      <img class="glass-touch-image" src="assets/gallery/DSC00043.jpg" alt="RM-01 中央绒光肤感玻璃面板特写" width="2000" height="3000" loading="lazy" decoding="async">
+      <div class="glass-touch-shade" aria-hidden="true"></div>
+      <div class="section-inner glass-touch-stage">
+        <div class="glass-touch-copy reveal">
+          <h2 id="glassTouchTitle" data-ui="glassTouchTitle" data-title-size="large">第一眼，就想触碰</h2>
+          <p data-ui="glassTouchLead">一整面绒光肤感玻璃，让光变得柔和，让触碰变得温润。\nRM-01 的质感，从第一眼延续到第一次触碰。</p>
         </div>
       </div>
     </section>
 
     <section class="section agent-terminal-section" id="agent-terminal" aria-labelledby="agentTerminalTitle">
+      <figure class="agent-terminal-media">
+        <img class="agent-terminal-image" src="assets/images/ports-rec709-gamma24-sdr.jpg" alt="RM-01 机身侧后方的数据连接与电源输入接口" width="3000" height="2000" loading="lazy" decoding="async">
+      </figure>
       <div class="section-inner agent-terminal-grid">
         <div class="agent-terminal-copy reveal">
-          <p class="eyebrow">AGENT TERMINAL</p>
-          <h2 id="agentTerminalTitle" data-ui="agentTitle">只把最简单的选择留给用户</h2>
-          <p data-ui="agentLead">一个接入能量，一个接入世界。RM-01 内部运行完整的 Ubuntu 系统，让 Agent 能调用模型、运行代码、读写文件并连接网络与设备。智能眼镜、电脑、路由器、手机与平板，都可以成为它与人、数据和现实世界交互的入口。</p>
-          <div class="agent-terminal-points" aria-label="Agent 终端能力">
-            <span data-ui="agentPointOne">Ubuntu 系统</span>
-            <span data-ui="agentPointTwo">Agent 执行</span>
-            <span data-ui="agentPointThree">多终端访问</span>
-          </div>
+          <h2 id="agentTerminalTitle" data-ui="agentTitle">只把最简单的选择留给你</h2>
+          <p data-ui="agentLead">一个接入能量，一个接入世界。智能眼镜、电脑、路由器、手机与平板，都可以成为本地 AI 与人、数据和现实世界交互的入口。</p>
         </div>
-        <figure class="bezel agent-terminal-media reveal" data-reveal-delay="120">
-          <div class="bezel-core">
-            <img
-              src="assets/images/rm01-two-ports-agent-terminal.jpg?v=1"
-              alt="RM-01 机身侧后方的数据连接与电源输入接口"
-              width="3000"
-              height="2000"
-              loading="lazy"
-              decoding="async"
-            >
-          </div>
-        </figure>
       </div>
     </section>
 
-    <section class="cartridge-section" id="cartridge">
-      <div class="section-inner cartridge-grid">
+    <section class="cartridge-section" id="cartridge" aria-labelledby="cartridgeTitle">
+      <video
+        class="cartridge-bg-video"
+        muted
+        playsinline
+        preload="auto"
+        poster="assets/images/cartridge-tvc-v2-poster.jpg"
+        autoplay
+        loop
+        data-loop-media
+        aria-hidden="true"
+      >
+        <source src="assets/images/cartridge-tvc-v2.mp4" type="video/mp4">
+      </video>
+      <div class="cartridge-shade" aria-hidden="true"></div>
+      <div class="section-inner cartridge-stage">
         <div class="cartridge-copy reveal">
-          <p class="eyebrow">CARTRIDGE DELIVERY</p>
-          <h2 data-ui="cartridgeTitle">换一张卡，切换一套 AI。</h2>
-          <p data-ui="cartridgeLead">RM-01 把模型与应用装进可更换存储卡。插入设备，即可切换对应的 AI 能力，让现场交付从复杂的软件部署，变成一次清晰、可控的物理动作。</p>
-          <div class="cartridge-facts" aria-label="插卡交付逻辑">
-            <span data-ui="cartridgeFactOne">插卡即用</span>
-            <span data-ui="cartridgeFactTwo">模型应用</span>
-          </div>
-        </div>
-        <div class="cartridge-media-grid">
-          <figure class="bezel cartridge-media cartridge-action-media reveal" data-reveal-delay="120">
-            <div class="bezel-core cartridge-video-core" role="button" tabindex="0" aria-label="点击重新播放插卡演示">
-              <video
-                class="cartridge-video"
-                muted
-                playsinline
-                preload="auto"
-                poster="assets/images/cartridge-delivery-start.jpg"
-                data-once-media
-                aria-label="将存储卡插入 RM-01 的演示"
-              >
-                <source src="assets/images/cartridge-delivery-loop.mp4" type="video/mp4">
-              </video>
-              <img class="cartridge-hold-frame" src="assets/images/cartridge-delivery-hold.jpg" alt="" aria-hidden="true">
-            </div>
-          </figure>
-          <figure class="bezel cartridge-media cartridge-product-media reveal" data-reveal-delay="180">
-            <div class="bezel-core">
-              <img src="assets/images/rm01-card-hand-ad-v4.png" alt="双指轻持 RM-01 模型与应用卡">
-            </div>
-          </figure>
+          <h2 id="cartridgeTitle" data-ui="cartridgeTitle">换一张卡，
+切换一套 AI</h2>
+          <p data-ui="cartridgeLead">RM-01 把模型与应用装进可更换存储卡。插入设备，即可装载面向具体业务的本地 AI 方案。</p>
         </div>
       </div>
     </section>
 
-    <section class="section craft-section" id="craft" aria-labelledby="craftTitle">
-      <div class="section-inner">
-        <div class="craft-intro reveal">
-          <div class="craft-copy">
-            <p class="eyebrow">PRECISION MANUFACTURING</p>
+    <section class="craft-section craft-story" id="craft" aria-labelledby="craftTitle">
+      <div class="craft-story-stage">
+        <div class="section-inner">
+          <header class="craft-story-heading">
             <h2 id="craftTitle" data-ui="craftTitle">把世界级制造，做到每一处细节</h2>
-            <p data-ui="craftLead">从 6063 铝合金到 260 目精细喷砂，RM-01 对材料、表面处理与装配精度逐项把控。最终落到用户手上的，是细腻的触感、严密的接缝，以及从第一次上手就能感受到的整机品质。</p>
+          </header>
+          <div class="craft-story-panels">
+            <article class="craft-story-panel is-active">
+              <figure class="craft-story-photo">
+                <img src="assets/images/craft-panel-fit.webp" alt="铝合金机身工艺细节" loading="lazy" decoding="async">
+              </figure>
+              <div class="craft-story-text">
+                <p class="craft-story-value">6063 <small></small></p>
+                <h3 data-ui="craftStoryMaterial">铝合金机身</h3>
+                <p data-ui="craftStoryMaterialText">握在手里的扎实，源自对材料的认真选择。</p>
+              </div>
+            </article>
+            <article class="craft-story-panel">
+              <figure class="craft-story-photo">
+                <img src="assets/images/craft-surface-detail.webp" alt="精细喷砂工艺细节" loading="lazy" decoding="async">
+              </figure>
+              <div class="craft-story-text">
+                <p class="craft-story-value">260 <small data-ui="craftMeshUnit">目</small></p>
+                <h3 data-ui="craftStoryFinish">精细喷砂</h3>
+                <p data-ui="craftStoryFinishText">细腻的触感，让每一次上手都感受到品质。</p>
+              </div>
+            </article>
+            <article class="craft-story-panel">
+              <figure class="craft-story-photo">
+                <img src="assets/images/craft-panel-fit.webp" alt="边缘圆角工艺细节" loading="lazy" decoding="async">
+              </figure>
+              <div class="craft-story-text">
+                <p class="craft-story-value">R0.2 <small>mm</small></p>
+                <h3 data-ui="craftStoryRadius">边缘圆角</h3>
+                <p data-ui="craftStoryRadiusText">微小到容易被忽略的边缘，也有明确的标准。</p>
+              </div>
+            </article>
+            <article class="craft-story-panel">
+              <figure class="craft-story-photo">
+                <img src="assets/images/craft-card-slot-detail.png" alt="工艺公差工艺细节" loading="lazy" decoding="async">
+              </figure>
+              <div class="craft-story-text">
+                <p class="craft-story-value">＜0.03 <small>mm</small></p>
+                <h3 data-ui="craftStoryTolerance">工艺公差</h3>
+                <p data-ui="craftStoryToleranceText">严密的接缝与干净的收口，让精度成为看得见的质感。</p>
+              </div>
+            </article>
           </div>
-          <dl class="craft-specs" aria-label="材料与表面工艺">
-            <div>
-              <dt>6063</dt>
-              <dd data-ui="craftMaterial">高品质铝合金机身</dd>
-            </div>
-            <div>
-              <dt>260 <small data-ui="craftMeshUnit">目</small></dt>
-              <dd data-ui="craftFinish">精细喷砂表面工艺</dd>
-            </div>
-          </dl>
-        </div>
-
-        <div class="craft-gallery" aria-label="RM-01 制造工艺细节">
-          <figure class="craft-shot craft-shot-primary reveal" data-reveal-delay="80">
-            <div class="bezel craft-image-frame">
-              <div class="bezel-core">
-                <img src="assets/images/craft-surface-detail.webp" alt="RM-01 铝合金机身交叠边缘与喷砂表面微距细节">
-              </div>
-            </div>
-            <figcaption data-ui="craftCaptionSurface">均匀细腻的喷砂表面，让光线在金属上呈现克制的层次。</figcaption>
-          </figure>
-          <figure class="craft-shot craft-shot-fit reveal" data-reveal-delay="140">
-            <div class="bezel craft-image-frame">
-              <div class="bezel-core">
-                <img src="assets/images/craft-panel-fit.webp" alt="RM-01 金属面板边缘与机身接缝微距细节">
-              </div>
-            </div>
-            <figcaption data-ui="craftCaptionFit">严密的接缝与干净的收口，让设计精度落到真实装配。</figcaption>
-          </figure>
-          <figure class="craft-shot craft-shot-edge reveal" data-reveal-delay="200">
-            <div class="bezel craft-image-frame">
-              <div class="bezel-core">
-                <img src="assets/images/craft-edge-detail.webp" alt="RM-01 机身散热开槽与金属结构边缘微距细节">
-              </div>
-            </div>
-            <figcaption data-ui="craftCaptionEdge">从结构边缘到散热开槽，保持一致的加工与表面标准。</figcaption>
-          </figure>
-          <figure class="craft-shot craft-shot-slot reveal" data-reveal-delay="260">
-            <div class="bezel craft-image-frame">
-              <div class="bezel-core">
-                <img src="assets/images/craft-card-slot-detail.png" alt="RM-01 存储卡槽与金属机身加工细节">
-              </div>
-            </div>
-            <figcaption data-ui="craftCaptionSlot">卡槽开口、结构边缘与机身表面，保持一致的加工精度。</figcaption>
-          </figure>
+          <div class="craft-story-progress" aria-hidden="true"><span></span></div>
         </div>
       </div>
     </section>
