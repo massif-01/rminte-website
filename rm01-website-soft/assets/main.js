@@ -14,11 +14,11 @@
   };
   const ui = (key) => data.ui[lang][key] || data.ui.zh[key] || '';
   const asset = (file) => imageBase + file;
-  const markedTermPattern = /(?:RM-01|TianshanOS)/g;
+  const markedTermPattern = /(?:RM-01|TianshanOS|EricLake)/g;
 
   function writeMarkedText(el, text) {
     const value = text == null ? '' : String(text);
-    if (!value.includes('RM-01') && !value.includes('TianshanOS')) {
+    if (!value.includes('RM-01') && !value.includes('TianshanOS') && !value.includes('EricLake')) {
       el.textContent = value;
       return;
     }
@@ -62,10 +62,7 @@
     });
     const title = $('[data-hero-title]');
     if (title) {
-      title.innerHTML = ui('heroTitle')
-        .split('\n')
-        .map((line) => `<span>${line}</span>`)
-        .join('<br>');
+      title.replaceChildren(...ui('heroTitle').split('\n').map((line) => textEl('span', line, 'hero-title-line')));
     }
     $$('[data-lang-toggle]').forEach((button) => {
       button.textContent = ui('langToggle');
@@ -140,7 +137,10 @@
     const html = document.documentElement;
     const previousBehavior = html.style.scrollBehavior;
     html.style.scrollBehavior = 'auto';
-    const restore = () => window.scrollTo(0, 0);
+    const initialHash = window.location.hash;
+    const restore = () => {
+      if (window.location.hash === initialHash) window.scrollTo(0, 0);
+    };
     restore();
     requestAnimationFrame(() => {
       restore();
@@ -163,7 +163,9 @@
     const html = document.documentElement;
     const previousBehavior = html.style.scrollBehavior;
     html.style.scrollBehavior = 'auto';
-    const restore = () => target.scrollIntoView({ block: 'start' });
+    const restore = () => {
+      if (window.location.hash.slice(1) === id) target.scrollIntoView({ block: 'start' });
+    };
     restore();
     requestAnimationFrame(() => {
       restore();
@@ -194,9 +196,7 @@
     const root = $('#pillarGrid');
     if (!root) return;
     root.replaceChildren(...data.pillars.map((pillar, index) => {
-      const number = textEl('span', String(index + 1).padStart(2, '0'), 'pillar-number');
       const card = cardShell([
-        number,
         textEl('h3', t(pillar.title)),
         textEl('p', t(pillar.text))
       ], 'pillar-card reveal');
@@ -205,53 +205,12 @@
     }));
   }
 
-  function renderFeatures() {
-    const root = $('#featureCascade');
-    if (!root) return;
-    root.replaceChildren(...data.features.map((feature, index) => {
-      const visual = document.createElement('div');
-      visual.className = 'feature-visual';
-      const image = document.createElement('img');
-      image.src = asset(feature.image);
-      image.alt = t(feature.title);
-      visual.append(image);
-
-      const copy = document.createElement('div');
-      copy.className = 'feature-copy';
-      copy.append(
-        textEl('span', String(index + 1).padStart(2, '0'), 'feature-number'),
-        textEl('p', t(feature.kicker), 'eyebrow'),
-        textEl('h3', t(feature.title)),
-        textEl('p', t(feature.body))
-      );
-
-      const core = document.createElement('div');
-      core.className = 'card-core feature-core';
-      core.append(visual, copy);
-
-      const outer = document.createElement('article');
-      outer.className = 'bezel feature-card reveal';
-      outer.dataset.revealDelay = String(index * 80);
-      outer.append(core);
-      return outer;
-    }));
-  }
-
   function renderModules() {
     const root = $('#moduleBento');
     if (!root) return;
     root.replaceChildren(...data.modules.map((module, index) => {
-      const icon = document.createElement('div');
-      icon.className = 'module-icon';
-      const img = document.createElement('img');
-      img.src = asset(module.icon);
-      img.alt = '';
-      icon.append(img);
-
-      const spec = textEl('span', module.spec, 'module-spec');
+      const spec = textEl('span', t(module.spec), 'module-spec');
       const card = cardShell([
-        icon,
-        textEl('span', `0${index + 1}`, 'module-number'),
         textEl('h3', t(module.name)),
         textEl('p', t(module.text)),
         spec
@@ -266,89 +225,12 @@
     if (!root) return;
     root.replaceChildren(...data.engine.map((item, index) => {
       const card = cardShell([
-        textEl('span', t(item.label), 'engine-label'),
         textEl('h3', t(item.title)),
         textEl('p', t(item.text))
       ], 'engine-card reveal');
       card.dataset.revealDelay = String(index * 90);
       return card;
     }));
-  }
-
-  function renderHonors() {
-    const root = $('#honorGrid');
-    if (!root) return;
-    root.replaceChildren(...data.honors.map((honor, index) => {
-      const imageWrap = document.createElement('div');
-      imageWrap.className = 'honor-image';
-      const img = document.createElement('img');
-      img.src = asset(honor.image);
-      img.alt = t(honor.title);
-      imageWrap.append(img);
-
-      const card = cardShell([
-        imageWrap,
-        textEl('h3', t(honor.title)),
-        textEl('p', t(honor.text))
-      ], 'honor-card reveal');
-      card.dataset.revealDelay = String(index * 70);
-      return card;
-    }));
-  }
-
-  function renderCases() {
-    const root = $('#caseBoard');
-    if (!root) return;
-    root.replaceChildren();
-
-    const spotlight = data.cases.find((item) => item.images.length) || data.cases[0];
-    const spotlightLink = document.createElement('a');
-    spotlightLink.href = `pages/${spotlight.file}`;
-    spotlightLink.className = 'case-spotlight reveal';
-    const spotlightImage = document.createElement('img');
-    spotlightImage.src = spotlight.images.length ? asset(spotlight.images[0]) : asset('img4.png');
-    spotlightImage.alt = t(spotlight.name);
-    const spotlightCopy = document.createElement('div');
-    spotlightCopy.className = 'case-spotlight-copy';
-    spotlightCopy.append(
-      textEl('span', t(spotlight.category), 'case-category'),
-      textEl('h3', t(spotlight.name)),
-      textEl('p', t(spotlight.desc)),
-      textEl('strong', `${ui('learn')} →`, 'case-action-text')
-    );
-    spotlightLink.append(spotlightImage, spotlightCopy);
-    root.append(spotlightLink);
-
-    const groups = [
-      { key: 'industry', cases: data.cases.filter((item) => t(item.category) === (lang === 'zh' ? '行业应用' : 'Industry')) },
-      { key: 'platform', cases: data.cases.filter((item) => t(item.category) !== (lang === 'zh' ? '行业应用' : 'Industry')) }
-    ];
-
-    groups.forEach((group) => {
-      root.append(textEl('h3', ui(group.key), 'case-group-title reveal'));
-      const grid = document.createElement('div');
-      grid.className = 'case-grid';
-      group.cases.forEach((item, index) => {
-        if (item.id === spotlight.id) return;
-        const action = document.createElement('div');
-        action.className = 'case-action';
-        action.append(textEl('strong', ui('learn')), textEl('span', '→'));
-
-        const card = cardShell([
-          textEl('span', t(item.category), 'case-category'),
-          textEl('h3', t(item.name)),
-          textEl('p', t(item.desc)),
-          action
-        ], 'case-card reveal');
-        card.dataset.revealDelay = String(index * 55);
-
-        const link = document.createElement('a');
-        link.href = `pages/${item.file}`;
-        link.append(card);
-        grid.append(link);
-      });
-      root.append(grid);
-    });
   }
 
   function setupReveal() {
@@ -688,16 +570,166 @@
     });
   }
 
+  function setupLoopingMedia() {
+    const videos = $$('video[data-loop-media]');
+    if (!videos.length) return;
+
+    videos.forEach((video) => {
+      video.muted = true;
+      video.defaultMuted = true;
+
+      const start = () => {
+        const playback = video.play();
+        if (playback) playback.catch(() => {});
+      };
+
+      if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) start();
+      else video.addEventListener('canplay', start, { once: true });
+
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden && video.paused) start();
+      });
+    });
+  }
+
+  function setupOneShotMedia() {
+    const videos = $$('video[data-once-media]');
+    if (!videos.length) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    videos.forEach((video) => {
+      const section = video.closest('.cartridge-section');
+      const core = video.closest('.cartridge-video-core, .teardown-film-core');
+      const returnFirstFrame = video.hasAttribute('data-return-first-frame');
+      let playedThisVisit = false;
+      let replayTimer;
+
+      const showResult = () => {
+        if (returnFirstFrame) {
+          video.pause();
+          video.currentTime = 0;
+          return;
+        }
+        core?.classList.add('is-complete');
+        section?.classList.add('is-complete');
+      };
+
+      const playOnce = (afterTransition = false) => {
+        clearTimeout(replayTimer);
+        video.pause();
+        video.currentTime = 0;
+        core?.classList.remove('is-complete');
+        section?.classList.remove('is-complete');
+
+        const start = () => {
+          const playback = video.play();
+          if (playback) playback.catch(showResult);
+        };
+
+        if (afterTransition) replayTimer = window.setTimeout(start, 460);
+        else start();
+      };
+
+      const prepare = () => {
+        section?.classList.add('motion-ready');
+        if (reduceMotion) {
+          showResult();
+          return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            // Rearm only after leaving the viewport, not while crossing the play threshold.
+            if (!entry.isIntersecting) {
+              video.pause();
+              playedThisVisit = false;
+              return;
+            }
+            if (entry.intersectionRatio >= 0.45 && !playedThisVisit) {
+              playedThisVisit = true;
+              playOnce();
+            }
+          });
+        }, { threshold: [0, 0.45] });
+
+        observer.observe(video);
+      };
+
+      if (video.readyState >= HTMLMediaElement.HAVE_METADATA) prepare();
+      else video.addEventListener('loadedmetadata', prepare, { once: true });
+
+      video.addEventListener('ended', showResult);
+      video.addEventListener('error', showResult);
+      core?.addEventListener('click', () => playOnce());
+      core?.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        playOnce();
+      });
+    });
+  }
+
+  function setupSapphireScroll() {
+    const section = $('#sapphire');
+    const image = $('.sapphire-light-image', section);
+    let frame;
+    const update = () => {
+      frame = undefined;
+      if (!image.naturalWidth) return;
+      const rect = image.getBoundingClientRect();
+      const scale = Math.max(rect.width / image.naturalWidth, rect.height / image.naturalHeight);
+      const positionY = parseFloat(getComputedStyle(image).objectPosition.split(' ')[1]) / 100;
+      // Center of the gemstone in the original 2000 x 1333 photo, not the section center.
+      const centerY = rect.top + (rect.height - image.naturalHeight * scale) * positionY + 574 * scale;
+      const position = centerY / window.innerHeight;
+      // Brighten only after the gemstone is visible; fade again as it passes the upper edge.
+      const glow = Math.max(0, Math.min(1, (0.78 - position) / 0.28, (position - 0.08) / 0.28));
+      image.style.setProperty('--sapphire-glow', glow.toFixed(3));
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    image.addEventListener('load', schedule);
+    schedule();
+  }
+
+  function setupCraftStory() {
+    const section = $('#craft');
+    const panels = $$('.craft-story-panel', section);
+    const progress = $('.craft-story-progress span', section);
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let frame;
+    const update = () => {
+      frame = undefined;
+      const enabled = !motion.matches && window.innerHeight >= 740;
+      section.classList.toggle('is-scroll-story', enabled);
+      const rect = section.getBoundingClientRect();
+      const distance = rect.height - window.innerHeight;
+      const fraction = enabled ? Math.max(0, Math.min(1, -rect.top / distance)) : 0;
+      const index = Math.min(panels.length - 1, Math.floor(fraction * panels.length));
+      panels.forEach((panel, i) => {
+        panel.classList.toggle('is-active', i === index);
+        panel.inert = enabled && i !== index;
+        if (enabled && i !== index) panel.setAttribute('aria-hidden', 'true');
+        else panel.removeAttribute('aria-hidden');
+      });
+      progress.style.width = enabled ? `${(index + 1) * 25}%` : '100%';
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    motion.addEventListener('change', schedule);
+    update();
+  }
+
   function renderAll() {
     setUiText();
     renderNav();
     renderMetrics();
     renderPillars();
-    renderFeatures();
     renderModules();
     renderEngine();
-    renderHonors();
-    renderCases();
     setupReveal();
     setupActiveNav();
   }
@@ -705,7 +737,11 @@
   document.addEventListener('DOMContentLoaded', () => {
     renderAll();
     setupControls();
+    setupSapphireScroll();
+    setupCraftStory();
     setupTeardownSequence();
+    setupLoopingMedia();
+    setupOneShotMedia();
     restoreInitialLocation();
   });
 })();
