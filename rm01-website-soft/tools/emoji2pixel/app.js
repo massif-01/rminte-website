@@ -148,6 +148,7 @@ class Emoji2Pixel {
     async init() {
         await this.initI18n();
         this.bindEvents();
+        this.initWorkspace();
         this.loadEmojiList();
         // 不自动预览，等待用户输入
     }
@@ -157,7 +158,8 @@ class Emoji2Pixel {
         await this.buildLanguageOptions();
         const saved = localStorage.getItem('emoji2pixel_lang');
         const browserLang = (navigator.language || '').toLowerCase();
-        const fallback = browserLang.startsWith('en') ? 'en-US' : 'zh-CN';
+        const siteLang = localStorage.getItem('rm-soft-lang');
+        const fallback = siteLang === 'zh' ? 'zh-CN' : siteLang === 'en' ? 'en-US' : browserLang.startsWith('en') ? 'en-US' : 'zh-CN';
         await this.setLanguage(saved || fallback, true);
         if (this.langSelect) {
             this.langSelect.addEventListener('change', (e) => {
@@ -249,6 +251,8 @@ class Emoji2Pixel {
     }
 
     applyI18n() {
+        document.documentElement.lang = this.language;
+        document.title = this.t('workspaceTitle') + ' · RMinte';
         document.querySelectorAll('[data-i18n]').forEach((el) => {
             const key = el.getAttribute('data-i18n');
             if (key) {
@@ -265,8 +269,70 @@ class Emoji2Pixel {
             const key = el.getAttribute('data-i18n-title');
             if (key) {
                 el.setAttribute('title', this.t(key));
+                const axis = /Width/.test(el.id) ? ' W' : /Height/.test(el.id) ? ' H' : el.id === 'offsetXSlider' ? ' X' : el.id === 'offsetYSlider' ? ' Y' : '';
+                el.setAttribute('aria-label', this.t(key) + axis);
             }
         });
+    }
+
+    initWorkspace() {
+        const workspace = document.querySelector('.app-container');
+        const tabs = [...document.querySelectorAll('[data-panel]')];
+        const selectPanel = (tab) => {
+            workspace.dataset.activePanel = tab.dataset.panel;
+            tabs.forEach(button => {
+                const selected = button === tab;
+                button.setAttribute('aria-selected', String(selected));
+                button.tabIndex = selected ? 0 : -1;
+            });
+            this.fitWorkspaceCanvas();
+        };
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => selectPanel(tab));
+            tab.addEventListener('keydown', event => {
+                if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+                event.preventDefault();
+                const visible = tabs.filter(button => button.getClientRects().length);
+                const index = visible.indexOf(tab);
+                const next = event.key === 'Home' ? 0 : event.key === 'End' ? visible.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + visible.length) % visible.length;
+                selectPanel(visible[next]);
+                visible[next].focus();
+            });
+        });
+        selectPanel(tabs[0]);
+        const menu = document.getElementById('brandMenu');
+        const nav = document.getElementById('brandNav');
+        const closeMenu = () => { nav.classList.remove('is-open'); menu.setAttribute('aria-expanded', 'false'); };
+        menu.addEventListener('click', () => menu.setAttribute('aria-expanded', String(nav.classList.toggle('is-open'))));
+        document.addEventListener('keydown', event => { if (event.key === 'Escape' && nav.classList.contains('is-open')) { closeMenu(); menu.focus(); } });
+        document.addEventListener('click', event => { if (!event.target.closest('.brand-header')) closeMenu(); });
+        this.workspaceObserver = new ResizeObserver(() => this.fitWorkspaceCanvas());
+        this.workspaceObserver.observe(this.mainCanvas.parentElement);
+        window.addEventListener('resize', () => {
+            if (innerWidth >= 768 && workspace.dataset.activePanel === 'frames') selectPanel(tabs[0]);
+            this.fitWorkspaceCanvas();
+        });
+        // Labels keep compact controls understandable to keyboard and screen-reader users.
+        const labels = {emojiInput:'inputEmoji',emojiSearchInput:'quickSearch',emojiScaleInput:'scale',tweenFramesInput:'tweenLabel',animSpeed:'play',displayWidthInput:'size',displayHeightInput:'size',gridWidthInput:'matrix',gridHeightInput:'matrix',pixelSizeInput:'pixelSize',gapSizeInput:'gap',unitSelect:'unit',renderModeSelect:'mode',exportTypeSelect:'exportRaw',scaleSlider:'scale',offsetXSlider:'transform',offsetYSlider:'transform',rotateSlider:'rotate',quantizeColorsInput:'colors',sharpenModeSelect:'sharpen',sharpenStrengthInput:'strength'};
+        Object.entries(labels).forEach(([id,key]) => document.getElementById(id).setAttribute('data-i18n-title', key));
+        this.applyI18n();
+        const empty = document.getElementById('canvasEmpty');
+        const refreshEmpty = () => { empty.hidden = this.frames.length > 0 || this.emojiInput.value.trim().length > 0; };
+        this.emojiInput.addEventListener('input', refreshEmpty);
+        this.frameObserver = new MutationObserver(refreshEmpty);
+        this.frameObserver.observe(this.framesContainer, {childList:true});
+        refreshEmpty();
+    }
+
+    fitWorkspaceCanvas() {
+        const available = this.mainCanvas.parentElement.clientWidth;
+        if (!available) return;
+        const ratio = this.displayWidth / this.displayHeight;
+        const maxHeight = innerHeight * (innerWidth < 768 ? 0.55 : 0.65);
+        const width = Math.min(available, maxHeight * ratio, this.displayWidth * 96 / 25.4);
+        this.mainCanvas.style.width = width + 'px';
+        this.mainCanvas.style.height = (width / ratio) + 'px';
+        this.drawSelectionOverlay();
     }
 
     async loadEmojiList() {
@@ -719,8 +785,7 @@ class Emoji2Pixel {
                 this.displayWidthInput.value = formatValue(widthUnit, this.unit);
                 this.displayHeightInput.value = formatValue(heightUnit, this.unit);
             }
-            this.mainCanvas.style.width = this.displayWidth + 'mm';
-            this.mainCanvas.style.height = this.displayHeight + 'mm';
+            this.fitWorkspaceCanvas();
             this.saveSettings();
         };
 
@@ -1045,10 +1110,30 @@ class Emoji2Pixel {
         this.clearFramesBtn.addEventListener('click', () => this.clearFrames());
 
         // 下载GIF
-        this.downloadGifBtn.addEventListener('click', () => this.downloadGIF());
+        this.downloadGifBtn.addEventListener('click', async () => {
+                this.downloadGifBtn.disabled = true;
+                this.downloadGifBtn.setAttribute('aria-busy', 'true');
+                this.downloadGifBtn.textContent = this.t('gifGenerating');
+                try { await this.downloadGIF(); } finally {
+                    this.downloadGifBtn.disabled = false;
+                    this.downloadGifBtn.removeAttribute('aria-busy');
+                    this.downloadGifBtn.textContent = this.t(this.downloadGifBtn.dataset.i18n);
+                }
+            });
 
         if (this.tianshanUploadBtn) {
-            this.tianshanUploadBtn.addEventListener('click', () => this.uploadToTianshan());
+            this.tianshanUploadBtn.addEventListener('click', async () => {
+                this.tianshanUploadBtn.disabled = true;
+                this.tianshanUploadBtn.setAttribute('aria-busy', 'true');
+                this.tianshanUploadBtn.textContent = this.t('tianshanUploading');
+                try { await this.uploadToTianshan(); } catch (error) {
+                    this.showToast(this.t('tianshanUploadFailed', {message:error.message}));
+                } finally {
+                    this.tianshanUploadBtn.disabled = false;
+                    this.tianshanUploadBtn.removeAttribute('aria-busy');
+                    this.tianshanUploadBtn.textContent = this.t(this.tianshanUploadBtn.dataset.i18n);
+                }
+            });
         }
 
 
@@ -2859,12 +2944,17 @@ class Emoji2Pixel {
                 tweenIndicator.innerHTML = `<span class="frame-arrow">→</span><span class="tween-count">${this.t('tweenFrames', { count: this.tweenFrames })}</span>`;
                 tweenIndicator.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:2px;';
                 const tweenCount = tweenIndicator.querySelector('.tween-count');
-                tweenCount.style.cssText = 'font-size:0.7rem;color:#94a3b8;';
+                tweenCount.style.cssText = 'font-size:0.7rem;color:var(--muted);';
                 this.framesContainer.appendChild(tweenIndicator);
             }
 
             const frameItem = document.createElement('div');
             frameItem.className = 'frame-item' + (index === this.currentFrameIndex ? ' active' : '');
+            frameItem.tabIndex = 0;
+            frameItem.setAttribute('aria-label', this.t('keyframe', {index:index + 1}));
+            frameItem.addEventListener('keydown', event => {
+                if (event.target === frameItem && ['Enter',' '].includes(event.key)) { event.preventDefault(); this.selectFrame(index); }
+            });
             const renderBadge = frame.renderOverrides ? '<span class="frame-render-badge">FX</span>' : '';
             const sampleBadge = frame.emojiFitMode
                 ? `<span class="frame-sample-badge">${frame.emojiFitMode === 'auto' ? 'A' : 'M'}</span>`
@@ -2890,7 +2980,9 @@ class Emoji2Pixel {
                 }
             });
 
+            frameItem.querySelector('.frame-delete').setAttribute('aria-label', this.t('delete') + ' ' + this.t('keyframe', {index:index+1}));
             const nameInput = frameItem.querySelector('.frame-name');
+            nameInput.setAttribute('aria-label', this.t('keyframe', {index:index+1}));
             const frameName = frame.name || frame.emoji || this.t('keyframe', { index: index + 1 });
             nameInput.value = frameName;
             nameInput.addEventListener('click', (e) => e.stopPropagation());
@@ -3504,6 +3596,8 @@ class Emoji2Pixel {
 
         const toast = document.createElement('div');
         toast.className = 'toast';
+        toast.setAttribute('role', 'status');
+        toast.setAttribute('aria-live', 'polite');
         toast.textContent = message;
         document.body.appendChild(toast);
 

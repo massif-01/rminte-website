@@ -109,5 +109,21 @@
   "gifFailed": "GIF-Erzeugung fehlgeschlagen",
   "confirmClearFrames": "Alle Keyframes loeschen?",
   "defaultImageName": "Bild",
-  "defaultGifName": "GIF"
+  "defaultGifName": "GIF",
+  "workspaceTitle": "LED-Grafikstudio",
+  "workspaceLead": "Vom Bild zur Anzeige. Jedes Pixel am richtigen Platz.",
+  "materials": "Material",
+  "timeline": "Frames",
+  "properties": "Eigenschaften",
+  "displaySettings": "Anzeigeeinstellungen",
+  "previewLabel": "Vorschau",
+  "startHint": "Emoji auswählen oder Bild importieren.",
+  "deviceHint": "Mit RM-01 verbinden, um die Grafik zu senden.",
+  "contact": "Kontakt",
+  "menu": "Menü",
+  "navGallery": "Galerie",
+  "navProduct": "Produkt",
+  "navArchitecture": "Architektur",
+  "navGuides": "Anleitungen",
+  "navDownloads": "Downloads"
 }

@@ -1,4 +1,4 @@
-/* Guides share the brand scale; article typography is optimized for reading. */
+/* Guides inherit the shared website palette and optimize long-form reading. */
 .guide-body { min-height: 100dvh; }
 .guide-home-main, .guide-doc-main { position: relative; z-index: 2; width: min(var(--section-w), calc(100% - var(--section-x) * 2)); margin: auto; padding: var(--page-top) 0 var(--section-space); }
 .guide-home-hero { max-width: 800px; }
@@ -77,13 +77,13 @@
 .guide-article li { margin: 10px 0; padding-left: .3rem; }
 .guide-article li::marker { color: var(--muted); }
 .guide-article strong { color: var(--ink); font-weight: 600; }
-.guide-article code { border-radius: 3px; padding: .12em .35em; color: var(--ink); background: #202326; border: 1px solid var(--line); font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: .88em; overflow-wrap: anywhere; }
+.guide-article code { border-radius: 3px; padding: .12em .35em; color: var(--ink); background: var(--panel-strong); border: 1px solid var(--line); font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: .88em; overflow-wrap: anywhere; }
 .guide-table-wrap { margin: 28px 0 36px; overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-control); }
 .guide-table-wrap table { width: 100%; min-width: 520px; border-collapse: collapse; }
 .guide-table-wrap th, .guide-table-wrap td { padding: 16px; border-bottom: 1px solid var(--line); color: var(--ink-soft); font-size: 14px; line-height: 1.8; text-align: left; vertical-align: top; }
 .guide-table-wrap th { color: var(--ink); background: var(--panel); font-weight: 550; }
 .guide-table-wrap tr:last-child td { border-bottom: 0; }
-.guide-code { position: relative; margin: 28px 0 36px; overflow: hidden; border-radius: var(--radius-panel); border: 1px solid var(--line); background: #101214; }
+.guide-code { position: relative; margin: 28px 0 36px; overflow: hidden; border-radius: var(--radius-panel); border: 1px solid var(--line); background: var(--bg-2); }
 .guide-code button { position: absolute; z-index: 2; top: 10px; right: 12px; min-height: 32px; border: 1px solid var(--line); border-radius: var(--radius-button); padding: 6px 10px; color: var(--muted); cursor: pointer; background: var(--panel-strong); font: 500 11px var(--font-ui); }
 .guide-code button:hover { color: var(--ink); }
 .guide-code pre { margin: 0; overflow-x: auto; padding: 56px 20px 24px; }

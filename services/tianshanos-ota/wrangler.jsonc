@@ -14,5 +14,12 @@
       "binding": "DOWNLOADS",
       "bucket_name": "rminte-downloads"
     }
-  ]
+  ],
+  "build": {
+    "command": "node scripts/build-service-brand.mjs",
+    "watch_dir": [
+      "../../rm01-website-soft/assets/brand.css",
+      "../../rm01-website-soft/assets/images/logo-white.svg"
+    ]
+  }
 }

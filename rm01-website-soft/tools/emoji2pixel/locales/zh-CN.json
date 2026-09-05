@@ -109,5 +109,21 @@
   "gifFailed": "GIF生成失败",
   "confirmClearFrames": "确定要清空所有帧吗？",
   "defaultImageName": "图片",
-  "defaultGifName": "GIF"
+  "defaultGifName": "GIF",
+  "workspaceTitle": "灯板图形转换工具",
+  "workspaceLead": "从图形到灯板，让每一颗像素准确呈现。",
+  "materials": "素材",
+  "timeline": "关键帧",
+  "properties": "属性",
+  "displaySettings": "灯板设置",
+  "previewLabel": "画布预览",
+  "startHint": "选择 Emoji 或导入图片，开始创作。",
+  "deviceHint": "连接 RM-01 后，将当前图形发送到灯板。",
+  "contact": "联系我们",
+  "menu": "菜单",
+  "navGallery": "图册",
+  "navProduct": "产品",
+  "navArchitecture": "架构",
+  "navGuides": "指南",
+  "navDownloads": "下载"
 }

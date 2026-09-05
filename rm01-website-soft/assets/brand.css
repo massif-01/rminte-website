@@ -6,16 +6,16 @@
   --radius-control: 4px;
   --radius-button: 999px;
   --radius-panel: 8px;
-  --bg: #08090a;
-  --bg-2: #0d0e10;
-  --ink: #f3f3f1;
-  --ink-soft: rgba(245,245,243,.82);
-  --muted: #a0a2a4;
-  --dim: #787c80;
-  --panel: #141517;
-  --panel-strong: #1b1d20;
-  --core: #101214;
-  --core-2: #17191b;
+  --bg: #141618;
+  --bg-2: #191c1f;
+  --ink: #e5e7e8;
+  --ink-soft: #cbd0d4;
+  --muted: #a9adb2;
+  --dim: #969da3;
+  --panel: #1c1f22;
+  --panel-strong: #24282c;
+  --core: #191c1f;
+  --core-2: #1c1f22;
   --line: rgba(235,238,240,.13);
   --line-strong: rgba(235,238,240,.28);
   --accent: #e8eaed;
@@ -46,7 +46,7 @@
 .brand-page {margin:0; min-width:320px; background:var(--bg); color:var(--ink); font:16px/1.65 var(--font-ui); -webkit-font-smoothing:antialiased; color-scheme:dark}
 .brand-page * {box-sizing:border-box}
 .brand-page a {color:inherit;text-decoration:none}
-.brand-page button,.brand-page input,.brand-page select {font:inherit}
+:where(.brand-page) button,:where(.brand-page) input,:where(.brand-page) select {font:inherit}
 .brand-page :focus-visible {outline:2px solid var(--accent);outline-offset:4px}
 .brand-page button {cursor:pointer}
 .brand-page button:disabled {opacity:.4;cursor:not-allowed}

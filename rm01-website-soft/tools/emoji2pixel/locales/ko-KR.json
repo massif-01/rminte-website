@@ -109,5 +109,21 @@
   "gifFailed": "GIF 생성 실패",
   "confirmClearFrames": "모든 키프레임을 삭제할까요?",
   "defaultImageName": "이미지",
-  "defaultGifName": "GIF"
+  "defaultGifName": "GIF",
+  "workspaceTitle": "LED 그래픽 스튜디오",
+  "workspaceLead": "이미지에서 디스플레이까지, 모든 픽셀을 정확하게.",
+  "materials": "소재",
+  "timeline": "프레임",
+  "properties": "속성",
+  "displaySettings": "디스플레이 설정",
+  "previewLabel": "미리보기",
+  "startHint": "이모지를 선택하거나 이미지를 가져오세요.",
+  "deviceHint": "RM-01에 연결하여 그래픽을 디스플레이로 전송하세요.",
+  "contact": "문의하기",
+  "menu": "메뉴",
+  "navGallery": "갤러리",
+  "navProduct": "제품",
+  "navArchitecture": "구조",
+  "navGuides": "가이드",
+  "navDownloads": "다운로드"
 }

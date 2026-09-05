@@ -18,7 +18,7 @@
 .visual-stage { position: relative; margin: 0; min-width: 0; grid-column: 2; grid-row: 1 / 3; touch-action: pan-y; }
 .product-image {
   width: 100%; height: clamp(350px, calc(100dvh - 290px), 780px);
-  object-fit: contain; object-position: center; background: #050606;
+  object-fit: contain; object-position: center; background: var(--bg-2);
   transition: opacity 260ms var(--motion); user-select: none; pointer-events: none;
 }
 .visual-stage.is-changing .product-image { opacity: 0; }

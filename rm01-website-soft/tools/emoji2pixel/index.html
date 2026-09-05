@@ -1,31 +1,14 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emoji2Pixel</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="app-container">
-        <!-- 左侧控制面板 -->
-        <aside class="control-panel">
-            <header class="app-header">
-                <div class="app-title">
-                    <h1>🎨 Emoji2Pixel</h1>
-                </div>
-                <div class="app-lang">
-                    <select id="langSelect" class="lang-select"></select>
-                </div>
-            </header>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#141618"><title>灯板图形转换工具 · RMinte</title>
+<link rel="icon" href="../../assets/images/favicon.png"><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="../../assets/brand.css?v=slate-2"><link rel="stylesheet" href="styles.css?v=graphite-3"></head><body class="brand-page pixel-page">
+<header class="brand-header"><a class="brand-logo" href="../../index.html" aria-label="RMinte"><img src="../../assets/images/logo-white.svg" alt="RMinte"></a><nav class="brand-nav" id="brandNav" aria-label="RMinte"><a href="../../gallery/" data-i18n="navGallery">图册</a><a href="../../index.html#engine" data-i18n="navProduct">产品</a><a href="../../index.html#teardown" data-i18n="navArchitecture">架构</a><a href="../../guides/" data-i18n="navGuides">指南</a><a href="../../downloads/" data-i18n="navDownloads">下载</a></nav><div class="brand-actions"><select id="langSelect" class="brand-language" aria-label="Language"></select><button id="brandMenu" class="brand-menu" aria-controls="brandNav" aria-expanded="false" data-i18n-title="menu" title="菜单">☰</button></div></header>
+<main class="pixel-main"><div class="workspace-heading"><div><span class="brand-kicker">RM-01 / EMOJI2PIXEL</span><h1 data-i18n="workspaceTitle">灯板图形转换工具</h1></div><p data-i18n="workspaceLead">从图形到灯板，让每一颗像素准确呈现。</p></div>
 
-            <!-- 输入区域 -->
-            <div class="input-section">
+<div class="app-container" data-active-panel="materials"><div class="workspace-tabs" role="tablist" aria-label="Workspace"><button role="tab" id="tabMaterials" aria-selected="true" aria-controls="materialsPanel" data-panel="materials" data-i18n="materials">素材</button><button role="tab" id="tabFrames" aria-selected="false" aria-controls="framesPanel" data-panel="frames" data-i18n="timeline">关键帧</button><button role="tab" id="tabProperties" aria-selected="false" aria-controls="propertiesPanel" data-panel="properties" data-i18n="properties">属性</button></div><aside class="control-panel" id="materialsPanel" aria-labelledby="tabMaterials"><h2 data-i18n="materials">素材</h2><div class="input-section">
                 <div class="input-row">
                     <button id="emojiFitToggle" class="emoji-fit-toggle" title="自动拟合" data-i18n-title="autoFit">A</button>
                     <input type="text" id="emojiInput" placeholder="input emoji" data-i18n-placeholder="inputEmoji" maxlength="4">
-                    <button id="addImageBtn" class="btn btn-icon" title="导入图片" data-i18n-title="importImage" type="button">🖼</button>
-                    <button id="addEmojiBtn" class="btn btn-primary" style="min-width:60px;font-weight:bold;" type="button" title="添加关键帧" data-i18n-title="addFrame">+</button>
+                    <button id="addImageBtn" class="btn btn-icon" title="导入图片" data-i18n-title="importImage" type="button">↥</button>
+                    <button id="addEmojiBtn" class="btn btn-primary"  type="button" title="添加关键帧" data-i18n-title="addFrame">+</button>
                 </div>
                 <input type="file" id="emojiImageInput" class="emoji-image-input" accept="image/*">
                 <div class="emoji-fit-row" id="emojiFitRow">
@@ -37,40 +20,28 @@
                 <div class="emoji-scroll" id="emojiGrid">
                     <div class="emoji-loading" data-i18n="loadingEmoji">正在加载emoji...</div>
                 </div>
-            </div>
-
-            <!-- 关键帧列表 -->
-            <div class="frames-section">
-                <div class="frames-header">
-                    <span id="frameCount">关键帧 (0)</span>
-                    <div class="tween-setting">
-                        <label data-i18n="tweenLabel">过渡:</label>
-                        <input type="number" id="tweenFramesInput" min="0" max="20" step="1" value="5">
-                    </div>
-                    <button id="clearFramesBtn" class="btn btn-icon btn-danger" title="清空" data-i18n-title="clear">🗑</button>
-                </div>
-                <span class="tween-info" id="tweenInfo"></span>
-                <div class="frames-container" id="framesContainer">
-                    <div class="empty-frames" data-i18n="emptyFrames">添加emoji创建动画</div>
-                </div>
-            </div>
-
-            <!-- 动画控制 -->
-            <div class="animation-section">
-                <div class="anim-controls">
-                    <button id="playBtn" class="btn btn-icon" title="播放" data-i18n-title="play">▶</button>
-                    <button id="pauseBtn" class="btn btn-icon" title="暂停" data-i18n-title="pause">⏸</button>
-                    <input type="number" id="animSpeed" min="20" max="5000" step="50" value="500">
-                    <span id="speedValue">500ms</span>
-                </div>
-            </div>
-        </aside>
-
-        <!-- 右侧预览区域 -->
-        <main class="preview-area">
-            <div class="preview-toolbar">
-                <!-- 画布设置 -->
-                <div class="canvas-settings">
+            </div></aside>
+<section class="preview-area" aria-label="Canvas"><div class="preview-toolbar"><span class="brand-kicker" data-i18n="previewLabel">画布预览</span><div class="export-controls">
+                    <select id="exportTypeSelect">
+                        <option value="raw" selected data-i18n="exportRaw">原始像素</option>
+                        <option value="preview" data-i18n="exportPreview">预览图</option>
+                    </select>
+                    <button id="downloadBtn" class="btn btn-small" data-i18n="downloadPng">PNG</button>
+                    <button id="downloadGifBtn" class="btn btn-small btn-primary" data-i18n="downloadGif">GIF</button>
+                    <button id="copyBtn" class="btn btn-small" data-i18n="copy">复制</button>
+                </div></div><div class="canvas-container">
+                <canvas id="mainCanvas" width="640" height="640"></canvas>
+                <canvas id="selectionCanvas" width="640" height="640"></canvas>
+            </div><div class="canvas-hint" id="canvasHint" data-i18n="canvasHint">拖拽移动 | 滚轮缩放 | Shift+拖拽旋转</div><div id="canvasEmpty" class="canvas-empty" data-i18n="startHint">选择 Emoji 或导入图片，开始创作。</div><div class="preview-shortcuts">
+                <span class="keycap">A</span><span data-i18n="shortcutRect">框选</span>
+                <span class="keycap">I</span><span data-i18n="shortcutColor">按色</span>
+                <span class="keycap">F</span><span data-i18n="shortcutFill">填色</span>
+                <span class="keycap">Del</span><span data-i18n="shortcutDelete">清空</span>
+                <span class="keycap">Cmd/Ctrl+C</span><span data-i18n="shortcutCopy">复制</span>
+                <span class="keycap">Cmd/Ctrl+V</span><span data-i18n="shortcutPaste">粘贴</span>
+                <span class="keycap">Cmd/Ctrl+Z</span><span data-i18n="shortcutUndo">撤销</span>
+            </div></section>
+<aside class="properties-panel" id="propertiesPanel" aria-labelledby="tabProperties"><h2 data-i18n="properties">属性</h2><details open class="settings-group"><summary data-i18n="displaySettings">灯板设置</summary><div class="canvas-settings">
                     <div class="setting-item">
                         <label data-i18n="size">尺寸</label>
                         <div class="unit-field">
@@ -130,41 +101,7 @@
                             <button class="style-btn" data-style="circle" title="圆形" data-i18n-title="shapeCircle">●</button>
                         </div>
                     </div>
-                </div>
-                <!-- 导出按钮 -->
-                <div class="export-controls">
-                    <select id="exportTypeSelect">
-                        <option value="raw" selected data-i18n="exportRaw">原始像素</option>
-                        <option value="preview" data-i18n="exportPreview">预览图</option>
-                    </select>
-                    <button id="downloadBtn" class="btn btn-small" data-i18n="downloadPng">PNG</button>
-                    <button id="downloadGifBtn" class="btn btn-small btn-primary" data-i18n="downloadGif">GIF</button>
-                    <button id="copyBtn" class="btn btn-small" data-i18n="copy">复制</button>
-                </div>
-            </div>
-            <div class="canvas-container">
-                <canvas id="mainCanvas" width="640" height="640"></canvas>
-                <canvas id="selectionCanvas" width="640" height="640"></canvas>
-            </div>
-            <div class="canvas-hint" id="canvasHint" data-i18n="canvasHint">拖拽移动 | 滚轮缩放 | Shift+拖拽旋转</div>
-            <div class="preview-shortcuts">
-                <span class="keycap">A</span><span data-i18n="shortcutRect">框选</span>
-                <span class="keycap">I</span><span data-i18n="shortcutColor">按色</span>
-                <span class="keycap">F</span><span data-i18n="shortcutFill">填色</span>
-                <span class="keycap">Del</span><span data-i18n="shortcutDelete">清空</span>
-                <span class="keycap">Cmd/Ctrl+C</span><span data-i18n="shortcutCopy">复制</span>
-                <span class="keycap">Cmd/Ctrl+V</span><span data-i18n="shortcutPaste">粘贴</span>
-                <span class="keycap">Cmd/Ctrl+Z</span><span data-i18n="shortcutUndo">撤销</span>
-            </div>
-            <div class="preview-author">
-                <span data-i18n="authorBy">By Thomas</span>
-                <span style="margin: 0 8px; opacity: 0.5;">|</span>
-                <a href="https://github.com/thomas-hiddenpeak/emoji2pixel" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">
-                    <span style="opacity: 0.8;">⭐ GitHub</span>
-                </a>
-                <button id="tianshanUploadBtn" class="btn btn-small" data-i18n="exportTianshan">TianshanOS</button>
-            </div>
-            <div class="pixel-tools" id="pixelTools">
+                </div></details><div class="pixel-tools" id="pixelTools">
                 <div class="pixel-tools-header" data-i18n="tools">工具</div>
                 <div class="pixel-tools-section">
                     <div class="pixel-tools-title" data-i18n="general">通用</div>
@@ -249,11 +186,34 @@
                         </label>
                     </div>
                 </div>
-            </div>
-        </main>
-    </div>
+            </div></aside><section class="timeline-panel" id="framesPanel" aria-labelledby="tabFrames"><div class="frames-section">
+                <div class="frames-header">
+                    <span id="frameCount">关键帧 (0)</span>
+                    <div class="tween-setting">
+                        <label data-i18n="tweenLabel">过渡:</label>
+                        <input type="number" id="tweenFramesInput" min="0" max="20" step="1" value="5">
+                    </div>
+                    <button id="clearFramesBtn" class="btn btn-icon btn-danger" title="清空" data-i18n-title="clear">×</button>
+                </div>
+                <span class="tween-info" id="tweenInfo"></span>
+                <div class="frames-container" id="framesContainer">
+                    <div class="empty-frames" data-i18n="emptyFrames">添加emoji创建动画</div>
+                </div>
+            </div><div class="animation-section">
+                <div class="anim-controls">
+                    <button id="playBtn" class="btn btn-icon" title="播放" data-i18n-title="play">▶</button>
+                    <button id="pauseBtn" class="btn btn-icon" title="暂停" data-i18n-title="pause">⏸</button>
+                    <input type="number" id="animSpeed" min="20" max="5000" step="50" value="500">
+                    <span id="speedValue">500ms</span>
+                </div>
+            </div></section></div>
+<div class="workspace-output"><p data-i18n="deviceHint">连接 RM-01 后，将当前图形发送到灯板。</p><button id="tianshanUploadBtn" class="brand-button" data-i18n="exportTianshan">导出到天山OS</button></div></main>
+<footer class="brand-footer"><div class="preview-author">
+                <span data-i18n="authorBy">By Thomas</span>
+                <span style="margin: 0 8px; opacity: 0.5;">|</span>
+                <a href="https://github.com/thomas-hiddenpeak/emoji2pixel" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">
+                    <span style="opacity: 0.8;">GitHub ↗</span>
+                </a>
 
-    <script src="locales/locales.js"></script>
-    <script src="app.js"></script>
-</body>
-</html>
+            </div><div class="brand-footer-links"><a class="brand-button" href="mailto:support@rminte.com" data-i18n="contact">联系我们</a><a class="brand-button" href="../../downloads/" data-i18n="navDownloads">下载</a></div></footer>
+<script src="locales/locales.js?v=graphite-3"></script><script src="app.js?v=graphite-3"></script></body></html>

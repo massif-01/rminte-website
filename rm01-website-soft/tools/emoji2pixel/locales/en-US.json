@@ -109,5 +109,21 @@
   "gifFailed": "GIF generation failed",
   "confirmClearFrames": "Clear all keyframes?",
   "defaultImageName": "Image",
-  "defaultGifName": "GIF"
+  "defaultGifName": "GIF",
+  "workspaceTitle": "LED graphics studio",
+  "workspaceLead": "From image to display. Every pixel in place.",
+  "materials": "Materials",
+  "timeline": "Frames",
+  "properties": "Properties",
+  "displaySettings": "Display settings",
+  "previewLabel": "Canvas preview",
+  "startHint": "Choose an emoji or import an image to begin.",
+  "deviceHint": "Connect to RM-01 to send your artwork to the display.",
+  "contact": "Contact us",
+  "menu": "Menu",
+  "navGallery": "Gallery",
+  "navProduct": "Product",
+  "navArchitecture": "Architecture",
+  "navGuides": "Guides",
+  "navDownloads": "Downloads"
 }

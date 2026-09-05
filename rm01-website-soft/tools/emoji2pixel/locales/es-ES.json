@@ -109,5 +109,21 @@
   "gifFailed": "Fallo al generar GIF",
   "confirmClearFrames": "¿Borrar todos los fotogramas clave?",
   "defaultImageName": "Imagen",
-  "defaultGifName": "GIF"
+  "defaultGifName": "GIF",
+  "workspaceTitle": "Estudio gráfico LED",
+  "workspaceLead": "De la imagen a la pantalla. Cada píxel en su lugar.",
+  "materials": "Materiales",
+  "timeline": "Fotogramas",
+  "properties": "Propiedades",
+  "displaySettings": "Ajustes de pantalla",
+  "previewLabel": "Vista previa",
+  "startHint": "Elige un emoji o importa una imagen.",
+  "deviceHint": "Conecta RM-01 para enviar tu diseño a la pantalla.",
+  "contact": "Contacto",
+  "menu": "Menú",
+  "navGallery": "Galería",
+  "navProduct": "Producto",
+  "navArchitecture": "Arquitectura",
+  "navGuides": "Guías",
+  "navDownloads": "Descargas"
 }

@@ -109,5 +109,21 @@
   "gifFailed": "GIFの生成に失敗しました",
   "confirmClearFrames": "全てのキーフレームを削除しますか？",
   "defaultImageName": "画像",
-  "defaultGifName": "GIF"
+  "defaultGifName": "GIF",
+  "workspaceTitle": "LEDグラフィックスタジオ",
+  "workspaceLead": "画像からディスプレイへ。一つひとつのピクセルを正確に。",
+  "materials": "素材",
+  "timeline": "フレーム",
+  "properties": "プロパティ",
+  "displaySettings": "ディスプレイ設定",
+  "previewLabel": "プレビュー",
+  "startHint": "絵文字を選択するか、画像を読み込んで開始します。",
+  "deviceHint": "RM-01に接続して、画像をディスプレイに送信します。",
+  "contact": "お問い合わせ",
+  "menu": "メニュー",
+  "navGallery": "ギャラリー",
+  "navProduct": "製品",
+  "navArchitecture": "構成",
+  "navGuides": "ガイド",
+  "navDownloads": "ダウンロード"
 }
