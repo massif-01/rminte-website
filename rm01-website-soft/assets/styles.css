@@ -3707,14 +3707,22 @@ body:is(.guide-body, .download-body, .gallery-body) {
   --page-top: calc(164px + var(--safe-top));
   --section-x: max(clamp(24px, 5.55vw, 88px), env(safe-area-inset-left), env(safe-area-inset-right));
 }
-body:is(.guide-body, .download-body, .gallery-body)::before {
+body:is(.guide-body, .download-body, .gallery-body) .site-shell {
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: none;
+  padding: calc(24px + var(--safe-top)) max(var(--section-x), calc((100% - var(--section-w)) / 2)) 8px;
+  background-color: var(--bg);
+  pointer-events: auto;
+}
+body:is(.guide-body, .download-body, .gallery-body) .site-shell::after {
   content: "";
-  position: fixed;
-  z-index: 19;
-  inset: 0 0 auto;
-  height: calc(112px + var(--safe-top));
+  position: absolute;
+  inset: 100% 0 auto;
+  height: 32px;
   pointer-events: none;
-  background: linear-gradient(var(--bg) 0 calc(80px + var(--safe-top)), transparent);
+  background: linear-gradient(var(--bg), transparent);
 }
 .ghost-button { border-radius: var(--radius-button); font-weight: 500; }
 body.teardown-active .brand-mark { background: none; }
@@ -3723,8 +3731,6 @@ body.teardown-active .brand-mark { background: none; }
   :root { --page-title: clamp(2.125rem, 5.5vw, 3rem); --page-top: 124px; --body-size: 15px; }
   body:is(.guide-body, .download-body, .gallery-body) { --page-top: calc(124px + var(--safe-top)); }
   body:is(.guide-body, .download-body, .gallery-body) .site-shell {
-    left: max(24px, env(safe-area-inset-left));
-    width: calc(100% - max(24px, env(safe-area-inset-left)) - max(24px, env(safe-area-inset-right)));
-    transform: none;
+    padding: calc(16px + var(--safe-top)) max(24px, env(safe-area-inset-right)) 20px max(24px, env(safe-area-inset-left));
   }
 }
