@@ -416,7 +416,7 @@ function siteNavigationTemplate() {
   <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true">
     <div class="mobile-overlay-panel">
       <div class="mobile-overlay-top">
-        <span>RMinte</span>
+        <img class="mobile-menu-logo" src="../assets/images/logo-white.svg" alt="RMinte">
         <button class="ghost-button" type="button" data-menu-close data-guide-text data-zh="关闭" data-en="Close">关闭</button>
       </div>
       <nav class="mobile-links" aria-label="移动导航">
@@ -440,7 +440,7 @@ function pageTemplate(config, rendered) {
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="${escapeHtml(config.description.zh)}">
   <meta property="og:title" content="${escapeHtml(config.title.zh)}">
   <meta property="og:description" content="${escapeHtml(config.description.zh)}">
@@ -451,7 +451,7 @@ function pageTemplate(config, rendered) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/styles.css?v=module-align-1">
+  <link rel="stylesheet" href="../assets/styles.css?v=safe-area-1">
   <link rel="stylesheet" href="../assets/guides.css?v=clean-cards-1">
   <script id="guidePageData" type="application/json">${pageData}</script>
   <script src="../visitor-language.js" defer></script>

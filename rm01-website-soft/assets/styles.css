@@ -253,7 +253,7 @@ body.teardown-active .brand-mark, body.teardown-active .nav-island, body.teardow
 
 .mobile-overlay-panel {
   min-height: 100dvh;
-  padding: 24px;
+  padding: calc(24px + var(--safe-top, 0px)) max(24px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
   transform: translateY(22px);
   transition: transform 720ms var(--motion);
 }
@@ -267,6 +267,12 @@ body.teardown-active .brand-mark, body.teardown-active .nav-island, body.teardow
   align-items: center;
   justify-content: space-between;
   color: var(--muted);
+}
+
+.mobile-menu-logo {
+  display: block;
+  width: 118px;
+  height: auto;
 }
 
 .mobile-links {
@@ -2287,7 +2293,7 @@ main :is(h1,h2,h3) .rm-mark {
 
 .site-shell {
   width: min(var(--section-w),calc(100% - var(--section-x)*2));
-  top: 24px;
+  top: calc(24px + var(--safe-top, 0px));
   gap: 36px;
   grid-template-columns: 1fr auto 1fr;
 }
@@ -3049,7 +3055,7 @@ html[lang=en] .pillar-card .card-core h3 {
 
 @media(max-width:820px) {
   .site-shell {
-    top: 16px;
+    top: calc(16px + var(--safe-top, 0px));
     width: calc(100% - 48px);
     gap: 20px;
   }
@@ -3695,19 +3701,30 @@ html[lang] main #heroTitle>.hero-title-line:first-child {
 }
 
 /* Support-page navigation backdrop and responsive type scale. */
-/* Keep scrolling article text from competing with the fixed navigation. */
+/* Cover the screen edge while keeping navigation within the device safe area. */
+body:is(.guide-body, .download-body, .gallery-body) {
+  --safe-top: env(safe-area-inset-top, 0px);
+  --page-top: calc(164px + var(--safe-top));
+  --section-x: max(clamp(24px, 5.55vw, 88px), env(safe-area-inset-left), env(safe-area-inset-right));
+}
 body:is(.guide-body, .download-body, .gallery-body)::before {
   content: "";
   position: fixed;
   z-index: 19;
   inset: 0 0 auto;
-  height: 112px;
+  height: calc(112px + var(--safe-top));
   pointer-events: none;
-  background: linear-gradient(var(--bg) 0 72%, transparent);
+  background: linear-gradient(var(--bg) 0 calc(80px + var(--safe-top)), transparent);
 }
 .ghost-button { border-radius: var(--radius-button); font-weight: 500; }
 body.teardown-active .brand-mark { background: none; }
 .contact-close, .skip-link:focus-visible { border-radius: var(--radius-button); }
 @media (max-width: 820px) {
   :root { --page-title: clamp(2.125rem, 5.5vw, 3rem); --page-top: 124px; --body-size: 15px; }
+  body:is(.guide-body, .download-body, .gallery-body) { --page-top: calc(124px + var(--safe-top)); }
+  body:is(.guide-body, .download-body, .gallery-body) .site-shell {
+    left: max(24px, env(safe-area-inset-left));
+    width: calc(100% - max(24px, env(safe-area-inset-left)) - max(24px, env(safe-area-inset-right)));
+    transform: none;
+  }
 }
