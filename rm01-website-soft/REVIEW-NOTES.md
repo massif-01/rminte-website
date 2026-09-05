@@ -21,6 +21,10 @@
 
 ## 验证与边界
 
+桌面最终构图示例（接口与插卡相邻板块）：
+
+![桌面板块留白与宽银幕图片](review/desktop-layout.png)
+
 - 本地预览：以 `rm01-website-soft` 为静态根目录，例如 `python3 -m http.server 4174 --directory rm01-website-soft`。
 - 已在 Chromium 浏览器检查导航、图文构图、视频循环及两档标题字号；覆盖 1169px 桌面、1920px 字号检查与 390px 手机布局检查。
 - 已检查 JavaScript 语法和 Git 空白错误。浏览器验证为人工/脚本交互记录，不是完整自动化回归套件。
