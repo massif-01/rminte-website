@@ -19,7 +19,7 @@
   "downloadPng": "PNG",
   "downloadGif": "GIF",
   "copy": "复制",
-  "exportTianshan": "导出到天山OS",
+  "exportTianshan": "导出到 TianshanOS",
   "tianshanUploading": "正在上传到天山OS...",
   "tianshanUploaded": "已上传并显示: {name}",
   "tianshanUploadFailed": "上传失败: {message}",

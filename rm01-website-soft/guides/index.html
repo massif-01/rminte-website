@@ -14,10 +14,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/brand.css?v=slate-2">
-  <link rel="stylesheet" href="../assets/styles.css?v=slate-1">
-  <link rel="stylesheet" href="../assets/guides.css?v=slate-1">
+  <link rel="stylesheet" href="../assets/styles.css?v=contact-panel-1">
+  <link rel="stylesheet" href="../assets/guides.css?v=clean-cards-1">
   <script src="../visitor-language.js" defer></script>
-  <script src="../assets/guides.js?v=ip-language-1" defer></script>
+  <script src="../assets/guides.js?v=vector-icons-1" defer></script>
+  <script src="../assets/site-data.js?v=selected-copy-2" defer></script>
+  <script src="../assets/footer.js?v=shared-footer-1" defer></script>
 </head>
 <body class="guide-body">
   <a class="skip-link" href="#guideMain" data-guide-text data-zh="跳至指南内容" data-en="Skip to guide content">跳至指南内容</a>
@@ -61,7 +63,7 @@
   <main class="guide-home-main" id="guideMain">
     <section class="guide-home-hero" aria-labelledby="guideTitle">
       <h1 id="guideTitle" data-guide-text data-zh="选择你的使用角色" data-en="Choose your operating role">选择你的使用角色</h1>
-      <p class="guide-home-lead" data-guide-text data-zh="从日常设备管理到系统级运维，按权限进入对应指南。页面只呈现该角色真正需要的操作范围。" data-en="From daily device administration to system-level operations, choose the guide that matches your account permissions and responsibilities.">从日常设备管理到系统级运维，按权限进入对应指南。页面只呈现该角色真正需要的操作范围。</p>
+      <p class="guide-home-lead" data-guide-text data-zh="日常管理、系统运维与安全配置，各有对应的操作指南。选择你的角色，从手头要做的事开始。" data-en="Find guidance for daily management, system operations, and security configuration. Choose your role and start with the task at hand.">日常管理、系统运维与安全配置，各有对应的操作指南。选择你的角色，从手头要做的事开始。</p>
     </section>
 
     <section class="guide-search" data-guide-search>
@@ -84,54 +86,54 @@
 
     <div class="guide-list-label" aria-hidden="true">
       <span data-guide-text data-zh="角色指南" data-en="Role guides">角色指南</span>
-      <span>03</span>
+
     </div>
 
     <section class="guide-card-grid" aria-label="角色指南列表">
       <a class="guide-card guide-card-admin" href="admin.html">
-        <span class="guide-card-index">01 / DAILY USE</span>
+
         <h2>Admin</h2>
         <p class="guide-card-copy" data-guide-text data-zh="面向设备管理员。覆盖系统状态、设备面板、风扇、LED、网络、文件与 OTA 更新。" data-en="For device administrators. Covers system status, device panels, fans, LEDs, networking, files, and OTA updates.">面向设备管理员。覆盖系统状态、设备面板、风扇、LED、网络、文件与 OTA 更新。</p>
         <div class="guide-card-bottom">
           <span class="guide-card-meta" data-guide-text data-zh="9 个章节 · 中英双语" data-en="9 chapters · Chinese and English">9 个章节 · 中英双语</span>
-          <span class="guide-card-arrow" aria-hidden="true">↗</span>
+          <span class="guide-card-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
         </div>
       </a>
 
       <a class="guide-card guide-card-root" href="root.html">
-        <span class="guide-card-index">02 / OPERATIONS</span>
+
         <h2>Root</h2>
         <p class="guide-card-copy" data-guide-text data-zh="面向系统运维人员。在日常能力之外，增加终端、远程指令与自动化管理。" data-en="For system operators. Adds terminal, remote command, and automation management to the shared daily capabilities.">面向系统运维人员。在日常能力之外，增加终端、远程指令与自动化管理。</p>
         <div class="guide-card-bottom">
           <span class="guide-card-meta" data-guide-text data-zh="12 个章节 · 高权限操作" data-en="12 chapters · Privileged operations">12 个章节 · 高权限操作</span>
-          <span class="guide-card-arrow" aria-hidden="true">↗</span>
+          <span class="guide-card-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
         </div>
       </a>
 
       <a class="guide-card guide-card-security" href="security.html">
-        <span class="guide-card-index">03 / SECURITY</span>
+
         <h2 data-guide-text data-zh="安全指南" data-en="Security guide">安全指南</h2>
         <p class="guide-card-copy" data-guide-text data-zh="面向个人用户与安全管理员。覆盖账号安全、SSH 密钥、主机指纹、HTTPS、mTLS 与 Config Pack。" data-en="For individual users and security administrators. Covers account security, SSH keys, host fingerprints, HTTPS, mTLS, and Config Pack.">面向个人用户与安全管理员。覆盖账号安全、SSH 密钥、主机指纹、HTTPS、mTLS 与 Config Pack。</p>
         <div class="guide-card-bottom">
           <span class="guide-card-meta" data-guide-text data-zh="8 个章节 · 安全操作" data-en="8 chapters · Security operations">8 个章节 · 安全操作</span>
-          <span class="guide-card-arrow" aria-hidden="true">↗</span>
+          <span class="guide-card-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
         </div>
       </a>
     </section>
 
     <div class="guide-list-label guide-topic-label" aria-hidden="true">
       <span data-guide-text data-zh="专题指南" data-en="Topic guide">专题指南</span>
-      <span>01</span>
+
     </div>
 
     <section class="guide-topic-grid" aria-label="专题指南列表">
       <a class="guide-card guide-card-network" href="network.html" aria-labelledby="networkGuideTitle">
-        <span class="guide-card-index">04 / NETWORK</span>
+
         <h2 id="networkGuideTitle" data-guide-text data-zh="网络配置" data-en="Network configuration">网络配置</h2>
         <p class="guide-card-copy" data-guide-text data-zh="说明 C1 与 C3 两条网络路径，以及用户设备联网、AI 辅助网络共享和整机接入上层网络的方法。" data-en="Covers the C1 and C3 network paths, device connectivity, AI-assisted internet sharing, and upstream access for the complete system.">说明 C1 与 C3 两条网络路径，以及用户设备联网、AI 辅助网络共享和整机接入上层网络的方法。</p>
         <div class="guide-card-bottom">
           <span class="guide-card-meta" data-guide-text data-zh="7 个章节 · 网络操作" data-en="7 chapters · Network operations">7 个章节 · 网络操作</span>
-          <span class="guide-card-arrow" aria-hidden="true">↗</span>
+          <span class="guide-card-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
         </div>
       </a>
     </section>
@@ -139,11 +141,55 @@
     <p class="guide-home-note" data-guide-text data-zh="Root 权限可能改变设备、远程主机和自动化流程。请根据实际职责选择指南。" data-en="Root privileges can change devices, remote hosts, and automation workflows. Choose the guide that matches your responsibilities.">Root 权限可能改变设备、远程主机和自动化流程。请根据实际职责选择指南。</p>
   </main>
 
-  <footer class="guide-footer">
-    <img src="../assets/images/logo-white.svg" alt="RMinte">
-    <div>
-      <span>© 2026 <span class="rm-mark">RMinte AI</span></span>
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="../assets/images/logo-white.svg" alt="RMinte">
+        <div>
+        <p data-footer-text="footer">泛灵（成都）人工智能科技有限公司</p>
+        <span data-footer-text="copyright">© 2026 <span class="rm-mark">RMinte</span> ( Chengdu ) Artificial Intelligence Technology Co., Ltd. · RM-01 Protable AI Supercomputer</span>
+        </div>
+      </div>
+      <div class="footer-actions">
+        <button class="footer-contact" type="button" aria-expanded="false" aria-controls="contactPopover" data-contact-toggle>
+          <span data-footer-text="contactButton">联系我们</span>
+        </button>
+        <a class="footer-github" href="https://github.com/RMinte-AI" target="_blank" rel="noreferrer" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.38-3.37-1.38-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.3.1-2.72 0 0 .84-.27 2.75 1.05A9.35 9.35 0 0 1 12 6.94c.85 0 1.7.12 2.5.34 1.9-1.32 2.74-1.05 2.74-1.05.55 1.42.2 2.46.1 2.72.64.72 1.03 1.64 1.03 2.76 0 3.95-2.34 4.82-4.57 5.07.36.32.68.94.68 1.9 0 1.38-.01 2.48-.01 2.82 0 .28.18.6.69.5A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
     </div>
   </footer>
+
+  <aside class="contact-popover" id="contactPopover" role="dialog" aria-labelledby="contactTitle" aria-hidden="true" data-contact-popover>
+    <div class="contact-card">
+      <div class="contact-card-core">
+        <div class="contact-top">
+          <div>
+
+            <h2 id="contactTitle" data-footer-text="contactTitle">联系我们</h2>
+          </div>
+          <button class="contact-close" type="button" aria-label="关闭" data-contact-close><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:jiezhu@rminte.com">
+            <span data-footer-text="salesContact">销售与渠道合作</span>
+            <strong>jiezhu@rminte.com</strong><svg class="contact-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+          <a href="mailto:yishi@rminte.com">
+            <span data-footer-text="manufacturingContact">制造与供应链合作</span>
+            <strong>yishi@rminte.com</strong><svg class="contact-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+          <a href="mailto:support@rminte.com">
+            <span data-footer-text="supportContact">售前与售后服务</span>
+            <strong>support@rminte.com</strong><svg class="contact-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </aside>
 </body>
 </html>

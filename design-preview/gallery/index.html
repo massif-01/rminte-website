@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="product-theme">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RM-01 产品图册，展示便携 AI 超算的产品外观、结构与工艺细节。">
+  <meta property="og:title" content="RM-01 产品图册">
+  <meta property="og:description" content="11 张实拍影像，呈现 RM-01 的外观、结构与工艺细节。">
+  <meta property="og:image" content="../../rm01-website-soft/assets/gallery/DSC00043.jpg">
+  <meta name="theme-color" content="#000000">
+  <title>图册设计预览 · RMinte</title>
+  <link rel="icon" type="image/png" sizes="512x512" href="../../rm01-website-soft/assets/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../rm01-website-soft/assets/brand.css?v=product-black-1">
+  <link rel="stylesheet" href="../../rm01-website-soft/assets/styles.css?v=compact-nav-1">
+  <style>
+.gallery-body { min-height:100dvh; background:var(--bg); }
+.gallery-main { position:relative; z-index:1; }
+.gallery-viewer { width:min(var(--section-w),calc(100% - var(--section-x)*2)); margin:auto; padding:142px 0 40px; }
+.gallery-intro { display:flex; justify-content:space-between; align-items:center; gap:40px; margin-bottom:24px; }
+.gallery-intro h1 { margin:0; flex:none; font-size:36px; line-height:1.2; font-weight:500; letter-spacing:-.035em; }
+.gallery-lead { max-width:400px; margin:0; font-size:14px; line-height:1.85; color:var(--muted); }
+.visual-stage { margin:0; touch-action:pan-y; }
+.product-image { display:block; width:100%; height:clamp(360px,calc(100dvh - 340px),820px); object-fit:contain; object-position:center; background:var(--bg); user-select:none; pointer-events:none; transition:opacity 260ms ease; }
+.visual-stage.is-changing .product-image { opacity:0; }
+.gallery-details { display:flex; align-items:center; justify-content:space-between; gap:32px; margin-top:28px; }
+.caption-copy { min-width:0; }
+.caption-copy div { display:grid; gap:8px; }
+.caption-copy strong { font-size:14px; line-height:1.5; font-weight:500; }
+.caption-copy [data-caption-label] { color:var(--muted); font-size:12px; line-height:1.6; }
+.gallery-navigation { display:flex; align-items:center; gap:28px; flex:none; }
+.gallery-count { display:flex; gap:8px; align-items:baseline; color:var(--dim); font-size:12px; font-variant-numeric:tabular-nums; }
+.gallery-count strong { color:var(--ink); font-size:16px; font-weight:450; }
+.gallery-arrows { display:flex; gap:10px; }
+.gallery-arrows button { display:grid; place-items:center; width:44px; height:44px; border:1px solid var(--line); border-radius:50%; background:var(--panel); color:var(--ink); cursor:pointer; transition:background 180ms ease; }
+.gallery-arrows button:hover { background:var(--panel-strong); }
+.gallery-arrows button:active { transform:scale(.96); }
+.gallery-arrows button:focus-visible { outline:2px solid var(--ink); outline-offset:4px; }
+@media(max-width:820px) {
+ .gallery-viewer { padding-top:124px; padding-bottom:32px; }
+ .gallery-intro { display:block; margin-bottom:28px; }
+ .gallery-intro h1 { font-size:32px; }
+ .gallery-lead { margin-top:16px; max-width:420px; }
+ .product-image { height:clamp(300px,calc(100svh - 340px),560px); }
+ .gallery-details { align-items:flex-start; gap:24px; }
+ .gallery-navigation { gap:16px; }
+}
+@media(max-width:520px) {
+ .product-image { height:clamp(240px,calc(100svh - 490px),400px); }
+ .gallery-details { flex-wrap:wrap; margin-top:24px; }
+ .visual-caption { width:100%; }
+ .gallery-navigation { width:100%; justify-content:space-between; }
+}
+@media(prefers-reduced-motion:reduce) { .product-image { transition:none; } }
+  </style>
+
+
+</head>
+<body class="gallery-body">
+  <a class="skip-link" href="#galleryMain" data-gallery-text data-zh="跳至图册内容" data-en="Skip to gallery">跳至图册内容</a>
+
+  <header class="site-shell" aria-label="主导航">
+    <a class="brand-mark" href="../../rm01-website-soft/index.html#hero" aria-label="RMinte 首页">
+      <img src="../../rm01-website-soft/assets/images/logo-white.svg" alt="RMinte">
+    </a>
+    <nav class="nav-island" aria-label="页面导航">
+      <a class="active" href="#galleryMain" aria-current="page" data-gallery-text data-zh="图册" data-en="Gallery">图册</a>
+      <a href="../../rm01-website-soft/index.html#engine" data-gallery-text data-zh="产品" data-en="Product">产品</a>
+      <a href="../../rm01-website-soft/index.html#teardown" data-gallery-text data-zh="架构" data-en="Architecture">架构</a>
+      <a href="../../rm01-website-soft/guides/index.html" data-gallery-text data-zh="指南" data-en="Guides">指南</a>
+      <a href="../../rm01-website-soft/downloads/index.html" data-gallery-text data-zh="下载" data-en="Downloads">下载</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="language-toggle" type="button" data-gallery-lang-toggle aria-label="切换到英文">EN</button>
+      <button class="menu-button" type="button" aria-label="打开菜单" aria-controls="mobileOverlay" aria-expanded="false" data-menu-toggle>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true">
+    <div class="mobile-overlay-panel">
+      <div class="mobile-overlay-top">
+        <span>RMinte</span>
+        <button class="ghost-button" type="button" data-menu-close data-gallery-text data-zh="关闭" data-en="Close">关闭</button>
+      </div>
+      <nav class="mobile-links" aria-label="移动导航">
+        <a class="active" href="#galleryMain" aria-current="page" data-gallery-text data-zh="图册" data-en="Gallery">图册</a>
+        <a href="../../rm01-website-soft/index.html#engine" data-gallery-text data-zh="产品" data-en="Product">产品</a>
+        <a href="../../rm01-website-soft/index.html#teardown" data-gallery-text data-zh="架构" data-en="Architecture">架构</a>
+        <a href="../../rm01-website-soft/guides/index.html" data-gallery-text data-zh="指南" data-en="Guides">指南</a>
+        <a href="../../rm01-website-soft/downloads/index.html" data-gallery-text data-zh="下载" data-en="Downloads">下载</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="gallery-main" id="galleryMain">
+    <section class="gallery-viewer" aria-labelledby="galleryTitle">
+      <div class="gallery-intro">
+        <h1 id="galleryTitle" data-gallery-text data-zh="产品图册" data-en="Product gallery">产品图册</h1>
+        <p class="gallery-lead" data-gallery-text data-zh="11 张实拍影像，呈现 RM-01 的外观、结构与工艺细节。" data-en="11 product images present RM-01's exterior, structure, and material details.">11 张实拍影像，呈现 <span class="rm-mark">RM-01</span> 的外观、结构与工艺细节。</p>
+      </div>
+
+      <figure aria-describedby="photoCaption" class="visual-stage" data-tone="dark" data-layout="portrait">
+        <img class="product-image" src="../../rm01-website-soft/assets/gallery/DSC00043.jpg" alt="RM-01 整机实拍 3/4 视角" fetchpriority="high">
+
+      </figure>
+      <div class="gallery-details">
+        <div id="photoCaption" class="visual-caption" aria-live="polite">
+          <div class="caption-copy">
+            <div>
+              <strong data-caption-product><span class="rm-mark">RM-01</span> 便携 AI 超算</strong>
+              <span data-caption-label>整机实拍·3/4视角</span>
+            </div>
+          </div>
+        </div>
+
+      <div class="gallery-navigation" aria-label="图册浏览状态">
+        <div class="gallery-count">
+          <strong>01</strong>
+          <span>/</span>
+          <span>11</span>
+        </div>
+        <div class="gallery-arrows" aria-label="照片切换">
+          <button type="button" data-gallery-previous aria-label="上一张照片"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M19 12H5m5-5-5 5 5 5"/></svg></button>
+          <button type="button" data-gallery-next aria-label="下一张照片"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></button>
+        </div>
+      </div>
+      </div>
+    </section>
+  </main>
+<script>
+(function () {
+  const galleryItems = [
+    {
+      src: '../../rm01-website-soft/assets/gallery/DSC00043.jpg', tone: 'dark', layout: 'portrait', category: 'PRODUCT EXTERIOR',
+      label: { zh: '整机实拍·3/4视角', en: 'Product photography · three-quarter view' },
+      alt: { zh: 'RM-01 整机实拍 3/4 视角', en: 'Three-quarter product photograph of RM-01' }
+    },
+    {
+      src: '../../rm01-website-soft/assets/gallery/DSC00010.jpg', tone: 'light', layout: 'portrait', category: 'PRODUCT EXTERIOR',
+      label: { zh: '整机实拍·正面', en: 'Product photography · front view' },
+      alt: { zh: 'RM-01 整机正面实拍', en: 'Front product photograph of RM-01' }
+    },
+    {
+      src: '../../rm01-website-soft/assets/gallery/DSC00020.jpg', tone: 'light', layout: 'portrait', category: 'PRODUCT EXTERIOR',
+      label: { zh: '整机实拍·亮场', en: 'Product photography · light studio' },
+      alt: { zh: '亮场中的 RM-01 整机实拍', en: 'RM-01 product photograph in a light studio' }
+    },
+    {
+      src: '../../rm01-website-soft/assets/gallery/DSC00030.jpg', tone: 'light', layout: 'portrait', category: 'PRODUCT EXTERIOR',
+      label: { zh: '整机实拍·侧后方', en: 'Product photography · rear-side view' },
+      alt: { zh: 'RM-01 整机侧后方实拍', en: 'Rear-side product photograph of RM-01' }
+    },
+    {
+      src: '../../rm01-website-soft/assets/gallery/DSC0031.jpg', tone: 'light', layout: 'landscape', category: 'PORTS & AIRFLOW',
+      label: { zh: '接口与风道细节', en: 'Ports and airflow detail' },
+      alt: { zh: 'RM-01 接口与散热风道细节', en: 'Close-up of RM-01 ports and thermal airflow channel' }
+    },
+    {
+      src: '../../rm01-website-soft/assets/gallery/DSC00094.jpg', tone: 'dark', layout: 'landscape', category: 'STORAGE SLOT',
+      label: { zh: 'CFe卡槽细节', en: 'CFe card slot detail' },
+      alt: { zh: 'RM-01 CFe 卡槽细节', en: 'Close-up of the RM-01 CFe card slot' }
+    },
+    {
+      src: '../../rm01-website-soft/assets/gallery/DSC00120.jpg', tone: 'dark', layout: 'landscape', category: 'STATUS LIGHT',
+      label: { zh: '蓝宝石状态灯', en: 'Sapphire status light' },
+      alt: { zh: 'RM-01 蓝宝石状态灯细节', en: 'Close-up of the RM-01 sapphire status light' }
+    },
+    {
+      src: '../../rm01-website-soft/assets/gallery/DSC00142.jpg', tone: 'dark', layout: 'portrait-detail', category: 'ENCLOSURE DETAIL',
+      label: { zh: '铝合金工艺细节', en: 'Aluminum-alloy craftsmanship' },
+      alt: { zh: 'RM-01 铝合金工艺细节', en: 'Close-up of RM-01 aluminum-alloy craftsmanship' }
+    },
+    {
+      src: '../../rm01-website-soft/assets/gallery/DSC00150.jpg', tone: 'dark', layout: 'landscape', category: 'THERMAL DETAIL',
+      label: { zh: '设计与加工细节', en: 'Design and machining detail' },
+      alt: { zh: 'RM-01 设计与加工细节', en: 'Close-up of RM-01 design and machining details' }
+    },
+    {
+      src: '../../rm01-website-soft/assets/gallery/DSC00126.jpg', tone: 'dark', layout: 'landscape', category: 'PANEL DETAIL',
+      label: { zh: '玻璃与装配工艺', en: 'Glass and assembly craftsmanship' },
+      alt: { zh: 'RM-01 玻璃与装配工艺细节', en: 'Close-up of RM-01 glass and assembly craftsmanship' }
+    },
+    {
+      src: '../../rm01-website-soft/assets/gallery/DSC00196.jpg', tone: 'dark', layout: 'landscape', category: 'PANEL DETAIL',
+      label: { zh: 'R0.25圆角与装配工艺', en: 'R0.25 corner radius and assembly' },
+      alt: { zh: 'RM-01 R0.25 圆角与装配工艺细节', en: 'Close-up of the RM-01 R0.25 corner radius and assembly' }
+    }
+  ];
+
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+  const stage = $('.visual-stage');
+  const productImage = $('.product-image');
+  const captionProduct = $('[data-caption-product]');
+  const captionLabel = $('[data-caption-label]');
+  const currentCount = $('.gallery-count strong');
+  const previousButton = $('[data-gallery-previous]');
+  const nextButton = $('[data-gallery-next]');
+  const overlay = $('#mobileOverlay');
+  const menuButton = $('[data-menu-toggle]');
+  const closeButton = $('[data-menu-close]');
+  let lang = 'zh';
+  let currentIndex = 0;
+  let transitionLocked = false;
+  let pointerStart = null;
+  const markedTermPattern = /RM-01/g;
+
+  function t(value) {
+    return value[lang] || value.zh;
+  }
+
+  function writeMarkedText(element, text) {
+    const value = text == null ? '' : String(text);
+    if (!value.includes('RM-01')) {
+      element.textContent = value;
+      return;
+    }
+
+    element.replaceChildren();
+    let cursor = 0;
+    value.replace(markedTermPattern, (match, index) => {
+      if (index > cursor) element.append(document.createTextNode(value.slice(cursor, index)));
+      const mark = document.createElement('span');
+      mark.className = 'rm-mark';
+      mark.textContent = match;
+      element.append(mark);
+      cursor = index + match.length;
+      return match;
+    });
+    if (cursor < value.length) element.append(document.createTextNode(value.slice(cursor)));
+  }
+
+  function formatIndex(index) {
+    return String(index + 1).padStart(2, '0');
+  }
+
+
+  const requestedImages = new Set([galleryItems[0].src]);
+
+  function preloadImage(index) {
+    const item = galleryItems[(index + galleryItems.length) % galleryItems.length];
+    if (requestedImages.has(item.src)) return;
+    requestedImages.add(item.src);
+    const preload = new Image();
+    preload.decoding = 'async';
+    preload.src = item.src;
+  }
+
+  function preloadNeighbors(index) {
+    preloadImage(index - 1);
+    preloadImage(index + 1);
+  }
+
+  function updateImageCopy() {
+    const item = galleryItems[currentIndex];
+    productImage.alt = t(item.alt);
+    writeMarkedText(captionProduct, lang === 'zh' ? 'RM-01 便携 AI 超算' : 'RM-01 Portable AI Supercomputer');
+    captionLabel.textContent = t(item.label);
+  }
+
+  function applyLanguage(nextLang, remember = true) {
+    lang = nextLang;
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+    $$('[data-gallery-text]').forEach((element) => {
+      const value = element.dataset[lang];
+      if (value !== undefined) writeMarkedText(element, value);
+    });
+    $$('[data-gallery-lang-toggle]').forEach((button) => {
+      button.textContent = lang === 'zh' ? 'EN' : '中';
+      button.setAttribute('aria-label', lang === 'zh' ? '切换到英文' : 'Switch to Chinese');
+    });
+    previousButton.setAttribute('aria-label', lang === 'zh' ? '上一张照片' : 'Previous photo');
+    nextButton.setAttribute('aria-label', lang === 'zh' ? '下一张照片' : 'Next photo');
+    menuButton.setAttribute('aria-label', lang === 'zh'
+      ? (menuButton.classList.contains('active') ? '关闭菜单' : '打开菜单')
+      : (menuButton.classList.contains('active') ? 'Close menu' : 'Open menu'));
+    updateImageCopy();
+    document.title = '图册设计预览 · RMinte';
+  }
+
+  function showImage(nextIndex) {
+    if (transitionLocked) return;
+    transitionLocked = true;
+    currentIndex = (nextIndex + galleryItems.length) % galleryItems.length;
+    const item = galleryItems[currentIndex];
+    stage.classList.add('is-changing');
+
+    window.setTimeout(() => {
+      stage.dataset.tone = item.tone;
+      stage.dataset.layout = item.layout;
+      productImage.src = item.src;
+      updateImageCopy();
+      currentCount.textContent = formatIndex(currentIndex);
+      stage.classList.remove('is-changing');
+      preloadNeighbors(currentIndex);
+      window.setTimeout(() => {
+        transitionLocked = false;
+      }, 420);
+    }, 180);
+  }
+
+  function setMenu(open) {
+    overlay.classList.toggle('active', open);
+    overlay.setAttribute('aria-hidden', String(!open));
+    menuButton.classList.toggle('active', open);
+    menuButton.setAttribute('aria-expanded', String(open));
+    document.body.classList.toggle('menu-open', open);
+    menuButton.setAttribute('aria-label', lang === 'zh'
+      ? (open ? '关闭菜单' : '打开菜单')
+      : (open ? 'Close menu' : 'Open menu'));
+  }
+
+  previousButton.addEventListener('click', () => showImage(currentIndex - 1));
+  nextButton.addEventListener('click', () => showImage(currentIndex + 1));
+  $('[data-gallery-lang-toggle]').addEventListener('click', () => applyLanguage(lang === 'zh' ? 'en' : 'zh'));
+  menuButton.addEventListener('click', () => setMenu(!menuButton.classList.contains('active')));
+  closeButton.addEventListener('click', () => setMenu(false));
+  $('.mobile-links a[href="#galleryMain"]').addEventListener('click', () => setMenu(false));
+
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowLeft') showImage(currentIndex - 1);
+    if (event.key === 'ArrowRight') showImage(currentIndex + 1);
+    if (event.key === 'Escape') setMenu(false);
+  });
+
+  stage.addEventListener('pointerdown', (event) => {
+    pointerStart = { x: event.clientX, y: event.clientY };
+  });
+  stage.addEventListener('pointercancel', () => {
+    pointerStart = null;
+  });
+  stage.addEventListener('pointerup', (event) => {
+    if (!pointerStart) return;
+    const deltaX = event.clientX - pointerStart.x;
+    const deltaY = event.clientY - pointerStart.y;
+    pointerStart = null;
+    if (Math.abs(deltaX) < 48 || Math.abs(deltaX) < Math.abs(deltaY)) return;
+    showImage(currentIndex + (deltaX < 0 ? 1 : -1));
+  });
+
+  applyLanguage(lang, false);
+  preloadNeighbors(currentIndex);
+})();
+
+</script>
+</body>
+</html>

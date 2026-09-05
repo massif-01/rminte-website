@@ -1,57 +1,57 @@
 (function () {
   const galleryItems = [
     {
-      src: '../assets/gallery/DSC00043.jpg', tone: 'dark', layout: 'portrait', category: 'PRODUCT EXTERIOR',
+      src: '../assets/gallery/DSC00043.jpg', tone: 'dark', layout: 'portrait',
       label: { zh: '整机实拍·3/4视角', en: 'Product photography · three-quarter view' },
       alt: { zh: 'RM-01 整机实拍 3/4 视角', en: 'Three-quarter product photograph of RM-01' }
     },
     {
-      src: '../assets/gallery/DSC00010.jpg', tone: 'light', layout: 'portrait', category: 'PRODUCT EXTERIOR',
+      src: '../assets/gallery/DSC00010.jpg', tone: 'light', layout: 'portrait',
       label: { zh: '整机实拍·正面', en: 'Product photography · front view' },
       alt: { zh: 'RM-01 整机正面实拍', en: 'Front product photograph of RM-01' }
     },
     {
-      src: '../assets/gallery/DSC00020.jpg', tone: 'light', layout: 'portrait', category: 'PRODUCT EXTERIOR',
+      src: '../assets/gallery/DSC00020.jpg', tone: 'light', layout: 'portrait',
       label: { zh: '整机实拍·亮场', en: 'Product photography · light studio' },
       alt: { zh: '亮场中的 RM-01 整机实拍', en: 'RM-01 product photograph in a light studio' }
     },
     {
-      src: '../assets/gallery/DSC00030.jpg', tone: 'light', layout: 'portrait', category: 'PRODUCT EXTERIOR',
+      src: '../assets/gallery/DSC00030.jpg', tone: 'light', layout: 'portrait',
       label: { zh: '整机实拍·侧后方', en: 'Product photography · rear-side view' },
       alt: { zh: 'RM-01 整机侧后方实拍', en: 'Rear-side product photograph of RM-01' }
     },
     {
-      src: '../assets/gallery/DSC0031.jpg', tone: 'light', layout: 'landscape', category: 'PORTS & AIRFLOW',
+      src: '../assets/gallery/DSC0031.jpg', tone: 'light', layout: 'landscape',
       label: { zh: '接口与风道细节', en: 'Ports and airflow detail' },
       alt: { zh: 'RM-01 接口与散热风道细节', en: 'Close-up of RM-01 ports and thermal airflow channel' }
     },
     {
-      src: '../assets/gallery/DSC00094.jpg', tone: 'dark', layout: 'landscape', category: 'STORAGE SLOT',
+      src: '../assets/gallery/DSC00094.jpg', tone: 'dark', layout: 'landscape',
       label: { zh: 'CFe卡槽细节', en: 'CFe card slot detail' },
       alt: { zh: 'RM-01 CFe 卡槽细节', en: 'Close-up of the RM-01 CFe card slot' }
     },
     {
-      src: '../assets/gallery/DSC00120.jpg', tone: 'dark', layout: 'landscape', category: 'STATUS LIGHT',
+      src: '../assets/gallery/DSC00120.jpg', tone: 'dark', layout: 'landscape',
       label: { zh: '蓝宝石状态灯', en: 'Sapphire status light' },
       alt: { zh: 'RM-01 蓝宝石状态灯细节', en: 'Close-up of the RM-01 sapphire status light' }
     },
     {
-      src: '../assets/gallery/DSC00142.jpg', tone: 'dark', layout: 'portrait-detail', category: 'ENCLOSURE DETAIL',
+      src: '../assets/gallery/DSC00142.jpg', tone: 'dark', layout: 'portrait-detail',
       label: { zh: '铝合金工艺细节', en: 'Aluminum-alloy craftsmanship' },
       alt: { zh: 'RM-01 铝合金工艺细节', en: 'Close-up of RM-01 aluminum-alloy craftsmanship' }
     },
     {
-      src: '../assets/gallery/DSC00150.jpg', tone: 'dark', layout: 'landscape', category: 'THERMAL DETAIL',
+      src: '../assets/gallery/DSC00150.jpg', tone: 'dark', layout: 'landscape',
       label: { zh: '设计与加工细节', en: 'Design and machining detail' },
       alt: { zh: 'RM-01 设计与加工细节', en: 'Close-up of RM-01 design and machining details' }
     },
     {
-      src: '../assets/gallery/DSC00126.jpg', tone: 'dark', layout: 'landscape', category: 'PANEL DETAIL',
+      src: '../assets/gallery/DSC00126.jpg', tone: 'dark', layout: 'landscape',
       label: { zh: '玻璃与装配工艺', en: 'Glass and assembly craftsmanship' },
       alt: { zh: 'RM-01 玻璃与装配工艺细节', en: 'Close-up of RM-01 glass and assembly craftsmanship' }
     },
     {
-      src: '../assets/gallery/DSC00196.jpg', tone: 'dark', layout: 'landscape', category: 'PANEL DETAIL',
+      src: '../assets/gallery/DSC00196.jpg', tone: 'dark', layout: 'landscape',
       label: { zh: 'R0.25圆角与装配工艺', en: 'R0.25 corner radius and assembly' },
       alt: { zh: 'RM-01 R0.25 圆角与装配工艺细节', en: 'Close-up of the RM-01 R0.25 corner radius and assembly' }
     }
@@ -61,12 +61,9 @@
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
   const stage = $('.visual-stage');
   const productImage = $('.product-image');
-  const captionIndex = $('.caption-index');
   const captionProduct = $('[data-caption-product]');
   const captionLabel = $('[data-caption-label]');
-  const captionCategory = $('[data-caption-category]');
   const currentCount = $('.gallery-count strong');
-  const progressRail = $('[data-gallery-progress]');
   const previousButton = $('[data-gallery-previous]');
   const nextButton = $('[data-gallery-next]');
   const overlay = $('#mobileOverlay');
@@ -107,14 +104,6 @@
     return String(index + 1).padStart(2, '0');
   }
 
-  const progressItems = galleryItems.map((item, index) => {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.classList.toggle('active', index === 0);
-    button.addEventListener('click', () => showImage(index));
-    progressRail.append(button);
-    return button;
-  });
 
   const requestedImages = new Set([galleryItems[0].src]);
 
@@ -137,7 +126,6 @@
     productImage.alt = t(item.alt);
     writeMarkedText(captionProduct, lang === 'zh' ? 'RM-01 便携 AI 超算' : 'RM-01 Portable AI Supercomputer');
     captionLabel.textContent = t(item.label);
-    captionCategory.textContent = item.category;
   }
 
   function applyLanguage(nextLang, remember = true) {
@@ -154,9 +142,6 @@
     });
     previousButton.setAttribute('aria-label', lang === 'zh' ? '上一张照片' : 'Previous photo');
     nextButton.setAttribute('aria-label', lang === 'zh' ? '下一张照片' : 'Next photo');
-    progressItems.forEach((button, index) => {
-      button.setAttribute('aria-label', lang === 'zh' ? `查看第 ${index + 1} 张照片` : `View photo ${index + 1}`);
-    });
     menuButton.setAttribute('aria-label', lang === 'zh'
       ? (menuButton.classList.contains('active') ? '关闭菜单' : '打开菜单')
       : (menuButton.classList.contains('active') ? 'Close menu' : 'Open menu'));
@@ -176,9 +161,7 @@
       stage.dataset.layout = item.layout;
       productImage.src = item.src;
       updateImageCopy();
-      captionIndex.textContent = formatIndex(currentIndex);
       currentCount.textContent = formatIndex(currentIndex);
-      progressItems.forEach((progress, index) => progress.classList.toggle('active', index === currentIndex));
       stage.classList.remove('is-changing');
       preloadNeighbors(currentIndex);
       window.setTimeout(() => {

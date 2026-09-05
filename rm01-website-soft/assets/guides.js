@@ -292,7 +292,7 @@
       const arrow = document.createElement('span');
       arrow.className = 'guide-search-result-arrow';
       arrow.setAttribute('aria-hidden', 'true');
-      arrow.textContent = '↗';
+      arrow.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg>';
 
       link.append(meta, title);
       if (snippet.textContent !== entry.title) link.append(snippet);

@@ -14,11 +14,11 @@
   };
   const ui = (key) => data.ui[lang][key] || data.ui.zh[key] || '';
   const asset = (file) => imageBase + file;
-  const markedTermPattern = /(?:RM-01|TianshanOS|EricLake)/g;
+  const markedTermPattern = /(?:RM-01|TianshanOS|EricLake|RMinte)/g;
 
   function writeMarkedText(el, text) {
     const value = text == null ? '' : String(text);
-    if (!value.includes('RM-01') && !value.includes('TianshanOS') && !value.includes('EricLake')) {
+    if (!value.includes('RM-01') && !value.includes('TianshanOS') && !value.includes('EricLake') && !value.includes('RMinte')) {
       el.textContent = value;
       return;
     }
@@ -251,6 +251,8 @@
   function setupActiveNav() {
     if (activeNavCleanup) activeNavCleanup();
     const links = $$('[data-nav-target]');
+    const brand = $('.site-shell .brand-mark');
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (!links.length) return;
     const sections = data.nav
       .map(([id]) => document.getElementById(id))
@@ -263,6 +265,11 @@
     };
 
     const updateActive = () => {
+      // Fade only the homepage logo over the first 240px of scrolling.
+      const opacity = motion.matches ? 1 : Math.max(0, Math.min(1, 1 - window.scrollY / 240));
+      brand.style.opacity = opacity;
+      brand.inert = opacity === 0;
+
       const anchor = window.scrollY + Math.max(120, window.innerHeight * 0.34);
       let activeId = sections[0]?.id;
 
@@ -295,6 +302,7 @@
 
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('hashchange', onHashChange);
+    motion.addEventListener('change', onScroll);
     onHashChange();
     if (!window.location.hash && sections[0]) setActive(sections[0].id);
     updateActive();
@@ -302,6 +310,7 @@
     activeNavCleanup = () => {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('hashchange', onHashChange);
+      motion.removeEventListener('change', onScroll);
       activeNavCleanup = undefined;
     };
   }
@@ -514,19 +523,6 @@
     button.setAttribute('aria-expanded', 'false');
   }
 
-  function setContactOpen(open) {
-    const popover = $('[data-contact-popover]');
-    const toggle = $('[data-contact-toggle]');
-    if (!popover || !toggle) return;
-    popover.classList.toggle('active', open);
-    popover.setAttribute('aria-hidden', open ? 'false' : 'true');
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-  }
-
-  function closeContact() {
-    setContactOpen(false);
-  }
-
   function setupControls() {
     $$('[data-lang-toggle]').forEach((button) => {
       button.addEventListener('click', () => {
@@ -549,23 +545,9 @@
     const closeButton = $('[data-menu-close]');
     if (closeButton) closeButton.addEventListener('click', closeMenu);
 
-    const contactToggle = $('[data-contact-toggle]');
-    const contactClose = $('[data-contact-close]');
-    const contactPopover = $('[data-contact-popover]');
-    if (contactToggle && contactPopover) {
-      contactToggle.addEventListener('click', (event) => {
-        event.stopPropagation();
-        setContactOpen(!contactPopover.classList.contains('active'));
-      });
-      contactPopover.addEventListener('click', (event) => event.stopPropagation());
-      document.addEventListener('click', closeContact);
-    }
-    if (contactClose) contactClose.addEventListener('click', closeContact);
-
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
         closeMenu();
-        closeContact();
       }
     });
   }
@@ -670,6 +652,28 @@
     });
   }
 
+  function setupThermalScroll() {
+    const stage = $('.thermal-stage');
+    const detail = $('.thermal-detail', stage);
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let frame;
+    const update = () => {
+      frame = undefined;
+      // Measure the layout position, unaffected by the detail's animated transform.
+      const center = stage.getBoundingClientRect().top + detail.offsetTop + detail.offsetHeight / 2;
+      const progress = motion.matches ? 1 : Math.max(0, Math.min(1,
+        (window.innerHeight * 0.85 - center) / (window.innerHeight * 0.35)));
+      const reveal = progress * progress * (3 - 2 * progress);
+      detail.style.setProperty('--thermal-reveal', reveal.toFixed(3));
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    motion.addEventListener('change', schedule);
+    new ResizeObserver(schedule).observe(stage);
+    update();
+  }
+
   function setupSapphireScroll() {
     const section = $('#sapphire');
     const image = $('.sapphire-light-image', section);
@@ -697,7 +701,6 @@
   function setupCraftStory() {
     const section = $('#craft');
     const panels = $$('.craft-story-panel', section);
-    const progress = $('.craft-story-progress span', section);
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let frame;
     const update = () => {
@@ -714,7 +717,6 @@
         if (enabled && i !== index) panel.setAttribute('aria-hidden', 'true');
         else panel.removeAttribute('aria-hidden');
       });
-      progress.style.width = enabled ? `${(index + 1) * 25}%` : '100%';
     };
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
     window.addEventListener('scroll', schedule, { passive: true });
@@ -737,6 +739,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     renderAll();
     setupControls();
+    setupThermalScroll();
     setupSapphireScroll();
     setupCraftStory();
     setupTeardownSequence();

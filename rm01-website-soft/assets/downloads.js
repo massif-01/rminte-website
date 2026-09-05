@@ -11,14 +11,14 @@
     while ((node = walker.nextNode())) {
       const parent = node.parentElement;
       if (!parent || parent.closest('.rm-mark, [data-brand-font="ui"], script, style')) continue;
-      if (/RM-01|TianShanOS|TianshanOS/.test(node.nodeValue)) textNodes.push(node);
+      if (/(?:RM-01|TianShanOS|TianshanOS|RMinte)(?![A-Za-z0-9_-]|\.[A-Za-z0-9])/.test(node.nodeValue)) textNodes.push(node);
     }
 
     textNodes.forEach((textNode) => {
-      const parts = textNode.nodeValue.split(/(RM-01|TianShanOS|TianshanOS)/g);
+      const parts = textNode.nodeValue.split(/(RM-01|TianShanOS|TianshanOS|RMinte)(?![A-Za-z0-9_-]|\.[A-Za-z0-9])/g);
       const fragment = document.createDocumentFragment();
       parts.forEach((part) => {
-        if (/^(RM-01|TianShanOS|TianshanOS)$/.test(part)) {
+        if (/^(RM-01|TianShanOS|TianshanOS|RMinte)$/.test(part)) {
           const mark = document.createElement('span');
           mark.className = 'rm-mark';
           mark.textContent = part;

@@ -451,11 +451,13 @@ function pageTemplate(config, rendered) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/styles.css?v=agency-24">
-  <link rel="stylesheet" href="../assets/guides.css?v=agency-33">
+  <link rel="stylesheet" href="../assets/styles.css?v=contact-panel-1">
+  <link rel="stylesheet" href="../assets/guides.css?v=clean-cards-1">
   <script id="guidePageData" type="application/json">${pageData}</script>
   <script src="../visitor-language.js" defer></script>
-  <script src="../assets/guides.js?v=ip-language-1" defer></script>
+  <script src="../assets/guides.js?v=vector-icons-1" defer></script>
+  <script src="../assets/site-data.js?v=selected-copy-2" defer></script>
+  <script src="../assets/footer.js?v=shared-footer-1" defer></script>
 </head>
 <body class="guide-body guide-doc-body guide-accent-${config.accent}">
   <a class="skip-link" href="#guideContent" data-guide-text data-zh="跳至指南正文" data-en="Skip to guide content">跳至指南正文</a>
@@ -464,7 +466,7 @@ ${siteNavigationTemplate()}
 
   <main id="guideContent" class="guide-doc-main">
     <section class="guide-doc-hero">
-      <a class="guide-breadcrumb" href="index.html"><span aria-hidden="true">←</span><span data-guide-text data-zh="全部指南" data-en="All guides">全部指南</span></a>
+      <a class="guide-breadcrumb" href="index.html"><span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M19 12H5m5-5-5 5 5 5"/></svg></span><span data-guide-text data-zh="全部指南" data-en="All guides">全部指南</span></a>
       <p class="eyebrow" data-guide-text data-zh="${escapeHtml(config.label.zh)}" data-en="${escapeHtml(config.label.en)}">${escapeHtml(config.label.zh)}</p>
       <h1 data-guide-text data-zh="${escapeHtml(config.title.zh)}" data-en="${escapeHtml(config.title.en)}">${escapeHtml(config.title.zh)}</h1>
       <p class="guide-doc-lead" data-guide-text data-zh="${escapeHtml(config.description.zh)}" data-en="${escapeHtml(config.description.en)}">${escapeHtml(config.description.zh)}</p>
@@ -503,7 +505,7 @@ ${renderLanguagePane('en', rendered.en, config)}
         <a class="guide-next" href="${config.next.href}">
           <span data-guide-text data-zh="下一步" data-en="Next">下一步</span>
           <strong data-guide-text data-zh="${escapeHtml(config.next.zh)}" data-en="${escapeHtml(config.next.en)}">${escapeHtml(config.next.zh)}</strong>
-          <span aria-hidden="true">↗</span>
+          <span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
         </a>
       </div>
 
@@ -514,12 +516,56 @@ ${renderLanguagePane('en', rendered.en, config)}
     </div>
   </main>
 
-  <footer class="guide-footer">
-    <img src="../assets/images/img3.png" alt="RMinte">
-    <div>
-      <span>© 2026 <span class="rm-mark">RMinte AI</span></span>
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="../assets/images/logo-white.svg" alt="RMinte">
+        <div>
+        <p data-footer-text="footer">泛灵（成都）人工智能科技有限公司</p>
+        <span data-footer-text="copyright">© 2026 <span class="rm-mark">RMinte</span> ( Chengdu ) Artificial Intelligence Technology Co., Ltd. · RM-01 Protable AI Supercomputer</span>
+        </div>
+      </div>
+      <div class="footer-actions">
+        <button class="footer-contact" type="button" aria-expanded="false" aria-controls="contactPopover" data-contact-toggle>
+          <span data-footer-text="contactButton">联系我们</span>
+        </button>
+        <a class="footer-github" href="https://github.com/RMinte-AI" target="_blank" rel="noreferrer" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.38-3.37-1.38-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.3.1-2.72 0 0 .84-.27 2.75 1.05A9.35 9.35 0 0 1 12 6.94c.85 0 1.7.12 2.5.34 1.9-1.32 2.74-1.05 2.74-1.05.55 1.42.2 2.46.1 2.72.64.72 1.03 1.64 1.03 2.76 0 3.95-2.34 4.82-4.57 5.07.36.32.68.94.68 1.9 0 1.38-.01 2.48-.01 2.82 0 .28.18.6.69.5A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
     </div>
   </footer>
+
+  <aside class="contact-popover" id="contactPopover" role="dialog" aria-labelledby="contactTitle" aria-hidden="true" data-contact-popover>
+    <div class="contact-card">
+      <div class="contact-card-core">
+        <div class="contact-top">
+          <div>
+
+            <h2 id="contactTitle" data-footer-text="contactTitle">联系我们</h2>
+          </div>
+          <button class="contact-close" type="button" aria-label="关闭" data-contact-close><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:jiezhu@rminte.com">
+            <span data-footer-text="salesContact">销售与渠道合作</span>
+            <strong>jiezhu@rminte.com</strong><svg class="contact-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+          <a href="mailto:yishi@rminte.com">
+            <span data-footer-text="manufacturingContact">制造与供应链合作</span>
+            <strong>yishi@rminte.com</strong><svg class="contact-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+          <a href="mailto:support@rminte.com">
+            <span data-footer-text="supportContact">售前与售后服务</span>
+            <strong>support@rminte.com</strong><svg class="contact-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </aside>
 </body>
 </html>
 `;

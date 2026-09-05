@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+  <base href="http://127.0.0.1:8000/downloads/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="RM-01 下载中心，提供产品手册、技术资料、固件与软件发布包。">
@@ -14,15 +15,39 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/brand.css?v=slate-2">
-  <link rel="stylesheet" href="../assets/styles.css?v=contact-panel-1">
+  <link rel="stylesheet" href="../assets/styles.css?v=compact-nav-1">
   <link rel="stylesheet" href="../assets/guides.css?v=clean-cards-1">
   <link rel="stylesheet" href="../assets/downloads.css?v=clear-headings-1">
   <script src="../visitor-language.js" defer></script>
   <script src="../assets/downloads.js?v=brand-filenames-1" defer></script>
   <script src="../assets/site-data.js?v=selected-copy-2" defer></script>
   <script src="../assets/footer.js?v=shared-footer-1" defer></script>
-</head>
-<body class="guide-body download-body">
+<style>
+.demo-controls{position:fixed;z-index:40;left:50%;top:88px;transform:translateX(-50%);display:flex;align-items:center;gap:6px;padding:6px;border:1px solid var(--line-strong);border-radius:999px;background:var(--bg);box-shadow:0 8px 24px #0003;white-space:nowrap;font:12px var(--font-ui)}
+.demo-controls span{padding:0 8px;color:var(--muted)}
+.demo-controls button{border:0;border-radius:999px;background:transparent;color:var(--muted);padding:9px 14px;cursor:pointer;font:inherit}
+.demo-controls button[aria-pressed=true]{background:var(--accent);color:var(--bg)}
+.demo-proposed .contact-popover{width:min(400px,calc(100vw - 32px));right:max(16px,var(--section-x));bottom:24px;transition:opacity 180ms ease,transform 180ms ease}
+.demo-proposed .contact-card{padding:0;border:1px solid var(--line-strong);border-radius:var(--radius-panel);background:var(--panel);box-shadow:none;backdrop-filter:none}
+.demo-proposed .contact-card-core{padding:24px;background:transparent;box-shadow:none;border-radius:inherit}
+.demo-proposed .contact-top{align-items:center;gap:16px}
+.demo-proposed .contact-kicker{display:none}
+.demo-proposed .contact-top h2{font-family:var(--font-ui);font-size:24px;line-height:1.3;font-weight:500;letter-spacing:-.025em}
+.demo-proposed .contact-close{width:44px;height:44px;flex:none;border:1px solid var(--line);background:var(--panel-strong);transition:background 180ms ease,border-color 180ms ease}
+.demo-proposed .contact-close:hover{transform:none;background:var(--bg-2);border-color:var(--line-strong)}
+.demo-proposed .contact-links{margin-top:24px;gap:0}
+.demo-proposed .contact-links a{grid-template-columns:minmax(0,1fr) 20px;column-gap:16px;row-gap:8px;padding:20px 0;border-radius:0;border-top:1px solid var(--line);background:transparent;box-shadow:none;transition:color 180ms ease}
+.demo-proposed .contact-links a:last-child{padding-bottom:4px}
+.demo-proposed .contact-links a:hover{transform:none;background:transparent}
+.demo-proposed .contact-links span{grid-column:1;color:var(--muted);font:400 12px/1.5 var(--font-ui)}
+.demo-proposed .contact-links strong{grid-column:1;color:var(--ink);font:400 17px/1.5 var(--font-ui);letter-spacing:0;overflow-wrap:anywhere}
+.demo-proposed .contact-links a:hover strong{text-decoration:underline;text-underline-offset:5px}
+.contact-link-arrow{display:none}
+.demo-proposed .contact-link-arrow{display:block;grid-column:2;grid-row:1/3;align-self:center;width:20px;height:20px;color:var(--ink-soft)}
+@media(max-width:520px){.demo-controls{top:76px}.demo-controls span{font-size:11px}.demo-proposed .contact-popover{right:16px;bottom:16px}.demo-proposed .contact-card-core{padding:20px}.demo-proposed .contact-top h2{font-size:22px}.demo-proposed .contact-links strong{font-size:16px}}
+@media(prefers-reduced-motion:reduce){.demo-proposed .contact-popover,.demo-proposed .contact-close,.demo-proposed .contact-links a{transition:none}}
+</style></head>
+<body class="guide-body download-body demo-proposed">
   <a class="skip-link" href="#downloadMain" data-download-text data-zh="跳至下载内容" data-en="Skip to downloads">跳至下载内容</a>
 
   <header class="site-shell" aria-label="主导航">
@@ -398,27 +423,28 @@
       <div class="contact-card-core">
         <div class="contact-top">
           <div>
-
+            <p class="contact-kicker" data-footer-text="contactKicker">CONTACT</p>
             <h2 id="contactTitle" data-footer-text="contactTitle">联系我们</h2>
           </div>
           <button class="contact-close" type="button" aria-label="关闭" data-contact-close><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
         </div>
         <div class="contact-links">
           <a href="mailto:jiezhu@rminte.com">
-            <span data-footer-text="salesContact">销售与渠道合作</span>
+            <span data-footer-text="salesContact">销售联系</span>
             <strong>jiezhu@rminte.com</strong><svg class="contact-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
           </a>
-          <a href="mailto:yishi@rminte.com">
-            <span data-footer-text="manufacturingContact">制造与供应链合作</span>
-            <strong>yishi@rminte.com</strong><svg class="contact-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
-          </a>
           <a href="mailto:support@rminte.com">
-            <span data-footer-text="supportContact">售前与售后服务</span>
+            <span data-footer-text="supportContact">支持联系</span>
             <strong>support@rminte.com</strong><svg class="contact-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
           </a>
         </div>
       </div>
     </div>
   </aside>
-</body>
+<div class="demo-controls" aria-label="弹层设计对比"><span>联系弹层示范</span><button type="button" data-demo="current" aria-pressed="false">原样</button><button type="button" data-demo="proposed" aria-pressed="true">示范</button></div>
+<script>
+function showContact(){const t=document.querySelector('[data-contact-toggle]');if(t.getAttribute('aria-expanded')!=='true')t.click();}
+document.querySelectorAll('[data-demo]').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();document.body.classList.toggle('demo-proposed',b.dataset.demo==='proposed');document.querySelectorAll('[data-demo]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));showContact();}));
+window.addEventListener('load',()=>{scrollTo(0,document.documentElement.scrollHeight);showContact();});
+</script></body>
 </html>

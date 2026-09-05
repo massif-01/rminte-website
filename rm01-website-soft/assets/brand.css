@@ -34,6 +34,12 @@
   --title-small: clamp(2.3rem,3.7vw,3.5rem);
 }
 
+/* Product presentation uses black; support pages retain the graphite defaults. */
+:root.product-theme {
+  --bg: #000000;
+  --bg-2: #000000;
+}
+
 @font-face {
   font-family: "Quantify RM";
     src: url("fonts/Quantify-Bold.ttf") format("truetype");
@@ -61,11 +67,19 @@
 .brand-button:hover {background:var(--panel-strong);border-color:var(--line-strong)}
 .brand-button.primary {background:var(--accent);color:var(--bg);border-color:transparent}
 .brand-button.primary:hover {background:#fff}
-.brand-language {border:1px solid var(--line);border-radius:var(--radius-button);min-height:38px;min-width:56px;background:var(--bg-2);color:var(--ink);padding:8px 14px;font-size:12px}
-.brand-menu {display:none;border:1px solid var(--line);border-radius:50%;width:44px;height:44px;background:var(--bg-2);color:var(--ink);font-size:20px}
+.brand-language,.brand-menu {height:44px;min-width:56px;border:0;border-radius:var(--radius-button);background:rgba(25,28,31,.82);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);color:var(--ink);font-size:11px;font-weight:500;backdrop-filter:blur(24px);transition:transform 560ms var(--motion),background 560ms var(--motion)}
+.brand-language {padding:0 14px}
+button.brand-language {width:56px;padding:0}
+.brand-menu {display:none;position:relative;width:56px;padding:0;flex-shrink:0}
+.brand-menu span {position:absolute;top:50%;left:calc(50% - 10px);width:20px;height:1px;background:currentColor;transform-origin:center;transition:transform 620ms var(--motion)}
+.brand-menu span:first-child {transform:translateY(-4px)}
+.brand-menu span:last-child {transform:translateY(4px)}
+.brand-menu[aria-expanded="true"] span:first-child {transform:rotate(45deg)}
+.brand-menu[aria-expanded="true"] span:last-child {transform:rotate(-45deg)}
+.brand-language:hover,.brand-menu:hover {transform:translateY(-1px);background:rgba(255,255,255,.1)}
 .brand-footer {max-width:var(--section-w);width:calc(100% - var(--section-x)*2);margin:64px auto 0;padding:32px 0 48px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:24px;color:var(--muted);font-size:12px}
 .brand-footer-links {display:flex;flex-wrap:wrap;gap:10px}
 .brand-kicker {font-size:11px;letter-spacing:.15em;color:var(--muted);text-transform:uppercase}
-@media(max-width:1000px){.brand-header{grid-template-columns:1fr auto}.brand-menu{display:block}.brand-nav{display:none;position:absolute;top:64px;right:0;left:0;padding:16px;background:var(--panel);border-radius:var(--radius-panel);flex-wrap:wrap;box-shadow:0 20px 40px #0008}.brand-nav.is-open{display:flex}.brand-nav a{font-size:15px;min-height:44px}.brand-actions{grid-column:2;grid-row:1}}
+@media(max-width:1120px){.brand-header{grid-template-columns:1fr auto}.brand-menu{display:block}.brand-nav{display:none;position:absolute;top:64px;right:0;left:0;padding:16px;background:var(--panel);border-radius:var(--radius-panel);flex-wrap:wrap;box-shadow:0 20px 40px #0008}.brand-nav.is-open{display:flex}.brand-nav a{font-size:15px;min-height:44px}.brand-actions{grid-column:2;grid-row:1}}
 @media(max-width:520px){.brand-header{margin-top:16px;gap:12px}.brand-logo{width:118px}.brand-footer{align-items:flex-start;flex-direction:column}.brand-footer-links{width:100%}.brand-button{padding:12px 18px}}
 @media(prefers-reduced-motion:reduce){.brand-page *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}

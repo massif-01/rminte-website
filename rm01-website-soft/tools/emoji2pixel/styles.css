@@ -1,5 +1,6 @@
 /* RMinte graphics workspace. Rendering colors belong to the canvas, not the UI. */
 .pixel-page {font-size:14px;line-height:1.5}
+.pixel-page .rm-mark {font-family:var(--font-brand);font-weight:700;letter-spacing:normal;white-space:nowrap}
 .pixel-page h1,.pixel-page h2,.pixel-page p {margin:0}
 .pixel-main {max-width:1600px;margin:54px auto 0;padding:0 var(--section-x)}
 .workspace-heading {display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:28px}
@@ -18,11 +19,11 @@
 #addImageBtn {grid-column:3;grid-row:1}
 #emojiFitToggle {grid-column:1;grid-row:2}
 #addEmojiBtn {grid-column:2 / 4;grid-row:2}
-.pixel-page input:not([type=range]):not([type=checkbox]):not([type=color]):not([type=file]),.pixel-page select {min-width:0;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--bg-2);color:var(--ink);padding:8px 10px;font-size:13px;min-height:38px;max-width:100%}
+.pixel-page input:not([type=range]):not([type=checkbox]):not([type=color]):not([type=file]),.pixel-page select:not(.brand-language) {min-width:0;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--bg-2);color:var(--ink);padding:8px 10px;font-size:13px;min-height:38px;max-width:100%}
 .pixel-page input::placeholder {color:var(--muted);font-size:12px}
 .pixel-page input[type=range] {accent-color:var(--accent);min-width:0;max-width:100%;height:28px;cursor:pointer}
 .pixel-page input[type=checkbox] {accent-color:var(--accent);width:16px;height:16px}
-.pixel-page select.brand-language {border-radius:var(--radius-button);padding:8px 12px;max-width:130px}
+.pixel-page select.brand-language {padding:0 12px;max-width:130px}
 .pixel-page button {transition:background .18s,border-color .18s,color .18s}
 .btn,.tool-btn,.emoji-fit-toggle,.style-btn,.workspace-tabs button {border:1px solid var(--line);background:var(--bg-2);color:var(--ink);border-radius:var(--radius-button);min-height:40px;padding:9px 16px;font-size:12px;line-height:1.3;display:inline-flex;align-items:center;justify-content:center;gap:6px}
 .btn:hover,.tool-btn:hover,.emoji-fit-toggle:hover,.style-btn:hover,.workspace-tabs button:hover {background:var(--panel-strong);border-color:var(--line-strong)}
@@ -107,7 +108,7 @@
 .frame-item.active {border-color:var(--accent);background:var(--panel-strong)}
 .frame-item canvas {display:block;width:60px;height:60px;image-rendering:pixelated}
 .frame-label,.frame-number {font-size:10px;color:var(--muted);max-width:72px;overflow:hidden;text-overflow:ellipsis}
-.frame-delete {position:absolute;top:-5px;right:-5px;width:24px;height:24px;border:1px solid var(--line);border-radius:50%;background:var(--panel-strong);color:var(--ink)}
+.frame-delete {display:grid;place-items:center;padding:0;position:absolute;top:-5px;right:-5px;width:24px;height:24px;border:1px solid var(--line);border-radius:50%;background:var(--panel-strong);color:var(--ink)}
 .frame-duration {max-width:60px}
 .tween-indicator {display:flex;flex-direction:column;align-items:center;flex-shrink:0;color:var(--muted);font-size:10px}
 .anim-controls {display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px}

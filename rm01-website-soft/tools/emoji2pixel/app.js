@@ -250,13 +250,29 @@ class Emoji2Pixel {
         return value;
     }
 
+    setLocalizedText(el, key) {
+        const text = this.t(key);
+        const term = key === 'deviceHint' ? 'RM-01' : key === 'exportTianshan' ? 'TianshanOS' : null;
+        if (!term) {
+            el.textContent = text;
+            return;
+        }
+        el.replaceChildren(...text.split(term).flatMap((part, index) => {
+            if (index === 0) return [part];
+            const mark = document.createElement('span');
+            mark.className = 'rm-mark';
+            mark.textContent = term;
+            return [mark, part];
+        }));
+    }
+
     applyI18n() {
         document.documentElement.lang = this.language;
         document.title = this.t('workspaceTitle') + ' · RMinte';
         document.querySelectorAll('[data-i18n]').forEach((el) => {
             const key = el.getAttribute('data-i18n');
             if (key) {
-                el.textContent = this.t(key);
+                this.setLocalizedText(el, key);
             }
         });
         document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
@@ -1131,7 +1147,7 @@ class Emoji2Pixel {
                 } finally {
                     this.tianshanUploadBtn.disabled = false;
                     this.tianshanUploadBtn.removeAttribute('aria-busy');
-                    this.tianshanUploadBtn.textContent = this.t(this.tianshanUploadBtn.dataset.i18n);
+                    this.setLocalizedText(this.tianshanUploadBtn, this.tianshanUploadBtn.dataset.i18n);
                 }
             });
         }
@@ -2941,7 +2957,7 @@ class Emoji2Pixel {
             if (index > 0) {
                 const tweenIndicator = document.createElement('div');
                 tweenIndicator.className = 'tween-indicator';
-                tweenIndicator.innerHTML = `<span class="frame-arrow">→</span><span class="tween-count">${this.t('tweenFrames', { count: this.tweenFrames })}</span>`;
+                tweenIndicator.innerHTML = `<span class="frame-arrow" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></span><span class="tween-count">${this.t('tweenFrames', { count: this.tweenFrames })}</span>`;
                 tweenIndicator.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:2px;';
                 const tweenCount = tweenIndicator.querySelector('.tween-count');
                 tweenCount.style.cssText = 'font-size:0.7rem;color:var(--muted);';
@@ -2966,7 +2982,7 @@ class Emoji2Pixel {
                 <canvas width="60" height="60"></canvas>
                 <input class="frame-name" type="text" />
                 <div class="frame-number">${this.t('keyframe', { index: index + 1 })}</div>
-                <button class="frame-delete" data-index="${index}">×</button>
+                <button class="frame-delete" data-index="${index}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
             `;
 
             // 复制缩略图
