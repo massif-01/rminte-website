@@ -60,7 +60,6 @@
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
   const stage = $('.visual-stage');
-  const stageBackdrop = $('.stage-backdrop');
   const productImage = $('.product-image');
   const captionIndex = $('.caption-index');
   const captionProduct = $('[data-caption-product]');
@@ -175,7 +174,6 @@
     window.setTimeout(() => {
       stage.dataset.tone = item.tone;
       stage.dataset.layout = item.layout;
-      stageBackdrop.src = item.src;
       productImage.src = item.src;
       updateImageCopy();
       captionIndex.textContent = formatIndex(currentIndex);
