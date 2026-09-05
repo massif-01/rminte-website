@@ -192,19 +192,6 @@
     }));
   }
 
-  function renderPillars() {
-    const root = $('#pillarGrid');
-    if (!root) return;
-    root.replaceChildren(...data.pillars.map((pillar, index) => {
-      const card = cardShell([
-        textEl('h3', t(pillar.title)),
-        textEl('p', t(pillar.text))
-      ], 'pillar-card reveal');
-      card.dataset.revealDelay = String(index * 70);
-      return card;
-    }));
-  }
-
   function renderModules() {
     const root = $('#moduleBento');
     if (!root) return;
@@ -220,17 +207,68 @@
     }));
   }
 
-  function renderEngine() {
-    const root = $('#engineRail');
-    if (!root) return;
-    root.replaceChildren(...data.engine.map((item, index) => {
-      const card = cardShell([
-        textEl('h3', t(item.title)),
-        textEl('p', t(item.text))
-      ], 'engine-card reveal');
-      card.dataset.revealDelay = String(index * 90);
-      return card;
+  let expandedEngine = 0;
+  let activeSystem = 0;
+  const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+
+  function updateEngine() {
+    document.getElementById('engineArt').dataset.scene = Math.max(0, expandedEngine);
+    document.getElementById('ecosystemLabel').textContent = ['vLLM · Transformers', lang === 'en' ? 'Concurrent requests' : '并发请求', lang === 'en' ? 'Model · Application' : '模型 · 应用'][Math.max(0, expandedEngine)];
+    document.getElementById('kernelLabel').innerHTML = expandedEngine === 1 ? 'Paged KV Cache' : '<span class="rm-mark">RMinte</span> Inference';
+    document.querySelectorAll('[data-engine-toggle]').forEach((button, index) => {
+      button.setAttribute('aria-expanded', String(index === expandedEngine));
+      document.getElementById(`engineDetail${index}`).hidden = index !== expandedEngine;
+    });
+  }
+
+  function updateSystem() {
+    document.getElementById('networkGraph').dataset.focus = activeSystem;
+    window.RMArchitecture.clearInspection();
+    window.RMArchitecture.setFocus(activeSystem);
+    document.querySelectorAll('[data-system-tab]').forEach((button, index) => {
+      const selected = index === activeSystem;
+      button.setAttribute('aria-selected', String(selected));
+      button.tabIndex = selected ? 0 : -1;
+      document.getElementById(`systemPanel${index}`).hidden = !selected;
+    });
+  }
+
+  function renderNetwork(lang) {
+    window.RMArchitecture.render(lang);
+  }
+
+  function renderExperience() {
+    document.getElementById('engineArt').setAttribute('aria-label', lang === 'en' ? 'Software layers above the CUDA compute platform' : '推理软件与 CUDA 计算平台的分层示意');
+    document.getElementById('networkGraph').setAttribute('aria-label', lang === 'en' ? 'Each computer connects through an Ethernet controller and PHY to the onboard switch and has dedicated storage. ESP32 connects through W5500 and has its own configuration storage.' : '两台计算模组分别经以太网控制器和 PHY 接入板载交换机，ESP32 经 W5500 接入并拥有自己的配置存储；两台计算机各有独立存储。');
+    document.getElementById('engineReading').innerHTML = data.engine.map((item, index) => `<article class="engine-topic">
+      <h3><button class="engine-topic-toggle" type="button" id="engineToggle${index}" data-engine-toggle="${index}" aria-expanded="${index === expandedEngine}" aria-controls="engineDetail${index}">${escapeHtml(t(item.title))}<svg class="topic-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></button></h3>
+      <div class="engine-detail" id="engineDetail${index}" role="region" aria-labelledby="engineToggle${index}" ${index === expandedEngine ? '' : 'hidden'}><p>${escapeHtml(t(item.text))}</p></div>
+    </article>`).join('');
+    document.querySelectorAll('[data-engine-toggle]').forEach(button => button.addEventListener('click', () => {
+      const index = Number(button.dataset.engineToggle);
+      expandedEngine = expandedEngine === index ? -1 : index;
+      updateEngine();
     }));
+    document.getElementById('systemReading').innerHTML = `<div class="system-tabs" role="tablist" aria-label="${lang === 'en' ? 'TianshanOS capabilities' : 'TianshanOS 功能'}">${data.pillars.map((item, index) => `<button type="button" role="tab" id="systemTab${index}" data-system-tab="${index}" aria-controls="systemPanel${index}" aria-selected="${index === activeSystem}" tabindex="${index === activeSystem ? 0 : -1}">${escapeHtml(t(item.title))}</button>`).join('')}</div><div class="system-panels">${data.pillars.map((item, index) => `<div role="tabpanel" tabindex="0" class="system-panel" id="systemPanel${index}" aria-labelledby="systemTab${index}" ${index === activeSystem ? '' : 'hidden'}><p>${escapeHtml(t(item.text))}</p></div>`).join('')}</div>`;
+    const tabs = Array.from(document.querySelectorAll('[data-system-tab]'));
+    tabs.forEach((button, index) => {
+      button.addEventListener('click', () => {activeSystem = index; updateSystem();});
+      button.addEventListener('keydown', event => {
+        let next;
+        if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+        if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+        if (event.key === 'Home') next = 0;
+        if (event.key === 'End') next = tabs.length - 1;
+        if (next === undefined) return;
+        event.preventDefault();
+        activeSystem = next;
+        updateSystem();
+        tabs[next].focus();
+      });
+    });
+    updateEngine();
+    renderNetwork(lang);
+    updateSystem();
   }
 
   function setupReveal() {
@@ -729,14 +767,15 @@
     setUiText();
     renderNav();
     renderMetrics();
-    renderPillars();
     renderModules();
-    renderEngine();
+    renderExperience();
     setupReveal();
     setupActiveNav();
   }
 
   document.addEventListener('DOMContentLoaded', () => {
+    $('.compute-grid').innerHTML = '<i></i>'.repeat(96);
+    $('.memory-grid').innerHTML = '<i></i>'.repeat(48);
     renderAll();
     setupControls();
     setupThermalScroll();
