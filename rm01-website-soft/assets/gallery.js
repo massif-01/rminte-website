@@ -137,7 +137,7 @@
       if (value !== undefined) writeMarkedText(element, value);
     });
     $$('[data-gallery-lang-toggle]').forEach((button) => {
-      button.textContent = lang === 'zh' ? 'EN' : '中';
+      button.textContent = lang === 'zh' ? 'EN' : '中文';
       button.setAttribute('aria-label', lang === 'zh' ? '切换到英文' : 'Switch to Chinese');
     });
     previousButton.setAttribute('aria-label', lang === 'zh' ? '上一张照片' : 'Previous photo');

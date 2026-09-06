@@ -97,7 +97,7 @@
     });
 
     $$('[data-guide-lang-toggle]').forEach((button) => {
-      button.textContent = lang === 'zh' ? 'EN' : '中';
+      button.textContent = lang === 'zh' ? 'EN' : '中文';
       button.setAttribute('aria-label', lang === 'zh' ? '切换到英文' : 'Switch to Chinese');
     });
 
