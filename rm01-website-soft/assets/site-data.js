@@ -53,7 +53,7 @@ window.RM_SOFT = {
   ],
   ui: {
     zh: {
-      chapter0: '为模型推理及应用原生设计',
+      chapter0: '为模型推理及AI应用原生设计',
       chapter1: '01 / 推理引擎',
       chapter2: '02 / 整机协同',
       chapter3: '03 / 硬件架构',
@@ -129,7 +129,7 @@ window.RM_SOFT = {
       supportContact: '售前与售后服务'
     },
     en: {
-      chapter0: 'PURPOSE-BUILT FOR MODEL INFERENCE AND APPLICATIONS',
+      chapter0: 'PURPOSE-BUILT FOR MODEL INFERENCE AND AI APPLICATIONS',
       chapter1: '01 / INFERENCE ENGINE',
       chapter2: '02 / SYSTEM ORCHESTRATION',
       chapter3: '03 / HARDWARE ARCHITECTURE',
