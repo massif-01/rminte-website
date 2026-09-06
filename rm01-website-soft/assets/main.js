@@ -738,6 +738,8 @@
 
   function setupCraftStory() {
     const section = $('#craft');
+    const stage = $('.craft-story-stage', section);
+    const hint = $('.craft-scroll-hint', section);
     const panels = $$('.craft-story-panel', section);
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let frame;
@@ -749,6 +751,8 @@
       const distance = rect.height - window.innerHeight;
       const fraction = enabled ? Math.max(0, Math.min(1, -rect.top / distance)) : 0;
       const index = Math.min(panels.length - 1, Math.floor(fraction * panels.length));
+      stage.style.setProperty('--craft-sticky-top', `${Math.min(0, window.innerHeight - stage.offsetHeight)}px`);
+      hint.classList.toggle('is-finished', index === panels.length - 1);
       panels.forEach((panel, i) => {
         panel.classList.toggle('is-active', i === index);
         panel.inert = enabled && i !== index;
@@ -760,6 +764,7 @@
     window.addEventListener('scroll', schedule, { passive: true });
     window.addEventListener('resize', schedule);
     motion.addEventListener('change', schedule);
+    new ResizeObserver(schedule).observe(stage);
     update();
   }
 

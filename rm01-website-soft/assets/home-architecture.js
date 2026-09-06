@@ -12,7 +12,7 @@ window.RMArchitecture = (() => {
         ['nic-x86',510,185,58,54,'MAC/PHY','interface'],
         ['x86',520,345,144,140,'x86','compute'],
         ['storage-cuda',260,142,72,34,'','storage'],
-        ['storage-x86',648,433,72,34,'','storage'],
+        ['storage-x86',300,420,72,34,'','storage'],
         ['config',645,135,70,32,'','config']
       ],
       // Every first/last segment is perpendicular to its package edge.
@@ -25,9 +25,9 @@ window.RMArchitecture = (() => {
         ['bus','x86-pcie',[[510,212],[510,239],[496,253],[496,275]]],
         ['network','x86-network',[[481,185],[430,185],[397,218],[397,246],[373,270],[363,270]]],
         ['bus','cuda-storage',[[202,155],[209,155],[222,142],[224,142]]],
-        ['bus','x86-storage',[[592,350],[609,350],[648,389],[648,416]]]
+        ['bus','x86-storage',[[448,380],[412,380],[372,420],[336,420]]]
       ],
-      captions:[[130,61,'inference','title'],[535,14,'TianshanOS','brand'],[305,368,'network','small'],[520,462,'application','title'],[260,182,'storage','small'],[648,486,'storage','small'],[645,176,'config','small'],[159,257,'PCIe','bus'],[544,247,'PCIe','bus'],[455,54,'SPI','bus']]
+      captions:[[130,69,'inference','title'],[535,24,'TianshanOS','brand'],[305,355,'network','small'],[520,441,'application','title'],[260,182,'storage','small'],[300,462,'storage','small'],[645,176,'config','small'],[159,257,'PCIe','bus'],[544,247,'PCIe','bus'],[455,54,'SPI','bus']]
     },
     mobile: {
       width:430,height:590,
@@ -40,7 +40,7 @@ window.RMArchitecture = (() => {
         ['nic-x86',325,210,54,48,'MAC/PHY','interface'],
         ['x86',270,475,118,112,'x86','compute'],
         ['storage-cuda',220,225,72,32,'','storage'],
-        ['storage-x86',125,520,70,30,'','storage'],
+        ['storage-x86',125,490,70,30,'','storage'],
         ['config',365,135,60,28,'','config']
       ],
       routes:[
@@ -52,9 +52,9 @@ window.RMArchitecture = (() => {
         ['bus','x86-pcie',[[352,210],[366,210],[378,222],[378,399],[348,429],[329,429]]],
         ['network','x86-network',[[298,210],[289,210],[289,283],[280,292],[280,296]]],
         ['bus','cuda-storage',[[154,220],[172,220],[177,225],[184,225]]],
-        ['bus','x86-storage',[[211,491],[191,491],[162,520],[160,520]]]
+        ['bus','x86-storage',[[211,461],[191,461],[162,490],[160,490]]]
       ],
-      captions:[[275,25,'TianshanOS','brand'],[95,151,'inference','title'],[250,411,'network','small'],[270,570,'application','title'],[220,265,'storage','small'],[125,559,'storage','small'],[365,176,'config','small'],[118,312,'PCIe','bus'],[399,306,'PCIe','bus'],[191,72,'SPI','bus']]
+      captions:[[275,37,'TianshanOS','brand'],[95,153,'inference','title'],[250,402,'network','small'],[270,553,'application','title'],[220,265,'storage','small'],[125,529,'storage','small'],[365,176,'config','small'],[118,312,'PCIe','bus'],[399,306,'PCIe','bus'],[191,72,'SPI','bus']]
     }
   };
 
