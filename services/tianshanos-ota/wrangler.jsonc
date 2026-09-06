@@ -18,8 +18,8 @@
   "build": {
     "command": "node scripts/build-service-brand.mjs",
     "watch_dir": [
-      "../../rm01-website-soft/assets/brand.css",
-      "../../rm01-website-soft/assets/images/logo-white.svg"
+      "../../website/assets/brand.css",
+      "../../website/assets/images/logo-white.svg"
     ]
   }
 }

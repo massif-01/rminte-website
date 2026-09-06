@@ -25,7 +25,7 @@
 
 ![桌面板块留白与宽银幕图片](review/desktop-layout.png)
 
-- 本地预览：以 `rm01-website-soft` 为静态根目录，例如 `python3 -m http.server 4174 --directory rm01-website-soft`。
+- 本地预览：以 `website` 为静态根目录，例如 `python3 -m http.server 4174 --directory website`。
 - 已在 Chromium 浏览器检查导航、图文构图、视频循环及两档标题字号；覆盖 1169px 桌面、1920px 字号检查与 390px 手机布局检查。
 - 已检查 JavaScript 语法和 Git 空白错误。浏览器验证为人工/脚本交互记录，不是完整自动化回归套件。
 - Safari 曾反馈叶片初始清晰后变模糊：已去除特写的 transform 放大与外层 reveal，改为实际尺寸定位。尚未在用户 Safari 上完成最终回归，不宣称已跨浏览器验收。
@@ -33,6 +33,6 @@
 
 ## 部署
 
-沿用上游现有部署，不修改域名、端口或密钥。网站静态目录为 `rm01-website-soft`；Cloudflare Pages 的 `_worker.js` / `_routes.json` 提供访问地区默认语言，普通静态预览不模拟该接口。OTA 服务仍为独立目录 `services/tianshanos-ota`，本 PR 不要求重部署 OTA。
+沿用上游现有部署，不修改域名、端口或密钥。网站静态目录为 `website`；Cloudflare Pages 的 `_worker.js` / `_routes.json` 提供访问地区默认语言，普通静态预览不模拟该接口。OTA 服务仍为独立目录 `services/tianshanos-ota`，本 PR 不要求重部署 OTA。
 
 本地 `output/`、浏览器截图和 `craft-concepts/` 是过程资料，不属于生产网站。回退应针对上游合并产生的提交进行，不要在现场覆盖或删除图册原文件。
