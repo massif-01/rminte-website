@@ -89,13 +89,15 @@ window.RMArchitecture = (() => {
         const pattern=({mcu:'controller',ethernet:'ethernet',switch:'switch','nic-cuda':'phy','nic-x86':'phy'}[key]||'');
         const blocks=pattern ? {controller:3,ethernet:4,switch:5,phy:3}[pattern] : key==='cuda'?3:2;
         const interior=`<div class="part-interior${pattern?` interior-${pattern}`:''}" aria-hidden="true">${'<i></i>'.repeat(blocks)}</div>`;
-        return `<foreignObject x="${x-w/2}" y="${y-h/2}" width="${w}" height="${h}" class="part-frame" data-node="${key}"><button xmlns="http://www.w3.org/1999/xhtml" type="button" class="system-part part-${type}" data-part="${key}" aria-label="${details}" aria-pressed="false">${interior}<span class="part-frost" aria-hidden="true"></span>${name?`<span class="part-name">${name}</span>`:''}</button></foreignObject>`;
+        return `<div class="part-frame" data-node="${key}" style="left:${(x-w/2)/layout.width*100}%;top:${(y-h/2)/layout.height*100}%;width:${w/layout.width*100}%;height:${h/layout.height*100}%"><button type="button" class="system-part part-${type}" data-part="${key}" aria-label="${details}" aria-pressed="false">${interior}<span class="part-frost" aria-hidden="true"></span>${name?`<span class="part-name">${name}</span>`:''}</button></div>`;
       }).join('');
       const wires=layout.routes.map(([type,route,points])=>[-2,0,2].map(offset=>`<path class="system-${type}-wire" data-route="${route}" d="${offsetPath(points,offset)}"/>`).join('')).join('');
       const captions=layout.captions.map(([x,y,key,type])=>`<text x="${x}" y="${y}" class="system-label label-${type}" aria-hidden="true">${words[key]||key}</text>`).join('');
-      return `<div class="network-${size}"><svg viewBox="0 0 ${layout.width} ${layout.height}" role="group" aria-label="${en?'Device architecture':'设备架构'}"><g aria-hidden="true">${wires}${captions}</g>${nodes}</svg></div>`;
+      return `<div class="network-${size} network-scene" data-scene-width="${layout.width}" style="--scene-width:${layout.width};aspect-ratio:${layout.width}/${layout.height}" role="group" aria-label="${en?'Device architecture':'设备架构'}"><svg viewBox="0 0 ${layout.width} ${layout.height}" aria-hidden="true">${wires}${captions}</svg>${nodes}</div>`;
     }
     const graph=document.getElementById('networkGraph');
+    // SVG and sibling HTML modules share the same untransformed container.
+    // Percent positions derive from the SVG viewBox; CSS scales module details.
     graph.innerHTML=scene('desktop')+scene('mobile');
     graph.querySelectorAll('[data-part]').forEach(button=>button.addEventListener('click',()=>{
       const pressed=button.getAttribute('aria-pressed')!=='true';
