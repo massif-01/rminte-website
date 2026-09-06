@@ -68,9 +68,11 @@
     .mp-model-capabilities h3 { margin:0; color:var(--ink); font-size:16px; line-height:1.5; font-weight:500; }
     .mp-model-capabilities p { margin:6px 0 0; color:var(--muted); font-size:14px; line-height:1.8; }
     .mp-card-bottom { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:auto; padding-top:20px; border-top:1px solid var(--line); }
-    .mp-model-card .mp-pill { min-height:42px; padding:10px 17px; gap:10px; font-size:12px; background:transparent; }
+    .mp-model-card .mp-pill { min-height:42px; padding:10px 17px; gap:8px; font-size:12px; background:transparent; }
     .mp-model-card .mp-pill:disabled { color:var(--dim); cursor:default; transform:none; border-color:var(--line); }
-    .hf-icon { width:23px; height:23px; flex:none; filter:invert(1); opacity:.85; }
+    .hf-icon, .hf-wordmark { display:block; flex:none; filter:invert(1); opacity:.85; }
+    .hf-icon { width:18px; height:18px; }
+    .hf-wordmark { width:82.875px; height:13px; }
     .mp-model-glyph { display:flex; gap:4px; align-items:center; height:24px; }
     .mp-model-glyph i { width:6px; height:20px; display:block; background:#919ba3; border-radius:1px; }
     .mp-model-card:last-child .mp-model-glyph i:nth-child(2n) { height:10px; background:#3e484f; }
@@ -153,18 +155,14 @@
     details[open] .mp-opt-plus .mp-plus-vertical { opacity:0; }
     .mp-opt-detail { padding:0 70px 30px 276px; color:var(--muted); font-size:14px; line-height:1.9; }
     .mp-opt-detail p { margin:0; max-width:750px; }
+    .mp-opt-detail p + p { margin-top:14px; }
     .mp-opt-detail strong { display:block; margin-bottom:10px; font-size:11px; font-weight:500; color:var(--dim); letter-spacing:.08em; }
     .models-preview .footer { padding:0 var(--section-x) 40px; }
     .models-preview .footer-inner { padding-top:24px; }
     .mp-dialog { color:var(--ink); background:var(--panel); border:1px solid var(--line); border-radius:var(--radius-panel); padding:27px; width:min(400px,calc(100vw - 32px)); max-height:calc(100dvh - 32px); overflow:auto; }
     .mp-dialog::backdrop { background:#0009; backdrop-filter:blur(12px); }
     .mp-dialog-top { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:18px; }
-    .mp-dialog h2 { font-size:20px; font-weight:500; margin:0; }
     .mp-close { display:grid; place-items:center; flex:none; width:44px; height:44px; border:1px solid var(--line); border-radius:50%; background:transparent; color:var(--ink); cursor:pointer; }
-    .mp-contact-links a { display:flex; flex-direction:column; gap:8px; border-top:1px solid var(--line); padding:20px 0; }
-    .mp-contact-links a:last-child { padding-bottom:0; }
-    .mp-contact-links span { color:var(--muted); font-size:12px; }
-    .mp-contact-links strong { font-size:16px; font-weight:500; }
     .mp-menu-dialog { width:100%; height:100dvh; max-width:none; max-height:none; margin:0; padding:24px; border:0; border-radius:0; background:var(--bg); }
     .mp-menu-dialog .mp-dialog-top { margin-bottom:38px; }
     .mp-menu-dialog img { width:125px; }
@@ -253,6 +251,7 @@
             .models-preview .footer-inner { gap:25px; }
       .models-preview .footer-brand { align-items:flex-start; }
     }
+    @media(max-width:380px) { .mp-card-bottom .mp-model-glyph { display:none; } }
     @media(max-width:360px) { .mp-hero h1 { font-size:29px; } .mp-model-card { padding:25px 21px; } .mp-model-card h2 { font-size:34px; } .mp-architecture-tag { font-size:13px; gap:5px; } .mp-heading { font-size:29px; } .mp-engine-tabs button { padding:10px 13px; } }
     @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .models-preview *, .models-preview *::before,.models-preview *::after { transition:none; animation:none; } }
   </style>
@@ -279,8 +278,8 @@
     <section class="mp-wrap mp-hero" aria-labelledby="modelsHeroTitle">
       <div>
         <p class="mp-eyebrow"><span data-zh="RMQ 系列模型" data-en="RMQ MODELS">RMQ 系列模型</span></p>
-        <h1 id="modelsHeroTitle"><span data-zh="专业分析，更深入。" data-en="Deeper analysis.">专业分析，更深入。</span><span data-zh="模型推理，更高效。" data-en="Faster inference.">模型推理，更高效。</span></h1>
-        <p class="mp-lead" data-zh="RMQ3x 与 RMQ4，RMinte 专业模型系列。为法律、调查、安全治理、科研与社会研究打造，连接领域知识、深度推理与工具执行，让 Agent 从理解问题、形成判断走向持续行动，交付文书、代码与研究成果。" data-en="RMQ3x and RMQ4, the RMinte professional model series. Built for law, investigations, security and governance, scientific research, and social research, they connect domain knowledge, deep reasoning, and tool use, enabling agents to move from understanding problems and forming judgments to sustained action, delivering documents, code, and research findings.">RMQ3x 与 RMQ4，RMinte 专业模型系列。为法律、调查、安全治理、科研与社会研究打造，连接领域知识、深度推理与工具执行，让 Agent 从理解问题、形成判断走向持续行动，交付文书、代码与研究成果。</p>
+        <h1 id="modelsHeroTitle"><span data-zh="专业分析，更深入。" data-en="Deeper analysis.">专业分析，更深入。</span><span data-zh="模型推理，更高效。" data-en="More efficient inference.">模型推理，更高效。</span></h1>
+        <p class="mp-lead" data-zh="RMQ3x 与 RMQ4，RMinte 专业模型系列。为法律、调查、安全治理、科研与社会研究打造，连接领域知识、深度推理与工具执行，让 Agent 从理解问题、形成判断走向持续行动，交付文书、代码与研究成果。" data-en="RMQ3x and RMQ4 are RMinte’s specialist models for law, investigations, security and governance, and scientific and social research. They combine domain knowledge, deep reasoning, and tool use so agents can understand problems, form judgments, and act on them to produce documents, code, and research findings.">RMQ3x 与 RMQ4，RMinte 专业模型系列。为法律、调查、安全治理、科研与社会研究打造，连接领域知识、深度推理与工具执行，让 Agent 从理解问题、形成判断走向持续行动，交付文书、代码与研究成果。</p>
         <div class="mp-hero-actions">
           <a class="cta-button" href="#models"><span data-zh="探索模型" data-en="Explore models">探索模型</span><svg class="cta-dot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a>
           <a class="mp-pill" href="#benchmarks"><span data-zh="查看评测" data-en="Benchmarks">查看评测</span></a>
@@ -323,25 +322,25 @@
       <div class="mp-model-grid">
         <article class="mp-model-card">
           <div class="mp-card-top"><h2 class="rm-mark">RMQ3x</h2><span class="mp-architecture-tag"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M1 1h4v4H1zm6 0h4v4H7zm6 0h4v4h-4zM1 7h4v4H1zm6 0h4v4H7zm6 0h4v4h-4zM1 13h4v4H1zm6 0h4v4H7zm6 0h4v4h-4z"/></svg>Dense</span></div>
-          <p class="mp-model-tagline"><span data-zh="专业推理，" data-en="Professional reasoning.">专业推理，</span><span data-zh="驱动实际行动。" data-en="Practical action.">驱动实际行动。</span></p>
-          <p class="mp-model-description" data-zh="针对法律、调查、安全治理、科研与社会研究打造的专业模型。连接方案设计、代码生成、工具调用与结果验证，让 Agent 将专业判断转化为行动，交付文书、代码与研究成果。" data-en="A professional model built for law, investigations, security and governance, scientific research, and social research. It connects planning, code generation, tool use, and result verification, enabling agents to turn professional judgment into action and deliver documents, code, and research findings.">针对法律、调查、安全治理、科研与社会研究打造的专业模型。连接方案设计、代码生成、工具调用与结果验证，让 Agent 将专业判断转化为行动，交付文书、代码与研究成果。</p>
+          <p class="mp-model-tagline"><span data-zh="专业推理，" data-en="Expert reasoning.">专业推理，</span><span data-zh="驱动实际行动。" data-en="Driving action.">驱动实际行动。</span></p>
+          <p class="mp-model-description" data-zh="针对法律、调查、安全治理、科研与社会研究打造的专业模型。连接方案设计、代码生成、工具调用与结果验证，让 Agent 将专业判断转化为行动，交付文书、代码与研究成果。" data-en="A specialist model for law, investigations, security and governance, and scientific and social research. It combines planning, code generation, tool use, and verification so agents can turn professional judgment into action and produce documents, code, and research findings.">针对法律、调查、安全治理、科研与社会研究打造的专业模型。连接方案设计、代码生成、工具调用与结果验证，让 Agent 将专业判断转化为行动，交付文书、代码与研究成果。</p>
           <ul class="mp-model-capabilities">
-            <li><h3 data-zh="理解专业问题" data-en="Understand professional problems">理解专业问题</h3><p data-zh="联系事实、证据与领域知识，推演因果、检验假设，形成有依据的判断与方案。" data-en="Connect facts, evidence, and domain knowledge to reason about cause and effect, test hypotheses, and develop well-founded judgments and plans.">联系事实、证据与领域知识，推演因果、检验假设，形成有依据的判断与方案。</p></li>
-            <li><h3 data-zh="完成实际工作" data-en="Execute real work">完成实际工作</h3><p data-zh="制定检索策略，生成数据查询与验证代码，调用专业工具执行任务、检验结果。" data-en="Develop search strategies, generate data queries and validation code, and use specialist tools to execute tasks and verify results.">制定检索策略，生成数据查询与验证代码，调用专业工具执行任务、检验结果。</p></li>
-            <li><h3 data-zh="延续任务进程" data-en="Sustain task progress">延续任务进程</h3><p data-zh="承接前序发现与执行反馈，修订方案、推进验证，完成调查、研究与业务工作。" data-en="Build on prior findings and execution feedback, revise plans, and advance verification to complete investigations, research, and business tasks.">承接前序发现与执行反馈，修订方案、推进验证，完成调查、研究与业务工作。</p></li>
+            <li><h3 data-zh="理解专业问题" data-en="Understand domain problems">理解专业问题</h3><p data-zh="联系事实、证据与领域知识，推演因果、检验假设，形成有依据的判断与方案。" data-en="Connect facts, evidence, and domain knowledge to examine cause and effect, test hypotheses, and develop sound judgments and plans.">联系事实、证据与领域知识，推演因果、检验假设，形成有依据的判断与方案。</p></li>
+            <li><h3 data-zh="完成实际工作" data-en="Execute tasks">完成实际工作</h3><p data-zh="制定检索策略，生成数据查询与验证代码，调用专业工具执行任务、检验结果。" data-en="Develop search strategies, generate data queries and validation code, and use specialist tools to execute tasks and verify results.">制定检索策略，生成数据查询与验证代码，调用专业工具执行任务、检验结果。</p></li>
+            <li><h3 data-zh="延续任务进程" data-en="Carry tasks forward">延续任务进程</h3><p data-zh="承接前序发现与执行反馈，修订方案、推进验证，完成调查、研究与业务工作。" data-en="Use prior findings and execution feedback to revise plans, verify results, and complete investigations, research, and business tasks.">承接前序发现与执行反馈，修订方案、推进验证，完成调查、研究与业务工作。</p></li>
           </ul>
-          <div class="mp-card-bottom"><button class="mp-pill hf-button" type="button" data-model="RMQ3x" disabled title="模型主页即将公布"><img class="hf-icon" src="hf-logo-monochrome.svg" alt="" aria-hidden="true"><span>Hugging Face</span></button><div class="mp-model-glyph" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="mp-card-bottom"><button class="mp-pill hf-button" type="button" data-model="RMQ3x" disabled title="模型主页即将公布"><img class="hf-icon" src="huggingface.svg" alt="" aria-hidden="true"><img class="hf-wordmark" src="huggingface-text.svg" alt="Hugging Face"></button><div class="mp-model-glyph" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
         </article>
         <article class="mp-model-card">
           <div class="mp-card-top"><h2 class="rm-mark">RMQ4</h2><span class="mp-architecture-tag"><svg viewBox="0 0 18 18" aria-hidden="true"><path opacity=".25" d="M1 1h4v4H1zm12 0h4v4h-4zM7 7h4v4H7zM1 13h4v4H1zm12 0h4v4h-4z"/><path d="M7 1h4v4H7zM1 7h4v4H1zm12 0h4v4h-4zM7 13h4v4H7z"/></svg>MoE</span></div>
-          <p class="mp-model-tagline"><span data-zh="深入复杂问题，" data-en="Explore complex problems.">深入复杂问题，</span><span data-zh="驾驭长程任务。" data-en="Manage long-running tasks.">驾驭长程任务。</span></p>
-          <p class="mp-model-description" data-zh="为跨领域、多阶段、需要反复验证的专业工作打造，覆盖法律、调查、安全治理、科研与社会研究。衔接任务规划、代码计算、工具使用与研究迭代，保持目标、约束和阶段成果的连续性，让 Agent 推进复杂调查与研究项目，完成从问题到成果的交付。" data-en="Built for professional work that spans disciplines, involves multiple stages, and requires repeated verification across law, investigations, security and governance, scientific research, and social research. It links task planning, computation, tool use, and research iteration while maintaining continuity in goals, constraints, and intermediate findings, enabling agents to carry complex investigations and research projects from initial questions to final deliverables.">为跨领域、多阶段、需要反复验证的专业工作打造，覆盖法律、调查、安全治理、科研与社会研究。衔接任务规划、代码计算、工具使用与研究迭代，保持目标、约束和阶段成果的连续性，让 Agent 推进复杂调查与研究项目，完成从问题到成果的交付。</p>
+          <p class="mp-model-tagline"><span data-zh="深入复杂问题，" data-en="Explore complex problems.">深入复杂问题，</span><span data-zh="驾驭长程任务。" data-en="Manage long-horizon tasks.">驾驭长程任务。</span></p>
+          <p class="mp-model-description" data-zh="为跨领域、多阶段、需要反复验证的专业工作打造，覆盖法律、调查、安全治理、科研与社会研究。衔接任务规划、代码计算、工具使用与研究迭代，保持目标、约束和阶段成果的连续性，让 Agent 推进复杂调查与研究项目，完成从问题到成果的交付。" data-en="Built for complex work in law, investigations, security and governance, and scientific and social research. It connects planning, code execution, tool use, and iterative research across disciplines and stages, retaining goals, constraints, and findings through repeated verification. Agents can carry investigations and research projects from the initial question to the final deliverable.">为跨领域、多阶段、需要反复验证的专业工作打造，覆盖法律、调查、安全治理、科研与社会研究。衔接任务规划、代码计算、工具使用与研究迭代，保持目标、约束和阶段成果的连续性，让 Agent 推进复杂调查与研究项目，完成从问题到成果的交付。</p>
           <ul class="mp-model-capabilities">
-            <li><h3 data-zh="建立完整论证" data-en="Build a complete argument">建立完整论证</h3><p data-zh="联结不同领域的知识与证据，解释问题机制，检验竞争性假设，形成逻辑严密的专业判断。" data-en="Connect knowledge and evidence across disciplines, explain underlying mechanisms, and test competing hypotheses to form logically rigorous professional judgments.">联结不同领域的知识与证据，解释问题机制，检验竞争性假设，形成逻辑严密的专业判断。</p></li>
-            <li><h3 data-zh="贯通复杂任务" data-en="Coordinate complex tasks">贯通复杂任务</h3><p data-zh="统筹调查规划、信息检索、代码计算与结果复核，将阶段性发现转化为后续行动。" data-en="Coordinate investigation planning, information retrieval, computation, and result review, translating intermediate findings into subsequent actions.">统筹调查规划、信息检索、代码计算与结果复核，将阶段性发现转化为后续行动。</p></li>
-            <li><h3 data-zh="推进研究迭代" data-en="Advance research iterations">推进研究迭代</h3><p data-zh="吸收新增证据、计算结果与实验反馈，修订假设、完善方案，产出可检验的研究成果。" data-en="Incorporate new evidence, computational results, and experimental feedback to revise hypotheses, refine plans, and produce testable research findings.">吸收新增证据、计算结果与实验反馈，修订假设、完善方案，产出可检验的研究成果。</p></li>
+            <li><h3 data-zh="建立完整论证" data-en="Build a complete argument">建立完整论证</h3><p data-zh="联结不同领域的知识与证据，解释问题机制，检验竞争性假设，形成逻辑严密的专业判断。" data-en="Connect knowledge and evidence across disciplines, explain underlying mechanisms, and test competing hypotheses to reach sound professional judgments.">联结不同领域的知识与证据，解释问题机制，检验竞争性假设，形成逻辑严密的专业判断。</p></li>
+            <li><h3 data-zh="贯通复杂任务" data-en="Coordinate complex tasks">贯通复杂任务</h3><p data-zh="统筹调查规划、信息检索、代码计算与结果复核，将阶段性发现转化为后续行动。" data-en="Coordinate investigation planning, information retrieval, code execution, and result verification. Use findings at each stage to guide the next action.">统筹调查规划、信息检索、代码计算与结果复核，将阶段性发现转化为后续行动。</p></li>
+            <li><h3 data-zh="推进研究迭代" data-en="Refine the research">推进研究迭代</h3><p data-zh="吸收新增证据、计算结果与实验反馈，修订假设、完善方案，产出可检验的研究成果。" data-en="Incorporate new evidence, computational results, and experimental feedback to revise hypotheses, refine plans, and produce testable research findings.">吸收新增证据、计算结果与实验反馈，修订假设、完善方案，产出可检验的研究成果。</p></li>
           </ul>
-          <div class="mp-card-bottom"><button class="mp-pill hf-button" type="button" data-model="RMQ4" disabled title="模型主页即将公布"><img class="hf-icon" src="hf-logo-monochrome.svg" alt="" aria-hidden="true"><span>Hugging Face</span></button><div class="mp-model-glyph" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="mp-card-bottom"><button class="mp-pill hf-button" type="button" data-model="RMQ4" disabled title="模型主页即将公布"><img class="hf-icon" src="huggingface.svg" alt="" aria-hidden="true"><img class="hf-wordmark" src="huggingface-text.svg" alt="Hugging Face"></button><div class="mp-model-glyph" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
         </article>
       </div>
     </section>
@@ -350,20 +349,20 @@
       <h2 class="mp-heading" id="benchmarkTitle" data-zh="模型评测" data-en="Model benchmarks">模型评测</h2>
       <figure class="mp-benchmark-plots">
         <canvas class="mp-benchmark-particles" aria-hidden="true"></canvas>
-        <figcaption class="mp-benchmark-status" data-zh="测评结果即将推出" data-en="Evaluation results coming soon">测评结果即将推出</figcaption>
+        <figcaption class="mp-benchmark-status" data-zh="测评结果即将推出" data-en="Benchmark results coming soon">测评结果即将推出</figcaption>
       </figure>
     </section>
 
     <section class="mp-wrap mp-section mp-scenarios" aria-labelledby="scenariosTitle">
-      <h2 class="mp-heading" id="scenariosTitle" data-zh="驱动专业 Agent，完成复杂任务。" data-en="Power professional agents. Deliver complex work.">驱动专业 Agent，完成复杂任务。</h2>
-      <p class="mp-lead" data-zh="以 RMQ 构建专业 Agent。连接行业知识、业务系统与专业工具，将专业目标转化为连续行动。" data-en="Build professional agents with RMQ. Connect domain knowledge, business systems, and specialist tools to turn professional goals into coordinated action.">以 RMQ 构建专业 Agent。连接行业知识、业务系统与专业工具，将专业目标转化为连续行动。</p>
+      <h2 class="mp-heading" id="scenariosTitle" data-zh="驱动专业 Agent，完成复杂任务。" data-en="Power specialist agents. Complete complex tasks.">驱动专业 Agent，完成复杂任务。</h2>
+      <p class="mp-lead" data-zh="以 RMQ 构建专业 Agent。连接行业知识、业务系统与专业工具，将专业目标转化为连续行动。" data-en="Build specialist agents with RMQ. Connect domain knowledge, business systems, and specialist tools to turn professional goals into sustained action.">以 RMQ 构建专业 Agent。连接行业知识、业务系统与专业工具，将专业目标转化为连续行动。</p>
       <div class="mp-case-grid" id="useCases"></div>
     </section>
 
     <section class="mp-wrap mp-section mp-engines" id="inference" aria-labelledby="inferenceTitle">
       <p class="mp-eyebrow" data-zh="推理引擎" data-en="INFERENCE ENGINES">推理引擎</p>
-      <h2 class="mp-heading" id="inferenceTitle" data-zh="专用引擎，释放模型性能。" data-en="Dedicated engines. More from your models.">专用引擎，释放模型性能。</h2>
-      <p class="mp-lead" data-zh="RMQ3x 与 RMQ4 已运行于 RMinte 自研 C++ 推理引擎和深度定制的 vLLM。围绕模型结构与 RM-01 的硬件平台，我们深入优化算子、执行路径与运行时，让模型能力建立在高效的推理实现之上。" data-en="RMQ3x and RMQ4 run on RMinte’s own C++ inference engine and a deeply customized vLLM implementation. We optimize kernels, execution paths, and runtimes around the model architectures and RM-01 hardware, grounding model capabilities in efficient inference.">RMQ3x 与 RMQ4 已运行于 RMinte 自研 C++ 推理引擎和深度定制的 vLLM。围绕模型结构与 RM-01 的硬件平台，我们深入优化算子、执行路径与运行时，让模型能力建立在高效的推理实现之上。</p>
+      <h2 class="mp-heading" id="inferenceTitle" data-zh="专用引擎，释放模型性能。" data-en="Dedicated engines. Unlock model performance.">专用引擎，释放模型性能。</h2>
+      <p class="mp-lead" data-zh="RMQ3x 与 RMQ4 已运行于 RMinte 自研 C++ 推理引擎和深度定制的 vLLM。围绕模型结构与 RM-01 的硬件平台，我们深入优化算子、执行路径与运行时，让模型能力建立在高效的推理实现之上。" data-en="RMQ3x and RMQ4 run on RMinte’s C++ inference engine and a custom vLLM implementation. We tailor kernels, execution paths, and runtimes to the model architectures and RM-01 hardware to turn model capability into efficient inference.">RMQ3x 与 RMQ4 已运行于 RMinte 自研 C++ 推理引擎和深度定制的 vLLM。围绕模型结构与 RM-01 的硬件平台，我们深入优化算子、执行路径与运行时，让模型能力建立在高效的推理实现之上。</p>
       <div class="mp-engine-layout">
         <figure class="mp-engine-art" id="engineArt" data-engine="cpp" aria-label="自研 C++ 推理实现示意">
           <div class="mp-engine-stack" aria-hidden="true">
@@ -378,39 +377,68 @@
             <button role="tab" type="button" id="tabVllm" aria-controls="panelVllm" aria-selected="false" tabindex="-1" data-engine-tab="vllm" data-zh="vLLM 定制" data-en="Custom vLLM">vLLM 定制</button>
           </div>
           <div class="mp-engine-panel" id="panelCpp" role="tabpanel" aria-labelledby="tabCpp" tabindex="0">
-            <h3 data-zh="自研 C++ 推理引擎" data-en="Our own C++ inference engine">自研 C++ 推理引擎</h3>
-            <h4 data-zh="更低的运行开销，更高的执行效率。" data-en="Lower runtime overhead. Higher execution efficiency.">更低的运行开销，更高的执行效率。</h4>
-            <p data-zh="RMinte 自研 C++ 引擎的 Runner 自身内存开销约为 2 MB，不含模型权重、KV Cache 与上下文等占用。在相同模型、精度与量化配置下，prefill 与 decode 性能均优于我们已优化的 vLLM 实现，兼顾输入处理与逐 token 生成的效率。" data-en="The runner in RMinte’s own C++ engine has a memory overhead of approximately 2 MB, excluding model weights, KV cache, context, and other model-related allocations. With the same model, precision, and quantization configuration, both prefill and decode outperform our optimized vLLM implementation, improving input processing and token-by-token generation.">RMinte 自研 C++ 引擎的 Runner 自身内存开销约为 2 MB，不含模型权重、KV Cache 与上下文等占用。在相同模型、精度与量化配置下，prefill 与 decode 性能均优于我们已优化的 vLLM 实现，兼顾输入处理与逐 token 生成的效率。</p>
+            <h3 data-zh="自研 C++ 推理引擎" data-en="Our C++ inference engine">自研 C++ 推理引擎</h3>
+            <h4 data-zh="更低的运行开销，更高的执行效率。" data-en="Lower runtime overhead. More efficient execution.">更低的运行开销，更高的执行效率。</h4>
+            <p data-zh="RMinte 自研 C++ 引擎的 Runner 自身内存开销约为 2 MB，不含模型权重、KV Cache 与上下文等占用。在相同模型、精度与量化配置下，prefill 与 decode 性能均优于我们已优化的 vLLM 实现，兼顾输入处理与逐 token 生成的效率。" data-en="The runner in RMinte’s C++ engine uses about 2 MB of memory, excluding model weights, KV cache, context, and other model allocations. With identical model, precision, and quantization settings, it outperforms our optimized vLLM implementation in both input processing (prefill) and token-by-token generation (decode).">RMinte 自研 C++ 引擎的 Runner 自身内存开销约为 2 MB，不含模型权重、KV Cache 与上下文等占用。在相同模型、精度与量化配置下，prefill 与 decode 性能均优于我们已优化的 vLLM 实现，兼顾输入处理与逐 token 生成的效率。</p>
             <h4 data-zh="持续 prefill，按需 decode。" data-en="Continuous prefill. Decode on demand.">持续 prefill，按需 decode。</h4>
-            <p data-zh="引擎支持连续追加输入、累积计算状态，将输入处理与回答生成分开调度。模型可以持续处理新消息、文档与任务反馈，复用已有计算，在需要输出时再启动 decode。" data-en="The engine supports incremental input and accumulated computation state, scheduling input processing separately from response generation. Models can keep processing new messages, documents, and task feedback, reuse previous computation, and begin decoding when output is needed.">引擎支持连续追加输入、累积计算状态，将输入处理与回答生成分开调度。模型可以持续处理新消息、文档与任务反馈，复用已有计算，在需要输出时再启动 decode。</p>
-            <p data-zh="这种执行方式让 Agent 能够持续接收上下文，无须每次输入都触发回答。从会议中的持续聆听，到案件材料的增量分析，模型随信息更新推进处理，在需要时参与判断与行动。" data-en="This execution model lets agents receive ongoing context without generating a response to every input. From listening throughout a meeting to incrementally analyzing case materials, models process information as it arrives and contribute to decisions and actions when needed.">这种执行方式让 Agent 能够持续接收上下文，无须每次输入都触发回答。从会议中的持续聆听，到案件材料的增量分析，模型随信息更新推进处理，在需要时参与判断与行动。</p>
+            <p data-zh="引擎支持连续追加输入、累积计算状态，将输入处理与回答生成分开调度。模型可以持续处理新消息、文档与任务反馈，复用已有计算，在需要输出时再启动 decode。" data-en="The engine accepts incremental input, retains computation state, and schedules input processing separately from response generation. Models process new messages, documents, and task feedback, reuse prior computation, and start decoding when output is needed.">引擎支持连续追加输入、累积计算状态，将输入处理与回答生成分开调度。模型可以持续处理新消息、文档与任务反馈，复用已有计算，在需要输出时再启动 decode。</p>
+            <p data-zh="这种执行方式让 Agent 能够持续接收上下文，无须每次输入都触发回答。从会议中的持续聆听，到案件材料的增量分析，模型随信息更新推进处理，在需要时参与判断与行动。" data-en="Agents can keep receiving context without responding to every input. Whether listening throughout a meeting or analyzing new case material, models process information as it arrives and contribute to decisions and actions when needed.">这种执行方式让 Agent 能够持续接收上下文，无须每次输入都触发回答。从会议中的持续聆听，到案件材料的增量分析，模型随信息更新推进处理，在需要时参与判断与行动。</p>
           </div>
           <div class="mp-engine-panel" id="panelVllm" role="tabpanel" aria-labelledby="tabVllm" tabindex="0" hidden>
-            <h3 data-zh="深度定制 vLLM" data-en="Deeply customized vLLM">深度定制 vLLM</h3>
-            <h4 data-zh="从算子到工具链，深入优化推理实现。" data-en="Optimizing inference, from kernels to toolchains.">从算子到工具链，深入优化推理实现。</h4>
-            <p data-zh="RMinte 围绕模型执行与硬件特性，完成 GPU 算子的移植与重写，处理 PTX 与编译工具链的兼容问题，并推进 FlashInfer 推理内核库、Transformers 5 模型库的适配与集成。" data-en="RMinte has ported and rewritten GPU kernels around model execution and hardware characteristics, addressed PTX and compiler toolchain compatibility, and worked on adapting and integrating the FlashInfer inference kernel library and the Transformers 5 model library.">RMinte 围绕模型执行与硬件特性，完成 GPU 算子的移植与重写，处理 PTX 与编译工具链的兼容问题，并推进 FlashInfer 推理内核库、Transformers 5 模型库的适配与集成。</p>
-            <p data-zh="在 Fused MoE 内核调优中，我们解决了相关流程中的 Triton 兼容问题，使内核参数能够针对模型配置与硬件特性进行调优。同时，对推测解码等执行流程进行定制优化，提升模型推理效率。" data-en="For Fused MoE kernel tuning, we resolved Triton compatibility issues in the tuning workflow, enabling kernel parameters to be tuned to model configurations and hardware characteristics. We also customize execution workflows, including speculative decoding, to improve inference efficiency.">在 Fused MoE 内核调优中，我们解决了相关流程中的 Triton 兼容问题，使内核参数能够针对模型配置与硬件特性进行调优。同时，对推测解码等执行流程进行定制优化，提升模型推理效率。</p>
+            <h3 data-zh="深度定制 vLLM" data-en="vLLM, customized from the kernel up">深度定制 vLLM</h3>
+            <h4 data-zh="从算子到工具链，深入优化推理实现。" data-en="Inference optimization, from kernels to toolchains.">从算子到工具链，深入优化推理实现。</h4>
+            <p data-zh="RMinte 围绕模型执行与硬件特性，完成 GPU 算子的移植与重写，处理 PTX 与编译工具链的兼容问题，并推进 FlashInfer 推理内核库、Transformers 5 模型库的适配与集成。" data-en="RMinte has ported and rewritten GPU kernels to match model execution and hardware requirements, and resolved compatibility issues with PTX and the compiler toolchain. We adapt and integrate the FlashInfer inference kernel library and the Transformers 5 model library.">RMinte 围绕模型执行与硬件特性，完成 GPU 算子的移植与重写，处理 PTX 与编译工具链的兼容问题，并推进 FlashInfer 推理内核库、Transformers 5 模型库的适配与集成。</p>
+            <p data-zh="在 Fused MoE 内核调优中，我们解决了相关流程中的 Triton 兼容问题，使内核参数能够针对模型配置与硬件特性进行调优。同时，对推测解码等执行流程进行定制优化，提升模型推理效率。" data-en="We resolved Triton compatibility issues in the Fused MoE tuning workflow so kernel parameters can be tuned for each model configuration and hardware platform. We also optimize execution paths, including speculative decoding, to improve inference efficiency.">在 Fused MoE 内核调优中，我们解决了相关流程中的 Triton 兼容问题，使内核参数能够针对模型配置与硬件特性进行调优。同时，对推测解码等执行流程进行定制优化，提升模型推理效率。</p>
             <h4 data-zh="支撑 RMQ，保留开放的模型选择。" data-en="Built for RMQ. Open to more models.">支撑 RMQ，保留开放的模型选择。</h4>
-            <p data-zh="定制 vLLM 已支持 RMQ3x 与 RMQ4，也为 RM-01 运行其他适配的开源模型提供推理基础。用户可以围绕任务选择模型，在同一台设备上构建不同的专业应用与 Agent 工作流。" data-en="Our customized vLLM supports RMQ3x and RMQ4 and provides an inference foundation for other compatible open-source models on RM-01. Users can choose models for their tasks and build different professional applications and agent workflows on the same device.">定制 vLLM 已支持 RMQ3x 与 RMQ4，也为 RM-01 运行其他适配的开源模型提供推理基础。用户可以围绕任务选择模型，在同一台设备上构建不同的专业应用与 Agent 工作流。</p>
+            <p data-zh="定制 vLLM 已支持 RMQ3x 与 RMQ4，也为 RM-01 运行其他适配的开源模型提供推理基础。用户可以围绕任务选择模型，在同一台设备上构建不同的专业应用与 Agent 工作流。" data-en="Our custom vLLM supports RMQ3x and RMQ4, as well as other compatible open-source models on RM-01. Choose models to suit each task and build specialist applications and agent workflows on the same device.">定制 vLLM 已支持 RMQ3x 与 RMQ4，也为 RM-01 运行其他适配的开源模型提供推理基础。用户可以围绕任务选择模型，在同一台设备上构建不同的专业应用与 Agent 工作流。</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- 内部目标状态文案；训练方法的当前状态与来源见同目录 TECHNICAL-NOTES.md。 -->
     <section class="mp-wrap mp-section mp-optimization" id="optimization" aria-labelledby="optimizationTitle">
-      <h2 class="mp-heading" id="optimizationTitle"><span data-zh="减少等待，" data-en="Less waiting.">减少等待，</span><br><span data-zh="让算力用在计算上。" data-en="More compute doing the work.">让算力用在计算上。</span></h2>
-      <p class="mp-lead" data-zh="模型性能取决于计算效率，也取决于数据读写与任务调度。我们计划优化关键算子、融合计算、减少数据搬运，让 RMQ3x 与 RMQ4 的架构优势转化为推理效率。" data-en="Model performance depends on computation, memory access, and scheduling. We plan to optimize key kernels, fuse operations, and reduce data movement, translating RMQ3x and RMQ4 architectures into inference efficiency.">模型性能取决于计算效率，也取决于数据读写与任务调度。我们计划优化关键算子、融合计算、减少数据搬运，让 RMQ3x 与 RMQ4 的架构优势转化为推理效率。</p>
+      <h2 class="mp-heading" id="optimizationTitle"><span data-zh="从架构到训练，" data-en="From architecture to training.">从架构到训练，</span><br><span data-zh="构建专业能力。" data-en="Built for professional work.">构建专业能力。</span></h2>
+      <p class="mp-lead" data-zh="RMQ3x 与 RMQ4 结合递归记忆、注意力检索与针对性训练，连接长上下文处理、专业分析和工具执行。稠密计算与稀疏专家构成两条架构路径，在模型容量、计算开销与任务能力之间形成各自的优势。" data-en="RMQ3x and RMQ4 combine recurrent memory, attention-based retrieval, and targeted training for long-context processing, professional analysis, and tool use. Dense computation and sparse experts offer distinct strengths across model capacity, computation cost, and task performance.">RMQ3x 与 RMQ4 结合递归记忆、注意力检索与针对性训练，连接长上下文处理、专业分析和工具执行。稠密计算与稀疏专家构成两条架构路径，在模型容量、计算开销与任务能力之间形成各自的优势。</p>
       <div class="mp-optimization-list" id="optimizations"></div>
     </section>
 
   </main>
 
-  <footer class="footer"><div class="footer-inner"><div class="footer-brand"><img src="../../website/assets/images/logo-white.svg" alt="RMinte"><div><p data-zh="泛灵（成都）人工智能科技有限公司" data-en="RMinte AI">泛灵（成都）人工智能科技有限公司</p><span>© 2026 <span class="rm-mark">RMinte</span> ( Chengdu ) Artificial Intelligence Technology Co., Ltd. · <span class="rm-mark">RM-01</span> Protable AI Supercomputer</span></div></div><div class="footer-actions"><button class="footer-contact" type="button" id="contactToggle" aria-expanded="false" aria-controls="contactDialog"><span data-zh="联系我们" data-en="Contact">联系我们</span></button><a class="footer-github" href="https://github.com/RMinte-AI" target="_blank" rel="noreferrer" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.38-3.37-1.38-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.3.1-2.72 0 0 .84-.27 2.75 1.05A9.35 9.35 0 0 1 12 6.94c.85 0 1.7.12 2.5.34 1.9-1.32 2.74-1.05 2.74-1.05.55 1.42.2 2.46.1 2.72.64.72 1.03 1.64 1.03 2.76 0 3.95-2.34 4.82-4.57 5.07.36.32.68.94.68 1.9 0 1.38-.01 2.48-.01 2.82 0 .28.18.6.69.5A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/></svg><span>GitHub</span></a></div></div></footer>
+  <footer class="footer"><div class="footer-inner"><div class="footer-brand"><img src="../../website/assets/images/logo-white.svg" alt="RMinte"><div><p data-zh="泛灵（成都）人工智能科技有限公司" data-en="RMinte AI">泛灵（成都）人工智能科技有限公司</p><span>© 2026 <span class="rm-mark">RMinte</span> (Chengdu) Artificial Intelligence Technology Co., Ltd. · <span class="rm-mark">RM-01</span> Portable AI Supercomputer</span></div></div><div class="footer-actions"><button class="footer-contact" type="button" id="contactToggle" aria-expanded="false" aria-controls="contactPopover" data-contact-toggle><span data-footer-text="contactButton">联系我们</span></button><a class="footer-github" href="https://github.com/RMinte-AI" target="_blank" rel="noreferrer" aria-label="GitHub"><svg class="github" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true" focusable="false" style="display:inline-block;width:18px;height:18px;flex:none;vertical-align:middle"><path d="M12 0c6.63 0 12 5.276 12 11.79-.001 5.067-3.29 9.567-8.175 11.187-.6.118-.825-.25-.825-.56 0-.398.015-1.665.015-3.242 0-1.105-.375-1.813-.81-2.181 2.67-.295 5.475-1.297 5.475-5.822 0-1.297-.465-2.344-1.23-3.169.12-.295.54-1.503-.12-3.125 0 0-1.005-.324-3.3 1.209a11.32 11.32 0 00-3-.398c-1.02 0-2.04.133-3 .398-2.295-1.518-3.3-1.209-3.3-1.209-.66 1.622-.24 2.83-.12 3.125-.765.825-1.23 1.887-1.23 3.169 0 4.51 2.79 5.527 5.46 5.822-.345.294-.66.81-.765 1.577-.69.31-2.415.81-3.495-.973-.225-.354-.9-1.223-1.845-1.209-1.005.015-.405.56.015.781.51.28 1.095 1.327 1.23 1.666.24.663 1.02 1.93 4.035 1.385 0 .988.015 1.916.015 2.196 0 .31-.225.664-.825.56C3.303 21.374-.003 16.867 0 11.791 0 5.276 5.37 0 12 0z"/></svg><span><svg class="github-text" viewBox="0 0 78 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true" focusable="false" style="display:inline-block;width:42.25px;height:13px;flex:none;vertical-align:middle"><path d="M16.598 10.836v9.48c0 .066-.017.181-.1.214 0 0-2.07 1.47-5.484 1.47C6.888 22 2 20.712 2 12.223 2 3.734 6.275 1.983 10.45 2c3.613 0 5.07.81 5.303.958.066.083.1.149.1.231l-.697 2.94c0 .149-.149.33-.331.28-.597-.18-1.491-.544-3.596-.544-2.435 0-5.053.693-5.053 6.16 0 5.466 2.485 6.11 4.275 6.11 1.524 0 2.07-.181 2.07-.181v-3.799h-2.435c-.182 0-.315-.132-.315-.28v-3.04c0-.148.133-.28.315-.28h6.197c.182 0 .315.132.315.28zM76 14.684c0 5.664-1.84 7.283-5.054 7.283-2.717 0-4.175-1.37-4.175-1.37s-.067.759-.15.858c-.05.1-.132.132-.231.132h-2.453c-.165 0-.315-.132-.315-.28l.034-18.349a.29.29 0 01.281-.28h3.53a.29.29 0 01.281.28v6.226s1.359-.875 3.347-.875l-.016-.033c1.988 0 4.921.743 4.921 6.408zM47.865 2.71a.29.29 0 01.281.281V21.34a.29.29 0 01-.281.281h-3.53a.29.29 0 01-.281-.28l.033-7.845h-5.485v7.844a.29.29 0 01-.281.281h-3.53c-.132 0-.281-.132-.281-.28V2.99a.29.29 0 01.281-.28h3.53a.29.29 0 01.281.28v6.755h5.485V2.99a.29.29 0 01.282-.28h3.496zM61.55 8.722c.183 0 .315.132.315.28l-.033 12.337c0 .149-.1.281-.282.281h-2.22c-.116 0-.232-.066-.265-.148-.05-.1-.133-.744-.133-.744S57.061 22 54.758 22c-2.8 0-4.839-.908-4.839-4.542V9.02a.29.29 0 01.282-.28h3.546a.29.29 0 01.282.28v7.845c0 1.238.364 1.8 1.607 1.8 1.243 0 2.154-.644 2.154-.644V9.036c0-.182.1-.314.282-.314h3.48zm-28.84 9.861h.007c.14.029.239.154.234.296v2.477c0 .116-.05.231-.149.264-.166.083-1.226.363-2.104.363-1.922 0-4.74-.412-4.74-4.442v-5.417H24.12c-.149 0-.281-.132-.281-.314V9.564c0-.132.083-.248.215-.28.116-.017 1.922-.463 1.922-.463V5.237c0-.132.083-.215.232-.215h3.58c.148 0 .231.083.231.215v3.485h2.635c.132 0 .265.132.265.28v2.808c0 .182-.116.314-.265.314h-2.635v5.17c0 .777.448 1.372 1.74 1.372.41 0 .797-.081.951-.083zM22.28 8.705a.29.29 0 01.282.281v12.172c0 .297-.083.446-.414.446h-3.182c-.281 0-.497-.116-.497-.446V9.036c0-.182.133-.33.282-.33h3.53zm49.693 6.243c0-2.99-1.21-3.386-2.486-3.253-.994.066-1.79.561-1.79.561v5.813s.813.562 2.022.595c1.707.05 2.254-.562 2.254-3.716zM20.54 3.123a2.26 2.26 0 012.254 2.28A2.26 2.26 0 0120.54 7.68a2.266 2.266 0 01-2.286-2.279c0-1.271 1.01-2.279 2.286-2.279z"/></svg></span></a></div></div></footer>
 
-  <dialog class="mp-dialog" id="contactDialog" aria-labelledby="contactTitle"><div class="mp-dialog-top"><h2 id="contactTitle" data-zh="联系我们" data-en="Contact">联系我们</h2><button class="mp-close" type="button" data-close-dialog aria-label="关闭"><svg class="mp-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><div class="mp-contact-links"><a href="mailto:jiezhu@rminte.com"><span data-zh="销售与渠道合作" data-en="Sales & channel partnerships">销售与渠道合作</span><strong>jiezhu@rminte.com</strong></a><a href="mailto:yishi@rminte.com"><span data-zh="制造与供应链合作" data-en="Manufacturing & supply chain">制造与供应链合作</span><strong>yishi@rminte.com</strong></a><a href="mailto:support@rminte.com"><span data-zh="售前与售后服务" data-en="Pre-sales & after-sales support">售前与售后服务</span><strong>support@rminte.com</strong></a></div></dialog>
+  <aside class="contact-popover" id="contactPopover" role="dialog" aria-labelledby="contactTitle" aria-hidden="true" data-contact-popover inert>
+    <div class="contact-card">
+      <div class="contact-card-core">
+        <div class="contact-top">
+          <div>
+
+            <h2 id="contactTitle" data-footer-text="contactTitle">联系我们</h2>
+          </div>
+          <button class="contact-close" type="button" aria-label="关闭" data-contact-close><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:jiezhu@rminte.com">
+            <span data-footer-text="salesContact">销售与渠道合作</span>
+            <strong>jiezhu@rminte.com</strong><svg class="contact-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+          <a href="mailto:yishi@rminte.com">
+            <span data-footer-text="manufacturingContact">制造与供应链合作</span>
+            <strong>yishi@rminte.com</strong><svg class="contact-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+          <a href="mailto:support@rminte.com">
+            <span data-footer-text="supportContact">售前与售后服务</span>
+            <strong>support@rminte.com</strong><svg class="contact-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </aside>
 
   <dialog class="mp-dialog mp-menu-dialog" id="mobileMenu" aria-label="导航菜单"><div class="mp-dialog-top"><img src="../../website/assets/images/logo-white.svg" alt="RMinte"><button class="mp-close" type="button" data-close-dialog aria-label="关闭"><svg class="mp-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><nav class="mp-mobile-links" aria-label="移动导航"><a href="https://rminte.com/gallery/index.html" data-zh="图册" data-en="Gallery">图册</a><a href="#main" aria-current="page" data-zh="模型" data-en="Models">模型</a><a href="https://rminte.com/#engine" data-zh="产品" data-en="Product">产品</a><a href="https://rminte.com/#teardown" data-zh="架构" data-en="Architecture">架构</a><a href="https://rminte.com/guides/index.html" data-zh="指南" data-en="Guides">指南</a><a href="https://rminte.com/downloads/index.html" data-zh="下载" data-en="Downloads">下载</a></nav></dialog>
 
+  <script src="../../website/assets/site-data.js" defer></script>
+  <script src="../../website/assets/footer.js" defer></script>
   <script src="benchmark-particles.js" defer></script>
   <script>
     (() => {
@@ -434,16 +462,16 @@
       ]
     },
     "en": {
-      "name": "Legal practice & judicial research",
-      "task": "Advance case research and trial preparation",
+      "name": "Justice & legal services",
+      "task": "Research cases and prepare for trial",
       "outputs": [
-        "Contract markups",
+        "Contract revisions",
         "Trial outlines"
       ],
       "stages": [
         "Case files, contracts, legal databases, and relevant precedents.",
-        "Research authorities, connect evidence to legal requirements, draft documents, and cross-check citations.",
-        "Legal opinions with supporting authorities, contract markups, and trial outlines."
+        "Find legal authorities, map evidence to legal elements, draft documents, and cross-check citations.",
+        "Legal opinions with supporting authorities, contract revisions, and trial outlines."
       ]
     }
   },
@@ -464,14 +492,14 @@
     },
     "en": {
       "name": "Criminal investigation & digital forensics",
-      "task": "Trace key leads and reconstruct connections",
+      "task": "Trace key leads and reconstruct event links",
       "outputs": [
         "Event timelines",
-        "Forensic follow-ups"
+        "Forensic verification tasks"
       ],
       "stages": [
-        "Communications, device data, and investigation records.",
-        "Connect entities and events, test competing explanations, and generate forensic queries and follow-up tasks.",
+        "Communication records, device data, and investigation records.",
+        "Cross-reference entities and events, test competing explanations, and generate forensic queries and follow-up verification tasks.",
         "Traceable event timelines, related leads, and verification plans."
       ]
     }
@@ -492,7 +520,7 @@
       ]
     },
     "en": {
-      "name": "Cybersecurity defense",
+      "name": "Cyber defense",
       "task": "Detect threats and drive incident response",
       "outputs": [
         "Detection queries",
@@ -522,15 +550,15 @@
     },
     "en": {
       "name": "Platform content governance",
-      "task": "Apply policies and resolve complex disputes",
+      "task": "Apply policies and handle complex disputes",
       "outputs": [
         "Review assignments",
         "Appeal assessments"
       ],
       "stages": [
         "User content, platform policies, reports, and appeals.",
-        "Interpret context and behavioral connections, prioritize risks, and use prior cases to support review.",
-        "Review assignments, appeal assessments, and policy gap findings."
+        "Examine context and links between behaviors, classify risks by severity, and use prior cases to support review decisions.",
+        "Review assignments, review recommendations, and a list of policy gaps."
       ]
     }
   },
@@ -551,13 +579,13 @@
     },
     "en": {
       "name": "Corporate investigations & anti-fraud",
-      "task": "Uncover transaction links and investigate concerns",
+      "task": "Uncover transaction links and investigate anomalies",
       "outputs": [
-        "Relationship leads",
+        "Unusual connections",
         "Investigation reports"
       ],
       "stages": [
-        "Contracts, financial transactions, internal communications, and company records.",
+        "Contracts, transaction records, internal communications, and company registration records.",
         "Cross-check unusual transactions and entity relationships, and prepare investigation plans and interview outlines.",
         "Investigation reports with evidence indexes and items requiring verification."
       ]
@@ -580,15 +608,15 @@
     },
     "en": {
       "name": "Forensic medicine, toxicology & accident investigation",
-      "task": "Explore mechanisms and plan verification",
+      "task": "Explain mechanisms and plan tests",
       "outputs": [
-        "Mechanism hypotheses",
-        "Further testing plans"
+        "Mechanistic hypotheses",
+        "Follow-up testing plans"
       ],
       "stages": [
         "Examination results, scene records, and specialist literature.",
         "Develop competing explanations, examine causal chains, and identify evidence that distinguishes possible mechanisms.",
-        "Mechanism hypotheses, differentiating questions, and further testing plans."
+        "Mechanistic hypotheses, questions that distinguish competing explanations, and follow-up testing plans."
       ]
     }
   },
@@ -608,16 +636,16 @@
       ]
     },
     "en": {
-      "name": "Materials & industrial chemistry",
-      "task": "Explore materials and iterate on processes",
+      "name": "Materials & industrial chemistry research",
+      "task": "Explore materials and processes. Advance R&D.",
       "outputs": [
-        "Experiment matrices",
+        "Experimental matrices",
         "Simulation scripts"
       ],
       "stages": [
         "Research literature, materials databases, and experimental and simulation tools.",
-        "Propose formulations and mechanisms, write simulation scripts, design experiments, and revise proposals using results.",
-        "Candidate proposals, experiment matrices, and reproducible data-processing scripts."
+        "Propose formulations and hypotheses about mechanisms, write simulation scripts, design experimental matrices, and revise plans based on the results.",
+        "Candidate approaches, experimental matrices, and reproducible data-processing scripts."
       ]
     }
   },
@@ -638,15 +666,15 @@
     },
     "en": {
       "name": "Life sciences & biomedical research",
-      "task": "Develop hypotheses and advance experiments",
+      "task": "Develop hypotheses and test them through experiments",
       "outputs": [
-        "Experiment designs",
+        "Experimental designs",
         "Research scripts"
       ],
       "stages": [
         "Literature, biological databases, and experimental data.",
-        "Develop mechanistic hypotheses and research priorities, design experiments and data workflows, and iterate on feedback.",
-        "Experiment designs, reproducible scripts, and research proposals."
+        "Develop mechanistic hypotheses, set research priorities, design experiments and data-processing workflows, and refine them based on feedback.",
+        "Experimental designs, reproducible scripts, and research plans."
       ]
     }
   },
@@ -667,24 +695,126 @@
     },
     "en": {
       "name": "Sociology, criminology & ethics",
-      "task": "Design studies and examine policy impacts",
+      "task": "Design studies and examine institutional effects",
       "outputs": [
         "Study designs",
-        "Theory evaluation reports"
+        "Theory-testing reports"
       ],
       "stages": [
         "Interviews, cases, statistical data, and theoretical literature.",
-        "Design sampling plans, perform qualitative coding and statistical modeling, test explanations, and explore institutional impacts.",
-        "Study designs, model results, and evidence-supported arguments."
+        "Develop sampling plans, code qualitative data, build statistical models, test explanations, and examine the effects of institutions.",
+        "Study designs, model results, and arguments supported by evidence."
       ]
     }
   }
 ];
       const optimizationItems = [
-        { model:'RMQ3x · RMQ4', zh:'混合注意力优化', en:'Hybrid attention', benefitZh:'加快输入处理与回答生成，减少注意力计算开销。', benefitEn:'Accelerate input processing and response generation while reducing attention overhead.', detailZh:'Gated DeltaNet 的门控与状态更新，以及两款模型各自的注意力计算路径；RMQ4 还包括 QSA 的块级索引、稀疏选择与数据访问。', detailEn:'Gated DeltaNet gating and state updates, along with each model’s attention paths. RMQ4 also includes QSA block-level indexing, sparse selection, and data access.' },
-        { model:'RMQ3x', zh:'稠密计算与算子融合', en:'Dense computation & fusion', benefitZh:'融合可合并的计算，减少中间结果读写与算子调用。', benefitEn:'Fuse compatible operations to reduce intermediate memory access and kernel calls.', detailZh:'稠密前馈网络、投影矩阵运算，以及适合融合的归一化、激活与残差计算。', detailEn:'Dense feed-forward networks and projection matrix operations, with normalization, activation, and residual computations fused where appropriate.' },
-        { model:'RMQ4', zh:'Fused MoE 专家计算', en:'Fused MoE expert computation', benefitZh:'优化专家调度、融合计算步骤，减少数据搬运。', benefitEn:'Optimize expert scheduling, fuse computation steps, and reduce data movement.', detailZh:'专家路由、token 分组与排布、分组矩阵运算、共享专家计算和输出汇总。', detailEn:'Expert routing, token grouping and layout, grouped matrix operations, shared-expert computation, and output aggregation.' },
-        { model:'RMQ4', zh:'门控残差与嵌入读取', en:'Gated residual & embedding access', benefitZh:'减少跨层信息传递与嵌入查表的等待。', benefitEn:'Reduce waiting during cross-layer information transfer and embedding lookups.', detailZh:'门控残差读写与归一化、N-gram 嵌入查表，以及计算融合、数据预取与存储调度。', detailEn:'Gated-residual reads, writes, and normalization; N-gram embedding lookups; and compute fusion, data prefetching, and storage scheduling.' }
+        {
+          model:'RMQ3x · RMQ4', zh:'Gated DeltaNet 递归记忆', en:'Gated DeltaNet recurrent memory',
+          benefitZh:'将历史信息写入递归状态，让长序列处理兼顾记忆更新与缓存开销。',
+          benefitEn:'Store history in a recurrent state to update memory while controlling cache costs for long sequences.',
+          detailZh:[
+            'Gated DeltaNet 将遗忘门控与 Delta 更新规则结合：门控调节旧状态的保留程度，Delta 规则用新信息修正当前状态的预测误差。GDN 层以固定规模的状态承接历史信息，避免逐 token 累积完整的键值缓存。',
+            '两款模型都以三个 GDN 层搭配一个注意力层。GDN 支持预填充阶段的分块并行与解码阶段的递归更新；注意力层保留对上下文细节的检索路径。状态记忆与注意力检索互补，共同处理长文档与多轮任务。'
+          ],
+          detailEn:[
+            'Gated DeltaNet combines a forget gate with the delta update rule. The gate controls how much of the previous state is retained; the delta rule uses new information to correct the state’s prediction error. Each GDN layer stores history in a fixed-size state rather than growing a full key-value cache with every token.',
+            'Both models pair three GDN layers with one attention layer. GDN supports chunk-parallel prefill and recurrent updates during decode; attention retrieves details from the context. Recurrent memory and attention-based retrieval work together to process long documents and multi-turn tasks.'
+          ]
+        },
+        {
+          model:'RMQ3x', zh:'全局注意力与稠密计算', en:'Global attention & dense computation',
+          benefitZh:'全局检索连接上下文细节，规整的前馈计算便于持续执行与算子融合。',
+          benefitEn:'Global attention retrieves details across the context; a regular feed-forward path supports sustained execution and operator fusion.',
+          detailZh:[
+            'RMQ3x 在 GDN 之间保留 Gated Attention 层，对因果范围内的上下文计算全局注意力，再通过输出门控调节检索结果的贡献。每个 token 经过完整的稠密前馈网络，计算路径无需专家路由与重排。',
+            '这一路径的优化重点是投影矩阵乘法、SwiGLU 激活与输出投影，以及残差相加和 RMSNorm 等相邻运算的融合。将可合并的步骤连续执行，减少中间张量的写回与读取，让规整的计算结构匹配硬件执行。'
+          ],
+          detailEn:[
+            'RMQ3x retains Gated Attention layers between GDN layers. These attend across the causal context, with an output gate controlling the contribution of retrieved information. Every token passes through the full dense feed-forward network, without expert routing or token reordering.',
+            'Optimization covers projection matrix multiplications, SwiGLU activation, output projection, and fusion of adjacent operations such as residual addition and RMSNorm. Combining compatible steps reduces intermediate tensor writes and reads and aligns the computation path with the hardware.'
+          ]
+        },
+        {
+          model:'RMQ4', zh:'QSA 块级稀疏注意力', en:'QSA block-sparse attention',
+          benefitZh:'先定位相关上下文，再读取原始 token，将注意力计算集中到选中的内容。',
+          benefitEn:'Find relevant context blocks, then attend to their original tokens to focus computation on selected content.',
+          detailZh:[
+            'QSA（Qwen Sparse Attention）通过轻量索引器，将历史键压缩为微块表示并评估相关性。选中的微块展开为原始 token 位置，交由主注意力模块计算；当前尚未填满的尾部块也参与计算。块级索引缩短了候选序列，细粒度注意力则保留对原始内容的读取。',
+            'RMQ4 用 QSA 承担 GDN 之外的上下文检索。工程重点贯穿块级索引、Top-k 选择、稀疏键值访问与注意力计算，控制索引成本和访存开销，使长上下文中的检索更有针对性。'
+          ],
+          detailEn:[
+            'QSA (Qwen Sparse Attention) uses a lightweight indexer to compress past keys into micro-block representations and score their relevance. Selected blocks are mapped back to their original token positions for the main attention computation, along with the current incomplete tail block. Block indexing shortens the candidate sequence; token-level attention preserves access to the original content.',
+            'QSA handles context retrieval alongside GDN in RMQ4. Optimization covers block indexing, top-k selection, sparse key-value access, and attention computation to control indexing and memory-access costs while focusing retrieval on relevant context.'
+          ]
+        },
+        {
+          model:'RMQ4', zh:'稀疏专家与 Fused MoE', en:'Sparse experts & Fused MoE',
+          benefitZh:'每个 token 调用部分路由专家与共享专家，让模型容量与单次计算成本分开扩展。',
+          benefitEn:'Each token activates selected routed experts and a shared expert, allowing model capacity to scale separately from per-token computation.',
+          detailZh:[
+            'RMQ4 的路由器根据 token 表征选择专家，由被选中的专家与共享专家参与前馈计算，再将结果加权汇总。稀疏激活让模型容纳更多专家，同时控制每个 token 的计算量；完整权重仍需相应的存储与访问机制。',
+            'Fused MoE 将 token 分组与重排、专家矩阵计算、门控激活和加权归并组织为协同执行路径。优化围绕专家负载、数据布局和中间结果展开，减少碎片化的小规模计算与数据搬运，保持路由关系和专家计算的语义。'
+          ],
+          detailEn:[
+            'RMQ4 selects experts based on each token’s representation. The selected experts and a shared expert perform feed-forward computation, and a weighted sum combines their outputs. Sparse activation supports a larger expert pool while limiting per-token computation. The full set of weights still needs storage and an access mechanism.',
+            'Fused MoE coordinates token grouping and reordering, expert matrix operations, gated activation, and weighted reduction. Tuning expert workloads, data layouts, and intermediate results reduces fragmented small operations and data movement while preserving routing and expert-computation semantics.'
+          ]
+        },
+        {
+          model:'RMQ4', zh:'Gated Residual 门控残差', en:'Gated Residual',
+          benefitZh:'通过多分支残差与动态读写门控，调节各层接收和保留的信息。',
+          benefitEn:'Use multiple residual branches and dynamic read-write gates to control what each layer receives and retains.',
+          detailZh:[
+            'Gated Residual 将残差流扩展为多个分支。读取时，各分支分别归一化，按输入生成逐通道门控，再聚合为当前计算模块的输入；写入时，为每个分支生成标量权重，控制模块输出加入该分支的程度。',
+            '这种结构把跨层信息选择细化到分支与通道，增强深层网络的信息传递能力。读门控与归一化共用计算路径，分支不再经过额外的残差混合矩阵，减少宽残差流的重复读取。'
+          ],
+          detailEn:[
+            'Gated Residual widens the residual stream into multiple branches. Each read normalizes the branches, applies input-dependent gates to their channels, and aggregates them into the current block’s input. Each write assigns a scalar weight to each branch to control how much of the block output it receives.',
+            'Branch- and channel-level selection improves information flow through deep networks. Read gating shares a computation path with normalization. Removing the additional residual-mixing matrix reduces repeated reads of the widened residual stream.'
+          ]
+        },
+        {
+          model:'RMQ4', zh:'N-gram 条件记忆', en:'N-gram conditional memory',
+          benefitZh:'用局部 token 组合检索嵌入表，以较少的额外计算扩展模型表达容量。',
+          benefitEn:'Look up local token combinations in an embedding table to expand representational capacity with little extra computation.',
+          detailZh:[
+            'N-gram 嵌入以当前 token 及其相邻前文构成短序列，生成确定的查表索引。取出的向量经投影与门控注入模型表征，让输入同时携带单 token 信息与局部组合特征。嵌入表中的知识来自训练，推理时按索引读取。',
+            '这类容量扩展主要增加查表与投影开销，无需为每次访问执行完整专家网络。确定的索引便于将嵌入预取与前序层计算重叠。工程重点是查表带宽、数据布局和存储调度，控制大容量嵌入带来的访问成本。'
+          ],
+          detailEn:[
+            'N-gram embeddings combine the current token with nearby preceding tokens to form short sequences and deterministic lookup indices. Retrieved vectors are projected and gated into the model representation, adding features from local token combinations to individual-token information. The embedding table is learned during training and read by index during inference.',
+            'Most of the added cost comes from lookup and projection, without running a full expert network for each access. Deterministic indices let embedding prefetch overlap with computation in earlier layers. Optimization focuses on lookup bandwidth, data layout, and memory scheduling to control the cost of accessing a large embedding table.'
+          ]
+        },
+        {
+          model:'RMQ3x · RMQ4', zh:'领域适配与 Agent 训练', en:'Domain adaptation & agent training',
+          benefitZh:'围绕专业材料、任务轨迹与执行反馈，训练分析、工具使用和结果核查能力。',
+          benefitEn:'Train analysis, tool use, and result verification with domain material, task trajectories, and execution feedback.',
+          detailZh:[
+            '监督微调（SFT）将专业材料组织为问题分析、证据关联、工具调用与成果交付的任务轨迹。训练覆盖多轮对话、结构化输出与执行失败后的修正，对助手回答和动作施加监督，让模型学习完整的任务过程。LoRA 低秩适配与全参微调用于不同范围的权重更新。',
+            '直接偏好优化（DPO）比较同一问题下的候选结果，将证据充分性、推理一致性和指令遵循纳入训练目标。对代码、计算与工具执行等可验证任务，GRPO 类强化学习利用结果反馈优化策略，并通过保留集检查专业能力与通用能力的变化。'
+          ],
+          detailEn:[
+            'Supervised fine-tuning (SFT) uses task trajectories built from domain material, covering problem analysis, evidence synthesis, tool calls, and delivery. Training supervises assistant responses and actions across multi-turn dialogue, structured outputs, and recovery from execution failures to teach the full task process. Low-rank adaptation (LoRA) and full-parameter fine-tuning offer different approaches to updating weights.',
+            'Direct Preference Optimization (DPO) uses preferences between responses to the same problem, with evidence quality, reasoning consistency, and instruction following as training criteria. For coding, computation, and tool tasks with verifiable outcomes, GRPO-style reinforcement learning uses result feedback to refine the policy. Held-out evaluations track changes in domain and general capabilities.'
+          ]
+        },
+        {
+          model:'RMQ3x · RMQ4', zh:'价值观与安全对齐调整', en:'Adjusting value & safety alignment',
+          benefitZh:'结合偏好重塑与拒答表征干预，解除预设对齐对专业问题的响应限制，并控制对原有能力的扰动。',
+          benefitEn:'Reshape preferences and edit refusal-related representations to remove preset alignment constraints on professional tasks and limit disruption to existing capabilities.',
+          detailZh:[
+            'RMQ3x 与 RMQ4 针对基座模型的价值观与安全对齐进行后训练。SFT 通过任务示范训练直接回答、证据辨析和指令执行；DPO 通过回答对的偏好关系，调整预设立场、回避表达与泛化拒答。训练目标围绕问题证据和用户任务设定，使模型能够讨论争议内容、比较不同观点并完成专业分析。',
+            'Abliteration 从对照样本的中间激活中提取拒答相关方向，对写入残差流的权重实施定向编辑。按层与表征结构采用单方向投影、SVD 多方向子空间及 LEACE 线性概念擦除；结合分层强度搜索、投影修正、范数保持与权重融合控制干预，并针对残余拒答行为迭代校正。',
+            '干预位置按架构适配：RMQ3x 处理注意力与稠密前馈输出；RMQ4 处理融合专家张量、共享专家与多分支残差，并区分嵌入投影和门控路径。以响应表现、KL 散度和任务评测共同选择编辑强度，通过中文、推理、代码、工具调用与长任务评测检查能力保持。'
+          ],
+          detailEn:[
+            'RMQ3x and RMQ4 use post-training to adjust their base models’ value and safety alignment. SFT uses task demonstrations to teach direct answers, evidence analysis, and instruction following. DPO uses preferences between paired responses to adjust predefined stances, evasive language, and overgeneralized refusals. Training objectives center on the evidence and the user’s task so models can discuss contested topics, compare viewpoints, and conduct professional analysis.',
+            'Abliteration extracts refusal-related directions from intermediate activations of contrasting examples and edits weights that write into the residual stream. We select single-direction projection, SVD-based multidirectional subspaces, and LEACE linear concept erasure to suit each layer and representation structure. Layer-wise strength search, projection refinement, norm preservation, and weight blending control the intervention. Successive edits target remaining refusal behavior.',
+            'Edit targets follow each architecture: attention and dense feed-forward outputs in RMQ3x; fused expert tensors, shared experts, and multiple residual branches in RMQ4. Embedding projections are treated separately from gating paths. Response behavior, KL divergence, and task evaluations guide edit strength. Evaluations of Chinese-language performance, reasoning, coding, tool use, and long-horizon tasks check capability retention.'
+          ]
+        }
       ];
       function bilingual(tag, zh, en, className) {
         const element = document.createElement(tag);
@@ -741,13 +871,13 @@
         close.addEventListener('click',() => { const previous = selectedCase; selectCase(-1); caseButtons[previous].focus(); });
         const title = bilingual('h3',item.zh.name,item.en.name); title.id = 'caseDetailTitle';
         const flow = document.createElement('div'); flow.className = 'mp-case-flow';
-        const labels = [['连接知识与工具','Connect knowledge and tools'],['Agent 推进任务','Agent execution'],['交付工作成果','Deliver work products']];
+        const labels = [['连接知识与工具','Connect knowledge and tools'],['Agent 推进任务','Agent execution'],['交付工作成果','Deliver results']];
         labels.forEach((label,index) => {
           const stage = document.createElement('div'); stage.className = 'mp-case-stage';
           const number = document.createElement('span'); number.className = 'mp-case-step'; number.textContent = `0${index + 1}`;
           stage.append(number,bilingual('h4',...label),bilingual('p',item.zh.stages[index],item.en.stages[index])); flow.append(stage);
         });
-        caseDetail.replaceChildren(close,bilingual('span','专业 Agent 工作流程','PROFESSIONAL AGENT WORKFLOW','mp-case-detail-eyebrow'),title,flow);
+        caseDetail.replaceChildren(close,bilingual('span','专业 Agent 工作流程','SPECIALIST AGENT WORKFLOW','mp-case-detail-eyebrow'),title,flow);
         caseDetail.querySelectorAll('[data-zh][data-en]').forEach(element => setBrandedText(element,element.dataset[lang]));
       }
       function selectCase(index) {
@@ -768,7 +898,8 @@
         const icon = plusIcon();
         summary.append(name,bilingual('p',item.benefitZh,item.benefitEn,'mp-opt-benefit'),icon);
         const detail = document.createElement('div'); detail.className = 'mp-opt-detail';
-        detail.append(bilingual('strong','技术重点','TECHNICAL FOCUS'),bilingual('p',item.detailZh,item.detailEn));
+        detail.append(bilingual('strong','技术解读','TECHNICAL DETAILS'));
+        item.detailZh.forEach((paragraph,index) => detail.append(bilingual('p',paragraph,item.detailEn[index])));
         details.append(summary,detail); document.getElementById('optimizations').append(details);
       }
       document.querySelectorAll('[data-cells]').forEach(grid => {
@@ -782,21 +913,24 @@
         link.append(...button.childNodes); button.replaceWith(link);
       });
       const menu = document.getElementById('mobileMenu');
-      const contact = document.getElementById('contactDialog');
+      const contact = document.getElementById('contactPopover');
       const menuToggle = document.getElementById('menuToggle');
       const contactToggle = document.getElementById('contactToggle');
       const languageToggle = document.getElementById('languageToggle');
+      const pageDescription = document.querySelector('meta[name="description"]');
+      const descriptionZh = pageDescription.content;
       let lang = 'zh';
       function setBrandedText(element,text) {
-        const parts = text.split(/(RMinte|RMQ3x|RMQ4|RMQ|RM-01)/g);
+        const parts = text.split(/(RMinte(?:\s+AI\b)?|RMQ3x|RMQ4|RMQ|RM-01)/g);
         element.replaceChildren(...parts.map(part => {
-          if (!/^(RMinte|RMQ3x|RMQ4|RMQ|RM-01)$/.test(part)) return document.createTextNode(part);
+          if (!/^(RMinte(?:\s+AI\b)?|RMQ3x|RMQ4|RMQ|RM-01)$/.test(part)) return document.createTextNode(part);
           const mark = document.createElement('span'); mark.className = 'rm-mark'; mark.textContent = part; return mark;
         }));
       }
       function setLanguage(next) {
         lang = next; document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
         document.title = lang === 'zh' ? '模型 · RMinte' : 'Models · RMinte';
+        pageDescription.content = lang === 'zh' ? descriptionZh : 'RMQ3x and RMQ4: RMinte’s specialist models with targeted training, dedicated inference engines, and architecture optimization.';
         document.querySelectorAll('[data-zh][data-en]').forEach(element => { setBrandedText(element,element.dataset[lang]); });
         languageToggle.textContent = lang === 'zh' ? 'EN' : '中文';
         languageToggle.setAttribute('aria-label',lang === 'zh' ? '切换到英文' : 'Switch to Chinese');
@@ -812,8 +946,8 @@
         document.querySelector('.mp-mobile-links').setAttribute('aria-label',lang === 'zh' ? '移动导航' : 'Mobile navigation');
         document.getElementById('models').setAttribute('aria-label',lang === 'zh' ? '模型介绍' : 'Model overview');
         renderCaseDetail();
-        document.querySelector('.mp-engine-tabs').setAttribute('aria-label',lang === 'zh' ? '推理实现' : 'Inference implementation');
-        document.querySelector('.mp-hero-art').setAttribute('aria-label',lang === 'zh' ? 'Dense 与 MoE 架构概念示意' : 'Dense and MoE architecture concepts');
+        document.querySelector('.mp-engine-tabs').setAttribute('aria-label',lang === 'zh' ? '推理实现' : 'Inference engines');
+        document.querySelector('.mp-hero-art').setAttribute('aria-label',lang === 'zh' ? 'Dense 与 MoE 架构概念示意' : 'Conceptual view of dense and MoE architectures');
         document.querySelectorAll('[data-visual-model]').forEach(button => {
           const architecture = button.classList.contains('dense') ? 'Dense' : 'MoE';
           button.setAttribute('aria-label',`${button.dataset.visualModel} ${architecture}${lang === 'zh' ? '：展开或收起结构' : ': expand or collapse layers'}`);
@@ -828,24 +962,28 @@
       });
       languageToggle.addEventListener('click',() => setLanguage(lang === 'zh' ? 'en' : 'zh'));
       menuToggle.addEventListener('click',() => { menu.showModal(); menuToggle.setAttribute('aria-expanded','true'); });
-      contactToggle.addEventListener('click',() => { contact.showModal(); contactToggle.setAttribute('aria-expanded','true'); });
       menu.addEventListener('close',() => menuToggle.setAttribute('aria-expanded','false'));
-      contact.addEventListener('close',() => contactToggle.setAttribute('aria-expanded','false'));
       document.querySelectorAll('[data-close-dialog]').forEach(button => button.addEventListener('click',() => button.closest('dialog').close()));
       document.querySelectorAll('.mp-mobile-links a').forEach(link => link.addEventListener('click',() => menu.close()));
-      contact.addEventListener('click',event => {
-        if (event.target !== contact) return;
-        const rect = contact.getBoundingClientRect();
-        if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) contact.close();
-      });
+      // Keep the shared non-modal panel out of keyboard navigation while closed.
+      new MutationObserver(() => {
+        const open = contact.getAttribute('aria-hidden') === 'false';
+        const restoreFocus = !open && contact.contains(document.activeElement);
+        contact.inert = !open;
+        if (open && contactToggle.matches(':focus-visible')) {
+          contact.querySelector('[data-contact-close]').focus();
+        } else if (restoreFocus) {
+          contactToggle.focus();
+        }
+      }).observe(contact,{ attributes:true, attributeFilter:['aria-hidden'] });
       const narrowMenu = matchMedia('(max-width:1120px)');
       narrowMenu.addEventListener('change',event => { if (!event.matches && menu.open) menu.close(); });
       const engineTabs = Array.from(document.querySelectorAll('[data-engine-tab]'));
       let engine = 'cpp';
       function updateEngineArt() {
         document.getElementById('engineArt').dataset.engine = engine;
-        document.getElementById('runtimeLabel').innerHTML = engine === 'cpp' ? '<span class="rm-mark">RMinte</span> C++ Runtime' : 'vLLM · Custom';
-        document.getElementById('engineArt').setAttribute('aria-label',lang === 'zh' ? `${engine === 'cpp' ? '自研 C++' : 'vLLM 定制'}推理实现示意` : `${engine === 'cpp' ? 'RMinte C++' : 'Custom vLLM'} inference concept`);
+        document.getElementById('runtimeLabel').innerHTML = engine === 'cpp' ? '<span class="rm-mark">RMinte</span> C++ Runtime' : 'Custom vLLM';
+        document.getElementById('engineArt').setAttribute('aria-label',lang === 'zh' ? `${engine === 'cpp' ? '自研 C++' : 'vLLM 定制'}推理实现示意` : `${engine === 'cpp' ? 'RMinte C++' : 'Custom vLLM'} inference diagram`);
       }
       function selectEngine(next,focus=false) {
         engine = next;

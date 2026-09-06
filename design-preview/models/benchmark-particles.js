@@ -3,7 +3,7 @@
   const context = canvas.getContext('2d');
   if (!context) return;
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  const pointer = { x: 0, y: 0, active: false };
+  const pointer = { x: 0, y: 0, active: false, strength: 0 };
   let stars = [];
   let width = 0;
   let height = 0;
@@ -13,7 +13,10 @@
 
   function draw(time, step = 0) {
     context.clearRect(0, 0, width, height);
-    const radius = Math.min(75, width * 0.14);
+    const radius = Math.min(36, width * 0.08);
+    pointer.strength = step && !reducedMotion.matches
+      ? pointer.strength + ((pointer.active ? 1 : 0) - pointer.strength) * (1 - Math.pow(0.8, step))
+      : 0;
     for (const star of stars) {
       if (step) {
         let ax = (star.homeX - star.x) * 0.009;
@@ -23,7 +26,7 @@
           const dy = star.y - pointer.y;
           const distance = Math.hypot(dx, dy);
           if (distance < radius) {
-            const force = (1 - distance / radius) ** 2 * 3.6;
+            const force = (1 - distance / radius) ** 2 * 0.9;
             const angle = distance > 0.1 ? Math.atan2(dy, dx) : star.phase;
             ax += Math.cos(angle) * force;
             ay += Math.sin(angle) * force;
@@ -36,7 +39,10 @@
       }
       const twinkle = reducedMotion.matches ? 1 : 0.85 + 0.15 * Math.sin(time * 0.0007 + star.phase);
       const edge = Math.min(1, star.x / 55, (width - star.x) / 55, star.y / 35, (height - star.y) / 35);
-      const opacity = star.opacity * twinkle * Math.max(0, edge);
+      const distanceRatio = Math.min(1, Math.hypot(star.x - pointer.x, star.y - pointer.y) / radius);
+      const feather = distanceRatio * distanceRatio * (3 - 2 * distanceRatio);
+      const pointerOpacity = 1 - pointer.strength * (1 - feather) * 0.75;
+      const opacity = star.opacity * twinkle * Math.max(0, edge) * pointerOpacity;
       if (star.size > 1.2) {
         context.fillStyle = `rgba(220,230,240,${opacity * 0.075})`;
         context.beginPath();
