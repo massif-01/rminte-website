@@ -134,8 +134,6 @@ class Emoji2Pixel {
         this.measureCtx = this.measureCanvas.getContext('2d', { willReadFrequently: true });
 
         this.emojiSections = [];
-        this.emojiNavButtons = [];
-        this.emojiNavScrollRaf = null;
         this.emojiCategories = [];
         this.emojiNameMap = new Map();
         this.language = 'zh-CN';
@@ -217,6 +215,9 @@ class Emoji2Pixel {
         }
         localStorage.setItem('emoji2pixel_lang', lang);
         this.applyI18n();
+        if (this.workbenchReady) { this.applyEmojiSearchFilter(); }
+        this.updateEmojiFitControls();
+        if (this.workbenchReady) this.refreshWorkbench();
         if (!silent) {
             this.updateFramesList();
             this.updateTweenInfo();
@@ -325,26 +326,138 @@ class Emoji2Pixel {
         this.workspaceObserver = new ResizeObserver(() => this.fitWorkspaceCanvas());
         this.workspaceObserver.observe(this.mainCanvas.parentElement);
         window.addEventListener('resize', () => {
-            if (innerWidth >= 768 && workspace.dataset.activePanel === 'frames') selectPanel(tabs[0]);
             this.fitWorkspaceCanvas();
         });
         // Labels keep compact controls understandable to keyboard and screen-reader users.
-        const labels = {emojiInput:'inputEmoji',emojiSearchInput:'quickSearch',emojiScaleInput:'scale',tweenFramesInput:'tweenLabel',animSpeed:'play',displayWidthInput:'size',displayHeightInput:'size',gridWidthInput:'matrix',gridHeightInput:'matrix',pixelSizeInput:'pixelSize',gapSizeInput:'gap',unitSelect:'unit',renderModeSelect:'mode',exportTypeSelect:'exportRaw',scaleSlider:'scale',offsetXSlider:'transform',offsetYSlider:'transform',rotateSlider:'rotate',quantizeColorsInput:'colors',sharpenModeSelect:'sharpen',sharpenStrengthInput:'strength'};
+        const labels = {emojiInput:'inputEmoji',emojiSearchInput:'quickSearch',emojiScaleInput:'scale',tweenFramesInput:'tweenLabel',animSpeed:'frameInterval',displayWidthInput:'size',displayHeightInput:'size',gridWidthInput:'matrix',gridHeightInput:'matrix',pixelSizeInput:'pixelSize',gapSizeInput:'gap',unitSelect:'unit',renderModeSelect:'mode',exportTypeSelect:'outputContent',scaleSlider:'scale',offsetXSlider:'horizontalPosition',offsetYSlider:'verticalPosition',rotateSlider:'rotate',quantizeColorsInput:'colors',sharpenModeSelect:'sharpen',sharpenStrengthInput:'strength'};
         Object.entries(labels).forEach(([id,key]) => document.getElementById(id).setAttribute('data-i18n-title', key));
         this.applyI18n();
-        const empty = document.getElementById('canvasEmpty');
-        const refreshEmpty = () => { empty.hidden = this.frames.length > 0 || this.emojiInput.value.trim().length > 0; };
-        this.emojiInput.addEventListener('input', refreshEmpty);
-        this.frameObserver = new MutationObserver(refreshEmpty);
-        this.frameObserver.observe(this.framesContainer, {childList:true});
-        refreshEmpty();
+        this.initWorkbench();
+    }
+
+    categoryLabel(name) {
+        const names = ['Smileys & Emotion','People & Body','Component','Animals & Nature','Food & Drink','Travel & Places','Activities','Objects','Symbols','Flags'];
+        const index = names.indexOf(name);
+        return index < 0 ? name : this.t('category' + index);
+    }
+
+    refreshCategorySelect() {
+        if (!this.emojiNav) return;
+        const selected = this.selectedCategory || '';
+        const select = document.createElement('select');
+        select.id = 'categorySelect';
+        select.setAttribute('aria-label', this.t('category'));
+        select.add(new Option(this.t('allCategories'), ''));
+        this.emojiCategories.forEach(group => select.add(new Option(this.categoryLabel(group.name), group.name)));
+        select.value = selected;
+        select.addEventListener('change', () => { this.selectedCategory = select.value; this.applyEmojiSearchFilter(); });
+        this.emojiNav.replaceChildren(select);
+    }
+
+    clearSelectionState() {
+        this.selectionRect = null;
+        this.selectionMask = null;
+        this.colorPickPoint = null;
+        this.selectionStart = null;
+        this.clearSelectionOverlay();
+    }
+
+    rememberWorkspace() {
+        this.processUndo = { workspace: this.frames.slice(), index: this.currentFrameIndex };
+    }
+
+    acceptSourceFrame(frame) {
+        this.pauseAnimation();
+        if (!this.importingAnimation) this.rememberWorkspace();
+        this.clearSelectionState();
+        if (this.frames.length && !this.addingFrame) this.frames[this.currentFrameIndex] = frame;
+        else { this.frames.push(frame); this.currentFrameIndex = this.frames.length - 1; }
+        if (!this.importingAnimation) this.addingFrame = false;
+        this.refreshWorkbench();
+    }
+
+    initWorkbench() {
+        this.workbenchReady = true;
+        const byId = id => document.getElementById(id);
+        const stage = document.querySelector('.preview-area');
+        this.stageObserver = new ResizeObserver(() => document.querySelector('.app-container').style.setProperty('--stage-height', Math.ceil(stage.getBoundingClientRect().height) + 'px'));
+        this.stageObserver.observe(stage);
+        const panel = name => document.querySelector(`[data-panel="${name}"]`).click();
+        const source = name => {
+            byId('imageSource').hidden = name !== 'image';
+            byId('emojiSource').hidden = name !== 'emoji';
+            document.querySelectorAll('[data-source]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.source === name)));
+        };
+        document.querySelectorAll('[data-source]').forEach(button => button.addEventListener('click', () => source(button.dataset.source)));
+        byId('emptyImportBtn').addEventListener('click', () => this.emojiImageInput.click());
+        byId('emptyEmojiBtn').addEventListener('click', () => { panel('materials'); source('emoji'); this.emojiSearchInput.focus(); });
+        byId('addFrameRequestBtn').addEventListener('click', () => { this.pauseAnimation(); this.addingFrame = true; byId('animationBody').hidden = false; panel('materials'); this.refreshWorkbench(); });
+        byId('cancelAddBtn').addEventListener('click', () => { this.addingFrame = false; this.refreshWorkbench(); });
+        byId('toggleAnimationBtn').addEventListener('click', () => { byId('animationBody').hidden = !byId('animationBody').hidden; this.refreshWorkbench(); });
+        byId('moveToolBtn').addEventListener('click', () => {
+            this.isSelecting = false; this.isColorSelecting = false; this.clearSelectionState();
+            this.mainCanvas.classList.remove('selecting','color-selecting'); this.refreshWorkbench();
+        });
+        [['boardSettingsBtn','boardDialog'],['helpBtn','helpDialog'],['openExportBtn','exportDialog'],['openSendBtn','sendDialog']].forEach(([trigger,id]) => {
+            const dialog = byId(id);
+            byId(trigger).addEventListener('click', () => { this.pauseAnimation(); this.refreshWorkbench(); dialog.querySelector('.dialog-result')?.replaceChildren(); dialog.showModal(); dialog.querySelector('h2').focus(); });
+            dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
+            dialog.addEventListener('close', () => byId(trigger).focus());
+        });
+        for (const type of ['click','input','change','keyup','mouseup','touchend']) document.addEventListener(type, () => queueMicrotask(() => this.refreshWorkbench()));
+        this.refreshWorkbench();
+    }
+
+    refreshWorkbench() {
+        if (!this.workbenchReady) return;
+        const byId = id => document.getElementById(id);
+        const frame = this.getCurrentFrame();
+        const has = !!frame;
+        const selection = !!(this.selectionRect || this.selectionMask);
+        byId('toleranceField').hidden = !this.isColorSelecting;
+        byId('bgColorLabel').textContent = this.t('fillColor');
+        byId('canvasEmpty').hidden = has;
+        byId('propertiesEmpty').hidden = has;
+        byId('pixelTools').hidden = !has;
+        byId('currentObject').textContent = this.isPlaying ? this.t('playing') : has ? (this.frames.length > 1 ? this.t('keyframe', {index:this.currentFrameIndex + 1}) : this.t('currentGraphic')) : this.t('adjust');
+        byId('selectionProperties').hidden = !has || !(selection || this.isSelecting || this.isColorSelecting || this.selectionClipboard);
+        byId('selectionStatus').textContent = this.t(selection ? 'selectionReady' : this.isColorSelecting ? 'pickColorPrompt' : this.isSelecting ? 'dragSelect' : 'pasteSelection') + (selection ? ` · ${this.selectionMask ? this.selectionMask.reduce((sum,value) => sum + (value ? 1 : 0), 0) : this.selectionRect.w * this.selectionRect.h} px` : '');
+        byId('sourceHint').textContent = this.t(this.addingFrame ? 'addPending' : 'replaceHint');
+        byId('cancelAddBtn').hidden = !this.addingFrame;
+        byId('toggleAnimationBtn').textContent = this.t(byId('animationBody').hidden ? 'makeAnimation' : 'collapseAnimation');
+        byId('toggleAnimationBtn').setAttribute('aria-expanded', String(!byId('animationBody').hidden));
+        byId('quantizeColorsValue').textContent = this.quantizeColorsInput.value;
+        byId('sharpenStrengthValue').textContent = this.sharpenStrengthInput.value;
+        byId('renderScope').textContent = this.t(frame?.renderOverrides ? 'frameColorScope' : 'globalColorScope');
+        const importedTiming = this.frames.length > 1 && this.tweenFrames === 0 && this.frames.every(item => Number.isFinite(item.durationMs) && item.durationMs > 0);
+        this.animSpeedInput.disabled = importedTiming;
+        byId('gifTimingHint').hidden = !importedTiming;
+        this.playBtn.hidden = this.isPlaying;
+        this.pauseBtn.hidden = !this.isPlaying;
+        this.playBtn.disabled = this.frames.length < 2;
+        this.downloadGifBtn.disabled = this.frames.length < 2 || this.downloadGifBtn.getAttribute('aria-busy') === 'true';
+        for (const id of ['openExportBtn','openSendBtn','moveToolBtn','selectToggleBtn','colorSelectBtn']) byId(id).disabled = !has || (this.isPlaying && !id.startsWith('open'));
+        this.bgUndoBtn.disabled = !this.processUndo || this.isPlaying;
+        this.frameRenderToggle.disabled = !has || this.isPlaying;
+        for (const id of ['fillSelectionBtn','eraseSelectionBtn','copySelectionBtn','clearSelectionBtn']) byId(id).disabled = !selection;
+        this.pasteSelectionBtn.disabled = !this.selectionClipboard;
+        document.querySelectorAll('#pixelTools input, #pixelTools select, #pixelTools button').forEach(control => { if (this.isPlaying) control.disabled = true; else if (!['frameRenderToggle','fillSelectionBtn','eraseSelectionBtn','copySelectionBtn','clearSelectionBtn','pasteSelectionBtn'].includes(control.id)) control.disabled = false; });
+        byId('moveToolBtn').setAttribute('aria-pressed', String(!this.isSelecting && !this.isColorSelecting));
+        this.selectToggleBtn.setAttribute('aria-pressed', String(this.isSelecting));
+        this.colorSelectBtn.setAttribute('aria-pressed', String(this.isColorSelecting));
+        this.selectToggleBtn.classList.toggle('is-active', this.isSelecting);
+        this.colorSelectBtn.classList.toggle('is-active', this.isColorSelecting);
+        byId('boardSettingsBtn').textContent = `${this.gridWidth} × ${this.gridHeight} · ${this.t('displaySettings')}`;
+        byId('outputSummary').textContent = has ? `${this.gridWidth} × ${this.gridHeight} · ${this.frames.length > 1 ? this.t('frameCount',{count:this.frames.length}) : this.t('currentGraphic')}` : this.t('startHint');
+        byId('sendSummary').textContent = `${this.t('target')}: ${this.tianshanHost} · ${this.tianshanDevice} — ${this.gridWidth} × ${this.gridHeight} ${this.frames.length > 1 ? this.t('animationGif') + ' · ' + this.t('frameCount',{count:this.frames.length}) : this.t('currentPng')}`;
+        this.canvasHint.textContent = this.t(this.isPlaying ? 'playing' : this.isColorSelecting ? 'pickColorPrompt' : this.isSelecting ? 'dragSelect' : 'touchMoveHint');
     }
 
     fitWorkspaceCanvas() {
         const available = this.mainCanvas.parentElement.clientWidth;
         if (!available) return;
         const ratio = this.displayWidth / this.displayHeight;
-        const maxHeight = innerHeight * (innerWidth < 768 ? 0.55 : 0.65);
+        const maxHeight = innerHeight * (innerWidth < 768 ? 0.29 : 0.52);
         const width = Math.min(available, maxHeight * ratio, this.displayWidth * 96 / 25.4);
         this.mainCanvas.style.width = width + 'px';
         this.mainCanvas.style.height = (width / ratio) + 'px';
@@ -365,6 +478,7 @@ class Emoji2Pixel {
             emojis: group.emojis.map((emoji) => ({ emoji, name: '' }))
         }));
 
+        this.setEmojiCategories(fallback);
         try {
             const sources = [
                 'https://r.jina.ai/http://unicode.org/Public/emoji/latest/emoji-test.txt',
@@ -411,7 +525,7 @@ class Emoji2Pixel {
                 return;
             }
 
-            if (!currentGroup || !line.includes('fully-qualified') || !line.includes('#')) {
+            if (line.startsWith('#') || !currentGroup || !line.includes('fully-qualified') || !line.includes('#')) {
                 return;
             }
 
@@ -422,11 +536,11 @@ class Emoji2Pixel {
             const tokens = comment.split(/\s+/);
             const emoji = tokens[0];
             if (!emoji) return;
-            const name = tokens.slice(1).join(' ').trim();
+            const name = tokens.slice(1).join(' ').replace(/^E[\d.]+\s+/, '').trim();
             byName.get(currentGroup).emojis.push({ emoji, name });
         });
 
-        return categories;
+        return categories.filter(category => category.emojis.length);
     }
 
     setEmojiCategories(categories) {
@@ -440,7 +554,7 @@ class Emoji2Pixel {
                 }
             });
         });
-        this.renderEmojiCategories(categories);
+        this.applyEmojiSearchFilter();
     }
 
     getEmojiLabel(emoji) {
@@ -453,7 +567,7 @@ class Emoji2Pixel {
         const query = term.toLowerCase();
         return this.emojiCategories
             .map((category) => {
-                const groupMatch = category.name.toLowerCase().includes(query);
+                const groupMatch = (category.name + ' ' + this.categoryLabel(category.name)).toLowerCase().includes(query);
                 const emojis = groupMatch
                     ? category.emojis
                     : category.emojis.filter((item) => {
@@ -470,7 +584,8 @@ class Emoji2Pixel {
     applyEmojiSearchFilter() {
         if (!this.emojiSearchInput) return;
         const term = this.emojiSearchInput.value.trim();
-        const filtered = this.getFilteredEmojiCategories(term);
+        const selected = document.getElementById('categorySelect')?.value || '';
+        const filtered = this.getFilteredEmojiCategories(term).filter(group => !selected || group.name === selected);
         this.renderEmojiCategories(filtered);
         if (this.emojiGrid) {
             this.emojiGrid.scrollTop = 0;
@@ -480,12 +595,9 @@ class Emoji2Pixel {
     renderEmojiCategories(categories) {
         if (!this.emojiGrid) return;
         this.emojiGrid.innerHTML = '';
-        if (this.emojiNav) {
-            this.emojiNav.innerHTML = '';
-        }
+
 
         this.emojiSections = [];
-        this.emojiNavButtons = [];
 
         categories.forEach((category) => {
             const sectionId = `emoji-group-${this.emojiSections.length}`;
@@ -495,7 +607,7 @@ class Emoji2Pixel {
 
             const title = document.createElement('div');
             title.className = 'emoji-category-title';
-            title.textContent = category.name;
+            title.textContent = this.categoryLabel(category.name);
 
             const group = document.createElement('div');
             group.className = 'emoji-group';
@@ -514,14 +626,6 @@ class Emoji2Pixel {
                 group.appendChild(btn);
             });
 
-            if (this.emojiNav) {
-                const navBtn = document.createElement('button');
-                navBtn.className = 'emoji-nav-btn';
-                navBtn.dataset.target = sectionId;
-                navBtn.textContent = category.name;
-                this.emojiNav.appendChild(navBtn);
-                this.emojiNavButtons.push(navBtn);
-            }
 
             section.appendChild(title);
             section.appendChild(group);
@@ -529,45 +633,21 @@ class Emoji2Pixel {
             this.emojiSections.push(section);
         });
 
-        if (this.emojiNavButtons.length > 0) {
-            this.emojiNavButtons[0].classList.add('active');
+        if (!categories.length) {
+            const empty = document.createElement('p');
+            empty.className = 'emoji-empty';
+            empty.textContent = this.t('noEmojiResults');
+            this.emojiGrid.appendChild(empty);
         }
-
-        requestAnimationFrame(() => this.updateEmojiNavActive());
-    }
-
-    setActiveEmojiNav(targetId) {
-        if (!this.emojiNavButtons || this.emojiNavButtons.length === 0) return;
-        this.emojiNavButtons.forEach((btn) => {
-            btn.classList.toggle('active', btn.dataset.target === targetId);
-        });
-    }
-
-    updateEmojiNavActive() {
-        if (!this.emojiSections || this.emojiSections.length === 0) return;
-        const containerTop = this.emojiGrid.getBoundingClientRect().top;
-        let bestIndex = 0;
-        let bestDistance = Infinity;
-
-        this.emojiSections.forEach((section, index) => {
-            const distance = Math.abs(section.getBoundingClientRect().top - containerTop);
-            if (distance < bestDistance) {
-                bestDistance = distance;
-                bestIndex = index;
-            }
-        });
-
-        const activeSection = this.emojiSections[bestIndex];
-        if (activeSection) {
-            this.setActiveEmojiNav(activeSection.id);
-        }
+        this.refreshCategorySelect();
     }
 
     updateEmojiFitControls() {
         if (!this.emojiScaleInput) return;
         const isAuto = this.emojiFitMode === 'auto';
         if (this.emojiFitToggle) {
-            this.emojiFitToggle.textContent = isAuto ? 'A' : 'M';
+            this.emojiFitToggle.textContent = this.t('autoFit');
+            this.emojiFitToggle.setAttribute('aria-pressed', String(isAuto));
             this.emojiFitToggle.title = isAuto ? this.t('autoFit') : this.t('manualScale');
             this.emojiFitToggle.classList.toggle('active', isAuto);
         }
@@ -699,7 +779,7 @@ class Emoji2Pixel {
         });
 
         // 输入变化实时预览
-        this.emojiInput.addEventListener('input', () => this.updatePreview());
+        // Apply typed Emoji explicitly so the canvas and export always share a committed frame.
 
         // 像素风格按钮
         this.styleBtns.forEach(btn => {
@@ -1162,32 +1242,6 @@ class Emoji2Pixel {
             }
         });
 
-        if (this.emojiNav) {
-            this.emojiNav.addEventListener('click', (e) => {
-                const btn = e.target.closest('.emoji-nav-btn');
-                if (!btn) return;
-                const targetId = btn.dataset.target;
-                const section = targetId ? document.getElementById(targetId) : null;
-                if (!section) return;
-                const containerTop = this.emojiGrid.getBoundingClientRect().top;
-                const sectionTop = section.getBoundingClientRect().top;
-                this.emojiGrid.scrollTo({
-                    top: this.emojiGrid.scrollTop + (sectionTop - containerTop) - 4,
-                    behavior: 'smooth'
-                });
-                this.setActiveEmojiNav(targetId);
-            });
-        }
-
-        this.emojiGrid.addEventListener('scroll', () => {
-            if (!this.emojiSections || this.emojiSections.length === 0) return;
-            if (this.emojiNavScrollRaf) return;
-            this.emojiNavScrollRaf = requestAnimationFrame(() => {
-                this.emojiNavScrollRaf = null;
-                this.updateEmojiNavActive();
-            });
-        });
-
         // 画布交互事件
         this.mainCanvas.addEventListener('mousedown', (e) => this.onCanvasMouseDown(e));
         this.mainCanvas.addEventListener('mousemove', (e) => this.onCanvasMouseMove(e));
@@ -1219,9 +1273,7 @@ class Emoji2Pixel {
         if (this.selectToggleBtn) {
             this.selectToggleBtn.addEventListener('click', () => {
                 this.isSelecting = !this.isSelecting;
-                this.selectionStart = null;
-                this.selectionRect = null;
-                this.clearSelectionOverlay();
+                this.clearSelectionState();
                 if (this.mainCanvas) {
                     this.mainCanvas.classList.toggle('selecting', this.isSelecting);
                     if (this.isSelecting) {
@@ -1267,8 +1319,9 @@ class Emoji2Pixel {
     }
 
     onKeyDown(e) {
+        if (document.querySelector('dialog[open]') || this.isPlaying) return;
         const target = e.target;
-        const isTyping = target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable);
+        const isTyping = target && (target.tagName === 'INPUT' || target.tagName === 'SELECT' || target.tagName === 'TEXTAREA' || target.isContentEditable);
         if (isTyping) return;
 
         const key = e.key.toLowerCase();
@@ -1329,7 +1382,7 @@ class Emoji2Pixel {
         this.mainCanvas.classList.toggle('play-mode', mode === 'play');
 
         // 更新提示显示
-        this.canvasHint.classList.toggle('hidden', mode === 'play');
+        this.refreshWorkbench();
 
         if (mode === 'edit') {
             // 恢复编辑预览
@@ -1338,7 +1391,7 @@ class Emoji2Pixel {
             // 播放模式
             if (this.frames.length > 0) {
                 this.currentFrameIndex = 0;
-                this.showFrame(0);
+                this.showFrame(this.currentFrameIndex);
             }
         }
     }
@@ -1347,12 +1400,12 @@ class Emoji2Pixel {
      * 画布鼠标按下
      */
     onCanvasMouseDown(e) {
-        if (this.mode !== 'edit') return;
+        if (this.mode !== 'edit' || this.isColorSelecting) return;
 
         if (this.isSelecting) {
             e.preventDefault();
             this.selectionStart = this.getCanvasPixelPoint(e);
-            this.selectionRect = { x: this.selectionStart.x, y: this.selectionStart.y, w: 0, h: 0 };
+            this.selectionRect = { x: this.selectionStart.x, y: this.selectionStart.y, w: 1, h: 1 };
             this.selectionMask = null;
             this.drawSelectionOverlay();
             return;
@@ -1656,6 +1709,7 @@ class Emoji2Pixel {
         thumbCtx.clearRect(0, 0, 60, 60);
         this.renderPixels(thumbCtx, frame.imageData, 60, 60, this.pixelStyle, this.getRenderSettingsForFrame(frame));
         this.renderPixels(this.ctx, frame.imageData, this.mainCanvas.width, this.mainCanvas.height, this.pixelStyle, this.getRenderSettingsForFrame(frame));
+        this.updateFramesList();
         this.showToast(this.t('selectionCleared'));
     }
 
@@ -1722,6 +1776,7 @@ class Emoji2Pixel {
         thumbCtx.clearRect(0, 0, 60, 60);
         this.renderPixels(thumbCtx, frame.imageData, 60, 60, this.pixelStyle, this.getRenderSettingsForFrame(frame));
         this.renderPixels(this.ctx, frame.imageData, this.mainCanvas.width, this.mainCanvas.height, this.pixelStyle, this.getRenderSettingsForFrame(frame));
+        this.updateFramesList();
         this.showToast(this.t('filled'));
     }
 
@@ -1819,6 +1874,7 @@ class Emoji2Pixel {
         thumbCtx.clearRect(0, 0, 60, 60);
         this.renderPixels(thumbCtx, frame.imageData, 60, 60, this.pixelStyle, this.getRenderSettingsForFrame(frame));
         this.renderPixels(this.ctx, frame.imageData, this.mainCanvas.width, this.mainCanvas.height, this.pixelStyle, this.getRenderSettingsForFrame(frame));
+        this.updateFramesList();
         this.showToast(this.t('pasted'));
     }
 
@@ -1837,6 +1893,7 @@ class Emoji2Pixel {
     }
 
     selectByColor() {
+        this.clearSelectionState();
         this.isColorSelecting = !this.isColorSelecting;
         if (this.mainCanvas) {
             this.mainCanvas.classList.toggle('color-selecting', this.isColorSelecting);
@@ -1962,6 +2019,21 @@ class Emoji2Pixel {
     }
 
     undoProcess() {
+        if (this.processUndo?.workspace) {
+            const undo = this.processUndo;
+            this.pauseAnimation();
+            this.frames = undo.workspace;
+            if (undo.timing) { this.tweenFrames = undo.timing.tween; this.tweenFramesInput.value = this.tweenFrames; this.animSpeedInput.value = undo.timing.speed; this.speedValue.textContent = undo.timing.speed + 'ms'; }
+            this.currentFrameIndex = undo.index;
+            this.processUndo = null;
+            this.addingFrame = false;
+            if (this.frames.length) this.selectFrame(this.currentFrameIndex);
+            else { this.emojiInput.value = ''; this.ctx.clearRect(0, 0, this.mainCanvas.width, this.mainCanvas.height); this.updateFramesList(); }
+            this.clearSelectionState();
+            this.refreshWorkbench();
+            this.showToast(this.t('undone'));
+            return;
+        }
         if (!this.processUndo || this.processUndo.frameIndex == null) {
             this.showToast(this.t('undoEmpty'));
             return;
@@ -1994,6 +2066,7 @@ class Emoji2Pixel {
         }
 
         this.processUndo = null;
+        this.updateFramesList();
         this.showToast(this.t('undone'));
     }
 
@@ -2036,50 +2109,18 @@ class Emoji2Pixel {
      * 触摸开始
      */
     onCanvasTouchStart(e) {
-        if (this.mode !== 'edit') return;
-        if (e.touches.length !== 1) return;
-
+        if (this.mode !== 'edit' || e.touches.length !== 1) return;
         e.preventDefault();
         const touch = e.touches[0];
-        const rect = this.mainCanvas.getBoundingClientRect();
-        this.dragStart = {
-            x: touch.clientX - rect.left,
-            y: touch.clientY - rect.top
-        };
-        this.transformStart = {
-            offsetX: this.transform.offsetX,
-            offsetY: this.transform.offsetY
-        };
-        this.isDragging = true;
+        if (this.isColorSelecting) this.selectByColorAtPoint(touch);
+        else this.onCanvasMouseDown({clientX:touch.clientX, clientY:touch.clientY, shiftKey:false, preventDefault() {}});
+        this.refreshWorkbench();
     }
 
-    /**
-     * 触摸移动
-     */
     onCanvasTouchMove(e) {
-        if (this.mode !== 'edit') return;
-        if (!this.isDragging || e.touches.length !== 1) return;
-
+        if (this.mode !== 'edit' || e.touches.length !== 1 || this.isColorSelecting) return;
         e.preventDefault();
-        const touch = e.touches[0];
-        const rect = this.mainCanvas.getBoundingClientRect();
-        const currentX = touch.clientX - rect.left;
-        const currentY = touch.clientY - rect.top;
-
-        const scaleRatioX = this.gridWidth / rect.width;
-        const scaleRatioY = this.gridHeight / rect.height;
-        const deltaX = (currentX - this.dragStart.x) * scaleRatioX;
-        const deltaY = (currentY - this.dragStart.y) * scaleRatioY;
-
-        this.transform.offsetX = Math.round(Math.max(-16, Math.min(16, this.transformStart.offsetX + deltaX)));
-        this.transform.offsetY = Math.round(Math.max(-16, Math.min(16, this.transformStart.offsetY + deltaY)));
-
-        this.offsetXSlider.value = this.transform.offsetX;
-        this.offsetXValue.textContent = this.transform.offsetX;
-        this.offsetYSlider.value = this.transform.offsetY;
-        this.offsetYValue.textContent = this.transform.offsetY;
-
-        this.updateCurrentFrame();
+        this.onCanvasMouseMove(e.touches[0]);
     }
 
     /**
@@ -2378,7 +2419,7 @@ class Emoji2Pixel {
         const currentFrame = frame || this.getCurrentFrame();
         const hasFrame = !!currentFrame;
         if (this.frameRenderToggle) {
-            this.frameRenderToggle.disabled = !hasFrame;
+            this.frameRenderToggle.disabled = !hasFrame || this.isPlaying;
             this.frameRenderToggle.checked = hasFrame && !!currentFrame.renderOverrides;
         }
 
@@ -2625,11 +2666,12 @@ class Emoji2Pixel {
     updatePreview() {
         if (this.isPlaying) return;
 
+        if (this.getCurrentFrame()) { this.showFrame(this.currentFrameIndex); return; }
         const emoji = this.emojiInput.value;
         if (!emoji) {
             // 没有输入时，如果有关键帧则显示第一帧
             if (this.frames.length > 0) {
-                this.showFrame(0);
+                this.showFrame(this.currentFrameIndex);
             }
             return;
         }
@@ -2654,8 +2696,8 @@ class Emoji2Pixel {
     updateCurrentFrame() {
         if (this.isPlaying) return;
 
-        const emoji = this.emojiInput.value;
         const currentFrame = this.getCurrentFrame();
+        const emoji = currentFrame?.emoji || '';
         const isImageFrame = currentFrame && currentFrame.isImage;
         if (!emoji && !isImageFrame) return;
 
@@ -2721,7 +2763,7 @@ class Emoji2Pixel {
         thumbCanvas.height = 60;
         this.renderPixels(thumbCanvas.getContext('2d'), imageData, 60, 60, this.pixelStyle, this.getGlobalRenderSettings());
 
-        this.frames.push({
+        this.acceptSourceFrame({
             emoji: emoji,
             name: label,
             transform: currentTransform, // 保存变换状态
@@ -2735,12 +2777,10 @@ class Emoji2Pixel {
 
         this.updateFramesList();
         this.updateTweenInfo();
-        this.showToast(this.t('frameAdded', { count: this.frames.length }));
+        this.showToast(this.t('sourceApplied'));
 
         // 自动选中新添加的帧，保持emoji在输入框
-        this.currentFrameIndex = this.frames.length - 1;
-        this.updateFramesList();
-        this.syncRenderControls(this.frames[this.currentFrameIndex]);
+        this.selectFrame(this.currentFrameIndex);
     }
 
     async handleImageFile(file) {
@@ -2768,8 +2808,10 @@ class Emoji2Pixel {
         reader.onload = () => {
             const img = new Image();
             img.onload = () => this.addImageFrame(img, reader.result, { label: baseName });
+            img.onerror = () => this.showToast(this.t('imageParseFailed'));
             img.src = reader.result;
         };
+        reader.onerror = () => this.showToast(this.t('imageParseFailed'));
         reader.readAsDataURL(file);
         if (this.emojiImageInput) {
             this.emojiImageInput.value = '';
@@ -2833,11 +2875,14 @@ class Emoji2Pixel {
             }
         }
 
+        decoder.close();
         if (!frames.length) {
             this.showToast(this.t('gifDecodeFailed'));
             return;
         }
 
+        this.rememberWorkspace();
+        this.processUndo.timing = {tween:this.tweenFrames, speed:this.animSpeedInput.value};
         const avgDuration = Math.max(20, Math.min(5000, Math.round(totalDuration / frames.length)));
         this.tweenFrames = 0;
         this.tweenFramesInput.value = 0;
@@ -2845,6 +2890,9 @@ class Emoji2Pixel {
         this.speedValue.textContent = `${avgDuration}ms`;
 
         const baseName = (file.name || '').replace(/\.[^.]+$/, '') || this.t('defaultGifName');
+        this.importingAnimation = true;
+        if (!this.addingFrame) this.frames = [];
+        this.addingFrame = true;
         frames.forEach((frame, index) => {
             const label = frames.length > 1 ? `${baseName} ${index + 1}` : baseName;
             this.addImageFrame(frame.canvas, null, {
@@ -2860,6 +2908,10 @@ class Emoji2Pixel {
         this.updateTweenInfo();
         this.currentFrameIndex = this.frames.length - 1;
         this.syncRenderControls(this.frames[this.currentFrameIndex]);
+        this.importingAnimation = false;
+        this.addingFrame = false;
+        document.getElementById('animationBody').hidden = false;
+        this.selectFrame(this.currentFrameIndex);
         this.showToast(this.t('gifImported', { count: frames.length }));
 
         if (this.emojiImageInput) {
@@ -2891,7 +2943,7 @@ class Emoji2Pixel {
         thumbCanvas.height = 60;
         this.renderPixels(thumbCanvas.getContext('2d'), imageData, 60, 60, this.pixelStyle, this.getGlobalRenderSettings());
 
-        this.frames.push({
+        this.acceptSourceFrame({
             emoji: label,
             name: label,
             isImage: true,
@@ -2912,12 +2964,10 @@ class Emoji2Pixel {
             this.updateFramesList();
             this.updateTweenInfo();
             if (!silent) {
-                this.showToast(this.t('frameAdded', { count: this.frames.length }));
+                this.showToast(this.t('sourceApplied'));
             }
 
-            this.currentFrameIndex = this.frames.length - 1;
-            this.updateFramesList();
-            this.syncRenderControls(this.frames[this.currentFrameIndex]);
+            this.selectFrame(this.currentFrameIndex);
         }
     }
 
@@ -2929,7 +2979,7 @@ class Emoji2Pixel {
             this.tweenInfo.textContent = '';
             return;
         }
-        const totalTween = (this.frames.length - 1) * this.tweenFrames;
+        const totalTween = this.frames.length * this.tweenFrames;
         const totalFrames = this.frames.length + totalTween;
         this.tweenInfo.textContent = this.t('tweenInfo', { totalFrames, totalTween });
     }
@@ -2938,6 +2988,7 @@ class Emoji2Pixel {
      * 更新帧列表显示
      */
     updateFramesList() {
+        this.refreshWorkbench();
         this.frameCount.textContent = this.t('frameCount', { count: this.frames.length });
         this.updateTweenInfo();
 
@@ -3037,6 +3088,8 @@ class Emoji2Pixel {
      * 选中帧
      */
     selectFrame(index) {
+        this.pauseAnimation();
+        this.clearSelectionState();
         this.currentFrameIndex = index;
         this.showFrame(index);
         this.updateFramesList();
@@ -3069,6 +3122,7 @@ class Emoji2Pixel {
             this.updateEmojiFitControls();
         }
         this.syncRenderControls(this.frames[index]);
+        this.refreshWorkbench();
     }
 
     /**
@@ -3085,12 +3139,17 @@ class Emoji2Pixel {
      * 删除帧
      */
     deleteFrame(index) {
+        this.rememberWorkspace();
+        this.pauseAnimation();
+        this.clearSelectionState();
         this.frames.splice(index, 1);
         if (this.currentFrameIndex >= this.frames.length) {
             this.currentFrameIndex = Math.max(0, this.frames.length - 1);
         }
         this.updateFramesList();
-        this.syncRenderControls(this.getCurrentFrame());
+        if (this.frames.length) this.selectFrame(this.currentFrameIndex);
+        else { this.emojiInput.value = ''; this.ctx.clearRect(0, 0, this.mainCanvas.width, this.mainCanvas.height); }
+        this.refreshWorkbench();
     }
 
     /**
@@ -3099,7 +3158,10 @@ class Emoji2Pixel {
     clearFrames() {
         if (this.frames.length === 0) return;
 
-        if (confirm(this.t('confirmClearFrames'))) {
+        {
+            this.rememberWorkspace();
+            this.clearSelectionState();
+            this.emojiInput.value = '';
             this.frames = [];
             this.currentFrameIndex = 0;
             this.pauseAnimation();
@@ -3262,6 +3324,7 @@ class Emoji2Pixel {
         }
         // 暂停后恢复编辑模式
         this.setMode('edit');
+        this.selectFrame(this.currentFrameIndex);
     }
 
     /**
@@ -3306,30 +3369,12 @@ class Emoji2Pixel {
     }
 
     getActivePixelData() {
-        const emoji = this.emojiInput.value;
-        if (!emoji && this.frames.length === 0) {
-            this.showToast(this.t('needEmojiOrFrame'));
+        const frame = this.getCurrentFrame();
+        if (!frame || !frame.imageData) {
+            this.showToast(this.t('needFrame'));
             return null;
         }
-
-        let imageData;
-        let renderSettings = this.getGlobalRenderSettings();
-        if (emoji) {
-            const frame = this.getCurrentFrame();
-            const fitSettings = this.getEmojiFitSettingsForFrame(frame && frame.emoji === emoji ? frame : null);
-            imageData = this.emojiToPixels(emoji, this.gridWidth, this.gridHeight, null, fitSettings);
-        } else if (this.frames.length > 0) {
-            const frame = this.frames[this.currentFrameIndex];
-            imageData = frame.imageData;
-            renderSettings = this.getRenderSettingsForFrame(frame);
-        }
-
-        if (!imageData) {
-            this.showToast(this.t('pixelDataUnavailable'));
-            return null;
-        }
-
-        return { imageData, renderSettings };
+        return { imageData: frame.imageData, renderSettings: this.getRenderSettingsForFrame(frame) };
     }
 
     createExportCanvas(exportType) {
@@ -3607,6 +3652,8 @@ class Emoji2Pixel {
      * 显示toast提示
      */
     showToast(message) {
+        const result = document.querySelector('dialog[open] .dialog-result');
+        if (result) result.textContent = message;
         const existing = document.querySelector('.toast');
         if (existing) existing.remove();
 

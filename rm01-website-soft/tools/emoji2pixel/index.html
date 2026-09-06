@@ -1,219 +1,169 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#141618"><title>灯板图形转换工具 · RMinte</title>
-<link rel="icon" href="../../assets/images/favicon.png"><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="../../assets/brand.css?v=service-nav-1"><link rel="stylesheet" href="styles.css?v=service-nav-1"></head><body class="brand-page pixel-page">
-<header class="brand-header"><a class="brand-logo" href="../../index.html" aria-label="RMinte"><img src="../../assets/images/logo-white.svg" alt="RMinte"></a><nav class="brand-nav" id="brandNav" aria-label="RMinte"><a href="../../gallery/" data-i18n="navGallery">图册</a><a href="../../index.html#engine" data-i18n="navProduct">产品</a><a href="../../index.html#teardown" data-i18n="navArchitecture">架构</a><a href="../../guides/" data-i18n="navGuides">指南</a><a href="../../downloads/" data-i18n="navDownloads">下载</a></nav><div class="brand-actions"><select id="langSelect" class="brand-language" aria-label="Language"></select><button id="brandMenu" class="brand-menu" aria-controls="brandNav" aria-expanded="false" data-i18n-title="menu" title="菜单"><span aria-hidden="true"></span><span aria-hidden="true"></span></button></div></header>
-<main class="pixel-main"><div class="workspace-heading"><div><span class="brand-kicker"><span class="rm-mark">RM-01</span> / EMOJI2PIXEL</span><h1 data-i18n="workspaceTitle">灯板图形转换工具</h1></div><p data-i18n="workspaceLead">从图形到灯板，让每一颗像素准确呈现。</p></div>
+<!DOCTYPE html>
 
-<div class="app-container" data-active-panel="materials"><div class="workspace-tabs" role="tablist" aria-label="Workspace"><button role="tab" id="tabMaterials" aria-selected="true" aria-controls="materialsPanel" data-panel="materials" data-i18n="materials">素材</button><button role="tab" id="tabFrames" aria-selected="false" aria-controls="framesPanel" data-panel="frames" data-i18n="timeline">关键帧</button><button role="tab" id="tabProperties" aria-selected="false" aria-controls="propertiesPanel" data-panel="properties" data-i18n="properties">属性</button></div><aside class="control-panel" id="materialsPanel" aria-labelledby="tabMaterials"><h2 data-i18n="materials">素材</h2><div class="input-section">
-                <div class="input-row">
-                    <button id="emojiFitToggle" class="emoji-fit-toggle" title="自动拟合" data-i18n-title="autoFit">A</button>
-                    <input type="text" id="emojiInput" placeholder="input emoji" data-i18n-placeholder="inputEmoji" maxlength="4">
-                    <button id="addImageBtn" class="btn btn-icon" title="导入图片" data-i18n-title="importImage" type="button"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M12 16V4m-5 5 5-5 5 5M5 15v5h14v-5"/></svg></button>
-                    <button id="addEmojiBtn" class="btn btn-primary"  type="button" title="添加关键帧" data-i18n-title="addFrame"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></button>
-                </div>
-                <input type="file" id="emojiImageInput" class="emoji-image-input" accept="image/*">
-                <div class="emoji-fit-row" id="emojiFitRow">
-                    <input type="range" id="emojiScaleInput" min="0.25" max="5" step="0.01" value="0.75">
-                    <span class="emoji-fit-value" id="emojiScaleValue">0.75x</span>
-                </div>
-                <input type="text" id="emojiSearchInput" class="emoji-search" placeholder="快速检索" data-i18n-placeholder="quickSearch">
-                <div class="emoji-nav" id="emojiNav"></div>
-                <div class="emoji-scroll" id="emojiGrid">
-                    <div class="emoji-loading" data-i18n="loadingEmoji">正在加载emoji...</div>
-                </div>
-            </div></aside>
-<section class="preview-area" aria-label="Canvas"><div class="preview-toolbar"><span class="brand-kicker" data-i18n="previewLabel">画布预览</span><div class="export-controls">
-                    <select id="exportTypeSelect">
-                        <option value="raw" selected data-i18n="exportRaw">原始像素</option>
-                        <option value="preview" data-i18n="exportPreview">预览图</option>
-                    </select>
-                    <button id="downloadBtn" class="btn btn-small" data-i18n="downloadPng">PNG</button>
-                    <button id="downloadGifBtn" class="btn btn-small btn-primary" data-i18n="downloadGif">GIF</button>
-                    <button id="copyBtn" class="btn btn-small" data-i18n="copy">复制</button>
-                </div></div><div class="canvas-container">
-                <canvas id="mainCanvas" width="640" height="640"></canvas>
-                <canvas id="selectionCanvas" width="640" height="640"></canvas>
-            </div><div class="canvas-hint" id="canvasHint" data-i18n="canvasHint">拖拽移动 | 滚轮缩放 | Shift+拖拽旋转</div><div id="canvasEmpty" class="canvas-empty" data-i18n="startHint">选择 Emoji 或导入图片，开始创作。</div><div class="preview-shortcuts">
-                <span class="keycap">A</span><span data-i18n="shortcutRect">框选</span>
-                <span class="keycap">I</span><span data-i18n="shortcutColor">按色</span>
-                <span class="keycap">F</span><span data-i18n="shortcutFill">填色</span>
-                <span class="keycap">Del</span><span data-i18n="shortcutDelete">清空</span>
-                <span class="keycap">Cmd/Ctrl+C</span><span data-i18n="shortcutCopy">复制</span>
-                <span class="keycap">Cmd/Ctrl+V</span><span data-i18n="shortcutPaste">粘贴</span>
-                <span class="keycap">Cmd/Ctrl+Z</span><span data-i18n="shortcutUndo">撤销</span>
-            </div></section>
-<aside class="properties-panel" id="propertiesPanel" aria-labelledby="tabProperties"><h2 data-i18n="properties">属性</h2><details open class="settings-group"><summary data-i18n="displaySettings">灯板设置</summary><div class="canvas-settings">
-                    <div class="setting-item">
-                        <label data-i18n="size">尺寸</label>
-                        <div class="unit-field">
-                            <input type="number" id="displayWidthInput" min="50" max="300" step="0.1" value="160">
-                            <span class="unit-badge" data-unit-target="display">mm</span>
-                        </div>
-                        <span class="unit">W</span>
-                        <div class="unit-field">
-                            <input type="number" id="displayHeightInput" min="50" max="300" step="0.1" value="160">
-                            <span class="unit-badge" data-unit-target="display">mm</span>
-                        </div>
-                        <span class="unit">H</span>
-                    </div>
-                    <div class="setting-divider" aria-hidden="true"></div>
-                    <div class="setting-item">
-                        <label data-i18n="pixelSize">像素大小</label>
-                        <div class="unit-field">
-                            <input type="number" id="pixelSizeInput" min="1" max="10" step="0.1" value="4">
-                            <span class="unit-badge" data-unit-target="size">mm</span>
-                        </div>
-                    </div>
-                    <div class="setting-item">
-                        <label data-i18n="gap">间隙</label>
-                        <div class="unit-field">
-                            <input type="number" id="gapSizeInput" min="0" max="5" step="0.1" value="1">
-                            <span class="unit-badge" data-unit-target="size">mm</span>
-                        </div>
-                    </div>
-                    <div class="setting-divider" aria-hidden="true"></div>
-                    <div class="setting-item">
-                        <label data-i18n="unit">单位</label>
-                        <select id="unitSelect" class="unit-select">
-                            <option value="mm" selected>mm</option>
-                            <option value="in">in</option>
-                        </select>
-                    </div>
-                    <div class="setting-divider" aria-hidden="true"></div>
-                    <div class="setting-item">
-                        <label data-i18n="matrix">矩阵</label>
-                        <input type="number" id="gridWidthInput" min="8" max="128" step="1" value="32">
-                        <span class="unit">W</span>
-                        <input type="number" id="gridHeightInput" min="8" max="128" step="1" value="32">
-                        <span class="unit">H</span>
-                    </div>
-                    <div class="setting-item">
-                        <label data-i18n="mode">模式</label>
-                        <select id="renderModeSelect">
-                            <option value="ideal" selected data-i18n="renderIdeal">理想</option>
-                            <option value="bare" data-i18n="renderBare">裸显</option>
-                        </select>
-                    </div>
-                    <div class="setting-item">
-                        <label data-i18n="shape">形状</label>
-                        <div class="pixel-style-toggle">
-                            <button class="style-btn active" data-style="rounded" title="圆角" data-i18n-title="shapeRounded"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><rect x="5" y="5" width="14" height="14" rx="3"/></svg></button>
-                            <button class="style-btn" data-style="square" title="方形" data-i18n-title="shapeSquare"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><rect x="5" y="5" width="14" height="14" fill="currentColor" stroke="none"/></svg></button>
-                            <button class="style-btn" data-style="circle" title="圆形" data-i18n-title="shapeCircle"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="7" fill="currentColor" stroke="none"/></svg></button>
-                        </div>
-                    </div>
-                </div></details><div class="pixel-tools" id="pixelTools">
-                <div class="pixel-tools-header" data-i18n="tools">工具</div>
-                <div class="pixel-tools-section">
-                    <div class="pixel-tools-title" data-i18n="general">通用</div>
-                    <div class="tool-grid">
-                        <button id="clearSelectionBtn" class="tool-btn" type="button" title="取消选择 (Esc)" data-i18n-title="cancelSelect"><span class="tool-icon" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></span><span class="tool-text" data-i18n="cancel">取消</span></button>
-                        <button id="bgUndoBtn" class="tool-btn" type="button" title="撤销 (Cmd/Ctrl+Z)" data-i18n-title="undo"><span class="tool-icon" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M9 5 4 10l5 5M4 10h9a6 6 0 0 1 6 6v3"/></svg></span><span class="tool-text" data-i18n="undo">撤销</span></button>
-                    </div>
-                </div>
-                <div class="pixel-tools-section">
-                    <div class="pixel-tools-title" data-i18n="select">选择</div>
-                    <div class="tool-grid">
-                        <button id="selectToggleBtn" class="tool-btn" type="button" title="框选 (A)" data-i18n-title="rectSelect"><span class="tool-icon" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M5 5h14v14H5z"/></svg></span><span class="tool-text" data-i18n="rectSelect">框选</span></button>
-                        <button id="colorSelectBtn" class="tool-btn" type="button" title="色选/吸管 (I)" data-i18n-title="colorSelect"><span class="tool-icon" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3" fill="currentColor" stroke="none"/></svg></span><span class="tool-text" data-i18n="colorSelect">色选/吸管</span></button>
-                    </div>
-                    <div class="tool-row tool-row-compact">
-                        <input type="color" id="bgColorInput" class="color-input-wide" value="#000000" title="目标颜色" data-i18n-title="targetColor">
-                        <input type="range" id="bgToleranceInput" min="0" max="100" step="1" value="15" title="容差" data-i18n-title="tolerance">
-                        <span id="bgToleranceValue">15</span>
-                    </div>
-                </div>
-                <div class="pixel-tools-section">
-                    <div class="pixel-tools-title" data-i18n="actions">操作</div>
-                    <div class="tool-grid">
-                        <button id="eraseSelectionBtn" class="tool-btn" type="button" title="删除选区 (Del)" data-i18n-title="delete"><span class="tool-icon" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M9 5h12v14H9l-7-7 7-7m3 4 6 6m0-6-6 6"/></svg></span><span class="tool-text" data-i18n="delete">删除</span></button>
-                        <button id="fillSelectionBtn" class="tool-btn" type="button" title="填充选区 (F)" data-i18n-title="fill"><span class="tool-icon" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><rect x="5" y="5" width="14" height="14" fill="currentColor" stroke="none"/></svg></span><span class="tool-text" data-i18n="fill">填充</span></button>
-                        <button id="copySelectionBtn" class="tool-btn" type="button" title="复制 (Cmd/Ctrl+C)" data-i18n-title="copy"><span class="tool-icon" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M8 8h12v12H8zM16 4H4v12"/></svg></span><span class="tool-text" data-i18n="copy">复制</span></button>
-                        <button id="pasteSelectionBtn" class="tool-btn" type="button" title="粘贴 (Cmd/Ctrl+V)" data-i18n-title="paste"><span class="tool-icon" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M9 5H5v16h14V5h-4M9 3h6v4H9z"/></svg></span><span class="tool-text" data-i18n="paste">粘贴</span></button>
-                    </div>
-                </div>
-                <div class="pixel-tools-section">
-                    <div class="pixel-tools-title" data-i18n="transform">变形</div>
-                    <div class="transform-bar">
-                        <div class="transform-item">
-                            <span data-i18n="scale">缩放</span>
-                            <input type="range" id="scaleSlider" min="50" max="150" value="100">
-                            <span id="scaleValue">100%</span>
-                        </div>
-                        <div class="transform-item">
-                            <span>X</span>
-                            <input type="range" id="offsetXSlider" min="-16" max="16" value="0">
-                            <span id="offsetXValue">0</span>
-                        </div>
-                        <div class="transform-item">
-                            <span>Y</span>
-                            <input type="range" id="offsetYSlider" min="-16" max="16" value="0">
-                            <span id="offsetYValue">0</span>
-                        </div>
-                        <div class="transform-item">
-                            <span data-i18n="rotate">旋转</span>
-                            <input type="range" id="rotateSlider" min="0" max="360" value="0">
-                            <span id="rotateValue">0°</span>
-                        </div>
-                        <button id="resetTransformBtn" class="btn btn-small" data-i18n="reset">重置</button>
-                    </div>
-                </div>
-                <div class="pixel-tools-section">
-                    <div class="pixel-tools-title" data-i18n="degrade">劣化</div>
-                    <div class="render-bar">
-                        <div class="render-item render-item-quantize">
-                            <label class="render-item-inline">
-                                <input type="checkbox" id="quantizeToggle">
-                                <span data-i18n="quantize">量化</span>
-                            </label>
-                            <span data-i18n="colors">颜色</span>
-                            <input type="range" id="quantizeColorsInput" min="2" max="256" step="1" value="64">
-                        </div>
-                        <div class="render-item">
-                            <span data-i18n="sharpen">锐化</span>
-                            <select id="sharpenModeSelect">
-                                <option value="none" selected data-i18n="sharpenNone">无</option>
-                                <option value="cross">邻域</option>
-                                <option value="unsharp">Unsharp</option>
-                            </select>
-                        </div>
-                        <div class="render-item">
-                            <span data-i18n="strength">强度</span>
-                            <input type="range" id="sharpenStrengthInput" min="0" max="100" step="5" value="40">
-                        </div>
-                        <label class="render-item render-item-center">
-                            <input type="checkbox" id="frameRenderToggle">
-                            <span data-i18n="currentFrame">当前帧</span>
-                        </label>
-                    </div>
-                </div>
-            </div></aside><section class="timeline-panel" id="framesPanel" aria-labelledby="tabFrames"><div class="frames-section">
-                <div class="frames-header">
-                    <span id="frameCount">关键帧 (0)</span>
-                    <div class="tween-setting">
-                        <label data-i18n="tweenLabel">过渡:</label>
-                        <input type="number" id="tweenFramesInput" min="0" max="20" step="1" value="5">
-                    </div>
-                    <button id="clearFramesBtn" class="btn btn-icon btn-danger" title="清空" data-i18n-title="clear"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
-                </div>
-                <span class="tween-info" id="tweenInfo"></span>
-                <div class="frames-container" id="framesContainer">
-                    <div class="empty-frames" data-i18n="emptyFrames">添加emoji创建动画</div>
-                </div>
-            </div><div class="animation-section">
-                <div class="anim-controls">
-                    <button id="playBtn" class="btn btn-icon" title="播放" data-i18n-title="play"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m8 5 11 7-11 7z"/></svg></button>
-                    <button id="pauseBtn" class="btn btn-icon" title="暂停" data-i18n-title="pause"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M8 5v14M16 5v14"/></svg></button>
-                    <input type="number" id="animSpeed" min="20" max="5000" step="50" value="500">
-                    <span id="speedValue">500ms</span>
-                </div>
-            </div></section></div>
-<div class="workspace-output"><p data-i18n="deviceHint">连接 <span class="rm-mark">RM-01</span> 后，将当前图形发送到灯板。</p><button id="tianshanUploadBtn" class="brand-button" data-i18n="exportTianshan">导出到 <span class="rm-mark">TianshanOS</span></button></div></main>
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="#141618" name="theme-color"/><title>灯板图形转换工具 · RMinte</title>
+<link href="../../assets/images/favicon.png" rel="icon"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Noto+Sans+SC:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="../../assets/brand.css?v=workbench-2" rel="stylesheet"/><link href="styles.css?v=workbench-2" rel="stylesheet"/></head><body class="brand-page pixel-page">
+<header class="brand-header"><a aria-label="RMinte" class="brand-logo" href="../../index.html"><img alt="RMinte" src="../../assets/images/logo-white.svg"/></a><nav aria-label="RMinte" class="brand-nav" id="brandNav"><a data-i18n="navGallery" href="../../gallery/">图册</a><a data-i18n="navProduct" href="../../index.html#engine">产品</a><a data-i18n="navArchitecture" href="../../index.html#teardown">架构</a><a data-i18n="navGuides" href="../../guides/">指南</a><a data-i18n="navDownloads" href="../../downloads/">下载</a></nav><div class="brand-actions"><select aria-label="Language" class="brand-language" id="langSelect"></select><button aria-controls="brandNav" aria-expanded="false" class="brand-menu" data-i18n-title="menu" id="brandMenu" title="菜单"><span aria-hidden="true"></span><span aria-hidden="true"></span></button></div></header>
+<main class="pixel-main"><div class="workspace-heading"><div><h1 data-i18n="workspaceTitle">灯板图形转换工具</h1></div><div class="workbench-actions"><button class="btn" data-i18n="displaySettings" id="boardSettingsBtn" type="button">灯板设置</button><button class="btn" data-i18n="help" id="helpBtn" type="button">帮助</button></div></div>
+<div class="app-container" data-active-panel="materials"><div aria-label="Workspace" class="workspace-tabs" role="tablist"><button aria-controls="materialsPanel" aria-selected="true" data-i18n="materials" data-panel="materials" id="tabMaterials" role="tab">素材</button><button aria-controls="propertiesPanel" aria-selected="false" data-i18n="adjust" data-panel="properties" id="tabProperties" role="tab">属性</button><button aria-controls="framesPanel" aria-selected="false" data-i18n="animation" data-panel="frames" id="tabFrames" role="tab">关键帧</button></div><aside aria-labelledby="tabMaterials" class="control-panel" id="materialsPanel"><h2 data-i18n="materials">素材</h2><div class="input-section"><div class="source-tabs"><button aria-pressed="true" class="btn" data-i18n="imageSource" data-source="image" type="button">图片</button><button aria-pressed="false" class="btn" data-source="emoji" type="button">Emoji</button></div><div class="upload-zone" id="imageSource"><button class="btn btn-primary" data-i18n="importImage" data-i18n-title="importImage" id="addImageBtn" title="导入图片" type="button">导入图片</button><p data-i18n="importHint">导入图片或 GIF；GIF 会载入动画帧。</p></div>
+<input accept="image/*" class="emoji-image-input" id="emojiImageInput" type="file"/>
+<div hidden="" id="emojiSource"><label data-i18n="quickSearch" for="emojiSearchInput">搜索 Emoji</label><input class="emoji-search" data-i18n-placeholder="quickSearch" id="emojiSearchInput" placeholder="快速检索" type="text"/><div class="emoji-nav" id="emojiNav"></div><div class="emoji-scroll" id="emojiGrid">
+<div class="emoji-loading" data-i18n="loadingEmoji">正在加载emoji...</div>
+</div><details class="manual-emoji"><summary data-i18n="inputEmoji">输入 Emoji</summary><input data-i18n-placeholder="inputEmoji" id="emojiInput" placeholder="input emoji" type="text"/><button class="btn" data-i18n="applySource" id="addEmojiBtn" title="添加关键帧" type="button">使用此 Emoji</button></details></div><p class="context-hint" data-i18n="replaceHint" id="sourceHint">选择素材会替换当前图形，可撤销。</p><button class="btn" data-i18n="cancel" hidden="" id="cancelAddBtn" type="button">取消</button></div></aside>
+<section aria-label="Canvas" class="preview-area"><div class="preview-toolbar"><button class="btn" data-i18n="moveTool" id="moveToolBtn" type="button">移动</button><button class="tool-btn" data-i18n-title="rectSelect" id="selectToggleBtn" title="框选 (A)" type="button"><span class="tool-icon" style="display:inline-flex;align-items:center"><svg aria-hidden="true" fill="none" focusable="false" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" style="vertical-align:middle;flex-shrink:0;pointer-events:none" viewbox="0 0 24 24" width="18"><path d="M5 5h14v14H5z"></path></svg></span><span class="tool-text" data-i18n="rectSelect">框选</span></button><button class="tool-btn" data-i18n-title="colorSelect" id="colorSelectBtn" title="色选/吸管 (I)" type="button"><span class="tool-icon" style="display:inline-flex;align-items:center"><svg aria-hidden="true" fill="none" focusable="false" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" style="vertical-align:middle;flex-shrink:0;pointer-events:none" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" fill="currentColor" r="3" stroke="none"></circle></svg></span><span class="tool-text" data-i18n="colorSelect">色选/吸管</span></button><button class="tool-btn" data-i18n-title="undo" id="bgUndoBtn" title="撤销 (Cmd/Ctrl+Z)" type="button"><span class="tool-icon" style="display:inline-flex;align-items:center"><svg aria-hidden="true" fill="none" focusable="false" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" style="vertical-align:middle;flex-shrink:0;pointer-events:none" viewbox="0 0 24 24" width="18"><path d="M9 5 4 10l5 5M4 10h9a6 6 0 0 1 6 6v3"></path></svg></span><span class="tool-text" data-i18n="undo">撤销</span></button></div><div class="canvas-container">
+<canvas aria-label="灯板像素画布" data-i18n-title="previewLabel" height="640" id="mainCanvas" tabindex="0" width="640"></canvas>
+<canvas aria-hidden="true" height="640" id="selectionCanvas" width="640"></canvas>
+<div class="canvas-empty" id="canvasEmpty"><h2 data-i18n="startCreating">从一个图形开始</h2><p data-i18n="workflowHelp">选择素材 → 调整图形 → 下载或发送</p><div class="empty-actions"><button class="btn" data-i18n="importImage" id="emptyImportBtn" type="button">导入图片</button><button class="btn" data-i18n="chooseEmoji" id="emptyEmojiBtn" type="button">选择 Emoji</button></div></div></div><div class="canvas-hint" data-i18n="canvasHint" id="canvasHint">拖拽移动 | 滚轮缩放 | Shift+拖拽旋转</div></section>
+<aside aria-labelledby="tabProperties" class="properties-panel" id="propertiesPanel"><h2 data-i18n="properties" id="currentObject">属性</h2><p class="context-hint" data-i18n="startHint" id="propertiesEmpty">选择 Emoji 或导入图片，开始创作。</p><div class="pixel-tools" id="pixelTools"><section class="pixel-tools-section" id="selectionProperties"><h3 data-i18n="selectionEdit">选区编辑</h3><p class="context-hint" id="selectionStatus"></p><div class="tool-row tool-row-compact"><label data-i18n="fillColor" for="bgColorInput" id="bgColorLabel">填充颜色</label><input class="color-input-wide" data-i18n-title="fillColor" id="bgColorInput" title="目标颜色" type="color" value="#000000"/></div><div class="tool-row" id="toleranceField"><label data-i18n="tolerance" for="bgToleranceInput">容差</label><input data-i18n-title="tolerance" id="bgToleranceInput" max="100" min="0" step="1" title="容差" type="range" value="15"/><span id="bgToleranceValue">15</span></div><div class="tool-grid"><button class="tool-btn" data-i18n-title="fill" id="fillSelectionBtn" title="填充选区 (F)" type="button"><span class="tool-icon" style="display:inline-flex;align-items:center"><svg aria-hidden="true" fill="none" focusable="false" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" style="vertical-align:middle;flex-shrink:0;pointer-events:none" viewbox="0 0 24 24" width="18"><rect fill="currentColor" height="14" stroke="none" width="14" x="5" y="5"></rect></svg></span><span class="tool-text" data-i18n="fill">填充</span></button><button class="tool-btn" data-i18n-title="delete" id="eraseSelectionBtn" title="删除选区 (Del)" type="button"><span class="tool-icon" style="display:inline-flex;align-items:center"><svg aria-hidden="true" fill="none" focusable="false" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" style="vertical-align:middle;flex-shrink:0;pointer-events:none" viewbox="0 0 24 24" width="18"><path d="M9 5h12v14H9l-7-7 7-7m3 4 6 6m0-6-6 6"></path></svg></span><span class="tool-text" data-i18n="delete">删除</span></button><button class="tool-btn" data-i18n-title="copySelection" id="copySelectionBtn" title="复制 (Cmd/Ctrl+C)" type="button"><span class="tool-icon" style="display:inline-flex;align-items:center"><svg aria-hidden="true" fill="none" focusable="false" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" style="vertical-align:middle;flex-shrink:0;pointer-events:none" viewbox="0 0 24 24" width="18"><path d="M8 8h12v12H8zM16 4H4v12"></path></svg></span><span class="tool-text" data-i18n="copySelection">复制</span></button><button class="tool-btn" data-i18n-title="pasteSelection" id="pasteSelectionBtn" title="粘贴 (Cmd/Ctrl+V)" type="button"><span class="tool-icon" style="display:inline-flex;align-items:center"><svg aria-hidden="true" fill="none" focusable="false" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" style="vertical-align:middle;flex-shrink:0;pointer-events:none" viewbox="0 0 24 24" width="18"><path d="M9 5H5v16h14V5h-4M9 3h6v4H9z"></path></svg></span><span class="tool-text" data-i18n="pasteSelection">粘贴</span></button><button class="tool-btn" data-i18n-title="cancelSelect" id="clearSelectionBtn" title="取消选择 (Esc)" type="button"><span class="tool-icon" style="display:inline-flex;align-items:center"><svg aria-hidden="true" fill="none" focusable="false" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" style="vertical-align:middle;flex-shrink:0;pointer-events:none" viewbox="0 0 24 24" width="18"><path d="m6 6 12 12M18 6 6 18"></path></svg></span><span class="tool-text" data-i18n="cancel">取消</span></button></div></section><div class="pixel-tools-section" id="transformProperties"><div class="pixel-tools-title" data-i18n="positionSize">变形</div>
+<button class="btn" id="emojiFitToggle" title="自动拟合">A</button><div class="emoji-fit-row" id="emojiFitRow">
+<input id="emojiScaleInput" max="5" min="0.25" step="0.01" type="range" value="0.75"/>
+<span class="emoji-fit-value" id="emojiScaleValue">0.75x</span>
+</div>
+<div class="transform-bar">
+<div class="transform-item">
+<span data-i18n="scale">缩放</span>
+<input id="scaleSlider" max="150" min="50" type="range" value="100"/>
+<span id="scaleValue">100%</span>
+</div>
+<div class="transform-item">
+<span data-i18n="horizontalPosition">水平位置</span>
+<input id="offsetXSlider" max="16" min="-16" type="range" value="0"/>
+<span id="offsetXValue">0</span>
+</div>
+<div class="transform-item">
+<span data-i18n="verticalPosition">垂直位置</span>
+<input id="offsetYSlider" max="16" min="-16" type="range" value="0"/>
+<span id="offsetYValue">0</span>
+</div>
+<div class="transform-item">
+<span data-i18n="rotate">旋转</span>
+<input id="rotateSlider" max="360" min="0" type="range" value="0"/>
+<span id="rotateValue">0°</span>
+</div>
+<button class="btn btn-small" data-i18n="reset" id="resetTransformBtn">重置</button>
+</div>
+</div><details class="pixel-tools-section" id="colorProperties"><summary data-i18n="colorDetails">颜色与细节</summary><p class="context-hint" id="renderScope"></p><div class="render-bar">
+<div class="render-item render-item-quantize">
+<label class="render-item-inline">
+<input id="quantizeToggle" type="checkbox"/>
+<span data-i18n="quantize">量化</span>
+</label>
+<span data-i18n="colors">颜色</span>
+<input id="quantizeColorsInput" max="256" min="2" step="1" type="range" value="64"/><output for="quantizeColorsInput" id="quantizeColorsValue"></output>
+</div>
+<div class="render-item">
+<span data-i18n="sharpen">锐化</span>
+<select id="sharpenModeSelect">
+<option data-i18n="sharpenNone" selected="" value="none">无</option>
+<option data-i18n="sharpenCross" value="cross">邻域</option>
+<option data-i18n="sharpenUnsharp" value="unsharp">Unsharp</option>
+</select>
+</div>
+<div class="render-item">
+<span data-i18n="strength">强度</span>
+<input id="sharpenStrengthInput" max="100" min="0" step="5" type="range" value="40"/><output for="sharpenStrengthInput" id="sharpenStrengthValue"></output>
+</div>
+<label class="render-item render-item-center">
+<input id="frameRenderToggle" type="checkbox"/>
+<span data-i18n="currentFrame">当前帧</span>
+</label>
+</div></details></div></aside><section aria-labelledby="tabFrames" class="timeline-panel" id="framesPanel"><div class="timeline-heading"><button class="btn" data-i18n="makeAnimation" id="toggleAnimationBtn" type="button">制作动画</button><button class="btn" data-i18n="addFrame" id="addFrameRequestBtn" type="button">添加一帧</button></div><div hidden="" id="animationBody"><div class="frames-section">
+<div class="frames-header">
+<span id="frameCount">关键帧 (0)</span>
+<div class="tween-setting">
+<label data-i18n="tweenLabel">过渡:</label>
+<input id="tweenFramesInput" max="20" min="0" step="1" type="number" value="5"/>
+</div>
+<button class="btn" data-i18n="clear" data-i18n-title="clear" id="clearFramesBtn" title="清空">清空</button>
+</div>
+<span class="tween-info" id="tweenInfo"></span>
+<div class="frames-container" id="framesContainer">
+<div class="empty-frames" data-i18n="emptyFrames">添加emoji创建动画</div>
+</div>
+</div><div class="animation-section">
+<div class="anim-controls">
+<button class="btn" data-i18n="play" data-i18n-title="play" id="playBtn" title="播放">播放</button>
+<button class="btn" data-i18n="pause" data-i18n-title="pause" id="pauseBtn" title="暂停">暂停</button>
+<label data-i18n="frameInterval" for="animSpeed">帧间隔 (ms)</label><input id="animSpeed" max="5000" min="20" step="50" type="number" value="500"/>
+<span hidden="" id="speedValue">500ms</span>
+</div>
+<p class="context-hint" data-i18n="gifTimingHint" hidden="" id="gifTimingHint">此 GIF 使用原始帧间隔。</p></div></div></section></div>
+<div class="workspace-output"><p aria-live="polite" id="outputSummary"></p><div class="output-actions"><button class="btn btn-primary" data-i18n="downloadFiles" id="openExportBtn" type="button">下载文件</button><button class="btn" data-i18n="sendToBoard" id="openSendBtn" type="button">发送到灯板</button></div></div></main>
 <footer class="brand-footer"><div class="preview-author">
-                <span data-i18n="authorBy">By Thomas</span>
-                <span style="margin: 0 8px; opacity: 0.5;">|</span>
-                <a href="https://github.com/thomas-hiddenpeak/emoji2pixel" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">
-                    <span style="opacity:0.8;display:inline-flex;align-items:center;gap:6px">GitHub <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
-                </a>
-
-            </div><div class="brand-footer-links"><a class="brand-button" href="mailto:support@rminte.com" data-i18n="contact">联系我们</a><a class="brand-button" href="../../downloads/" data-i18n="navDownloads">下载</a></div></footer>
-<script src="locales/locales.js?v=export-brand-1"></script><script src="app.js?v=export-brand-1"></script></body></html>
+<span data-i18n="authorBy">By Thomas</span>
+<span style="margin: 0 8px; opacity: 0.5;">|</span>
+<a href="https://github.com/thomas-hiddenpeak/emoji2pixel" rel="noopener noreferrer" style="color: inherit; text-decoration: none;" target="_blank">
+<span style="opacity:0.8;display:inline-flex;align-items:center;gap:6px">GitHub <svg aria-hidden="true" fill="none" focusable="false" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" style="vertical-align:middle;flex-shrink:0;pointer-events:none" viewbox="0 0 24 24" width="18"><path d="M7 17 17 7M7 7h10v10"></path></svg></span>
+</a>
+</div><div class="brand-footer-links"><a class="brand-button" data-i18n="contact" href="mailto:support@rminte.com">联系我们</a><a class="brand-button" data-i18n="navDownloads" href="../../downloads/">下载</a></div></footer>
+<script src="locales/locales.js?v=workbench-2"></script><script src="app.js?v=workbench-2"></script><dialog aria-labelledby="boardDialogTitle" id="boardDialog"><div class="dialog-head"><h2 data-i18n="displaySettings" id="boardDialogTitle" tabindex="-1">灯板设置</h2><button aria-label="关闭" class="dialog-close" data-i18n-title="close" type="button"><svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-width="1.6" viewbox="0 0 24 24" width="20"><path d="m6 6 12 12M18 6 6 18"></path></svg></button></div><div class="canvas-settings">
+<div class="setting-item">
+<label data-i18n="size">尺寸</label>
+<div class="unit-field">
+<input id="displayWidthInput" max="300" min="50" step="0.1" type="number" value="160"/>
+<span class="unit-badge" data-unit-target="display">mm</span>
+</div>
+<span class="unit">W</span>
+<div class="unit-field">
+<input id="displayHeightInput" max="300" min="50" step="0.1" type="number" value="160"/>
+<span class="unit-badge" data-unit-target="display">mm</span>
+</div>
+<span class="unit">H</span>
+</div>
+<div aria-hidden="true" class="setting-divider"></div>
+<div class="setting-item">
+<label data-i18n="pixelSize" for="pixelSizeInput">像素大小</label>
+<div class="unit-field">
+<input id="pixelSizeInput" max="10" min="1" step="0.1" type="number" value="4"/>
+<span class="unit-badge" data-unit-target="size">mm</span>
+</div>
+</div>
+<div class="setting-item">
+<label data-i18n="gap" for="gapSizeInput">间隙</label>
+<div class="unit-field">
+<input id="gapSizeInput" max="5" min="0" step="0.1" type="number" value="1"/>
+<span class="unit-badge" data-unit-target="size">mm</span>
+</div>
+</div>
+<div aria-hidden="true" class="setting-divider"></div>
+<div class="setting-item">
+<label data-i18n="unit" for="unitSelect">单位</label>
+<select class="unit-select" id="unitSelect">
+<option selected="" value="mm">mm</option>
+<option value="in">in</option>
+</select>
+</div>
+<div aria-hidden="true" class="setting-divider"></div>
+<div class="setting-item">
+<label data-i18n="matrix">矩阵</label>
+<input id="gridWidthInput" max="128" min="8" step="1" type="number" value="32"/>
+<span class="unit">W</span>
+<input id="gridHeightInput" max="128" min="8" step="1" type="number" value="32"/>
+<span class="unit">H</span>
+</div>
+<div class="setting-item">
+<label data-i18n="mode" for="renderModeSelect">模式</label>
+<select id="renderModeSelect">
+<option data-i18n="renderIdeal" selected="" value="ideal">理想</option>
+<option data-i18n="renderBare" value="bare">裸显</option>
+</select>
+</div>
+<div class="setting-item">
+<label data-i18n="shape">形状</label>
+<div class="pixel-style-toggle">
+<button class="style-btn active" data-i18n-title="shapeRounded" data-style="rounded" title="圆角"><svg aria-hidden="true" fill="none" focusable="false" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" style="vertical-align:middle;flex-shrink:0;pointer-events:none" viewbox="0 0 24 24" width="18"><rect height="14" rx="3" width="14" x="5" y="5"></rect></svg></button>
+<button class="style-btn" data-i18n-title="shapeSquare" data-style="square" title="方形"><svg aria-hidden="true" fill="none" focusable="false" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" style="vertical-align:middle;flex-shrink:0;pointer-events:none" viewbox="0 0 24 24" width="18"><rect fill="currentColor" height="14" stroke="none" width="14" x="5" y="5"></rect></svg></button>
+<button class="style-btn" data-i18n-title="shapeCircle" data-style="circle" title="圆形"><svg aria-hidden="true" fill="none" focusable="false" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" style="vertical-align:middle;flex-shrink:0;pointer-events:none" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" fill="currentColor" r="7" stroke="none"></circle></svg></button>
+</div>
+</div>
+</div></dialog><dialog aria-labelledby="exportDialogTitle" id="exportDialog"><div class="dialog-head"><h2 data-i18n="downloadFiles" id="exportDialogTitle" tabindex="-1">下载文件</h2><button aria-label="关闭" class="dialog-close" data-i18n-title="close" type="button"><svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-width="1.6" viewbox="0 0 24 24" width="20"><path d="m6 6 12 12M18 6 6 18"></path></svg></button></div><p class="dialog-lead" data-i18n="exportExplanation">PNG 和复制图像作用于当前帧；GIF 包含完整动画。</p><label data-i18n="outputContent" for="exportTypeSelect">输出内容</label><select id="exportTypeSelect">
+<option data-i18n="exportRaw" selected="" value="raw">原始像素</option>
+<option data-i18n="exportPreview" value="preview">预览图</option>
+</select><p class="context-hint" data-i18n="pixelExportHint">原始像素文件不含灯珠间隙；效果预览保留灯珠形状和间隙。</p><div class="dialog-actions"><button class="btn btn-primary" data-i18n="currentPng" id="downloadBtn">PNG</button><button class="btn" data-i18n="animationGif" id="downloadGifBtn">GIF</button><button class="btn btn-small" data-i18n="copyImage" id="copyBtn">复制</button></div><p class="dialog-result" role="status"></p></dialog><dialog aria-labelledby="sendDialogTitle" id="sendDialog"><div class="dialog-head"><h2 data-i18n="sendToBoard" id="sendDialogTitle" tabindex="-1">发送到灯板</h2><button aria-label="关闭" class="dialog-close" data-i18n-title="close" type="button"><svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-width="1.6" viewbox="0 0 24 24" width="20"><path d="m6 6 12 12M18 6 6 18"></path></svg></button></div><p class="dialog-lead" data-i18n="sendExplanation">发送原始像素；多帧时发送完整 GIF 动画。</p><p id="sendSummary"></p><div class="dialog-actions"><button class="brand-button" data-i18n="confirmSend" id="tianshanUploadBtn">导出到 <span class="rm-mark">TianshanOS</span></button></div><p class="dialog-result" role="status"></p></dialog><dialog aria-labelledby="helpDialogTitle" id="helpDialog"><div class="dialog-head"><h2 data-i18n="help" id="helpDialogTitle" tabindex="-1">帮助</h2><button aria-label="关闭" class="dialog-close" data-i18n-title="close" type="button"><svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-width="1.6" viewbox="0 0 24 24" width="20"><path d="m6 6 12 12M18 6 6 18"></path></svg></button></div><p class="dialog-lead" data-i18n="workflowHelp">选择素材 → 调整图形 → 下载或发送</p><p data-i18n="replaceHint">选择素材会替换当前图形，可撤销。</p><p data-i18n="addHint">需要动画时，先点击“添加一帧”，再选择素材。</p><div class="preview-shortcuts">
+<span class="keycap">A</span><span data-i18n="shortcutRect">框选</span>
+<span class="keycap">I</span><span data-i18n="shortcutColor">按色</span>
+<span class="keycap">F</span><span data-i18n="shortcutFill">填色</span>
+<span class="keycap">Del</span><span data-i18n="shortcutDelete">清空</span>
+<span class="keycap">Cmd/Ctrl+C</span><span data-i18n="shortcutCopy">复制</span>
+<span class="keycap">Cmd/Ctrl+V</span><span data-i18n="shortcutPaste">粘贴</span>
+<span class="keycap">Cmd/Ctrl+Z</span><span data-i18n="shortcutUndo">撤销</span>
+</div></dialog></body></html>
