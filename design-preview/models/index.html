@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="product-theme">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="RMQ3x 与 RMQ4，RMinte 专业模型系列。针对性训练、专用推理引擎与架构优化。">
+  <title>模型 · RMinte</title>
+  <link rel="icon" href="../../website/assets/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../website/assets/brand.css">
+  <link rel="stylesheet" href="../../website/assets/styles.css">
+  <style>
+    .models-preview { background:var(--bg); color-scheme:dark; }
+    .models-preview::after { display:none; }
+    .models-preview .rm-mark { font-family:var(--font-brand); font-weight:700; }
+    .models-preview :focus-visible { outline:2px solid var(--ink); outline-offset:5px; }
+    .models-preview .site-shell { top:0; left:0; transform:none; width:100%; padding:calc(24px + var(--safe-top, 0px)) max(var(--section-x),calc((100% - var(--section-w))/2)) 20px; background:var(--bg); }
+    .models-preview .site-shell::after { content:""; position:absolute; top:100%; inset-inline:0; height:24px; background:linear-gradient(var(--bg),transparent); pointer-events:none; }
+    .models-preview .menu-button svg { display:block; margin:auto; }
+    .mp-wrap { width:min(var(--section-w),calc(100% - var(--section-x) * 2)); margin-inline:auto; }
+    .mp-section { padding-block:var(--section-space); scroll-margin-top:100px; }
+    .mp-eyebrow { display:flex; align-items:center; gap:12px; margin:0 0 30px; color:var(--muted); font-size:11px; font-weight:400; letter-spacing:.13em; }
+    .mp-eyebrow::before { content:""; width:19px; height:1px; background:var(--dim); }
+    .mp-heading { margin:0; font-size:clamp(32px,3.6vw,50px); font-weight:500; line-height:1.25; letter-spacing:-.035em; text-wrap:balance; }
+    .mp-lead { color:var(--muted); font-size:16px; line-height:1.9; margin:24px 0 0; max-width:700px; }
+    .mp-pill { display:inline-flex; align-items:center; justify-content:center; gap:15px; min-height:48px; padding:12px 21px; background:var(--panel); border:1px solid var(--line); color:var(--ink); border-radius:var(--radius-button); font-size:13px; line-height:1.4; white-space:nowrap; cursor:pointer; transition:background .2s,transform .2s; }
+    .mp-pill:hover { background:var(--panel-strong); transform:translateY(-1px); }
+    .mp-icon { width:20px; height:20px; flex:none; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+    .mp-hero { min-height:100svh; padding-top:124px; padding-bottom:44px; display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); align-items:center; column-gap:36px; }
+    .mp-hero h1 { margin:0; font-size:clamp(38px,4.1vw,60px); font-weight:500; line-height:1.26; letter-spacing:-.035em; }
+    .mp-hero h1 span { display:block; }
+    .mp-hero h1 span + span { color:var(--muted); margin-top:4px; }
+    .mp-hero .mp-lead { max-width:580px; margin-top:30px; }
+    .mp-hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
+    .mp-hero-art { position:relative; height:480px; margin:0; isolation:isolate; }
+    .mp-model-visual { position:absolute; width:55%; aspect-ratio:.82; padding:0; border:0; border-radius:8px; background:transparent; color:var(--ink); cursor:pointer; mix-blend-mode:screen; -webkit-tap-highlight-color:transparent; }
+    .mp-model-visual.dense { left:-3%; top:24%; }
+    .mp-model-visual.moe { right:-3%; top:0; }
+    .mp-glass-stack { display:block; width:100%; height:100%; overflow:visible; pointer-events:none; }
+    .mp-glass-layer { transition:transform .7s var(--motion),filter .7s var(--motion); }
+    .mp-glass-layer.feature { transform-origin:center; transform-box:fill-box; }
+    .mp-model-visual[aria-pressed="true"] .upper { transform:translate(-3px,-24px); }
+    .mp-model-visual[aria-pressed="true"] .feature { transform:translate(-6px,-2px) scale(1.035); filter:brightness(1.13); }
+    .mp-model-visual[aria-pressed="true"] .lower { transform:translate(3px,16px); }
+    @media(hover:hover) and (pointer:fine) {
+      .mp-model-visual:hover .upper { transform:translate(-3px,-24px); }
+      .mp-model-visual:hover .feature { transform:translate(-6px,-2px) scale(1.035); filter:brightness(1.13); }
+      .mp-model-visual:hover .lower { transform:translate(3px,16px); }
+    }
+    .mp-sculpture-name { position:absolute; display:flex; flex-direction:column; align-items:flex-start; gap:10px; text-align:left; }
+    .mp-sculpture-name .rm-mark { color:var(--ink); font-size:25px; line-height:1; }
+    .dense .mp-sculpture-name { left:8%; top:-27%; }
+    .moe .mp-sculpture-name { right:5%; bottom:-24%; align-items:flex-end; text-align:right; }
+    .mp-models { min-height:100svh; padding-top:112px; padding-bottom:40px; display:grid; align-items:center; scroll-margin-top:0; }
+    .mp-model-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+    .mp-model-card { position:relative; display:flex; flex-direction:column; padding:28px 32px; border:1px solid var(--line); border-radius:var(--radius-panel); background:linear-gradient(135deg,#191d20 0%,#101214 72%); }
+    .mp-card-top { display:flex; justify-content:space-between; align-items:center; gap:16px; }
+    .mp-model-card h2 { margin:0; font-size:clamp(36px,4vw,54px); font-weight:700; line-height:1.2; letter-spacing:.015em; }
+    .mp-architecture-tag { display:inline-flex; align-items:center; gap:7px; color:var(--ink); font-size:14px; font-weight:700; letter-spacing:-.035em; line-height:1; flex:none; }
+    .mp-architecture-tag svg { width:18px; height:18px; fill:currentColor; flex:none; }
+    .mp-model-tagline { display:flex; flex-wrap:wrap; column-gap:.25em; margin:20px 0 0; color:var(--ink); font-size:22px; font-weight:500; line-height:1.5; }
+    .mp-model-description { color:var(--muted); line-height:1.9; font-size:15px; margin:14px 0 0; }
+    .mp-model-capabilities { display:grid; gap:16px; margin:22px 0 24px; padding:0; list-style:none; }
+    .mp-model-capabilities h3 { margin:0; color:var(--ink); font-size:16px; line-height:1.5; font-weight:500; }
+    .mp-model-capabilities p { margin:6px 0 0; color:var(--muted); font-size:14px; line-height:1.8; }
+    .mp-card-bottom { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:auto; padding-top:20px; border-top:1px solid var(--line); }
+    .mp-model-card .mp-pill { min-height:42px; padding:10px 17px; gap:10px; font-size:12px; background:transparent; }
+    .mp-model-card .mp-pill:disabled { color:var(--dim); cursor:default; transform:none; border-color:var(--line); }
+    .hf-icon { width:23px; height:23px; flex:none; filter:invert(1); opacity:.85; }
+    .mp-model-glyph { display:flex; gap:4px; align-items:center; height:24px; }
+    .mp-model-glyph i { width:6px; height:20px; display:block; background:#919ba3; border-radius:1px; }
+    .mp-model-card:last-child .mp-model-glyph i:nth-child(2n) { height:10px; background:#3e484f; }
+    @media(min-width:821px) {
+      html[lang="en"] .mp-model-grid { row-gap:0; }
+      html[lang="en"] .mp-model-card { display:grid; grid-row:span 7; grid-template-rows:subgrid; row-gap:0; }
+      html[lang="en"] .mp-model-tagline { display:block; }
+      html[lang="en"] .mp-model-tagline > span { display:block; }
+      html[lang="en"] .mp-model-capabilities { grid-row:span 3; grid-template-rows:subgrid; row-gap:12px; }
+      html[lang="en"] .mp-model-capabilities > li { align-self:start; }
+    }
+    .mp-benchmarks { padding-top:48px; scroll-margin-top:120px; }
+    .mp-benchmark-plots { margin:32px 0 0; }
+    .mp-benchmark-particles { display:block; width:100%; height:clamp(260px,30vw,400px); touch-action:pan-y; }
+    .mp-benchmark-status { margin:24px 0 0; color:var(--dim); font-size:14px; line-height:1.8; text-align:center; }
+    .mp-scenarios .mp-lead { max-width:720px; }
+    .mp-scenarios .mp-heading { scroll-margin-top:120px; }
+    .mp-case-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin-top:40px; }
+    .mp-case-card { display:flex; flex-direction:column; min-width:0; padding:22px 24px; text-align:left; color:var(--ink); font:inherit; background:linear-gradient(145deg,#191c1f,#101214 65%,#0d0f11); border:1px solid #282c30; border-radius:var(--radius-panel); cursor:pointer; box-shadow:inset 0 1px 0 #ffffff05; transition:border-color .28s,transform .28s; }
+    .mp-case-card[aria-expanded="true"] { background:linear-gradient(145deg,var(--panel-strong),#14171a); border-color:#8b9299; }
+    .mp-case-industry { display:flex; flex-direction:row; align-items:center; gap:14px; color:var(--ink-soft); font-size:14px; line-height:1.65; }
+    .mp-case-industry .mp-icon { width:22px; height:22px; color:#b4bbc2; flex:none; }
+    .mp-case-task { display:block; margin:14px 0 8px; font-size:24px; font-weight:500; line-height:1.5; letter-spacing:-.02em; white-space:pre-line; }
+    .mp-case-outputs { display:flex; flex-wrap:wrap; gap:2px 16px; margin-top:auto; color:var(--muted); font-size:13px; line-height:1.8; }
+    .mp-case-open { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:16px; padding-top:12px; border-top:1px solid #ffffff12; color:var(--ink-soft); font-size:13px; line-height:1.6; }
+    .mp-case-open .mp-icon { width:18px; height:18px; color:var(--dim); transition:transform .28s,color .28s; }
+    .mp-case-detail { grid-column:1/-1; position:relative; padding:30px; background:linear-gradient(140deg,#1a1d20,#111315); border:1px solid #393f45; border-radius:var(--radius-panel); }
+    .mp-case-detail[hidden] { display:none; }
+    .mp-case-detail-eyebrow { display:block; margin:0 48px 8px 0; color:var(--muted); font-size:12px; line-height:1.7; }
+    .mp-case-detail h3 { margin:0 48px 26px 0; font-size:24px; font-weight:500; line-height:1.5; }
+    .mp-case-close { position:absolute; right:22px; top:22px; display:grid; place-items:center; width:44px; height:44px; padding:0; border:1px solid #424950; border-radius:50%; background:var(--panel); color:var(--ink-soft); cursor:pointer; }
+    .mp-case-flow { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px; }
+    .mp-case-stage { position:relative; min-width:0; }
+    .mp-case-stage:not(:last-child)::before { content:""; position:absolute; top:14px; left:28px; width:calc(100% + 1px); height:1px; background:linear-gradient(90deg,#60676f,#343b42); }
+    .mp-case-step { position:relative; display:grid; place-items:center; width:28px; height:28px; margin-bottom:16px; border:1px solid #596169; border-radius:50%; color:var(--ink-soft); background:#191c1f; font-size:11px; }
+    .mp-case-stage h4 { margin:0; color:var(--ink); font-size:16px; font-weight:500; line-height:1.6; }
+    .mp-case-stage p { margin:10px 0 0; color:var(--muted); font-size:15px; line-height:1.9; }
+    @media(hover:hover) and (pointer:fine) { .mp-case-card:hover { border-color:#60666d; transform:translateY(-2px); } .mp-case-card:hover .mp-case-open .mp-icon { transform:translateX(3px); color:var(--ink); } }
+    @media(max-width:1000px) { .mp-case-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media(max-width:600px) { .mp-case-grid { grid-template-columns:1fr; margin-top:28px; gap:12px; } .mp-case-card { padding:20px; } .mp-case-industry { flex-direction:row; align-items:center; gap:14px; } .mp-case-industry .mp-icon { width:20px; height:20px; } .mp-case-task { font-size:22px; margin-top:14px; } .mp-case-detail { padding:24px; } .mp-case-detail h3 { font-size:22px; margin-right:36px; } .mp-case-close { top:16px; right:16px; } .mp-case-flow { grid-template-columns:1fr; gap:26px; } .mp-case-stage { padding-left:44px; } .mp-case-step { position:absolute; left:0; top:0; } .mp-case-stage:not(:last-child)::before { top:28px; left:14px; width:1px; height:calc(100% - 2px); background:linear-gradient(#60676f,#343b42); } }
+    @media(prefers-reduced-motion:reduce) { .mp-case-card,.mp-case-open .mp-icon { transition:none; } .mp-case-card:hover,.mp-case-card:hover .mp-case-open .mp-icon { transform:none; } }
+    .mp-engines { padding-top:48px; }
+    .mp-engine-layout { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); gap:84px; align-items:center; margin-top:42px; }
+    .mp-engine-art { position:relative; aspect-ratio:1.22; margin:0; min-width:0; }
+    .mp-engine-stack { position:absolute; width:60%; height:54%; left:23%; top:36%; transform:rotateX(48deg) rotateZ(-30deg); transform-style:preserve-3d; }
+    .mp-engine-plane { position:absolute; inset:0; border:1px solid #727c83; border-radius:8px; background:linear-gradient(140deg,#353d43,#151b20 70%); box-shadow:2px 5px 0 #0b0e10,3px 6px 0 #58616a,12px 24px 28px #0009; transform-style:preserve-3d; }
+    .mp-engine-plane > span { position:absolute; bottom:16px; left:20px; font-size:17px; font-weight:500; white-space:nowrap; color:var(--ink); }
+    .mp-engine-plane.base { transform:translateZ(-45px); border-color:#737b80; background:linear-gradient(140deg,#373c40,#101315 55%,#23282c); box-shadow:2px 5px 0 #0b0d0f,3px 6px 0 #43494d,10px 22px 30px #0009; }
+    .mp-engine-plane.runtime { transform:translate3d(0,-30px,30px); background:linear-gradient(145deg,#6d7985e6,#26333ee8 70%); border-color:#a6b2bc; transition:transform .45s var(--motion); }
+    .mp-engine-plane.model { transform:translate3d(0,-60px,85px); background:linear-gradient(140deg,#83909b80,#263440be 60%,#1b2732df); border-color:#afb9c1; backdrop-filter:blur(2.5px); }
+    .mp-engine-plane.model span { font-family:var(--font-brand); font-weight:700; font-size:22px; }
+    .mp-engine-art[data-engine="vllm"] .runtime { transform:translate3d(0,-36px,46px); }
+    .mp-engine-traces { position:absolute; top:27px; left:22px; right:22px; display:grid; gap:13px; }
+    .mp-engine-traces i { display:block; width:100%; height:2px; background:linear-gradient(90deg,#dce1e5,#5a697766); box-shadow:0 5px 0 #6778894d; }
+    .mp-engine-traces i:nth-child(2) { width:72%; }
+    .mp-engine-traces i:nth-child(3) { width:88%; }
+    .mp-engine-core { position:absolute; inset:22px 20px 53px; display:grid; grid-template-columns:repeat(6,1fr); gap:6px; }
+    .mp-engine-core i { background:linear-gradient(135deg,#9aa7b2,#556471); border:1px solid #c3cbd15e; }
+    .mp-engine-compute { position:absolute; inset:24px 22px 60px; display:grid; grid-template-columns:repeat(12,1fr); gap:5px; }
+    .mp-engine-compute i { background:#454c52; border:1px solid #747e86; box-shadow:1px 2px 0 #07090b; }
+    .mp-engine-reading { min-width:0; }
+    .mp-engine-tabs { display:inline-flex; max-width:100%; border-radius:var(--radius-button); padding:4px; gap:4px; border:1px solid var(--line); margin-bottom:30px; }
+    .mp-engine-tabs button { background:transparent; color:var(--dim); border:0; border-radius:var(--radius-button); padding:11px 19px; min-height:44px; cursor:pointer; font-size:13px; white-space:nowrap; transition:background .2s,color .2s; }
+    .mp-engine-tabs button[aria-selected="true"] { color:var(--ink); background:var(--panel-strong); }
+    .mp-engine-panel h3 { margin:0; font-size:24px; line-height:1.4; font-weight:500; letter-spacing:-.02em; }
+    .mp-engine-panel h4 { margin:28px 0 0; font-size:17px; line-height:1.6; font-weight:500; color:var(--ink); }
+    .mp-engine-panel p { margin:12px 0 0; font-size:16px; line-height:1.9; color:var(--muted); }
+    .mp-engine-panel[hidden] { display:none; }
+    .mp-optimization { padding-top:72px; }
+    .mp-optimization-list { margin-top:40px; }
+    .mp-optimization-list details { border-top:1px solid var(--line); padding:0; }
+    .mp-optimization-list details:last-child { border-bottom:1px solid var(--line); }
+    .mp-optimization-list summary { list-style:none; display:grid; grid-template-columns:230px minmax(0,1fr) 24px; column-gap:46px; align-items:center; padding:30px 0; cursor:pointer; }
+    .mp-optimization-list summary::-webkit-details-marker { display:none; }
+    .mp-opt-name h3 { margin:0; font-size:20px; font-weight:500; line-height:1.4; letter-spacing:-.015em; }
+    .mp-opt-model { display:block; margin-top:9px; font-family:var(--font-brand); font-size:12px; font-weight:700; color:var(--dim); letter-spacing:.025em; }
+    .mp-opt-benefit { margin:0; color:var(--muted); font-size:15px; line-height:1.8; }
+    .mp-opt-plus { color:var(--muted); }
+    .mp-opt-plus .mp-plus-vertical { transition:opacity .2s; }
+    details[open] .mp-opt-plus .mp-plus-vertical { opacity:0; }
+    .mp-opt-detail { padding:0 70px 30px 276px; color:var(--muted); font-size:14px; line-height:1.9; }
+    .mp-opt-detail p { margin:0; max-width:750px; }
+    .mp-opt-detail strong { display:block; margin-bottom:10px; font-size:11px; font-weight:500; color:var(--dim); letter-spacing:.08em; }
+    .models-preview .footer { padding:0 var(--section-x) 40px; }
+    .models-preview .footer-inner { padding-top:24px; }
+    .mp-dialog { color:var(--ink); background:var(--panel); border:1px solid var(--line); border-radius:var(--radius-panel); padding:27px; width:min(400px,calc(100vw - 32px)); max-height:calc(100dvh - 32px); overflow:auto; }
+    .mp-dialog::backdrop { background:#0009; backdrop-filter:blur(12px); }
+    .mp-dialog-top { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:18px; }
+    .mp-dialog h2 { font-size:20px; font-weight:500; margin:0; }
+    .mp-close { display:grid; place-items:center; flex:none; width:44px; height:44px; border:1px solid var(--line); border-radius:50%; background:transparent; color:var(--ink); cursor:pointer; }
+    .mp-contact-links a { display:flex; flex-direction:column; gap:8px; border-top:1px solid var(--line); padding:20px 0; }
+    .mp-contact-links a:last-child { padding-bottom:0; }
+    .mp-contact-links span { color:var(--muted); font-size:12px; }
+    .mp-contact-links strong { font-size:16px; font-weight:500; }
+    .mp-menu-dialog { width:100%; height:100dvh; max-width:none; max-height:none; margin:0; padding:24px; border:0; border-radius:0; background:var(--bg); }
+    .mp-menu-dialog .mp-dialog-top { margin-bottom:38px; }
+    .mp-menu-dialog img { width:125px; }
+    .mp-mobile-links { display:flex; flex-direction:column; }
+    .mp-mobile-links a { padding:18px 0; font-size:25px; color:var(--muted); border-bottom:1px solid var(--line); }
+    .mp-mobile-links a[aria-current="page"] { color:var(--ink); }
+    .models-preview:has(dialog[open]) { overflow:hidden; }
+    @media(min-width:1000px) and (max-height:800px) {
+      .mp-models { padding-top:96px; padding-bottom:24px; }
+      .mp-model-card { padding:20px 28px; }
+      .mp-model-tagline { margin-top:14px; }
+      .mp-model-description { line-height:1.7; margin-top:12px; }
+      .mp-model-capabilities { gap:8px; margin:16px 0; }
+      .mp-model-capabilities p { margin-top:4px; line-height:1.7; }
+      .mp-card-bottom { padding-top:14px; }
+    }
+    @media(min-width:821px) and (max-height:760px) { .mp-hero-art { height:400px; } }
+    @media(max-width:1120px) { .mp-hero { grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:20px; } .mp-hero h1 { font-size:clamp(34px,4vw,46px); } .mp-engine-layout { gap:40px; } }
+    @media(max-width:820px) {
+      .models-preview .site-shell { padding:calc(16px + env(safe-area-inset-top)) max(24px,env(safe-area-inset-right)) 16px max(24px,env(safe-area-inset-left)); }
+      .mp-hero { grid-template-columns:1fr; padding-top:142px; gap:16px; padding-bottom:35px; }
+      .mp-hero h1 { font-size:clamp(36px,6vw,50px); }
+      .mp-hero .mp-lead { max-width:640px; }
+      .mp-hero-art { width:min(100%,560px); height:470px; margin:42px auto 0; }
+      .mp-models { padding-top:96px; padding-bottom:32px; }
+      .mp-model-card { padding:28px 26px 26px; }
+      .mp-model-card h2 { font-size:36px; }
+      .mp-card-top { gap:12px; }
+      .mp-benchmarks { padding-top:32px; scroll-margin-top:96px; }
+      .mp-engine-layout { grid-template-columns:1fr; gap:34px; margin-top:34px; }
+      .mp-engine-art { width:min(100%,490px); margin-inline:auto; }
+      .mp-engine-reading { max-width:640px; width:100%; margin-inline:auto; }
+      .mp-optimization-list summary { grid-template-columns:200px minmax(0,1fr) 24px; gap:24px; }
+      .mp-opt-detail { padding-left:224px; padding-right:48px; }
+      .mp-section { scroll-margin-top:92px; }
+    }
+    @media(max-width:560px) {
+      .mp-hero { padding-top:131px; }
+      .mp-eyebrow { margin-bottom:24px; }
+      .mp-hero h1 { font-size:34px; line-height:1.3; letter-spacing:-.04em; }
+      .mp-hero .mp-lead { margin-top:24px; font-size:15px; line-height:1.9; }
+      .mp-hero-actions { margin-top:26px; gap:10px; }
+      .mp-pill { padding:12px 17px; gap:10px; }
+      .mp-hero-art { height:auto; aspect-ratio:1.1; margin-top:34px; margin-bottom:26px; }
+      .mp-model-visual { width:56%; }
+      .mp-sculpture-name .rm-mark { font-size:21px; }
+      .mp-sculpture-name { gap:8px; }
+      .dense .mp-sculpture-name { top:-34%; }
+      .moe .mp-sculpture-name { bottom:-30%; }
+      .mp-model-grid { grid-template-columns:1fr; gap:18px; }
+      .mp-card-top { flex-direction:row; align-items:center; }
+      .mp-model-card h2 { font-size:39px; }
+      .mp-model-card { padding:27px 25px; }
+      .mp-model-tagline { font-size:21px; }
+      .mp-model-description { font-size:15px; }
+      .mp-heading { font-size:32px; line-height:1.3; }
+      .mp-lead { font-size:15px; line-height:1.9; margin-top:22px; }
+      .mp-benchmark-plots { margin-top:28px; }
+      .mp-benchmark-status { margin-top:20px; font-size:12px; }
+      .mp-engines { padding-top:12px; }
+      .mp-engine-layout { gap:30px; }
+      .mp-engine-art { aspect-ratio:1.08; }
+      .mp-engine-stack { width:57%; left:24%; height:51%; top:38%; }
+      .mp-engine-plane > span { font-size:12px; left:13px; bottom:12px; }
+      .mp-engine-plane.model span { font-size:15px; }
+      .mp-engine-plane.base { transform:translateZ(-22px); }
+      .mp-engine-plane.runtime { transform:translate3d(0,-20px,22px); }
+      .mp-engine-plane.model { transform:translate3d(0,-40px,58px); }
+      .mp-engine-art[data-engine="vllm"] .runtime { transform:translate3d(0,-24px,31px); }
+      .mp-engine-traces { left:15px; right:15px; top:20px; gap:12px; }
+      .mp-engine-core { inset:17px 14px 40px; gap:4px; }
+      .mp-engine-compute { inset:18px 15px 44px; gap:4px; }
+      .mp-engine-tabs { margin-bottom:24px; }
+      .mp-engine-tabs button { font-size:12px; padding:10px 15px; }
+      .mp-engine-panel h3 { font-size:21px; }
+      .mp-engine-panel h4 { font-size:16px; margin-top:24px; }
+      .mp-engine-panel p { font-size:15px; }
+      .mp-optimization { padding-top:18px; }
+      .mp-optimization-list { margin-top:30px; }
+      .mp-optimization-list summary { grid-template-columns:minmax(0,1fr) 24px; padding:25px 0; column-gap:16px; row-gap:16px; }
+      .mp-opt-name { grid-column:1; grid-row:1; }
+      .mp-opt-name h3 { font-size:19px; }
+      .mp-opt-benefit { grid-column:1; grid-row:2; font-size:14px; }
+      .mp-opt-plus { grid-column:2; grid-row:1; }
+      .mp-opt-detail { padding:0 0 26px; font-size:14px; }
+            .models-preview .footer-inner { gap:25px; }
+      .models-preview .footer-brand { align-items:flex-start; }
+    }
+    @media(max-width:360px) { .mp-hero h1 { font-size:29px; } .mp-model-card { padding:25px 21px; } .mp-model-card h2 { font-size:34px; } .mp-architecture-tag { font-size:13px; gap:5px; } .mp-heading { font-size:29px; } .mp-engine-tabs button { padding:10px 13px; } }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .models-preview *, .models-preview *::before,.models-preview *::after { transition:none; animation:none; } }
+  </style>
+</head>
+<body class="models-preview">
+  <a class="skip-link" href="#main" data-zh="跳至主要内容" data-en="Skip to content">跳至主要内容</a>
+  <header class="site-shell" aria-label="主导航">
+    <a class="brand-mark" href="https://rminte.com/" aria-label="RMinte"><img src="../../website/assets/images/logo-white.svg" alt="RMinte"></a>
+    <nav class="nav-island" aria-label="页面导航">
+      <a href="https://rminte.com/gallery/index.html" data-zh="图册" data-en="Gallery">图册</a>
+      <a class="active" href="#main" aria-current="page" data-zh="模型" data-en="Models">模型</a>
+      <a href="https://rminte.com/#engine" data-zh="产品" data-en="Product">产品</a>
+      <a href="https://rminte.com/#teardown" data-zh="架构" data-en="Architecture">架构</a>
+      <a href="https://rminte.com/guides/index.html" data-zh="指南" data-en="Guides">指南</a>
+      <a href="https://rminte.com/downloads/index.html" data-zh="下载" data-en="Downloads">下载</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="language-toggle" type="button" id="languageToggle" aria-label="切换到英文">EN</button>
+      <button class="menu-button" type="button" id="menuToggle" aria-label="打开菜单" aria-controls="mobileMenu" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M2 8h20v1H2zM2 16h20v1H2z"/></svg></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="mp-wrap mp-hero" aria-labelledby="modelsHeroTitle">
+      <div>
+        <p class="mp-eyebrow"><span data-zh="RMQ 系列模型" data-en="RMQ MODELS">RMQ 系列模型</span></p>
+        <h1 id="modelsHeroTitle"><span data-zh="专业分析，更深入。" data-en="Deeper analysis.">专业分析，更深入。</span><span data-zh="模型推理，更高效。" data-en="Faster inference.">模型推理，更高效。</span></h1>
+        <p class="mp-lead" data-zh="RMQ3x 与 RMQ4，RMinte 专业模型系列。为法律、调查、安全治理、科研与社会研究打造，连接领域知识、深度推理与工具执行，让 Agent 从理解问题、形成判断走向持续行动，交付文书、代码与研究成果。" data-en="RMQ3x and RMQ4, the RMinte professional model series. Built for law, investigations, security and governance, scientific research, and social research, they connect domain knowledge, deep reasoning, and tool use, enabling agents to move from understanding problems and forming judgments to sustained action, delivering documents, code, and research findings.">RMQ3x 与 RMQ4，RMinte 专业模型系列。为法律、调查、安全治理、科研与社会研究打造，连接领域知识、深度推理与工具执行，让 Agent 从理解问题、形成判断走向持续行动，交付文书、代码与研究成果。</p>
+        <div class="mp-hero-actions">
+          <a class="cta-button" href="#models"><span data-zh="探索模型" data-en="Explore models">探索模型</span><svg class="cta-dot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a>
+          <a class="mp-pill" href="#benchmarks"><span data-zh="查看评测" data-en="Benchmarks">查看评测</span></a>
+        </div>
+      </div>
+      <!-- Approved A artwork: masked layer groups preserve the glass texture while opening independently. -->
+      <figure class="mp-hero-art" aria-label="Dense 与 MoE 架构概念示意">
+        <button class="mp-model-visual dense" type="button" aria-pressed="false" data-visual-model="RMQ3x" aria-label="RMQ3x Dense：展开或收起结构">
+          <svg class="mp-glass-stack" viewBox="50 110 710 820" aria-hidden="true">
+            <defs>
+              <image id="glass-dense" href="model-glass-a.png" width="1536" height="1024"/>
+              <clipPath id="glass-dense-upper"><path d="M50 110H760V433H712C712 444 700 448 683 448H134C121 448 112 444 112 433H50Z"/></clipPath>
+              <clipPath id="glass-dense-feature"><path d="M50 433H112C112 444 121 448 134 448H683C700 448 712 444 712 433H760V591H50Z"/></clipPath>
+              <clipPath id="glass-dense-lower"><polygon points="50,591 760,591 760,930 50,930"/></clipPath>
+            </defs>
+            <g class="mp-glass-layer lower"><use href="#glass-dense" clip-path="url(#glass-dense-lower)"/></g>
+            <g class="mp-glass-layer upper"><use href="#glass-dense" clip-path="url(#glass-dense-upper)"/></g>
+            <g class="mp-glass-layer feature"><use href="#glass-dense" clip-path="url(#glass-dense-feature)"/></g>
+          </svg>
+          <span class="mp-sculpture-name"><span class="rm-mark">RMQ3x</span><span class="mp-architecture-tag"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M1 1h4v4H1zm6 0h4v4H7zm6 0h4v4h-4zM1 7h4v4H1zm6 0h4v4H7zm6 0h4v4h-4zM1 13h4v4H1zm6 0h4v4H7zm6 0h4v4h-4z"/></svg>Dense</span></span>
+        </button>
+        <button class="mp-model-visual moe" type="button" aria-pressed="false" data-visual-model="RMQ4" aria-label="RMQ4 MoE：展开或收起结构">
+          <svg class="mp-glass-stack" viewBox="770 110 710 820" aria-hidden="true">
+            <defs>
+              <image id="glass-moe" href="model-glass-a.png" width="1536" height="1024"/>
+              <clipPath id="glass-moe-upper"><path d="M770 110H1480V433H1430C1430 442 1417 448 1400 448H854C839 448 826 444 826 433H770Z"/></clipPath>
+              <clipPath id="glass-moe-feature"><path d="M770 433H826C826 444 839 448 854 448H1400C1417 448 1430 442 1430 433H1480V591H770Z"/></clipPath>
+              <clipPath id="glass-moe-lower"><polygon points="770,591 1480,591 1480,930 770,930"/></clipPath>
+            </defs>
+            <g class="mp-glass-layer lower"><use href="#glass-moe" clip-path="url(#glass-moe-lower)"/></g>
+            <g class="mp-glass-layer upper"><use href="#glass-moe" clip-path="url(#glass-moe-upper)"/></g>
+            <g class="mp-glass-layer feature"><use href="#glass-moe" clip-path="url(#glass-moe-feature)"/></g>
+          </svg>
+          <span class="mp-sculpture-name"><span class="rm-mark">RMQ4</span><span class="mp-architecture-tag"><svg viewBox="0 0 18 18" aria-hidden="true"><path opacity=".25" d="M1 1h4v4H1zm12 0h4v4h-4zM7 7h4v4H7zM1 13h4v4H1zm12 0h4v4h-4z"/><path d="M7 1h4v4H7zM1 7h4v4H1zm12 0h4v4h-4zM7 13h4v4H7z"/></svg>MoE</span></span>
+        </button>
+      </figure>
+    </section>
+
+    <section class="mp-wrap mp-models" id="models" aria-label="模型介绍">
+      <div class="mp-model-grid">
+        <article class="mp-model-card">
+          <div class="mp-card-top"><h2 class="rm-mark">RMQ3x</h2><span class="mp-architecture-tag"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M1 1h4v4H1zm6 0h4v4H7zm6 0h4v4h-4zM1 7h4v4H1zm6 0h4v4H7zm6 0h4v4h-4zM1 13h4v4H1zm6 0h4v4H7zm6 0h4v4h-4z"/></svg>Dense</span></div>
+          <p class="mp-model-tagline"><span data-zh="专业推理，" data-en="Professional reasoning.">专业推理，</span><span data-zh="驱动实际行动。" data-en="Practical action.">驱动实际行动。</span></p>
+          <p class="mp-model-description" data-zh="针对法律、调查、安全治理、科研与社会研究打造的专业模型。连接方案设计、代码生成、工具调用与结果验证，让 Agent 将专业判断转化为行动，交付文书、代码与研究成果。" data-en="A professional model built for law, investigations, security and governance, scientific research, and social research. It connects planning, code generation, tool use, and result verification, enabling agents to turn professional judgment into action and deliver documents, code, and research findings.">针对法律、调查、安全治理、科研与社会研究打造的专业模型。连接方案设计、代码生成、工具调用与结果验证，让 Agent 将专业判断转化为行动，交付文书、代码与研究成果。</p>
+          <ul class="mp-model-capabilities">
+            <li><h3 data-zh="理解专业问题" data-en="Understand professional problems">理解专业问题</h3><p data-zh="联系事实、证据与领域知识，推演因果、检验假设，形成有依据的判断与方案。" data-en="Connect facts, evidence, and domain knowledge to reason about cause and effect, test hypotheses, and develop well-founded judgments and plans.">联系事实、证据与领域知识，推演因果、检验假设，形成有依据的判断与方案。</p></li>
+            <li><h3 data-zh="完成实际工作" data-en="Execute real work">完成实际工作</h3><p data-zh="制定检索策略，生成数据查询与验证代码，调用专业工具执行任务、检验结果。" data-en="Develop search strategies, generate data queries and validation code, and use specialist tools to execute tasks and verify results.">制定检索策略，生成数据查询与验证代码，调用专业工具执行任务、检验结果。</p></li>
+            <li><h3 data-zh="延续任务进程" data-en="Sustain task progress">延续任务进程</h3><p data-zh="承接前序发现与执行反馈，修订方案、推进验证，完成调查、研究与业务工作。" data-en="Build on prior findings and execution feedback, revise plans, and advance verification to complete investigations, research, and business tasks.">承接前序发现与执行反馈，修订方案、推进验证，完成调查、研究与业务工作。</p></li>
+          </ul>
+          <div class="mp-card-bottom"><button class="mp-pill hf-button" type="button" data-model="RMQ3x" disabled title="模型主页即将公布"><img class="hf-icon" src="hf-logo-monochrome.svg" alt="" aria-hidden="true"><span>Hugging Face</span></button><div class="mp-model-glyph" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        </article>
+        <article class="mp-model-card">
+          <div class="mp-card-top"><h2 class="rm-mark">RMQ4</h2><span class="mp-architecture-tag"><svg viewBox="0 0 18 18" aria-hidden="true"><path opacity=".25" d="M1 1h4v4H1zm12 0h4v4h-4zM7 7h4v4H7zM1 13h4v4H1zm12 0h4v4h-4z"/><path d="M7 1h4v4H7zM1 7h4v4H1zm12 0h4v4h-4zM7 13h4v4H7z"/></svg>MoE</span></div>
+          <p class="mp-model-tagline"><span data-zh="深入复杂问题，" data-en="Explore complex problems.">深入复杂问题，</span><span data-zh="驾驭长程任务。" data-en="Manage long-running tasks.">驾驭长程任务。</span></p>
+          <p class="mp-model-description" data-zh="为跨领域、多阶段、需要反复验证的专业工作打造，覆盖法律、调查、安全治理、科研与社会研究。衔接任务规划、代码计算、工具使用与研究迭代，保持目标、约束和阶段成果的连续性，让 Agent 推进复杂调查与研究项目，完成从问题到成果的交付。" data-en="Built for professional work that spans disciplines, involves multiple stages, and requires repeated verification across law, investigations, security and governance, scientific research, and social research. It links task planning, computation, tool use, and research iteration while maintaining continuity in goals, constraints, and intermediate findings, enabling agents to carry complex investigations and research projects from initial questions to final deliverables.">为跨领域、多阶段、需要反复验证的专业工作打造，覆盖法律、调查、安全治理、科研与社会研究。衔接任务规划、代码计算、工具使用与研究迭代，保持目标、约束和阶段成果的连续性，让 Agent 推进复杂调查与研究项目，完成从问题到成果的交付。</p>
+          <ul class="mp-model-capabilities">
+            <li><h3 data-zh="建立完整论证" data-en="Build a complete argument">建立完整论证</h3><p data-zh="联结不同领域的知识与证据，解释问题机制，检验竞争性假设，形成逻辑严密的专业判断。" data-en="Connect knowledge and evidence across disciplines, explain underlying mechanisms, and test competing hypotheses to form logically rigorous professional judgments.">联结不同领域的知识与证据，解释问题机制，检验竞争性假设，形成逻辑严密的专业判断。</p></li>
+            <li><h3 data-zh="贯通复杂任务" data-en="Coordinate complex tasks">贯通复杂任务</h3><p data-zh="统筹调查规划、信息检索、代码计算与结果复核，将阶段性发现转化为后续行动。" data-en="Coordinate investigation planning, information retrieval, computation, and result review, translating intermediate findings into subsequent actions.">统筹调查规划、信息检索、代码计算与结果复核，将阶段性发现转化为后续行动。</p></li>
+            <li><h3 data-zh="推进研究迭代" data-en="Advance research iterations">推进研究迭代</h3><p data-zh="吸收新增证据、计算结果与实验反馈，修订假设、完善方案，产出可检验的研究成果。" data-en="Incorporate new evidence, computational results, and experimental feedback to revise hypotheses, refine plans, and produce testable research findings.">吸收新增证据、计算结果与实验反馈，修订假设、完善方案，产出可检验的研究成果。</p></li>
+          </ul>
+          <div class="mp-card-bottom"><button class="mp-pill hf-button" type="button" data-model="RMQ4" disabled title="模型主页即将公布"><img class="hf-icon" src="hf-logo-monochrome.svg" alt="" aria-hidden="true"><span>Hugging Face</span></button><div class="mp-model-glyph" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="mp-wrap mp-benchmarks" id="benchmarks" aria-labelledby="benchmarkTitle">
+      <h2 class="mp-heading" id="benchmarkTitle" data-zh="模型评测" data-en="Model benchmarks">模型评测</h2>
+      <figure class="mp-benchmark-plots">
+        <canvas class="mp-benchmark-particles" aria-hidden="true"></canvas>
+        <figcaption class="mp-benchmark-status" data-zh="测评结果即将推出" data-en="Evaluation results coming soon">测评结果即将推出</figcaption>
+      </figure>
+    </section>
+
+    <section class="mp-wrap mp-section mp-scenarios" aria-labelledby="scenariosTitle">
+      <h2 class="mp-heading" id="scenariosTitle" data-zh="驱动专业 Agent，完成复杂任务。" data-en="Power professional agents. Deliver complex work.">驱动专业 Agent，完成复杂任务。</h2>
+      <p class="mp-lead" data-zh="以 RMQ 构建专业 Agent。连接行业知识、业务系统与专业工具，将专业目标转化为连续行动。" data-en="Build professional agents with RMQ. Connect domain knowledge, business systems, and specialist tools to turn professional goals into coordinated action.">以 RMQ 构建专业 Agent。连接行业知识、业务系统与专业工具，将专业目标转化为连续行动。</p>
+      <div class="mp-case-grid" id="useCases"></div>
+    </section>
+
+    <section class="mp-wrap mp-section mp-engines" id="inference" aria-labelledby="inferenceTitle">
+      <p class="mp-eyebrow" data-zh="推理引擎" data-en="INFERENCE ENGINES">推理引擎</p>
+      <h2 class="mp-heading" id="inferenceTitle" data-zh="专用引擎，释放模型性能。" data-en="Dedicated engines. More from your models.">专用引擎，释放模型性能。</h2>
+      <p class="mp-lead" data-zh="RMQ3x 与 RMQ4 已运行于 RMinte 自研 C++ 推理引擎和深度定制的 vLLM。围绕模型结构与 RM-01 的硬件平台，我们深入优化算子、执行路径与运行时，让模型能力建立在高效的推理实现之上。" data-en="RMQ3x and RMQ4 run on RMinte’s own C++ inference engine and a deeply customized vLLM implementation. We optimize kernels, execution paths, and runtimes around the model architectures and RM-01 hardware, grounding model capabilities in efficient inference.">RMQ3x 与 RMQ4 已运行于 RMinte 自研 C++ 推理引擎和深度定制的 vLLM。围绕模型结构与 RM-01 的硬件平台，我们深入优化算子、执行路径与运行时，让模型能力建立在高效的推理实现之上。</p>
+      <div class="mp-engine-layout">
+        <figure class="mp-engine-art" id="engineArt" data-engine="cpp" aria-label="自研 C++ 推理实现示意">
+          <div class="mp-engine-stack" aria-hidden="true">
+            <div class="mp-engine-plane base"><div class="mp-engine-compute" data-cells="96"></div><span>NVIDIA CUDA</span></div>
+            <div class="mp-engine-plane runtime"><div class="mp-engine-core" data-cells="18"></div><span id="runtimeLabel"><span class="rm-mark">RMinte</span> C++ Runtime</span></div>
+            <div class="mp-engine-plane model"><div class="mp-engine-traces"><i></i><i></i><i></i></div><span>RMQ3x · RMQ4</span></div>
+          </div>
+        </figure>
+        <div class="mp-engine-reading">
+          <div class="mp-engine-tabs" role="tablist" aria-label="推理实现">
+            <button role="tab" type="button" id="tabCpp" aria-controls="panelCpp" aria-selected="true" data-engine-tab="cpp" data-zh="自研 C++" data-en="Our C++ engine">自研 C++</button>
+            <button role="tab" type="button" id="tabVllm" aria-controls="panelVllm" aria-selected="false" tabindex="-1" data-engine-tab="vllm" data-zh="vLLM 定制" data-en="Custom vLLM">vLLM 定制</button>
+          </div>
+          <div class="mp-engine-panel" id="panelCpp" role="tabpanel" aria-labelledby="tabCpp" tabindex="0">
+            <h3 data-zh="自研 C++ 推理引擎" data-en="Our own C++ inference engine">自研 C++ 推理引擎</h3>
+            <h4 data-zh="更低的运行开销，更高的执行效率。" data-en="Lower runtime overhead. Higher execution efficiency.">更低的运行开销，更高的执行效率。</h4>
+            <p data-zh="RMinte 自研 C++ 引擎的 Runner 自身内存开销约为 2 MB，不含模型权重、KV Cache 与上下文等占用。在相同模型、精度与量化配置下，prefill 与 decode 性能均优于我们已优化的 vLLM 实现，兼顾输入处理与逐 token 生成的效率。" data-en="The runner in RMinte’s own C++ engine has a memory overhead of approximately 2 MB, excluding model weights, KV cache, context, and other model-related allocations. With the same model, precision, and quantization configuration, both prefill and decode outperform our optimized vLLM implementation, improving input processing and token-by-token generation.">RMinte 自研 C++ 引擎的 Runner 自身内存开销约为 2 MB，不含模型权重、KV Cache 与上下文等占用。在相同模型、精度与量化配置下，prefill 与 decode 性能均优于我们已优化的 vLLM 实现，兼顾输入处理与逐 token 生成的效率。</p>
+            <h4 data-zh="持续 prefill，按需 decode。" data-en="Continuous prefill. Decode on demand.">持续 prefill，按需 decode。</h4>
+            <p data-zh="引擎支持连续追加输入、累积计算状态，将输入处理与回答生成分开调度。模型可以持续处理新消息、文档与任务反馈，复用已有计算，在需要输出时再启动 decode。" data-en="The engine supports incremental input and accumulated computation state, scheduling input processing separately from response generation. Models can keep processing new messages, documents, and task feedback, reuse previous computation, and begin decoding when output is needed.">引擎支持连续追加输入、累积计算状态，将输入处理与回答生成分开调度。模型可以持续处理新消息、文档与任务反馈，复用已有计算，在需要输出时再启动 decode。</p>
+            <p data-zh="这种执行方式让 Agent 能够持续接收上下文，无须每次输入都触发回答。从会议中的持续聆听，到案件材料的增量分析，模型随信息更新推进处理，在需要时参与判断与行动。" data-en="This execution model lets agents receive ongoing context without generating a response to every input. From listening throughout a meeting to incrementally analyzing case materials, models process information as it arrives and contribute to decisions and actions when needed.">这种执行方式让 Agent 能够持续接收上下文，无须每次输入都触发回答。从会议中的持续聆听，到案件材料的增量分析，模型随信息更新推进处理，在需要时参与判断与行动。</p>
+          </div>
+          <div class="mp-engine-panel" id="panelVllm" role="tabpanel" aria-labelledby="tabVllm" tabindex="0" hidden>
+            <h3 data-zh="深度定制 vLLM" data-en="Deeply customized vLLM">深度定制 vLLM</h3>
+            <h4 data-zh="从算子到工具链，深入优化推理实现。" data-en="Optimizing inference, from kernels to toolchains.">从算子到工具链，深入优化推理实现。</h4>
+            <p data-zh="RMinte 围绕模型执行与硬件特性，完成 GPU 算子的移植与重写，处理 PTX 与编译工具链的兼容问题，并推进 FlashInfer 推理内核库、Transformers 5 模型库的适配与集成。" data-en="RMinte has ported and rewritten GPU kernels around model execution and hardware characteristics, addressed PTX and compiler toolchain compatibility, and worked on adapting and integrating the FlashInfer inference kernel library and the Transformers 5 model library.">RMinte 围绕模型执行与硬件特性，完成 GPU 算子的移植与重写，处理 PTX 与编译工具链的兼容问题，并推进 FlashInfer 推理内核库、Transformers 5 模型库的适配与集成。</p>
+            <p data-zh="在 Fused MoE 内核调优中，我们解决了相关流程中的 Triton 兼容问题，使内核参数能够针对模型配置与硬件特性进行调优。同时，对推测解码等执行流程进行定制优化，提升模型推理效率。" data-en="For Fused MoE kernel tuning, we resolved Triton compatibility issues in the tuning workflow, enabling kernel parameters to be tuned to model configurations and hardware characteristics. We also customize execution workflows, including speculative decoding, to improve inference efficiency.">在 Fused MoE 内核调优中，我们解决了相关流程中的 Triton 兼容问题，使内核参数能够针对模型配置与硬件特性进行调优。同时，对推测解码等执行流程进行定制优化，提升模型推理效率。</p>
+            <h4 data-zh="支撑 RMQ，保留开放的模型选择。" data-en="Built for RMQ. Open to more models.">支撑 RMQ，保留开放的模型选择。</h4>
+            <p data-zh="定制 vLLM 已支持 RMQ3x 与 RMQ4，也为 RM-01 运行其他适配的开源模型提供推理基础。用户可以围绕任务选择模型，在同一台设备上构建不同的专业应用与 Agent 工作流。" data-en="Our customized vLLM supports RMQ3x and RMQ4 and provides an inference foundation for other compatible open-source models on RM-01. Users can choose models for their tasks and build different professional applications and agent workflows on the same device.">定制 vLLM 已支持 RMQ3x 与 RMQ4，也为 RM-01 运行其他适配的开源模型提供推理基础。用户可以围绕任务选择模型，在同一台设备上构建不同的专业应用与 Agent 工作流。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mp-wrap mp-section mp-optimization" id="optimization" aria-labelledby="optimizationTitle">
+      <h2 class="mp-heading" id="optimizationTitle"><span data-zh="减少等待，" data-en="Less waiting.">减少等待，</span><br><span data-zh="让算力用在计算上。" data-en="More compute doing the work.">让算力用在计算上。</span></h2>
+      <p class="mp-lead" data-zh="模型性能取决于计算效率，也取决于数据读写与任务调度。我们计划优化关键算子、融合计算、减少数据搬运，让 RMQ3x 与 RMQ4 的架构优势转化为推理效率。" data-en="Model performance depends on computation, memory access, and scheduling. We plan to optimize key kernels, fuse operations, and reduce data movement, translating RMQ3x and RMQ4 architectures into inference efficiency.">模型性能取决于计算效率，也取决于数据读写与任务调度。我们计划优化关键算子、融合计算、减少数据搬运，让 RMQ3x 与 RMQ4 的架构优势转化为推理效率。</p>
+      <div class="mp-optimization-list" id="optimizations"></div>
+    </section>
+
+  </main>
+
+  <footer class="footer"><div class="footer-inner"><div class="footer-brand"><img src="../../website/assets/images/logo-white.svg" alt="RMinte"><div><p data-zh="泛灵（成都）人工智能科技有限公司" data-en="RMinte AI">泛灵（成都）人工智能科技有限公司</p><span>© 2026 <span class="rm-mark">RMinte</span> ( Chengdu ) Artificial Intelligence Technology Co., Ltd. · <span class="rm-mark">RM-01</span> Protable AI Supercomputer</span></div></div><div class="footer-actions"><button class="footer-contact" type="button" id="contactToggle" aria-expanded="false" aria-controls="contactDialog"><span data-zh="联系我们" data-en="Contact">联系我们</span></button><a class="footer-github" href="https://github.com/RMinte-AI" target="_blank" rel="noreferrer" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.38-3.37-1.38-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.3.1-2.72 0 0 .84-.27 2.75 1.05A9.35 9.35 0 0 1 12 6.94c.85 0 1.7.12 2.5.34 1.9-1.32 2.74-1.05 2.74-1.05.55 1.42.2 2.46.1 2.72.64.72 1.03 1.64 1.03 2.76 0 3.95-2.34 4.82-4.57 5.07.36.32.68.94.68 1.9 0 1.38-.01 2.48-.01 2.82 0 .28.18.6.69.5A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/></svg><span>GitHub</span></a></div></div></footer>
+
+  <dialog class="mp-dialog" id="contactDialog" aria-labelledby="contactTitle"><div class="mp-dialog-top"><h2 id="contactTitle" data-zh="联系我们" data-en="Contact">联系我们</h2><button class="mp-close" type="button" data-close-dialog aria-label="关闭"><svg class="mp-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><div class="mp-contact-links"><a href="mailto:jiezhu@rminte.com"><span data-zh="销售与渠道合作" data-en="Sales & channel partnerships">销售与渠道合作</span><strong>jiezhu@rminte.com</strong></a><a href="mailto:yishi@rminte.com"><span data-zh="制造与供应链合作" data-en="Manufacturing & supply chain">制造与供应链合作</span><strong>yishi@rminte.com</strong></a><a href="mailto:support@rminte.com"><span data-zh="售前与售后服务" data-en="Pre-sales & after-sales support">售前与售后服务</span><strong>support@rminte.com</strong></a></div></dialog>
+
+  <dialog class="mp-dialog mp-menu-dialog" id="mobileMenu" aria-label="导航菜单"><div class="mp-dialog-top"><img src="../../website/assets/images/logo-white.svg" alt="RMinte"><button class="mp-close" type="button" data-close-dialog aria-label="关闭"><svg class="mp-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><nav class="mp-mobile-links" aria-label="移动导航"><a href="https://rminte.com/gallery/index.html" data-zh="图册" data-en="Gallery">图册</a><a href="#main" aria-current="page" data-zh="模型" data-en="Models">模型</a><a href="https://rminte.com/#engine" data-zh="产品" data-en="Product">产品</a><a href="https://rminte.com/#teardown" data-zh="架构" data-en="Architecture">架构</a><a href="https://rminte.com/guides/index.html" data-zh="指南" data-en="Guides">指南</a><a href="https://rminte.com/downloads/index.html" data-zh="下载" data-en="Downloads">下载</a></nav></dialog>
+
+  <script src="benchmark-particles.js" defer></script>
+  <script>
+    (() => {
+      'use strict';
+      // Add the actual RMQ model URLs when supplied; never link to the base models.
+      const modelLinks = { RMQ3x: '', RMQ4: '' };
+      const cases = [
+  {
+    "icon": "scale",
+    "zh": {
+      "name": "司法与法律服务",
+      "task": "推进案件研究\n与诉讼准备",
+      "outputs": [
+        "合同修订稿",
+        "庭审提纲"
+      ],
+      "stages": [
+        "卷宗、合同、法律数据库与相关判例。",
+        "检索依据，建立证据与法律要件的联系，起草文书并交叉验证引用。",
+        "附依据的法律意见、合同修订稿与庭审提纲。"
+      ]
+    },
+    "en": {
+      "name": "Legal practice & judicial research",
+      "task": "Advance case research and trial preparation",
+      "outputs": [
+        "Contract markups",
+        "Trial outlines"
+      ],
+      "stages": [
+        "Case files, contracts, legal databases, and relevant precedents.",
+        "Research authorities, connect evidence to legal requirements, draft documents, and cross-check citations.",
+        "Legal opinions with supporting authorities, contract markups, and trial outlines."
+      ]
+    }
+  },
+  {
+    "icon": "fingerprint",
+    "zh": {
+      "name": "刑事调查与数字取证",
+      "task": "追踪关键线索\n重建事件关联",
+      "outputs": [
+        "事件时间线",
+        "取证核查任务"
+      ],
+      "stages": [
+        "通信记录、设备数据与调查资料。",
+        "联查实体和事件，检验竞争性解释，生成取证查询与后续核查任务。",
+        "可追溯的事件时间线、关联线索与核查计划。"
+      ]
+    },
+    "en": {
+      "name": "Criminal investigation & digital forensics",
+      "task": "Trace key leads and reconstruct connections",
+      "outputs": [
+        "Event timelines",
+        "Forensic follow-ups"
+      ],
+      "stages": [
+        "Communications, device data, and investigation records.",
+        "Connect entities and events, test competing explanations, and generate forensic queries and follow-up tasks.",
+        "Traceable event timelines, related leads, and verification plans."
+      ]
+    }
+  },
+  {
+    "icon": "shield",
+    "zh": {
+      "name": "网络安全防御",
+      "task": "发现威胁\n推进响应处置",
+      "outputs": [
+        "检测查询",
+        "修复方案"
+      ],
+      "stages": [
+        "安全日志、威胁情报与检测工具。",
+        "执行告警分诊，追踪攻击路径，编写检测查询与处置脚本。",
+        "事件调查记录、修复方案与处置验证结果。"
+      ]
+    },
+    "en": {
+      "name": "Cybersecurity defense",
+      "task": "Detect threats and drive incident response",
+      "outputs": [
+        "Detection queries",
+        "Remediation plans"
+      ],
+      "stages": [
+        "Security logs, threat intelligence, and detection tools.",
+        "Triage alerts, trace attack paths, and write detection queries and response scripts.",
+        "Investigation records, remediation plans, and response validation results."
+      ]
+    }
+  },
+  {
+    "icon": "list-filter",
+    "zh": {
+      "name": "平台内容治理",
+      "task": "执行治理规则\n处理复杂争议",
+      "outputs": [
+        "审核任务分派",
+        "申诉复核意见"
+      ],
+      "stages": [
+        "用户内容、平台规则、举报与申诉。",
+        "识别语境与行为关联，完成风险分级，结合历史案例生成复核依据。",
+        "审核任务分派、复核意见与规则缺口清单。"
+      ]
+    },
+    "en": {
+      "name": "Platform content governance",
+      "task": "Apply policies and resolve complex disputes",
+      "outputs": [
+        "Review assignments",
+        "Appeal assessments"
+      ],
+      "stages": [
+        "User content, platform policies, reports, and appeals.",
+        "Interpret context and behavioral connections, prioritize risks, and use prior cases to support review.",
+        "Review assignments, appeal assessments, and policy gap findings."
+      ]
+    }
+  },
+  {
+    "icon": "network",
+    "zh": {
+      "name": "企业调查与反舞弊",
+      "task": "穿透交易关系\n推进疑点核查",
+      "outputs": [
+        "异常关系线索",
+        "调查报告"
+      ],
+      "stages": [
+        "合同、资金流水、内部通信与工商信息。",
+        "交叉核验异常交易和实体关联，制定调查计划与访谈提纲。",
+        "附证据索引的调查报告与待核实事项。"
+      ]
+    },
+    "en": {
+      "name": "Corporate investigations & anti-fraud",
+      "task": "Uncover transaction links and investigate concerns",
+      "outputs": [
+        "Relationship leads",
+        "Investigation reports"
+      ],
+      "stages": [
+        "Contracts, financial transactions, internal communications, and company records.",
+        "Cross-check unusual transactions and entity relationships, and prepare investigation plans and interview outlines.",
+        "Investigation reports with evidence indexes and items requiring verification."
+      ]
+    }
+  },
+  {
+    "icon": "scan-line",
+    "zh": {
+      "name": "法医、毒理与事故调查",
+      "task": "推演发生机制\n设计验证路径",
+      "outputs": [
+        "机制假设",
+        "补充检验方案"
+      ],
+      "stages": [
+        "检验结果、现场记录与专业文献。",
+        "构建竞争性解释，推演因果链条，识别可区分不同机制的关键证据。",
+        "机制假设、鉴别问题与补充检验方案。"
+      ]
+    },
+    "en": {
+      "name": "Forensic medicine, toxicology & accident investigation",
+      "task": "Explore mechanisms and plan verification",
+      "outputs": [
+        "Mechanism hypotheses",
+        "Further testing plans"
+      ],
+      "stages": [
+        "Examination results, scene records, and specialist literature.",
+        "Develop competing explanations, examine causal chains, and identify evidence that distinguishes possible mechanisms.",
+        "Mechanism hypotheses, differentiating questions, and further testing plans."
+      ]
+    }
+  },
+  {
+    "icon": "layers",
+    "zh": {
+      "name": "材料与工业化学研究",
+      "task": "探索材料工艺\n推动研发迭代",
+      "outputs": [
+        "实验矩阵",
+        "仿真脚本"
+      ],
+      "stages": [
+        "研究文献、材料数据库、实验与仿真工具。",
+        "提出配方和机理假设，编写仿真脚本，设计实验矩阵并据结果修订方案。",
+        "候选方案、实验矩阵与可复现的数据处理脚本。"
+      ]
+    },
+    "en": {
+      "name": "Materials & industrial chemistry",
+      "task": "Explore materials and iterate on processes",
+      "outputs": [
+        "Experiment matrices",
+        "Simulation scripts"
+      ],
+      "stages": [
+        "Research literature, materials databases, and experimental and simulation tools.",
+        "Propose formulations and mechanisms, write simulation scripts, design experiments, and revise proposals using results.",
+        "Candidate proposals, experiment matrices, and reproducible data-processing scripts."
+      ]
+    }
+  },
+  {
+    "icon": "dna",
+    "zh": {
+      "name": "生命科学与生物医学研究",
+      "task": "形成研究假设\n推进实验验证",
+      "outputs": [
+        "实验设计",
+        "研究脚本"
+      ],
+      "stages": [
+        "文献、生物数据库与实验数据。",
+        "建立机制假设和研究优先级，设计实验与数据处理流程，随反馈迭代。",
+        "实验设计、可复现脚本与研究方案。"
+      ]
+    },
+    "en": {
+      "name": "Life sciences & biomedical research",
+      "task": "Develop hypotheses and advance experiments",
+      "outputs": [
+        "Experiment designs",
+        "Research scripts"
+      ],
+      "stages": [
+        "Literature, biological databases, and experimental data.",
+        "Develop mechanistic hypotheses and research priorities, design experiments and data workflows, and iterate on feedback.",
+        "Experiment designs, reproducible scripts, and research proposals."
+      ]
+    }
+  },
+  {
+    "icon": "messages-square",
+    "zh": {
+      "name": "社会学、犯罪学与伦理研究",
+      "task": "构建研究设计\n检验制度影响",
+      "outputs": [
+        "研究设计",
+        "理论检验报告"
+      ],
+      "stages": [
+        "访谈、案例、统计数据与理论文献。",
+        "制定抽样方案，执行质性编码与统计建模，检验解释并推演制度影响。",
+        "研究设计、模型结果与有证据支撑的论证。"
+      ]
+    },
+    "en": {
+      "name": "Sociology, criminology & ethics",
+      "task": "Design studies and examine policy impacts",
+      "outputs": [
+        "Study designs",
+        "Theory evaluation reports"
+      ],
+      "stages": [
+        "Interviews, cases, statistical data, and theoretical literature.",
+        "Design sampling plans, perform qualitative coding and statistical modeling, test explanations, and explore institutional impacts.",
+        "Study designs, model results, and evidence-supported arguments."
+      ]
+    }
+  }
+];
+      const optimizationItems = [
+        { model:'RMQ3x · RMQ4', zh:'混合注意力优化', en:'Hybrid attention', benefitZh:'加快输入处理与回答生成，减少注意力计算开销。', benefitEn:'Accelerate input processing and response generation while reducing attention overhead.', detailZh:'Gated DeltaNet 的门控与状态更新，以及两款模型各自的注意力计算路径；RMQ4 还包括 QSA 的块级索引、稀疏选择与数据访问。', detailEn:'Gated DeltaNet gating and state updates, along with each model’s attention paths. RMQ4 also includes QSA block-level indexing, sparse selection, and data access.' },
+        { model:'RMQ3x', zh:'稠密计算与算子融合', en:'Dense computation & fusion', benefitZh:'融合可合并的计算，减少中间结果读写与算子调用。', benefitEn:'Fuse compatible operations to reduce intermediate memory access and kernel calls.', detailZh:'稠密前馈网络、投影矩阵运算，以及适合融合的归一化、激活与残差计算。', detailEn:'Dense feed-forward networks and projection matrix operations, with normalization, activation, and residual computations fused where appropriate.' },
+        { model:'RMQ4', zh:'Fused MoE 专家计算', en:'Fused MoE expert computation', benefitZh:'优化专家调度、融合计算步骤，减少数据搬运。', benefitEn:'Optimize expert scheduling, fuse computation steps, and reduce data movement.', detailZh:'专家路由、token 分组与排布、分组矩阵运算、共享专家计算和输出汇总。', detailEn:'Expert routing, token grouping and layout, grouped matrix operations, shared-expert computation, and output aggregation.' },
+        { model:'RMQ4', zh:'门控残差与嵌入读取', en:'Gated residual & embedding access', benefitZh:'减少跨层信息传递与嵌入查表的等待。', benefitEn:'Reduce waiting during cross-layer information transfer and embedding lookups.', detailZh:'门控残差读写与归一化、N-gram 嵌入查表，以及计算融合、数据预取与存储调度。', detailEn:'Gated-residual reads, writes, and normalization; N-gram embedding lookups; and compute fusion, data prefetching, and storage scheduling.' }
+      ];
+      function bilingual(tag, zh, en, className) {
+        const element = document.createElement(tag);
+        element.dataset.zh = zh; element.dataset.en = en; element.textContent = zh;
+        if (className) element.className = className;
+        return element;
+      }
+      function plusIcon() {
+        const icon = document.createElementNS('http://www.w3.org/2000/svg','svg');
+        icon.setAttribute('class','mp-icon mp-opt-plus'); icon.setAttribute('viewBox','0 0 24 24'); icon.setAttribute('aria-hidden','true');
+        const horizontal = document.createElementNS('http://www.w3.org/2000/svg','path'); horizontal.setAttribute('d','M5 12h14');
+        const vertical = document.createElementNS('http://www.w3.org/2000/svg','path'); vertical.setAttribute('d','M12 5v14'); vertical.setAttribute('class','mp-plus-vertical'); icon.append(horizontal,vertical);
+        return icon;
+      }
+      const caseGrid = document.getElementById('useCases');
+      const caseButtons = [];
+      let selectedCase = -1;
+      function caseIcon(name) {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+        svg.setAttribute('class','mp-icon'); svg.setAttribute('viewBox','0 0 24 24'); svg.setAttribute('aria-hidden','true');
+        const use = document.createElementNS('http://www.w3.org/2000/svg','use');
+        use.setAttribute('href',`industry-icons.svg#${name}`); svg.append(use); return svg;
+      }
+      function caseActionIcon(close=false) {
+        const svg = plusIcon(); svg.classList.remove('mp-opt-plus'); svg.lastChild.remove();
+        svg.firstChild.setAttribute('d',close ? 'M6 6l12 12M18 6 6 18' : 'M5 12h14m-5-5 5 5-5 5'); return svg;
+      }
+      cases.forEach((item,index) => {
+        const button = document.createElement('button'); button.type = 'button'; button.className = 'mp-case-card';
+        button.id = `case-${index}`; button.setAttribute('aria-expanded','false'); button.setAttribute('aria-controls','caseDetail');
+        const industry = document.createElement('span'); industry.className = 'mp-case-industry';
+        industry.append(caseIcon(item.icon),bilingual('span',item.zh.name,item.en.name));
+        const outputs = document.createElement('span'); outputs.className = 'mp-case-outputs';
+        item.zh.outputs.forEach((value,i) => outputs.append(bilingual('span',value,item.en.outputs[i])));
+        const action = document.createElement('span'); action.className = 'mp-case-open';
+        action.append(bilingual('span','查看工作流程','Explore workflow'),caseActionIcon());
+        button.append(industry,bilingual('span',item.zh.task,item.en.task,'mp-case-task'),outputs,action);
+        button.addEventListener('click',() => selectCase(selectedCase === index ? -1 : index));
+        caseButtons.push(button); caseGrid.append(button);
+      });
+      const caseDetail = document.createElement('div'); caseDetail.className = 'mp-case-detail'; caseDetail.id = 'caseDetail'; caseDetail.hidden = true;
+      caseDetail.setAttribute('role','region'); caseDetail.setAttribute('aria-labelledby','caseDetailTitle'); caseGrid.append(caseDetail);
+      function positionCaseDetail() {
+        if (selectedCase < 0) return;
+        const columns = getComputedStyle(caseGrid).gridTemplateColumns.split(' ').length;
+        const last = Math.min(cases.length - 1,Math.floor(selectedCase / columns) * columns + columns - 1);
+        if (caseButtons[last].nextElementSibling !== caseDetail) caseButtons[last].after(caseDetail);
+      }
+      function renderCaseDetail() {
+        if (selectedCase < 0) return;
+        const item = cases[selectedCase];
+        const close = document.createElement('button'); close.type = 'button'; close.className = 'mp-case-close';
+        close.setAttribute('aria-label',lang === 'zh' ? '收起工作流程' : 'Close workflow'); close.append(caseActionIcon(true));
+        close.addEventListener('click',() => { const previous = selectedCase; selectCase(-1); caseButtons[previous].focus(); });
+        const title = bilingual('h3',item.zh.name,item.en.name); title.id = 'caseDetailTitle';
+        const flow = document.createElement('div'); flow.className = 'mp-case-flow';
+        const labels = [['连接知识与工具','Connect knowledge and tools'],['Agent 推进任务','Agent execution'],['交付工作成果','Deliver work products']];
+        labels.forEach((label,index) => {
+          const stage = document.createElement('div'); stage.className = 'mp-case-stage';
+          const number = document.createElement('span'); number.className = 'mp-case-step'; number.textContent = `0${index + 1}`;
+          stage.append(number,bilingual('h4',...label),bilingual('p',item.zh.stages[index],item.en.stages[index])); flow.append(stage);
+        });
+        caseDetail.replaceChildren(close,bilingual('span','专业 Agent 工作流程','PROFESSIONAL AGENT WORKFLOW','mp-case-detail-eyebrow'),title,flow);
+        caseDetail.querySelectorAll('[data-zh][data-en]').forEach(element => setBrandedText(element,element.dataset[lang]));
+      }
+      function selectCase(index) {
+        selectedCase = index; caseButtons.forEach((button,i) => button.setAttribute('aria-expanded',String(i === index)));
+        caseDetail.hidden = index < 0;
+        if (index >= 0) { renderCaseDetail(); positionCaseDetail(); }
+      }
+      caseGrid.addEventListener('keydown',event => {
+        if (event.key === 'Escape' && selectedCase >= 0) { const previous = selectedCase; selectCase(-1); caseButtons[previous].focus(); }
+      });
+      new ResizeObserver(positionCaseDetail).observe(caseGrid);
+      for (const item of optimizationItems) {
+        const details = document.createElement('details');
+        const summary = document.createElement('summary');
+        const name = document.createElement('div'); name.className = 'mp-opt-name';
+        const model = document.createElement('span'); model.className = 'mp-opt-model'; model.textContent = item.model;
+        name.append(bilingual('h3',item.zh,item.en),model);
+        const icon = plusIcon();
+        summary.append(name,bilingual('p',item.benefitZh,item.benefitEn,'mp-opt-benefit'),icon);
+        const detail = document.createElement('div'); detail.className = 'mp-opt-detail';
+        detail.append(bilingual('strong','技术重点','TECHNICAL FOCUS'),bilingual('p',item.detailZh,item.detailEn));
+        details.append(summary,detail); document.getElementById('optimizations').append(details);
+      }
+      document.querySelectorAll('[data-cells]').forEach(grid => {
+        for (let i=0;i<Number(grid.dataset.cells);i++) grid.append(document.createElement('i'));
+      });
+      document.querySelectorAll('[data-model]').forEach(button => {
+        const href = modelLinks[button.dataset.model];
+        if (!href) return;
+        const link = document.createElement('a');
+        link.className = button.className; link.href = href; link.target = '_blank'; link.rel = 'noreferrer';
+        link.append(...button.childNodes); button.replaceWith(link);
+      });
+      const menu = document.getElementById('mobileMenu');
+      const contact = document.getElementById('contactDialog');
+      const menuToggle = document.getElementById('menuToggle');
+      const contactToggle = document.getElementById('contactToggle');
+      const languageToggle = document.getElementById('languageToggle');
+      let lang = 'zh';
+      function setBrandedText(element,text) {
+        const parts = text.split(/(RMinte|RMQ3x|RMQ4|RMQ|RM-01)/g);
+        element.replaceChildren(...parts.map(part => {
+          if (!/^(RMinte|RMQ3x|RMQ4|RMQ|RM-01)$/.test(part)) return document.createTextNode(part);
+          const mark = document.createElement('span'); mark.className = 'rm-mark'; mark.textContent = part; return mark;
+        }));
+      }
+      function setLanguage(next) {
+        lang = next; document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+        document.title = lang === 'zh' ? '模型 · RMinte' : 'Models · RMinte';
+        document.querySelectorAll('[data-zh][data-en]').forEach(element => { setBrandedText(element,element.dataset[lang]); });
+        languageToggle.textContent = lang === 'zh' ? 'EN' : '中文';
+        languageToggle.setAttribute('aria-label',lang === 'zh' ? '切换到英文' : 'Switch to Chinese');
+        menuToggle.setAttribute('aria-label',lang === 'zh' ? '打开菜单' : 'Open menu');
+        document.querySelectorAll('[data-close-dialog]').forEach(button => button.setAttribute('aria-label',lang === 'zh' ? '关闭' : 'Close'));
+        document.querySelectorAll('.hf-button[disabled]').forEach(button => {
+          button.title = lang === 'zh' ? '模型主页即将公布' : 'Model page coming soon';
+          button.setAttribute('aria-label',`${button.dataset.model} · Hugging Face · ${button.title}`);
+        });
+        menu.setAttribute('aria-label',lang === 'zh' ? '导航菜单' : 'Navigation menu');
+        document.querySelector('.site-shell').setAttribute('aria-label',lang === 'zh' ? '主导航' : 'Main navigation');
+        document.querySelector('.nav-island').setAttribute('aria-label',lang === 'zh' ? '页面导航' : 'Page navigation');
+        document.querySelector('.mp-mobile-links').setAttribute('aria-label',lang === 'zh' ? '移动导航' : 'Mobile navigation');
+        document.getElementById('models').setAttribute('aria-label',lang === 'zh' ? '模型介绍' : 'Model overview');
+        renderCaseDetail();
+        document.querySelector('.mp-engine-tabs').setAttribute('aria-label',lang === 'zh' ? '推理实现' : 'Inference implementation');
+        document.querySelector('.mp-hero-art').setAttribute('aria-label',lang === 'zh' ? 'Dense 与 MoE 架构概念示意' : 'Dense and MoE architecture concepts');
+        document.querySelectorAll('[data-visual-model]').forEach(button => {
+          const architecture = button.classList.contains('dense') ? 'Dense' : 'MoE';
+          button.setAttribute('aria-label',`${button.dataset.visualModel} ${architecture}${lang === 'zh' ? '：展开或收起结构' : ': expand or collapse layers'}`);
+        });
+        updateEngineArt();
+      }
+      document.querySelectorAll('[data-visual-model]').forEach(button => {
+        button.addEventListener('click',() => button.setAttribute('aria-pressed',String(button.getAttribute('aria-pressed') !== 'true')));
+        button.addEventListener('keydown',event => {
+          if (event.key === 'Escape') button.setAttribute('aria-pressed','false');
+        });
+      });
+      languageToggle.addEventListener('click',() => setLanguage(lang === 'zh' ? 'en' : 'zh'));
+      menuToggle.addEventListener('click',() => { menu.showModal(); menuToggle.setAttribute('aria-expanded','true'); });
+      contactToggle.addEventListener('click',() => { contact.showModal(); contactToggle.setAttribute('aria-expanded','true'); });
+      menu.addEventListener('close',() => menuToggle.setAttribute('aria-expanded','false'));
+      contact.addEventListener('close',() => contactToggle.setAttribute('aria-expanded','false'));
+      document.querySelectorAll('[data-close-dialog]').forEach(button => button.addEventListener('click',() => button.closest('dialog').close()));
+      document.querySelectorAll('.mp-mobile-links a').forEach(link => link.addEventListener('click',() => menu.close()));
+      contact.addEventListener('click',event => {
+        if (event.target !== contact) return;
+        const rect = contact.getBoundingClientRect();
+        if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) contact.close();
+      });
+      const narrowMenu = matchMedia('(max-width:1120px)');
+      narrowMenu.addEventListener('change',event => { if (!event.matches && menu.open) menu.close(); });
+      const engineTabs = Array.from(document.querySelectorAll('[data-engine-tab]'));
+      let engine = 'cpp';
+      function updateEngineArt() {
+        document.getElementById('engineArt').dataset.engine = engine;
+        document.getElementById('runtimeLabel').innerHTML = engine === 'cpp' ? '<span class="rm-mark">RMinte</span> C++ Runtime' : 'vLLM · Custom';
+        document.getElementById('engineArt').setAttribute('aria-label',lang === 'zh' ? `${engine === 'cpp' ? '自研 C++' : 'vLLM 定制'}推理实现示意` : `${engine === 'cpp' ? 'RMinte C++' : 'Custom vLLM'} inference concept`);
+      }
+      function selectEngine(next,focus=false) {
+        engine = next;
+        engineTabs.forEach(tab => {
+          const selected = tab.dataset.engineTab === engine;
+          tab.setAttribute('aria-selected',String(selected)); tab.tabIndex = selected ? 0 : -1;
+          document.getElementById(tab.getAttribute('aria-controls')).hidden = !selected;
+          if (selected && focus) tab.focus();
+        });
+        updateEngineArt();
+      }
+      engineTabs.forEach((tab,index) => {
+        tab.addEventListener('click',() => selectEngine(tab.dataset.engineTab));
+        tab.addEventListener('keydown',event => {
+          let target;
+          if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') target = engineTabs[1-index];
+          if (event.key === 'Home') target = engineTabs[0];
+          if (event.key === 'End') target = engineTabs[1];
+          if (target) { event.preventDefault(); selectEngine(target.dataset.engineTab,true); }
+        });
+      });
+      const initialLanguage = new URL(location.href).searchParams.get('lang');
+      setLanguage(initialLanguage === 'en' ? 'en' : 'zh');
+    })();
+  </script>
+</body>
+</html>

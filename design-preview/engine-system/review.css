@@ -1,0 +1,98 @@
+/* Material study applied to the complete graph, scoped to review pages. */
+.material-review[data-material="abstract"] .module-card::before{content:none}
+.material-review .part-frame{overflow:visible}
+.material-review .review-part{position:relative;display:block;width:100%;height:100%;padding:0;border:0;border-radius:5px;isolation:isolate;background:linear-gradient(145deg,#282e33,#101518 76%);cursor:pointer;color:#cdd6dc;font-family:var(--font-ui);text-align:left;appearance:none}
+.material-review .part-interior{position:absolute;inset:14px 14px 43px;display:flex;gap:6px;opacity:.45;transition:opacity 450ms ease}
+.material-review .part-interior i{display:block;flex:1;background:linear-gradient(140deg,#9ba6ae,#414d56);border:1px solid #b4c0c64d;border-radius:1px}
+.material-review [data-part=cuda] .part-interior i:first-child{flex:2.1}
+/* A: different functional silhouettes, not literal chip die diagrams. */
+.material-review .interior-controller{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:4px}
+.material-review .interior-controller i:first-child{grid-row:1 / 3;background:linear-gradient(140deg,#b9c5ce,#586772)}
+.material-review .interior-controller i:not(:first-child){background:linear-gradient(140deg,#7d909c,#3f4d57)}
+.material-review .interior-ethernet{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:2fr 1fr;gap:3px}
+.material-review .interior-ethernet i:first-child{grid-column:1 / 4}
+.material-review .interior-switch{display:grid;grid-template-columns:1fr 2.4fr 1fr;grid-template-rows:1fr 1fr;gap:5px}
+.material-review .interior-switch i:first-child{grid-column:2;grid-row:1 / 3;background:linear-gradient(140deg,#bdc8d0,#566772)}
+.material-review .interior-switch i:not(:first-child){background:linear-gradient(140deg,#8599a6,#384953)}
+.material-review .interior-phy{display:grid;grid-template-columns:1.7fr 1fr 1fr;gap:3px}
+.material-review .interior-phy i:first-child{background:linear-gradient(140deg,#b1bec8,#526470)}
+.material-review .interior-phy i:nth-child(2){margin-block:2px;background:linear-gradient(140deg,#8297a4,#394b57)}
+.material-review .interior-phy i:nth-child(3){margin-block:4px;background:linear-gradient(140deg,#687e8c,#303f4a)}
+.material-review .part-frost{position:absolute;inset:0;border:1px solid #87949e69;border-top-color:#c5d0d891;border-left-color:#a8b7c37a;border-radius:inherit;background:linear-gradient(132deg,#b7c4cf45,#62727f1a 44%,#303a433d 80%);backdrop-filter:blur(2.5px);-webkit-backdrop-filter:blur(2.5px);box-shadow:inset 0 1px 0 #e7f0f51a,0 2px 0 #0d1012,0 3px 0 #73808a32;transition:backdrop-filter 450ms ease,-webkit-backdrop-filter 450ms ease,border-color 450ms ease}
+.material-review .part-name{position:absolute;left:14px;bottom:13px;font-size:19px;font-weight:500;line-height:1;letter-spacing:-.025em;color:#cdd6dc;text-shadow:0 1px 0 #0008;white-space:nowrap}
+.material-review .part-management .part-interior{inset:12px 12px 35px;gap:5px}
+.material-review .part-management .part-name{left:12px;bottom:12px;font-size:12px}
+.material-review .part-switch .part-interior{inset:13px 13px 38px}
+.material-review .part-switch .part-name{left:13px;bottom:12px;font-size:12px}
+.material-review .part-interface .part-interior{inset:9px 9px 28px;gap:4px}
+.material-review .part-interface .part-name{left:9px;bottom:9px;font-size:10px}
+.material-review .part-storage .part-interior,.material-review .part-config .part-interior{inset:8px;gap:5px}
+.material-review .part-image{position:absolute;inset:10px 12px 39px;overflow:hidden;opacity:.72;transition:opacity 450ms ease}
+.material-review .part-image img{display:block;width:100%;height:100%;object-fit:contain;transform:scale(1.22)}
+.material-review .part-gold-crop{position:absolute;height:100%;aspect-ratio:810 / 874;left:50%;transform:translateX(-50%);overflow:hidden;border-radius:2px}
+.material-review .part-gold-crop img{position:absolute;left:-27.16%;top:-18.76%;width:154.81%;height:auto;max-width:none;transform:none;object-fit:initial}
+.material-review .review-part:focus-visible{outline:2px solid #e5e7e8;outline-offset:5px}
+.material-review .review-part[data-lit=true] .part-frost,
+.material-review .review-part[aria-pressed=true] .part-frost,
+.material-review .review-part:focus-visible .part-frost,
+.material-review[data-material="silicon"] #networkGraph[data-focus="0"] .part-management .part-frost,
+.material-review[data-material="silicon"] #networkGraph[data-focus="2"] .part-config .part-frost,
+.material-review[data-material="silicon"] #networkGraph[data-focus="3"] .part-management .part-frost{backdrop-filter:blur(0px);-webkit-backdrop-filter:blur(0px);border-color:#ccd8e0b3}
+.material-review .review-part[data-lit=true] .part-interior,
+.material-review .review-part[aria-pressed=true] .part-interior,
+.material-review .review-part[aria-pressed=true] .part-image,
+.material-review .review-part:focus-visible .part-interior,
+.material-review .review-part:focus-visible .part-image,
+.material-review[data-material="silicon"] #networkGraph[data-focus="0"] .part-management .part-interior,
+.material-review[data-material="silicon"] #networkGraph[data-focus="2"] .part-config .part-interior,
+.material-review[data-material="silicon"] #networkGraph[data-focus="3"] .part-management .part-interior{opacity:.9}
+@media(hover:hover){
+  .material-review .review-part:hover .part-frost{backdrop-filter:blur(0px);-webkit-backdrop-filter:blur(0px);border-color:#ccd8e0b3}
+  .material-review .review-part:hover .part-interior,.material-review .review-part:hover .part-image{opacity:.9}
+}
+.material-review .review-network-wire,.material-review .review-bus-wire{fill:none;stroke-linecap:butt;stroke-linejoin:round;stroke-width:.75}
+.material-review .review-network-wire{stroke:#87959f;opacity:.64;transition:opacity 450ms ease,stroke 450ms ease}
+.material-review .review-bus-wire{stroke:#69757e;opacity:.8;transition:opacity 450ms ease,stroke 450ms ease}
+.material-review [data-route][data-lit=true]{opacity:1;stroke:#c7d3db}
+.material-review[data-material="silicon"] #networkGraph[data-focus="1"] .review-network-wire,
+.material-review[data-material="silicon"] #networkGraph[data-focus="3"] .review-network-wire{opacity:1;stroke:#c7d3db}
+.material-review .review-label{font-family:var(--font-ui);text-anchor:middle;fill:#abb2b8;font-size:13px}
+.material-review .label-title{fill:#e1e5e7;font-size:17px;font-weight:500;letter-spacing:-.02em}
+.material-review .label-brand{font-family:var(--font-brand);font-weight:700;font-size:21px;letter-spacing:.01em;fill:#e5e7e8}
+.material-review .label-small{font-size:11px}
+.material-review .label-bus{font-size:10px;fill:#969fa6}
+.visual-preview .preview-dock>.review-version{display:block;padding:0 12px;color:var(--ink);border-right:1px solid var(--line)}
+@media(max-width:1000px){
+  .material-review .system-experience{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);column-gap:30px}
+  .material-review .system-heading h2{font-size:34px}
+}
+@media(max-width:820px){
+  .material-review main>.system-visual-section{padding:64px 0 55px}
+  .material-review .system-experience{grid-template-columns:1fr;grid-template-areas:"heading" "art" "reading";gap:30px}
+  .material-review .system-heading h2{max-width:600px;font-size:42px}
+  .material-review .system-heading>p:last-child{font-size:15px;max-width:650px}
+  .material-review .network-graph{width:100%;max-width:670px;justify-self:center;margin:0}
+  .material-review .system-tabs{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+  .material-review .system-panels{min-height:110px;max-width:650px}
+  .material-review .system-panel p{font-size:15px}
+}
+@media(max-width:520px){
+  .material-review .system-heading h2{font-size:34px;line-height:1.2}
+  .material-review .system-tabs{grid-template-columns:1fr 1fr;gap:0 20px}
+  .material-review .network-desktop{display:none}.material-review .network-mobile{display:block}
+  .material-review .network-graph{max-width:420px}
+  .material-review .system-experience{gap:26px}.material-review .system-panels{min-height:155px}
+  .material-review .network-mobile .part-name{font-size:19px;left:12px;bottom:12px}
+  .material-review .network-mobile .part-management .part-name{font-size:12px;left:10px;bottom:11px}
+  .material-review .network-mobile .part-interface .part-name{font-size:10px;left:7px;bottom:9px}
+  .material-review .network-mobile .part-switch .part-name{font-size:12px;left:12px;bottom:11px}
+  .material-review .network-mobile .label-small{font-size:13px}.material-review .network-mobile .label-brand{font-size:24px}
+  .material-review .network-mobile .part-image{inset:9px 10px 35px}
+  .material-review .preview-dock{left:12px;right:12px;justify-content:center;font-size:10px}
+  .material-review .preview-dock>a{padding:6px 9px}
+  .material-review .preview-dock>.review-version{padding:0 9px}
+}
+@media(prefers-reduced-motion:reduce){
+  .material-review .part-frost,.material-review .part-interior,.material-review .part-image,.material-review .review-network-wire,.material-review .review-bus-wire,.material-review .stack-plane,.material-review .memory-grid i,.material-review .engine-topic-toggle,.material-review .topic-chevron,.material-review .system-tabs button,.material-review .system-tabs button::after{transition:none}
+}
+.material-review.preview-reduced-motion .part-frost,.material-review.preview-reduced-motion .part-interior,.material-review.preview-reduced-motion .part-image,.material-review.preview-reduced-motion .review-network-wire,.material-review.preview-reduced-motion .review-bus-wire,.material-review.preview-reduced-motion .stack-plane,.material-review.preview-reduced-motion .memory-grid i,.material-review.preview-reduced-motion .engine-topic-toggle,.material-review.preview-reduced-motion .topic-chevron,.material-review.preview-reduced-motion .system-tabs button,.material-review.preview-reduced-motion .system-tabs button::after{transition:none}

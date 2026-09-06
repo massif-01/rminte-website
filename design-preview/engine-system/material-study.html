@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN" class="product-theme">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>磨砂材质样张 · RMinte</title>
+  <link rel="icon" href="../../website/assets/images/logo-white.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../website/assets/brand.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Noto+Sans+SC:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="material-study.css">
+  <script src="material-study.js" defer></script>
+</head>
+<body>
+  <header>
+    <img src="../../website/assets/images/logo-white.svg" alt="RMinte" width="118">
+    <button id="language" type="button" aria-label="切换到英文">EN</button>
+  </header>
+  <main>
+    <div class="introduction">
+      <p class="eyebrow" data-copy="eyebrow">整机协同 / 材质样张</p>
+      <h1 data-copy="title">两种表面，同一种聚焦。</h1>
+      <p class="lead" data-copy="lead">先选择材质，再切换聚焦，比较从磨砂到清晰的变化。</p>
+    </div>
+    <div class="version-controls" role="group" aria-label="材质版本">
+      <button type="button" data-version="abstract" aria-pressed="true" data-copy="versionA">A / 抽象磨砂</button>
+      <button type="button" data-version="silicon" aria-pressed="false" data-copy="versionB">B / 芯片材质</button>
+    </div>
+    <figure aria-labelledby="study-caption">
+      <div class="material-scene" id="scene" data-version="abstract" data-state="rest">
+        <svg class="connections" aria-hidden="true"><defs><linearGradient id="entry" gradientUnits="userSpaceOnUse" x1="0" x2="0"><stop stop-color="#89939b" stop-opacity="0"/><stop offset=".5" stop-color="#89939b" stop-opacity=".8"/></linearGradient></defs><g id="storage-wires"></g><g id="control-wires"></g></svg>
+        <div class="module compute" id="compute" role="img" aria-label="CUDA 计算模块材质示意">
+          <div class="interior" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="soc-image" aria-hidden="true"><div class="gold-assembly-crop"><img src="media/soc-gold-assembly.png" alt="" width="1254" height="1254"></div></div>
+          <div class="glass" aria-hidden="true"></div>
+          <span class="inscription">CUDA</span>
+        </div>
+        <div class="module application" id="application" role="img" aria-label="x86 计算模块材质示意">
+          <div class="interior" aria-hidden="true"><i></i><i></i></div>
+          <div class="soc-image" aria-hidden="true"><img src="media/soc-package-cutout.png" alt="" width="1254" height="1254"></div>
+          <div class="glass" aria-hidden="true"></div>
+          <span class="inscription">x86</span>
+        </div>
+        <div class="module storage" id="storage" role="img" aria-label="独立存储材质示意">
+          <div class="interior" aria-hidden="true"><i></i><i></i></div>
+          <div class="glass" aria-hidden="true"></div>
+          <span class="inscription" data-copy="storage">独立存储</span>
+        </div>
+        <div class="module controller" id="controller" role="img" aria-label="ESP32-S3 控制模块材质示意">
+          <div class="interior" aria-hidden="true"><i></i><i></i></div>
+          <div class="glass" aria-hidden="true"></div>
+          <span class="inscription">ESP32-S3</span>
+        </div>
+      </div>
+      <figcaption id="study-caption" data-copy="caption">仅比较材质与接线；B 版芯片从参考插画提取，不表示完整硬件架构。</figcaption>
+    </figure>
+    <div class="study-controls" role="group" aria-label="材质状态">
+      <button type="button" data-state="rest" aria-pressed="true" data-copy="rest">静态表面</button>
+      <button type="button" data-state="active" aria-pressed="false" data-copy="active">聚焦 · 看清内部</button>
+    </div>
+  </main>
+</body>
+</html>

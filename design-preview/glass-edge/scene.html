@@ -1,0 +1,19 @@
+<!doctype html><html lang="zh-CN" class="product-theme"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="/website/"><title>绒光玻璃构图</title><link rel="stylesheet" href="assets/brand.css"><link rel="stylesheet" href="assets/styles.css"><style>
+.glass-touch-image{-webkit-mask-image:none;mask-image:none}
+.proposed .glass-touch-image{-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 var(--fade,16%));mask-image:linear-gradient(90deg,transparent 0%,#000 var(--fade,16%))}
+</style></head><body class="home-body"><main>    <section class="glass-touch-section" id="glass-touch" aria-labelledby="glassTouchTitle">
+      <img class="glass-touch-image" src="assets/gallery/DSC00043.jpg" alt="RM-01 中央绒光肤感玻璃面板特写" width="2000" height="3000" loading="lazy" decoding="async">
+      <div class="glass-touch-shade" aria-hidden="true"></div>
+      <div class="section-inner glass-touch-stage">
+        <div class="glass-touch-copy reveal visible">
+          <p class="chapter-label" data-ui="chapter7">触感与表面</p>
+          <h2 id="glassTouchTitle" data-ui="glassTouchTitle" data-title-size="large">绒光玻璃，温润触感</h2>
+          <p data-ui="glassTouchLead">整面绒光肤感玻璃柔化光线，呈现温润触感。目光与指尖，都能感知 RM-01 的表面质感。</p>
+        </div>
+      </div>
+    </section>
+
+</main><script>
+const p=new URLSearchParams(location.search);document.documentElement.classList.toggle('proposed',p.get('variant')==='b');
+window.addEventListener('message',e=>{if(e.origin!==location.origin)return;const d=e.data;if(d.type!=='preview')return;document.documentElement.style.setProperty('--fade',d.fade+'%');document.documentElement.lang=d.lang;document.querySelector('#glassTouchTitle').textContent=d.lang==='en'?'Velvet-touch glass. A warmth you can feel.':'绒光玻璃，温润触感';document.querySelector('.chapter-label').textContent=d.lang==='en'?'TOUCH & SURFACE':'触感与表面';document.querySelector('[data-ui="glassTouchLead"]').innerHTML=d.lang==='en'?'A full face of velvet-touch glass softens the light and feels warm to the touch. The surface of <span class="rm-mark">RM-01</span> invites both a closer look and a touch.':'整面绒光肤感玻璃柔化光线，呈现温润触感。目光与指尖，都能感知 <span class="rm-mark">RM-01</span> 的表面质感。';});
+</script></body></html>
