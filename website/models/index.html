@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="product-theme">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <link rel="canonical" href="https://rminte.com/models/">
+  <meta name="description" content="RMQ3x 与 RMQ4，RMinte 专业模型系列。针对性训练、专用推理引擎与架构优化。">
+  <title>模型 · RMinte</title>
+  <link rel="icon" href="../assets/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/brand.css">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="models.css?v=models-launch-1">
+</head>
+<body class="models-page">
+  <a class="skip-link" href="#main" data-zh="跳至主要内容" data-en="Skip to content">跳至主要内容</a>
+  <header class="site-shell" aria-label="主导航">
+    <a class="brand-mark" href="../index.html" aria-label="RMinte"><img src="../assets/images/logo-white.svg" alt="RMinte"></a>
+    <nav class="nav-island" aria-label="页面导航">
+      <a href="../gallery/index.html" data-zh="图册" data-en="Gallery">图册</a>
+      <a class="active" href="#main" aria-current="page" data-zh="模型" data-en="Models">模型</a>
+      <a href="../index.html#engine" data-zh="产品" data-en="Product">产品</a>
+      <a href="../index.html#teardown" data-zh="架构" data-en="Architecture">架构</a>
+      <a href="../guides/index.html" data-zh="指南" data-en="Guides">指南</a>
+      <a href="../downloads/index.html" data-zh="下载" data-en="Downloads">下载</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="language-toggle" type="button" id="languageToggle" aria-label="切换到英文">EN</button>
+      <button class="menu-button" type="button" id="menuToggle" aria-label="打开菜单" aria-controls="mobileMenu" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M2 8h20v1H2zM2 16h20v1H2z"/></svg></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="mp-wrap mp-hero" aria-labelledby="modelsHeroTitle">
+      <div>
+        <p class="mp-eyebrow"><span data-zh="RMQ 系列模型" data-en="RMQ MODELS">RMQ 系列模型</span></p>
+        <h1 id="modelsHeroTitle"><span data-zh="专业分析，更深入。" data-en="Deeper analysis.">专业分析，更深入。</span><span data-zh="模型推理，更高效。" data-en="More efficient inference.">模型推理，更高效。</span></h1>
+        <p class="mp-lead" data-zh="RMQ3x 与 RMQ4，RMinte 专业模型系列。为法律、调查、安全治理、科研与社会研究打造，连接领域知识、深度推理与工具执行，让 Agent 从理解问题、形成判断走向持续行动，交付文书、代码与研究成果。" data-en="RMQ3x and RMQ4 are RMinte’s specialist models for law, investigations, security and governance, and scientific and social research. They combine domain knowledge, deep reasoning, and tool use so agents can understand problems, form judgments, and act on them to produce documents, code, and research findings.">RMQ3x 与 RMQ4，RMinte 专业模型系列。为法律、调查、安全治理、科研与社会研究打造，连接领域知识、深度推理与工具执行，让 Agent 从理解问题、形成判断走向持续行动，交付文书、代码与研究成果。</p>
+        <div class="mp-hero-actions">
+          <a class="cta-button" href="#models"><span data-zh="探索模型" data-en="Explore models">探索模型</span><svg class="cta-dot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a>
+          <a class="mp-pill" href="#benchmarks"><span data-zh="查看评测" data-en="Benchmarks">查看评测</span></a>
+        </div>
+      </div>
+      <!-- Approved A artwork: masked layer groups preserve the glass texture while opening independently. -->
+      <figure class="mp-hero-art" aria-label="Dense 与 MoE 架构概念示意">
+        <button class="mp-model-visual dense" type="button" aria-pressed="false" data-visual-model="RMQ3x" aria-label="RMQ3x Dense：展开或收起结构">
+          <svg class="mp-glass-stack" viewBox="50 110 710 820" aria-hidden="true">
+            <defs>
+              <image id="glass-dense" href="model-glass-a.png" width="1536" height="1024"/>
+              <clipPath id="glass-dense-upper"><path d="M50 110H760V433H712C712 444 700 448 683 448H134C121 448 112 444 112 433H50Z"/></clipPath>
+              <clipPath id="glass-dense-feature"><path d="M50 433H112C112 444 121 448 134 448H683C700 448 712 444 712 433H760V591H50Z"/></clipPath>
+              <clipPath id="glass-dense-lower"><polygon points="50,591 760,591 760,930 50,930"/></clipPath>
+            </defs>
+            <g class="mp-glass-layer lower"><use href="#glass-dense" clip-path="url(#glass-dense-lower)"/></g>
+            <g class="mp-glass-layer upper"><use href="#glass-dense" clip-path="url(#glass-dense-upper)"/></g>
+            <g class="mp-glass-layer feature"><use href="#glass-dense" clip-path="url(#glass-dense-feature)"/></g>
+          </svg>
+          <span class="mp-sculpture-name"><span class="rm-mark">RMQ3x</span><span class="mp-architecture-tag"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M1 1h4v4H1zm6 0h4v4H7zm6 0h4v4h-4zM1 7h4v4H1zm6 0h4v4H7zm6 0h4v4h-4zM1 13h4v4H1zm6 0h4v4H7zm6 0h4v4h-4z"/></svg>Dense</span></span>
+        </button>
+        <button class="mp-model-visual moe" type="button" aria-pressed="false" data-visual-model="RMQ4" aria-label="RMQ4 MoE：展开或收起结构">
+          <svg class="mp-glass-stack" viewBox="770 110 710 820" aria-hidden="true">
+            <defs>
+              <image id="glass-moe" href="model-glass-a.png" width="1536" height="1024"/>
+              <clipPath id="glass-moe-upper"><path d="M770 110H1480V433H1430C1430 442 1417 448 1400 448H854C839 448 826 444 826 433H770Z"/></clipPath>
+              <clipPath id="glass-moe-feature"><path d="M770 433H826C826 444 839 448 854 448H1400C1417 448 1430 442 1430 433H1480V591H770Z"/></clipPath>
+              <clipPath id="glass-moe-lower"><polygon points="770,591 1480,591 1480,930 770,930"/></clipPath>
+            </defs>
+            <g class="mp-glass-layer lower"><use href="#glass-moe" clip-path="url(#glass-moe-lower)"/></g>
+            <g class="mp-glass-layer upper"><use href="#glass-moe" clip-path="url(#glass-moe-upper)"/></g>
+            <g class="mp-glass-layer feature"><use href="#glass-moe" clip-path="url(#glass-moe-feature)"/></g>
+          </svg>
+          <span class="mp-sculpture-name"><span class="rm-mark">RMQ4</span><span class="mp-architecture-tag"><svg viewBox="0 0 18 18" aria-hidden="true"><path opacity=".25" d="M1 1h4v4H1zm12 0h4v4h-4zM7 7h4v4H7zM1 13h4v4H1zm12 0h4v4h-4z"/><path d="M7 1h4v4H7zM1 7h4v4H1zm12 0h4v4h-4zM7 13h4v4H7z"/></svg>MoE</span></span>
+        </button>
+      </figure>
+    </section>
+
+    <section class="mp-wrap mp-models" id="models" aria-label="模型介绍">
+      <div class="mp-model-grid">
+        <article class="mp-model-card">
+          <div class="mp-card-top"><h2 class="rm-mark">RMQ3x</h2><span class="mp-architecture-tag"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M1 1h4v4H1zm6 0h4v4H7zm6 0h4v4h-4zM1 7h4v4H1zm6 0h4v4H7zm6 0h4v4h-4zM1 13h4v4H1zm6 0h4v4H7zm6 0h4v4h-4z"/></svg>Dense</span></div>
+          <p class="mp-model-tagline"><span data-zh="专业推理，" data-en="Expert reasoning.">专业推理，</span><span data-zh="驱动实际行动。" data-en="Driving action.">驱动实际行动。</span></p>
+          <p class="mp-model-description" data-zh="针对法律、调查、安全治理、科研与社会研究打造的专业模型。连接方案设计、代码生成、工具调用与结果验证，让 Agent 将专业判断转化为行动，交付文书、代码与研究成果。" data-en="A specialist model for law, investigations, security and governance, and scientific and social research. It combines planning, code generation, tool use, and verification so agents can turn professional judgment into action and produce documents, code, and research findings.">针对法律、调查、安全治理、科研与社会研究打造的专业模型。连接方案设计、代码生成、工具调用与结果验证，让 Agent 将专业判断转化为行动，交付文书、代码与研究成果。</p>
+          <ul class="mp-model-capabilities">
+            <li><h3 data-zh="理解专业问题" data-en="Understand domain problems">理解专业问题</h3><p data-zh="联系事实、证据与领域知识，推演因果、检验假设，形成有依据的判断与方案。" data-en="Connect facts, evidence, and domain knowledge to examine cause and effect, test hypotheses, and develop sound judgments and plans.">联系事实、证据与领域知识，推演因果、检验假设，形成有依据的判断与方案。</p></li>
+            <li><h3 data-zh="完成实际工作" data-en="Execute tasks">完成实际工作</h3><p data-zh="制定检索策略，生成数据查询与验证代码，调用专业工具执行任务、检验结果。" data-en="Develop search strategies, generate data queries and validation code, and use specialist tools to execute tasks and verify results.">制定检索策略，生成数据查询与验证代码，调用专业工具执行任务、检验结果。</p></li>
+            <li><h3 data-zh="延续任务进程" data-en="Carry tasks forward">延续任务进程</h3><p data-zh="承接前序发现与执行反馈，修订方案、推进验证，完成调查、研究与业务工作。" data-en="Use prior findings and execution feedback to revise plans, verify results, and complete investigations, research, and business tasks.">承接前序发现与执行反馈，修订方案、推进验证，完成调查、研究与业务工作。</p></li>
+          </ul>
+          <div class="mp-card-bottom"><button class="mp-pill hf-button" type="button" data-model="RMQ3x" disabled title="模型主页即将公布"><img class="hf-icon" src="huggingface.svg" alt="" aria-hidden="true"><img class="hf-wordmark" src="huggingface-text.svg" alt="Hugging Face"></button><div class="mp-model-glyph" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        </article>
+        <article class="mp-model-card">
+          <div class="mp-card-top"><h2 class="rm-mark">RMQ4</h2><span class="mp-architecture-tag"><svg viewBox="0 0 18 18" aria-hidden="true"><path opacity=".25" d="M1 1h4v4H1zm12 0h4v4h-4zM7 7h4v4H7zM1 13h4v4H1zm12 0h4v4h-4z"/><path d="M7 1h4v4H7zM1 7h4v4H1zm12 0h4v4h-4zM7 13h4v4H7z"/></svg>MoE</span></div>
+          <p class="mp-model-tagline"><span data-zh="深入复杂问题，" data-en="Explore complex problems.">深入复杂问题，</span><span data-zh="驾驭长程任务。" data-en="Manage long-horizon tasks.">驾驭长程任务。</span></p>
+          <p class="mp-model-description" data-zh="为跨领域、多阶段、需要反复验证的专业工作打造，覆盖法律、调查、安全治理、科研与社会研究。衔接任务规划、代码计算、工具使用与研究迭代，保持目标、约束和阶段成果的连续性，让 Agent 推进复杂调查与研究项目，完成从问题到成果的交付。" data-en="Built for complex work in law, investigations, security and governance, and scientific and social research. It connects planning, code execution, tool use, and iterative research across disciplines and stages, retaining goals, constraints, and findings through repeated verification. Agents can carry investigations and research projects from the initial question to the final deliverable.">为跨领域、多阶段、需要反复验证的专业工作打造，覆盖法律、调查、安全治理、科研与社会研究。衔接任务规划、代码计算、工具使用与研究迭代，保持目标、约束和阶段成果的连续性，让 Agent 推进复杂调查与研究项目，完成从问题到成果的交付。</p>
+          <ul class="mp-model-capabilities">
+            <li><h3 data-zh="建立完整论证" data-en="Build a complete argument">建立完整论证</h3><p data-zh="联结不同领域的知识与证据，解释问题机制，检验竞争性假设，形成逻辑严密的专业判断。" data-en="Connect knowledge and evidence across disciplines, explain underlying mechanisms, and test competing hypotheses to reach sound professional judgments.">联结不同领域的知识与证据，解释问题机制，检验竞争性假设，形成逻辑严密的专业判断。</p></li>
+            <li><h3 data-zh="贯通复杂任务" data-en="Coordinate complex tasks">贯通复杂任务</h3><p data-zh="统筹调查规划、信息检索、代码计算与结果复核，将阶段性发现转化为后续行动。" data-en="Coordinate investigation planning, information retrieval, code execution, and result verification. Use findings at each stage to guide the next action.">统筹调查规划、信息检索、代码计算与结果复核，将阶段性发现转化为后续行动。</p></li>
+            <li><h3 data-zh="推进研究迭代" data-en="Refine the research">推进研究迭代</h3><p data-zh="吸收新增证据、计算结果与实验反馈，修订假设、完善方案，产出可检验的研究成果。" data-en="Incorporate new evidence, computational results, and experimental feedback to revise hypotheses, refine plans, and produce testable research findings.">吸收新增证据、计算结果与实验反馈，修订假设、完善方案，产出可检验的研究成果。</p></li>
+          </ul>
+          <div class="mp-card-bottom"><button class="mp-pill hf-button" type="button" data-model="RMQ4" disabled title="模型主页即将公布"><img class="hf-icon" src="huggingface.svg" alt="" aria-hidden="true"><img class="hf-wordmark" src="huggingface-text.svg" alt="Hugging Face"></button><div class="mp-model-glyph" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="mp-wrap mp-benchmarks" id="benchmarks" aria-labelledby="benchmarkTitle">
+      <h2 class="mp-heading" id="benchmarkTitle" data-zh="模型评测" data-en="Model benchmarks">模型评测</h2>
+      <figure class="mp-benchmark-plots">
+        <canvas class="mp-benchmark-particles" aria-hidden="true"></canvas>
+        <figcaption class="mp-benchmark-status" data-zh="测评结果即将推出" data-en="Benchmark results coming soon">测评结果即将推出</figcaption>
+      </figure>
+    </section>
+
+    <section class="mp-wrap mp-section mp-scenarios" aria-labelledby="scenariosTitle">
+      <h2 class="mp-heading" id="scenariosTitle" data-zh="驱动专业 Agent，完成复杂任务。" data-en="Power specialist agents. Complete complex tasks.">驱动专业 Agent，完成复杂任务。</h2>
+      <p class="mp-lead" data-zh="以 RMQ 构建专业 Agent。连接行业知识、业务系统与专业工具，将专业目标转化为连续行动。" data-en="Build specialist agents with RMQ. Connect domain knowledge, business systems, and specialist tools to turn professional goals into sustained action.">以 RMQ 构建专业 Agent。连接行业知识、业务系统与专业工具，将专业目标转化为连续行动。</p>
+      <div class="mp-case-grid" id="useCases"></div>
+    </section>
+
+    <section class="mp-wrap mp-section mp-engines" id="inference" aria-labelledby="inferenceTitle">
+      <p class="mp-eyebrow" data-zh="推理引擎" data-en="INFERENCE ENGINES">推理引擎</p>
+      <h2 class="mp-heading" id="inferenceTitle" data-zh="专用引擎，释放模型性能。" data-en="Dedicated engines. Unlock model performance.">专用引擎，释放模型性能。</h2>
+      <p class="mp-lead" data-zh="RMQ3x 与 RMQ4 已运行于 RMinte 自研 C++ 推理引擎和深度定制的 vLLM。围绕模型结构与 RM-01 的硬件平台，我们深入优化算子、执行路径与运行时，让模型能力建立在高效的推理实现之上。" data-en="RMQ3x and RMQ4 run on RMinte’s C++ inference engine and a custom vLLM implementation. We tailor kernels, execution paths, and runtimes to the model architectures and RM-01 hardware to turn model capability into efficient inference.">RMQ3x 与 RMQ4 已运行于 RMinte 自研 C++ 推理引擎和深度定制的 vLLM。围绕模型结构与 RM-01 的硬件平台，我们深入优化算子、执行路径与运行时，让模型能力建立在高效的推理实现之上。</p>
+      <div class="mp-engine-layout">
+        <figure class="mp-engine-art" id="engineArt" data-engine="cpp" aria-label="自研 C++ 推理实现示意">
+          <div class="mp-engine-stack" aria-hidden="true">
+            <div class="mp-engine-plane base"><div class="mp-engine-compute" data-cells="96"></div><span>NVIDIA CUDA</span></div>
+            <div class="mp-engine-plane runtime"><div class="mp-engine-core" data-cells="18"></div><span id="runtimeLabel"><span class="rm-mark">RMinte</span> C++ Runtime</span></div>
+            <div class="mp-engine-plane model"><div class="mp-engine-traces"><i></i><i></i><i></i></div><span>RMQ3x · RMQ4</span></div>
+          </div>
+        </figure>
+        <div class="mp-engine-reading">
+          <div class="mp-engine-tabs" role="tablist" aria-label="推理实现">
+            <button role="tab" type="button" id="tabCpp" aria-controls="panelCpp" aria-selected="true" data-engine-tab="cpp" data-zh="自研 C++" data-en="Our C++ engine">自研 C++</button>
+            <button role="tab" type="button" id="tabVllm" aria-controls="panelVllm" aria-selected="false" tabindex="-1" data-engine-tab="vllm" data-zh="vLLM 定制" data-en="Custom vLLM">vLLM 定制</button>
+          </div>
+          <div class="mp-engine-panel" id="panelCpp" role="tabpanel" aria-labelledby="tabCpp" tabindex="0">
+            <h3 data-zh="自研 C++ 推理引擎" data-en="Our C++ inference engine">自研 C++ 推理引擎</h3>
+            <h4 data-zh="更低的运行开销，更高的执行效率。" data-en="Lower runtime overhead. More efficient execution.">更低的运行开销，更高的执行效率。</h4>
+            <p data-zh="RMinte 自研 C++ 引擎的 Runner 自身内存开销约为 2 MB，不含模型权重、KV Cache 与上下文等占用。在相同模型、精度与量化配置下，prefill 与 decode 性能均优于我们已优化的 vLLM 实现，兼顾输入处理与逐 token 生成的效率。" data-en="The runner in RMinte’s C++ engine uses about 2 MB of memory, excluding model weights, KV cache, context, and other model allocations. With identical model, precision, and quantization settings, it outperforms our optimized vLLM implementation in both input processing (prefill) and token-by-token generation (decode).">RMinte 自研 C++ 引擎的 Runner 自身内存开销约为 2 MB，不含模型权重、KV Cache 与上下文等占用。在相同模型、精度与量化配置下，prefill 与 decode 性能均优于我们已优化的 vLLM 实现，兼顾输入处理与逐 token 生成的效率。</p>
+            <h4 data-zh="持续 prefill，按需 decode。" data-en="Continuous prefill. Decode on demand.">持续 prefill，按需 decode。</h4>
+            <p data-zh="引擎支持连续追加输入、累积计算状态，将输入处理与回答生成分开调度。模型可以持续处理新消息、文档与任务反馈，复用已有计算，在需要输出时再启动 decode。" data-en="The engine accepts incremental input, retains computation state, and schedules input processing separately from response generation. Models process new messages, documents, and task feedback, reuse prior computation, and start decoding when output is needed.">引擎支持连续追加输入、累积计算状态，将输入处理与回答生成分开调度。模型可以持续处理新消息、文档与任务反馈，复用已有计算，在需要输出时再启动 decode。</p>
+            <p data-zh="这种执行方式让 Agent 能够持续接收上下文，无须每次输入都触发回答。从会议中的持续聆听，到案件材料的增量分析，模型随信息更新推进处理，在需要时参与判断与行动。" data-en="Agents can keep receiving context without responding to every input. Whether listening throughout a meeting or analyzing new case material, models process information as it arrives and contribute to decisions and actions when needed.">这种执行方式让 Agent 能够持续接收上下文，无须每次输入都触发回答。从会议中的持续聆听，到案件材料的增量分析，模型随信息更新推进处理，在需要时参与判断与行动。</p>
+          </div>
+          <div class="mp-engine-panel" id="panelVllm" role="tabpanel" aria-labelledby="tabVllm" tabindex="0" hidden>
+            <h3 data-zh="深度定制 vLLM" data-en="vLLM, customized from the kernel up">深度定制 vLLM</h3>
+            <h4 data-zh="从算子到工具链，深入优化推理实现。" data-en="Inference optimization, from kernels to toolchains.">从算子到工具链，深入优化推理实现。</h4>
+            <p data-zh="RMinte 围绕模型执行与硬件特性，完成 GPU 算子的移植与重写，处理 PTX 与编译工具链的兼容问题，并推进 FlashInfer 推理内核库、Transformers 5 模型库的适配与集成。" data-en="RMinte has ported and rewritten GPU kernels to match model execution and hardware requirements, and resolved compatibility issues with PTX and the compiler toolchain. We adapt and integrate the FlashInfer inference kernel library and the Transformers 5 model library.">RMinte 围绕模型执行与硬件特性，完成 GPU 算子的移植与重写，处理 PTX 与编译工具链的兼容问题，并推进 FlashInfer 推理内核库、Transformers 5 模型库的适配与集成。</p>
+            <p data-zh="在 Fused MoE 内核调优中，我们解决了相关流程中的 Triton 兼容问题，使内核参数能够针对模型配置与硬件特性进行调优。同时，对推测解码等执行流程进行定制优化，提升模型推理效率。" data-en="We resolved Triton compatibility issues in the Fused MoE tuning workflow so kernel parameters can be tuned for each model configuration and hardware platform. We also optimize execution paths, including speculative decoding, to improve inference efficiency.">在 Fused MoE 内核调优中，我们解决了相关流程中的 Triton 兼容问题，使内核参数能够针对模型配置与硬件特性进行调优。同时，对推测解码等执行流程进行定制优化，提升模型推理效率。</p>
+            <h4 data-zh="支撑 RMQ，保留开放的模型选择。" data-en="Built for RMQ. Open to more models.">支撑 RMQ，保留开放的模型选择。</h4>
+            <p data-zh="定制 vLLM 已支持 RMQ3x 与 RMQ4，也为 RM-01 运行其他适配的开源模型提供推理基础。用户可以围绕任务选择模型，在同一台设备上构建不同的专业应用与 Agent 工作流。" data-en="Our custom vLLM supports RMQ3x and RMQ4, as well as other compatible open-source models on RM-01. Choose models to suit each task and build specialist applications and agent workflows on the same device.">定制 vLLM 已支持 RMQ3x 与 RMQ4，也为 RM-01 运行其他适配的开源模型提供推理基础。用户可以围绕任务选择模型，在同一台设备上构建不同的专业应用与 Agent 工作流。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 内部目标状态文案；训练方法的当前状态与来源见同目录 TECHNICAL-NOTES.md。 -->
+    <section class="mp-wrap mp-section mp-optimization" id="optimization" aria-labelledby="optimizationTitle">
+      <h2 class="mp-heading" id="optimizationTitle"><span data-zh="从架构到训练，" data-en="From architecture to training.">从架构到训练，</span><br><span data-zh="构建专业能力。" data-en="Built for professional work.">构建专业能力。</span></h2>
+      <p class="mp-lead" data-zh="RMQ3x 与 RMQ4 结合递归记忆、注意力检索与针对性训练，连接长上下文处理、专业分析和工具执行。稠密计算与稀疏专家构成两条架构路径，在模型容量、计算开销与任务能力之间形成各自的优势。" data-en="RMQ3x and RMQ4 combine recurrent memory, attention-based retrieval, and targeted training for long-context processing, professional analysis, and tool use. Dense computation and sparse experts offer distinct strengths across model capacity, computation cost, and task performance.">RMQ3x 与 RMQ4 结合递归记忆、注意力检索与针对性训练，连接长上下文处理、专业分析和工具执行。稠密计算与稀疏专家构成两条架构路径，在模型容量、计算开销与任务能力之间形成各自的优势。</p>
+      <div class="mp-optimization-list" id="optimizations"></div>
+    </section>
+
+  </main>
+
+  <footer class="footer"><div class="footer-inner"><div class="footer-brand"><img src="../assets/images/logo-white.svg" alt="RMinte"><div><p data-zh="泛灵（成都）人工智能科技有限公司" data-en="RMinte AI">泛灵（成都）人工智能科技有限公司</p><span>© 2026 <span class="rm-mark">RMinte</span> (Chengdu) Artificial Intelligence Technology Co., Ltd. · <span class="rm-mark">RM-01</span> Portable AI Supercomputer</span></div></div><div class="footer-actions"><button class="footer-contact" type="button" id="contactToggle" aria-expanded="false" aria-controls="contactPopover" data-contact-toggle><span data-footer-text="contactButton">联系我们</span></button><a class="footer-github" href="https://github.com/RMinte-AI" target="_blank" rel="noreferrer" aria-label="GitHub"><svg class="github" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true" focusable="false" style="display:inline-block;width:18px;height:18px;flex:none;vertical-align:middle"><path d="M12 0c6.63 0 12 5.276 12 11.79-.001 5.067-3.29 9.567-8.175 11.187-.6.118-.825-.25-.825-.56 0-.398.015-1.665.015-3.242 0-1.105-.375-1.813-.81-2.181 2.67-.295 5.475-1.297 5.475-5.822 0-1.297-.465-2.344-1.23-3.169.12-.295.54-1.503-.12-3.125 0 0-1.005-.324-3.3 1.209a11.32 11.32 0 00-3-.398c-1.02 0-2.04.133-3 .398-2.295-1.518-3.3-1.209-3.3-1.209-.66 1.622-.24 2.83-.12 3.125-.765.825-1.23 1.887-1.23 3.169 0 4.51 2.79 5.527 5.46 5.822-.345.294-.66.81-.765 1.577-.69.31-2.415.81-3.495-.973-.225-.354-.9-1.223-1.845-1.209-1.005.015-.405.56.015.781.51.28 1.095 1.327 1.23 1.666.24.663 1.02 1.93 4.035 1.385 0 .988.015 1.916.015 2.196 0 .31-.225.664-.825.56C3.303 21.374-.003 16.867 0 11.791 0 5.276 5.37 0 12 0z"/></svg><span><svg class="github-text" viewBox="0 0 78 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true" focusable="false" style="display:inline-block;width:42.25px;height:13px;flex:none;vertical-align:middle"><path d="M16.598 10.836v9.48c0 .066-.017.181-.1.214 0 0-2.07 1.47-5.484 1.47C6.888 22 2 20.712 2 12.223 2 3.734 6.275 1.983 10.45 2c3.613 0 5.07.81 5.303.958.066.083.1.149.1.231l-.697 2.94c0 .149-.149.33-.331.28-.597-.18-1.491-.544-3.596-.544-2.435 0-5.053.693-5.053 6.16 0 5.466 2.485 6.11 4.275 6.11 1.524 0 2.07-.181 2.07-.181v-3.799h-2.435c-.182 0-.315-.132-.315-.28v-3.04c0-.148.133-.28.315-.28h6.197c.182 0 .315.132.315.28zM76 14.684c0 5.664-1.84 7.283-5.054 7.283-2.717 0-4.175-1.37-4.175-1.37s-.067.759-.15.858c-.05.1-.132.132-.231.132h-2.453c-.165 0-.315-.132-.315-.28l.034-18.349a.29.29 0 01.281-.28h3.53a.29.29 0 01.281.28v6.226s1.359-.875 3.347-.875l-.016-.033c1.988 0 4.921.743 4.921 6.408zM47.865 2.71a.29.29 0 01.281.281V21.34a.29.29 0 01-.281.281h-3.53a.29.29 0 01-.281-.28l.033-7.845h-5.485v7.844a.29.29 0 01-.281.281h-3.53c-.132 0-.281-.132-.281-.28V2.99a.29.29 0 01.281-.28h3.53a.29.29 0 01.281.28v6.755h5.485V2.99a.29.29 0 01.282-.28h3.496zM61.55 8.722c.183 0 .315.132.315.28l-.033 12.337c0 .149-.1.281-.282.281h-2.22c-.116 0-.232-.066-.265-.148-.05-.1-.133-.744-.133-.744S57.061 22 54.758 22c-2.8 0-4.839-.908-4.839-4.542V9.02a.29.29 0 01.282-.28h3.546a.29.29 0 01.282.28v7.845c0 1.238.364 1.8 1.607 1.8 1.243 0 2.154-.644 2.154-.644V9.036c0-.182.1-.314.282-.314h3.48zm-28.84 9.861h.007c.14.029.239.154.234.296v2.477c0 .116-.05.231-.149.264-.166.083-1.226.363-2.104.363-1.922 0-4.74-.412-4.74-4.442v-5.417H24.12c-.149 0-.281-.132-.281-.314V9.564c0-.132.083-.248.215-.28.116-.017 1.922-.463 1.922-.463V5.237c0-.132.083-.215.232-.215h3.58c.148 0 .231.083.231.215v3.485h2.635c.132 0 .265.132.265.28v2.808c0 .182-.116.314-.265.314h-2.635v5.17c0 .777.448 1.372 1.74 1.372.41 0 .797-.081.951-.083zM22.28 8.705a.29.29 0 01.282.281v12.172c0 .297-.083.446-.414.446h-3.182c-.281 0-.497-.116-.497-.446V9.036c0-.182.133-.33.282-.33h3.53zm49.693 6.243c0-2.99-1.21-3.386-2.486-3.253-.994.066-1.79.561-1.79.561v5.813s.813.562 2.022.595c1.707.05 2.254-.562 2.254-3.716zM20.54 3.123a2.26 2.26 0 012.254 2.28A2.26 2.26 0 0120.54 7.68a2.266 2.266 0 01-2.286-2.279c0-1.271 1.01-2.279 2.286-2.279z"/></svg></span></a></div></div></footer>
+
+  <aside class="contact-popover" id="contactPopover" role="dialog" aria-labelledby="contactTitle" aria-hidden="true" data-contact-popover inert>
+    <div class="contact-card">
+      <div class="contact-card-core">
+        <div class="contact-top">
+          <div>
+
+            <h2 id="contactTitle" data-footer-text="contactTitle">联系我们</h2>
+          </div>
+          <button class="contact-close" type="button" aria-label="关闭" data-contact-close><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:jiezhu@rminte.com">
+            <span data-footer-text="salesContact">销售与渠道合作</span>
+            <strong>jiezhu@rminte.com</strong><svg class="contact-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+          <a href="mailto:yishi@rminte.com">
+            <span data-footer-text="manufacturingContact">制造与供应链合作</span>
+            <strong>yishi@rminte.com</strong><svg class="contact-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+          <a href="mailto:support@rminte.com">
+            <span data-footer-text="supportContact">售前与售后服务</span>
+            <strong>support@rminte.com</strong><svg class="contact-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <dialog class="mp-dialog mp-menu-dialog" id="mobileMenu" aria-label="导航菜单"><div class="mp-dialog-top"><img src="../assets/images/logo-white.svg" alt="RMinte"><button class="mp-close" type="button" data-close-dialog aria-label="关闭"><svg class="mp-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><nav class="mp-mobile-links" aria-label="移动导航"><a href="../gallery/index.html" data-zh="图册" data-en="Gallery">图册</a><a href="#main" aria-current="page" data-zh="模型" data-en="Models">模型</a><a href="../index.html#engine" data-zh="产品" data-en="Product">产品</a><a href="../index.html#teardown" data-zh="架构" data-en="Architecture">架构</a><a href="../guides/index.html" data-zh="指南" data-en="Guides">指南</a><a href="../downloads/index.html" data-zh="下载" data-en="Downloads">下载</a></nav></dialog>
+
+  <script src="../visitor-language.js" defer></script>
+  <script src="../assets/site-data.js?v=models-launch-1" defer></script>
+  <script src="../assets/footer.js?v=models-launch-1" defer></script>
+  <script src="benchmark-particles.js" defer></script>
+  <script src="models.js?v=models-launch-1" defer></script>
+</body>
+</html>

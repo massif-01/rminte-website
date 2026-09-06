@@ -8,8 +8,8 @@
     const labels = window.RM_SOFT.ui[lang];
     document.querySelectorAll('[data-footer-text]').forEach((element) => {
       const value = labels[element.dataset.footerText];
-      element.replaceChildren(...value.split(/(RMinte|RM-01)/g).filter(Boolean).map((part) => {
-        if (!/^(RMinte|RM-01)$/.test(part)) return document.createTextNode(part);
+      element.replaceChildren(...value.split(/(RMinte(?:\s+AI\b)?|RM-01)/g).filter(Boolean).map((part) => {
+        if (!/^(RMinte(?:\s+AI\b)?|RM-01)$/.test(part)) return document.createTextNode(part);
         const span = document.createElement('span');
         span.className = 'rm-mark';
         span.textContent = part;

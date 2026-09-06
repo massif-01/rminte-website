@@ -14,7 +14,7 @@
   };
   const ui = (key) => data.ui[lang][key] || data.ui.zh[key] || '';
   const asset = (file) => imageBase + file;
-  const markedTermPattern = /(?:RM-01|TianshanOS|EricLake|RMinte)/g;
+  const markedTermPattern = /(?:RM-01|TianshanOS|EricLake|RMinte(?:\s+AI\b)?)/g;
 
   function writeMarkedText(el, text) {
     const value = text == null ? '' : String(text);

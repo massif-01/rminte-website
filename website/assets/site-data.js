@@ -1,6 +1,7 @@
 window.RM_SOFT = {
   nav: [
     ['gallery', { zh: '图册', en: 'Gallery' }, { href: 'gallery/index.html' }],
+    ['models', { zh: '模型', en: 'Models' }, { href: 'models/index.html' }],
     ['engine', { zh: '产品', en: 'Product' }],
     ['teardown', { zh: '架构', en: 'Architecture' }],
     ['guides', { zh: '指南', en: 'Guides' }, { href: 'guides/index.html' }],

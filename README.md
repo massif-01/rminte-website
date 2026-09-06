@@ -4,7 +4,7 @@
 
 ## 目录
 
-- `website/`：正式网站，包含首页、图册、下载、指南及灯板工具。
+- `website/`：正式网站，包含首页、图册、模型、下载、指南及灯板工具。
 - `services/tianshanos-ota/`：独立 OTA 服务，单独部署。
 - `scripts/`：共享资源生成脚本。
 - `design-preview/`、`copy-review/`、`output/`：设计讨论、文案与验证材料，不属于正式站点发布目录。
