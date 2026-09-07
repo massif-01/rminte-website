@@ -213,7 +213,7 @@
 
   function updateEngine() {
     document.getElementById('engineArt').dataset.scene = Math.max(0, expandedEngine);
-    document.getElementById('ecosystemLabel').textContent = ['vLLM · Transformers', lang === 'en' ? 'Concurrent requests' : '并发请求', lang === 'en' ? 'Model · Application' : '模型 · 应用'][Math.max(0, expandedEngine)];
+    document.getElementById('ecosystemLabel').textContent = ['C++ · vLLM', lang === 'en' ? 'Concurrent requests' : '并发请求', lang === 'en' ? 'Model · Application' : '模型 · 应用'][Math.max(0, expandedEngine)];
     document.getElementById('kernelLabel').innerHTML = expandedEngine === 1 ? 'Paged KV Cache' : '<span class="rm-mark">RMinte</span> Inference';
     document.querySelectorAll('[data-engine-toggle]').forEach((button, index) => {
       button.setAttribute('aria-expanded', String(index === expandedEngine));

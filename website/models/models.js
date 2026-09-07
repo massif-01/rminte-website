@@ -268,15 +268,17 @@
       const optimizationItems = [
         {
           model:'RMQ3x · RMQ4', zh:'Gated DeltaNet 递归记忆', en:'Gated DeltaNet recurrent memory',
-          benefitZh:'将历史信息写入递归状态，让长序列处理兼顾记忆更新与缓存开销。',
-          benefitEn:'Store history in a recurrent state to update memory while controlling cache costs for long sequences.',
+          benefitZh:'以递归状态承接历史信息，减少缓存占用，并通过分块计算加快输入处理。',
+          benefitEn:'Carry history in recurrent state to reduce cache use, with chunked computation to accelerate input processing.',
           detailZh:[
             'Gated DeltaNet 将遗忘门控与 Delta 更新规则结合：门控调节旧状态的保留程度，Delta 规则用新信息修正当前状态的预测误差。GDN 层以固定规模的状态承接历史信息，避免逐 token 累积完整的键值缓存。',
-            '两款模型都以三个 GDN 层搭配一个注意力层。GDN 支持预填充阶段的分块并行与解码阶段的递归更新；注意力层保留对上下文细节的检索路径。状态记忆与注意力检索互补，共同处理长文档与多轮任务。'
+            '两款模型都以三个 GDN 层搭配一个注意力层。GDN 支持预填充阶段的分块并行与解码阶段的递归更新；注意力层保留对上下文细节的检索路径。状态记忆与注意力检索互补，共同处理长文档与多轮任务。',
+            '引擎采用 WY 分块计算组织预填充，复用块内状态与输入，减少逐 token 更新中的重复访问。递归状态以 BF16 存储，在 FP32 中完成更新与累加，降低状态读写和并发请求的内存占用。'
           ],
           detailEn:[
             'Gated DeltaNet combines a forget gate with the delta update rule. The gate controls how much of the previous state is retained; the delta rule uses new information to correct the state’s prediction error. Each GDN layer stores history in a fixed-size state rather than growing a full key-value cache with every token.',
-            'Both models pair three GDN layers with one attention layer. GDN supports chunk-parallel prefill and recurrent updates during decode; attention retrieves details from the context. Recurrent memory and attention-based retrieval work together to process long documents and multi-turn tasks.'
+            'Both models pair three GDN layers with one attention layer. GDN supports chunk-parallel prefill and recurrent updates during decode; attention retrieves details from the context. Recurrent memory and attention-based retrieval work together to process long documents and multi-turn tasks.',
+            'The engine uses WY chunked computation for prefill, reusing state and inputs within each chunk to reduce repeated access during token-by-token updates. Recurrent state is stored in BF16, with updates and accumulation performed in FP32, reducing state traffic and memory use across concurrent requests.'
           ]
         },
         {
@@ -285,11 +287,11 @@
           benefitEn:'Global attention retrieves details across the context; a regular feed-forward path supports sustained execution and operator fusion.',
           detailZh:[
             'RMQ3x 在 GDN 之间保留 Gated Attention 层，对因果范围内的上下文计算全局注意力，再通过输出门控调节检索结果的贡献。每个 token 经过完整的稠密前馈网络，计算路径无需专家路由与重排。',
-            '这一路径的优化重点是投影矩阵乘法、SwiGLU 激活与输出投影，以及残差相加和 RMSNorm 等相邻运算的融合。将可合并的步骤连续执行，减少中间张量的写回与读取，让规整的计算结构匹配硬件执行。'
+            '引擎将 Q、K、V 投影合并为一次矩阵运算，将 QK 归一化与 RoPE 位置编码融合执行。单 token 解码中，输入 RMSNorm 与投影计算共用片上数据；SwiGLU、输出投影和残差相加按执行路径融合，减少中间张量的写回、读取与算子启动。'
           ],
           detailEn:[
             'RMQ3x retains Gated Attention layers between GDN layers. These attend across the causal context, with an output gate controlling the contribution of retrieved information. Every token passes through the full dense feed-forward network, without expert routing or token reordering.',
-            'Optimization covers projection matrix multiplications, SwiGLU activation, output projection, and fusion of adjacent operations such as residual addition and RMSNorm. Combining compatible steps reduces intermediate tensor writes and reads and aligns the computation path with the hardware.'
+            'The engine merges Q, K, and V projections into one matrix operation and fuses QK normalization with RoPE positional encoding. During single-token decoding, input RMSNorm and projection computation share on-chip data. SwiGLU, output projections, and residual addition are fused where the execution path allows, reducing intermediate tensor writes, reads, and kernel launches.'
           ]
         },
         {
@@ -311,11 +313,13 @@
           benefitEn:'Each token activates selected routed experts and a shared expert, allowing model capacity to scale separately from per-token computation.',
           detailZh:[
             'RMQ4 的路由器根据 token 表征选择专家，由被选中的专家与共享专家参与前馈计算，再将结果加权汇总。稀疏激活让模型容纳更多专家，同时控制每个 token 的计算量；完整权重仍需相应的存储与访问机制。',
-            'Fused MoE 将 token 分组与重排、专家矩阵计算、门控激活和加权归并组织为协同执行路径。优化围绕专家负载、数据布局和中间结果展开，减少碎片化的小规模计算与数据搬运，保持路由关系和专家计算的语义。'
+            'Fused MoE 按专家归组与重排 token，将共享同一专家的输入合并计算，复用专家权重。引擎根据专家负载选择 GEMV 或 GEMM，并融合门控激活与加权归并，减少零散的小规模计算和中间结果搬运，保持路由关系与专家计算的语义。',
+            '量化专家权重在加载时写入预分配的打包缓冲区，避免逐张量分配后再次搬运。专家的 Gate 与 Up 投影共享布局，让模型加载与推理计算使用同一套数据组织，缩短启动准备并减少内存开销。'
           ],
           detailEn:[
             'RMQ4 selects experts based on each token’s representation. The selected experts and a shared expert perform feed-forward computation, and a weighted sum combines their outputs. Sparse activation supports a larger expert pool while limiting per-token computation. The full set of weights still needs storage and an access mechanism.',
-            'Fused MoE coordinates token grouping and reordering, expert matrix operations, gated activation, and weighted reduction. Tuning expert workloads, data layouts, and intermediate results reduces fragmented small operations and data movement while preserving routing and expert-computation semantics.'
+            'Fused MoE groups and reorders tokens by expert, combining inputs assigned to the same expert to reuse its weights. The engine selects GEMV or GEMM according to expert workload and fuses gated activation and weighted reduction. This reduces fragmented small operations and movement of intermediate results while preserving routing and expert-computation semantics.',
+            'Quantized expert weights load into preallocated packed buffers, avoiding separate allocations and a second round of copies for each tensor. Gate and up projections share a layout, so loading and inference use the same data organization to reduce startup preparation and memory overhead.'
           ]
         },
         {
@@ -342,6 +346,51 @@
           detailEn:[
             'N-gram embeddings combine the current token with nearby preceding tokens to form short sequences and deterministic lookup indices. Retrieved vectors are projected and gated into the model representation, adding features from local token combinations to individual-token information. The embedding table is learned during training and read by index during inference.',
             'Most of the added cost comes from lookup and projection, without running a full expert network for each access. Deterministic indices let embedding prefetch overlap with computation in earlier layers. Optimization focuses on lookup bandwidth, data layout, and memory scheduling to control the cost of accessing a large embedding table.'
+          ]
+        },
+        {
+          model:'RMQ3x · RMQ4',
+          zh:'面向硬件的计算路径',
+          en:'Hardware-specific computation paths',
+          benefitZh:'按计算规模组织算子与数据，让 GPU、内存带宽和缓存共同服务于模型推理。',
+          benefitEn:'Organize kernels and data by workload size to put GPU compute, memory bandwidth, and caches to work on inference.',
+          detailZh:[
+            '单 token 解码、小批量验证与大批量输入采用不同的计算路径。引擎按矩阵规模选择专用 GEMV、cuBLAS 或 CUTLASS GEMM，结合线程布局、向量化访存与缓存复用，匹配 RM-01 的 GPU 执行和内存结构。小批量计算利用 L2 缓存复用输入，减少共享内存占用对并行度的影响。',
+            'NVFP4（W4A16）以 4 位格式存储权重，配合 16 位激活参与计算。专用算子通过查表解码、向量化加载与投影合并降低权重访问成本。模型加载根据可用内存和权重分片大小选择映射与预读方式，使精度、容量和访问开销共同纳入推理设计。'
+          ],
+          detailEn:[
+            'Single-token decoding, small-batch verification, and large input batches use different computation paths. The engine selects specialized GEMV, cuBLAS, or CUTLASS GEMM by matrix size, combining thread layouts, vectorized memory access, and cache reuse to match RM-01’s GPU and memory architecture. Small batches reuse inputs through the L2 cache, reducing the impact of shared-memory use on parallelism.',
+            'NVFP4 (W4A16) stores weights in a 4-bit format for computation with 16-bit activations. Specialized kernels use lookup-table decoding, vectorized loads, and merged projections to reduce weight-access costs. Loading selects memory-mapping and prefetch strategies according to available memory and shard size, bringing precision, capacity, and access costs into the inference design.'
+          ]
+        },
+        {
+          model:'RMQ3x · RMQ4',
+          zh:'多 token 预测与验证',
+          en:'Multi-token prediction & verification',
+          benefitZh:'一次验证处理多个候选 token，减少生成过程中的重复计算与同步等待。',
+          benefitEn:'Verify multiple candidate tokens in one pass to reduce repeated computation and synchronization during generation.',
+          detailZh:[
+            'MTP 在 GPU 上生成候选 token，草稿链中的后续步骤使用前一步结果，减少 CPU 与 GPU 之间的同步。主模型批量验证草稿，接受匹配的连续前缀，再输出修正或追加的 token。小批量验证使用多行 GEMV，共享权重读取，降低验证开销。',
+            '对于 GDN 等有状态结构，引擎在验证过程中保存递归状态与卷积状态的检查点。当草稿部分通过时，恢复对应位置的状态，再继续生成。单请求采用投机解码，多请求切换批量解码，使预测、验证与权重复用匹配当前负载。'
+          ],
+          detailEn:[
+            'MTP generates candidate tokens on the GPU, feeding each draft step from the previous result to reduce CPU–GPU synchronization. The main model verifies the drafts in a batch, accepts the matching prefix, and emits a corrected or additional token. Small-batch verification uses multi-row GEMV to share weight reads and reduce verification overhead.',
+            'For stateful architectures such as GDN, the engine checkpoints recurrent and convolution states during verification. When only part of a draft is accepted, it restores the state at that position before continuing. Single requests use speculative decoding; multiple requests switch to batched decoding, matching prediction, verification, and weight reuse to the workload.'
+          ]
+        },
+        {
+          model:'RMQ3x · RMQ4',
+          zh:'上下文与并发调度',
+          en:'Context & concurrency scheduling',
+          benefitZh:'复用前序计算，合并并发请求，让有限内存与带宽承接更多任务。',
+          benefitEn:'Reuse prior computation and batch concurrent requests so finite memory and bandwidth can serve more tasks.',
+          detailZh:[
+            '分页 KV Cache 与递归状态管理保存各请求的计算进度，前缀缓存复用重复输入。长上下文采用分块预填充，并通过内存与 SSD 分层存储管理历史状态；流式注意力分批读取 SSD 中的键值块，合并各部分的注意力结果，扩展上下文容量。',
+            '等长短输入可合并为一次批量 prefill，多个请求的输出投影也合并计算，减少权重重复读取和首字等待。连续批处理在生成阶段复用计算资源，各请求保留自己的上下文与状态，让文档处理、多轮交互和并发任务共用一套推理服务。'
+          ],
+          detailEn:[
+            'Paged KV cache and recurrent-state management retain each request’s progress, while prefix caching reuses repeated input. Long contexts use chunked prefill and memory–SSD storage tiers to manage historical state. Streaming attention reads key-value blocks from SSD in batches and merges partial attention results to extend context capacity.',
+            'Short inputs of equal length can share one batched prefill pass. Output projections are also combined across requests, reducing repeated weight reads and time to first token. Continuous batching shares compute resources during generation while each request retains its own context and state, bringing document processing, multi-turn interaction, and concurrent tasks into one inference service.'
           ]
         },
         {
