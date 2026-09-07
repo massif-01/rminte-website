@@ -78,7 +78,7 @@
 .guide-table-wrap { margin: 28px 0 36px; overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-control); }
 .guide-table-wrap table { width: 100%; min-width: 520px; border-collapse: collapse; }
 .guide-table-wrap th, .guide-table-wrap td { padding: 16px; border-bottom: 1px solid var(--line); color: var(--ink-soft); font-size: 14px; line-height: 1.8; text-align: left; vertical-align: top; }
-.guide-table-wrap th { color: var(--ink); background: var(--panel); font-weight: 550; }
+.guide-table-wrap th { word-break: keep-all; color: var(--ink); background: var(--panel); font-weight: 550; }
 .guide-table-wrap tr:last-child td { border-bottom: 0; }
 .guide-code { position: relative; margin: 28px 0 36px; overflow: hidden; border-radius: var(--radius-panel); border: 1px solid var(--line); background: var(--bg-2); }
 .guide-code button { position: absolute; z-index: 2; top: 10px; right: 12px; min-height: 32px; border: 1px solid var(--line); border-radius: var(--radius-button); padding: 6px 10px; color: var(--muted); cursor: pointer; background: var(--panel-strong); font: 500 11px var(--font-ui); }
