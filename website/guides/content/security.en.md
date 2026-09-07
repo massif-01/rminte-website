@@ -55,7 +55,7 @@ If sign-in fails: check the account and device address first. Five consecutive f
 
 ### 2.3 Reset the admin password
 
-Root can reset admin to the default password, `rm01`, and clear its login lockout. After resetting, sign in as admin in a new session and set a new password immediately. A reset is a temporary recovery measure. Do not keep the default password, and do not assume a password change signs out every existing session.
+root can reset admin to the default password, `rm01`, and clear its login lockout. After resetting, sign in as admin in a new session and set a new password immediately. A reset is a temporary recovery measure. Do not keep the default password, and do not assume a password change signs out every existing session.
 
 ## 3. Connect to a server with an SSH key
 

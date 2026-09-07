@@ -632,15 +632,15 @@ CLI 是设备本地命令；SSH 命令在远程主机执行；Webhook 用于通�
 
 导入或修改数据源、动作和规则后，检查引擎状态以及列表中的启用状态。页面提示需要重新加载或重启时，应先结束仍在运行的远程任务，再安排操作。
 
-# TianshanOS Root Operations Guide
+# TianshanOS root Operations Guide
 
 This guide is for operators who manage TianshanOS with the root account. Part I covers routine tasks shared by admin and root. Part II covers the root-only “Terminal,” “Commands,” and “Automation” pages. Use the TianshanOS Security Guide for security management.
 
-Root can perform high-impact operations that change the device, remote hosts, and automation workflows. Confirm the current device, target host, and running tasks before continuing.
+root can perform high-impact operations that change the device, remote hosts, and automation workflows. Confirm the current device, target host, and running tasks before continuing.
 
 The controls available to you depend on your device and its configuration. Some appear only when the required hardware is connected or the feature has been configured.
 
-## Part I: Routine Tasks Shared by Admin and Root
+## Part I: Routine Tasks Shared by Admin and root
 
 ## 1. Getting Started
 
@@ -661,7 +661,7 @@ Select the language button at the top of the page, then choose Chinese or Englis
 
 ### Page Navigation
 
-Root can use these pages:
+root can use these pages:
 
 - “System”: View device status, control modules, fans, and LEDs, and open OTA Update.
 - “Network”: Check Ethernet status and DHCP clients, configure WiFi, and manage NAT forwarding.
@@ -986,7 +986,7 @@ After the operation and reboot complete, reopen the WebUI and verify the current
 
 Select “Security” in the top navigation to open security management. Use the TianshanOS Security Guide for SSH keys, remote hosts, known-host fingerprints, HTTPS certificates, configuration packages, and account management. These procedures are not repeated here.
 
-## Part II: Root-only Operations
+## Part II: root-only Operations
 
 ## 10. Terminal and System Logs
 
