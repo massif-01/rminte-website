@@ -41,15 +41,15 @@ window.RM_SOFT = {
   engine: [
     {
       title: { zh: '沿用生态，减少适配', en: 'Familiar ecosystem, less integration work' },
-      text: { zh: '你熟悉的开源生态得以保留：vLLM 承担前端，Hugging Face Transformers 加载模型权重与配置，自研内核负责推理计算，减少模型接入与应用适配的工作。我们还提供为单一模型专门设计的 C++ 推理引擎。', en: 'The open-source ecosystem you know stays in place: vLLM provides the frontend, Hugging Face Transformers loads model weights and configurations, and our own kernels handle inference. This reduces model integration and application adaptation work. We offer a C++ inference engine designed for a single model.' }
+      text: { zh: '定制 vLLM 沿用 Hugging Face 模型生态，自研内核优化推理计算；C++ 专用引擎面向模型架构与硬件平台，组织权重加载、算子和运行时。两条路线支持 RMQ 模型，并通过兼容 OpenAI 等接口的服务连接应用，减少接入与适配工作。', en: 'Custom vLLM retains the Hugging Face model ecosystem and uses our kernels for inference. The dedicated C++ engine tailors weight loading, kernels, and the runtime to model architectures and hardware. Both paths support RMQ models and connect applications through services with interfaces such as the OpenAI-compatible API, reducing integration work.' }
     },
     {
       title: { zh: '容纳更长的上下文，处理更多并发', en: 'Longer contexts. More concurrent tasks.' },
-      text: { zh: '定制 CUDA 内核优化 FlashAttention 与 FlashInfer，加速注意力计算与解码。增强型 PagedAttention 管理 KV Cache，减少显存碎片；连续批处理提高长上下文与并发任务的处理效率，让算力服务于更多任务。', en: 'Custom CUDA kernels optimize FlashAttention and FlashInfer to accelerate attention and decoding. Enhanced PagedAttention manages KV Cache to reduce GPU memory fragmentation. Continuous batching improves efficiency for long contexts and concurrent tasks, putting compute to work on more requests.' }
+      text: { zh: '分页缓存与递归状态管理承接上下文，前缀缓存复用已有计算。专用引擎通过内存与 SSD 分层存储扩展上下文容量，结合批量输入处理与连续批处理，减少权重重复读取，让文档分析、多轮交互和并发请求共用推理资源。', en: 'Paged caching and recurrent-state management retain context, while prefix caching reuses prior computation. The dedicated engine extends context capacity through memory and SSD storage tiers. Batched input processing and continuous batching reduce repeated weight reads, sharing inference resources across document analysis, multi-turn interaction, and concurrent requests.' }
     },
     {
       title: { zh: '从推理需求出发，设计整机', en: 'A system shaped by inference' },
-      text: { zh: '自研 Kernel 与 Fused Layer 优化降低 MoE 和 Dense 模型的计算与内存开销。MoE 优化涵盖专家并行加载、路由向量化与前向融合。主板与推理引擎协同设计，让硬件与软件围绕同一个目标工作。', en: 'Our kernels and fused-layer optimizations reduce compute and memory overhead for MoE and Dense models. MoE optimizations cover parallel expert loading, vectorized routing, and fused forward computation. We design the motherboard and inference engine as a whole, giving hardware and software a shared purpose.' }
+      text: { zh: '主板与推理引擎协同设计，围绕 GPU、内存带宽和缓存安排计算与数据访问。投影合并、算子融合与专家归组减少搬运开销；MTP 与批量解码分别服务于单请求生成和并发任务，将硬件资源转化为模型执行效率。', en: 'The motherboard and inference engine are designed together, organizing computation and data access around GPU compute, memory bandwidth, and caches. Merged projections, kernel fusion, and expert grouping reduce data movement. MTP serves single-request generation and batched decoding serves concurrent tasks, turning hardware resources into model execution efficiency.' }
     }
   ],
   ui: {

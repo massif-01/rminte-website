@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/brand.css">
   <link rel="stylesheet" href="../assets/styles.css">
-  <link rel="stylesheet" href="models.css?v=models-launch-1">
+  <link rel="stylesheet" href="models.css?v=benchmark-clean-1">
 </head>
 <body class="models-page">
   <a class="skip-link" href="#main" data-zh="跳至主要内容" data-en="Skip to content">跳至主要内容</a>
@@ -123,24 +123,28 @@
       <h2 class="mp-heading" id="inferenceTitle" data-zh="专用引擎，释放模型性能。" data-en="Dedicated engines. Unlock model performance.">专用引擎，释放模型性能。</h2>
       <p class="mp-lead" data-zh="RMQ3x 与 RMQ4 已运行于 RMinte 自研 C++ 推理引擎和深度定制的 vLLM。围绕模型结构与 RM-01 的硬件平台，我们深入优化算子、执行路径与运行时，让模型能力建立在高效的推理实现之上。" data-en="RMQ3x and RMQ4 run on RMinte’s C++ inference engine and a custom vLLM implementation. We tailor kernels, execution paths, and runtimes to the model architectures and RM-01 hardware to turn model capability into efficient inference.">RMQ3x 与 RMQ4 已运行于 RMinte 自研 C++ 推理引擎和深度定制的 vLLM。围绕模型结构与 RM-01 的硬件平台，我们深入优化算子、执行路径与运行时，让模型能力建立在高效的推理实现之上。</p>
       <div class="mp-engine-layout">
-        <figure class="mp-engine-art" id="engineArt" data-engine="cpp" aria-label="自研 C++ 推理实现示意">
-          <div class="mp-engine-stack" aria-hidden="true">
-            <div class="mp-engine-plane base"><div class="mp-engine-compute" data-cells="96"></div><span>NVIDIA CUDA</span></div>
-            <div class="mp-engine-plane runtime"><div class="mp-engine-core" data-cells="18"></div><span id="runtimeLabel"><span class="rm-mark">RMinte</span> C++ Runtime</span></div>
-            <div class="mp-engine-plane model"><div class="mp-engine-traces"><i></i><i></i><i></i></div><span>RMQ3x · RMQ4</span></div>
-          </div>
-        </figure>
-        <div class="mp-engine-reading">
+        <div class="mp-engine-visual">
+          <figure class="mp-engine-art" id="engineArt" data-engine="cpp" aria-label="自研 C++ 推理实现示意">
+            <div class="mp-engine-stack" aria-hidden="true">
+              <div class="mp-engine-plane base"><div class="mp-engine-compute" data-cells="96"></div><span>NVIDIA CUDA</span></div>
+              <div class="mp-engine-plane runtime"><div class="mp-engine-core" data-cells="18"></div><span id="runtimeLabel"><span class="rm-mark">RMinte</span> C++ Runtime</span></div>
+              <div class="mp-engine-plane model"><div class="mp-engine-traces"><i></i><i></i><i></i></div><span>RMQ3x · RMQ4</span></div>
+            </div>
+          </figure>
           <div class="mp-engine-tabs" role="tablist" aria-label="推理实现">
             <button role="tab" type="button" id="tabCpp" aria-controls="panelCpp" aria-selected="true" data-engine-tab="cpp" data-zh="自研 C++" data-en="Our C++ engine">自研 C++</button>
             <button role="tab" type="button" id="tabVllm" aria-controls="panelVllm" aria-selected="false" tabindex="-1" data-engine-tab="vllm" data-zh="vLLM 定制" data-en="Custom vLLM">vLLM 定制</button>
           </div>
+        </div>
+        <div class="mp-engine-reading">
           <div class="mp-engine-panel" id="panelCpp" role="tabpanel" aria-labelledby="tabCpp" tabindex="0">
             <h3 data-zh="自研 C++ 推理引擎" data-en="Our C++ inference engine">自研 C++ 推理引擎</h3>
             <h4 data-zh="更低的运行开销，更高的执行效率。" data-en="Lower runtime overhead. More efficient execution.">更低的运行开销，更高的执行效率。</h4>
             <p data-zh="RMinte 自研 C++ 引擎的 Runner 自身内存开销约为 2 MB，不含模型权重、KV Cache 与上下文等占用。在相同模型、精度与量化配置下，prefill 与 decode 性能均优于我们已优化的 vLLM 实现，兼顾输入处理与逐 token 生成的效率。" data-en="The runner in RMinte’s C++ engine uses about 2 MB of memory, excluding model weights, KV cache, context, and other model allocations. With identical model, precision, and quantization settings, it outperforms our optimized vLLM implementation in both input processing (prefill) and token-by-token generation (decode).">RMinte 自研 C++ 引擎的 Runner 自身内存开销约为 2 MB，不含模型权重、KV Cache 与上下文等占用。在相同模型、精度与量化配置下，prefill 与 decode 性能均优于我们已优化的 vLLM 实现，兼顾输入处理与逐 token 生成的效率。</p>
+            <h4 data-zh="匹配硬件，减少数据搬运。" data-en="Match the hardware. Move less data.">匹配硬件，减少数据搬运。</h4>
+            <p data-zh="针对 RM-01 的 GPU、统一内存与缓存结构，我们设计 CUDA 算子，合并投影与相邻运算，并按矩阵规模选择计算路径。权重加载、量化存储与运行时布局共同减少内存分配和中间结果搬运，将资源留给模型计算。" data-en="We design CUDA kernels for RM-01’s GPU, unified memory, and caches, merge projections and adjacent operations, and select computation paths by matrix size. Weight loading, quantized storage, and runtime layouts reduce memory allocations and movement of intermediate results, leaving more resources for model computation.">针对 RM-01 的 GPU、统一内存与缓存结构，我们设计 CUDA 算子，合并投影与相邻运算，并按矩阵规模选择计算路径。权重加载、量化存储与运行时布局共同减少内存分配和中间结果搬运，将资源留给模型计算。</p>
             <h4 data-zh="持续 prefill，按需 decode。" data-en="Continuous prefill. Decode on demand.">持续 prefill，按需 decode。</h4>
-            <p data-zh="引擎支持连续追加输入、累积计算状态，将输入处理与回答生成分开调度。模型可以持续处理新消息、文档与任务反馈，复用已有计算，在需要输出时再启动 decode。" data-en="The engine accepts incremental input, retains computation state, and schedules input processing separately from response generation. Models process new messages, documents, and task feedback, reuse prior computation, and start decoding when output is needed.">引擎支持连续追加输入、累积计算状态，将输入处理与回答生成分开调度。模型可以持续处理新消息、文档与任务反馈，复用已有计算，在需要输出时再启动 decode。</p>
+            <p data-zh="引擎支持连续追加输入，将输入处理与回答生成分开调度。前缀缓存与递归状态管理复用已有计算，内存与 SSD 分层存储承接上下文。模型随新消息、文档与任务反馈推进处理，在需要输出时启动 decode。" data-en="The engine accepts incremental input and schedules input processing separately from response generation. Prefix caching and recurrent-state management reuse prior computation, while memory and SSD tiers hold context. Models process new messages, documents, and task feedback, then decode when output is needed.">引擎支持连续追加输入，将输入处理与回答生成分开调度。前缀缓存与递归状态管理复用已有计算，内存与 SSD 分层存储承接上下文。模型随新消息、文档与任务反馈推进处理，在需要输出时启动 decode。</p>
             <p data-zh="这种执行方式让 Agent 能够持续接收上下文，无须每次输入都触发回答。从会议中的持续聆听，到案件材料的增量分析，模型随信息更新推进处理，在需要时参与判断与行动。" data-en="Agents can keep receiving context without responding to every input. Whether listening throughout a meeting or analyzing new case material, models process information as it arrives and contribute to decisions and actions when needed.">这种执行方式让 Agent 能够持续接收上下文，无须每次输入都触发回答。从会议中的持续聆听，到案件材料的增量分析，模型随信息更新推进处理，在需要时参与判断与行动。</p>
           </div>
           <div class="mp-engine-panel" id="panelVllm" role="tabpanel" aria-labelledby="tabVllm" tabindex="0" hidden>
@@ -157,8 +161,8 @@
 
     <!-- 内部目标状态文案；训练方法的当前状态与来源见同目录 TECHNICAL-NOTES.md。 -->
     <section class="mp-wrap mp-section mp-optimization" id="optimization" aria-labelledby="optimizationTitle">
-      <h2 class="mp-heading" id="optimizationTitle"><span data-zh="从架构到训练，" data-en="From architecture to training.">从架构到训练，</span><br><span data-zh="构建专业能力。" data-en="Built for professional work.">构建专业能力。</span></h2>
-      <p class="mp-lead" data-zh="RMQ3x 与 RMQ4 结合递归记忆、注意力检索与针对性训练，连接长上下文处理、专业分析和工具执行。稠密计算与稀疏专家构成两条架构路径，在模型容量、计算开销与任务能力之间形成各自的优势。" data-en="RMQ3x and RMQ4 combine recurrent memory, attention-based retrieval, and targeted training for long-context processing, professional analysis, and tool use. Dense computation and sparse experts offer distinct strengths across model capacity, computation cost, and task performance.">RMQ3x 与 RMQ4 结合递归记忆、注意力检索与针对性训练，连接长上下文处理、专业分析和工具执行。稠密计算与稀疏专家构成两条架构路径，在模型容量、计算开销与任务能力之间形成各自的优势。</p>
+      <h2 class="mp-heading mp-optimization-heading" id="optimizationTitle"><span><span data-zh="从架构到训练，" data-en="From architecture to training. ">从架构到训练，</span><span data-zh="构建专业能力。" data-en="Built for professional work.">构建专业能力。</span></span><span><span data-zh="从硬件到推理，" data-en="From hardware to inference. ">从硬件到推理，</span><span data-zh="释放模型性能。" data-en="Unlock model performance.">释放模型性能。</span></span></h2>
+      <p class="mp-lead" data-zh="RMQ3x 与 RMQ4 结合递归记忆、注意力检索与针对性训练，构建专业分析和工具执行能力。自研推理引擎围绕模型结构与硬件特性，优化计算路径、数据访问和任务调度，让这些能力服务于长文档、多轮交互与持续运行的 Agent。" data-en="RMQ3x and RMQ4 combine recurrent memory, attention-based retrieval, and targeted training for professional analysis and tool use. Our inference engine tailors computation paths, data access, and task scheduling to the model architectures and hardware, supporting long documents, multi-turn interaction, and agents that keep working.">RMQ3x 与 RMQ4 结合递归记忆、注意力检索与针对性训练，构建专业分析和工具执行能力。自研推理引擎围绕模型结构与硬件特性，优化计算路径、数据访问和任务调度，让这些能力服务于长文档、多轮交互与持续运行的 Agent。</p>
       <div class="mp-optimization-list" id="optimizations"></div>
     </section>
 
@@ -197,9 +201,9 @@
   <dialog class="mp-dialog mp-menu-dialog" id="mobileMenu" aria-label="导航菜单"><div class="mp-dialog-top"><img src="../assets/images/logo-white.svg" alt="RMinte"><button class="mp-close" type="button" data-close-dialog aria-label="关闭"><svg class="mp-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><nav class="mp-mobile-links" aria-label="移动导航"><a href="../gallery/index.html" data-zh="图册" data-en="Gallery">图册</a><a href="#main" aria-current="page" data-zh="模型" data-en="Models">模型</a><a href="../index.html#engine" data-zh="产品" data-en="Product">产品</a><a href="../index.html#teardown" data-zh="架构" data-en="Architecture">架构</a><a href="../guides/index.html" data-zh="指南" data-en="Guides">指南</a><a href="../downloads/index.html" data-zh="下载" data-en="Downloads">下载</a></nav></dialog>
 
   <script src="../visitor-language.js" defer></script>
-  <script src="../assets/site-data.js?v=models-launch-1" defer></script>
+  <script src="../assets/site-data.js?v=models-inference-2" defer></script>
   <script src="../assets/footer.js?v=models-launch-1" defer></script>
   <script src="benchmark-particles.js" defer></script>
-  <script src="models.js?v=models-launch-1" defer></script>
+  <script src="models.js?v=models-inference-2" defer></script>
 </body>
 </html>

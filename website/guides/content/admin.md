@@ -1,23 +1,21 @@
 # TianshanOS admin 日常使用指南
 
-![TianshanOS](图片和附件/tsintro.png)
-
 本指南面向使用 admin 账户管理 TianshanOS 的用户，介绍 WebUI 中的日常查看和操作功能。安全管理请切换到《TianshanOS 安全指南》。终端、自动化规则和指令管理由 root 运维指南说明。
 
-设备型号、硬件配置和当前状态会影响页面显示。页面未显示的设备、按钮或选项无需操作。
+请按设备页面上实际显示的功能操作。部分按钮只会在连接了相应硬件或完成配置后出现。
 
 ## 1. 开始使用
 
 ### 进入 WebUI
 
-1. 在浏览器中打开设备的 WebUI 地址。
+1. 在浏览器中打开管理员提供的设备网页地址（WebUI）。
 2. 点击页面右上角的“登录”。
 3. 用户名保持为 `admin`，输入设备提供的 admin 密码。
 4. 点击“登录”。登录成功后，右上角会显示当前用户名。
 
 首次使用默认密码登录时，页面会显示“安全提醒”。可以在弹窗中输入当前密码和新密码，随后点击“立即修改”。新密码需要输入两次并保持一致。选择“稍后修改”会关闭提醒。
 
-完成操作后，点击右上角的“退出登录”。页面会返回“系统”。
+使用完毕后，点击右上角的“退出登录”。再次操作设备时需要重新登录。
 
 ### 切换语言
 
@@ -28,7 +26,7 @@
 admin 日常使用的主要入口如下：
 
 - “系统”：查看设备状态，控制模组、风扇和 LED，并进入 OTA 升级。
-- “网络”：查看和调整以太网、WiFi、DHCP 与 NAT 设置。
+- “网络”：查看以太网和 DHCP 状态，设置 WiFi 和 NAT 网络转发。
 - “文件”：管理 SD 卡和 SPIFFS 中的文件。
 - “安全”：进入单独的安全管理页面，详细操作请查看安全指南。
 
@@ -38,7 +36,7 @@ admin 日常使用的主要入口如下：
 
 ### 查看资源与服务状态
 
-“资源监控”显示 CPU、DRAM 和 PSRAM 的使用情况。DRAM 是设备的主要运行内存，PSRAM 是扩展内存。
+“资源监控”显示 CPU、DRAM 和 PSRAM 的使用情况。DRAM 和 PSRAM 都是设备运行程序时使用的内存。
 
 - 点击“详情”查看内存总量、已用空间、空闲空间和碎片率。
 - “服务”按钮旁显示正在运行的服务数量和服务总数。
@@ -72,7 +70,7 @@ admin 日常使用的主要入口如下：
 
 #### 调整关机设置
 
-更改电压阈值或等待时间会影响设备的关机与恢复行为。修改前应确认设备的供电要求。
+这些设置决定设备在低电压时何时关机，以及供电恢复后何时重新启动。请按设备的供电要求填写电压和等待时间。
 
 点击“关机设置”，可以调整以下内容：
 
@@ -88,7 +86,7 @@ admin 日常使用的主要入口如下：
 
 切换 USB 目标可能使当前连接的外设暂时断开。确认目标设备和正在进行的工作后再操作。
 
-页面显示 USB 切换功能时，点击“USB”按钮，可以在 ESP、AGX 和 LPMU 之间切换顶部 USB 接口的连接目标。按钮会显示当前目标，切换成功后页面会给出提示。
+页面显示 USB 切换功能时，点击“USB”按钮，每点击一次，顶部 USB 接口会按 ESP、AGX、LPMU 的顺序切换到下一个目标。按钮会显示当前目标，切换成功后页面会给出提示。
 
 ## 3. 设备面板
 
@@ -112,9 +110,7 @@ AGX 和 LPMU 按钮会显示当前状态。绿色表示设备正在运行，红�
 3. 支持后台运行的卡片会显示运行状态，并提供“日志”和“停止”。
 4. 点击“日志”查看当前输出；点击“停止”结束仍在运行的任务。
 
-正在运行的任务需要先停止，随后才能再次启动。触发一个操作后，等待几秒再启动其他操作。
-
-长按卡片，出现排序提示后拖动，可以调整快捷操作的显示顺序。“暂无快捷操作”表示当前没有可供 admin 使用的卡片。
+正在运行的任务需要先停止，随后才能再次启动。触发一个操作后，等待几秒再启动其他操作。长按卡片，出现排序提示后拖动，可以调整快捷操作的显示顺序。“暂无快捷操作”表示当前没有可供 admin 使用的卡片。
 
 ### 管理数据组件
 
@@ -133,7 +129,9 @@ AGX 和 LPMU 按钮会显示当前状态。绿色表示设备正在运行，红�
 
 ### 查看风扇状态
 
-顶部状态栏显示“有效温度”和“目标转速”。每张风扇卡片显示当前模式、转速百分比和可用的 RPM。RPM 表示风扇每分钟转数。
+顶部状态栏显示“有效温度”和“目标转速”。风扇卡片上的百分比在自动、曲线模式下表示目标调速值，在手动模式下表示当前设置值。RPM 表示测得的每分钟转数，只有取得有效读数时才显示。百分比与 RPM 的含义不同。
+
+自动模式还可能显示“按曲线运行”“自适应调速”“保护介入”或“温度失效”，以及安全参考温度、45 秒预测温度和升温速度。预测温度用于提前调速。出现“温度失效”时，先检查温度来源是否持续更新；设备会采用保护转速。点击卡片上的信息按钮，可以查看自动模式说明。
 
 点击右上角的刷新按钮，可以重新获取当前状态。
 
@@ -142,7 +140,7 @@ AGX 和 LPMU 按钮会显示当前状态。绿色表示设备正在运行，红�
 | 模式 | 作用 |
 | --- | --- |
 | “关闭” | 停止风扇。 |
-| “手动” | 使用固定转速，滑块可以设置 0–100%。 |
+| “手动” | 使用固定的调速百分比，滑块可设置 0-100%。 |
 | “自动” | 以风扇曲线为基础，同时根据温度变化趋势和保护状态调整转速。 |
 | “曲线” | 按照已设置的温度与转速对应关系运行。 |
 
@@ -152,28 +150,30 @@ AGX 和 LPMU 按钮会显示当前状态。绿色表示设备正在运行，红�
 
 ### 设置风扇曲线
 
-点击“曲线”打开“风扇曲线管理”。页面会列出当前可选的风扇和温度数据来源。
+点击“风扇控制”区域顶部的“曲线”按钮，打开“风扇曲线管理”。风扇卡片内的“曲线”按钮只切换运行模式。
 
-1. 在“选择风扇”中选择页面当前显示的风扇。
+1. 在“选择风扇”中选择要调整的风扇编号，并与系统页的风扇卡片核对。
 2. 在“绑定温度变量”中添加一个或多个温度来源，并设置权重。
-3. 点击绑定按钮，使选定温度来源生效。
+3. 点击“绑定全部”应用温度来源。温度来源由自动、曲线模式的风扇共用，修改会影响所有使用该温度来源的风扇。
 4. 在“温度-转速曲线”中添加或编辑曲线点。每条曲线至少需要 2 个点，最多支持 10 个点。
 5. 设置“最小占空比”和“最大占空比”。最小值不能高于最大值。
-6. 根据需要设置“温度迟滞”和“最小间隔”。温度迟滞范围为 0–20°C，最小间隔范围为 500–30000 ms。
+6. 根据需要设置“温度迟滞”和“最小间隔”。温度迟滞范围为 0-20°C，最小间隔范围为500-30000 ms。
 7. 点击“应用曲线”。系统会保存设置，并将所选风扇切换到“曲线”模式。
 
-“温度迟滞”用于减少临界温度附近的频繁调速。“最小间隔”用于限制连续两次调速之间的最短时间。
+“最小占空比”和“最大占空比”用于限定调速百分比的范围。“温度迟滞”用于减少温度轻微波动时的频繁调速。“最小间隔”限制连续两次调速之间的最短时间，1000 ms 等于 1 秒。
+
+应用曲线后会切换到曲线模式。如果希望继续使用自动调速，请返回风扇卡片，点击“自动”。
 
 ### 导入和导出曲线
 
 - 点击“导入配置”，选择有效的曲线 JSON 文件。检查页面加载的曲线和参数后，点击“应用曲线”使其生效。
-- 点击“导出配置”，浏览器会下载当前曲线，同时尝试将副本保存到 SD 卡的 `/sdcard/config` 目录。页面会提示 SD 卡保存结果。
+- 点击“导出配置”，浏览器会下载当前曲线，同时尝试将副本保存到 SD 卡的`/sdcard/config` 目录。页面会提示 SD 卡保存结果。
 
 ### 使用测试温度
 
 测试温度会临时替代正常温度来源，并影响自动或曲线调速。测试期间应持续观察风扇和设备状态。
 
-1. 在“测试温度”中输入 0–100°C 的数值。
+1. 在“测试温度”中输入 0-100°C 的数值。
 2. 点击“测试”，观察目标转速和风扇响应。
 3. 测试结束后立即点击“清除测试”，恢复正常温度来源。
 
@@ -188,7 +188,7 @@ AGX 和 LPMU 按钮会显示当前状态。绿色表示设备正在运行，红�
 - 选择颜色或预设色，使支持颜色控制的设备显示所选颜色。
 - 点击“动画特效”中的选项启动动画，点击“停止动画”结束当前动画。
 - 点击“保存配置”，保存当前设备的 LED 设置。
-- 点击“全部关闭”，关闭页面当前显示的所有 LED。
+- 点击“全部关闭”，关闭页面显示的所有 LED。
 
 不同 LED 提供的颜色、亮度和动画选项可能不同。以当前设备卡片和设置弹窗中显示的选项为准。
 
@@ -199,14 +199,14 @@ AGX 和 LPMU 按钮会显示当前状态。绿色表示设备正在运行，红�
 - “显示图像”：从 SD 卡选择图像并显示。
 - “生成 QR 码”：输入内容，设置颜色和纠错级别后生成 QR 码。
 - “显示文本”：输入文字，并设置字体、对齐方式、滚动速度、前景色和背景。
-- “后处理滤镜”：选择页面当前提供的滤镜并应用；点击停止按钮结束滤镜。
+- “后处理滤镜”：选择页面提供的滤镜并应用；点击停止按钮结束滤镜。
 - “色彩校正”：调整矩阵显示效果，并根据页面按钮重置、导入或导出校正设置。
 
 LED 矩阵的尺寸、动画和滤镜由当前设备决定。文档中的操作以页面实际显示内容为准。
 
 ## 6. 网络管理
 
-点击顶部导航中的“网络”进入“网络设置”。修改网络模式、热点或 NAT 设置可能中断当前 WebUI 连接。保存设置前，应确认可以通过新的网络地址重新连接设备。
+点击顶部导航中的“网络”进入“网络设置”。修改网络模式、热点或 NAT 设置可能中断当前WebUI 连接。保存设置前，应确认可以通过新的网络地址重新连接设备。
 
 ### 查看网络状态
 
@@ -257,7 +257,7 @@ DHCP 会自动为接入设备分配网络地址。点击“客户端”，选择
 
 #### 设置 NAT 网关
 
-NAT 用于在设备的网络接口之间转发连接。启用或停用 NAT 后，点击“保存”保留当前设置。操作完成后检查 WiFi 和 Ethernet 状态。
+NAT 用于在设备的网络接口之间转发网络流量。启用或停用 NAT 后，点击“保存”保留当前设置。操作完成后检查 WiFi 和 Ethernet 状态。
 
 #### 通过 LPMU 接入上层网络
 
@@ -267,7 +267,7 @@ NAT 用于在设备的网络接口之间转发连接。启用或停用 NAT 后�
 
 点击顶部导航中的“文件”进入“文件管理”。
 
-SD 卡是可插拔存储，SPIFFS 是设备内部文件存储。点击“SD 卡”或“SPIFFS”切换位置。面包屑显示当前路径，点击其中的目录可以返回对应层级。
+SD 卡是可插拔存储，SPIFFS 是设备内部文件存储。点击“SD 卡”或“SPIFFS”切换位置。页面上方显示当前文件夹路径；点击路径中的文件夹名称，可以返回上一级或更早的目录。
 
 ### 浏览和管理文件
 
@@ -283,9 +283,7 @@ SD 卡是可插拔存储，SPIFFS 是设备内部文件存储。点击“SD 卡�
 2. 点击“上传文件”。
 3. 点击上传区域选择一个或多个文件，或将文件拖入该区域。
 4. 检查上传列表，移除不需要的文件。
-5. 点击“上传”，等待每个文件显示完成状态。
-
-上传 `.tscfg` 配置包时，页面会进入配置包校验和应用流程。配置包的来源、签名和应用要求请查看安全指南。
+5. 点击“上传”，等待每个文件显示完成状态。上传 `.tscfg` 配置包时，页面会进入配置包校验和应用流程。配置包的来源、签名和应用要求请查看安全指南。
 
 ### 批量操作
 
@@ -319,18 +317,16 @@ SD 卡未挂载时，页面会显示“挂载 SD”。点击该按钮，等待�
 4. 页面会显示“发现新版本”“已是最新版本”“服务器版本较旧”或错误信息。
 5. 确认目标版本后，点击“立即升级”或页面显示的升级按钮。
 6. 等待下载、安装和重启完成。页面显示中止按钮时，可以按需中止当前支持中止的阶段。
-7. 设备重新上线后，重新连接 WebUI，并核对“当前版本”。
-
-升级同时包含 WebUI 时，固件和 WebUI 会依次更新。两者应来自同一发布版本。
+7. 设备重新上线后，重新连接 WebUI，并核对“当前版本”。升级同时包含 WebUI 时，固件和 WebUI 会依次更新。两者应来自同一发布版本。
 
 ### 手动升级
 
 展开“手动升级”后，可以选择以下方式：
 
 - “从 URL 升级”：填写固件 URL，根据发布说明选择“包含 WebUI”，然后点击“升级”。
-- “从 SD 卡升级”：填写固件文件路径，例如 `/sdcard/firmware.bin`。选择“包含 WebUI”时，页面会同时处理同目录中的 WebUI 文件。
+- “从 SD 卡升级”：填写固件文件路径，例如 `/sdcard/firmware.bin`。选择“包含WebUI”时，页面会同时处理同目录中的 WebUI 文件。
 
-“跳过验证”会绕过固件完整性或签名检查，并增加安装损坏或非预期固件的风险。日常升级应保持验证开启。只有在固件来源和操作要求已经确认时才使用该选项。
+从 URL 升级时，“跳过验证”用于跳过 HTTPS 服务器证书验证。勾选后，设备无法通过该证书确认下载服务器的身份。日常升级请保持未勾选；遇到证书错误时，请先联系管理员检查服务器地址和证书。
 
 ### 分区管理与回滚
 
@@ -347,24 +343,22 @@ SD 卡未挂载时，页面会显示“挂载 SD”。点击该按钮，等待�
 
 # TianshanOS Admin User Guide
 
-![TianshanOS](图片和附件/tsintro%201.png)
-
 This guide is for users who manage TianshanOS with the admin account. It covers routine tasks available in the WebUI. Use the TianshanOS Security Guide for security management. Terminal access, automation rules, and command management are covered by the root operations guide.
 
-Available pages and controls depend on the device model, hardware configuration, and current state. No action is required for a device, button, or option that is not shown.
+The controls available to you depend on your device and its configuration. Some appear only when the required hardware is connected or the feature has been configured.
 
 ## 1. Getting Started
 
 ### Open the WebUI
 
-1. Open the device WebUI address in a browser.
+1. Open the device’s web interface (WebUI) using the address provided by your administrator.
 2. Select “Login” in the upper-right corner.
 3. Keep `admin` as the username and enter the admin password supplied with the device.
 4. Select “Login.” After a successful login, the current username appears in the upper-right corner.
 
 When the default password is still in use, a “Security Reminder” appears after login. Enter the current password and the new password, then select “Change Now.” Enter the new password twice with matching values. Select “Change Later” to close the reminder.
 
-After completing your work, select “Logout” in the upper-right corner. The WebUI returns to “System.”
+When you have finished, select “Logout” in the upper-right corner. You will need to sign in again to use the device.
 
 ### Switch Languages
 
@@ -375,7 +369,7 @@ Select the language button at the top of the page, then choose Chinese or Englis
 The main admin pages are:
 
 - “System”: View device status, control modules, fans, and LEDs, and open OTA Update.
-- “Network”: View and change Ethernet, WiFi, DHCP, and NAT settings.
+- “Network”: Check Ethernet status and DHCP clients, configure WiFi, and manage NAT forwarding.
 - “Files”: Manage files on the SD Card and SPIFFS.
 - “Security”: Open the separate security management page. See the Security Guide for instructions.
 
@@ -385,7 +379,7 @@ Select “System” in the top navigation.
 
 ### View Resource and Service Status
 
-“Resource Monitor” shows CPU, DRAM, and PSRAM usage. DRAM is the main working memory, and PSRAM is extended memory.
+“Resource Monitor” shows CPU, DRAM, and PSRAM usage. DRAM and PSRAM are memory used by the device to run programs.
 
 - Select “Details” to view total, used, and free memory, plus fragmentation.
 - The number next to “Services” shows running services and total services.
@@ -419,7 +413,7 @@ Restarting a service temporarily interrupts the function it provides. Open “Se
 
 #### Change Shutdown Settings
 
-Voltage thresholds and delay values affect device shutdown and recovery. Confirm the device's power requirements before changing them.
+These settings control when the device shuts down after a voltage drop and when it starts again after power recovers. Use values that match your device’s power requirements.
 
 Select “Shutdown Settings” to change:
 
@@ -435,7 +429,7 @@ Save the form to apply the updated protection settings.
 
 Switching the USB target may temporarily disconnect an attached device. Confirm the target and finish active work before continuing.
 
-When USB switching is available, select the “USB” button to change the top USB connection among ESP, AGX, and LPMU. The button shows the current target, and the page confirms a successful switch.
+When USB switching is available, each click of the “USB” button cycles the top USB port to the next target: ESP, AGX, then LPMU. The button shows the current target, and the page confirms a successful switch.
 
 ## 3. Device Panel
 
@@ -480,7 +474,9 @@ Existing widgets can be edited, deleted, and reordered. You can also select a wi
 
 ### View Fan Status
 
-The status bar shows “Effective Temp” and “Target Speed.” Each fan card shows the current mode, speed percentage, and RPM when available. RPM is the number of fan revolutions per minute.
+The status bar shows “Effective Temp” and “Target Speed.” In Auto and Curve modes, the percentage on a fan card is the target control value. In Manual mode, it is the current setting. RPM is the measured fan speed in revolutions per minute and appears only when a valid reading is available. The percentage is not an RPM reading.
+
+In Auto mode, the card may also show its control state, a safety reference temperature, a 45-second temperature forecast, and the rate of temperature change. The forecast helps the fan respond before the temperature rises. If the temperature reading becomes invalid, check that its source is still updating; the device uses a protective fan setting. Select the information button on the card to learn more about Auto mode.
 
 Select the refresh button in the upper-right corner to reload the current state.
 
@@ -489,7 +485,7 @@ Select the refresh button in the upper-right corner to reload the current state.
 | Mode | Purpose |
 | --- | --- |
 | “Off” | Stops the fan. |
-| “Manual” | Uses a fixed speed set with the 0–100% slider. |
+| “Manual” | Uses a fixed control percentage set with the 0-100% slider. |
 | “Auto” | Starts from the fan curve and also responds to temperature trends and protection states. |
 | “Curve” | Follows the configured temperature-to-speed points. |
 
@@ -499,17 +495,19 @@ In “Manual” mode, use the “Speed Adjust” slider to set the speed. The sl
 
 ### Configure a Fan Curve
 
-Select “Curve” to open “Fan Curve Management.” The page lists the fans and temperature data sources currently available.
+Select “Curve” in the Fan Control section header to open “Fan Curve Management.” The “Curve”button inside a fan card switches its operating mode.
 
-1. Under “Select Fan,” choose a fan shown by the page.
+1. Under “Select Fan,” choose the fan number you want to adjust. Check it against the fan cards on the System page.
 2. Under “Bind Temperature Variable,” add one or more temperature sources and assign weights.
-3. Select the bind control to apply the selected temperature sources.
+3. Select the bind control to apply the temperature sources. These sources are shared by fans in Auto and Curve modes, so a change affects every fan using them.
 4. Add or edit points under “Temperature-Speed Curve.” A curve requires at least 2 points and supports up to 10 points.
 5. Set “Min Duty Cycle” and “Max Duty Cycle.” The minimum cannot be greater than the maximum.
-6. Set “Temperature Hysteresis” and “Min Interval” as needed. Hysteresis accepts 0–20°C, and the minimum interval accepts 500–30000 ms.
+6. Set “Temperature Hysteresis” and “Min Interval” as needed. Hysteresis accepts 0-20°C, and the minimum interval accepts 500-30000 ms.
 7. Select “Apply Curve.” The settings are saved and the selected fan switches to “Curve” mode.
 
-“Temperature Hysteresis” reduces repeated speed changes near a temperature boundary. “Min Interval” sets the shortest time between speed adjustments.
+“Min Duty Cycle” and “Max Duty Cycle” set the control range as percentages. “Temperature Hysteresis” reduces frequent adjustments caused by small temperature changes. “Min Interval”sets the shortest time between adjustments; 1000 ms is 1 second.
+
+Applying a curve switches the fan to Curve mode. To continue using automatic control, return to the fan card and select “Auto.”
 
 ### Import and Export a Curve
 
@@ -520,7 +518,7 @@ Select “Curve” to open “Fan Curve Management.” The page lists the fans a
 
 A test temperature temporarily replaces the normal temperature source and affects Auto or Curve control. Monitor the fan and device state throughout the test.
 
-1. Enter a value from 0–100°C under “Test Temp.”
+1. Enter a value from 0-100°C under “Test Temp.”
 2. Select “Test” and observe the target speed and fan response.
 3. Select “Clear Test” immediately after the test to restore the normal temperature source.
 
@@ -604,7 +602,7 @@ DHCP automatically assigns network addresses to connected devices. Select “Cli
 
 #### Configure the NAT Gateway
 
-NAT forwards connections between the device's network interfaces. Enable or disable NAT, then select “Save” to retain the setting. Check the WiFi and Ethernet status afterward.
+NAT forwards network traffic between the device's network interfaces. Enable or disable NAT, then select “Save” to retain the setting. Check the WiFi and Ethernet status afterward.
 
 #### Access the Upstream Network via LPMU
 
@@ -614,7 +612,7 @@ When “Upstream Network Access” is shown, select “Access via LPMU.” Wait 
 
 Select “Files” in the top navigation to open “File Manager.”
 
-The SD Card is removable storage, and SPIFFS is internal device file storage. Select “SD Card” or “SPIFFS” to switch locations. The breadcrumb shows the current path; select a directory in it to return to that level.
+The SD Card is removable storage, and SPIFFS is internal device file storage. Select “SD Card” or “SPIFFS” to switch locations. The path at the top shows your current folder. Select a folder name in the path to go back to it.
 
 ### Browse and Manage Files
 
@@ -677,7 +675,7 @@ Expand “Manual Upgrade” and choose one of these methods:
 - “Upgrade from URL”: Enter the firmware URL, set “Include WebUI” according to the release instructions, then select “Upgrade.”
 - “Upgrade from SD Card”: Enter a firmware path such as `/sdcard/firmware.bin`. When “Include WebUI” is enabled, the page also processes the WebUI file in the same directory.
 
-“Skip Verify” bypasses firmware integrity or signature checks and increases the risk of installing damaged or unintended firmware. Keep verification enabled for routine updates. Use this option only after the firmware source and operating instructions have been confirmed.
+For an upgrade from a URL, “Skip Verify” skips verification of the HTTPS server certificate. This removes the certificate check used to confirm the download server’s identity. Leave it unchecked for routine updates. If you see a certificate error, ask your administrator to check the server address and certificate.
 
 ### Partition Management and Rollback
 

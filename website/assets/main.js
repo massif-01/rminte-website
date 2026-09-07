@@ -213,7 +213,7 @@
 
   function updateEngine() {
     document.getElementById('engineArt').dataset.scene = Math.max(0, expandedEngine);
-    document.getElementById('ecosystemLabel').textContent = ['vLLM · Transformers', lang === 'en' ? 'Concurrent requests' : '并发请求', lang === 'en' ? 'Model · Application' : '模型 · 应用'][Math.max(0, expandedEngine)];
+    document.getElementById('ecosystemLabel').textContent = ['C++ · vLLM', lang === 'en' ? 'Concurrent requests' : '并发请求', lang === 'en' ? 'Model · Application' : '模型 · 应用'][Math.max(0, expandedEngine)];
     document.getElementById('kernelLabel').innerHTML = expandedEngine === 1 ? 'Paged KV Cache' : '<span class="rm-mark">RMinte</span> Inference';
     document.querySelectorAll('[data-engine-toggle]').forEach((button, index) => {
       button.setAttribute('aria-expanded', String(index === expandedEngine));
@@ -751,8 +751,8 @@
       const distance = rect.height - window.innerHeight;
       const fraction = enabled ? Math.max(0, Math.min(1, -rect.top / distance)) : 0;
       const index = Math.min(panels.length - 1, Math.floor(fraction * panels.length));
-      stage.style.setProperty('--craft-sticky-top', `${Math.min(0, window.innerHeight - stage.offsetHeight)}px`);
       hint.classList.toggle('is-finished', index === panels.length - 1);
+      stage.style.setProperty('--craft-sticky-top', `${window.innerHeight - stage.offsetHeight}px`);
       panels.forEach((panel, i) => {
         panel.classList.toggle('is-active', i === index);
         panel.inert = enabled && i !== index;

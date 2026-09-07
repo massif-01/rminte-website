@@ -1999,7 +1999,7 @@ html[lang="en"] .hero-copy h1 {
 }
 
 .craft-scroll-hint.is-finished {
-  visibility: hidden;
+  display: none;
 }
 
 .craft-story-heading {
