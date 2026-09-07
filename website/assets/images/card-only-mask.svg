@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1122" height="1402" viewBox="0 0 1122 1402">
+  <defs>
+    <linearGradient id="base" x1="0" y1="1210" x2="0" y2="1290" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0"/>
+      <stop offset="1" stop-color="white"/>
+    </linearGradient>
+  </defs>
+  <!-- Original card silhouette only; the untouched photograph supplies all surface detail. -->
+  <path d="M214 302 L874 246 L882 224 L932 229 L950 273 L960 1280 L197 1280 Z" fill="white"/>
+  <rect y="1210" width="1122" height="192" fill="url(#base)"/>
+</svg>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <base href="http://127.0.0.1:8000/downloads/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RM-01 下载中心，提供产品手册、技术资料、固件与软件发布包。">
+  <meta property="og:title" content="RM-01 下载中心">
+  <meta property="og:description" content="获取 RM-01 产品文档、产品资料、固件与软件。">
+  <meta property="og:image" content="../assets/images/img4.png">
+  <meta name="theme-color" content="#141618">
+  <title>RMinte - RM-01 - Portable AI Supercomputer - 泛灵人工智能</title>
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/brand.css?v=slate-2">
+  <link rel="stylesheet" href="../assets/styles.css?v=compact-nav-1">
+  <link rel="stylesheet" href="../assets/guides.css?v=clean-cards-1">
+  <link rel="stylesheet" href="../assets/downloads.css?v=clear-headings-1">
+  <script src="../visitor-language.js" defer></script>
+  <script src="../assets/downloads.js?v=brand-filenames-1" defer></script>
+  <script src="../assets/site-data.js?v=selected-copy-2" defer></script>
+  <script src="../assets/footer.js?v=shared-footer-1" defer></script>
+<style>
+.demo-controls{position:fixed;z-index:40;left:50%;top:88px;transform:translateX(-50%);display:flex;align-items:center;gap:6px;padding:6px;border:1px solid var(--line-strong);border-radius:999px;background:var(--bg);box-shadow:0 8px 24px #0003;white-space:nowrap;font:12px var(--font-ui)}
+.demo-controls span{padding:0 8px;color:var(--muted)}
+.demo-controls button{border:0;border-radius:999px;background:transparent;color:var(--muted);padding:9px 14px;cursor:pointer;font:inherit}
+.demo-controls button[aria-pressed=true]{background:var(--accent);color:var(--bg)}
+.demo-proposed .contact-popover{width:min(400px,calc(100vw - 32px));right:max(16px,var(--section-x));bottom:24px;transition:opacity 180ms ease,transform 180ms ease}
+.demo-proposed .contact-card{padding:0;border:1px solid var(--line-strong);border-radius:var(--radius-panel);background:var(--panel);box-shadow:none;backdrop-filter:none}
+.demo-proposed .contact-card-core{padding:24px;background:transparent;box-shadow:none;border-radius:inherit}
+.demo-proposed .contact-top{align-items:center;gap:16px}
+.demo-proposed .contact-kicker{display:none}
+.demo-proposed .contact-top h2{font-family:var(--font-ui);font-size:24px;line-height:1.3;font-weight:500;letter-spacing:-.025em}
+.demo-proposed .contact-close{width:44px;height:44px;flex:none;border:1px solid var(--line);background:var(--panel-strong);transition:background 180ms ease,border-color 180ms ease}
+.demo-proposed .contact-close:hover{transform:none;background:var(--bg-2);border-color:var(--line-strong)}
+.demo-proposed .contact-links{margin-top:24px;gap:0}
+.demo-proposed .contact-links a{grid-template-columns:minmax(0,1fr) 20px;column-gap:16px;row-gap:8px;padding:20px 0;border-radius:0;border-top:1px solid var(--line);background:transparent;box-shadow:none;transition:color 180ms ease}
+.demo-proposed .contact-links a:last-child{padding-bottom:4px}
+.demo-proposed .contact-links a:hover{transform:none;background:transparent}
+.demo-proposed .contact-links span{grid-column:1;color:var(--muted);font:400 12px/1.5 var(--font-ui)}
+.demo-proposed .contact-links strong{grid-column:1;color:var(--ink);font:400 17px/1.5 var(--font-ui);letter-spacing:0;overflow-wrap:anywhere}
+.demo-proposed .contact-links a:hover strong{text-decoration:underline;text-underline-offset:5px}
+.contact-link-arrow{display:none}
+.demo-proposed .contact-link-arrow{display:block;grid-column:2;grid-row:1/3;align-self:center;width:20px;height:20px;color:var(--ink-soft)}
+@media(max-width:520px){.demo-controls{top:76px}.demo-controls span{font-size:11px}.demo-proposed .contact-popover{right:16px;bottom:16px}.demo-proposed .contact-card-core{padding:20px}.demo-proposed .contact-top h2{font-size:22px}.demo-proposed .contact-links strong{font-size:16px}}
+@media(prefers-reduced-motion:reduce){.demo-proposed .contact-popover,.demo-proposed .contact-close,.demo-proposed .contact-links a{transition:none}}
+</style></head>
+<body class="guide-body download-body demo-proposed">
+  <a class="skip-link" href="#downloadMain" data-download-text data-zh="跳至下载内容" data-en="Skip to downloads">跳至下载内容</a>
+
+  <header class="site-shell" aria-label="主导航">
+    <a class="brand-mark" href="../index.html#hero" aria-label="RMinte 首页">
+      <img src="../assets/images/logo-white.svg" alt="RMinte">
+    </a>
+    <nav class="nav-island" aria-label="页面导航">
+      <a href="../gallery/index.html" data-download-text data-zh="图册" data-en="Gallery">图册</a>
+      <a href="../index.html#engine" data-download-text data-zh="产品" data-en="Product">产品</a>
+      <a href="../index.html#teardown" data-download-text data-zh="架构" data-en="Architecture">架构</a>
+      <a href="../guides/index.html" data-download-text data-zh="指南" data-en="Guides">指南</a>
+      <a class="active" href="#downloadMain" aria-current="page" data-download-text data-zh="下载" data-en="Downloads">下载</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="language-toggle" type="button" data-download-lang-toggle aria-label="切换到英文">EN</button>
+      <button class="menu-button" type="button" aria-label="打开菜单" aria-controls="mobileOverlay" aria-expanded="false" data-menu-toggle>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true">
+    <div class="mobile-overlay-panel">
+      <div class="mobile-overlay-top">
+        <span>RMinte</span>
+        <button class="ghost-button" type="button" data-menu-close data-download-text data-zh="关闭" data-en="Close">关闭</button>
+      </div>
+      <nav class="mobile-links" aria-label="移动导航">
+        <a href="../gallery/index.html" data-download-text data-zh="图册" data-en="Gallery">图册</a>
+        <a href="../index.html#engine" data-download-text data-zh="产品" data-en="Product">产品</a>
+        <a href="../index.html#teardown" data-download-text data-zh="架构" data-en="Architecture">架构</a>
+        <a href="../guides/index.html" data-download-text data-zh="指南" data-en="Guides">指南</a>
+        <a class="active" href="#downloadMain" aria-current="page" data-download-text data-zh="下载" data-en="Downloads">下载</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="download-main" id="downloadMain">
+    <section class="download-hero" aria-labelledby="downloadTitle">
+      <h1 id="downloadTitle" data-download-text data-zh="下载中心" data-en="Download center">下载中心</h1>
+      <p class="download-lead"><span data-download-text data-zh="获取" data-en="Get">获取</span> <span class="rm-mark">RM-01</span> <span data-download-text data-zh="产品文档、技术资料、固件与软件发布包，并直接使用在线工具。" data-en="product documentation, technical materials, firmware and software releases, plus browser-based online tools.">产品文档、技术资料、固件与软件发布包，并直接使用在线工具。</span></p>
+    </section>
+
+    <section class="download-overview" aria-label="下载资源分类">
+      <a class="download-overview-item" href="#documents">
+
+        <strong data-download-text data-zh="产品文档" data-en="Product documents">产品文档</strong>
+      </a>
+      <a class="download-overview-item" href="#materials">
+
+        <strong data-download-text data-zh="产品资料" data-en="Product materials">产品资料</strong>
+      </a>
+      <a class="download-overview-item" href="#firmware">
+
+        <strong data-download-text data-zh="固件与软件" data-en="Firmware &amp; software">固件与软件</strong>
+      </a>
+      <a class="download-overview-item" href="#online-tools">
+
+        <strong data-download-text data-zh="在线工具" data-en="Online tools">在线工具</strong>
+      </a>
+    </section>
+
+    <section class="download-section" id="documents" aria-labelledby="documentTitle">
+      <div class="download-section-head">
+        <div>
+
+          <h2 id="documentTitle" data-download-text data-zh="产品文档" data-en="Product documents">产品文档</h2>
+        </div>
+        <p data-download-text data-zh="面向产品使用、快速入门与现场交付的正式文档。" data-en="Official documents for product use, quick start, and field delivery.">面向产品使用、快速入门与现场交付的正式文档。</p>
+      </div>
+      <div class="download-list">
+        <article class="download-row">
+          <span class="download-filetype" aria-hidden="true">PDF</span>
+          <div class="download-copy">
+            <h3 data-download-text data-zh="TianshanOS Admin 日常使用指南（中英双语）" data-en="TianshanOS Admin User Guide (Bilingual)">TianshanOS Admin 日常使用指南（中英双语）</h3>
+            <p data-download-text data-zh="Admin 用户日常操作指南 · 中英双语 · 24 页 · PDF · 534 KB" data-en="Daily operations guide for Admin users · Chinese and English · 24 pages · PDF · 534 KB">Admin 用户日常操作指南 · 中英双语 · 24 页 · PDF · 534 KB</p>
+          </div>
+          <a class="download-action" href="../assets/downloads/tianshanos-admin-user-guide-bilingual.pdf" download="TianshanOS-Admin-User-Guide-Bilingual.pdf">
+            <span data-download-text data-zh="下载" data-en="Download">下载</span>
+            <span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></span>
+          </a>
+        </article>
+        <article class="download-row">
+          <span class="download-filetype" aria-hidden="true">PDF</span>
+          <div class="download-copy">
+            <h3 data-download-text data-zh="TianshanOS Root 运维指南（中英双语）" data-en="TianshanOS Root Operations Guide (Bilingual)">TianshanOS Root 运维指南（中英双语）</h3>
+            <p data-download-text data-zh="Root 用户运维操作指南 · 中英双语 · 40 页 · PDF · 634 KB" data-en="Operations guide for Root users · Chinese and English · 40 pages · PDF · 634 KB">Root 用户运维操作指南 · 中英双语 · 40 页 · PDF · 634 KB</p>
+          </div>
+          <a class="download-action" href="../assets/downloads/tianshanos-root-operations-guide-bilingual.pdf" download="TianshanOS-Root-Operations-Guide-Bilingual.pdf">
+            <span data-download-text data-zh="下载" data-en="Download">下载</span>
+            <span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></span>
+          </a>
+        </article>
+        <article class="download-row">
+          <span class="download-filetype" aria-hidden="true">PDF</span>
+          <div class="download-copy">
+            <h3 data-download-text data-zh="TianShanOS 安全页面完整操作指南（中文）" data-en="TianShanOS Complete Security Page Guide (Chinese)">TianShanOS 安全页面完整操作指南（中文）</h3>
+            <p data-download-text data-zh="安全页面操作、验证与恢复指南 · 中文 · 14 页 · PDF · 455 KB" data-en="Security Page operations, verification, and recovery · Chinese · 14 pages · PDF · 455 KB">安全页面操作、验证与恢复指南 · 中文 · 14 页 · PDF · 455 KB</p>
+          </div>
+          <a class="download-action" href="../assets/downloads/tianshanos-security-page-guide-zh.pdf" download="TianShanOS-Security-Page-Guide-Chinese.pdf">
+            <span data-download-text data-zh="下载" data-en="Download">下载</span>
+            <span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></span>
+          </a>
+        </article>
+        <article class="download-row">
+          <span class="download-filetype" aria-hidden="true">PDF</span>
+          <div class="download-copy">
+            <h3 data-download-text data-zh="TianShanOS 安全页面完整操作指南（英文）" data-en="TianShanOS Complete Security Page Guide (English)">TianShanOS 安全页面完整操作指南（英文）</h3>
+            <p data-download-text data-zh="安全页面操作、验证与恢复指南 · 英文 · 16 页 · PDF · 164 KB" data-en="Security Page operations, verification, and recovery · English · 16 pages · PDF · 164 KB">安全页面操作、验证与恢复指南 · 英文 · 16 页 · PDF · 164 KB</p>
+          </div>
+          <a class="download-action" href="../assets/downloads/tianshanos-security-page-guide-en.pdf" download="TianShanOS-Security-Page-Guide-English.pdf">
+            <span data-download-text data-zh="下载" data-en="Download">下载</span>
+            <span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></span>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="download-section download-section-material" id="materials" aria-labelledby="materialTitle">
+      <div class="download-section-head">
+        <div>
+
+          <h2 id="materialTitle" data-download-text data-zh="产品资料" data-en="Product materials">产品资料</h2>
+        </div>
+        <p data-download-text data-zh="用于技术评估、方案交流与项目引用的产品信息。" data-en="Product information for technical evaluation, solution planning, and project reference.">用于技术评估、方案交流与项目引用的产品信息。</p>
+      </div>
+      <div class="download-list">
+        <article class="download-row">
+          <span class="download-filetype" aria-hidden="true">PDF</span>
+          <div class="download-copy">
+            <h3 data-download-text data-zh="泛灵人工智能宣传彩页" data-en="RMinte AI product brochure">泛灵人工智能宣传彩页</h3>
+            <p data-download-text data-zh="2026 经销商印刷版 · 24 页 · PDF · 23.3 MB" data-en="2026 dealer print edition · 24 pages · PDF · 23.3 MB">2026 经销商印刷版 · 24 页 · PDF · 23.3 MB</p>
+          </div>
+          <a class="download-action" href="https://downloads.rminte.com/materials/rminte-brochure-2026-compressed.pdf" download="泛灵人工智能宣传手册-2026.pdf">
+            <span data-download-text data-zh="下载" data-en="Download">下载</span>
+            <span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></span>
+          </a>
+        </article>
+        <article class="download-row">
+          <span class="download-filetype" aria-hidden="true">AI</span>
+          <div class="download-copy">
+            <h3 data-download-text data-zh="RMinte Logo 与字标" data-en="RMinte logo &amp; wordmark"><span class="rm-mark">RMinte</span> Logo 与字标</h3>
+            <p data-download-text data-zh="经销商印刷用 · Illustrator 可编辑文件 · 75 KB" data-en="For dealer printing · Editable Illustrator file · 75 KB">经销商印刷用 · Illustrator 可编辑文件 · 75 KB</p>
+          </div>
+          <a class="download-action" href="../assets/downloads/rminte-logo-with-wordmark-dealer-print.ai" download="RMinte-Logo与字标-经销商印刷版.ai">
+            <span data-download-text data-zh="下载" data-en="Download">下载</span>
+            <span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></span>
+          </a>
+        </article>
+        <article class="download-row">
+          <span class="download-filetype" aria-hidden="true">JPG</span>
+          <div class="download-copy">
+            <h3 data-download-text data-zh="RM-01 产品结构爆炸图" data-en="RM-01 product exploded view">RM-01 产品结构爆炸图</h3>
+            <p data-download-text data-zh="新一代生产级 AI 交付基座 · 4724 × 4606 · JPG · 21.7 MB" data-en="Next-generation production AI delivery platform · 4724 × 4606 · JPG · 21.7 MB">新一代生产级 AI 交付基座 · 4724 × 4606 · JPG · 21.7 MB</p>
+          </div>
+          <a class="download-action" href="../assets/downloads/rm01-yunqi-product-structure.jpg" download="RM-01-云栖大会产品结构图.jpg">
+            <span data-download-text data-zh="下载" data-en="Download">下载</span>
+            <span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></span>
+          </a>
+        </article>
+        <article class="download-row">
+          <span class="download-filetype" aria-hidden="true">MOV</span>
+          <div class="download-copy">
+            <h3 data-download-text data-zh="RM-01 场景示例片" data-en="RM-01 scenario demo film">RM-01 场景示例片</h3>
+            <p data-download-text data-zh="产品宣传视频 · QuickTime MOV · 40.8 MB" data-en="Product campaign film · QuickTime MOV · 40.8 MB">产品宣传视频 · QuickTime MOV · 40.8 MB</p>
+          </div>
+          <a class="download-action" href="https://downloads.rminte.com/media/rm-tvc-1.mov" download="RM-TVC-1.mov">
+            <span data-download-text data-zh="下载" data-en="Download">下载</span>
+            <span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></span>
+          </a>
+        </article>
+        <article class="download-row">
+          <span class="download-filetype" aria-hidden="true">MOV</span>
+          <div class="download-copy">
+            <h3 data-download-text data-zh="RM-01 宣传片" data-en="RM-01 promotional film">RM-01 宣传片</h3>
+            <p data-download-text data-zh="视频平台高清版本 · QuickTime MOV · 48.9 MB" data-en="HD edition for video platforms · QuickTime MOV · 48.9 MB">视频平台高清版本 · QuickTime MOV · 48.9 MB</p>
+          </div>
+          <a class="download-action" href="https://downloads.rminte.com/media/platform-hd.mov" download="RMinte-Platform-HD.mov">
+            <span data-download-text data-zh="下载" data-en="Download">下载</span>
+            <span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></span>
+          </a>
+        </article>
+        <article class="download-row">
+          <span class="download-filetype" aria-hidden="true">MP4</span>
+          <div class="download-copy">
+            <h3 data-download-text data-zh="RM-01 拆解片版本 A" data-en="RM-01 teardown film · Version A">RM-01 拆解片版本 A</h3>
+            <p data-download-text data-zh="产品主题视频 · MP4 · 260.3 MB" data-en="Product feature film · MP4 · 260.3 MB">产品主题视频 · MP4 · 260.3 MB</p>
+          </div>
+          <a class="download-action" href="https://downloads.rminte.com/media/production-ai-delivery-base.mp4" download="Production-AI-Delivery-Base.mp4">
+            <span data-download-text data-zh="下载" data-en="Download">下载</span>
+            <span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></span>
+          </a>
+        </article>
+        <article class="download-row">
+          <span class="download-filetype" aria-hidden="true">MP4</span>
+          <div class="download-copy">
+            <h3 data-download-text data-zh="RM-01 拆解片版本 B" data-en="RM-01 teardown film · Version B">RM-01 拆解片版本 B</h3>
+            <p data-download-text data-zh="云栖大会现场宣传视频 · MP4 · 63.3 MB" data-en="Yunqi Conference campaign film · MP4 · 63.3 MB">云栖大会现场宣传视频 · MP4 · 63.3 MB</p>
+          </div>
+          <a class="download-action" href="https://downloads.rminte.com/media/yunqi-conference.mp4" download="RMinte-Yunqi-Conference.mp4">
+            <span data-download-text data-zh="下载" data-en="Download">下载</span>
+            <span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></span>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="download-section download-section-firmware" id="firmware" aria-labelledby="firmwareTitle">
+      <div class="download-section-head">
+        <div>
+
+          <h2 id="firmwareTitle" data-download-text data-zh="固件与软件" data-en="Firmware &amp; software">固件与软件</h2>
+        </div>
+        <p><span data-download-text data-zh="用于 " data-en="Verified release packages for ">用于 </span><span class="rm-mark">RM-01</span><span data-download-text data-zh=" 设备管理、系统更新与本地部署的验证发布包。" data-en=" device management, system updates, and local deployment."> 设备管理、系统更新与本地部署的验证发布包。</span></p>
+      </div>
+      <div class="download-list">
+        <article class="download-release-row">
+          <div>
+
+            <h3 data-download-text data-zh="TianshanOS 固件" data-en="TianshanOS firmware">TianshanOS 固件</h3>
+            <p data-download-text data-zh="v0.5.1 · 刷写固件时必须同时准备 TianShanOS.bin 和 www.bin。" data-en="v0.5.1 · Both TianShanOS.bin and www.bin are required when flashing the firmware.">v0.5.1 · 刷写固件时必须同时准备 TianShanOS.bin 和 www.bin。</p>
+          </div>
+          <a class="download-release-link" href="https://github.com/RMinte-AI/TianshanOS/releases/tag/v0.5.1" target="_blank" rel="noopener noreferrer">
+            <span data-download-text data-zh="查看发布说明" data-en="Release notes">查看发布说明</span>
+            <span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+          </a>
+        </article>
+        <article class="download-row">
+          <span class="download-filetype" aria-hidden="true">BIN</span>
+          <div class="download-copy">
+            <h3>TianShanOS.bin</h3>
+            <p data-download-text data-zh="TianshanOS 主固件镜像 · v0.5.1 · 2.1 MB · 刷机必需" data-en="TianshanOS main firmware image · v0.5.1 · 2.1 MB · Required for flashing">TianshanOS 主固件镜像 · v0.5.1 · 2.1 MB · 刷机必需</p>
+          </div>
+          <a class="download-action" href="https://downloads.rminte.com/firmware/tianshanos/v0.5.1/TianShanOS.bin">
+            <span data-download-text data-zh="下载" data-en="Download">下载</span>
+            <span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></span>
+          </a>
+        </article>
+        <article class="download-row">
+          <span class="download-filetype" aria-hidden="true">BIN</span>
+          <div class="download-copy">
+            <h3>www.bin</h3>
+            <p data-download-text data-zh="TianshanOS WebUI 文件系统镜像 · v0.5.1 · 3.0 MB · 刷机必需" data-en="TianshanOS WebUI filesystem image · v0.5.1 · 3.0 MB · Required for flashing">TianshanOS WebUI 文件系统镜像 · v0.5.1 · 3.0 MB · 刷机必需</p>
+          </div>
+          <a class="download-action" href="https://downloads.rminte.com/firmware/tianshanos/v0.5.1/www.bin">
+            <span data-download-text data-zh="下载" data-en="Download">下载</span>
+            <span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></span>
+          </a>
+        </article>
+        <article class="download-release-row">
+          <div>
+
+            <h3>RM-01 Internet Connector</h3>
+            <p data-download-text data-zh="RM-01 联网工具 · v1.1.5 · 选择与你的操作系统和使用方式匹配的版本。" data-en="RM-01 network connectivity tool · v1.1.5 · Choose the build that matches your operating system and workflow.">RM-01 联网工具 · v1.1.5 · 选择与你的操作系统和使用方式匹配的版本。</p>
+          </div>
+          <a class="download-release-link" href="https://github.com/RMinte-AI/RM-01-Internet-Connector/releases/tag/v1.1.5" target="_blank" rel="noopener noreferrer">
+            <span data-download-text data-zh="查看发布说明" data-en="Release notes">查看发布说明</span>
+            <span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+          </a>
+        </article>
+        <article class="download-row">
+          <span class="download-filetype" aria-hidden="true">APP</span>
+          <div class="download-copy">
+            <h3>RM-01 Internet Connector · Linux</h3>
+            <p data-download-text data-zh="Linux x86_64 · AppImage · v1.1.5 · 47.1 MB" data-en="Linux x86_64 · AppImage · v1.1.5 · 47.1 MB">Linux x86_64 · AppImage · v1.1.5 · 47.1 MB</p>
+          </div>
+          <a class="download-action" href="https://downloads.rminte.com/software/rm-01-internet-connector/v1.1.5/RM-01-Internet-Connector-Linux-v1.1.5-x86_64.AppImage">
+            <span data-download-text data-zh="下载" data-en="Download">下载</span>
+            <span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></span>
+          </a>
+        </article>
+        <article class="download-row">
+          <span class="download-filetype" aria-hidden="true">ZIP</span>
+          <div class="download-copy">
+            <h3>RM-01 Internet Connector · macOS</h3>
+            <p data-download-text data-zh="macOS 应用包 · ZIP 压缩包 · v1.1.5 · 3.9 MB" data-en="macOS app bundle · ZIP archive · v1.1.5 · 3.9 MB">macOS 应用包 · ZIP 压缩包 · v1.1.5 · 3.9 MB</p>
+          </div>
+          <a class="download-action" href="https://downloads.rminte.com/software/rm-01-internet-connector/v1.1.5/RM-01-Internet-Connector-macOS-v1.1.5.app.zip">
+            <span data-download-text data-zh="下载" data-en="Download">下载</span>
+            <span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></span>
+          </a>
+        </article>
+        <article class="download-row">
+          <span class="download-filetype" aria-hidden="true">CLI</span>
+          <div class="download-copy">
+            <h3>RM-01 Internet Connector · macOS CLI</h3>
+            <p data-download-text data-zh="macOS Apple 芯片命令行工具 · arm64 · v1.1.5 · 7.3 MB" data-en="macOS command-line tool for Apple silicon · arm64 · v1.1.5 · 7.3 MB">macOS Apple 芯片命令行工具 · arm64 · v1.1.5 · 7.3 MB</p>
+          </div>
+          <a class="download-action" href="https://downloads.rminte.com/software/rm-01-internet-connector/v1.1.5/rm01-cli-macOS-arm64-v1.1.5">
+            <span data-download-text data-zh="下载" data-en="Download">下载</span>
+            <span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></span>
+          </a>
+        </article>
+        <article class="download-row">
+          <span class="download-filetype" aria-hidden="true">ZIP</span>
+          <div class="download-copy">
+            <h3>RM-01 Internet Connector · Windows</h3>
+            <p data-download-text data-zh="Windows 压缩包 · ZIP · v1.1.5 · 69.7 MB" data-en="Windows package · ZIP archive · v1.1.5 · 69.7 MB">Windows 压缩包 · ZIP · v1.1.5 · 69.7 MB</p>
+          </div>
+          <a class="download-action" href="https://downloads.rminte.com/software/rm-01-internet-connector/v1.1.5/RM-01-Internet-Connector-Windows-v1.1.5.zip">
+            <span data-download-text data-zh="下载" data-en="Download">下载</span>
+            <span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></span>
+          </a>
+        </article>
+      </div>
+      <p class="download-note">
+        <strong data-download-text data-zh="发布原则" data-en="RELEASE POLICY">发布原则</strong>
+        <span data-download-text data-zh="固件与软件只会在完成签名、适配性验证和完整性校验后开放下载，请根据发布说明选择与设备匹配的版本。" data-en="Firmware and software downloads open only after signing, compatibility validation, and integrity checks. Select the release that matches your device according to its release notes.">固件与软件只会在完成签名、适配性验证和完整性校验后开放下载，请根据发布说明选择与设备匹配的版本。</span>
+      </p>
+    </section>
+
+    <section class="download-section download-section-tools" id="online-tools" aria-labelledby="onlineToolsTitle">
+      <div class="download-section-head">
+        <div>
+
+          <h2 id="onlineToolsTitle" data-download-text data-zh="在线工具" data-en="Online tools">在线工具</h2>
+        </div>
+        <p><span data-download-text data-zh="无需下载安装，直接在浏览器中使用的 " data-en="Browser-based companion tools for ">无需下载安装，直接在浏览器中使用的 </span><span class="rm-mark">RM-01</span><span data-download-text data-zh=" 配套工具。" data-en=", available without installation."> 配套工具。</span></p>
+      </div>
+      <div class="download-list">
+        <article class="download-row">
+          <span class="download-filetype" aria-hidden="true">WEB</span>
+          <div class="download-copy">
+            <h3 data-download-text data-zh="RM-01 灯板图形转换工具" data-en="RM-01 LED matrix graphics converter">RM-01 灯板图形转换工具</h3>
+            <p data-download-text data-zh="Emoji2Pixel · 将 Emoji 或图片转换为适配 RM-01 灯板的像素图与动画。" data-en="Emoji2Pixel · Convert emojis or images into pixel art and animations for the RM-01 LED matrix.">Emoji2Pixel · 将 Emoji 或图片转换为适配 RM-01 灯板的像素图与动画。</p>
+          </div>
+          <a class="download-action" href="../tools/emoji2pixel/" target="_blank" rel="noopener noreferrer">
+            <span data-download-text data-zh="打开工具" data-en="Open tool">打开工具</span>
+            <span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+          </a>
+        </article>
+        <article class="download-row">
+          <span class="download-filetype" aria-hidden="true">OTA</span>
+          <div class="download-copy">
+            <h3 data-download-text data-zh="TianShanOS OTA 更新服务" data-en="TianShanOS OTA update service">TianShanOS OTA 更新服务</h3>
+            <p data-download-text data-zh="为 RM-01 本机 OTA 页面提供 TianShanOS 正式固件与 WebUI 更新文件。" data-en="Provides official TianShanOS firmware and WebUI updates to the OTA page hosted on your RM-01.">为 RM-01 本机 OTA 页面提供 TianShanOS 正式固件与 WebUI 更新文件。</p>
+          </div>
+          <a class="download-action" href="https://ota.rminte.com/" target="_blank" rel="noopener noreferrer">
+            <span data-download-text data-zh="打开服务" data-en="Open service">打开服务</span>
+            <span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+          </a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="../assets/images/logo-white.svg" alt="RMinte">
+        <div>
+        <p data-footer-text="footer">泛灵（成都）人工智能科技有限公司</p>
+        <span data-footer-text="copyright">© 2026 <span class="rm-mark">RMinte</span> ( Chengdu ) Artificial Intelligence Technology Co., Ltd. · RM-01 Protable AI Supercomputer</span>
+        </div>
+      </div>
+      <div class="footer-actions">
+        <button class="footer-contact" type="button" aria-expanded="false" aria-controls="contactPopover" data-contact-toggle>
+          <span data-footer-text="contactButton">联系我们</span>
+        </button>
+        <a class="footer-github" href="https://github.com/RMinte-AI" target="_blank" rel="noreferrer" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.38-3.37-1.38-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.3.1-2.72 0 0 .84-.27 2.75 1.05A9.35 9.35 0 0 1 12 6.94c.85 0 1.7.12 2.5.34 1.9-1.32 2.74-1.05 2.74-1.05.55 1.42.2 2.46.1 2.72.64.72 1.03 1.64 1.03 2.76 0 3.95-2.34 4.82-4.57 5.07.36.32.68.94.68 1.9 0 1.38-.01 2.48-.01 2.82 0 .28.18.6.69.5A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <aside class="contact-popover" id="contactPopover" role="dialog" aria-labelledby="contactTitle" aria-hidden="true" data-contact-popover>
+    <div class="contact-card">
+      <div class="contact-card-core">
+        <div class="contact-top">
+          <div>
+            <p class="contact-kicker" data-footer-text="contactKicker">CONTACT</p>
+            <h2 id="contactTitle" data-footer-text="contactTitle">联系我们</h2>
+          </div>
+          <button class="contact-close" type="button" aria-label="关闭" data-contact-close><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:jiezhu@rminte.com">
+            <span data-footer-text="salesContact">销售联系</span>
+            <strong>jiezhu@rminte.com</strong><svg class="contact-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+          <a href="mailto:support@rminte.com">
+            <span data-footer-text="supportContact">支持联系</span>
+            <strong>support@rminte.com</strong><svg class="contact-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </aside>
+<div class="demo-controls" aria-label="弹层设计对比"><span>联系弹层示范</span><button type="button" data-demo="current" aria-pressed="false">原样</button><button type="button" data-demo="proposed" aria-pressed="true">示范</button></div>
+<script>
+function showContact(){const t=document.querySelector('[data-contact-toggle]');if(t.getAttribute('aria-expanded')!=='true')t.click();}
+document.querySelectorAll('[data-demo]').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();document.body.classList.toggle('demo-proposed',b.dataset.demo==='proposed');document.querySelectorAll('[data-demo]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));showContact();}));
+window.addEventListener('load',()=>{scrollTo(0,document.documentElement.scrollHeight);showContact();});
+</script></body>
+</html>

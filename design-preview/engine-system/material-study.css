@@ -1,0 +1,62 @@
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.7 var(--font-ui);-webkit-font-smoothing:antialiased;color-scheme:dark}
+header{max-width:1120px;margin:20px auto 0;padding:0 32px;display:flex;align-items:center;justify-content:space-between}
+header img{display:block;height:auto}
+button{font:inherit;border:1px solid var(--line);border-radius:var(--radius-button);background:#15181a;color:var(--muted);cursor:pointer;min-height:44px;padding:0 20px;transition:color 200ms,background 200ms,border-color 200ms}
+button:hover{color:var(--ink);border-color:var(--line-strong)}
+button:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+#language{min-width:56px;padding:0 14px;font-size:11px}
+main{max-width:960px;margin:22px auto 28px;padding:0 32px}
+.eyebrow{color:var(--dim);font-size:11px;letter-spacing:.09em;margin:0 0 8px}
+h1{font-size:clamp(28px,3vw,36px);font-weight:500;line-height:1.2;letter-spacing:-.035em;margin:0;text-wrap:balance}
+.lead{color:var(--muted);margin:10px 0 0;font-size:14px}
+figure{margin:10px 0 0}
+.material-scene{position:relative;width:600px;max-width:100%;height:350px;margin:0 auto}
+.connections{position:absolute;inset:0;width:100%;height:100%;overflow:visible;fill:none;stroke-width:.8;stroke-linecap:butt;stroke-linejoin:round}
+#storage-wires{stroke:#78838b}
+#control-wires{stroke:url(#entry)}
+.module{position:absolute;border-radius:6px;background:linear-gradient(145deg,#282e33,#101518 76%);isolation:isolate}
+.compute{left:48px;top:20px;width:168px;height:160px}
+.storage{left:360px;top:46px;width:112px;height:76px}
+.application{left:102px;top:202px;width:144px;height:132px}
+.controller{left:392px;top:224px;width:128px;height:106px}
+.interior{position:absolute;inset:18px 18px 57px;display:flex;gap:7px;opacity:.45;transition:opacity 450ms ease}
+.interior i{display:block;flex:1;background:linear-gradient(140deg,#9ba6ae,#414d56);border:1px solid #b4c0c64d;border-radius:1px}
+.compute .interior i:first-child{flex:2.1}
+.compute .interior i:last-child{background:linear-gradient(140deg,#68767f,#313d45)}
+.glass{position:absolute;inset:0;border:1px solid transparent;border-radius:inherit;background:linear-gradient(132deg,#b7c4cf45,#62727f1a 44%,#303a433d 80%) padding-box;border-color:#87949e69;border-top-color:#c5d0d891;border-left-color:#a8b7c37a;backdrop-filter:blur(2.5px);-webkit-backdrop-filter:blur(2.5px);box-shadow:inset 0 1px 0 #e7f0f51a,inset 1px 0 0 #e7f0f50a,0 2px 0 #0d1012,0 3px 0 #73808a32;transition:backdrop-filter 450ms ease,-webkit-backdrop-filter 450ms ease,border-color 450ms ease}
+.inscription{position:absolute;left:18px;bottom:17px;font-weight:500;font-size:21px;letter-spacing:-.025em;line-height:1;color:#cdd6dc;text-shadow:0 1px 0 #0008}
+.storage .interior{inset:12px 12px 35px;gap:5px}
+.storage .inscription{left:12px;bottom:12px;font-size:13px;letter-spacing:0}
+.controller .interior{inset:15px 15px 46px;gap:6px}
+.controller .interior i:first-child{flex:2.2}
+.controller .inscription{left:15px;bottom:15px;font-size:16px}
+.glass::after{content:'';position:absolute;inset:-1px;border:1px solid #d0dce599;border-radius:inherit;background:linear-gradient(140deg,#d8e3eb19,transparent 68%);opacity:0;transition:opacity 450ms ease}
+.material-scene[data-state=active] .glass::after{opacity:1}
+.material-scene[data-state=active] .interior{opacity:.9}
+.material-scene[data-state=active] .glass{backdrop-filter:blur(0px);-webkit-backdrop-filter:blur(0px)}
+.material-scene[data-state=active] .soc-image{opacity:1}
+figcaption{font-size:12px;color:var(--dim);text-align:center;margin:6px auto 0;max-width:640px;line-height:1.8}
+.study-controls{display:flex;justify-content:center;gap:8px;margin-top:12px}
+.study-controls button,.version-controls button{font-size:12px;padding:0 18px}
+.study-controls button[aria-pressed=true],.version-controls button[aria-pressed=true]{color:var(--ink);background:#272c30;border-color:#84919a66}
+.version-controls{display:flex;gap:8px;margin-top:16px}
+.soc-image{display:none;position:absolute;inset:12px 16px 43px;opacity:.72;transition:opacity 450ms ease;overflow:hidden}
+.soc-image img{display:block;width:100%;height:100%;object-fit:contain;transform:scale(1.22)}
+/* The generated gold assembly has a matte background; frame its rectangular body in CSS. */
+.gold-assembly-crop{position:absolute;height:100%;aspect-ratio:810 / 874;left:50%;transform:translateX(-50%);overflow:hidden;border-radius:2px}
+.soc-image .gold-assembly-crop img{position:absolute;left:-27.16%;top:-18.76%;width:154.81%;height:auto;max-width:none;transform:none;object-fit:initial}
+.application .interior{inset:16px 16px 49px}
+.application .inscription{left:16px;bottom:15px;font-size:20px}
+.application .soc-image{inset:10px 14px 37px}
+.material-scene[data-version=silicon] .compute .interior,.material-scene[data-version=silicon] .application .interior{display:none}
+.material-scene[data-version=silicon] .soc-image{display:block}
+@media(max-width:650px){
+  header{margin-top:20px;padding:0 24px}main{margin-top:38px;padding:0 24px}.lead{font-size:13px;line-height:1.85;max-width:29em}
+  .material-scene{width:340px;height:360px;margin-top:20px}
+  .compute{left:0;top:30px;width:144px;height:140px}.storage{left:auto;right:0;top:51px;width:96px;height:70px}.application{left:0;top:214px;width:126px;height:132px}.controller{left:auto;right:0;top:238px;width:126px;height:106px}
+  .compute .interior{inset:16px 16px 52px}.compute .inscription{left:16px;bottom:16px;font-size:20px}
+  .version-controls button{font-size:11px;padding:0 12px;white-space:nowrap}
+  .storage .inscription{font-size:12px}figcaption{text-align:left;font-size:12px}.study-controls{margin-top:20px}
+}
+@media(prefers-reduced-motion:reduce){button,.interior,.glass,.soc-image,.glass::after{transition:none}}

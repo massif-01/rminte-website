@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="product-theme">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RM-01 便携 AI 超算，面向本地部署、低功耗推理和生产级 AI 应用交付。">
+  <meta property="og:title" content="泛灵人工智能 - RM-01 便携 AI 超算">
+  <meta property="og:description" content="生产级本地 AI 交付基座。插卡即用，全栈交付。">
+  <meta property="og:image" content="../../website/assets/images/img4.png">
+  <title>硬件分工示例 · RMinte - RM-01 - Portable AI Supercomputer - 泛灵人工智能</title>
+  <link rel="icon" type="image/png" sizes="512x512" href="../../website/assets/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#000000">
+  <script>
+    (function () {
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      if (window.location.hash === '#product') {
+        history.replaceState(null, '', window.location.pathname + window.location.search + '#engine');
+      }
+      const sectionLinks = new Set(['#hero', '#engine', '#tianshanos', '#hardware', '#teardown', '#thermal', '#sapphire', '#glass-touch', '#craft']);
+      if (window.location.hash && !sectionLinks.has(window.location.hash)) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="../../website/assets/brand.css?v=product-black-1">
+  <link rel="stylesheet" href="../../website/assets/styles.css?v=solid-header-1">
+  <script src="../../website/assets/site-data.js?v=copyright-1" defer></script>
+  <script src="page-main.js" defer></script>
+  <script src="../../website/assets/footer.js?v=shared-footer-1" defer></script>
+  <link rel="stylesheet" href="review-base.css">
+  <link rel="stylesheet" href="review.css">
+  <script src="review-graph.js" defer></script>
+  <script src="review-interactions.js" defer></script>
+  <link rel="stylesheet" href="hardware-study.css">
+  <script src="hardware-study.js" defer></script>
+</head>
+<body class="home-body visual-preview material-review hardware-study" data-material="abstract">
+  <a class="skip-link" href="#main">跳至主要内容</a>
+
+  <header class="site-shell" aria-label="主导航">
+    <a class="brand-mark" href="#hero" aria-label="RMinte">
+      <img src="../../website/assets/images/logo-white.svg" alt="RMinte">
+    </a>
+    <nav class="nav-island" id="desktopNav" aria-label="页面导航"></nav>
+    <div class="nav-actions">
+      <button class="language-toggle" type="button" data-lang-toggle>EN</button>
+      <button class="menu-button" type="button" aria-label="打开菜单" aria-controls="mobileOverlay" aria-expanded="false" data-menu-toggle>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true">
+    <div class="mobile-overlay-panel">
+      <div class="mobile-overlay-top">
+        <img class="mobile-menu-logo" src="../../website/assets/images/logo-white.svg" alt="RMinte">
+        <button class="ghost-button" type="button" data-menu-close>关闭</button>
+      </div>
+      <nav class="mobile-links" id="mobileNav" aria-label="移动导航"></nav>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="hero-section" id="hero" aria-labelledby="heroTitle">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+        <source src="../../website/assets/images/hero-bg.mp4" type="video/mp4">
+      </video>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="section-inner hero-grid reveal">
+        <div class="hero-copy">
+          <p class="chapter-label hero-eyebrow"><span data-ui="chapter0">为模型推理及应用原生设计</span></p>
+          <h1 id="heroTitle" data-hero-title><span class="hero-title-line"><span class="rm-mark">RM-01</span></span><span class="hero-title-line">让 AI 在本地，</span><span class="hero-title-line">为你工作</span></h1>
+          <p class="hero-lead" data-ui="heroLead">RM-01 将模型推理与应用运行带到你的业务现场。硬件架构、推理引擎与系统共同支撑 Agent，让它从理解需求走向执行任务。</p>
+          <div class="hero-actions">
+            <a class="cta-button" href="#teardown">
+              <span data-ui="explore">继续探索</span>
+              <svg class="cta-dot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>
+            </a>
+          </div>
+          <div class="hero-metrics-row" id="heroMetrics" aria-label="RM-01 核心指标"></div>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#engine">
+        <span data-ui="scroll">继续向下</span>
+        <span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></span>
+      </a>
+    </section>
+
+    <section class="section engine-visual-section" id="engine" aria-labelledby="engineTitle">
+      <div class="section-inner">
+        <div class="section-heading visual-heading">
+          <p class="chapter-label" data-ui="chapter1">01 / 推理引擎</p>
+          <h2 id="engineTitle" data-ui="engineTitle" data-title-size="large">让有限的算力，承载更多任务</h2>
+          <p data-ui="engineLead">自研推理引擎提高算力与显存利用率，减少资源消耗。更大模型、更长上下文与更多并发任务，由此获得运行空间。</p>
+        </div>
+        <div class="engine-experience">
+          <figure class="engine-art" id="engineArt" aria-label="推理软件与 CUDA 计算平台的分层示意">
+            <div class="software-stack" aria-hidden="true">
+              <div class="stack-plane stack-base"><span>NVIDIA CUDA</span><div class="compute-grid"></div></div>
+              <div class="stack-plane stack-kernel"><span id="kernelLabel"><span class="rm-mark">RMinte</span> Inference</span><div class="memory-grid"></div></div>
+              <div class="stack-plane stack-ecosystem"><span id="ecosystemLabel">vLLM · Transformers</span><div class="model-lines"><i></i><i></i><i></i></div></div>
+            </div>
+          </figure>
+          <div class="engine-reading" id="engineReading"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section system-visual-section" id="tianshanos" aria-labelledby="productTitle">
+      <div class="section-inner system-experience">
+        <div class="section-heading visual-heading system-heading">
+          <p class="chapter-label" data-ui="chapter2">02 / 整机协同</p>
+          <h2 id="productTitle" data-ui="productTitle" data-title-size="large">TianshanOS 让整机协同有序</h2>
+          <p data-ui="productLead">一台设备的运行，离不开内部各个部分的配合。TianshanOS 管理 RM-01 的内部设备与系统行为，让推理、应用与存储共同工作。无需专门建设供电、网络与机房环境，RM-01 就能走进业务现场。</p>
+        </div>
+        <figure class="network-graph" id="networkGraph" aria-label="两台计算机分别经以太网控制器和 PHY 接入板载交换机，ESP32-S3 经 W5500 接入并拥有配置存储；两台计算机各有独立存储。"></figure>
+        <div class="system-reading" id="systemReading"></div>
+      </div>
+    </section>
+
+    <section class="section hardware-section" id="hardware" aria-labelledby="hardwareTitle">
+      <div class="section-inner split-copy">
+        <div class="section-heading reveal">
+          <p class="chapter-label" data-ui="chapter3">03 / 硬件架构</p>
+          <h2 id="hardwareTitle" data-ui="hardwareTitle" data-title-size="large">各司其职，整机交付</h2>
+        </div>
+        <p class="long-copy reveal" data-ui="hardwareLead">应用有自己的运行空间，推理有专属的计算资源。RM-01 将模型、应用与运行环境整合进一台设备，让各个模组的协作，服务于你的业务。</p>
+      </div>
+      <div class="section-inner hardware-composition" id="moduleBento"></div>
+    </section>
+
+    <section class="teardown-section" id="teardown" aria-labelledby="filmTitle">
+      <div class="teardown-stage">
+        <div class="teardown-layout section-inner">
+          <div class="teardown-copy reveal">
+            <p class="chapter-label" data-ui="chapter4">04 / 深入内部</p>
+            <h2 id="filmTitle" data-ui="filmTitle" data-title-size="large">机身展开，协作可见</h2>
+            <p data-ui="filmLead">紧凑机身之内，推理、应用、互联与散热各有其位。随着结构展开，模组之间的连接逐一显现，一套本地 AI 系统的构成也随之清晰。</p>
+          </div>
+          <div class="teardown-film reveal" data-reveal-delay="120" data-teardown-sequence>
+            <div class="teardown-film-core">
+              <canvas
+                class="teardown-canvas"
+                width="1440"
+                height="810"
+                role="img"
+                aria-label="RM-01 硬件结构滚动帧动画"
+                data-frame-prefix="../../website/assets/teardown-frames-v2/frame-"
+                data-frame-count="120"
+                data-frame-pad="3"
+                data-frame-ext=".jpg"></canvas>
+              <img class="teardown-fallback" src="../../website/assets/teardown-frames-v2/frame-001.jpg" alt="RM-01 硬件结构动态分解">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="thermal-section" id="thermal" aria-labelledby="thermalTitle">
+      <video class="thermal-bg-video" autoplay muted loop playsinline preload="metadata" poster="../../website/assets/images/thermal-airflow-poster.jpg" aria-hidden="true">
+        <source src="../../website/assets/images/thermal-airflow-loop-hd.mp4?v=3" type="video/mp4">
+      </video>
+      <div class="thermal-shade" aria-hidden="true"></div>
+      <div class="section-inner thermal-stage">
+        <div class="thermal-copy reveal">
+          <p class="chapter-label" data-ui="chapter5">05 / 持续运行</p>
+          <h2 id="thermalTitle" data-ui="thermalTitle"><span class="rm-mark">EricLake</span><br>封闭式热管理系统</h2>
+          <p data-ui="thermalLead">推理持续，散热也持续。特制叶片、定制电机与 Z 型独立风道共同导出热量，支撑高并发任务。风道设计经过数次计算流体力学仿真优化；封闭式热管理结构大幅减少灰尘进入核心器件区域，照顾高负载下的运行，也照顾日复一日的使用。</p>
+        </div>
+        <figure class="thermal-detail">
+          <div class="thermal-detail-photo">
+            <img src="../../website/assets/images/thermal-fan-blade.png" alt="EricLake 定制风扇叶片微距特写" width="1254" height="1254" loading="lazy" decoding="async">
+          </div>
+          <figcaption><strong>0.13 <small>mm</small></strong><span data-ui="thermalDetailCaption">超高速射出成型叶片承担持续散热</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="sapphire-section" id="sapphire" aria-labelledby="sapphireTitle">
+      <img class="sapphire-bg-image" src="../../website/assets/gallery/DSC00120.jpg" alt="" width="2000" height="1333" loading="lazy" decoding="async" aria-hidden="true">
+      <img class="sapphire-light-image" src="../../website/assets/gallery/DSC00120.jpg" alt="" width="2000" height="1333" loading="lazy" decoding="async" aria-hidden="true">
+      <div class="sapphire-shade" aria-hidden="true"></div>
+      <div class="section-inner sapphire-stage">
+        <div class="sapphire-copy reveal">
+          <p class="chapter-label" data-ui="chapter6">06 / 材料与光</p>
+          <h2 id="sapphireTitle" data-ui="sapphireTitle">蓝宝石亮起，
+智能开始工作</h2>
+          <p data-ui="sapphireLead">光掠过切面，蓝宝石的轮廓从深色机身上浮现。外覆合工艺让蓝宝石贴合机身表面，保留多重锐角切面。高硬度让成型与镜面抛光更为艰难，良品率也随之降低。56 小时的雕琢与抛光，凝结在这一刻的光泽里。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass-touch-section" id="glass-touch" aria-labelledby="glassTouchTitle">
+      <img class="glass-touch-image" src="../../website/assets/gallery/DSC00043.jpg" alt="RM-01 中央绒光肤感玻璃面板特写" width="2000" height="3000" loading="lazy" decoding="async">
+      <div class="glass-touch-shade" aria-hidden="true"></div>
+      <div class="section-inner glass-touch-stage">
+        <div class="glass-touch-copy reveal">
+          <p class="chapter-label" data-ui="chapter7">07 / 触感与表面</p>
+          <h2 id="glassTouchTitle" data-ui="glassTouchTitle" data-title-size="large">绒光玻璃，温润触感</h2>
+          <p data-ui="glassTouchLead">整面绒光肤感玻璃柔化光线，呈现温润触感。目光与指尖，都能感知 RM-01 的表面质感。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section agent-terminal-section" id="agent-terminal" aria-labelledby="agentTerminalTitle">
+      <figure class="agent-terminal-media">
+        <img class="agent-terminal-image" src="../../website/assets/images/ports-rec709-gamma24-sdr.jpg" alt="RM-01 机身侧后方的数据连接与电源输入接口" width="3000" height="2000" loading="lazy" decoding="async">
+      </figure>
+      <div class="section-inner agent-terminal-grid">
+        <div class="agent-terminal-copy reveal">
+          <p class="chapter-label" data-ui="chapter8">08 / 连接与访问</p>
+          <h2 id="agentTerminalTitle" data-ui="agentTitle">连接电源
+接入世界</h2>
+          <p data-ui="agentLead">一个接口连接电源，一个接口连接网络。智能眼镜、电脑、路由器、手机与平板，都是访问本地 AI 的入口。你熟悉的设备，由此连接身边的算力。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cartridge-section" id="cartridge" aria-labelledby="cartridgeTitle">
+      <video
+        class="cartridge-bg-video"
+        muted
+        playsinline
+        preload="auto"
+        poster="../../website/assets/images/cartridge-tvc-v2-poster.jpg"
+        autoplay
+        loop
+        data-loop-media
+        aria-hidden="true"
+      >
+        <source src="../../website/assets/images/cartridge-tvc-v2.mp4" type="video/mp4">
+      </video>
+      <div class="cartridge-shade" aria-hidden="true"></div>
+      <div class="section-inner cartridge-stage">
+        <div class="cartridge-copy reveal">
+          <p class="chapter-label" data-ui="chapter9">09 / 方案交付</p>
+          <h2 id="cartridgeTitle" data-ui="cartridgeTitle">换一张卡，
+切换一套 AI</h2>
+          <p data-ui="cartridgeLead">模型与应用存放在可更换的存储卡中。插入 RM-01，一套对应业务的本地 AI 方案随之装载。同一台设备，换一张卡，就能接手另一项工作。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="craft-section craft-story" id="craft" aria-labelledby="craftTitle">
+      <div class="craft-story-stage">
+        <div class="section-inner">
+          <header class="craft-story-heading">
+            <p class="chapter-label" data-ui="chapter10">10 / 制造精度</p>
+            <h2 id="craftTitle" data-ui="craftTitle">材料、表面与装配
+每一处都有标准</h2>
+          </header>
+          <div class="craft-story-panels">
+            <article class="craft-story-panel is-active">
+              <figure class="craft-story-photo">
+                <img src="../../website/assets/gallery/DSC00150.jpg" alt="铝合金机身工艺细节" loading="lazy" decoding="async">
+              </figure>
+              <div class="craft-story-text">
+                <p class="craft-story-value">6063 <small></small></p>
+                <h3 data-ui="craftStoryMaterial">铝合金机身</h3>
+                <p data-ui="craftStoryMaterialText">6063 铝合金构成机身，握持时的扎实感，来自材料本身。</p>
+              </div>
+            </article>
+            <article class="craft-story-panel">
+              <figure class="craft-story-photo">
+                <img src="../../website/assets/images/craft-surface-detail.webp" alt="精细喷砂工艺细节" loading="lazy" decoding="async">
+              </figure>
+              <div class="craft-story-text">
+                <p class="craft-story-value">260 <small data-ui="craftMeshUnit">目</small></p>
+                <h3 data-ui="craftStoryFinish">精细喷砂</h3>
+                <p data-ui="craftStoryFinishText">喷砂赋予金属细腻的表面。目光看见的纹理，指尖也能感知。</p>
+              </div>
+            </article>
+            <article class="craft-story-panel">
+              <figure class="craft-story-photo">
+                <img src="../../website/assets/images/craft-panel-fit.webp" alt="玻璃圆角与铝合金机身装配细节" loading="lazy" decoding="async">
+              </figure>
+              <div class="craft-story-text">
+                <p class="craft-story-value">R0.2 <small>mm</small></p>
+                <h3 data-ui="craftStoryRadius">玻璃圆角</h3>
+                <p data-ui="craftStoryRadiusText">玻璃边缘采用 R0.2 mm 圆角，与铝合金机身精密贴合。两种材料在这里相接，也在这里体现装配的功夫。</p>
+              </div>
+            </article>
+            <article class="craft-story-panel">
+              <figure class="craft-story-photo">
+                <img src="../../website/assets/images/craft-card-slot-detail.png" alt="工艺公差工艺细节" loading="lazy" decoding="async">
+              </figure>
+              <div class="craft-story-text">
+                <p class="craft-story-value">＜0.03 <small>mm</small></p>
+                <h3 data-ui="craftStoryTolerance">工艺公差</h3>
+                <p data-ui="craftStoryToleranceText">工艺公差小于 0.03 mm。精度落实在接缝与收口，让每一处衔接都经得起细看。</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="../../website/assets/images/logo-white.svg" alt="RMinte">
+        <div>
+        <p data-ui="footer">泛灵（成都）人工智能科技有限公司</p>
+        <span data-ui="copyright">© 2026 <span class="rm-mark">RMinte</span> ( Chengdu ) Artificial Intelligence Technology Co., Ltd. · RM-01 Protable AI Supercomputer</span>
+        </div>
+      </div>
+      <div class="footer-actions">
+        <button class="footer-contact" type="button" aria-expanded="false" aria-controls="contactPopover" data-contact-toggle>
+          <span data-ui="contactButton">联系我们</span>
+        </button>
+        <a class="footer-github" href="https://github.com/RMinte-AI" target="_blank" rel="noreferrer" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.38-3.37-1.38-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.3.1-2.72 0 0 .84-.27 2.75 1.05A9.35 9.35 0 0 1 12 6.94c.85 0 1.7.12 2.5.34 1.9-1.32 2.74-1.05 2.74-1.05.55 1.42.2 2.46.1 2.72.64.72 1.03 1.64 1.03 2.76 0 3.95-2.34 4.82-4.57 5.07.36.32.68.94.68 1.9 0 1.38-.01 2.48-.01 2.82 0 .28.18.6.69.5A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <aside class="contact-popover" id="contactPopover" role="dialog" aria-labelledby="contactTitle" aria-hidden="true" data-contact-popover>
+    <div class="contact-card">
+      <div class="contact-card-core">
+        <div class="contact-top">
+          <div>
+
+            <h2 id="contactTitle" data-ui="contactTitle">联系我们</h2>
+          </div>
+          <button class="contact-close" type="button" aria-label="关闭" data-contact-close><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:jiezhu@rminte.com">
+            <span data-ui="salesContact">销售与渠道合作</span>
+            <strong>jiezhu@rminte.com</strong><svg class="contact-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+          <a href="mailto:yishi@rminte.com">
+            <span data-ui="manufacturingContact">制造与供应链合作</span>
+            <strong>yishi@rminte.com</strong><svg class="contact-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+          <a href="mailto:support@rminte.com">
+            <span data-ui="supportContact">售前与售后服务</span>
+            <strong>support@rminte.com</strong><svg class="contact-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </aside>
+<aside class="preview-dock" aria-label="设计预览导航">
+  <span class="review-version" data-preview-zh="硬件分工示例" data-preview-en="Hardware study">硬件分工示例</span>
+  <a href="#hardware" data-preview-jump="hardware" data-preview-zh="硬件分工" data-preview-en="Hardware">硬件分工</a>
+  <a href="#tianshanos" data-preview-jump="tianshanos" data-preview-zh="整机协同" data-preview-en="System">整机协同</a>
+  <a href="review-a.html#hardware" data-review-other target="_blank" rel="noopener" data-preview-zh="原版 A" data-preview-en="Original A">原版 A</a>
+</aside>
+</body>
+</html>
