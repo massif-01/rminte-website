@@ -71,9 +71,6 @@
     .mp-benchmarks { padding-top:48px; scroll-margin-top:120px; }
     .mp-benchmark-plots { margin:32px 0 0; }
     .mp-benchmark-particles { display:block; width:100%; height:clamp(260px,30vw,400px); touch-action:pan-y; }
-    .mp-benchmark-scope { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px 48px; margin-top:36px; padding-top:24px; border-top:1px solid var(--line); }
-    .mp-benchmark-scope h3 { margin:0; color:var(--ink); font-size:17px; font-weight:500; line-height:1.6; }
-    .mp-benchmark-scope p { margin:10px 0 0; color:var(--muted); font-size:15px; line-height:1.9; }
     .mp-benchmark-status { margin:24px 0 0; color:var(--dim); font-size:14px; line-height:1.8; text-align:center; }
     .mp-scenarios .mp-lead { max-width:720px; }
     .mp-scenarios .mp-heading { scroll-margin-top:120px; }
@@ -213,9 +210,6 @@
       .mp-heading { font-size:32px; line-height:1.3; }
       .mp-lead { font-size:15px; line-height:1.9; margin-top:22px; }
       .mp-benchmark-plots { margin-top:28px; }
-      .mp-benchmark-scope { grid-template-columns:1fr; gap:24px; margin-top:28px; }
-      .mp-benchmark-scope h3 { font-size:16px; }
-      .mp-benchmark-scope p { font-size:14px; }
       .mp-benchmark-status { margin-top:20px; font-size:12px; }
       .mp-engines { padding-top:12px; }
       .mp-engine-layout { gap:30px; }
