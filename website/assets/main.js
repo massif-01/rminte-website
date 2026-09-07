@@ -751,8 +751,8 @@
       const distance = rect.height - window.innerHeight;
       const fraction = enabled ? Math.max(0, Math.min(1, -rect.top / distance)) : 0;
       const index = Math.min(panels.length - 1, Math.floor(fraction * panels.length));
-      stage.style.setProperty('--craft-sticky-top', `${Math.min(0, window.innerHeight - stage.offsetHeight)}px`);
       hint.classList.toggle('is-finished', index === panels.length - 1);
+      stage.style.setProperty('--craft-sticky-top', `${window.innerHeight - stage.offsetHeight}px`);
       panels.forEach((panel, i) => {
         panel.classList.toggle('is-active', i === index);
         panel.inert = enabled && i !== index;
