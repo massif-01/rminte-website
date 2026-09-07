@@ -393,7 +393,7 @@ function siteNavigationTemplate() {
   return `
   <header class="site-shell" aria-label="主导航">
     <a class="brand-mark" href="../index.html#hero" aria-label="RMinte 首页">
-      <img src="../assets/images/img3.png" alt="RMinte">
+      <img src="../assets/images/logo-white.svg" alt="RMinte">
     </a>
     <nav class="nav-island" aria-label="页面导航">
       <a href="../gallery/index.html" data-guide-text data-zh="图册" data-en="Gallery">图册</a>
@@ -445,23 +445,23 @@ function pageTemplate(config, rendered) {
   <meta property="og:title" content="${escapeHtml(config.title.zh)}">
   <meta property="og:description" content="${escapeHtml(config.description.zh)}">
   <meta property="og:image" content="../assets/images/img4.png">
-  <meta name="theme-color" content="#050606">
+  <meta name="theme-color" content="#141618">
   <title>RMinte - RM-01 - Portable AI Supercomputer - 泛灵人工智能</title>
   <link rel="icon" type="image/png" sizes="512x512" href="../assets/images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/brand.css?v=slate-2">
   <link rel="stylesheet" href="../assets/styles.css?v=solid-header-1">
   <link rel="stylesheet" href="../assets/guides.css?v=clean-cards-1">
   <script id="guidePageData" type="application/json">${pageData}</script>
   <script src="../visitor-language.js" defer></script>
-  <script src="../assets/guides.js?v=language-label-1" defer></script>
+  <script src="../assets/guides.js?v=docs-20260907" defer></script>
   <script src="../assets/site-data.js?v=models-launch-1" defer></script>
   <script src="../assets/footer.js?v=models-launch-1" defer></script>
 </head>
 <body class="guide-body guide-doc-body guide-accent-${config.accent}">
   <a class="skip-link" href="#guideContent" data-guide-text data-zh="跳至指南正文" data-en="Skip to guide content">跳至指南正文</a>
-  <div class="ambient-field" aria-hidden="true"></div>
 ${siteNavigationTemplate()}
 
   <main id="guideContent" class="guide-doc-main">

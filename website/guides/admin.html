@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="../assets/guides.css?v=clean-cards-1">
   <script id="guidePageData" type="application/json">{"title":{"zh":"TianshanOS admin 日常使用指南","en":"TianshanOS Admin User Guide"},"copy":{"zh":"已复制","en":"Copied"},"copyDefault":{"zh":"复制","en":"Copy"}}</script>
   <script src="../visitor-language.js" defer></script>
-  <script src="../assets/guides.js?v=language-label-1" defer></script>
+  <script src="../assets/guides.js?v=docs-20260907" defer></script>
   <script src="../assets/site-data.js?v=models-launch-1" defer></script>
   <script src="../assets/footer.js?v=models-launch-1" defer></script>
 </head>
@@ -279,21 +279,21 @@
 
           <article class="guide-article lang-pane" data-lang-pane="zh">
 <p>本指南面向使用 admin 账户管理 TianshanOS 的用户，介绍 WebUI 中的日常查看和操作功能。安全管理请切换到《TianshanOS 安全指南》。终端、自动化规则和指令管理由 root 运维指南说明。</p>
-<p>设备型号、硬件配置和当前状态会影响页面显示。页面未显示的设备、按钮或选项无需操作。</p>
+<p>请按设备页面上实际显示的功能操作。部分按钮只会在连接了相应硬件或完成配置后出现。</p>
 <h2 id="zh-section-1" data-heading-key="section-1"><a href="#zh-section-1">1. 开始使用</a></h2>
 <h3 id="zh-section-2" data-heading-key="section-2"><a href="#zh-section-2">进入 WebUI</a></h3>
-<ol><li>在浏览器中打开设备的 WebUI 地址。</li><li>点击页面右上角的“登录”。</li><li>用户名保持为 <code>admin</code>，输入设备提供的 admin 密码。</li><li>点击“登录”。登录成功后，右上角会显示当前用户名。</li></ol>
+<ol><li>在浏览器中打开管理员提供的设备网页地址（WebUI）。</li><li>点击页面右上角的“登录”。</li><li>用户名保持为 <code>admin</code>，输入设备提供的 admin 密码。</li><li>点击“登录”。登录成功后，右上角会显示当前用户名。</li></ol>
 <p>首次使用默认密码登录时，页面会显示“安全提醒”。可以在弹窗中输入当前密码和新密码，随后点击“立即修改”。新密码需要输入两次并保持一致。选择“稍后修改”会关闭提醒。</p>
-<p>完成操作后，点击右上角的“退出登录”。页面会返回“系统”。</p>
+<p>使用完毕后，点击右上角的“退出登录”。再次操作设备时需要重新登录。</p>
 <h3 id="zh-section-3" data-heading-key="section-3"><a href="#zh-section-3">切换语言</a></h3>
 <p>点击页面顶部的语言按钮，在菜单中选择中文或 English。页面内容和按钮名称会立即切换到所选语言。</p>
 <h3 id="zh-section-4" data-heading-key="section-4"><a href="#zh-section-4">页面导航</a></h3>
 <p>admin 日常使用的主要入口如下：</p>
-<ul><li>“系统”：查看设备状态，控制模组、风扇和 LED，并进入 OTA 升级。</li><li>“网络”：查看和调整以太网、WiFi、DHCP 与 NAT 设置。</li><li>“文件”：管理 SD 卡和 SPIFFS 中的文件。</li><li>“安全”：进入单独的安全管理页面，详细操作请查看安全指南。</li></ul>
+<ul><li>“系统”：查看设备状态，控制模组、风扇和 LED，并进入 OTA 升级。</li><li>“网络”：查看以太网和 DHCP 状态，设置 WiFi 和 NAT 网络转发。</li><li>“文件”：管理 SD 卡和 SPIFFS 中的文件。</li><li>“安全”：进入单独的安全管理页面，详细操作请查看安全指南。</li></ul>
 <h2 id="zh-section-5" data-heading-key="section-5"><a href="#zh-section-5">2. 系统状态与常用操作</a></h2>
 <p>点击顶部导航中的“系统”进入系统页面。</p>
 <h3 id="zh-section-6" data-heading-key="section-6"><a href="#zh-section-6">查看资源与服务状态</a></h3>
-<p>“资源监控”显示 CPU、DRAM 和 PSRAM 的使用情况。DRAM 是设备的主要运行内存，PSRAM 是扩展内存。</p>
+<p>“资源监控”显示 CPU、DRAM 和 PSRAM 的使用情况。DRAM 和 PSRAM 都是设备运行程序时使用的内存。</p>
 <ul><li>点击“详情”查看内存总量、已用空间、空闲空间和碎片率。</li><li>“服务”按钮旁显示正在运行的服务数量和服务总数。</li><li>点击“服务”查看各项服务的状态、阶段和健康情况。</li></ul>
 <p>服务状态为“失败”或健康状态异常时，可以先刷新页面确认状态。</p>
 <h3 id="zh-section-7" data-heading-key="section-7"><a href="#zh-section-7">查看系统与电源信息</a></h3>
@@ -308,13 +308,13 @@
 <h4 id="zh-section-11" data-heading-key="section-11"><a href="#zh-section-11">重启单项服务</a></h4>
 <p>重启服务会暂时中断该服务提供的功能。在“服务状态”中找到异常服务，点击该行的“重启”。操作完成后重新查看状态和健康信息。</p>
 <h4 id="zh-section-12" data-heading-key="section-12"><a href="#zh-section-12">调整关机设置</a></h4>
-<aside class="guide-notice"><span>操作提示</span><p>更改电压阈值或等待时间会影响设备的关机与恢复行为。修改前应确认设备的供电要求。</p></aside>
+<p>这些设置决定设备在低电压时何时关机，以及供电恢复后何时重新启动。请按设备的供电要求填写电压和等待时间。</p>
 <p>点击“关机设置”，可以调整以下内容：</p>
 <ul><li>“低电压阈值”：低于该电压后开始关机倒计时。</li><li>“恢复电压阈值”：高于该电压后开始恢复流程。</li><li>“关机倒计时”：检测到低电压后等待多久执行关机。</li><li>“恢复稳定等待”：电压恢复后等待多久确认供电稳定。</li><li>“风扇关闭延迟”：关机后等待多久关闭风扇。</li></ul>
 <p>保存后，页面会应用新的保护设置。</p>
 <h4 id="zh-section-13" data-heading-key="section-13"><a href="#zh-section-13">切换顶部 USB 连接目标</a></h4>
 <aside class="guide-notice"><span>操作提示</span><p>切换 USB 目标可能使当前连接的外设暂时断开。确认目标设备和正在进行的工作后再操作。</p></aside>
-<p>页面显示 USB 切换功能时，点击“USB”按钮，可以在 ESP、AGX 和 LPMU 之间切换顶部 USB 接口的连接目标。按钮会显示当前目标，切换成功后页面会给出提示。</p>
+<p>页面显示 USB 切换功能时，点击“USB”按钮，每点击一次，顶部 USB 接口会按 ESP、AGX、LPMU 的顺序切换到下一个目标。按钮会显示当前目标，切换成功后页面会给出提示。</p>
 <h2 id="zh-section-14" data-heading-key="section-14"><a href="#zh-section-14">3. 设备面板</a></h2>
 <p>“设备面板”位于“系统”页面，包含模组电源控制、快捷操作和数据组件。</p>
 <h3 id="zh-section-15" data-heading-key="section-15"><a href="#zh-section-15">控制 AGX 和 LPMU</a></h3>
@@ -324,8 +324,7 @@
 <h3 id="zh-section-16" data-heading-key="section-16"><a href="#zh-section-16">使用快捷操作</a></h3>
 <p>“快捷操作”显示已经为 admin 开放的操作卡片。</p>
 <ol><li>点击卡片运行对应操作。</li><li>卡片显示处理中时，等待本次操作完成。</li><li>支持后台运行的卡片会显示运行状态，并提供“日志”和“停止”。</li><li>点击“日志”查看当前输出；点击“停止”结束仍在运行的任务。</li></ol>
-<p>正在运行的任务需要先停止，随后才能再次启动。触发一个操作后，等待几秒再启动其他操作。</p>
-<p>长按卡片，出现排序提示后拖动，可以调整快捷操作的显示顺序。“暂无快捷操作”表示当前没有可供 admin 使用的卡片。</p>
+<p>正在运行的任务需要先停止，随后才能再次启动。触发一个操作后，等待几秒再启动其他操作。长按卡片，出现排序提示后拖动，可以调整快捷操作的显示顺序。“暂无快捷操作”表示当前没有可供 admin 使用的卡片。</p>
 <h3 id="zh-section-17" data-heading-key="section-17"><a href="#zh-section-17">管理数据组件</a></h3>
 <p>数据组件用于在“设备面板”中持续显示设备数据。</p>
 <ol><li>点击“组件管理”。</li><li>选择刷新间隔，或关闭自动刷新。</li><li>添加预设组件，或选择页面提供的组件样式和数据来源。</li><li>根据需要编辑名称、显示方式和单位，然后保存。</li></ol>
@@ -333,32 +332,34 @@
 <h2 id="zh-section-18" data-heading-key="section-18"><a href="#zh-section-18">4. 风扇管理</a></h2>
 <p>“风扇控制”位于“系统”页面。页面只显示当前设备实际提供的风扇。</p>
 <h3 id="zh-section-19" data-heading-key="section-19"><a href="#zh-section-19">查看风扇状态</a></h3>
-<p>顶部状态栏显示“有效温度”和“目标转速”。每张风扇卡片显示当前模式、转速百分比和可用的 RPM。RPM 表示风扇每分钟转数。</p>
+<p>顶部状态栏显示“有效温度”和“目标转速”。风扇卡片上的百分比在自动、曲线模式下表示目标调速值，在手动模式下表示当前设置值。RPM 表示测得的每分钟转数，只有取得有效读数时才显示。百分比与 RPM 的含义不同。</p>
+<p>自动模式还可能显示“按曲线运行”“自适应调速”“保护介入”或“温度失效”，以及安全参考温度、45 秒预测温度和升温速度。预测温度用于提前调速。出现“温度失效”时，先检查温度来源是否持续更新；设备会采用保护转速。点击卡片上的信息按钮，可以查看自动模式说明。</p>
 <p>点击右上角的刷新按钮，可以重新获取当前状态。</p>
 <h3 id="zh-section-20" data-heading-key="section-20"><a href="#zh-section-20">选择运行模式</a></h3>
-<div class="guide-table-wrap"><table><thead><tr><th>模式</th><th>作用</th></tr></thead><tbody><tr><td>“关闭”</td><td>停止风扇。</td></tr><tr><td>“手动”</td><td>使用固定转速，滑块可以设置 0–100%。</td></tr><tr><td>“自动”</td><td>以风扇曲线为基础，同时根据温度变化趋势和保护状态调整转速。</td></tr><tr><td>“曲线”</td><td>按照已设置的温度与转速对应关系运行。</td></tr></tbody></table></div>
+<div class="guide-table-wrap"><table><thead><tr><th>模式</th><th>作用</th></tr></thead><tbody><tr><td>“关闭”</td><td>停止风扇。</td></tr><tr><td>“手动”</td><td>使用固定的调速百分比，滑块可设置 0-100%。</td></tr><tr><td>“自动”</td><td>以风扇曲线为基础，同时根据温度变化趋势和保护状态调整转速。</td></tr><tr><td>“曲线”</td><td>按照已设置的温度与转速对应关系运行。</td></tr></tbody></table></div>
 <aside class="guide-notice"><span>操作提示</span><p>关闭风扇或设置过低的手动转速会降低散热能力。执行前应确认设备负载和温度，并持续观察温度变化。</p></aside>
 <p>在“手动”模式下，拖动“转速调节”滑块设置速度。其他模式下，滑块保持不可用。</p>
 <h3 id="zh-section-21" data-heading-key="section-21"><a href="#zh-section-21">设置风扇曲线</a></h3>
-<p>点击“曲线”打开“风扇曲线管理”。页面会列出当前可选的风扇和温度数据来源。</p>
-<ol><li>在“选择风扇”中选择页面当前显示的风扇。</li><li>在“绑定温度变量”中添加一个或多个温度来源，并设置权重。</li><li>点击绑定按钮，使选定温度来源生效。</li><li>在“温度-转速曲线”中添加或编辑曲线点。每条曲线至少需要 2 个点，最多支持 10 个点。</li><li>设置“最小占空比”和“最大占空比”。最小值不能高于最大值。</li><li>根据需要设置“温度迟滞”和“最小间隔”。温度迟滞范围为 0–20°C，最小间隔范围为 500–30000 ms。</li><li>点击“应用曲线”。系统会保存设置，并将所选风扇切换到“曲线”模式。</li></ol>
-<p>“温度迟滞”用于减少临界温度附近的频繁调速。“最小间隔”用于限制连续两次调速之间的最短时间。</p>
+<p>点击“风扇控制”区域顶部的“曲线”按钮，打开“风扇曲线管理”。风扇卡片内的“曲线”按钮只切换运行模式。</p>
+<ol><li>在“选择风扇”中选择要调整的风扇编号，并与系统页的风扇卡片核对。</li><li>在“绑定温度变量”中添加一个或多个温度来源，并设置权重。</li><li>点击“绑定全部”应用温度来源。温度来源由自动、曲线模式的风扇共用，修改会影响所有使用该温度来源的风扇。</li><li>在“温度-转速曲线”中添加或编辑曲线点。每条曲线至少需要 2 个点，最多支持 10 个点。</li><li>设置“最小占空比”和“最大占空比”。最小值不能高于最大值。</li><li>根据需要设置“温度迟滞”和“最小间隔”。温度迟滞范围为 0-20°C，最小间隔范围为500-30000 ms。</li><li>点击“应用曲线”。系统会保存设置，并将所选风扇切换到“曲线”模式。</li></ol>
+<p>“最小占空比”和“最大占空比”用于限定调速百分比的范围。“温度迟滞”用于减少温度轻微波动时的频繁调速。“最小间隔”限制连续两次调速之间的最短时间，1000 ms 等于 1 秒。</p>
+<p>应用曲线后会切换到曲线模式。如果希望继续使用自动调速，请返回风扇卡片，点击“自动”。</p>
 <h3 id="zh-section-22" data-heading-key="section-22"><a href="#zh-section-22">导入和导出曲线</a></h3>
-<ul><li>点击“导入配置”，选择有效的曲线 JSON 文件。检查页面加载的曲线和参数后，点击“应用曲线”使其生效。</li><li>点击“导出配置”，浏览器会下载当前曲线，同时尝试将副本保存到 SD 卡的 <code>/sdcard/config</code> 目录。页面会提示 SD 卡保存结果。</li></ul>
+<ul><li>点击“导入配置”，选择有效的曲线 JSON 文件。检查页面加载的曲线和参数后，点击“应用曲线”使其生效。</li><li>点击“导出配置”，浏览器会下载当前曲线，同时尝试将副本保存到 SD 卡的<code>/sdcard/config</code> 目录。页面会提示 SD 卡保存结果。</li></ul>
 <h3 id="zh-section-23" data-heading-key="section-23"><a href="#zh-section-23">使用测试温度</a></h3>
 <aside class="guide-notice"><span>操作提示</span><p>测试温度会临时替代正常温度来源，并影响自动或曲线调速。测试期间应持续观察风扇和设备状态。</p></aside>
-<ol><li>在“测试温度”中输入 0–100°C 的数值。</li><li>点击“测试”，观察目标转速和风扇响应。</li><li>测试结束后立即点击“清除测试”，恢复正常温度来源。</li></ol>
+<ol><li>在“测试温度”中输入 0-100°C 的数值。</li><li>点击“测试”，观察目标转速和风扇响应。</li><li>测试结束后立即点击“清除测试”，恢复正常温度来源。</li></ol>
 <h2 id="zh-section-24" data-heading-key="section-24"><a href="#zh-section-24">5. LED 管理</a></h2>
 <p>“LED 控制”位于“系统”页面，只显示当前设备提供的 LED。</p>
 <h3 id="zh-section-25" data-heading-key="section-25"><a href="#zh-section-25">常用控制</a></h3>
-<ul><li>点击设备卡片中的开关，开启或关闭对应 LED。</li><li>使用“亮度”调节当前设备的亮度。</li><li>选择颜色或预设色，使支持颜色控制的设备显示所选颜色。</li><li>点击“动画特效”中的选项启动动画，点击“停止动画”结束当前动画。</li><li>点击“保存配置”，保存当前设备的 LED 设置。</li><li>点击“全部关闭”，关闭页面当前显示的所有 LED。</li></ul>
+<ul><li>点击设备卡片中的开关，开启或关闭对应 LED。</li><li>使用“亮度”调节当前设备的亮度。</li><li>选择颜色或预设色，使支持颜色控制的设备显示所选颜色。</li><li>点击“动画特效”中的选项启动动画，点击“停止动画”结束当前动画。</li><li>点击“保存配置”，保存当前设备的 LED 设置。</li><li>点击“全部关闭”，关闭页面显示的所有 LED。</li></ul>
 <p>不同 LED 提供的颜色、亮度和动画选项可能不同。以当前设备卡片和设置弹窗中显示的选项为准。</p>
 <h3 id="zh-section-26" data-heading-key="section-26"><a href="#zh-section-26">LED 矩阵高级功能</a></h3>
 <p>设备提供 LED 矩阵时，设置弹窗还可以包含以下功能：</p>
-<ul><li>“显示图像”：从 SD 卡选择图像并显示。</li><li>“生成 QR 码”：输入内容，设置颜色和纠错级别后生成 QR 码。</li><li>“显示文本”：输入文字，并设置字体、对齐方式、滚动速度、前景色和背景。</li><li>“后处理滤镜”：选择页面当前提供的滤镜并应用；点击停止按钮结束滤镜。</li><li>“色彩校正”：调整矩阵显示效果，并根据页面按钮重置、导入或导出校正设置。</li></ul>
+<ul><li>“显示图像”：从 SD 卡选择图像并显示。</li><li>“生成 QR 码”：输入内容，设置颜色和纠错级别后生成 QR 码。</li><li>“显示文本”：输入文字，并设置字体、对齐方式、滚动速度、前景色和背景。</li><li>“后处理滤镜”：选择页面提供的滤镜并应用；点击停止按钮结束滤镜。</li><li>“色彩校正”：调整矩阵显示效果，并根据页面按钮重置、导入或导出校正设置。</li></ul>
 <p>LED 矩阵的尺寸、动画和滤镜由当前设备决定。文档中的操作以页面实际显示内容为准。</p>
 <h2 id="zh-section-27" data-heading-key="section-27"><a href="#zh-section-27">6. 网络管理</a></h2>
-<aside class="guide-notice"><span>操作提示</span><p>点击顶部导航中的“网络”进入“网络设置”。修改网络模式、热点或 NAT 设置可能中断当前 WebUI 连接。保存设置前，应确认可以通过新的网络地址重新连接设备。</p></aside>
+<aside class="guide-notice"><span>操作提示</span><p>点击顶部导航中的“网络”进入“网络设置”。修改网络模式、热点或 NAT 设置可能中断当前WebUI 连接。保存设置前，应确认可以通过新的网络地址重新连接设备。</p></aside>
 <h3 id="zh-section-28" data-heading-key="section-28"><a href="#zh-section-28">查看网络状态</a></h3>
 <p>页面顶部显示以太网、WiFi 客户端和 WiFi 热点的连接状态。进入对应面板，可以查看 IP 地址、子网掩码、网关、DNS、MAC 地址、SSID、信号和接入设备数量等信息。</p>
 <p>以太网面板用于查看当前链路和地址信息，不提供地址修改入口。</p>
@@ -377,17 +378,16 @@
 <p>DHCP 会自动为接入设备分配网络地址。点击“客户端”，选择“WiFi AP”或“Ethernet”，查看当前分配记录。点击刷新按钮可以重新加载列表。</p>
 <h3 id="zh-section-34" data-heading-key="section-34"><a href="#zh-section-34">高级网络操作</a></h3>
 <h4 id="zh-section-35" data-heading-key="section-35"><a href="#zh-section-35">设置 NAT 网关</a></h4>
-<p>NAT 用于在设备的网络接口之间转发连接。启用或停用 NAT 后，点击“保存”保留当前设置。操作完成后检查 WiFi 和 Ethernet 状态。</p>
+<p>NAT 用于在设备的网络接口之间转发网络流量。启用或停用 NAT 后，点击“保存”保留当前设置。操作完成后检查 WiFi 和 Ethernet 状态。</p>
 <h4 id="zh-section-36" data-heading-key="section-36"><a href="#zh-section-36">通过 LPMU 接入上层网络</a></h4>
 <p>页面显示“接入上层网络”时，点击“通过LPMU接入”。等待状态从“处理中”变为“成功”或“失败”。处理期间不要重复启动。失败时查看页面给出的错误和输出信息。</p>
 <h2 id="zh-section-37" data-heading-key="section-37"><a href="#zh-section-37">7. 文件管理</a></h2>
 <p>点击顶部导航中的“文件”进入“文件管理”。</p>
-<p>SD 卡是可插拔存储，SPIFFS 是设备内部文件存储。点击“SD 卡”或“SPIFFS”切换位置。面包屑显示当前路径，点击其中的目录可以返回对应层级。</p>
+<p>SD 卡是可插拔存储，SPIFFS 是设备内部文件存储。点击“SD 卡”或“SPIFFS”切换位置。页面上方显示当前文件夹路径；点击路径中的文件夹名称，可以返回上一级或更早的目录。</p>
 <h3 id="zh-section-38" data-heading-key="section-38"><a href="#zh-section-38">浏览和管理文件</a></h3>
 <ul><li>点击文件夹名称进入该目录。</li><li>点击文件右侧的下载按钮，将文件保存到浏览器的下载位置。</li><li>点击重命名按钮，输入新名称并确认。</li><li>点击“新建文件夹”，输入文件夹名称并创建。</li><li>点击刷新按钮重新加载当前目录和存储状态。</li></ul>
 <h3 id="zh-section-39" data-heading-key="section-39"><a href="#zh-section-39">上传文件</a></h3>
-<ol><li>进入目标目录。</li><li>点击“上传文件”。</li><li>点击上传区域选择一个或多个文件，或将文件拖入该区域。</li><li>检查上传列表，移除不需要的文件。</li><li>点击“上传”，等待每个文件显示完成状态。</li></ol>
-<p>上传 <code>.tscfg</code> 配置包时，页面会进入配置包校验和应用流程。配置包的来源、签名和应用要求请查看安全指南。</p>
+<ol><li>进入目标目录。</li><li>点击“上传文件”。</li><li>点击上传区域选择一个或多个文件，或将文件拖入该区域。</li><li>检查上传列表，移除不需要的文件。</li><li>点击“上传”，等待每个文件显示完成状态。上传 <code>.tscfg</code> 配置包时，页面会进入配置包校验和应用流程。配置包的来源、签名和应用要求请查看安全指南。</li></ol>
 <h3 id="zh-section-40" data-heading-key="section-40"><a href="#zh-section-40">批量操作</a></h3>
 <p>勾选文件或文件夹后，页面会显示批量工具栏。</p>
 <ul><li>“批量下载”下载选中的文件。文件夹不会加入下载内容。</li><li>“批量删除”删除选中的文件和文件夹。</li><li>“取消选择”清除当前选择。</li></ul>
@@ -400,12 +400,11 @@
 <p>在“系统”页面的“网络与时间”区域点击“OTA 升级”，进入“固件升级”。</p>
 <p>更新过程中设备会重启，WebUI 会暂时断开。开始前应保存正在进行的工作，并保持设备供电稳定。升级进度尚未完成时不要关闭设备。</p>
 <h3 id="zh-section-44" data-heading-key="section-44"><a href="#zh-section-44">从 OTA 服务器检查更新</a></h3>
-<ol><li>查看页面显示的“当前版本”。</li><li>在“OTA 服务器”中输入管理员或发行方提供的服务器地址。</li><li>点击“保存”，随后点击“检查更新”。</li><li>页面会显示“发现新版本”“已是最新版本”“服务器版本较旧”或错误信息。</li><li>确认目标版本后，点击“立即升级”或页面显示的升级按钮。</li><li>等待下载、安装和重启完成。页面显示中止按钮时，可以按需中止当前支持中止的阶段。</li><li>设备重新上线后，重新连接 WebUI，并核对“当前版本”。</li></ol>
-<p>升级同时包含 WebUI 时，固件和 WebUI 会依次更新。两者应来自同一发布版本。</p>
+<ol><li>查看页面显示的“当前版本”。</li><li>在“OTA 服务器”中输入管理员或发行方提供的服务器地址。</li><li>点击“保存”，随后点击“检查更新”。</li><li>页面会显示“发现新版本”“已是最新版本”“服务器版本较旧”或错误信息。</li><li>确认目标版本后，点击“立即升级”或页面显示的升级按钮。</li><li>等待下载、安装和重启完成。页面显示中止按钮时，可以按需中止当前支持中止的阶段。</li><li>设备重新上线后，重新连接 WebUI，并核对“当前版本”。升级同时包含 WebUI 时，固件和 WebUI 会依次更新。两者应来自同一发布版本。</li></ol>
 <h3 id="zh-section-45" data-heading-key="section-45"><a href="#zh-section-45">手动升级</a></h3>
 <p>展开“手动升级”后，可以选择以下方式：</p>
-<ul><li>“从 URL 升级”：填写固件 URL，根据发布说明选择“包含 WebUI”，然后点击“升级”。</li><li>“从 SD 卡升级”：填写固件文件路径，例如 <code>/sdcard/firmware.bin</code>。选择“包含 WebUI”时，页面会同时处理同目录中的 WebUI 文件。</li></ul>
-<p>“跳过验证”会绕过固件完整性或签名检查，并增加安装损坏或非预期固件的风险。日常升级应保持验证开启。只有在固件来源和操作要求已经确认时才使用该选项。</p>
+<ul><li>“从 URL 升级”：填写固件 URL，根据发布说明选择“包含 WebUI”，然后点击“升级”。</li><li>“从 SD 卡升级”：填写固件文件路径，例如 <code>/sdcard/firmware.bin</code>。选择“包含WebUI”时，页面会同时处理同目录中的 WebUI 文件。</li></ul>
+<p>从 URL 升级时，“跳过验证”用于跳过 HTTPS 服务器证书验证。勾选后，设备无法通过该证书确认下载服务器的身份。日常升级请保持未勾选；遇到证书错误时，请先联系管理员检查服务器地址和证书。</p>
 <h3 id="zh-section-46" data-heading-key="section-46"><a href="#zh-section-46">分区管理与回滚</a></h3>
 <p>“分区管理”显示当前运行分区和其他可用分区。</p>
 <ul><li>“标记有效”会确认当前运行版本，并取消该版本的自动回滚保护。确认当前版本运行正常后再执行。</li><li>“回滚到此版本”会选择另一可启动版本，并通过重启切换。回滚会中断当前服务，执行前应确认目标版本和相关数据兼容。</li></ul>
@@ -417,21 +416,21 @@
 
           <article class="guide-article lang-pane" data-lang-pane="en" hidden>
 <p>This guide is for users who manage TianshanOS with the admin account. It covers routine tasks available in the WebUI. Use the TianshanOS Security Guide for security management. Terminal access, automation rules, and command management are covered by the root operations guide.</p>
-<p>Available pages and controls depend on the device model, hardware configuration, and current state. No action is required for a device, button, or option that is not shown.</p>
+<p>The controls available to you depend on your device and its configuration. Some appear only when the required hardware is connected or the feature has been configured.</p>
 <h2 id="en-section-1" data-heading-key="section-1"><a href="#en-section-1">1. Getting Started</a></h2>
 <h3 id="en-section-2" data-heading-key="section-2"><a href="#en-section-2">Open the WebUI</a></h3>
-<ol><li>Open the device WebUI address in a browser.</li><li>Select “Login” in the upper-right corner.</li><li>Keep <code>admin</code> as the username and enter the admin password supplied with the device.</li><li>Select “Login.” After a successful login, the current username appears in the upper-right corner.</li></ol>
+<ol><li>Open the device’s web interface (WebUI) using the address provided by your administrator.</li><li>Select “Login” in the upper-right corner.</li><li>Keep <code>admin</code> as the username and enter the admin password supplied with the device.</li><li>Select “Login.” After a successful login, the current username appears in the upper-right corner.</li></ol>
 <p>When the default password is still in use, a “Security Reminder” appears after login. Enter the current password and the new password, then select “Change Now.” Enter the new password twice with matching values. Select “Change Later” to close the reminder.</p>
-<p>After completing your work, select “Logout” in the upper-right corner. The WebUI returns to “System.”</p>
+<p>When you have finished, select “Logout” in the upper-right corner. You will need to sign in again to use the device.</p>
 <h3 id="en-section-3" data-heading-key="section-3"><a href="#en-section-3">Switch Languages</a></h3>
 <p>Select the language button at the top of the page, then choose Chinese or English. Page content and control labels switch immediately.</p>
 <h3 id="en-section-4" data-heading-key="section-4"><a href="#en-section-4">Page Navigation</a></h3>
 <p>The main admin pages are:</p>
-<ul><li>“System”: View device status, control modules, fans, and LEDs, and open OTA Update.</li><li>“Network”: View and change Ethernet, WiFi, DHCP, and NAT settings.</li><li>“Files”: Manage files on the SD Card and SPIFFS.</li><li>“Security”: Open the separate security management page. See the Security Guide for instructions.</li></ul>
+<ul><li>“System”: View device status, control modules, fans, and LEDs, and open OTA Update.</li><li>“Network”: Check Ethernet status and DHCP clients, configure WiFi, and manage NAT forwarding.</li><li>“Files”: Manage files on the SD Card and SPIFFS.</li><li>“Security”: Open the separate security management page. See the Security Guide for instructions.</li></ul>
 <h2 id="en-section-5" data-heading-key="section-5"><a href="#en-section-5">2. System Status and Routine Operations</a></h2>
 <p>Select “System” in the top navigation.</p>
 <h3 id="en-section-6" data-heading-key="section-6"><a href="#en-section-6">View Resource and Service Status</a></h3>
-<p>“Resource Monitor” shows CPU, DRAM, and PSRAM usage. DRAM is the main working memory, and PSRAM is extended memory.</p>
+<p>“Resource Monitor” shows CPU, DRAM, and PSRAM usage. DRAM and PSRAM are memory used by the device to run programs.</p>
 <ul><li>Select “Details” to view total, used, and free memory, plus fragmentation.</li><li>The number next to “Services” shows running services and total services.</li><li>Select “Services” to view each service's status, stage, and health.</li></ul>
 <p>If a service shows “Failed” or an unhealthy state, refresh the page first to confirm the current condition.</p>
 <h3 id="en-section-7" data-heading-key="section-7"><a href="#en-section-7">View System and Power Information</a></h3>
@@ -446,13 +445,13 @@
 <h4 id="en-section-11" data-heading-key="section-11"><a href="#en-section-11">Restart One Service</a></h4>
 <p>Restarting a service temporarily interrupts the function it provides. Open “Service Status,” find the affected service, and select “Reboot” on that row. Check its status and health again when the operation finishes.</p>
 <h4 id="en-section-12" data-heading-key="section-12"><a href="#en-section-12">Change Shutdown Settings</a></h4>
-<aside class="guide-notice"><span>Operational note</span><p>Voltage thresholds and delay values affect device shutdown and recovery. Confirm the device's power requirements before changing them.</p></aside>
+<p>These settings control when the device shuts down after a voltage drop and when it starts again after power recovers. Use values that match your device’s power requirements.</p>
 <p>Select “Shutdown Settings” to change:</p>
 <ul><li>“Low Voltage Threshold”: Starts the shutdown countdown below this voltage.</li><li>“Recovery Threshold”: Starts recovery above this voltage.</li><li>“Shutdown Countdown”: Sets the delay before shutdown after low voltage is detected.</li><li>“Recovery Stabilization”: Sets the wait time used to confirm stable power recovery.</li><li>“Fan Stop Delay”: Sets the delay before fans stop after shutdown.</li></ul>
 <p>Save the form to apply the updated protection settings.</p>
 <h4 id="en-section-13" data-heading-key="section-13"><a href="#en-section-13">Switch the Top USB Target</a></h4>
 <p>Switching the USB target may temporarily disconnect an attached device. Confirm the target and finish active work before continuing.</p>
-<p>When USB switching is available, select the “USB” button to change the top USB connection among ESP, AGX, and LPMU. The button shows the current target, and the page confirms a successful switch.</p>
+<p>When USB switching is available, each click of the “USB” button cycles the top USB port to the next target: ESP, AGX, then LPMU. The button shows the current target, and the page confirms a successful switch.</p>
 <h2 id="en-section-14" data-heading-key="section-14"><a href="#en-section-14">3. Device Panel</a></h2>
 <p>The “Device Panel” is on the “System” page. It contains module power controls, Quick Actions, and data widgets.</p>
 <h3 id="en-section-15" data-heading-key="section-15"><a href="#en-section-15">Control AGX and LPMU</a></h3>
@@ -471,21 +470,23 @@
 <h2 id="en-section-18" data-heading-key="section-18"><a href="#en-section-18">4. Fan Management</a></h2>
 <p>“Fan Control” is on the “System” page. The page shows only fans currently provided by the device.</p>
 <h3 id="en-section-19" data-heading-key="section-19"><a href="#en-section-19">View Fan Status</a></h3>
-<p>The status bar shows “Effective Temp” and “Target Speed.” Each fan card shows the current mode, speed percentage, and RPM when available. RPM is the number of fan revolutions per minute.</p>
+<p>The status bar shows “Effective Temp” and “Target Speed.” In Auto and Curve modes, the percentage on a fan card is the target control value. In Manual mode, it is the current setting. RPM is the measured fan speed in revolutions per minute and appears only when a valid reading is available. The percentage is not an RPM reading.</p>
+<p>In Auto mode, the card may also show its control state, a safety reference temperature, a 45-second temperature forecast, and the rate of temperature change. The forecast helps the fan respond before the temperature rises. If the temperature reading becomes invalid, check that its source is still updating; the device uses a protective fan setting. Select the information button on the card to learn more about Auto mode.</p>
 <p>Select the refresh button in the upper-right corner to reload the current state.</p>
 <h3 id="en-section-20" data-heading-key="section-20"><a href="#en-section-20">Select an Operating Mode</a></h3>
-<div class="guide-table-wrap"><table><thead><tr><th>Mode</th><th>Purpose</th></tr></thead><tbody><tr><td>“Off”</td><td>Stops the fan.</td></tr><tr><td>“Manual”</td><td>Uses a fixed speed set with the 0–100% slider.</td></tr><tr><td>“Auto”</td><td>Starts from the fan curve and also responds to temperature trends and protection states.</td></tr><tr><td>“Curve”</td><td>Follows the configured temperature-to-speed points.</td></tr></tbody></table></div>
+<div class="guide-table-wrap"><table><thead><tr><th>Mode</th><th>Purpose</th></tr></thead><tbody><tr><td>“Off”</td><td>Stops the fan.</td></tr><tr><td>“Manual”</td><td>Uses a fixed control percentage set with the 0-100% slider.</td></tr><tr><td>“Auto”</td><td>Starts from the fan curve and also responds to temperature trends and protection states.</td></tr><tr><td>“Curve”</td><td>Follows the configured temperature-to-speed points.</td></tr></tbody></table></div>
 <aside class="guide-notice"><span>Operational note</span><p>Turning a fan off or using a low manual speed reduces cooling. Confirm the device load and temperature before changing the mode, and continue monitoring temperature afterward.</p></aside>
 <p>In “Manual” mode, use the “Speed Adjust” slider to set the speed. The slider is unavailable in other modes.</p>
 <h3 id="en-section-21" data-heading-key="section-21"><a href="#en-section-21">Configure a Fan Curve</a></h3>
-<p>Select “Curve” to open “Fan Curve Management.” The page lists the fans and temperature data sources currently available.</p>
-<ol><li>Under “Select Fan,” choose a fan shown by the page.</li><li>Under “Bind Temperature Variable,” add one or more temperature sources and assign weights.</li><li>Select the bind control to apply the selected temperature sources.</li><li>Add or edit points under “Temperature-Speed Curve.” A curve requires at least 2 points and supports up to 10 points.</li><li>Set “Min Duty Cycle” and “Max Duty Cycle.” The minimum cannot be greater than the maximum.</li><li>Set “Temperature Hysteresis” and “Min Interval” as needed. Hysteresis accepts 0–20°C, and the minimum interval accepts 500–30000 ms.</li><li>Select “Apply Curve.” The settings are saved and the selected fan switches to “Curve” mode.</li></ol>
-<p>“Temperature Hysteresis” reduces repeated speed changes near a temperature boundary. “Min Interval” sets the shortest time between speed adjustments.</p>
+<p>Select “Curve” in the Fan Control section header to open “Fan Curve Management.” The “Curve”button inside a fan card switches its operating mode.</p>
+<ol><li>Under “Select Fan,” choose the fan number you want to adjust. Check it against the fan cards on the System page.</li><li>Under “Bind Temperature Variable,” add one or more temperature sources and assign weights.</li><li>Select the bind control to apply the temperature sources. These sources are shared by fans in Auto and Curve modes, so a change affects every fan using them.</li><li>Add or edit points under “Temperature-Speed Curve.” A curve requires at least 2 points and supports up to 10 points.</li><li>Set “Min Duty Cycle” and “Max Duty Cycle.” The minimum cannot be greater than the maximum.</li><li>Set “Temperature Hysteresis” and “Min Interval” as needed. Hysteresis accepts 0-20°C, and the minimum interval accepts 500-30000 ms.</li><li>Select “Apply Curve.” The settings are saved and the selected fan switches to “Curve” mode.</li></ol>
+<p>“Min Duty Cycle” and “Max Duty Cycle” set the control range as percentages. “Temperature Hysteresis” reduces frequent adjustments caused by small temperature changes. “Min Interval”sets the shortest time between adjustments; 1000 ms is 1 second.</p>
+<p>Applying a curve switches the fan to Curve mode. To continue using automatic control, return to the fan card and select “Auto.”</p>
 <h3 id="en-section-22" data-heading-key="section-22"><a href="#en-section-22">Import and Export a Curve</a></h3>
 <ul><li>Select “Import Config” and choose a valid curve JSON file. Review the loaded curve and parameters, then select “Apply Curve.”</li><li>Select “Export Config” to download the current curve in the browser. The page also attempts to save a copy under <code>/sdcard/config</code> and reports the SD Card result.</li></ul>
 <h3 id="en-section-23" data-heading-key="section-23"><a href="#en-section-23">Use a Test Temperature</a></h3>
 <p>A test temperature temporarily replaces the normal temperature source and affects Auto or Curve control. Monitor the fan and device state throughout the test.</p>
-<ol><li>Enter a value from 0–100°C under “Test Temp.”</li><li>Select “Test” and observe the target speed and fan response.</li><li>Select “Clear Test” immediately after the test to restore the normal temperature source.</li></ol>
+<ol><li>Enter a value from 0-100°C under “Test Temp.”</li><li>Select “Test” and observe the target speed and fan response.</li><li>Select “Clear Test” immediately after the test to restore the normal temperature source.</li></ol>
 <h2 id="en-section-24" data-heading-key="section-24"><a href="#en-section-24">5. LED Management</a></h2>
 <p>“LED Control” is on the “System” page and shows only LEDs currently provided by the device.</p>
 <h3 id="en-section-25" data-heading-key="section-25"><a href="#en-section-25">Routine Controls</a></h3>
@@ -515,12 +516,12 @@
 <p>DHCP automatically assigns network addresses to connected devices. Select “Clients,” choose “WiFi AP” or “Ethernet,” and view the current leases. Use the refresh button to reload the list.</p>
 <h3 id="en-section-34" data-heading-key="section-34"><a href="#en-section-34">Advanced Network Operations</a></h3>
 <h4 id="en-section-35" data-heading-key="section-35"><a href="#en-section-35">Configure the NAT Gateway</a></h4>
-<p>NAT forwards connections between the device's network interfaces. Enable or disable NAT, then select “Save” to retain the setting. Check the WiFi and Ethernet status afterward.</p>
+<p>NAT forwards network traffic between the device's network interfaces. Enable or disable NAT, then select “Save” to retain the setting. Check the WiFi and Ethernet status afterward.</p>
 <h4 id="en-section-36" data-heading-key="section-36"><a href="#en-section-36">Access the Upstream Network via LPMU</a></h4>
 <p>When “Upstream Network Access” is shown, select “Access via LPMU.” Wait for the state to change from “Processing” to “Success” or “Failed.” Do not start it again while processing. If it fails, read the error and output shown by the page.</p>
 <h2 id="en-section-37" data-heading-key="section-37"><a href="#en-section-37">7. File Management</a></h2>
 <p>Select “Files” in the top navigation to open “File Manager.”</p>
-<p>The SD Card is removable storage, and SPIFFS is internal device file storage. Select “SD Card” or “SPIFFS” to switch locations. The breadcrumb shows the current path; select a directory in it to return to that level.</p>
+<p>The SD Card is removable storage, and SPIFFS is internal device file storage. Select “SD Card” or “SPIFFS” to switch locations. The path at the top shows your current folder. Select a folder name in the path to go back to it.</p>
 <h3 id="en-section-38" data-heading-key="section-38"><a href="#en-section-38">Browse and Manage Files</a></h3>
 <ul><li>Select a folder name to open it.</li><li>Select the download button beside a file to save it to the browser's download location.</li><li>Select the rename button, enter a new name, and confirm.</li><li>Select “New Folder,” enter a folder name, and create it.</li><li>Select the refresh button to reload the current directory and storage state.</li></ul>
 <h3 id="en-section-39" data-heading-key="section-39"><a href="#en-section-39">Upload Files</a></h3>
@@ -543,7 +544,7 @@
 <h3 id="en-section-45" data-heading-key="section-45"><a href="#en-section-45">Manual Upgrade</a></h3>
 <p>Expand “Manual Upgrade” and choose one of these methods:</p>
 <ul><li>“Upgrade from URL”: Enter the firmware URL, set “Include WebUI” according to the release instructions, then select “Upgrade.”</li><li>“Upgrade from SD Card”: Enter a firmware path such as <code>/sdcard/firmware.bin</code>. When “Include WebUI” is enabled, the page also processes the WebUI file in the same directory.</li></ul>
-<p>“Skip Verify” bypasses firmware integrity or signature checks and increases the risk of installing damaged or unintended firmware. Keep verification enabled for routine updates. Use this option only after the firmware source and operating instructions have been confirmed.</p>
+<p>For an upgrade from a URL, “Skip Verify” skips verification of the HTTPS server certificate. This removes the certificate check used to confirm the download server’s identity. Leave it unchecked for routine updates. If you see a certificate error, ask your administrator to check the server address and certificate.</p>
 <h3 id="en-section-46" data-heading-key="section-46"><a href="#en-section-46">Partition Management and Rollback</a></h3>
 <p>“Partition Management” shows the running partition and other available partitions.</p>
 <ul><li>“Mark Valid” confirms the running version and disables automatic rollback protection for that version. Use it after confirming that the current version operates correctly.</li><li>“Rollback to This Version” selects another bootable version and switches through a reboot. Rollback interrupts current services. Confirm the target version and data compatibility first.</li></ul>

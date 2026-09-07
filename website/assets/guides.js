@@ -259,7 +259,7 @@
     let query = '';
     let firstResultHref = null;
 
-    const indexPromise = fetch('search-index.json?v=agency-32')
+    const indexPromise = fetch('search-index.json?v=docs-20260907')
       .then((response) => {
         if (!response.ok) throw new Error(`Search index returned ${response.status}`);
         return response.json();
