@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/brand.css">
   <link rel="stylesheet" href="../assets/styles.css">
-  <link rel="stylesheet" href="models.css?v=models-inference-2">
+  <link rel="stylesheet" href="models.css?v=engine-tabs-below-1">
 </head>
 <body class="models-page">
   <a class="skip-link" href="#main" data-zh="跳至主要内容" data-en="Skip to content">跳至主要内容</a>
@@ -127,26 +127,26 @@
       <h2 class="mp-heading" id="inferenceTitle" data-zh="专用引擎，释放模型性能。" data-en="Dedicated engines. Unlock model performance.">专用引擎，释放模型性能。</h2>
       <p class="mp-lead" data-zh="RMQ3x 与 RMQ4 已运行于 RMinte 自研 C++ 推理引擎和深度定制的 vLLM。围绕模型结构与 RM-01 的硬件平台，我们深入优化算子、执行路径与运行时，让模型能力建立在高效的推理实现之上。" data-en="RMQ3x and RMQ4 run on RMinte’s C++ inference engine and a custom vLLM implementation. We tailor kernels, execution paths, and runtimes to the model architectures and RM-01 hardware to turn model capability into efficient inference.">RMQ3x 与 RMQ4 已运行于 RMinte 自研 C++ 推理引擎和深度定制的 vLLM。围绕模型结构与 RM-01 的硬件平台，我们深入优化算子、执行路径与运行时，让模型能力建立在高效的推理实现之上。</p>
       <div class="mp-engine-layout">
-        <figure class="mp-engine-art" id="engineArt" data-engine="cpp" aria-label="自研 C++ 推理实现示意">
-          <div class="mp-engine-stack" aria-hidden="true">
-            <div class="mp-engine-plane base"><div class="mp-engine-compute" data-cells="96"></div><span>NVIDIA CUDA</span></div>
-            <div class="mp-engine-plane runtime"><div class="mp-engine-core" data-cells="18"></div><span id="runtimeLabel"><span class="rm-mark">RMinte</span> C++ Runtime</span></div>
-            <div class="mp-engine-plane model"><div class="mp-engine-traces"><i></i><i></i><i></i></div><span>RMQ3x · RMQ4</span></div>
-          </div>
-        </figure>
-        <div class="mp-engine-reading">
+        <div class="mp-engine-visual">
+          <figure class="mp-engine-art" id="engineArt" data-engine="cpp" aria-label="自研 C++ 推理实现示意">
+            <div class="mp-engine-stack" aria-hidden="true">
+              <div class="mp-engine-plane base"><div class="mp-engine-compute" data-cells="96"></div><span>NVIDIA CUDA</span></div>
+              <div class="mp-engine-plane runtime"><div class="mp-engine-core" data-cells="18"></div><span id="runtimeLabel"><span class="rm-mark">RMinte</span> C++ Runtime</span></div>
+              <div class="mp-engine-plane model"><div class="mp-engine-traces"><i></i><i></i><i></i></div><span>RMQ3x · RMQ4</span></div>
+            </div>
+          </figure>
           <div class="mp-engine-tabs" role="tablist" aria-label="推理实现">
             <button role="tab" type="button" id="tabCpp" aria-controls="panelCpp" aria-selected="true" data-engine-tab="cpp" data-zh="自研 C++" data-en="Our C++ engine">自研 C++</button>
             <button role="tab" type="button" id="tabVllm" aria-controls="panelVllm" aria-selected="false" tabindex="-1" data-engine-tab="vllm" data-zh="vLLM 定制" data-en="Custom vLLM">vLLM 定制</button>
           </div>
+        </div>
+        <div class="mp-engine-reading">
           <div class="mp-engine-panel" id="panelCpp" role="tabpanel" aria-labelledby="tabCpp" tabindex="0">
             <h3 data-zh="自研 C++ 推理引擎" data-en="Our C++ inference engine">自研 C++ 推理引擎</h3>
             <h4 data-zh="更低的运行开销，更高的执行效率。" data-en="Lower runtime overhead. More efficient execution.">更低的运行开销，更高的执行效率。</h4>
             <p data-zh="RMinte 自研 C++ 引擎的 Runner 自身内存开销约为 2 MB，不含模型权重、KV Cache 与上下文等占用。在相同模型、精度与量化配置下，prefill 与 decode 性能均优于我们已优化的 vLLM 实现，兼顾输入处理与逐 token 生成的效率。" data-en="The runner in RMinte’s C++ engine uses about 2 MB of memory, excluding model weights, KV cache, context, and other model allocations. With identical model, precision, and quantization settings, it outperforms our optimized vLLM implementation in both input processing (prefill) and token-by-token generation (decode).">RMinte 自研 C++ 引擎的 Runner 自身内存开销约为 2 MB，不含模型权重、KV Cache 与上下文等占用。在相同模型、精度与量化配置下，prefill 与 decode 性能均优于我们已优化的 vLLM 实现，兼顾输入处理与逐 token 生成的效率。</p>
             <h4 data-zh="匹配硬件，减少数据搬运。" data-en="Match the hardware. Move less data.">匹配硬件，减少数据搬运。</h4>
             <p data-zh="针对 RM-01 的 GPU、统一内存与缓存结构，我们设计 CUDA 算子，合并投影与相邻运算，并按矩阵规模选择计算路径。权重加载、量化存储与运行时布局共同减少内存分配和中间结果搬运，将资源留给模型计算。" data-en="We design CUDA kernels for RM-01’s GPU, unified memory, and caches, merge projections and adjacent operations, and select computation paths by matrix size. Weight loading, quantized storage, and runtime layouts reduce memory allocations and movement of intermediate results, leaving more resources for model computation.">针对 RM-01 的 GPU、统一内存与缓存结构，我们设计 CUDA 算子，合并投影与相邻运算，并按矩阵规模选择计算路径。权重加载、量化存储与运行时布局共同减少内存分配和中间结果搬运，将资源留给模型计算。</p>
-            <h4 data-zh="加快生成，承接并发任务。" data-en="Faster generation. Capacity for concurrent tasks.">加快生成，承接并发任务。</h4>
-            <p data-zh="单请求生成采用多 token 预测（MTP），在 GPU 上生成草稿并交由主模型批量验证，接受匹配的连续前缀。多请求采用批量解码，复用权重读取；可合并的输入采用批量 prefill，减少首字等待。引擎按负载组织执行，让交互响应与并发吞吐各有适合的计算路径。" data-en="For single-request generation, Multi-Token Prediction (MTP) produces drafts on the GPU, verifies them in a batch with the main model, and accepts the matching prefix. Multiple requests use batched decoding to reuse weight reads, while compatible inputs share a prefill pass to reduce time to first token. Execution follows the workload, with paths for interactive response and concurrent throughput.">单请求生成采用多 token 预测（MTP），在 GPU 上生成草稿并交由主模型批量验证，接受匹配的连续前缀。多请求采用批量解码，复用权重读取；可合并的输入采用批量 prefill，减少首字等待。引擎按负载组织执行，让交互响应与并发吞吐各有适合的计算路径。</p>
             <h4 data-zh="持续 prefill，按需 decode。" data-en="Continuous prefill. Decode on demand.">持续 prefill，按需 decode。</h4>
             <p data-zh="引擎支持连续追加输入，将输入处理与回答生成分开调度。前缀缓存与递归状态管理复用已有计算，内存与 SSD 分层存储承接上下文。模型随新消息、文档与任务反馈推进处理，在需要输出时启动 decode。" data-en="The engine accepts incremental input and schedules input processing separately from response generation. Prefix caching and recurrent-state management reuse prior computation, while memory and SSD tiers hold context. Models process new messages, documents, and task feedback, then decode when output is needed.">引擎支持连续追加输入，将输入处理与回答生成分开调度。前缀缓存与递归状态管理复用已有计算，内存与 SSD 分层存储承接上下文。模型随新消息、文档与任务反馈推进处理，在需要输出时启动 decode。</p>
             <p data-zh="这种执行方式让 Agent 能够持续接收上下文，无须每次输入都触发回答。从会议中的持续聆听，到案件材料的增量分析，模型随信息更新推进处理，在需要时参与判断与行动。" data-en="Agents can keep receiving context without responding to every input. Whether listening throughout a meeting or analyzing new case material, models process information as it arrives and contribute to decisions and actions when needed.">这种执行方式让 Agent 能够持续接收上下文，无须每次输入都触发回答。从会议中的持续聆听，到案件材料的增量分析，模型随信息更新推进处理，在需要时参与判断与行动。</p>
