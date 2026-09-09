@@ -2,22 +2,30 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
+  <script>
+    // Reveal after deferred localization; without JavaScript the source page stays readable.
+    document.documentElement.classList.add('i18n-loading');
+    document.addEventListener('DOMContentLoaded', () => document.documentElement.classList.remove('i18n-loading'), { once: true });
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="RM-01 下载中心，提供产品手册、技术资料、固件与软件发布包。">
-  <meta property="og:title" content="RM-01 下载中心">
-  <meta property="og:description" content="获取 RM-01 产品文档、产品资料、固件与软件。">
+  <meta name="description" content="RM-01 下载中心，提供产品手册、技术资料、固件与软件发布包。" data-i18n-attr="content" data-zh="RM-01 下载中心，提供产品手册、技术资料、固件与软件发布包。" data-en="Download RM-01 product manuals, technical materials, firmware, and software releases.">
+  <meta property="og:title" content="RM-01 下载中心 · RMinte" data-i18n-attr="content" data-zh="RM-01 下载中心 · RMinte" data-en="RM-01 Downloads · RMinte">
+  <meta property="og:description" content="RM-01 下载中心，提供产品手册、技术资料、固件与软件发布包。" data-i18n-attr="content" data-zh="RM-01 下载中心，提供产品手册、技术资料、固件与软件发布包。" data-en="Download RM-01 product manuals, technical materials, firmware, and software releases.">
   <meta property="og:image" content="../assets/images/img4.png">
   <meta name="theme-color" content="#141618">
-  <title>RMinte - RM-01 - Portable AI Supercomputer - 泛灵人工智能</title>
+  <title data-zh="RM-01 下载中心 · RMinte" data-en="RM-01 Downloads · RMinte">RM-01 下载中心 · RMinte</title>
   <link rel="icon" type="image/png" sizes="512x512" href="../assets/images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/brand.css?v=slate-2">
   <link rel="stylesheet" href="../assets/styles.css?v=solid-header-1">
   <link rel="stylesheet" href="../assets/guides.css?v=clean-cards-1">
   <link rel="stylesheet" href="../assets/downloads.css?v=clear-headings-1">
   <script src="../visitor-language.js" defer></script>
+  <script src="../assets/translations.js" defer></script>
+  <script src="../assets/i18n.js" defer></script>
   <script src="../assets/downloads.js?v=models-launch-1" defer></script>
   <script src="../assets/site-data.js?v=models-launch-1" defer></script>
   <script src="../assets/footer.js?v=models-launch-1" defer></script>
@@ -25,11 +33,11 @@
 <body class="guide-body download-body">
   <a class="skip-link" href="#downloadMain" data-download-text data-zh="跳至下载内容" data-en="Skip to downloads">跳至下载内容</a>
 
-  <header class="site-shell" aria-label="主导航">
-    <a class="brand-mark" href="../index.html#hero" aria-label="RMinte 首页">
+  <header class="site-shell" aria-label="主导航" data-i18n-aria-label-zh="主导航" data-i18n-aria-label-en="Main navigation">
+    <a class="brand-mark" href="../index.html#hero" aria-label="RMinte 首页" data-i18n-aria-label-zh="RMinte 首页" data-i18n-aria-label-en="RMinte home">
       <img src="../assets/images/logo-white.svg" alt="RMinte">
     </a>
-    <nav class="nav-island" aria-label="页面导航">
+    <nav class="nav-island" aria-label="页面导航" data-i18n-aria-label-zh="页面导航" data-i18n-aria-label-en="Page navigation">
       <a href="../gallery/index.html" data-download-text data-zh="图册" data-en="Gallery">图册</a>
       <a href="../models/index.html" data-download-text data-zh="模型" data-en="Models">模型</a>
       <a href="../index.html#engine" data-download-text data-zh="产品" data-en="Product">产品</a>
@@ -39,7 +47,7 @@
     </nav>
     <div class="nav-actions">
       <button class="language-toggle" type="button" data-download-lang-toggle aria-label="切换到英文">EN</button>
-      <button class="menu-button" type="button" aria-label="打开菜单" aria-controls="mobileOverlay" aria-expanded="false" data-menu-toggle>
+      <button class="menu-button" type="button" aria-label="打开菜单" aria-controls="mobileOverlay" aria-expanded="false" data-menu-toggle data-i18n-aria-label-zh="打开菜单" data-i18n-aria-label-en="Open menu">
         <span></span>
         <span></span>
       </button>
@@ -52,7 +60,7 @@
         <img class="mobile-menu-logo" src="../assets/images/logo-white.svg" alt="RMinte">
         <button class="ghost-button" type="button" data-menu-close data-download-text data-zh="关闭" data-en="Close">关闭</button>
       </div>
-      <nav class="mobile-links" aria-label="移动导航">
+      <nav class="mobile-links" aria-label="移动导航" data-i18n-aria-label-zh="移动导航" data-i18n-aria-label-en="Mobile navigation">
         <a href="../gallery/index.html" data-download-text data-zh="图册" data-en="Gallery">图册</a>
         <a href="../models/index.html" data-download-text data-zh="模型" data-en="Models">模型</a>
         <a href="../index.html#engine" data-download-text data-zh="产品" data-en="Product">产品</a>
@@ -66,10 +74,10 @@
   <main class="download-main" id="downloadMain">
     <section class="download-hero" aria-labelledby="downloadTitle">
       <h1 id="downloadTitle" data-download-text data-zh="下载中心" data-en="Download center">下载中心</h1>
-      <p class="download-lead"><span data-download-text data-zh="获取" data-en="Get">获取</span> <span class="rm-mark">RM-01</span> <span data-download-text data-zh="产品文档、技术资料、固件与软件发布包，并直接使用在线工具。" data-en="product documentation, technical materials, firmware and software releases, plus browser-based online tools.">产品文档、技术资料、固件与软件发布包，并直接使用在线工具。</span></p>
+      <p class="download-lead" data-download-text data-zh="获取 RM-01 产品文档、技术资料、固件与软件发布包，并直接使用在线工具。" data-en="Get RM-01 product documentation, technical materials, firmware and software releases, plus browser-based online tools.">获取 RM-01 产品文档、技术资料、固件与软件发布包，并直接使用在线工具。</p>
     </section>
 
-    <section class="download-overview" aria-label="下载资源分类">
+    <section class="download-overview" aria-label="下载资源分类" data-i18n-aria-label-zh="下载资源分类" data-i18n-aria-label-en="Download categories">
       <a class="download-overview-item" href="#documents">
 
         <strong data-download-text data-zh="产品文档" data-en="Product documents">产品文档</strong>
@@ -441,7 +449,7 @@
 
             <h2 id="contactTitle" data-footer-text="contactTitle">联系我们</h2>
           </div>
-          <button class="contact-close" type="button" aria-label="关闭" data-contact-close><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+          <button class="contact-close" type="button" aria-label="关闭" data-contact-close data-i18n-aria-label-zh="关闭" data-i18n-aria-label-en="Close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
         </div>
         <div class="contact-links">
           <a href="mailto:jiezhu@rminte.com">

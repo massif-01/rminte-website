@@ -69,14 +69,14 @@
   const overlay = $('#mobileOverlay');
   const menuButton = $('[data-menu-toggle]');
   const closeButton = $('[data-menu-close]');
-  let lang = localStorage.getItem('rm-soft-lang') || window.RM_DEFAULT_LANG || 'en';
+  let lang = RM_I18N.initial();
   let currentIndex = 0;
   let transitionLocked = false;
   let pointerStart = null;
   const markedTermPattern = /RM-01/g;
 
   function t(value) {
-    return value[lang] || value.zh;
+    return RM_I18N.text(value, lang);
   }
 
   function writeMarkedText(element, text) {
@@ -124,29 +124,24 @@
   function updateImageCopy() {
     const item = galleryItems[currentIndex];
     productImage.alt = t(item.alt);
-    writeMarkedText(captionProduct, lang === 'zh' ? 'RM-01 便携 AI 超算' : 'RM-01 Portable AI Supercomputer');
+    writeMarkedText(captionProduct, RM_I18N.text({zh: 'RM-01 便携 AI 超算', en: 'RM-01 Portable AI Supercomputer'}, lang));
     captionLabel.textContent = t(item.label);
   }
 
-  function applyLanguage(nextLang, remember = true) {
+  function applyLanguage(nextLang) {
     lang = nextLang;
-    if (remember) localStorage.setItem('rm-soft-lang', lang);
-    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+
+    RM_I18N.apply(lang);
     $$('[data-gallery-text]').forEach((element) => {
-      const value = element.dataset[lang];
+      const value = RM_I18N.text(element.dataset, lang);
       if (value !== undefined) writeMarkedText(element, value);
     });
-    $$('[data-gallery-lang-toggle]').forEach((button) => {
-      button.textContent = lang === 'zh' ? 'EN' : '中文';
-      button.setAttribute('aria-label', lang === 'zh' ? '切换到英文' : 'Switch to Chinese');
-    });
-    previousButton.setAttribute('aria-label', lang === 'zh' ? '上一张照片' : 'Previous photo');
-    nextButton.setAttribute('aria-label', lang === 'zh' ? '下一张照片' : 'Next photo');
-    menuButton.setAttribute('aria-label', lang === 'zh'
-      ? (menuButton.classList.contains('active') ? '关闭菜单' : '打开菜单')
-      : (menuButton.classList.contains('active') ? 'Close menu' : 'Open menu'));
+
+    previousButton.setAttribute('aria-label', RM_I18N.text({zh: '上一张照片', en: 'Previous photo'}, lang));
+    nextButton.setAttribute('aria-label', RM_I18N.text({zh: '下一张照片', en: 'Next photo'}, lang));
+    menuButton.setAttribute('aria-label', RM_I18N.text(menuButton.classList.contains('active') ? {zh: '关闭菜单', en: 'Close menu'} : {zh: '打开菜单', en: 'Open menu'}, lang));
     updateImageCopy();
-    document.title = 'RMinte - RM-01 - Portable AI Supercomputer - 泛灵人工智能';
+    RM_I18N.apply(lang);
   }
 
   function showImage(nextIndex) {
@@ -170,20 +165,23 @@
     }, 180);
   }
 
+  overlay.inert = true;
   function setMenu(open) {
+    const restoreFocus = !open && overlay.contains(document.activeElement);
+    overlay.inert = !open;
+    if (open) requestAnimationFrame(() => closeButton.focus({ preventScroll: true }));
+    else if (restoreFocus) menuButton.focus({ preventScroll: true });
     overlay.classList.toggle('active', open);
     overlay.setAttribute('aria-hidden', String(!open));
     menuButton.classList.toggle('active', open);
     menuButton.setAttribute('aria-expanded', String(open));
     document.body.classList.toggle('menu-open', open);
-    menuButton.setAttribute('aria-label', lang === 'zh'
-      ? (open ? '关闭菜单' : '打开菜单')
-      : (open ? 'Close menu' : 'Open menu'));
+    menuButton.setAttribute('aria-label', RM_I18N.text({zh: open ? '关闭菜单' : '打开菜单', en: open ? 'Close menu' : 'Open menu'}, lang));
   }
 
   previousButton.addEventListener('click', () => showImage(currentIndex - 1));
   nextButton.addEventListener('click', () => showImage(currentIndex + 1));
-  $('[data-gallery-lang-toggle]').addEventListener('click', () => applyLanguage(lang === 'zh' ? 'en' : 'zh'));
+  RM_I18N.mount('[data-gallery-lang-toggle]', next => applyLanguage(next));
   menuButton.addEventListener('click', () => setMenu(!menuButton.classList.contains('active')));
   closeButton.addEventListener('click', () => setMenu(false));
   $('.mobile-links a[href="#galleryMain"]').addEventListener('click', () => setMenu(false));
@@ -209,6 +207,6 @@
     showImage(currentIndex + (deltaX < 0 ? 1 : -1));
   });
 
-  applyLanguage(lang, false);
+  applyLanguage(lang);
   preloadNeighbors(currentIndex);
 })();

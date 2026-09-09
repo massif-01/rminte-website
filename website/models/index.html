@@ -2,24 +2,30 @@
 <html lang="zh-CN" class="product-theme">
 <head>
   <meta charset="UTF-8">
+  <script>
+    // Reveal after deferred localization; without JavaScript the source page stays readable.
+    document.documentElement.classList.add('i18n-loading');
+    document.addEventListener('DOMContentLoaded', () => document.documentElement.classList.remove('i18n-loading'), { once: true });
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#000000">
   <link rel="canonical" href="https://rminte.com/models/">
-  <meta name="description" content="RMQ3x 与 RMQ4，RMinte 专业模型系列。针对性训练、专用推理引擎与架构优化。">
-  <title>模型 · RMinte</title>
+  <meta name="description" content="RMQ3x 与 RMQ4，RMinte 专业模型系列。针对性训练、专用推理引擎与架构优化。" data-i18n-attr="content" data-zh="RMQ3x 与 RMQ4，RMinte 专业模型系列。针对性训练、专用推理引擎与架构优化。" data-en="RMQ3x and RMQ4: RMinte’s specialist models with targeted training, dedicated inference engines, and architecture optimization.">
+  <title data-zh="模型 · RMinte" data-en="Models · RMinte">模型 · RMinte</title>
   <link rel="icon" href="../assets/images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/brand.css">
   <link rel="stylesheet" href="../assets/styles.css">
   <link rel="stylesheet" href="models.css?v=benchmark-clean-1">
 </head>
 <body class="models-page">
-  <a class="skip-link" href="#main" data-zh="跳至主要内容" data-en="Skip to content">跳至主要内容</a>
-  <header class="site-shell" aria-label="主导航">
+  <a class="skip-link" href="#main" data-zh="跳至主要内容" data-en="Skip to content" data-i18n-text data-zh="跳至主要内容" data-en="Skip to main content">跳至主要内容</a>
+  <header class="site-shell" aria-label="主导航" data-i18n-aria-label-zh="主导航" data-i18n-aria-label-en="Main navigation">
     <a class="brand-mark" href="../index.html" aria-label="RMinte"><img src="../assets/images/logo-white.svg" alt="RMinte"></a>
-    <nav class="nav-island" aria-label="页面导航">
+    <nav class="nav-island" aria-label="页面导航" data-i18n-aria-label-zh="页面导航" data-i18n-aria-label-en="Page navigation">
       <a href="../gallery/index.html" data-zh="图册" data-en="Gallery">图册</a>
       <a class="active" href="#main" aria-current="page" data-zh="模型" data-en="Models">模型</a>
       <a href="../index.html#engine" data-zh="产品" data-en="Product">产品</a>
@@ -29,7 +35,7 @@
     </nav>
     <div class="nav-actions">
       <button class="language-toggle" type="button" id="languageToggle" aria-label="切换到英文">EN</button>
-      <button class="menu-button" type="button" id="menuToggle" aria-label="打开菜单" aria-controls="mobileMenu" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M2 8h20v1H2zM2 16h20v1H2z"/></svg></button>
+      <button class="menu-button" type="button" id="menuToggle" aria-label="打开菜单" aria-controls="mobileMenu" aria-expanded="false" data-i18n-aria-label-zh="打开菜单" data-i18n-aria-label-en="Open menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M2 8h20v1H2zM2 16h20v1H2z"/></svg></button>
     </div>
   </header>
 
@@ -45,8 +51,8 @@
         </div>
       </div>
       <!-- Approved A artwork: masked layer groups preserve the glass texture while opening independently. -->
-      <figure class="mp-hero-art" aria-label="Dense 与 MoE 架构概念示意">
-        <button class="mp-model-visual dense" type="button" aria-pressed="false" data-visual-model="RMQ3x" aria-label="RMQ3x Dense：展开或收起结构">
+      <figure class="mp-hero-art" aria-label="Dense 与 MoE 架构概念示意" data-i18n-aria-label-zh="Dense 与 MoE 架构概念示意" data-i18n-aria-label-en="Conceptual view of dense and MoE architectures">
+        <button class="mp-model-visual dense" type="button" aria-pressed="false" data-visual-model="RMQ3x" aria-label="RMQ3x Dense：展开或收起结构" data-i18n-aria-label-zh="RMQ3x Dense：展开或收起结构" data-i18n-aria-label-en="RMQ3x Dense: expand or collapse the structure">
           <svg class="mp-glass-stack" viewBox="50 110 710 820" aria-hidden="true">
             <defs>
               <image id="glass-dense" href="model-glass-a.png" width="1536" height="1024"/>
@@ -60,7 +66,7 @@
           </svg>
           <span class="mp-sculpture-name"><span class="rm-mark">RMQ3x</span><span class="mp-architecture-tag"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M1 1h4v4H1zm6 0h4v4H7zm6 0h4v4h-4zM1 7h4v4H1zm6 0h4v4H7zm6 0h4v4h-4zM1 13h4v4H1zm6 0h4v4H7zm6 0h4v4h-4z"/></svg>Dense</span></span>
         </button>
-        <button class="mp-model-visual moe" type="button" aria-pressed="false" data-visual-model="RMQ4" aria-label="RMQ4 MoE：展开或收起结构">
+        <button class="mp-model-visual moe" type="button" aria-pressed="false" data-visual-model="RMQ4" aria-label="RMQ4 MoE：展开或收起结构" data-i18n-aria-label-zh="RMQ4 MoE：展开或收起结构" data-i18n-aria-label-en="RMQ4 MoE: expand or collapse the structure">
           <svg class="mp-glass-stack" viewBox="770 110 710 820" aria-hidden="true">
             <defs>
               <image id="glass-moe" href="model-glass-a.png" width="1536" height="1024"/>
@@ -77,7 +83,7 @@
       </figure>
     </section>
 
-    <section class="mp-wrap mp-models" id="models" aria-label="模型介绍">
+    <section class="mp-wrap mp-models" id="models" aria-label="模型介绍" data-i18n-aria-label-zh="模型介绍" data-i18n-aria-label-en="Model overview">
       <div class="mp-model-grid">
         <article class="mp-model-card">
           <div class="mp-card-top"><h2 class="rm-mark">RMQ3x</h2><span class="mp-architecture-tag"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M1 1h4v4H1zm6 0h4v4H7zm6 0h4v4h-4zM1 7h4v4H1zm6 0h4v4H7zm6 0h4v4h-4zM1 13h4v4H1zm6 0h4v4H7zm6 0h4v4h-4z"/></svg>Dense</span></div>
@@ -88,7 +94,7 @@
             <li><h3 data-zh="完成实际工作" data-en="Execute tasks">完成实际工作</h3><p data-zh="制定检索策略，生成数据查询与验证代码，调用专业工具执行任务、检验结果。" data-en="Develop search strategies, generate data queries and validation code, and use specialist tools to execute tasks and verify results.">制定检索策略，生成数据查询与验证代码，调用专业工具执行任务、检验结果。</p></li>
             <li><h3 data-zh="延续任务进程" data-en="Carry tasks forward">延续任务进程</h3><p data-zh="承接前序发现与执行反馈，修订方案、推进验证，完成调查、研究与业务工作。" data-en="Use prior findings and execution feedback to revise plans, verify results, and complete investigations, research, and business tasks.">承接前序发现与执行反馈，修订方案、推进验证，完成调查、研究与业务工作。</p></li>
           </ul>
-          <div class="mp-card-bottom"><button class="mp-pill hf-button" type="button" data-model="RMQ3x" disabled title="模型主页即将公布"><img class="hf-icon" src="huggingface.svg" alt="" aria-hidden="true"><img class="hf-wordmark" src="huggingface-text.svg" alt="Hugging Face"></button><div class="mp-model-glyph" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="mp-card-bottom"><button class="mp-pill hf-button" type="button" data-model="RMQ3x" disabled title="模型主页即将公布" data-i18n-title-zh="模型主页即将公布" data-i18n-title-en="Model page coming soon"><img class="hf-icon" src="huggingface.svg" alt="" aria-hidden="true"><img class="hf-wordmark" src="huggingface-text.svg" alt="Hugging Face"></button><div class="mp-model-glyph" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
         </article>
         <article class="mp-model-card">
           <div class="mp-card-top"><h2 class="rm-mark">RMQ4</h2><span class="mp-architecture-tag"><svg viewBox="0 0 18 18" aria-hidden="true"><path opacity=".25" d="M1 1h4v4H1zm12 0h4v4h-4zM7 7h4v4H7zM1 13h4v4H1zm12 0h4v4h-4z"/><path d="M7 1h4v4H7zM1 7h4v4H1zm12 0h4v4h-4zM7 13h4v4H7z"/></svg>MoE</span></div>
@@ -99,7 +105,7 @@
             <li><h3 data-zh="贯通复杂任务" data-en="Coordinate complex tasks">贯通复杂任务</h3><p data-zh="统筹调查规划、信息检索、代码计算与结果复核，将阶段性发现转化为后续行动。" data-en="Coordinate investigation planning, information retrieval, code execution, and result verification. Use findings at each stage to guide the next action.">统筹调查规划、信息检索、代码计算与结果复核，将阶段性发现转化为后续行动。</p></li>
             <li><h3 data-zh="推进研究迭代" data-en="Refine the research">推进研究迭代</h3><p data-zh="吸收新增证据、计算结果与实验反馈，修订假设、完善方案，产出可检验的研究成果。" data-en="Incorporate new evidence, computational results, and experimental feedback to revise hypotheses, refine plans, and produce testable research findings.">吸收新增证据、计算结果与实验反馈，修订假设、完善方案，产出可检验的研究成果。</p></li>
           </ul>
-          <div class="mp-card-bottom"><button class="mp-pill hf-button" type="button" data-model="RMQ4" disabled title="模型主页即将公布"><img class="hf-icon" src="huggingface.svg" alt="" aria-hidden="true"><img class="hf-wordmark" src="huggingface-text.svg" alt="Hugging Face"></button><div class="mp-model-glyph" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="mp-card-bottom"><button class="mp-pill hf-button" type="button" data-model="RMQ4" disabled title="模型主页即将公布" data-i18n-title-zh="模型主页即将公布" data-i18n-title-en="Model page coming soon"><img class="hf-icon" src="huggingface.svg" alt="" aria-hidden="true"><img class="hf-wordmark" src="huggingface-text.svg" alt="Hugging Face"></button><div class="mp-model-glyph" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
         </article>
       </div>
     </section>
@@ -124,14 +130,14 @@
       <p class="mp-lead" data-zh="RMQ3x 与 RMQ4 已运行于 RMinte 自研 C++ 推理引擎和深度定制的 vLLM。围绕模型结构与 RM-01 的硬件平台，我们深入优化算子、执行路径与运行时，让模型能力建立在高效的推理实现之上。" data-en="RMQ3x and RMQ4 run on RMinte’s C++ inference engine and a custom vLLM implementation. We tailor kernels, execution paths, and runtimes to the model architectures and RM-01 hardware to turn model capability into efficient inference.">RMQ3x 与 RMQ4 已运行于 RMinte 自研 C++ 推理引擎和深度定制的 vLLM。围绕模型结构与 RM-01 的硬件平台，我们深入优化算子、执行路径与运行时，让模型能力建立在高效的推理实现之上。</p>
       <div class="mp-engine-layout">
         <div class="mp-engine-visual">
-          <figure class="mp-engine-art" id="engineArt" data-engine="cpp" aria-label="自研 C++ 推理实现示意">
+          <figure class="mp-engine-art" id="engineArt" data-engine="cpp" aria-label="自研 C++ 推理实现示意" data-i18n-aria-label-zh="自研 C++ 推理实现示意" data-i18n-aria-label-en="Diagram of the dedicated C++ inference engine">
             <div class="mp-engine-stack" aria-hidden="true">
               <div class="mp-engine-plane base"><div class="mp-engine-compute" data-cells="96"></div><span>NVIDIA CUDA</span></div>
               <div class="mp-engine-plane runtime"><div class="mp-engine-core" data-cells="18"></div><span id="runtimeLabel"><span class="rm-mark">RMinte</span> C++ Runtime</span></div>
               <div class="mp-engine-plane model"><div class="mp-engine-traces"><i></i><i></i><i></i></div><span>RMQ3x · RMQ4</span></div>
             </div>
           </figure>
-          <div class="mp-engine-tabs" role="tablist" aria-label="推理实现">
+          <div class="mp-engine-tabs" role="tablist" aria-label="推理实现" data-i18n-aria-label-zh="推理实现" data-i18n-aria-label-en="Inference engines">
             <button role="tab" type="button" id="tabCpp" aria-controls="panelCpp" aria-selected="true" data-engine-tab="cpp" data-zh="自研 C++" data-en="Our C++ engine">自研 C++</button>
             <button role="tab" type="button" id="tabVllm" aria-controls="panelVllm" aria-selected="false" tabindex="-1" data-engine-tab="vllm" data-zh="vLLM 定制" data-en="Custom vLLM">vLLM 定制</button>
           </div>
@@ -168,7 +174,7 @@
 
   </main>
 
-  <footer class="footer"><div class="footer-inner"><div class="footer-brand"><img src="../assets/images/logo-white.svg" alt="RMinte"><div><p data-zh="泛灵（成都）人工智能科技有限公司" data-en="RMinte AI">泛灵（成都）人工智能科技有限公司</p><span>© 2026 <span class="rm-mark">RMinte</span> (Chengdu) Artificial Intelligence Technology Co., Ltd. · <span class="rm-mark">RM-01</span> Portable AI Supercomputer</span></div></div><div class="footer-actions"><button class="footer-contact" type="button" id="contactToggle" aria-expanded="false" aria-controls="contactPopover" data-contact-toggle><span data-footer-text="contactButton">联系我们</span></button><a class="footer-github" href="https://github.com/RMinte-AI" target="_blank" rel="noreferrer" aria-label="GitHub"><svg class="github" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true" focusable="false" style="display:inline-block;width:18px;height:18px;flex:none;vertical-align:middle"><path d="M12 0c6.63 0 12 5.276 12 11.79-.001 5.067-3.29 9.567-8.175 11.187-.6.118-.825-.25-.825-.56 0-.398.015-1.665.015-3.242 0-1.105-.375-1.813-.81-2.181 2.67-.295 5.475-1.297 5.475-5.822 0-1.297-.465-2.344-1.23-3.169.12-.295.54-1.503-.12-3.125 0 0-1.005-.324-3.3 1.209a11.32 11.32 0 00-3-.398c-1.02 0-2.04.133-3 .398-2.295-1.518-3.3-1.209-3.3-1.209-.66 1.622-.24 2.83-.12 3.125-.765.825-1.23 1.887-1.23 3.169 0 4.51 2.79 5.527 5.46 5.822-.345.294-.66.81-.765 1.577-.69.31-2.415.81-3.495-.973-.225-.354-.9-1.223-1.845-1.209-1.005.015-.405.56.015.781.51.28 1.095 1.327 1.23 1.666.24.663 1.02 1.93 4.035 1.385 0 .988.015 1.916.015 2.196 0 .31-.225.664-.825.56C3.303 21.374-.003 16.867 0 11.791 0 5.276 5.37 0 12 0z"/></svg><span><svg class="github-text" viewBox="0 0 78 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true" focusable="false" style="display:inline-block;width:42.25px;height:13px;flex:none;vertical-align:middle"><path d="M16.598 10.836v9.48c0 .066-.017.181-.1.214 0 0-2.07 1.47-5.484 1.47C6.888 22 2 20.712 2 12.223 2 3.734 6.275 1.983 10.45 2c3.613 0 5.07.81 5.303.958.066.083.1.149.1.231l-.697 2.94c0 .149-.149.33-.331.28-.597-.18-1.491-.544-3.596-.544-2.435 0-5.053.693-5.053 6.16 0 5.466 2.485 6.11 4.275 6.11 1.524 0 2.07-.181 2.07-.181v-3.799h-2.435c-.182 0-.315-.132-.315-.28v-3.04c0-.148.133-.28.315-.28h6.197c.182 0 .315.132.315.28zM76 14.684c0 5.664-1.84 7.283-5.054 7.283-2.717 0-4.175-1.37-4.175-1.37s-.067.759-.15.858c-.05.1-.132.132-.231.132h-2.453c-.165 0-.315-.132-.315-.28l.034-18.349a.29.29 0 01.281-.28h3.53a.29.29 0 01.281.28v6.226s1.359-.875 3.347-.875l-.016-.033c1.988 0 4.921.743 4.921 6.408zM47.865 2.71a.29.29 0 01.281.281V21.34a.29.29 0 01-.281.281h-3.53a.29.29 0 01-.281-.28l.033-7.845h-5.485v7.844a.29.29 0 01-.281.281h-3.53c-.132 0-.281-.132-.281-.28V2.99a.29.29 0 01.281-.28h3.53a.29.29 0 01.281.28v6.755h5.485V2.99a.29.29 0 01.282-.28h3.496zM61.55 8.722c.183 0 .315.132.315.28l-.033 12.337c0 .149-.1.281-.282.281h-2.22c-.116 0-.232-.066-.265-.148-.05-.1-.133-.744-.133-.744S57.061 22 54.758 22c-2.8 0-4.839-.908-4.839-4.542V9.02a.29.29 0 01.282-.28h3.546a.29.29 0 01.282.28v7.845c0 1.238.364 1.8 1.607 1.8 1.243 0 2.154-.644 2.154-.644V9.036c0-.182.1-.314.282-.314h3.48zm-28.84 9.861h.007c.14.029.239.154.234.296v2.477c0 .116-.05.231-.149.264-.166.083-1.226.363-2.104.363-1.922 0-4.74-.412-4.74-4.442v-5.417H24.12c-.149 0-.281-.132-.281-.314V9.564c0-.132.083-.248.215-.28.116-.017 1.922-.463 1.922-.463V5.237c0-.132.083-.215.232-.215h3.58c.148 0 .231.083.231.215v3.485h2.635c.132 0 .265.132.265.28v2.808c0 .182-.116.314-.265.314h-2.635v5.17c0 .777.448 1.372 1.74 1.372.41 0 .797-.081.951-.083zM22.28 8.705a.29.29 0 01.282.281v12.172c0 .297-.083.446-.414.446h-3.182c-.281 0-.497-.116-.497-.446V9.036c0-.182.133-.33.282-.33h3.53zm49.693 6.243c0-2.99-1.21-3.386-2.486-3.253-.994.066-1.79.561-1.79.561v5.813s.813.562 2.022.595c1.707.05 2.254-.562 2.254-3.716zM20.54 3.123a2.26 2.26 0 012.254 2.28A2.26 2.26 0 0120.54 7.68a2.266 2.266 0 01-2.286-2.279c0-1.271 1.01-2.279 2.286-2.279z"/></svg></span></a></div></div></footer>
+  <footer class="footer"><div class="footer-inner"><div class="footer-brand"><img src="../assets/images/logo-white.svg" alt="RMinte"><div><p data-zh="泛灵（成都）人工智能科技有限公司" data-en="RMinte AI">泛灵（成都）人工智能科技有限公司</p><span data-zh="© 2026 RMinte (Chengdu) Artificial Intelligence Technology Co., Ltd. · RM-01 Portable AI Supercomputer" data-en="© 2026 RMinte (Chengdu) Artificial Intelligence Technology Co., Ltd. · RM-01 Portable AI Supercomputer">© 2026 <span class="rm-mark">RMinte</span> (Chengdu) Artificial Intelligence Technology Co., Ltd. · <span class="rm-mark">RM-01</span> Portable AI Supercomputer</span></div></div><div class="footer-actions"><button class="footer-contact" type="button" id="contactToggle" aria-expanded="false" aria-controls="contactPopover" data-contact-toggle><span data-footer-text="contactButton">联系我们</span></button><a class="footer-github" href="https://github.com/RMinte-AI" target="_blank" rel="noreferrer" aria-label="GitHub"><svg class="github" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true" focusable="false" style="display:inline-block;width:18px;height:18px;flex:none;vertical-align:middle"><path d="M12 0c6.63 0 12 5.276 12 11.79-.001 5.067-3.29 9.567-8.175 11.187-.6.118-.825-.25-.825-.56 0-.398.015-1.665.015-3.242 0-1.105-.375-1.813-.81-2.181 2.67-.295 5.475-1.297 5.475-5.822 0-1.297-.465-2.344-1.23-3.169.12-.295.54-1.503-.12-3.125 0 0-1.005-.324-3.3 1.209a11.32 11.32 0 00-3-.398c-1.02 0-2.04.133-3 .398-2.295-1.518-3.3-1.209-3.3-1.209-.66 1.622-.24 2.83-.12 3.125-.765.825-1.23 1.887-1.23 3.169 0 4.51 2.79 5.527 5.46 5.822-.345.294-.66.81-.765 1.577-.69.31-2.415.81-3.495-.973-.225-.354-.9-1.223-1.845-1.209-1.005.015-.405.56.015.781.51.28 1.095 1.327 1.23 1.666.24.663 1.02 1.93 4.035 1.385 0 .988.015 1.916.015 2.196 0 .31-.225.664-.825.56C3.303 21.374-.003 16.867 0 11.791 0 5.276 5.37 0 12 0z"/></svg><span><svg class="github-text" viewBox="0 0 78 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true" focusable="false" style="display:inline-block;width:42.25px;height:13px;flex:none;vertical-align:middle"><path d="M16.598 10.836v9.48c0 .066-.017.181-.1.214 0 0-2.07 1.47-5.484 1.47C6.888 22 2 20.712 2 12.223 2 3.734 6.275 1.983 10.45 2c3.613 0 5.07.81 5.303.958.066.083.1.149.1.231l-.697 2.94c0 .149-.149.33-.331.28-.597-.18-1.491-.544-3.596-.544-2.435 0-5.053.693-5.053 6.16 0 5.466 2.485 6.11 4.275 6.11 1.524 0 2.07-.181 2.07-.181v-3.799h-2.435c-.182 0-.315-.132-.315-.28v-3.04c0-.148.133-.28.315-.28h6.197c.182 0 .315.132.315.28zM76 14.684c0 5.664-1.84 7.283-5.054 7.283-2.717 0-4.175-1.37-4.175-1.37s-.067.759-.15.858c-.05.1-.132.132-.231.132h-2.453c-.165 0-.315-.132-.315-.28l.034-18.349a.29.29 0 01.281-.28h3.53a.29.29 0 01.281.28v6.226s1.359-.875 3.347-.875l-.016-.033c1.988 0 4.921.743 4.921 6.408zM47.865 2.71a.29.29 0 01.281.281V21.34a.29.29 0 01-.281.281h-3.53a.29.29 0 01-.281-.28l.033-7.845h-5.485v7.844a.29.29 0 01-.281.281h-3.53c-.132 0-.281-.132-.281-.28V2.99a.29.29 0 01.281-.28h3.53a.29.29 0 01.281.28v6.755h5.485V2.99a.29.29 0 01.282-.28h3.496zM61.55 8.722c.183 0 .315.132.315.28l-.033 12.337c0 .149-.1.281-.282.281h-2.22c-.116 0-.232-.066-.265-.148-.05-.1-.133-.744-.133-.744S57.061 22 54.758 22c-2.8 0-4.839-.908-4.839-4.542V9.02a.29.29 0 01.282-.28h3.546a.29.29 0 01.282.28v7.845c0 1.238.364 1.8 1.607 1.8 1.243 0 2.154-.644 2.154-.644V9.036c0-.182.1-.314.282-.314h3.48zm-28.84 9.861h.007c.14.029.239.154.234.296v2.477c0 .116-.05.231-.149.264-.166.083-1.226.363-2.104.363-1.922 0-4.74-.412-4.74-4.442v-5.417H24.12c-.149 0-.281-.132-.281-.314V9.564c0-.132.083-.248.215-.28.116-.017 1.922-.463 1.922-.463V5.237c0-.132.083-.215.232-.215h3.58c.148 0 .231.083.231.215v3.485h2.635c.132 0 .265.132.265.28v2.808c0 .182-.116.314-.265.314h-2.635v5.17c0 .777.448 1.372 1.74 1.372.41 0 .797-.081.951-.083zM22.28 8.705a.29.29 0 01.282.281v12.172c0 .297-.083.446-.414.446h-3.182c-.281 0-.497-.116-.497-.446V9.036c0-.182.133-.33.282-.33h3.53zm49.693 6.243c0-2.99-1.21-3.386-2.486-3.253-.994.066-1.79.561-1.79.561v5.813s.813.562 2.022.595c1.707.05 2.254-.562 2.254-3.716zM20.54 3.123a2.26 2.26 0 012.254 2.28A2.26 2.26 0 0120.54 7.68a2.266 2.266 0 01-2.286-2.279c0-1.271 1.01-2.279 2.286-2.279z"/></svg></span></a></div></div></footer>
 
   <aside class="contact-popover" id="contactPopover" role="dialog" aria-labelledby="contactTitle" aria-hidden="true" data-contact-popover inert>
     <div class="contact-card">
@@ -178,7 +184,7 @@
 
             <h2 id="contactTitle" data-footer-text="contactTitle">联系我们</h2>
           </div>
-          <button class="contact-close" type="button" aria-label="关闭" data-contact-close><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+          <button class="contact-close" type="button" aria-label="关闭" data-contact-close data-i18n-aria-label-zh="关闭" data-i18n-aria-label-en="Close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
         </div>
         <div class="contact-links">
           <a href="mailto:jiezhu@rminte.com">
@@ -198,9 +204,11 @@
     </div>
   </aside>
 
-  <dialog class="mp-dialog mp-menu-dialog" id="mobileMenu" aria-label="导航菜单"><div class="mp-dialog-top"><img src="../assets/images/logo-white.svg" alt="RMinte"><button class="mp-close" type="button" data-close-dialog aria-label="关闭"><svg class="mp-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><nav class="mp-mobile-links" aria-label="移动导航"><a href="../gallery/index.html" data-zh="图册" data-en="Gallery">图册</a><a href="#main" aria-current="page" data-zh="模型" data-en="Models">模型</a><a href="../index.html#engine" data-zh="产品" data-en="Product">产品</a><a href="../index.html#teardown" data-zh="架构" data-en="Architecture">架构</a><a href="../guides/index.html" data-zh="指南" data-en="Guides">指南</a><a href="../downloads/index.html" data-zh="下载" data-en="Downloads">下载</a></nav></dialog>
+  <dialog class="mp-dialog mp-menu-dialog" id="mobileMenu" aria-label="导航菜单" data-i18n-aria-label-zh="导航菜单" data-i18n-aria-label-en="Navigation menu"><div class="mp-dialog-top"><img src="../assets/images/logo-white.svg" alt="RMinte"><button class="mp-close" type="button" data-close-dialog aria-label="关闭" data-i18n-aria-label-zh="关闭" data-i18n-aria-label-en="Close"><svg class="mp-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><nav class="mp-mobile-links" aria-label="移动导航" data-i18n-aria-label-zh="移动导航" data-i18n-aria-label-en="Mobile navigation"><a href="../gallery/index.html" data-zh="图册" data-en="Gallery">图册</a><a href="#main" aria-current="page" data-zh="模型" data-en="Models">模型</a><a href="../index.html#engine" data-zh="产品" data-en="Product">产品</a><a href="../index.html#teardown" data-zh="架构" data-en="Architecture">架构</a><a href="../guides/index.html" data-zh="指南" data-en="Guides">指南</a><a href="../downloads/index.html" data-zh="下载" data-en="Downloads">下载</a></nav></dialog>
 
   <script src="../visitor-language.js" defer></script>
+  <script src="../assets/translations.js" defer></script>
+  <script src="../assets/i18n.js" defer></script>
   <script src="../assets/site-data.js?v=models-inference-2" defer></script>
   <script src="../assets/footer.js?v=models-launch-1" defer></script>
   <script src="benchmark-particles.js" defer></script>

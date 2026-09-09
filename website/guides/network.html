@@ -2,22 +2,30 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
+  <script>
+    // Reveal after deferred localization; without JavaScript the source page stays readable.
+    document.documentElement.classList.add('i18n-loading');
+    document.addEventListener('DOMContentLoaded', () => document.documentElement.classList.remove('i18n-loading'), { once: true });
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="说明 C1 与 C3 两条网络连接路径，以及用户设备接入、AI 辅助网络共享和整机接入上层网络的方法。">
-  <meta property="og:title" content="RM-01 网络配置指南">
-  <meta property="og:description" content="说明 C1 与 C3 两条网络连接路径，以及用户设备接入、AI 辅助网络共享和整机接入上层网络的方法。">
+  <meta name="description" content="说明 C1 与 C3 两条网络连接路径，以及用户设备接入、AI 辅助网络共享和整机接入上层网络的方法。" data-i18n-attr="content" data-zh="说明 C1 与 C3 两条网络连接路径，以及用户设备接入、AI 辅助网络共享和整机接入上层网络的方法。" data-en="Explains the C1 and C3 network paths, device access, AI-assisted internet sharing, and how to connect the complete RM-01 system to an upstream network.">
+  <meta property="og:title" content="RM-01 网络配置指南" data-i18n-attr="content" data-zh="RM-01 网络配置指南" data-en="RM-01 Network Configuration Guide">
+  <meta property="og:description" content="说明 C1 与 C3 两条网络连接路径，以及用户设备接入、AI 辅助网络共享和整机接入上层网络的方法。" data-i18n-attr="content" data-zh="说明 C1 与 C3 两条网络连接路径，以及用户设备接入、AI 辅助网络共享和整机接入上层网络的方法。" data-en="Explains the C1 and C3 network paths, device access, AI-assisted internet sharing, and how to connect the complete RM-01 system to an upstream network.">
   <meta property="og:image" content="../assets/images/img4.png">
   <meta name="theme-color" content="#141618">
-  <title>RMinte - RM-01 - Portable AI Supercomputer - 泛灵人工智能</title>
+  <title data-zh="RM-01 网络配置指南" data-en="RM-01 Network Configuration Guide">RM-01 网络配置指南</title>
   <link rel="icon" type="image/png" sizes="512x512" href="../assets/images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/brand.css?v=slate-2">
   <link rel="stylesheet" href="../assets/styles.css?v=solid-header-1">
   <link rel="stylesheet" href="../assets/guides.css?v=table-header-1">
-  <script id="guidePageData" type="application/json">{"title":{"zh":"RM-01 网络配置指南","en":"RM-01 Network Configuration Guide"},"copy":{"zh":"已复制","en":"Copied"},"copyDefault":{"zh":"复制","en":"Copy"}}</script>
+  <script id="guidePageData" type="application/json">{"title":{"zh":"RM-01 网络配置指南","en":"RM-01 Network Configuration Guide","ja":"RM-01 ネットワーク設定ガイド","ko":"RM-01 네트워크 설정 가이드","es":"Guía de configuración de red de RM-01","fr":"Guide de configuration réseau de RM-01"},"copy":{"zh":"已复制","en":"Copied"},"copyDefault":{"zh":"复制","en":"Copy"}}</script>
   <script src="../visitor-language.js" defer></script>
+  <script src="../assets/translations.js" defer></script>
+  <script src="../assets/i18n.js" defer></script>
   <script src="../assets/guides.js?v=docs-20260907" defer></script>
   <script src="../assets/site-data.js?v=models-launch-1" defer></script>
   <script src="../assets/footer.js?v=models-launch-1" defer></script>
@@ -25,11 +33,11 @@
 <body class="guide-body guide-doc-body guide-accent-network">
   <a class="skip-link" href="#guideContent" data-guide-text data-zh="跳至指南正文" data-en="Skip to guide content">跳至指南正文</a>
 
-  <header class="site-shell" aria-label="主导航">
-    <a class="brand-mark" href="../index.html#hero" aria-label="RMinte 首页">
+  <header class="site-shell" aria-label="主导航" data-i18n-aria-label-zh="主导航" data-i18n-aria-label-en="Main navigation">
+    <a class="brand-mark" href="../index.html#hero" aria-label="RMinte 首页" data-i18n-aria-label-zh="RMinte 首页" data-i18n-aria-label-en="RMinte home">
       <img src="../assets/images/logo-white.svg" alt="RMinte">
     </a>
-    <nav class="nav-island" aria-label="页面导航">
+    <nav class="nav-island" aria-label="页面导航" data-i18n-aria-label-zh="页面导航" data-i18n-aria-label-en="Page navigation">
       <a href="../gallery/index.html" data-guide-text data-zh="图册" data-en="Gallery">图册</a>
       <a href="../models/index.html" data-guide-text data-zh="模型" data-en="Models">模型</a>
       <a href="../index.html#engine" data-guide-text data-zh="产品" data-en="Product">产品</a>
@@ -39,7 +47,7 @@
     </nav>
     <div class="nav-actions">
       <button class="language-toggle" type="button" data-guide-lang-toggle>EN</button>
-      <button class="menu-button" type="button" aria-label="打开菜单" aria-controls="mobileOverlay" aria-expanded="false" data-menu-toggle>
+      <button class="menu-button" type="button" aria-label="打开菜单" aria-controls="mobileOverlay" aria-expanded="false" data-menu-toggle data-i18n-aria-label-zh="打开菜单" data-i18n-aria-label-en="Open menu">
         <span></span>
         <span></span>
       </button>
@@ -52,7 +60,7 @@
         <img class="mobile-menu-logo" src="../assets/images/logo-white.svg" alt="RMinte">
         <button class="ghost-button" type="button" data-menu-close data-guide-text data-zh="关闭" data-en="Close">关闭</button>
       </div>
-      <nav class="mobile-links" aria-label="移动导航">
+      <nav class="mobile-links" aria-label="移动导航" data-i18n-aria-label-zh="移动导航" data-i18n-aria-label-en="Mobile navigation">
         <a href="../gallery/index.html" data-guide-text data-zh="图册" data-en="Gallery">图册</a>
         <a href="../models/index.html" data-guide-text data-zh="模型" data-en="Models">模型</a>
         <a href="../index.html#engine" data-guide-text data-zh="产品" data-en="Product">产品</a>
@@ -71,7 +79,7 @@
       <p class="guide-doc-lead" data-guide-text data-zh="说明 C1 与 C3 两条网络连接路径，以及用户设备接入、AI 辅助网络共享和整机接入上层网络的方法。" data-en="Explains the C1 and C3 network paths, device access, AI-assisted internet sharing, and how to connect the complete RM-01 system to an upstream network.">说明 C1 与 C3 两条网络连接路径，以及用户设备接入、AI 辅助网络共享和整机接入上层网络的方法。</p>
       <div class="guide-doc-meta">
         <span data-guide-text data-zh="7 个章节" data-en="7 chapters">7 个章节</span>
-        <span data-guide-text data-zh="中英双语" data-en="Chinese and English">中英双语</span>
+        <span data-guide-text data-zh="六种语言" data-en="Six languages">六种语言</span>
         <span>TianshanOS</span>
       </div>
     </section>
@@ -96,7 +104,7 @@
 
     <details class="guide-mobile-toc">
       <summary data-guide-text data-zh="展开本页目录" data-en="Open page contents">展开本页目录</summary>
-      <nav class="lang-pane" data-lang-pane="zh" aria-label="中文目录">
+<nav class="lang-pane" data-lang-pane="zh" aria-label="本页目录">
 <a class="toc-link toc-depth-0" href="#zh-section-1" data-toc-target="zh-section-1">1. 先了解两条网络连接路径</a>
 <a class="toc-link toc-depth-0" href="#zh-section-2" data-toc-target="zh-section-2">2. 识别 C1 与 C3</a>
 <a class="toc-link toc-depth-1" href="#zh-section-3" data-toc-target="zh-section-3">C1 接口</a>
@@ -122,7 +130,7 @@
 <a class="toc-link toc-depth-1" href="#zh-section-23" data-toc-target="zh-section-23">端口转发与安全边界</a>
 <a class="toc-link toc-depth-1" href="#zh-section-24" data-toc-target="zh-section-24">风险与故障排查</a>
       </nav>
-      <nav class="lang-pane" data-lang-pane="en" aria-label="English contents" hidden>
+<nav class="lang-pane" data-lang-pane="en" aria-label="On this page" hidden>
 <a class="toc-link toc-depth-0" href="#en-section-1" data-toc-target="en-section-1">1. Understand the Two Network Paths</a>
 <a class="toc-link toc-depth-0" href="#en-section-2" data-toc-target="en-section-2">2. Identify C1 and C3</a>
 <a class="toc-link toc-depth-1" href="#en-section-3" data-toc-target="en-section-3">C1 port</a>
@@ -148,12 +156,116 @@
 <a class="toc-link toc-depth-1" href="#en-section-23" data-toc-target="en-section-23">Port forwarding and the security boundary</a>
 <a class="toc-link toc-depth-1" href="#en-section-24" data-toc-target="en-section-24">Risks and troubleshooting</a>
       </nav>
+<nav class="lang-pane" data-lang-pane="ja" aria-label="このページの内容" hidden>
+<a class="toc-link toc-depth-0" href="#ja-section-1" data-toc-target="ja-section-1">1. 2 つの接続経路を理解する</a>
+<a class="toc-link toc-depth-0" href="#ja-section-2" data-toc-target="ja-section-2">2. C1 と C3 の位置を確認する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-3" data-toc-target="ja-section-3">C1 ポート</a>
+<a class="toc-link toc-depth-1" href="#ja-section-4" data-toc-target="ja-section-4">C3 ポート</a>
+<a class="toc-link toc-depth-0" href="#ja-section-5" data-toc-target="ja-section-5">3. C1 で手元の機器を RM-01 に接続する</a>
+<a class="toc-link toc-depth-0" href="#ja-section-6" data-toc-target="ja-section-6">4. インターネット接続を維持し、RM-01 と共有する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-7" data-toc-target="ja-section-7">接続機器のインターネット接続への影響</a>
+<a class="toc-link toc-depth-1" href="#ja-section-8" data-toc-target="ja-section-8">RM-01 ネットワーク接続ツールを使う</a>
+<a class="toc-link toc-depth-0" href="#ja-section-9" data-toc-target="ja-section-9">5. AI で C1 のネットワーク共有を設定する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-10" data-toc-target="ja-section-10">AI Agent を実行する場所</a>
+<a class="toc-link toc-depth-1" href="#ja-section-11" data-toc-target="ja-section-11">実行前の確認</a>
+<a class="toc-link toc-depth-1" href="#ja-section-12" data-toc-target="ja-section-12">Agent にそのまま渡せるプロンプト</a>
+<a class="toc-link toc-depth-1" href="#ja-section-13" data-toc-target="ja-section-13">設定の成功を確認する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-14" data-toc-target="ja-section-14">セキュリティ上の注意</a>
+<a class="toc-link toc-depth-0" href="#ja-section-15" data-toc-target="ja-section-15">6. C3 で RM-01 を上位ネットワークに接続する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-16" data-toc-target="ja-section-16">アダプターを用意する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-17" data-toc-target="ja-section-17">上部 USB を LPMU に切り替える</a>
+<a class="toc-link toc-depth-0" href="#ja-section-18" data-toc-target="ja-section-18">7. LPMU 経由でシステム全体を接続する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-19" data-toc-target="ja-section-19">プロジェクトの場所と必要な操作</a>
+<a class="toc-link toc-depth-1" href="#ja-section-20" data-toc-target="ja-section-20">自動設定で行う処理</a>
+<a class="toc-link toc-depth-1" href="#ja-section-21" data-toc-target="ja-section-21">TianshanOS から実行する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-22" data-toc-target="ja-section-22">接続の成功を確認する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-23" data-toc-target="ja-section-23">ポート転送とセキュリティの範囲</a>
+<a class="toc-link toc-depth-1" href="#ja-section-24" data-toc-target="ja-section-24">リスクとトラブルシューティング</a>
+      </nav>
+<nav class="lang-pane" data-lang-pane="ko" aria-label="이 페이지의 내용" hidden>
+<a class="toc-link toc-depth-0" href="#ko-section-1" data-toc-target="ko-section-1">1. 두 가지 네트워크 연결 경로</a>
+<a class="toc-link toc-depth-0" href="#ko-section-2" data-toc-target="ko-section-2">2. C1과 C3 위치 확인</a>
+<a class="toc-link toc-depth-1" href="#ko-section-3" data-toc-target="ko-section-3">C1 포트</a>
+<a class="toc-link toc-depth-1" href="#ko-section-4" data-toc-target="ko-section-4">C3 포트</a>
+<a class="toc-link toc-depth-0" href="#ko-section-5" data-toc-target="ko-section-5">3. C1으로 사용자 기기를 RM-01에 연결</a>
+<a class="toc-link toc-depth-0" href="#ko-section-6" data-toc-target="ko-section-6">4. 인터넷 연결 유지 및 RM-01과 공유</a>
+<a class="toc-link toc-depth-1" href="#ko-section-7" data-toc-target="ko-section-7">사용자 기기의 인터넷 연결에 미치는 영향</a>
+<a class="toc-link toc-depth-1" href="#ko-section-8" data-toc-target="ko-section-8">RM-01 네트워크 연결 도구 사용</a>
+<a class="toc-link toc-depth-0" href="#ko-section-9" data-toc-target="ko-section-9">5. AI로 C1 네트워크 공유 설정</a>
+<a class="toc-link toc-depth-1" href="#ko-section-10" data-toc-target="ko-section-10">AI Agent 실행 위치</a>
+<a class="toc-link toc-depth-1" href="#ko-section-11" data-toc-target="ko-section-11">실행 전 확인</a>
+<a class="toc-link toc-depth-1" href="#ko-section-12" data-toc-target="ko-section-12">Agent에 바로 전달할 프롬프트</a>
+<a class="toc-link toc-depth-1" href="#ko-section-13" data-toc-target="ko-section-13">설정 성공 여부 확인</a>
+<a class="toc-link toc-depth-1" href="#ko-section-14" data-toc-target="ko-section-14">보안 안내</a>
+<a class="toc-link toc-depth-0" href="#ko-section-15" data-toc-target="ko-section-15">6. C3으로 RM-01을 상위 네트워크에 연결</a>
+<a class="toc-link toc-depth-1" href="#ko-section-16" data-toc-target="ko-section-16">어댑터 준비</a>
+<a class="toc-link toc-depth-1" href="#ko-section-17" data-toc-target="ko-section-17">상단 USB를 LPMU로 전환</a>
+<a class="toc-link toc-depth-0" href="#ko-section-18" data-toc-target="ko-section-18">7. LPMU를 통해 시스템 전체 연결</a>
+<a class="toc-link toc-depth-1" href="#ko-section-19" data-toc-target="ko-section-19">프로젝트 위치와 사용자 작업</a>
+<a class="toc-link toc-depth-1" href="#ko-section-20" data-toc-target="ko-section-20">자동 설정이 수행하는 작업</a>
+<a class="toc-link toc-depth-1" href="#ko-section-21" data-toc-target="ko-section-21">TianshanOS에서 실행</a>
+<a class="toc-link toc-depth-1" href="#ko-section-22" data-toc-target="ko-section-22">연결 성공 여부 확인</a>
+<a class="toc-link toc-depth-1" href="#ko-section-23" data-toc-target="ko-section-23">포트 전달 및 보안 범위</a>
+<a class="toc-link toc-depth-1" href="#ko-section-24" data-toc-target="ko-section-24">위험 및 문제 해결</a>
+      </nav>
+<nav class="lang-pane" data-lang-pane="es" aria-label="En esta página" hidden>
+<a class="toc-link toc-depth-0" href="#es-section-1" data-toc-target="es-section-1">1. Comprender las dos vías de conexión</a>
+<a class="toc-link toc-depth-0" href="#es-section-2" data-toc-target="es-section-2">2. Identificar C1 y C3</a>
+<a class="toc-link toc-depth-1" href="#es-section-3" data-toc-target="es-section-3">Puerto C1</a>
+<a class="toc-link toc-depth-1" href="#es-section-4" data-toc-target="es-section-4">Puerto C3</a>
+<a class="toc-link toc-depth-0" href="#es-section-5" data-toc-target="es-section-5">3. Conectar un dispositivo de usuario mediante C1</a>
+<a class="toc-link toc-depth-0" href="#es-section-6" data-toc-target="es-section-6">4. Mantener el acceso a internet y compartirlo con RM-01</a>
+<a class="toc-link toc-depth-1" href="#es-section-7" data-toc-target="es-section-7">Qué puede ocurrir con la conexión a internet del usuario</a>
+<a class="toc-link toc-depth-1" href="#es-section-8" data-toc-target="es-section-8">Utilizar la herramienta de conexión de red de RM-01</a>
+<a class="toc-link toc-depth-0" href="#es-section-9" data-toc-target="es-section-9">5. Configurar con IA la conexión compartida de C1</a>
+<a class="toc-link toc-depth-1" href="#es-section-10" data-toc-target="es-section-10">Dónde ejecutar el agente de IA</a>
+<a class="toc-link toc-depth-1" href="#es-section-11" data-toc-target="es-section-11">Comprobaciones previas</a>
+<a class="toc-link toc-depth-1" href="#es-section-12" data-toc-target="es-section-12">Instrucciones para enviar al agente</a>
+<a class="toc-link toc-depth-1" href="#es-section-13" data-toc-target="es-section-13">Comprobar el resultado</a>
+<a class="toc-link toc-depth-1" href="#es-section-14" data-toc-target="es-section-14">Aviso de seguridad</a>
+<a class="toc-link toc-depth-0" href="#es-section-15" data-toc-target="es-section-15">6. Conectar RM-01 a una red ascendente mediante C3</a>
+<a class="toc-link toc-depth-1" href="#es-section-16" data-toc-target="es-section-16">Preparar el adaptador</a>
+<a class="toc-link toc-depth-1" href="#es-section-17" data-toc-target="es-section-17">Cambiar el destino del USB superior a LPMU</a>
+<a class="toc-link toc-depth-0" href="#es-section-18" data-toc-target="es-section-18">7. Conectar todo el sistema a través de LPMU</a>
+<a class="toc-link toc-depth-1" href="#es-section-19" data-toc-target="es-section-19">Ubicación del proyecto y tareas del usuario</a>
+<a class="toc-link toc-depth-1" href="#es-section-20" data-toc-target="es-section-20">Qué configura el proyecto de automatización</a>
+<a class="toc-link toc-depth-1" href="#es-section-21" data-toc-target="es-section-21">Ejecutar la configuración desde TianshanOS</a>
+<a class="toc-link toc-depth-1" href="#es-section-22" data-toc-target="es-section-22">Comprobar la conexión</a>
+<a class="toc-link toc-depth-1" href="#es-section-23" data-toc-target="es-section-23">Reenvío de puertos y límites de seguridad</a>
+<a class="toc-link toc-depth-1" href="#es-section-24" data-toc-target="es-section-24">Riesgos y resolución de problemas</a>
+      </nav>
+<nav class="lang-pane" data-lang-pane="fr" aria-label="Sur cette page" hidden>
+<a class="toc-link toc-depth-0" href="#fr-section-1" data-toc-target="fr-section-1">1. Comprendre les deux voies de connexion</a>
+<a class="toc-link toc-depth-0" href="#fr-section-2" data-toc-target="fr-section-2">2. Identifier C1 et C3</a>
+<a class="toc-link toc-depth-1" href="#fr-section-3" data-toc-target="fr-section-3">Port C1</a>
+<a class="toc-link toc-depth-1" href="#fr-section-4" data-toc-target="fr-section-4">Port C3</a>
+<a class="toc-link toc-depth-0" href="#fr-section-5" data-toc-target="fr-section-5">3. Connecter un appareil utilisateur par C1</a>
+<a class="toc-link toc-depth-0" href="#fr-section-6" data-toc-target="fr-section-6">4. Conserver l’accès à internet et le partager avec RM-01</a>
+<a class="toc-link toc-depth-1" href="#fr-section-7" data-toc-target="fr-section-7">Effet possible sur la connexion internet de l’utilisateur</a>
+<a class="toc-link toc-depth-1" href="#fr-section-8" data-toc-target="fr-section-8">Utiliser l’outil de connexion réseau de RM-01</a>
+<a class="toc-link toc-depth-0" href="#fr-section-9" data-toc-target="fr-section-9">5. Configurer le partage internet de C1 avec l’IA</a>
+<a class="toc-link toc-depth-1" href="#fr-section-10" data-toc-target="fr-section-10">Où exécuter l’agent IA</a>
+<a class="toc-link toc-depth-1" href="#fr-section-11" data-toc-target="fr-section-11">Vérifications préalables</a>
+<a class="toc-link toc-depth-1" href="#fr-section-12" data-toc-target="fr-section-12">Instructions à envoyer à l’agent</a>
+<a class="toc-link toc-depth-1" href="#fr-section-13" data-toc-target="fr-section-13">Vérifier le résultat</a>
+<a class="toc-link toc-depth-1" href="#fr-section-14" data-toc-target="fr-section-14">Avis de sécurité</a>
+<a class="toc-link toc-depth-0" href="#fr-section-15" data-toc-target="fr-section-15">6. Connecter RM-01 au réseau amont par C3</a>
+<a class="toc-link toc-depth-1" href="#fr-section-16" data-toc-target="fr-section-16">Préparer l’adaptateur</a>
+<a class="toc-link toc-depth-1" href="#fr-section-17" data-toc-target="fr-section-17">Commuter le port USB supérieur vers LPMU</a>
+<a class="toc-link toc-depth-0" href="#fr-section-18" data-toc-target="fr-section-18">7. Connecter l’ensemble du système par LPMU</a>
+<a class="toc-link toc-depth-1" href="#fr-section-19" data-toc-target="fr-section-19">Emplacement du projet et rôle de l’utilisateur</a>
+<a class="toc-link toc-depth-1" href="#fr-section-20" data-toc-target="fr-section-20">Ce que configure le projet d’automatisation</a>
+<a class="toc-link toc-depth-1" href="#fr-section-21" data-toc-target="fr-section-21">Lancer la configuration depuis TianshanOS</a>
+<a class="toc-link toc-depth-1" href="#fr-section-22" data-toc-target="fr-section-22">Vérifier la connexion</a>
+<a class="toc-link toc-depth-1" href="#fr-section-23" data-toc-target="fr-section-23">Redirection de ports et périmètre de sécurité</a>
+<a class="toc-link toc-depth-1" href="#fr-section-24" data-toc-target="fr-section-24">Risques et dépannage</a>
+      </nav>
     </details>
 
     <div class="guide-doc-layout">
-      <aside class="guide-toc" aria-label="本页目录">
+      <aside class="guide-toc" aria-label="本页目录" data-i18n-aria-label-zh="本页目录" data-i18n-aria-label-en="On this page">
         <p data-guide-text data-zh="本页目录" data-en="On this page">本页目录</p>
-        <nav class="lang-pane" data-lang-pane="zh">
+<nav class="lang-pane" data-lang-pane="zh">
 <a class="toc-link toc-depth-0" href="#zh-section-1" data-toc-target="zh-section-1">1. 先了解两条网络连接路径</a>
 <a class="toc-link toc-depth-0" href="#zh-section-2" data-toc-target="zh-section-2">2. 识别 C1 与 C3</a>
 <a class="toc-link toc-depth-1" href="#zh-section-3" data-toc-target="zh-section-3">C1 接口</a>
@@ -179,7 +291,7 @@
 <a class="toc-link toc-depth-1" href="#zh-section-23" data-toc-target="zh-section-23">端口转发与安全边界</a>
 <a class="toc-link toc-depth-1" href="#zh-section-24" data-toc-target="zh-section-24">风险与故障排查</a>
         </nav>
-        <nav class="lang-pane" data-lang-pane="en" hidden>
+<nav class="lang-pane" data-lang-pane="en" hidden>
 <a class="toc-link toc-depth-0" href="#en-section-1" data-toc-target="en-section-1">1. Understand the Two Network Paths</a>
 <a class="toc-link toc-depth-0" href="#en-section-2" data-toc-target="en-section-2">2. Identify C1 and C3</a>
 <a class="toc-link toc-depth-1" href="#en-section-3" data-toc-target="en-section-3">C1 port</a>
@@ -204,6 +316,110 @@
 <a class="toc-link toc-depth-1" href="#en-section-22" data-toc-target="en-section-22">Confirm that the connection works</a>
 <a class="toc-link toc-depth-1" href="#en-section-23" data-toc-target="en-section-23">Port forwarding and the security boundary</a>
 <a class="toc-link toc-depth-1" href="#en-section-24" data-toc-target="en-section-24">Risks and troubleshooting</a>
+        </nav>
+<nav class="lang-pane" data-lang-pane="ja" hidden>
+<a class="toc-link toc-depth-0" href="#ja-section-1" data-toc-target="ja-section-1">1. 2 つの接続経路を理解する</a>
+<a class="toc-link toc-depth-0" href="#ja-section-2" data-toc-target="ja-section-2">2. C1 と C3 の位置を確認する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-3" data-toc-target="ja-section-3">C1 ポート</a>
+<a class="toc-link toc-depth-1" href="#ja-section-4" data-toc-target="ja-section-4">C3 ポート</a>
+<a class="toc-link toc-depth-0" href="#ja-section-5" data-toc-target="ja-section-5">3. C1 で手元の機器を RM-01 に接続する</a>
+<a class="toc-link toc-depth-0" href="#ja-section-6" data-toc-target="ja-section-6">4. インターネット接続を維持し、RM-01 と共有する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-7" data-toc-target="ja-section-7">接続機器のインターネット接続への影響</a>
+<a class="toc-link toc-depth-1" href="#ja-section-8" data-toc-target="ja-section-8">RM-01 ネットワーク接続ツールを使う</a>
+<a class="toc-link toc-depth-0" href="#ja-section-9" data-toc-target="ja-section-9">5. AI で C1 のネットワーク共有を設定する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-10" data-toc-target="ja-section-10">AI Agent を実行する場所</a>
+<a class="toc-link toc-depth-1" href="#ja-section-11" data-toc-target="ja-section-11">実行前の確認</a>
+<a class="toc-link toc-depth-1" href="#ja-section-12" data-toc-target="ja-section-12">Agent にそのまま渡せるプロンプト</a>
+<a class="toc-link toc-depth-1" href="#ja-section-13" data-toc-target="ja-section-13">設定の成功を確認する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-14" data-toc-target="ja-section-14">セキュリティ上の注意</a>
+<a class="toc-link toc-depth-0" href="#ja-section-15" data-toc-target="ja-section-15">6. C3 で RM-01 を上位ネットワークに接続する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-16" data-toc-target="ja-section-16">アダプターを用意する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-17" data-toc-target="ja-section-17">上部 USB を LPMU に切り替える</a>
+<a class="toc-link toc-depth-0" href="#ja-section-18" data-toc-target="ja-section-18">7. LPMU 経由でシステム全体を接続する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-19" data-toc-target="ja-section-19">プロジェクトの場所と必要な操作</a>
+<a class="toc-link toc-depth-1" href="#ja-section-20" data-toc-target="ja-section-20">自動設定で行う処理</a>
+<a class="toc-link toc-depth-1" href="#ja-section-21" data-toc-target="ja-section-21">TianshanOS から実行する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-22" data-toc-target="ja-section-22">接続の成功を確認する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-23" data-toc-target="ja-section-23">ポート転送とセキュリティの範囲</a>
+<a class="toc-link toc-depth-1" href="#ja-section-24" data-toc-target="ja-section-24">リスクとトラブルシューティング</a>
+        </nav>
+<nav class="lang-pane" data-lang-pane="ko" hidden>
+<a class="toc-link toc-depth-0" href="#ko-section-1" data-toc-target="ko-section-1">1. 두 가지 네트워크 연결 경로</a>
+<a class="toc-link toc-depth-0" href="#ko-section-2" data-toc-target="ko-section-2">2. C1과 C3 위치 확인</a>
+<a class="toc-link toc-depth-1" href="#ko-section-3" data-toc-target="ko-section-3">C1 포트</a>
+<a class="toc-link toc-depth-1" href="#ko-section-4" data-toc-target="ko-section-4">C3 포트</a>
+<a class="toc-link toc-depth-0" href="#ko-section-5" data-toc-target="ko-section-5">3. C1으로 사용자 기기를 RM-01에 연결</a>
+<a class="toc-link toc-depth-0" href="#ko-section-6" data-toc-target="ko-section-6">4. 인터넷 연결 유지 및 RM-01과 공유</a>
+<a class="toc-link toc-depth-1" href="#ko-section-7" data-toc-target="ko-section-7">사용자 기기의 인터넷 연결에 미치는 영향</a>
+<a class="toc-link toc-depth-1" href="#ko-section-8" data-toc-target="ko-section-8">RM-01 네트워크 연결 도구 사용</a>
+<a class="toc-link toc-depth-0" href="#ko-section-9" data-toc-target="ko-section-9">5. AI로 C1 네트워크 공유 설정</a>
+<a class="toc-link toc-depth-1" href="#ko-section-10" data-toc-target="ko-section-10">AI Agent 실행 위치</a>
+<a class="toc-link toc-depth-1" href="#ko-section-11" data-toc-target="ko-section-11">실행 전 확인</a>
+<a class="toc-link toc-depth-1" href="#ko-section-12" data-toc-target="ko-section-12">Agent에 바로 전달할 프롬프트</a>
+<a class="toc-link toc-depth-1" href="#ko-section-13" data-toc-target="ko-section-13">설정 성공 여부 확인</a>
+<a class="toc-link toc-depth-1" href="#ko-section-14" data-toc-target="ko-section-14">보안 안내</a>
+<a class="toc-link toc-depth-0" href="#ko-section-15" data-toc-target="ko-section-15">6. C3으로 RM-01을 상위 네트워크에 연결</a>
+<a class="toc-link toc-depth-1" href="#ko-section-16" data-toc-target="ko-section-16">어댑터 준비</a>
+<a class="toc-link toc-depth-1" href="#ko-section-17" data-toc-target="ko-section-17">상단 USB를 LPMU로 전환</a>
+<a class="toc-link toc-depth-0" href="#ko-section-18" data-toc-target="ko-section-18">7. LPMU를 통해 시스템 전체 연결</a>
+<a class="toc-link toc-depth-1" href="#ko-section-19" data-toc-target="ko-section-19">프로젝트 위치와 사용자 작업</a>
+<a class="toc-link toc-depth-1" href="#ko-section-20" data-toc-target="ko-section-20">자동 설정이 수행하는 작업</a>
+<a class="toc-link toc-depth-1" href="#ko-section-21" data-toc-target="ko-section-21">TianshanOS에서 실행</a>
+<a class="toc-link toc-depth-1" href="#ko-section-22" data-toc-target="ko-section-22">연결 성공 여부 확인</a>
+<a class="toc-link toc-depth-1" href="#ko-section-23" data-toc-target="ko-section-23">포트 전달 및 보안 범위</a>
+<a class="toc-link toc-depth-1" href="#ko-section-24" data-toc-target="ko-section-24">위험 및 문제 해결</a>
+        </nav>
+<nav class="lang-pane" data-lang-pane="es" hidden>
+<a class="toc-link toc-depth-0" href="#es-section-1" data-toc-target="es-section-1">1. Comprender las dos vías de conexión</a>
+<a class="toc-link toc-depth-0" href="#es-section-2" data-toc-target="es-section-2">2. Identificar C1 y C3</a>
+<a class="toc-link toc-depth-1" href="#es-section-3" data-toc-target="es-section-3">Puerto C1</a>
+<a class="toc-link toc-depth-1" href="#es-section-4" data-toc-target="es-section-4">Puerto C3</a>
+<a class="toc-link toc-depth-0" href="#es-section-5" data-toc-target="es-section-5">3. Conectar un dispositivo de usuario mediante C1</a>
+<a class="toc-link toc-depth-0" href="#es-section-6" data-toc-target="es-section-6">4. Mantener el acceso a internet y compartirlo con RM-01</a>
+<a class="toc-link toc-depth-1" href="#es-section-7" data-toc-target="es-section-7">Qué puede ocurrir con la conexión a internet del usuario</a>
+<a class="toc-link toc-depth-1" href="#es-section-8" data-toc-target="es-section-8">Utilizar la herramienta de conexión de red de RM-01</a>
+<a class="toc-link toc-depth-0" href="#es-section-9" data-toc-target="es-section-9">5. Configurar con IA la conexión compartida de C1</a>
+<a class="toc-link toc-depth-1" href="#es-section-10" data-toc-target="es-section-10">Dónde ejecutar el agente de IA</a>
+<a class="toc-link toc-depth-1" href="#es-section-11" data-toc-target="es-section-11">Comprobaciones previas</a>
+<a class="toc-link toc-depth-1" href="#es-section-12" data-toc-target="es-section-12">Instrucciones para enviar al agente</a>
+<a class="toc-link toc-depth-1" href="#es-section-13" data-toc-target="es-section-13">Comprobar el resultado</a>
+<a class="toc-link toc-depth-1" href="#es-section-14" data-toc-target="es-section-14">Aviso de seguridad</a>
+<a class="toc-link toc-depth-0" href="#es-section-15" data-toc-target="es-section-15">6. Conectar RM-01 a una red ascendente mediante C3</a>
+<a class="toc-link toc-depth-1" href="#es-section-16" data-toc-target="es-section-16">Preparar el adaptador</a>
+<a class="toc-link toc-depth-1" href="#es-section-17" data-toc-target="es-section-17">Cambiar el destino del USB superior a LPMU</a>
+<a class="toc-link toc-depth-0" href="#es-section-18" data-toc-target="es-section-18">7. Conectar todo el sistema a través de LPMU</a>
+<a class="toc-link toc-depth-1" href="#es-section-19" data-toc-target="es-section-19">Ubicación del proyecto y tareas del usuario</a>
+<a class="toc-link toc-depth-1" href="#es-section-20" data-toc-target="es-section-20">Qué configura el proyecto de automatización</a>
+<a class="toc-link toc-depth-1" href="#es-section-21" data-toc-target="es-section-21">Ejecutar la configuración desde TianshanOS</a>
+<a class="toc-link toc-depth-1" href="#es-section-22" data-toc-target="es-section-22">Comprobar la conexión</a>
+<a class="toc-link toc-depth-1" href="#es-section-23" data-toc-target="es-section-23">Reenvío de puertos y límites de seguridad</a>
+<a class="toc-link toc-depth-1" href="#es-section-24" data-toc-target="es-section-24">Riesgos y resolución de problemas</a>
+        </nav>
+<nav class="lang-pane" data-lang-pane="fr" hidden>
+<a class="toc-link toc-depth-0" href="#fr-section-1" data-toc-target="fr-section-1">1. Comprendre les deux voies de connexion</a>
+<a class="toc-link toc-depth-0" href="#fr-section-2" data-toc-target="fr-section-2">2. Identifier C1 et C3</a>
+<a class="toc-link toc-depth-1" href="#fr-section-3" data-toc-target="fr-section-3">Port C1</a>
+<a class="toc-link toc-depth-1" href="#fr-section-4" data-toc-target="fr-section-4">Port C3</a>
+<a class="toc-link toc-depth-0" href="#fr-section-5" data-toc-target="fr-section-5">3. Connecter un appareil utilisateur par C1</a>
+<a class="toc-link toc-depth-0" href="#fr-section-6" data-toc-target="fr-section-6">4. Conserver l’accès à internet et le partager avec RM-01</a>
+<a class="toc-link toc-depth-1" href="#fr-section-7" data-toc-target="fr-section-7">Effet possible sur la connexion internet de l’utilisateur</a>
+<a class="toc-link toc-depth-1" href="#fr-section-8" data-toc-target="fr-section-8">Utiliser l’outil de connexion réseau de RM-01</a>
+<a class="toc-link toc-depth-0" href="#fr-section-9" data-toc-target="fr-section-9">5. Configurer le partage internet de C1 avec l’IA</a>
+<a class="toc-link toc-depth-1" href="#fr-section-10" data-toc-target="fr-section-10">Où exécuter l’agent IA</a>
+<a class="toc-link toc-depth-1" href="#fr-section-11" data-toc-target="fr-section-11">Vérifications préalables</a>
+<a class="toc-link toc-depth-1" href="#fr-section-12" data-toc-target="fr-section-12">Instructions à envoyer à l’agent</a>
+<a class="toc-link toc-depth-1" href="#fr-section-13" data-toc-target="fr-section-13">Vérifier le résultat</a>
+<a class="toc-link toc-depth-1" href="#fr-section-14" data-toc-target="fr-section-14">Avis de sécurité</a>
+<a class="toc-link toc-depth-0" href="#fr-section-15" data-toc-target="fr-section-15">6. Connecter RM-01 au réseau amont par C3</a>
+<a class="toc-link toc-depth-1" href="#fr-section-16" data-toc-target="fr-section-16">Préparer l’adaptateur</a>
+<a class="toc-link toc-depth-1" href="#fr-section-17" data-toc-target="fr-section-17">Commuter le port USB supérieur vers LPMU</a>
+<a class="toc-link toc-depth-0" href="#fr-section-18" data-toc-target="fr-section-18">7. Connecter l’ensemble du système par LPMU</a>
+<a class="toc-link toc-depth-1" href="#fr-section-19" data-toc-target="fr-section-19">Emplacement du projet et rôle de l’utilisateur</a>
+<a class="toc-link toc-depth-1" href="#fr-section-20" data-toc-target="fr-section-20">Ce que configure le projet d’automatisation</a>
+<a class="toc-link toc-depth-1" href="#fr-section-21" data-toc-target="fr-section-21">Lancer la configuration depuis TianshanOS</a>
+<a class="toc-link toc-depth-1" href="#fr-section-22" data-toc-target="fr-section-22">Vérifier la connexion</a>
+<a class="toc-link toc-depth-1" href="#fr-section-23" data-toc-target="fr-section-23">Redirection de ports et périmètre de sécurité</a>
+<a class="toc-link toc-depth-1" href="#fr-section-24" data-toc-target="fr-section-24">Risques et dépannage</a>
         </nav>
       </aside>
 
@@ -414,6 +630,420 @@ ping -c 3 google.com    # Verify DNS resolution</code></pre></div>
               <span>View the network automation project on <svg class="github-text" viewBox="0 0 78 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true" focusable="false" style="display:inline-block;width:42.25px;height:13px;flex:none;vertical-align:middle"><path d="M16.598 10.836v9.48c0 .066-.017.181-.1.214 0 0-2.07 1.47-5.484 1.47C6.888 22 2 20.712 2 12.223 2 3.734 6.275 1.983 10.45 2c3.613 0 5.07.81 5.303.958.066.083.1.149.1.231l-.697 2.94c0 .149-.149.33-.331.28-.597-.18-1.491-.544-3.596-.544-2.435 0-5.053.693-5.053 6.16 0 5.466 2.485 6.11 4.275 6.11 1.524 0 2.07-.181 2.07-.181v-3.799h-2.435c-.182 0-.315-.132-.315-.28v-3.04c0-.148.133-.28.315-.28h6.197c.182 0 .315.132.315.28zM76 14.684c0 5.664-1.84 7.283-5.054 7.283-2.717 0-4.175-1.37-4.175-1.37s-.067.759-.15.858c-.05.1-.132.132-.231.132h-2.453c-.165 0-.315-.132-.315-.28l.034-18.349a.29.29 0 01.281-.28h3.53a.29.29 0 01.281.28v6.226s1.359-.875 3.347-.875l-.016-.033c1.988 0 4.921.743 4.921 6.408zM47.865 2.71a.29.29 0 01.281.281V21.34a.29.29 0 01-.281.281h-3.53a.29.29 0 01-.281-.28l.033-7.845h-5.485v7.844a.29.29 0 01-.281.281h-3.53c-.132 0-.281-.132-.281-.28V2.99a.29.29 0 01.281-.28h3.53a.29.29 0 01.281.28v6.755h5.485V2.99a.29.29 0 01.282-.28h3.496zM61.55 8.722c.183 0 .315.132.315.28l-.033 12.337c0 .149-.1.281-.282.281h-2.22c-.116 0-.232-.066-.265-.148-.05-.1-.133-.744-.133-.744S57.061 22 54.758 22c-2.8 0-4.839-.908-4.839-4.542V9.02a.29.29 0 01.282-.28h3.546a.29.29 0 01.282.28v7.845c0 1.238.364 1.8 1.607 1.8 1.243 0 2.154-.644 2.154-.644V9.036c0-.182.1-.314.282-.314h3.48zm-28.84 9.861h.007c.14.029.239.154.234.296v2.477c0 .116-.05.231-.149.264-.166.083-1.226.363-2.104.363-1.922 0-4.74-.412-4.74-4.442v-5.417H24.12c-.149 0-.281-.132-.281-.314V9.564c0-.132.083-.248.215-.28.116-.017 1.922-.463 1.922-.463V5.237c0-.132.083-.215.232-.215h3.58c.148 0 .231.083.231.215v3.485h2.635c.132 0 .265.132.265.28v2.808c0 .182-.116.314-.265.314h-2.635v5.17c0 .777.448 1.372 1.74 1.372.41 0 .797-.081.951-.083zM22.28 8.705a.29.29 0 01.282.281v12.172c0 .297-.083.446-.414.446h-3.182c-.281 0-.497-.116-.497-.446V9.036c0-.182.133-.33.282-.33h3.53zm49.693 6.243c0-2.99-1.21-3.386-2.486-3.253-.994.066-1.79.561-1.79.561v5.813s.813.562 2.022.595c1.707.05 2.254-.562 2.254-3.716zM20.54 3.123a2.26 2.26 0 012.254 2.28A2.26 2.26 0 0120.54 7.68a2.266 2.266 0 01-2.286-2.279c0-1.271 1.01-2.279 2.286-2.279z"/></svg></span>
             </a>
           </article>
+
+          <article class="guide-article lang-pane" data-lang-pane="ja" hidden>
+<h2 id="ja-section-1" data-heading-key="section-1"><a href="#ja-section-1">1. 2 つの接続経路を理解する</a></h2>
+<p>RM-01 には USB-C を使う 2 つのネットワーク接続経路があり、本ガイドでは <strong>C1 ポート</strong>と <strong>C3 ポート</strong>と呼びます。どちらもネットワーク通信に使えますが、接続する機器とネットワーク構成が異なります。</p>
+<div class="guide-table-wrap"><table><thead><tr><th>ポート</th><th>主な用途</th><th>接続後のネットワーク構成</th></tr></thead><tbody><tr><td>C1</td><td>パソコン、タブレット、スマートフォンなどを RM-01 に接続</td><td>接続機器が RM-01 内部のスイッチネットワークに参加し、内部ノードになります</td></tr><tr><td>C3</td><td>RM-01 を既存の LAN に接続</td><td>LPMU が内部ノードのルーティングを担い、システム全体をスイッチやルーターのある上位ネットワークに接続します</td></tr></tbody></table></div>
+<h2 id="ja-section-2" data-heading-key="section-2"><a href="#ja-section-2">2. C1 と C3 の位置を確認する</a></h2>
+<h3 id="ja-section-3" data-heading-key="section-3"><a href="#ja-section-3">C1 ポート</a></h3>
+<p>C1 は本体側面の後方にあります。縦に並ぶ 2 つの USB-C ポートのうち上側が C1 です。ポートの下に刻印された接続図で位置を確認できます。</p>
+<h3 id="ja-section-4" data-heading-key="section-4"><a href="#ja-section-4">C3 ポート</a></h3>
+<p>C3 は本体上部にあります。マグネット式カバーを開くと USB-C ポートが見えます。上部の共有 USB ポートで、TianshanOS から接続先を ESP、AGX、LPMU に切り替えられます。</p>
+<h2 id="ja-section-5" data-heading-key="section-5"><a href="#ja-section-5">3. C1 で手元の機器を RM-01 に接続する</a></h2>
+<p>データ転送対応の USB-C ケーブルで、iPad、パソコン、スマートフォンなどを C1 に接続します。RM-01 が DHCP でアドレスを自動割り当てするため、IP アドレス、ゲートウェイ、DNS の手動入力は不要です。</p>
+<p>接続機器には通常、<code>AX88179</code> または USB Ethernet という有線ネットワークインターフェースが認識されます。その機器は RM-01 内部のスイッチネットワークに参加し、内部の各機器と通信できるようになります。</p>
+<aside class="guide-notice"><span>重要事項</span><p>C1 は接続機器を RM-01 の内部ネットワークに直接参加させます。信頼できる機器だけを接続してください。公共の場所や信頼できない環境では、管理されていない機器を C1 に接続しないでください。</p></aside>
+<h2 id="ja-section-6" data-heading-key="section-6"><a href="#ja-section-6">4. インターネット接続を維持し、RM-01 と共有する</a></h2>
+<h3 id="ja-section-7" data-heading-key="section-7"><a href="#ja-section-7">接続機器のインターネット接続への影響</a></h3>
+<aside class="guide-notice"><span>操作上の注意</span><p>OS によっては、C1 接続後に <code>AX88179</code> を優先的なネットワーク出口として使うことがあります。C1 は主に RM-01 内部へのアクセス用であり、直接インターネットを提供するものではないため、既存のインターネット接続が一時的に使えなくなることがあります。</p></aside>
+<p>Wi-Fi、Ethernet などのインターネット接続を引き続き使う場合は、その優先順位を <code>AX88179</code> より高くしてください。</p>
+<div class="guide-table-wrap"><table><thead><tr><th>OS</th><th>設定項目</th><th>設定の考え方</th></tr></thead><tbody><tr><td>macOS</td><td>サービスの順序（Service Order）</td><td>インターネットに接続する Wi-Fi または Ethernet を <code>AX88179</code> より上にします</td></tr><tr><td>Windows</td><td>インターフェースメトリック（Interface Metric）</td><td>小さい値ほど優先されます。インターネット側の値を <code>AX88179</code> より小さくします</td></tr><tr><td>Linux</td><td>ルートメトリック（Route Metric）</td><td>小さい値ほど優先されます。インターネットのデフォルトルートの値を <code>AX88179</code> より小さくします</td></tr></tbody></table></div>
+<h3 id="ja-section-8" data-heading-key="section-8"><a href="#ja-section-8">RM-01 ネットワーク接続ツールを使う</a></h3>
+<p>手元の機器のインターネット接続を RM-01 に共有する場合は、サイトのダウンロードページから <strong>RM-01 ネットワーク接続ツール</strong>を入手してください。接続機器と C1 間の DHCP、ルーティング、共有ルールを設定し、インターネットのトラフィックを RM-01 内部ネットワークへ転送できるようにします。</p>
+<p>現在の対応 OS は次のとおりです。</p>
+<ul><li>macOS</li><li>Linux</li><li>Windows Pro</li></ul>
+<p>Windows Home は現在対応していません。</p>
+<aside class="guide-notice"><span>重要事項</span><p>このツールは接続機器のネットワークアドレス、ルート、共有設定を変更します。実行中に既存の接続が一時的に切れる場合があります。ダウンロード、リモートセッションなど、ネットワークに依存する作業を保存してから開始してください。</p></aside>
+<h2 id="ja-section-9" data-heading-key="section-9"><a href="#ja-section-9">5. AI で C1 のネットワーク共有を設定する</a></h2>
+<p>Codex、Hermes など、ローカルでコマンドを実行できる Agent Harness は、自然言語の指示から構成を調べ、手元のパソコンから RM-01 内部への転送・共有設定を支援できます。対象パソコンでシステムコマンドを実行できることが必要です。通常の対話型 AI は手順を提案するだけで、設定そのものは実行できません。</p>
+<h3 id="ja-section-10" data-heading-key="section-10"><a href="#ja-section-10">AI Agent を実行する場所</a></h3>
+<p>C1 に接続したパソコン上で直接実行することをお勧めします。インターネット出口、デフォルトルート、共有ルールを管理するのはそのパソコンであり、設定にはその管理者権限が必要です。</p>
+<p>Codex、Hermes などを RM-01 内部で動かす場合は、手元のパソコンへのリモートコマンド実行権限と管理者の許可を事前に用意する必要があります。それがなければ、パソコンの共有、ルート、ファイアウォール設定は変更できません。</p>
+<h3 id="ja-section-11" data-heading-key="section-11"><a href="#ja-section-11">実行前の確認</a></h3>
+<ul><li>パソコンが C1 に接続され、<code>AX88179</code> または USB Ethernet が見えていること。</li><li>パソコンの C1 アドレスが <code>10.10.99.100/24</code>、RM-01 内部ノードが引き続き <code>10.10.99.99</code>、<code>10.10.99.98</code>、<code>10.10.99.97</code> を使っていること。</li><li>パソコンが Wi-Fi、Ethernet などでインターネットに接続できていること。</li><li>Agent Harness がパソコン上でコマンドを実行でき、必要に応じて管理者権限を要求できること。</li><li>ダウンロード、リモートセッションなどを保存済みで、ローカルでネットワーク設定を復旧できること。</li></ul>
+<h3 id="ja-section-12" data-heading-key="section-12"><a href="#ja-section-12">Agent にそのまま渡せるプロンプト</a></h3>
+<p>次のプロンプトは出荷時の構成を維持し、確認してから変更し、検証と元に戻す方法を示すよう求めるものです。コマンド実行に対応する Codex、Hermes などにコピーして使えます。</p>
+<div class="guide-code"><button type="button" data-copy-code>コピー</button><pre><code class="language-text">RM-01 の C1 ネットワーク共有設定を手伝ってください。まず OS、ネットワークインターフェース、アドレス、デフォルトルート、ファイアウォールを調べ、以下の構成と一致することを確認してから変更してください。インターフェース名だけで推測せず、RM-01 内部ノードの固定アドレスは変更しないでください。
+
+現在の構成：
+- パソコンは USB-C で RM-01 の C1 に接続しています。通常は AX88179 または USB Ethernet と表示され、アドレスは 10.10.99.100/24 です。
+- RM-01 内部ネットワークは 10.10.99.0/24 です。
+- アプリケーションコンピューター（LPMU）は 10.10.99.99 です。
+- 推論コンピューター（AGX）は 10.10.99.98 です。
+- アウトオブバンド管理コンピューターは 10.10.99.97 です。
+- パソコンは別のインターフェースでインターネットに接続しています。
+
+目標：パソコンの既存のインターネット接続を保ち、それを C1 の AX88179 / USB Ethernet 経由で内部ネットワークに共有し、10.10.99.99、10.10.99.98、10.10.99.97 がインターネットにアクセスできるようにしてください。
+
+制約：
+1. OS、実際のインターネット出口、C1 のインターフェースを特定し、変更予定の項目を説明してください。
+2. OS 標準の方法で変更を最小限に抑え、必要な IP 転送、NAT、ルートまたは Internet Connection Sharing を設定してください。
+3. 既存のインターネット側インターフェースの優先順位とデフォルトルート、上記ノードのアドレスは変更しないでください。無関係なファイアウォールルールを消去・上書きしないでください。
+4. 管理者権限が必要なら用途を説明してから要求してください。現在の OS または権限で安全に設定できなければ、停止して理由を説明してください。
+5. 完了後はパソコンのインターネット接続、10.10.99.99、10.10.99.98、10.10.99.97 への到達性、内部ノードからのパブリック IP への接続と名前解決を検証してください。
+6. 最後に、実行したコマンドまたは変更点、検証結果、元の設定に戻す手順を示してください。</code></pre></div>
+<p>macOS は通常「インターネット共有」と OS のルーティング、Linux は IP 転送と nftables または iptables、Windows Pro は Internet Connection Sharing（ICS）を使います。具体的なコマンドとインターフェース名は、Agent が実機で調べた結果に従ってください。Windows Home は現在対応していません。</p>
+<h3 id="ja-section-13" data-heading-key="section-13"><a href="#ja-section-13">設定の成功を確認する</a></h3>
+<p>完了後は、次のすべてを満たすことを確認します。</p>
+<ol><li>パソコンの既存のインターネット接続が使える。</li><li>パソコンから <code>10.10.99.99</code>、<code>10.10.99.98</code>、<code>10.10.99.97</code> にアクセスできる。</li><li>RM-01 内部ノードがパブリック IP にアクセスでき、ドメイン名を解決して接続できる。</li><li>Agent が単に成功と報告するだけでなく、実際の変更点と実行可能な復旧手順を示している。</li></ol>
+<h3 id="ja-section-14" data-heading-key="section-14"><a href="#ja-section-14">セキュリティ上の注意</a></h3>
+<aside class="guide-notice"><span>重要事項</span><p>管理者または root 権限を許可すると、Agent はルート、IP 転送、NAT、Internet Connection Sharing、ファイアウォールを変更できます。信頼できる Agent Harness のみを使い、許可前に操作計画を確認してください。パソコンがリモート接続などの重要な通信を担う場合は、ローカルで復旧できることを先に確認してください。</p></aside>
+<h2 id="ja-section-15" data-heading-key="section-15"><a href="#ja-section-15">6. C3 で RM-01 を上位ネットワークに接続する</a></h2>
+<p>「上位ネットワーク」とは、スイッチやルーターが接続されている既存の LAN を指します。</p>
+<h3 id="ja-section-16" data-heading-key="section-16"><a href="#ja-section-16">アダプターを用意する</a></h3>
+<p>次の機器を用意してください。</p>
+<ul><li>USB-C ↔ RJ45 Ethernet アダプター 1 個</li><li>スイッチまたはルーターに接続する RJ45 ケーブル 1 本</li></ul>
+<p>USB-C 側を C3 に、RJ45 ケーブルをスイッチまたはルーターに接続します。物理接続だけでは DHCP とルートの設定は完了しません。続けて RM-01 内蔵のネットワーク設定プログラムを実行する必要があります。</p>
+<h3 id="ja-section-17" data-heading-key="section-17"><a href="#ja-section-17">上部 USB を LPMU に切り替える</a></h3>
+<ol><li>TianshanOS のホームページを開きます。</li><li>USB 切り替え（「USB 切换」）を探します。</li><li>「USB」ボタンで上部 USB ポートの接続先を <code>LPMU</code> に切り替えます。</li><li>現在の接続先が <code>LPMU</code> と表示されたことを確認してから続行します。</li></ol>
+<aside class="guide-notice"><span>操作上の注意</span><p>切り替え時に現在の接続が一時的に切れることがあります。データ転送中に切り替えないでください。</p></aside>
+<h2 id="ja-section-18" data-heading-key="section-18"><a href="#ja-section-18">7. LPMU 経由でシステム全体を接続する</a></h2>
+<p>出荷時の LPMU にはネットワーク自動設定プロジェクトが用意されています。LPMU が上位ネットワークに接続すると、内部ルーティングと NAT で AGX などのトラフィックを転送し、システム全体を接続します。</p>
+<h3 id="ja-section-19" data-heading-key="section-19"><a href="#ja-section-19">プロジェクトの場所と必要な操作</a></h3>
+<p>プロジェクトは <strong>LPMU の現在のユーザーのホームディレクトリ</strong>の <code>~/network-setup/</code> にあり、LPMU 用スクリプトは <code>~/network-setup/lpmu/</code> にあります。</p>
+<p>出荷時の機器では再ダウンロードや、README の導入担当者向け <code>scp</code>、<code>chmod</code>、インストール手順の再実行は不要です。通常は TianshanOS から設定を実行します。プロジェクト内のスクリプトやログを調べるのは、障害調査や追加開発のときだけです。</p>
+<aside class="guide-notice"><span>重要事項</span><p><code>~/network-setup/</code> を不用意に移動、改名、削除しないでください。TianshanOS のネットワーク設定は、出荷時のパスとスクリプトに依存しています。</p></aside>
+<h3 id="ja-section-20" data-heading-key="section-20"><a href="#ja-section-20">自動設定で行う処理</a></h3>
+<p>LPMU 上で順に次を実行します。</p>
+<ol><li>ゲートウェイのあるインターフェースを検出し、疎通試験で利用可能な上位ネットワーク出口を選びます。</li><li>選んだインターフェースから送信するよう、LPMU のデフォルトルートを再設定します。</li><li>IPv4 転送を有効にし、<code>iptables</code> の NAT と FORWARD ルールを設定します。</li><li>内部 AGX（既定 <code>10.10.99.98</code>）が LPMU（内部 <code>10.10.99.99</code>）経由で上位ネットワークにアクセスできるようにします。</li><li>AGX にアクセスするためのポート転送を設定します。</li></ol>
+<p>任意で有効にできるルート監視サービスも含まれます。30 秒ごとに出口を確認し、切断時には別の利用可能なインターフェースへの切り替えを試み、優先インターフェースが復旧すると戻します。</p>
+<h3 id="ja-section-21" data-heading-key="section-21"><a href="#ja-section-21">TianshanOS から実行する</a></h3>
+<ol><li>C3 が USB-C ↔ RJ45 アダプター経由でスイッチまたはルーターにつながっていることを確認します。</li><li>ホームページで上部 USB の接続先が <code>LPMU</code> になっていることを確認します。</li><li>上部ナビゲーションのネットワーク（「网络」）を開きます。</li><li>上位ネットワーク接続（「接入上层网络」）を探します。</li><li>LPMU 経由で接続（「通过LPMU接入」）を選択します。</li><li>処理中（「处理中」）から成功（「成功」）または失敗（「失败」）に変わるまで待ちます。処理中に再実行しないでください。</li></ol>
+<p>成功は、利用可能な出口を見つけ、LPMU のルートと内部転送・NAT 設定を実行できたことを示します。ボタンの状態だけで判断せず、AGX の IP 疎通と DNS 名前解決も確認することをお勧めします。</p>
+<h3 id="ja-section-22" data-heading-key="section-22"><a href="#ja-section-22">接続の成功を確認する</a></h3>
+<p>まず TianshanOS に成功（「成功」）と表示されることを確認します。AGX のターミナルを使える場合は、AGX 上で順に実行します。</p>
+<div class="guide-code"><button type="button" data-copy-code>コピー</button><pre><code class="language-bash">ping -c 3 10.10.99.99  # AGX から LPMU への疎通
+ping -c 3 8.8.8.8       # インターネットの IP 疎通
+ping -c 3 google.com    # DNS 名前解決</code></pre></div>
+<p>順に内部リンク、インターネット転送、DNS を確認します。最初が失敗したら内部接続やアドレス設定、最初だけ成功したら LPMU の上位接続・デフォルトルート・NAT、最初の 2 つが成功したら DNS 設定を確認してください。</p>
+<h3 id="ja-section-23" data-heading-key="section-23"><a href="#ja-section-23">ポート転送とセキュリティの範囲</a></h3>
+<p>現在のプロジェクトは LPMU の上位側インターフェースに次を設定します。</p>
+<div class="guide-table-wrap"><table><thead><tr><th>LPMU の入口</th><th>転送先</th><th>用途</th></tr></thead><tbody><tr><td>TCP <code>58022</code></td><td>AGX TCP <code>22</code></td><td>LPMU 経由で AGX の SSH に接続</td></tr><tr><td>TCP/UDP <code>58000–58999</code></td><td>AGX の同じポート</td><td>AGX のアプリケーションサービスに接続</td></tr></tbody></table></div>
+<p>例えば SSH の接続先は LPMU の上位側アドレスですが、ユーザー名と認証情報は AGX のものです。</p>
+<div class="guide-code"><button type="button" data-copy-code>コピー</button><pre><code class="language-bash">ssh -p 58022 &lt;AGX_USERNAME&gt;@&lt;LPMU_IP&gt;</code></pre></div>
+<aside class="guide-notice"><span>重要事項</span><p>ポート転送は上位ネットワークから AGX のサービスにアクセスできる範囲を広げます。信頼できる LAN だけで使い、スイッチ、ルーター、上位ファイアウォールで送信元を制限してください。これらのポートをインターネットに直接公開しないでください。</p></aside>
+<h3 id="ja-section-24" data-heading-key="section-24"><a href="#ja-section-24">リスクとトラブルシューティング</a></h3>
+<aside class="guide-notice"><span>重要事項</span><p>「通过LPMU接入」は LPMU の既存デフォルトルートを削除し、<code>iptables</code> の NAT テーブルと FORWARD チェーンを消去し、FORWARD の既定ポリシーを DROP にしてから、RM-01 用のルート・NAT・ポート転送を設定します。リモート接続が即座に切れ、独自のネットワークやファイアウォール設定が上書きされる可能性があります。LPMU をカスタマイズしている場合は、先にルートとファイアウォールのルールをエクスポートし、ローカルで復旧できるようにしてください。</p></aside>
+<p>失敗した場合は次の順に確認します。</p>
+<ol><li>C3 の USB-C ↔ RJ45 アダプターとケーブルが確実に接続されているか。</li><li>スイッチまたはルーターのポートが有効か。</li><li>上部 USB の接続先が <code>LPMU</code> と表示されているか。</li><li>上位ネットワークが有効なアドレス、ゲートウェイ、DNS を LPMU に提供できるか。</li><li>上位ネットワーク接続欄のエラーと出力。</li><li>AGX から LPMU 内部アドレス <code>10.10.99.99</code> に到達できるか。</li><li>デフォルトルート、NAT、FORWARD、ポート転送と競合する独自ルールが LPMU にないか。</li></ol>
+
+            <a class="footer-github guide-github-link" href="https://github.com/RMinte-AI/lpmu-agx-network-setup" target="_blank" rel="noopener noreferrer" aria-label="GitHub でネットワーク自動化プロジェクトを見る">
+              <svg class="github" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true" focusable="false" style="display:inline-block;width:18px;height:18px;flex:none;vertical-align:middle"><path d="M12 0c6.63 0 12 5.276 12 11.79-.001 5.067-3.29 9.567-8.175 11.187-.6.118-.825-.25-.825-.56 0-.398.015-1.665.015-3.242 0-1.105-.375-1.813-.81-2.181 2.67-.295 5.475-1.297 5.475-5.822 0-1.297-.465-2.344-1.23-3.169.12-.295.54-1.503-.12-3.125 0 0-1.005-.324-3.3 1.209a11.32 11.32 0 00-3-.398c-1.02 0-2.04.133-3 .398-2.295-1.518-3.3-1.209-3.3-1.209-.66 1.622-.24 2.83-.12 3.125-.765.825-1.23 1.887-1.23 3.169 0 4.51 2.79 5.527 5.46 5.822-.345.294-.66.81-.765 1.577-.69.31-2.415.81-3.495-.973-.225-.354-.9-1.223-1.845-1.209-1.005.015-.405.56.015.781.51.28 1.095 1.327 1.23 1.666.24.663 1.02 1.93 4.035 1.385 0 .988.015 1.916.015 2.196 0 .31-.225.664-.825.56C3.303 21.374-.003 16.867 0 11.791 0 5.276 5.37 0 12 0z"/></svg>
+              <span><svg class="github-text" viewBox="0 0 78 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true" focusable="false" style="display:inline-block;width:42.25px;height:13px;flex:none;vertical-align:middle"><path d="M16.598 10.836v9.48c0 .066-.017.181-.1.214 0 0-2.07 1.47-5.484 1.47C6.888 22 2 20.712 2 12.223 2 3.734 6.275 1.983 10.45 2c3.613 0 5.07.81 5.303.958.066.083.1.149.1.231l-.697 2.94c0 .149-.149.33-.331.28-.597-.18-1.491-.544-3.596-.544-2.435 0-5.053.693-5.053 6.16 0 5.466 2.485 6.11 4.275 6.11 1.524 0 2.07-.181 2.07-.181v-3.799h-2.435c-.182 0-.315-.132-.315-.28v-3.04c0-.148.133-.28.315-.28h6.197c.182 0 .315.132.315.28zM76 14.684c0 5.664-1.84 7.283-5.054 7.283-2.717 0-4.175-1.37-4.175-1.37s-.067.759-.15.858c-.05.1-.132.132-.231.132h-2.453c-.165 0-.315-.132-.315-.28l.034-18.349a.29.29 0 01.281-.28h3.53a.29.29 0 01.281.28v6.226s1.359-.875 3.347-.875l-.016-.033c1.988 0 4.921.743 4.921 6.408zM47.865 2.71a.29.29 0 01.281.281V21.34a.29.29 0 01-.281.281h-3.53a.29.29 0 01-.281-.28l.033-7.845h-5.485v7.844a.29.29 0 01-.281.281h-3.53c-.132 0-.281-.132-.281-.28V2.99a.29.29 0 01.281-.28h3.53a.29.29 0 01.281.28v6.755h5.485V2.99a.29.29 0 01.282-.28h3.496zM61.55 8.722c.183 0 .315.132.315.28l-.033 12.337c0 .149-.1.281-.282.281h-2.22c-.116 0-.232-.066-.265-.148-.05-.1-.133-.744-.133-.744S57.061 22 54.758 22c-2.8 0-4.839-.908-4.839-4.542V9.02a.29.29 0 01.282-.28h3.546a.29.29 0 01.282.28v7.845c0 1.238.364 1.8 1.607 1.8 1.243 0 2.154-.644 2.154-.644V9.036c0-.182.1-.314.282-.314h3.48zm-28.84 9.861h.007c.14.029.239.154.234.296v2.477c0 .116-.05.231-.149.264-.166.083-1.226.363-2.104.363-1.922 0-4.74-.412-4.74-4.442v-5.417H24.12c-.149 0-.281-.132-.281-.314V9.564c0-.132.083-.248.215-.28.116-.017 1.922-.463 1.922-.463V5.237c0-.132.083-.215.232-.215h3.58c.148 0 .231.083.231.215v3.485h2.635c.132 0 .265.132.265.28v2.808c0 .182-.116.314-.265.314h-2.635v5.17c0 .777.448 1.372 1.74 1.372.41 0 .797-.081.951-.083zM22.28 8.705a.29.29 0 01.282.281v12.172c0 .297-.083.446-.414.446h-3.182c-.281 0-.497-.116-.497-.446V9.036c0-.182.133-.33.282-.33h3.53zm49.693 6.243c0-2.99-1.21-3.386-2.486-3.253-.994.066-1.79.561-1.79.561v5.813s.813.562 2.022.595c1.707.05 2.254-.562 2.254-3.716zM20.54 3.123a2.26 2.26 0 012.254 2.28A2.26 2.26 0 0120.54 7.68a2.266 2.266 0 01-2.286-2.279c0-1.271 1.01-2.279 2.286-2.279z"/></svg> でネットワーク自動化プロジェクトを見る</span>
+            </a>
+          </article>
+
+          <article class="guide-article lang-pane" data-lang-pane="ko" hidden>
+<h2 id="ko-section-1" data-heading-key="section-1"><a href="#ko-section-1">1. 두 가지 네트워크 연결 경로</a></h2>
+<p>RM-01은 USB-C 기반 네트워크 연결 경로를 두 가지 제공합니다. 이 문서에서는 <strong>C1 포트</strong>와 <strong>C3 포트</strong>로 구분합니다. 둘 다 네트워크 연결에 쓰이지만 연결 대상과 네트워크 구성이 다릅니다.</p>
+<div class="guide-table-wrap"><table><thead><tr><th>포트</th><th>주요 용도</th><th>연결 후 네트워크 구성</th></tr></thead><tbody><tr><td>C1</td><td>컴퓨터, 태블릿, 스마트폰 등 사용자 기기를 RM-01에 연결</td><td>사용자 기기가 RM-01 내부 스위치 네트워크의 노드로 참여합니다</td></tr><tr><td>C3</td><td>RM-01을 기존 LAN에 연결</td><td>LPMU가 내부 노드의 라우팅을 맡아 시스템 전체를 스위치나 라우터가 있는 상위 네트워크에 연결합니다</td></tr></tbody></table></div>
+<h2 id="ko-section-2" data-heading-key="section-2"><a href="#ko-section-2">2. C1과 C3 위치 확인</a></h2>
+<h3 id="ko-section-3" data-heading-key="section-3"><a href="#ko-section-3">C1 포트</a></h3>
+<p>C1은 본체 측면 뒤쪽에 있습니다. 위아래로 배치된 USB-C 포트 두 개 중 위쪽입니다. 포트 아래에 새겨진 연결 그림으로 위치를 확인할 수 있습니다.</p>
+<h3 id="ko-section-4" data-heading-key="section-4"><a href="#ko-section-4">C3 포트</a></h3>
+<p>C3은 본체 상단에 있습니다. 자석식 덮개를 열면 USB-C 포트가 보입니다. 상단 공유 USB 포트로, TianshanOS에서 연결 대상을 ESP, AGX, LPMU로 바꿀 수 있습니다.</p>
+<h2 id="ko-section-5" data-heading-key="section-5"><a href="#ko-section-5">3. C1으로 사용자 기기를 RM-01에 연결</a></h2>
+<p>데이터 전송을 지원하는 USB-C 케이블로 iPad, 컴퓨터, 스마트폰 등을 C1에 연결합니다. RM-01이 DHCP로 주소를 자동 할당하므로 IP 주소, 게이트웨이, DNS를 직접 입력할 필요가 없습니다.</p>
+<p>사용자 기기에서는 보통 <code>AX88179</code> 또는 USB Ethernet이라는 유선 네트워크 인터페이스로 인식됩니다. 기기는 RM-01 내부 스위치 네트워크에 참여하여 내부 장치와 통신할 수 있습니다.</p>
+<aside class="guide-notice"><span>중요 사항</span><p>C1은 사용자 기기를 RM-01 내부 네트워크에 직접 연결합니다. 신뢰할 수 있는 기기만 연결하세요. 공공장소나 신뢰할 수 없는 환경에서는 관리되지 않은 기기를 C1에 연결하지 마세요.</p></aside>
+<h2 id="ko-section-6" data-heading-key="section-6"><a href="#ko-section-6">4. 인터넷 연결 유지 및 RM-01과 공유</a></h2>
+<h3 id="ko-section-7" data-heading-key="section-7"><a href="#ko-section-7">사용자 기기의 인터넷 연결에 미치는 영향</a></h3>
+<aside class="guide-notice"><span>작업 시 주의 사항</span><p>일부 운영체제는 C1 연결 후 <code>AX88179</code>를 우선 네트워크 출구로 사용할 수 있습니다. C1은 주로 RM-01 내부 접속을 위한 경로이며 인터넷을 직접 제공하지 않으므로, 기존 인터넷 연결이 잠시 끊길 수 있습니다.</p></aside>
+<p>Wi-Fi, 이더넷 등으로 인터넷을 계속 사용하려면 기존 인터넷 연결의 우선순위를 <code>AX88179</code>보다 높게 설정하세요.</p>
+<div class="guide-table-wrap"><table><thead><tr><th>운영체제</th><th>설정 이름</th><th>설정 원칙</th></tr></thead><tbody><tr><td>macOS</td><td>서비스 순서(Service Order)</td><td>인터넷을 제공하는 Wi-Fi 또는 이더넷을 <code>AX88179</code>보다 위에 둡니다</td></tr><tr><td>Windows</td><td>인터페이스 메트릭(Interface Metric)</td><td>값이 작을수록 우선합니다. 인터넷 인터페이스의 값을 <code>AX88179</code>보다 작게 설정합니다</td></tr><tr><td>Linux</td><td>경로 메트릭(Route Metric)</td><td>값이 작을수록 우선합니다. 인터넷 기본 경로의 값을 <code>AX88179</code>보다 작게 설정합니다</td></tr></tbody></table></div>
+<h3 id="ko-section-8" data-heading-key="section-8"><a href="#ko-section-8">RM-01 네트워크 연결 도구 사용</a></h3>
+<p>사용자 기기의 인터넷을 RM-01과 공유하려면 웹사이트 다운로드 페이지에서 <strong>RM-01 네트워크 연결 도구</strong>를 받으세요. 사용자 기기와 C1 사이의 DHCP, 경로, 공유 규칙을 설정하여 인터넷 트래픽을 RM-01 내부 네트워크로 전달합니다.</p>
+<p>현재 지원하는 운영체제는 다음과 같습니다.</p>
+<ul><li>macOS</li><li>Linux</li><li>Windows Pro</li></ul>
+<p>Windows Home은 현재 지원하지 않습니다.</p>
+<aside class="guide-notice"><span>중요 사항</span><p>도구는 사용자 기기의 네트워크 주소, 경로, 공유 설정을 변경합니다. 실행 중 기존 연결이 잠시 끊길 수 있습니다. 다운로드, 원격 세션 등 네트워크에 의존하는 작업을 저장한 뒤 시작하세요.</p></aside>
+<h2 id="ko-section-9" data-heading-key="section-9"><a href="#ko-section-9">5. AI로 C1 네트워크 공유 설정</a></h2>
+<p>Codex, Hermes처럼 로컬 명령 실행이 가능한 Agent Harness는 자연어 요청에 따라 네트워크 구성을 확인하고 사용자 컴퓨터에서 RM-01 내부로의 전달 및 공유 설정을 도울 수 있습니다. 대상 컴퓨터에서 시스템 명령을 실행할 수 있어야 합니다. 일반 대화형 AI는 절차를 안내할 수 있을 뿐 설정을 직접 수행하지 못합니다.</p>
+<h3 id="ko-section-10" data-heading-key="section-10"><a href="#ko-section-10">AI Agent 실행 위치</a></h3>
+<p>C1에 연결된 사용자 컴퓨터에서 직접 실행하는 것을 권장합니다. 인터넷 출구, 기본 경로, 공유 규칙은 해당 컴퓨터가 관리하며, 설정하려면 그 컴퓨터의 관리자 권한이 필요합니다.</p>
+<p>Codex, Hermes 등이 RM-01 내부에서 실행된다면, 먼저 사용자 컴퓨터에 대한 원격 명령 실행 권한과 관리자 승인을 확보해야 합니다. 그렇지 않으면 사용자 컴퓨터의 공유, 경로, 방화벽 설정을 바꿀 수 없습니다.</p>
+<h3 id="ko-section-11" data-heading-key="section-11"><a href="#ko-section-11">실행 전 확인</a></h3>
+<ul><li>사용자 컴퓨터가 C1에 연결되어 <code>AX88179</code> 또는 USB Ethernet 인터페이스가 보이는지 확인합니다.</li><li>컴퓨터의 C1 주소가 <code>10.10.99.100/24</code>이고 내부 노드가 계속 <code>10.10.99.99</code>, <code>10.10.99.98</code>, <code>10.10.99.97</code>을 사용하는지 확인합니다.</li><li>컴퓨터가 Wi-Fi, 이더넷 등의 다른 인터페이스로 인터넷에 정상 접속하는지 확인합니다.</li><li>Agent Harness가 컴퓨터에서 명령을 실행하고 필요할 때 관리자 권한을 요청할 수 있어야 합니다.</li><li>다운로드, 원격 세션 등 네트워크 작업을 저장하고 로컬에서 네트워크 설정을 복구할 수 있어야 합니다.</li></ul>
+<h3 id="ko-section-12" data-heading-key="section-12"><a href="#ko-section-12">Agent에 바로 전달할 프롬프트</a></h3>
+<p>다음 프롬프트는 출하 시 네트워크 구성을 유지하면서 확인 후 변경하고, 검증 및 복구 방법을 제시하도록 요청합니다. 명령 실행을 지원하는 Codex, Hermes 등에 복사하여 사용할 수 있습니다.</p>
+<div class="guide-code"><button type="button" data-copy-code>복사</button><pre><code class="language-text">RM-01의 C1 네트워크 공유 설정을 도와주세요. 먼저 현재 운영체제, 네트워크 인터페이스, 주소, 기본 경로, 방화벽 상태를 확인하고 아래 구성과 일치할 때만 변경하세요. 인터페이스 이름만으로 추정하거나 RM-01 내부 노드의 고정 주소를 바꾸지 마세요.
+
+현재 구성:
+- 사용자 컴퓨터는 USB-C로 RM-01의 C1에 연결되어 있습니다. 보통 AX88179 또는 USB Ethernet으로 표시되며 주소는 10.10.99.100/24입니다.
+- RM-01 내부 네트워크는 10.10.99.0/24입니다.
+- 애플리케이션 컴퓨터(LPMU)는 10.10.99.99입니다.
+- 추론 컴퓨터(AGX)는 10.10.99.98입니다.
+- 대역 외 관리 컴퓨터는 10.10.99.97입니다.
+- 사용자 컴퓨터는 다른 네트워크 인터페이스로 인터넷에 연결되어 있습니다.
+
+목표는 기존 인터넷 연결을 유지하면서 C1의 AX88179 / USB Ethernet 인터페이스를 통해 RM-01 내부에 공유하여 10.10.99.99, 10.10.99.98, 10.10.99.97이 인터넷을 사용하게 하는 것입니다.
+
+다음 조건을 지켜주세요.
+1. 운영체제, 실제 인터넷 출구 인터페이스, C1 인터페이스를 확인하고 변경할 항목을 설명하세요.
+2. 운영체제 기본 기능으로 변경을 최소화하여 필요한 IP 전달, NAT, 경로 또는 Internet Connection Sharing을 설정하세요.
+3. 기존 인터넷 인터페이스의 우선순위와 기본 경로, 위 RM-01 노드 주소는 바꾸지 마세요. 관련 없는 방화벽 규칙을 지우거나 덮어쓰지 마세요.
+4. 관리자 권한이 필요하면 용도를 설명한 뒤 요청하세요. 현재 시스템이나 권한으로 안전하게 설정할 수 없다면 중단하고 이유를 설명하세요.
+5. 완료 후 컴퓨터의 인터넷 연결, 10.10.99.99, 10.10.99.98, 10.10.99.97에 대한 접근, 내부 노드의 공인 IP 접속 및 도메인 이름 해석을 검증하세요.
+6. 마지막으로 실제 실행한 명령 또는 변경 사항, 검증 결과, 원래 설정으로 복구하는 절차를 제시하세요.</code></pre></div>
+<p>macOS는 보통 인터넷 공유와 시스템 라우팅을, Linux는 IP 전달과 nftables 또는 iptables를, Windows Pro는 Internet Connection Sharing(ICS)을 사용합니다. 실제 명령과 인터페이스 이름은 Agent가 현재 컴퓨터에서 확인한 결과를 따라야 합니다. Windows Home은 현재 지원하지 않습니다.</p>
+<h3 id="ko-section-13" data-heading-key="section-13"><a href="#ko-section-13">설정 성공 여부 확인</a></h3>
+<p>설정 후 다음 조건을 모두 충족해야 합니다.</p>
+<ol><li>컴퓨터의 기존 인터넷 연결을 계속 사용할 수 있습니다.</li><li>컴퓨터에서 <code>10.10.99.99</code>, <code>10.10.99.98</code>, <code>10.10.99.97</code>에 접근할 수 있습니다.</li><li>RM-01 내부 노드에서 공인 IP에 접속하고 도메인 이름을 해석하여 접속할 수 있습니다.</li><li>Agent가 성공했다는 말뿐 아니라 실제 변경 사항과 실행 가능한 복구 절차를 제시했습니다.</li></ol>
+<h3 id="ko-section-14" data-heading-key="section-14"><a href="#ko-section-14">보안 안내</a></h3>
+<aside class="guide-notice"><span>중요 사항</span><p>관리자 또는 root 권한을 허용하면 Agent는 경로, IP 전달, NAT, Internet Connection Sharing, 방화벽 규칙을 변경할 수 있습니다. 신뢰할 수 있는 Agent Harness만 사용하고 승인 전에 작업 계획을 확인하세요. 컴퓨터가 원격 연결 등 중요한 네트워크 작업을 담당한다면 먼저 로컬 복구 수단을 확보하세요.</p></aside>
+<h2 id="ko-section-15" data-heading-key="section-15"><a href="#ko-section-15">6. C3으로 RM-01을 상위 네트워크에 연결</a></h2>
+<p>여기서 상위 네트워크는 스위치나 라우터가 있는 기존 LAN을 뜻합니다.</p>
+<h3 id="ko-section-16" data-heading-key="section-16"><a href="#ko-section-16">어댑터 준비</a></h3>
+<p>다음 연결 장비를 별도로 준비합니다.</p>
+<ul><li>USB-C ↔ RJ45 이더넷 어댑터 1개</li><li>스위치 또는 라우터에 연결할 RJ45 케이블 1개</li></ul>
+<p>USB-C 쪽을 C3에 연결하고 RJ45 케이블을 스위치나 라우터에 연결합니다. 물리 연결만으로 DHCP와 경로 설정이 끝나지는 않습니다. 이후 RM-01 내장 네트워크 설정 프로그램을 실행해야 합니다.</p>
+<h3 id="ko-section-17" data-heading-key="section-17"><a href="#ko-section-17">상단 USB를 LPMU로 전환</a></h3>
+<ol><li>TianshanOS 홈 화면을 엽니다.</li><li>USB 전환 영역(‘USB 切换’)을 찾습니다.</li><li>‘USB’ 버튼으로 상단 포트의 대상을 <code>LPMU</code>로 바꿉니다.</li><li>현재 대상이 <code>LPMU</code>로 표시되는지 확인한 뒤 계속 진행합니다.</li></ol>
+<aside class="guide-notice"><span>작업 시 주의 사항</span><p>전환 중 현재 연결이 잠시 끊길 수 있습니다. 데이터를 전송하는 중에는 대상을 바꾸지 마세요.</p></aside>
+<h2 id="ko-section-18" data-heading-key="section-18"><a href="#ko-section-18">7. LPMU를 통해 시스템 전체 연결</a></h2>
+<p>출하 시 LPMU에는 네트워크 자동 설정 프로젝트가 준비되어 있습니다. LPMU가 상위 네트워크에 연결되면 내부 라우팅과 NAT로 AGX 등 내부 노드의 트래픽을 전달하여 시스템 전체를 연결합니다.</p>
+<h3 id="ko-section-19" data-heading-key="section-19"><a href="#ko-section-19">프로젝트 위치와 사용자 작업</a></h3>
+<p>프로젝트는 <strong>LPMU 현재 사용자의 홈 디렉터리</strong> 아래 <code>~/network-setup/</code>에 있으며 LPMU용 스크립트는 <code>~/network-setup/lpmu/</code>에 있습니다.</p>
+<p>출하 상태의 장치는 프로젝트를 다시 다운로드하거나 README의 엔지니어링 배포용 <code>scp</code>, <code>chmod</code>, 설치 절차를 반복할 필요가 없습니다. 일반 사용자는 TianshanOS에서 설정을 실행하세요. 문제 진단이나 추가 개발 때만 프로젝트 디렉터리에서 스크립트와 로그를 확인하면 됩니다.</p>
+<aside class="guide-notice"><span>중요 사항</span><p><code>~/network-setup/</code>을 임의로 이동하거나 이름을 바꾸거나 삭제하지 마세요. TianshanOS의 네트워크 설정 기능은 출하 시 준비된 경로와 스크립트에 의존합니다.</p></aside>
+<h3 id="ko-section-20" data-heading-key="section-20"><a href="#ko-section-20">자동 설정이 수행하는 작업</a></h3>
+<p>LPMU에서 다음 작업을 순서대로 수행합니다.</p>
+<ol><li>게이트웨이가 있는 인터페이스를 찾고 연결 시험으로 사용 가능한 상위 네트워크 출구를 선택합니다.</li><li>선택한 인터페이스로 트래픽이 나가도록 LPMU 기본 경로를 다시 설정합니다.</li><li>IPv4 전달을 켜고 <code>iptables</code>의 NAT 및 FORWARD 규칙을 설정합니다.</li><li>내부 AGX(기본 <code>10.10.99.98</code>)가 LPMU(내부 <code>10.10.99.99</code>)를 통해 상위 네트워크에 접속하게 합니다.</li><li>AGX 접속용 포트 전달 규칙을 설정합니다.</li></ol>
+<p>선택적으로 켤 수 있는 지능형 경로 모니터링 서비스도 포함됩니다. 켜면 30초마다 현재 출구를 확인하고 연결이 끊기면 다른 사용 가능한 인터페이스로 전환을 시도하며, 우선 인터페이스가 복구되면 돌아갑니다.</p>
+<h3 id="ko-section-21" data-heading-key="section-21"><a href="#ko-section-21">TianshanOS에서 실행</a></h3>
+<ol><li>C3이 USB-C ↔ RJ45 어댑터를 통해 스위치나 라우터에 연결되어 있는지 확인합니다.</li><li>홈 화면의 상단 USB 대상이 <code>LPMU</code>인지 확인합니다.</li><li>위쪽 탐색 메뉴에서 네트워크(‘网络’)를 엽니다.</li><li>상위 네트워크 접속(‘接入上层网络’)을 찾습니다.</li><li>LPMU를 통해 접속(‘通过LPMU接入’)을 선택합니다.</li><li>처리 중(‘处理中’)에서 성공(‘成功’) 또는 실패(‘失败’)로 바뀔 때까지 기다립니다. 처리 중 다시 실행하지 마세요.</li></ol>
+<p>성공은 스크립트가 사용 가능한 상위 출구를 찾고 LPMU 경로와 내부 전달·NAT 설정을 실행했다는 뜻입니다. 버튼 상태만으로 판단하지 말고 AGX의 IP 연결과 DNS 이름 해석도 확인하는 것이 좋습니다.</p>
+<h3 id="ko-section-22" data-heading-key="section-22"><a href="#ko-section-22">연결 성공 여부 확인</a></h3>
+<p>먼저 TianshanOS에 성공(‘成功’)이 표시되는지 확인합니다. AGX 터미널 권한이 있다면 AGX에서 순서대로 실행합니다.</p>
+<div class="guide-code"><button type="button" data-copy-code>복사</button><pre><code class="language-bash">ping -c 3 10.10.99.99  # AGX에서 LPMU로 연결 확인
+ping -c 3 8.8.8.8       # 인터넷 IP 연결 확인
+ping -c 3 google.com    # DNS 이름 해석 확인</code></pre></div>
+<p>각각 내부 링크, 인터넷 전달, DNS를 확인합니다. 첫 번째 실패는 주로 내부 연결이나 주소 문제입니다. 첫 번째만 성공하면 LPMU의 상위 연결, 기본 경로, NAT를 확인합니다. 앞의 두 개가 성공하고 세 번째만 실패하면 DNS 설정을 확인합니다.</p>
+<h3 id="ko-section-23" data-heading-key="section-23"><a href="#ko-section-23">포트 전달 및 보안 범위</a></h3>
+<p>현재 프로젝트는 LPMU의 상위 네트워크 인터페이스에 다음 전달 규칙을 설정합니다.</p>
+<div class="guide-table-wrap"><table><thead><tr><th>LPMU 진입 포트</th><th>전달 대상</th><th>용도</th></tr></thead><tbody><tr><td>TCP <code>58022</code></td><td>AGX TCP <code>22</code></td><td>LPMU를 통해 AGX SSH 접속</td></tr><tr><td>TCP/UDP <code>58000–58999</code></td><td>AGX의 동일 포트</td><td>AGX에서 실행되는 애플리케이션 서비스 접속</td></tr></tbody></table></div>
+<p>예를 들어 SSH는 LPMU의 상위 네트워크 주소로 접속하지만 사용자 이름과 인증 정보는 AGX의 것을 사용합니다.</p>
+<div class="guide-code"><button type="button" data-copy-code>복사</button><pre><code class="language-bash">ssh -p 58022 &lt;AGX_USERNAME&gt;@&lt;LPMU_IP&gt;</code></pre></div>
+<aside class="guide-notice"><span>중요 사항</span><p>포트 전달은 상위 네트워크에서 AGX 서비스에 접근할 수 있는 범위를 넓힙니다. 신뢰할 수 있는 LAN에서만 사용하고 스위치, 라우터 또는 상위 방화벽으로 출발지 주소를 제한하세요. 이 포트들을 공용 인터넷에 직접 노출하지 마세요.</p></aside>
+<h3 id="ko-section-24" data-heading-key="section-24"><a href="#ko-section-24">위험 및 문제 해결</a></h3>
+<aside class="guide-notice"><span>중요 사항</span><p>‘通过LPMU接入’은 LPMU의 기존 기본 경로를 삭제하고 <code>iptables</code> NAT 테이블과 FORWARD 체인 규칙을 비운 뒤 FORWARD 기본 정책을 DROP으로 설정합니다. 이후 RM-01에 필요한 경로, NAT, 포트 전달 규칙을 기록합니다. 원격 연결이 즉시 끊길 수 있고 기존 사용자 지정 네트워크·방화벽 설정이 덮어써질 수 있습니다. LPMU를 변경해 사용했다면 먼저 경로표와 방화벽 규칙을 내보내고 로컬 복구 수단을 확보하세요.</p></aside>
+<p>실패하면 다음 순서로 확인합니다.</p>
+<ol><li>C3의 USB-C ↔ RJ45 어댑터와 케이블이 제대로 연결되었는지 확인합니다.</li><li>스위치나 라우터 포트가 켜져 있는지 확인합니다.</li><li>홈 화면의 상단 USB 대상이 <code>LPMU</code>인지 확인합니다.</li><li>상위 네트워크가 LPMU에 유효한 주소, 게이트웨이, DNS를 제공하는지 확인합니다.</li><li>상위 네트워크 접속 영역의 오류와 출력을 확인합니다.</li><li>AGX에서 LPMU 내부 주소 <code>10.10.99.99</code>에 접근할 수 있는지 확인합니다.</li><li>LPMU의 사용자 지정 규칙이 기본 경로, NAT, FORWARD 체인, 포트 전달과 충돌하는지 확인합니다.</li></ol>
+
+            <a class="footer-github guide-github-link" href="https://github.com/RMinte-AI/lpmu-agx-network-setup" target="_blank" rel="noopener noreferrer" aria-label="GitHub에서 네트워크 자동화 프로젝트 보기">
+              <svg class="github" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true" focusable="false" style="display:inline-block;width:18px;height:18px;flex:none;vertical-align:middle"><path d="M12 0c6.63 0 12 5.276 12 11.79-.001 5.067-3.29 9.567-8.175 11.187-.6.118-.825-.25-.825-.56 0-.398.015-1.665.015-3.242 0-1.105-.375-1.813-.81-2.181 2.67-.295 5.475-1.297 5.475-5.822 0-1.297-.465-2.344-1.23-3.169.12-.295.54-1.503-.12-3.125 0 0-1.005-.324-3.3 1.209a11.32 11.32 0 00-3-.398c-1.02 0-2.04.133-3 .398-2.295-1.518-3.3-1.209-3.3-1.209-.66 1.622-.24 2.83-.12 3.125-.765.825-1.23 1.887-1.23 3.169 0 4.51 2.79 5.527 5.46 5.822-.345.294-.66.81-.765 1.577-.69.31-2.415.81-3.495-.973-.225-.354-.9-1.223-1.845-1.209-1.005.015-.405.56.015.781.51.28 1.095 1.327 1.23 1.666.24.663 1.02 1.93 4.035 1.385 0 .988.015 1.916.015 2.196 0 .31-.225.664-.825.56C3.303 21.374-.003 16.867 0 11.791 0 5.276 5.37 0 12 0z"/></svg>
+              <span><svg class="github-text" viewBox="0 0 78 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true" focusable="false" style="display:inline-block;width:42.25px;height:13px;flex:none;vertical-align:middle"><path d="M16.598 10.836v9.48c0 .066-.017.181-.1.214 0 0-2.07 1.47-5.484 1.47C6.888 22 2 20.712 2 12.223 2 3.734 6.275 1.983 10.45 2c3.613 0 5.07.81 5.303.958.066.083.1.149.1.231l-.697 2.94c0 .149-.149.33-.331.28-.597-.18-1.491-.544-3.596-.544-2.435 0-5.053.693-5.053 6.16 0 5.466 2.485 6.11 4.275 6.11 1.524 0 2.07-.181 2.07-.181v-3.799h-2.435c-.182 0-.315-.132-.315-.28v-3.04c0-.148.133-.28.315-.28h6.197c.182 0 .315.132.315.28zM76 14.684c0 5.664-1.84 7.283-5.054 7.283-2.717 0-4.175-1.37-4.175-1.37s-.067.759-.15.858c-.05.1-.132.132-.231.132h-2.453c-.165 0-.315-.132-.315-.28l.034-18.349a.29.29 0 01.281-.28h3.53a.29.29 0 01.281.28v6.226s1.359-.875 3.347-.875l-.016-.033c1.988 0 4.921.743 4.921 6.408zM47.865 2.71a.29.29 0 01.281.281V21.34a.29.29 0 01-.281.281h-3.53a.29.29 0 01-.281-.28l.033-7.845h-5.485v7.844a.29.29 0 01-.281.281h-3.53c-.132 0-.281-.132-.281-.28V2.99a.29.29 0 01.281-.28h3.53a.29.29 0 01.281.28v6.755h5.485V2.99a.29.29 0 01.282-.28h3.496zM61.55 8.722c.183 0 .315.132.315.28l-.033 12.337c0 .149-.1.281-.282.281h-2.22c-.116 0-.232-.066-.265-.148-.05-.1-.133-.744-.133-.744S57.061 22 54.758 22c-2.8 0-4.839-.908-4.839-4.542V9.02a.29.29 0 01.282-.28h3.546a.29.29 0 01.282.28v7.845c0 1.238.364 1.8 1.607 1.8 1.243 0 2.154-.644 2.154-.644V9.036c0-.182.1-.314.282-.314h3.48zm-28.84 9.861h.007c.14.029.239.154.234.296v2.477c0 .116-.05.231-.149.264-.166.083-1.226.363-2.104.363-1.922 0-4.74-.412-4.74-4.442v-5.417H24.12c-.149 0-.281-.132-.281-.314V9.564c0-.132.083-.248.215-.28.116-.017 1.922-.463 1.922-.463V5.237c0-.132.083-.215.232-.215h3.58c.148 0 .231.083.231.215v3.485h2.635c.132 0 .265.132.265.28v2.808c0 .182-.116.314-.265.314h-2.635v5.17c0 .777.448 1.372 1.74 1.372.41 0 .797-.081.951-.083zM22.28 8.705a.29.29 0 01.282.281v12.172c0 .297-.083.446-.414.446h-3.182c-.281 0-.497-.116-.497-.446V9.036c0-.182.133-.33.282-.33h3.53zm49.693 6.243c0-2.99-1.21-3.386-2.486-3.253-.994.066-1.79.561-1.79.561v5.813s.813.562 2.022.595c1.707.05 2.254-.562 2.254-3.716zM20.54 3.123a2.26 2.26 0 012.254 2.28A2.26 2.26 0 0120.54 7.68a2.266 2.266 0 01-2.286-2.279c0-1.271 1.01-2.279 2.286-2.279z"/></svg>에서 네트워크 자동화 프로젝트 보기</span>
+            </a>
+          </article>
+
+          <article class="guide-article lang-pane" data-lang-pane="es" hidden>
+<p>Los nombres de botones y secciones se conservan en inglés para que puedas localizarlos en el dispositivo. La WebUI del dispositivo admite chino e inglés; cambiar el idioma de este sitio no cambia los idiomas del dispositivo.</p>
+<h2 id="es-section-1" data-heading-key="section-1"><a href="#es-section-1">1. Comprender las dos vías de conexión</a></h2>
+<p>RM-01 ofrece dos vías de red mediante USB-C, denominadas en esta guía <strong>puerto C1</strong> y <strong>puerto C3</strong>. Ambas transportan conexiones de red, pero conectan equipos distintos y crean topologías diferentes:</p>
+<div class="guide-table-wrap"><table><thead><tr><th>Puerto</th><th>Uso principal</th><th>Relación de red tras la conexión</th></tr></thead><tbody><tr><td>C1</td><td>Conectar un ordenador, una tableta, un teléfono u otro dispositivo de usuario a RM-01</td><td>El dispositivo se incorpora como nodo a la red del conmutador interno de RM-01</td></tr><tr><td>C3</td><td>Conectar RM-01 a la red local existente del usuario</td><td>LPMU enruta el tráfico de los demás nodos internos y permite incorporar todo el sistema a la red del conmutador o rúter ascendente</td></tr></tbody></table></div>
+<h2 id="es-section-2" data-heading-key="section-2"><a href="#es-section-2">2. Identificar C1 y C3</a></h2>
+<h3 id="es-section-3" data-heading-key="section-3"><a href="#es-section-3">Puerto C1</a></h3>
+<p>C1 se encuentra en la parte trasera de la carcasa. Es el superior de los dos puertos USB-C dispuestos en vertical. Un símbolo de conexión grabado debajo permite identificarlo.</p>
+<h3 id="es-section-4" data-heading-key="section-4"><a href="#es-section-4">Puerto C3</a></h3>
+<p>C3 está en la parte superior de la carcasa. Levanta la tapa magnética para acceder a este puerto USB-C. C3 es el puerto USB superior compartido, cuyo destino puede cambiarse entre ESP, AGX y LPMU desde TianshanOS.</p>
+<h2 id="es-section-5" data-heading-key="section-5"><a href="#es-section-5">3. Conectar un dispositivo de usuario mediante C1</a></h2>
+<p>Utiliza un cable USB-C con transferencia de datos para conectar un iPad, ordenador, teléfono u otro dispositivo a C1. RM-01 proporciona la configuración DHCP; no hace falta introducir manualmente una dirección IP, una puerta de enlace ni un servidor DNS.</p>
+<p>El dispositivo suele detectar una interfaz de red cableada denominada <code>AX88179</code> o USB Ethernet. Después se incorpora a la red del conmutador interno de RM-01 y puede comunicarse con sus equipos.</p>
+<aside class="guide-notice"><span>Importante</span><p>C1 conecta el dispositivo de usuario directamente a la red interna de RM-01. Conecta solo dispositivos de confianza y no conectes equipos sin gestionar a C1 en entornos públicos o no fiables.</p></aside>
+<h2 id="es-section-6" data-heading-key="section-6"><a href="#es-section-6">4. Mantener el acceso a internet y compartirlo con RM-01</a></h2>
+<h3 id="es-section-7" data-heading-key="section-7"><a href="#es-section-7">Qué puede ocurrir con la conexión a internet del usuario</a></h3>
+<p>Al conectar C1, algunos sistemas operativos pueden dar prioridad a <code>AX88179</code>. Como C1 ofrece acceso a la red interna de RM-01, no acceso directo a internet, la conexión a internet existente del dispositivo puede interrumpirse.</p>
+<p>Si el dispositivo debe seguir utilizando Wi-Fi, Ethernet u otra conexión para acceder a internet, mantén esa conexión con mayor prioridad que <code>AX88179</code>:</p>
+<div class="guide-table-wrap"><table><thead><tr><th>Sistema</th><th>Término del sistema</th><th>Criterio de configuración</th></tr></thead><tbody><tr><td>macOS</td><td>Orden de servicios de red (Service Order)</td><td>Sitúa el servicio Wi-Fi o Ethernet que proporciona internet por encima de <code>AX88179</code></td></tr><tr><td>Windows</td><td>Métrica de interfaz</td><td>Los valores menores tienen mayor prioridad; asigna a la interfaz de internet una métrica inferior a la de <code>AX88179</code></td></tr><tr><td>Linux</td><td>Métrica de ruta</td><td>Los valores menores tienen mayor prioridad; asigna a la ruta predeterminada de internet una métrica inferior a la de <code>AX88179</code></td></tr></tbody></table></div>
+<h3 id="es-section-8" data-heading-key="section-8"><a href="#es-section-8">Utilizar la herramienta de conexión de red de RM-01</a></h3>
+<p>Para compartir la conexión a internet del dispositivo con RM-01, obtén la <strong>Herramienta de conexión de red de RM-01</strong> en la página de descargas del sitio web. Configura DHCP, el enrutamiento y las reglas de conexión compartida entre el dispositivo del usuario y C1 para reenviar el tráfico de internet a la red interna de RM-01.</p>
+<p>Sistemas admitidos actualmente:</p>
+<ul><li>macOS</li><li>Linux</li><li>Windows Pro</li></ul>
+<p>Windows Home no es compatible actualmente.</p>
+<aside class="guide-notice"><span>Importante</span><p>La herramienta modifica las direcciones de red, el enrutamiento y los ajustes de conexión compartida del dispositivo del usuario. Las conexiones existentes pueden interrumpirse brevemente. Guarda el trabajo de las descargas, sesiones remotas y demás tareas que dependan de la red antes de empezar.</p></aside>
+<h2 id="es-section-9" data-heading-key="section-9"><a href="#es-section-9">5. Configurar con IA la conexión compartida de C1</a></h2>
+<p>Un entorno de ejecución de agentes con capacidad para ejecutar comandos locales, como Codex o Hermes, puede inspeccionar la topología a partir de instrucciones en lenguaje natural y ayudar a configurar el reenvío y la conexión compartida desde el ordenador del usuario a la red interna de RM-01. La IA debe poder ejecutar comandos del sistema en el ordenador de destino. Una IA limitada al chat puede dar instrucciones, pero no aplicar la configuración.</p>
+<h3 id="es-section-10" data-heading-key="section-10"><a href="#es-section-10">Dónde ejecutar el agente de IA</a></h3>
+<p>Siempre que sea posible, ejecuta el agente directamente en el ordenador conectado a C1. Ese ordenador controla la salida a internet, la ruta predeterminada y las reglas de conexión compartida; el agente necesita acceso de administrador en él para realizar la configuración.</p>
+<p>Si Codex, Hermes u otro agente se ejecuta dentro de RM-01, ya debe disponer de autorización para ejecutar comandos remotos y de acceso de administrador al ordenador del usuario. Sin ese acceso no puede modificar su conexión compartida, sus rutas ni su cortafuegos.</p>
+<h3 id="es-section-11" data-heading-key="section-11"><a href="#es-section-11">Comprobaciones previas</a></h3>
+<ul><li>El ordenador está conectado a RM-01 por C1 y detecta una interfaz denominada <code>AX88179</code> o USB Ethernet.</li><li>La dirección C1 del ordenador es <code>10.10.99.100/24</code>; los nodos internos de RM-01 conservan <code>10.10.99.99</code>, <code>10.10.99.98</code> y <code>10.10.99.97</code>.</li><li>El ordenador ya tiene acceso a internet mediante Wi-Fi, Ethernet u otra interfaz.</li><li>El entorno de agentes puede ejecutar comandos en el ordenador y solicitar privilegios de administrador cuando sean necesarios.</li><li>Se ha guardado el trabajo de las descargas, sesiones remotas y otras tareas que dependen de la red, y existe una vía local para recuperar la configuración si hace falta.</li></ul>
+<h3 id="es-section-12" data-heading-key="section-12"><a href="#es-section-12">Instrucciones para enviar al agente</a></h3>
+<p>El siguiente texto conserva la topología de fábrica de RM-01, exige inspeccionar antes de modificar y solicita comprobaciones e instrucciones de reversión. Cópialo en Codex, Hermes u otro entorno de agentes capaz de ejecutar comandos:</p>
+<div class="guide-code"><button type="button" data-copy-code>Copiar</button><pre><code class="language-text">Ayúdame a configurar la conexión compartida a internet de C1 para RM-01. Inspecciona primero el sistema operativo, las interfaces de red, las direcciones, las rutas predeterminadas y el estado del cortafuegos. Modifica la configuración solo después de confirmar que coincide con la topología siguiente. No deduzcas la función de una interfaz solo por su nombre ni cambies las direcciones fijas de los nodos internos de RM-01.
+
+Topología actual:
+- El ordenador del usuario está conectado por USB-C al puerto C1 de RM-01. En el ordenador, esta conexión suele aparecer como AX88179 o USB Ethernet y utiliza 10.10.99.100/24.
+- La red interna de RM-01 es 10.10.99.0/24.
+- El ordenador de aplicaciones (LPMU) es 10.10.99.99.
+- El ordenador de inferencia (AGX) es 10.10.99.98.
+- El ordenador de gestión fuera de banda es 10.10.99.97.
+- El ordenador del usuario también tiene acceso a internet mediante otra interfaz de red.
+
+Mi objetivo es conservar la conexión a internet existente del ordenador y compartirla por la interfaz AX88179 / USB Ethernet asociada a C1, para que 10.10.99.99, 10.10.99.98 y 10.10.99.97 puedan acceder a internet.
+
+Respeta estas condiciones:
+1. Identifica el sistema operativo, la salida real a internet y la interfaz asociada a C1; explica después qué vas a cambiar.
+2. Utiliza el método nativo de conexión compartida menos invasivo del sistema operativo para configurar únicamente el reenvío IP, NAT, el enrutamiento o la Conexión compartida a Internet que sean necesarios.
+3. No cambies la prioridad ni la ruta predeterminada de la interfaz de internet existente. No cambies las direcciones de los nodos RM-01 indicadas arriba ni vacíes o sobrescribas reglas del cortafuegos ajenas a esta tarea.
+4. Si necesitas privilegios de administrador, explica el motivo antes de solicitarlos. Si el sistema o los permisos actuales no permiten completar la configuración de forma segura, detente e indica el motivo.
+5. Después de aplicar la configuración, verifica que el ordenador sigue teniendo internet; que 10.10.99.99, 10.10.99.98 y 10.10.99.97 son accesibles; y que los nodos internos de RM-01 alcanzan una IP pública y resuelven nombres DNS.
+6. Por último, enumera los comandos o ajustes modificados, los resultados de la validación y los pasos de reversión necesarios para restaurar la configuración original.</code></pre></div>
+<p>macOS suele utilizar Compartir Internet y las funciones de enrutamiento del sistema; Linux, reenvío IP con nftables o iptables; Windows Pro, Conexión compartida a Internet (ICS). Los comandos y nombres de interfaz concretos deben basarse en la inspección del ordenador actual. Windows Home no es compatible actualmente.</p>
+<h3 id="es-section-13" data-heading-key="section-13"><a href="#es-section-13">Comprobar el resultado</a></h3>
+<p>Tras la configuración deben cumplirse todas estas condiciones:</p>
+<ol><li>La conexión original del ordenador a internet sigue disponible.</li><li>El ordenador puede alcanzar <code>10.10.99.99</code>, <code>10.10.99.98</code> y <code>10.10.99.97</code>.</li><li>Los nodos internos de RM-01 pueden alcanzar direcciones IP públicas y nombres de host de internet mediante DNS.</li><li>El agente detalla los cambios realizados y proporciona pasos de reversión ejecutables, en lugar de limitarse a afirmar que la configuración ha terminado correctamente.</li></ol>
+<h3 id="es-section-14" data-heading-key="section-14"><a href="#es-section-14">Aviso de seguridad</a></h3>
+<aside class="guide-notice"><span>Importante</span><p>Conceder acceso de administrador o root a un agente para configurar la red le permite modificar rutas, reenvío IP, NAT, Conexión compartida a Internet y reglas del cortafuegos. Utiliza solo un entorno de agentes de confianza y revisa las acciones propuestas antes de autorizarlas. Si el ordenador mantiene una sesión remota u otra tarea de red crítica, asegúrate primero de poder recuperar la configuración de forma local.</p></aside>
+<h2 id="es-section-15" data-heading-key="section-15"><a href="#es-section-15">6. Conectar RM-01 a una red ascendente mediante C3</a></h2>
+<p>En esta guía, «red ascendente» es la red local existente del usuario, por ejemplo, la proporcionada por un conmutador o rúter.</p>
+<h3 id="es-section-16" data-heading-key="section-16"><a href="#es-section-16">Preparar el adaptador</a></h3>
+<p>El usuario debe disponer de:</p>
+<ul><li>Un adaptador Ethernet de USB-C a RJ45.</li><li>Un cable Ethernet RJ45 conectado al conmutador o rúter.</li></ul>
+<p>Conecta el extremo USB-C a C3 y el cable RJ45 al conmutador o rúter. La conexión física no completa por sí sola la configuración DHCP ni el enrutamiento. Después hay que ejecutar el programa de configuración de red integrado en RM-01.</p>
+<h3 id="es-section-17" data-heading-key="section-17"><a href="#es-section-17">Cambiar el destino del USB superior a LPMU</a></h3>
+<ol><li>Abre la página de inicio de TianshanOS.</li><li>Busca «USB Switch».</li><li>Selecciona el botón «USB» y cambia el destino actual del puerto superior a <code>LPMU</code>.</li><li>Comprueba que la página muestra <code>LPMU</code> como destino actual antes de continuar.</li></ol>
+<aside class="guide-notice"><span>Nota de operación</span><p>El cambio de destino puede interrumpir brevemente el enlace actual. No cambies el destino mientras se transfieren datos por ese puerto.</p></aside>
+<h2 id="es-section-18" data-heading-key="section-18"><a href="#es-section-18">7. Conectar todo el sistema a través de LPMU</a></h2>
+<p>RM-01 incorpora el proyecto de automatización de red preinstalado en LPMU. Una vez que LPMU dispone de conexión ascendente, utiliza enrutamiento interno y NAT para reenviar el tráfico de AGX y de los demás nodos internos e incorporar todo el sistema a la red ascendente del usuario.</p>
+<h3 id="es-section-19" data-heading-key="section-19"><a href="#es-section-19">Ubicación del proyecto y tareas del usuario</a></h3>
+<p>El proyecto está en el <strong>directorio personal del usuario actual de LPMU</strong>, en <code>~/network-setup/</code>. Los scripts específicos de LPMU se encuentran en <code>~/network-setup/lpmu/</code>.</p>
+<p>En un dispositivo con la configuración de fábrica, no vuelvas a descargar el proyecto ni repitas los pasos de despliegue técnico del README del repositorio, como <code>scp</code>, <code>chmod</code> o la instalación de servicios. El usuario habitual debe iniciar la configuración desde TianshanOS. Accede al directorio del proyecto solo para diagnosticar problemas o desarrollar.</p>
+<aside class="guide-notice"><span>Importante</span><p>No muevas, cambies de nombre ni elimines <code>~/network-setup/</code>. El flujo de configuración de red de TianshanOS depende de esa ruta y de los scripts de fábrica.</p></aside>
+<h3 id="es-section-20" data-heading-key="section-20"><a href="#es-section-20">Qué configura el proyecto de automatización</a></h3>
+<p>Al iniciarse, el proyecto realiza estas operaciones en LPMU:</p>
+<ol><li>Detecta las interfaces con puerta de enlace y realiza pruebas de conectividad para seleccionar una salida ascendente utilizable.</li><li>Sustituye la ruta predeterminada de LPMU para que el tráfico utilice la interfaz seleccionada.</li><li>Activa el reenvío IPv4 y configura reglas NAT y FORWARD de <code>iptables</code>.</li><li>Permite que AGX, cuya dirección interna predeterminada es <code>10.10.99.98</code>, alcance la red ascendente a través de LPMU en <code>10.10.99.99</code>.</li><li>Añade reglas de reenvío de puertos para los servicios alojados en AGX.</li></ol>
+<p>El proyecto también incluye un servicio opcional de supervisión inteligente de rutas. Si se activa, comprueba la salida ascendente cada 30 segundos, intenta cambiar a otra cuando se pierde la conectividad y vuelve a la interfaz preferida cuando esta se recupera.</p>
+<h3 id="es-section-21" data-heading-key="section-21"><a href="#es-section-21">Ejecutar la configuración desde TianshanOS</a></h3>
+<ol><li>Comprueba que C3 está conectado al conmutador o rúter mediante el adaptador Ethernet USB-C a RJ45.</li><li>Comprueba que el destino del USB superior en la página de inicio de TianshanOS es <code>LPMU</code>.</li><li>Abre «Network» en la navegación superior de TianshanOS.</li><li>Busca «Upstream Network Access».</li><li>Selecciona «Access via LPMU».</li><li>Espera a que el estado pase de «Processing» a «Success» o «Failed». No vuelvas a iniciar la operación mientras se procesa.</li></ol>
+<p>«Success» significa que el script ha encontrado una salida ascendente utilizable, ha configurado la ruta de LPMU y ha ejecutado la configuración de reenvío interno y NAT. Comprueba después la conectividad IP y la resolución DNS de AGX; el estado del botón no basta como prueba de conectividad.</p>
+<h3 id="es-section-22" data-heading-key="section-22"><a href="#es-section-22">Comprobar la conexión</a></h3>
+<p>Confirma primero que TianshanOS indica «Success». Si dispones de acceso al terminal de AGX, ejecuta estas comprobaciones en AGX:</p>
+<div class="guide-code"><button type="button" data-copy-code>Copiar</button><pre><code class="language-bash">ping -c 3 10.10.99.99  # Comprobar la conexión de AGX a LPMU
+ping -c 3 8.8.8.8       # Comprobar el acceso a una IP de internet
+ping -c 3 google.com    # Comprobar la resolución DNS</code></pre></div>
+<p>Estas pruebas distinguen el enlace interno, el reenvío a internet y DNS. Si falla la primera, revisa el enlace interno y las direcciones. Si la primera funciona y la segunda falla, revisa la conexión ascendente de LPMU, la ruta predeterminada y NAT. Si solo falla la tercera, revisa DNS.</p>
+<h3 id="es-section-23" data-heading-key="section-23"><a href="#es-section-23">Reenvío de puertos y límites de seguridad</a></h3>
+<p>El proyecto actual configura estos reenvíos en la interfaz ascendente de LPMU:</p>
+<div class="guide-table-wrap"><table><thead><tr><th>Entrada en LPMU</th><th>Destino del reenvío</th><th>Función</th></tr></thead><tbody><tr><td>TCP <code>58022</code></td><td>AGX TCP <code>22</code></td><td>Acceder al servicio SSH de AGX a través de LPMU</td></tr><tr><td>TCP/UDP <code>58000–58999</code></td><td>Los mismos puertos de AGX</td><td>Acceder a los servicios de aplicaciones ejecutados en AGX</td></tr></tbody></table></div>
+<p>Para SSH, el cliente se conecta a la dirección ascendente de LPMU, pero el nombre de usuario y las credenciales pertenecen a AGX:</p>
+<div class="guide-code"><button type="button" data-copy-code>Copiar</button><pre><code class="language-bash">ssh -p 58022 &lt;AGX_USERNAME&gt;@&lt;LPMU_IP&gt;</code></pre></div>
+<aside class="guide-notice"><span>Importante</span><p>El reenvío de puertos hace que los servicios de AGX sean más accesibles desde la red ascendente. Actívalo solo en una LAN de confianza y restringe las direcciones de origen mediante el conmutador, el rúter o el cortafuegos ascendente. No expongas estos puertos directamente a internet.</p></aside>
+<h3 id="es-section-24" data-heading-key="section-24"><a href="#es-section-24">Riesgos y resolución de problemas</a></h3>
+<aside class="guide-notice"><span>Importante</span><p>«Access via LPMU» elimina las rutas predeterminadas anteriores de LPMU, vacía la tabla NAT y la cadena FORWARD de <code>iptables</code>, establece DROP como política predeterminada de FORWARD y escribe las reglas de enrutamiento, NAT y reenvío de puertos de RM-01. Esto puede interrumpir sesiones remotas de inmediato y sobrescribir configuraciones personalizadas de red o cortafuegos. Si LPMU se ha personalizado, exporta primero sus rutas y reglas actuales y asegúrate de contar con una vía de recuperación local.</p></aside>
+<p>Si la operación falla, comprueba lo siguiente en este orden:</p>
+<ol><li>El adaptador USB-C a RJ45 y el cable Ethernet conectados a C3 están bien sujetos.</li><li>El puerto del conmutador o rúter está habilitado.</li><li>La página de inicio de TianshanOS muestra <code>LPMU</code> como destino actual del USB superior.</li><li>La red ascendente proporciona a LPMU una dirección, una puerta de enlace y una configuración DNS válidas.</li><li>Lee el error y la salida de «Upstream Network Access».</li><li>Comprueba que AGX sigue alcanzando la dirección interna de LPMU, <code>10.10.99.99</code>.</li><li>Busca reglas personalizadas de LPMU que entren en conflicto con la ruta predeterminada, NAT, la cadena FORWARD o el reenvío de puertos.</li></ol>
+
+            <a class="footer-github guide-github-link" href="https://github.com/RMinte-AI/lpmu-agx-network-setup" target="_blank" rel="noopener noreferrer" aria-label="Ver el proyecto de automatización de red en GitHub">
+              <svg class="github" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true" focusable="false" style="display:inline-block;width:18px;height:18px;flex:none;vertical-align:middle"><path d="M12 0c6.63 0 12 5.276 12 11.79-.001 5.067-3.29 9.567-8.175 11.187-.6.118-.825-.25-.825-.56 0-.398.015-1.665.015-3.242 0-1.105-.375-1.813-.81-2.181 2.67-.295 5.475-1.297 5.475-5.822 0-1.297-.465-2.344-1.23-3.169.12-.295.54-1.503-.12-3.125 0 0-1.005-.324-3.3 1.209a11.32 11.32 0 00-3-.398c-1.02 0-2.04.133-3 .398-2.295-1.518-3.3-1.209-3.3-1.209-.66 1.622-.24 2.83-.12 3.125-.765.825-1.23 1.887-1.23 3.169 0 4.51 2.79 5.527 5.46 5.822-.345.294-.66.81-.765 1.577-.69.31-2.415.81-3.495-.973-.225-.354-.9-1.223-1.845-1.209-1.005.015-.405.56.015.781.51.28 1.095 1.327 1.23 1.666.24.663 1.02 1.93 4.035 1.385 0 .988.015 1.916.015 2.196 0 .31-.225.664-.825.56C3.303 21.374-.003 16.867 0 11.791 0 5.276 5.37 0 12 0z"/></svg>
+              <span>Ver el proyecto de automatización de red en <svg class="github-text" viewBox="0 0 78 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true" focusable="false" style="display:inline-block;width:42.25px;height:13px;flex:none;vertical-align:middle"><path d="M16.598 10.836v9.48c0 .066-.017.181-.1.214 0 0-2.07 1.47-5.484 1.47C6.888 22 2 20.712 2 12.223 2 3.734 6.275 1.983 10.45 2c3.613 0 5.07.81 5.303.958.066.083.1.149.1.231l-.697 2.94c0 .149-.149.33-.331.28-.597-.18-1.491-.544-3.596-.544-2.435 0-5.053.693-5.053 6.16 0 5.466 2.485 6.11 4.275 6.11 1.524 0 2.07-.181 2.07-.181v-3.799h-2.435c-.182 0-.315-.132-.315-.28v-3.04c0-.148.133-.28.315-.28h6.197c.182 0 .315.132.315.28zM76 14.684c0 5.664-1.84 7.283-5.054 7.283-2.717 0-4.175-1.37-4.175-1.37s-.067.759-.15.858c-.05.1-.132.132-.231.132h-2.453c-.165 0-.315-.132-.315-.28l.034-18.349a.29.29 0 01.281-.28h3.53a.29.29 0 01.281.28v6.226s1.359-.875 3.347-.875l-.016-.033c1.988 0 4.921.743 4.921 6.408zM47.865 2.71a.29.29 0 01.281.281V21.34a.29.29 0 01-.281.281h-3.53a.29.29 0 01-.281-.28l.033-7.845h-5.485v7.844a.29.29 0 01-.281.281h-3.53c-.132 0-.281-.132-.281-.28V2.99a.29.29 0 01.281-.28h3.53a.29.29 0 01.281.28v6.755h5.485V2.99a.29.29 0 01.282-.28h3.496zM61.55 8.722c.183 0 .315.132.315.28l-.033 12.337c0 .149-.1.281-.282.281h-2.22c-.116 0-.232-.066-.265-.148-.05-.1-.133-.744-.133-.744S57.061 22 54.758 22c-2.8 0-4.839-.908-4.839-4.542V9.02a.29.29 0 01.282-.28h3.546a.29.29 0 01.282.28v7.845c0 1.238.364 1.8 1.607 1.8 1.243 0 2.154-.644 2.154-.644V9.036c0-.182.1-.314.282-.314h3.48zm-28.84 9.861h.007c.14.029.239.154.234.296v2.477c0 .116-.05.231-.149.264-.166.083-1.226.363-2.104.363-1.922 0-4.74-.412-4.74-4.442v-5.417H24.12c-.149 0-.281-.132-.281-.314V9.564c0-.132.083-.248.215-.28.116-.017 1.922-.463 1.922-.463V5.237c0-.132.083-.215.232-.215h3.58c.148 0 .231.083.231.215v3.485h2.635c.132 0 .265.132.265.28v2.808c0 .182-.116.314-.265.314h-2.635v5.17c0 .777.448 1.372 1.74 1.372.41 0 .797-.081.951-.083zM22.28 8.705a.29.29 0 01.282.281v12.172c0 .297-.083.446-.414.446h-3.182c-.281 0-.497-.116-.497-.446V9.036c0-.182.133-.33.282-.33h3.53zm49.693 6.243c0-2.99-1.21-3.386-2.486-3.253-.994.066-1.79.561-1.79.561v5.813s.813.562 2.022.595c1.707.05 2.254-.562 2.254-3.716zM20.54 3.123a2.26 2.26 0 012.254 2.28A2.26 2.26 0 0120.54 7.68a2.266 2.266 0 01-2.286-2.279c0-1.271 1.01-2.279 2.286-2.279z"/></svg></span>
+            </a>
+          </article>
+
+          <article class="guide-article lang-pane" data-lang-pane="fr" hidden>
+<p>Les noms des boutons et des rubriques sont conservés en anglais pour vous permettre de les retrouver sur l’appareil. Son interface web est disponible en chinois et en anglais ; changer la langue de ce site ne modifie pas les langues de l’appareil.</p>
+<h2 id="fr-section-1" data-heading-key="section-1"><a href="#fr-section-1">1. Comprendre les deux voies de connexion</a></h2>
+<p>RM-01 propose deux voies réseau par USB-C, appelées <strong>port C1</strong> et <strong>port C3</strong> dans ce guide. Toutes deux transportent des connexions réseau, mais relient des appareils différents et créent des topologies distinctes :</p>
+<div class="guide-table-wrap"><table><thead><tr><th>Port</th><th>Usage principal</th><th>Organisation du réseau après connexion</th></tr></thead><tbody><tr><td>C1</td><td>Connecter un ordinateur, une tablette, un téléphone ou un autre appareil utilisateur à RM-01</td><td>L’appareil rejoint le réseau du commutateur interne de RM-01 en tant que nœud interne</td></tr><tr><td>C3</td><td>Connecter RM-01 au réseau local existant de l’utilisateur</td><td>LPMU achemine le trafic des autres nœuds internes, ce qui permet à l’ensemble du système de rejoindre le réseau du commutateur ou du routeur amont</td></tr></tbody></table></div>
+<h2 id="fr-section-2" data-heading-key="section-2"><a href="#fr-section-2">2. Identifier C1 et C3</a></h2>
+<h3 id="fr-section-3" data-heading-key="section-3"><a href="#fr-section-3">Port C1</a></h3>
+<p>C1 se trouve à l’arrière du boîtier. Parmi les deux ports USB-C disposés verticalement, il s’agit du port supérieur. Un symbole de connexion gravé sous le port permet de le repérer.</p>
+<h3 id="fr-section-4" data-heading-key="section-4"><a href="#fr-section-4">Port C3</a></h3>
+<p>C3 se trouve sur le dessus du boîtier. Soulevez le couvercle magnétique pour accéder à ce port USB-C. C3 est le port USB supérieur partagé ; sa destination peut être commutée entre ESP, AGX et LPMU dans TianshanOS.</p>
+<h2 id="fr-section-5" data-heading-key="section-5"><a href="#fr-section-5">3. Connecter un appareil utilisateur par C1</a></h2>
+<p>Utilisez un câble USB-C prenant en charge le transfert de données pour connecter un iPad, un ordinateur, un téléphone ou un autre appareil à C1. RM-01 fournit la configuration DHCP : l’utilisateur n’a pas à saisir manuellement d’adresse IP, de passerelle ni de serveur DNS.</p>
+<p>L’appareil détecte généralement une interface réseau filaire nommée <code>AX88179</code> ou USB Ethernet. Il rejoint ensuite le réseau du commutateur interne de RM-01 et peut communiquer avec les appareils de ce réseau.</p>
+<aside class="guide-notice"><span>Important</span><p>C1 relie directement l’appareil utilisateur au réseau interne de RM-01. Ne connectez que des appareils de confiance et ne raccordez pas d’appareils non administrés à C1 dans un environnement public ou non fiable.</p></aside>
+<h2 id="fr-section-6" data-heading-key="section-6"><a href="#fr-section-6">4. Conserver l’accès à internet et le partager avec RM-01</a></h2>
+<h3 id="fr-section-7" data-heading-key="section-7"><a href="#fr-section-7">Effet possible sur la connexion internet de l’utilisateur</a></h3>
+<p>Après la connexion à C1, certains systèmes d’exploitation peuvent donner la priorité à <code>AX88179</code>. Comme C1 donne accès au réseau interne de RM-01, et non directement à internet, la connexion internet existante de l’appareil peut être interrompue.</p>
+<p>Si l’appareil doit continuer à utiliser le Wi-Fi, Ethernet ou une autre connexion pour accéder à internet, conservez une priorité supérieure pour cette connexion par rapport à <code>AX88179</code> :</p>
+<div class="guide-table-wrap"><table><thead><tr><th>Système</th><th>Terme employé</th><th>Principe de configuration</th></tr></thead><tbody><tr><td>macOS</td><td>Ordre des services réseau (Service Order)</td><td>Placez le service Wi-Fi ou Ethernet fournissant internet au-dessus de <code>AX88179</code></td></tr><tr><td>Windows</td><td>Métrique d’interface</td><td>Une valeur plus faible donne une priorité supérieure ; attribuez à l’interface internet une métrique inférieure à celle de <code>AX88179</code></td></tr><tr><td>Linux</td><td>Métrique de route</td><td>Une valeur plus faible donne une priorité supérieure ; attribuez à la route internet par défaut une métrique inférieure à celle de <code>AX88179</code></td></tr></tbody></table></div>
+<h3 id="fr-section-8" data-heading-key="section-8"><a href="#fr-section-8">Utiliser l’outil de connexion réseau de RM-01</a></h3>
+<p>Pour partager la connexion internet de l’appareil avec RM-01, téléchargez l’<strong>Outil de connexion réseau de RM-01</strong> depuis la page Téléchargements du site. Cet outil configure DHCP, le routage et les règles de partage entre l’appareil utilisateur et C1 afin d’acheminer le trafic internet vers le réseau interne de RM-01.</p>
+<p>Systèmes actuellement pris en charge :</p>
+<ul><li>macOS</li><li>Linux</li><li>Windows Pro</li></ul>
+<p>Windows Home n’est pas pris en charge actuellement.</p>
+<aside class="guide-notice"><span>Important</span><p>L’outil modifie l’adressage réseau, le routage et les réglages de partage sur l’appareil utilisateur. Les connexions existantes peuvent être brièvement interrompues. Préservez le travail lié aux téléchargements, aux sessions distantes et aux autres activités dépendant du réseau avant de commencer.</p></aside>
+<h2 id="fr-section-9" data-heading-key="section-9"><a href="#fr-section-9">5. Configurer le partage internet de C1 avec l’IA</a></h2>
+<p>Un environnement d’exécution d’agents capable d’exécuter des commandes locales, tel que Codex ou Hermes, peut examiner la topologie à partir d’instructions en langage naturel et aider à configurer le transfert et le partage internet entre l’ordinateur utilisateur et le réseau interne de RM-01. L’IA doit pouvoir exécuter des commandes système sur l’ordinateur cible. Une IA limitée à la conversation peut fournir des instructions, mais ne peut pas appliquer la configuration.</p>
+<h3 id="fr-section-10" data-heading-key="section-10"><a href="#fr-section-10">Où exécuter l’agent IA</a></h3>
+<p>Exécutez si possible l’agent directement sur l’ordinateur connecté à C1. Cet ordinateur gère la liaison internet, la route par défaut et les règles de partage ; l’agent a donc besoin d’un accès administrateur sur cet ordinateur pour effectuer la configuration.</p>
+<p>Si Codex, Hermes ou un autre agent s’exécute dans RM-01, il doit déjà disposer d’une autorisation d’exécution de commandes à distance et d’un accès administrateur à l’ordinateur utilisateur. Sans cet accès, il ne peut pas modifier le partage réseau, le routage ni le pare-feu de cet ordinateur.</p>
+<h3 id="fr-section-11" data-heading-key="section-11"><a href="#fr-section-11">Vérifications préalables</a></h3>
+<ul><li>L’ordinateur est connecté à RM-01 par C1 et détecte une interface nommée <code>AX88179</code> ou USB Ethernet.</li><li>L’adresse C1 de l’ordinateur est <code>10.10.99.100/24</code>, tandis que les nœuds internes de RM-01 conservent <code>10.10.99.99</code>, <code>10.10.99.98</code> et <code>10.10.99.97</code>.</li><li>L’ordinateur dispose déjà d’un accès internet fonctionnel par Wi-Fi, Ethernet ou une autre interface.</li><li>L’environnement d’agents peut exécuter des commandes sur l’ordinateur et demander des privilèges administrateur si nécessaire.</li><li>Le travail lié aux téléchargements, sessions distantes et autres activités dépendant du réseau a été préservé, et une récupération locale du réseau est possible.</li></ul>
+<h3 id="fr-section-12" data-heading-key="section-12"><a href="#fr-section-12">Instructions à envoyer à l’agent</a></h3>
+<p>Le texte suivant conserve la topologie d’usine de RM-01, exige une inspection avant toute modification et demande des vérifications ainsi que des instructions de retour arrière. Copiez-le dans Codex, Hermes ou un autre environnement d’agents capable d’exécuter des commandes :</p>
+<div class="guide-code"><button type="button" data-copy-code>Copier</button><pre><code class="language-text">Aide-moi à configurer le partage internet de C1 pour RM-01. Examine d’abord le système d’exploitation, les interfaces réseau, les adresses, les routes par défaut et l’état du pare-feu. Ne modifie la configuration qu’après avoir confirmé qu’elle correspond à la topologie ci-dessous. Ne déduis pas le rôle d’une interface de son seul nom et ne change pas les adresses fixes des nœuds internes de RM-01.
+
+Topologie actuelle :
+- L’ordinateur utilisateur est connecté par USB-C au port C1 de RM-01. Sur l’ordinateur, cette connexion apparaît généralement sous le nom AX88179 ou USB Ethernet et utilise 10.10.99.100/24.
+- Le réseau interne de RM-01 est 10.10.99.0/24.
+- L’ordinateur applicatif (LPMU) est 10.10.99.99.
+- L’ordinateur d’inférence (AGX) est 10.10.99.98.
+- L’ordinateur d’administration hors bande est 10.10.99.97.
+- L’ordinateur utilisateur dispose aussi d’un accès internet par une autre interface réseau.
+
+Mon objectif est de conserver la connexion internet existante de l’ordinateur et de la partager par l’interface AX88179 / USB Ethernet associée à C1, afin de permettre à 10.10.99.99, 10.10.99.98 et 10.10.99.97 d’accéder à internet.
+
+Respecte ces contraintes :
+1. Identifie le système d’exploitation, la véritable liaison internet et l’interface associée à C1, puis explique les changements prévus.
+2. Utilise la méthode native de partage la moins intrusive du système pour configurer uniquement le transfert IP, NAT, le routage ou le partage de connexion internet nécessaires.
+3. Ne change ni la priorité ni la route par défaut de l’interface internet existante. Ne modifie pas les adresses RM-01 ci-dessus et ne vide ni n’écrase les règles de pare-feu étrangères à cette tâche.
+4. Si des privilèges administrateur sont nécessaires, explique pourquoi avant de les demander. Si le système ou les permissions actuels ne permettent pas une configuration sûre, arrête-toi et indique la raison.
+5. Après la configuration, vérifie que l’ordinateur dispose toujours d’internet ; que 10.10.99.99, 10.10.99.98 et 10.10.99.97 sont joignables ; et que les nœuds internes de RM-01 peuvent atteindre une IP publique et résoudre des noms DNS.
+6. Enfin, détaille les commandes ou réglages réellement modifiés, les résultats de validation et les étapes de retour arrière permettant de rétablir la configuration d’origine.</code></pre></div>
+<p>macOS utilise généralement le partage internet et les fonctions de routage du système ; Linux, le transfert IP avec nftables ou iptables ; Windows Pro, le partage de connexion internet (ICS). Les commandes et les noms d’interfaces exacts doivent découler de l’inspection de l’ordinateur actuel. Windows Home n’est pas pris en charge actuellement.</p>
+<h3 id="fr-section-13" data-heading-key="section-13"><a href="#fr-section-13">Vérifier le résultat</a></h3>
+<p>Après la configuration, toutes les conditions suivantes doivent être remplies :</p>
+<ol><li>La connexion internet d’origine de l’ordinateur reste disponible.</li><li>L’ordinateur peut joindre <code>10.10.99.99</code>, <code>10.10.99.98</code> et <code>10.10.99.97</code>.</li><li>Les nœuds internes de RM-01 peuvent joindre des adresses IP publiques et des noms d’hôtes internet résolus par DNS.</li><li>L’agent détaille les modifications effectuées et fournit des étapes de retour arrière exécutables, au lieu de simplement annoncer une réussite.</li></ol>
+<h3 id="fr-section-14" data-heading-key="section-14"><a href="#fr-section-14">Avis de sécurité</a></h3>
+<aside class="guide-notice"><span>Important</span><p>Accorder à un agent un accès administrateur ou root pour configurer le réseau lui permet de modifier les routes, le transfert IP, NAT, le partage de connexion internet et les règles du pare-feu. N’utilisez qu’un environnement d’agents de confiance et examinez ses actions proposées avant de les autoriser. Si l’ordinateur héberge une session distante ou une autre activité réseau critique, vérifiez d’abord qu’une récupération locale de la configuration est possible.</p></aside>
+<h2 id="fr-section-15" data-heading-key="section-15"><a href="#fr-section-15">6. Connecter RM-01 au réseau amont par C3</a></h2>
+<p>Dans ce guide, le « réseau amont » désigne le réseau local existant de l’utilisateur, par exemple celui d’un commutateur ou d’un routeur.</p>
+<h3 id="fr-section-16" data-heading-key="section-16"><a href="#fr-section-16">Préparer l’adaptateur</a></h3>
+<p>L’utilisateur doit fournir :</p>
+<ul><li>Un adaptateur Ethernet USB-C vers RJ45.</li><li>Un câble Ethernet RJ45 raccordé au commutateur ou au routeur.</li></ul>
+<p>Connectez l’extrémité USB-C à C3, puis le câble RJ45 au commutateur ou au routeur. Le seul raccordement physique ne termine pas la configuration DHCP ni le routage. Il faut ensuite exécuter le programme de configuration réseau intégré à RM-01.</p>
+<h3 id="fr-section-17" data-heading-key="section-17"><a href="#fr-section-17">Commuter le port USB supérieur vers LPMU</a></h3>
+<ol><li>Ouvrez la page d’accueil de TianshanOS.</li><li>Repérez « USB Switch ».</li><li>Sélectionnez le bouton « USB » et faites passer la destination du port supérieur à <code>LPMU</code>.</li><li>Vérifiez que la page affiche <code>LPMU</code> comme destination actuelle avant de continuer.</li></ol>
+<aside class="guide-notice"><span>Note d’utilisation</span><p>La commutation peut interrompre brièvement la liaison actuelle. Ne changez pas de destination pendant un transfert de données par ce port.</p></aside>
+<h2 id="fr-section-18" data-heading-key="section-18"><a href="#fr-section-18">7. Connecter l’ensemble du système par LPMU</a></h2>
+<p>RM-01 est livré avec le projet d’automatisation réseau préinstallé sur LPMU. Une fois la liaison amont établie, LPMU utilise le routage interne et NAT pour transférer le trafic d’AGX et des autres nœuds internes, reliant ainsi l’ensemble du système au réseau amont de l’utilisateur.</p>
+<h3 id="fr-section-19" data-heading-key="section-19"><a href="#fr-section-19">Emplacement du projet et rôle de l’utilisateur</a></h3>
+<p>Le projet se trouve dans le <strong>répertoire personnel de l’utilisateur actuel de LPMU</strong>, à l’emplacement <code>~/network-setup/</code>. Les scripts propres à LPMU sont dans <code>~/network-setup/lpmu/</code>.</p>
+<p>Sur un appareil configuré en usine, ne téléchargez pas à nouveau le projet et ne répétez pas les étapes de déploiement technique du README du dépôt, telles que <code>scp</code>, <code>chmod</code> ou l’installation de services. En usage courant, lancez la configuration depuis TianshanOS. N’ouvrez le répertoire du projet que pour le dépannage ou le développement.</p>
+<aside class="guide-notice"><span>Important</span><p>Ne déplacez, ne renommez et ne supprimez pas <code>~/network-setup/</code>. Le processus de configuration réseau de TianshanOS dépend du chemin et des scripts d’usine.</p></aside>
+<h3 id="fr-section-20" data-heading-key="section-20"><a href="#fr-section-20">Ce que configure le projet d’automatisation</a></h3>
+<p>Au lancement, le projet effectue les opérations suivantes sur LPMU :</p>
+<ol><li>Il détecte les interfaces disposant d’une passerelle et teste la connectivité pour choisir une voie amont utilisable.</li><li>Il remplace la route par défaut de LPMU pour acheminer le trafic par l’interface sélectionnée.</li><li>Il active le transfert IPv4 et configure les règles NAT et FORWARD de <code>iptables</code>.</li><li>Il permet à AGX, dont l’adresse interne par défaut est <code>10.10.99.98</code>, d’accéder au réseau amont par LPMU à l’adresse <code>10.10.99.99</code>.</li><li>Il ajoute des règles de redirection de ports pour les services hébergés sur AGX.</li></ol>
+<p>Le projet comprend aussi un service facultatif de surveillance intelligente des routes. Lorsqu’il est activé, il vérifie la voie amont toutes les 30 secondes, tente de basculer en cas de perte de connectivité et revient à l’interface préférée dès qu’elle est rétablie.</p>
+<h3 id="fr-section-21" data-heading-key="section-21"><a href="#fr-section-21">Lancer la configuration depuis TianshanOS</a></h3>
+<ol><li>Vérifiez que C3 est raccordé au commutateur ou au routeur par l’adaptateur Ethernet USB-C vers RJ45.</li><li>Vérifiez que la destination du port USB supérieur est <code>LPMU</code> sur la page d’accueil de TianshanOS.</li><li>Ouvrez « Network » dans la navigation supérieure de TianshanOS.</li><li>Repérez « Upstream Network Access ».</li><li>Sélectionnez « Access via LPMU ».</li><li>Attendez que l’état passe de « Processing » à « Success » ou « Failed ». Ne relancez pas l’opération pendant le traitement.</li></ol>
+<p>« Success » signifie que le script a trouvé une voie amont utilisable, configuré la route de LPMU et exécuté la configuration du transfert interne et de NAT. Vérifiez ensuite la connectivité IP et la résolution DNS d’AGX ; l’état du bouton ne suffit pas à prouver la connectivité.</p>
+<h3 id="fr-section-22" data-heading-key="section-22"><a href="#fr-section-22">Vérifier la connexion</a></h3>
+<p>Vérifiez d’abord que TianshanOS indique « Success ». Si vous disposez d’un accès au terminal d’AGX, exécutez ces contrôles sur AGX :</p>
+<div class="guide-code"><button type="button" data-copy-code>Copier</button><pre><code class="language-bash">ping -c 3 10.10.99.99  # Vérifier la liaison entre AGX et LPMU
+ping -c 3 8.8.8.8       # Vérifier l’accès à une IP sur internet
+ping -c 3 google.com    # Vérifier la résolution DNS</code></pre></div>
+<p>Ces tests distinguent la liaison interne, le transfert vers internet et DNS. Si le premier échoue, vérifiez la liaison interne et l’adressage. Si le premier réussit mais que le deuxième échoue, vérifiez la connexion amont de LPMU, la route par défaut et NAT. Si seul le troisième échoue, vérifiez DNS.</p>
+<h3 id="fr-section-23" data-heading-key="section-23"><a href="#fr-section-23">Redirection de ports et périmètre de sécurité</a></h3>
+<p>Le projet actuel configure les redirections suivantes sur l’interface amont de LPMU :</p>
+<div class="guide-table-wrap"><table><thead><tr><th>Entrée LPMU</th><th>Destination</th><th>Usage</th></tr></thead><tbody><tr><td>TCP <code>58022</code></td><td>AGX TCP <code>22</code></td><td>Accéder au service SSH d’AGX par LPMU</td></tr><tr><td>TCP/UDP <code>58000–58999</code></td><td>Les mêmes ports sur AGX</td><td>Accéder aux services applicatifs exécutés sur AGX</td></tr></tbody></table></div>
+<p>Pour SSH, le client se connecte à l’adresse amont de LPMU, mais le nom d’utilisateur et les éléments d’authentification sont ceux d’AGX :</p>
+<div class="guide-code"><button type="button" data-copy-code>Copier</button><pre><code class="language-bash">ssh -p 58022 &lt;AGX_USERNAME&gt;@&lt;LPMU_IP&gt;</code></pre></div>
+<aside class="guide-notice"><span>Important</span><p>La redirection de ports rend les services d’AGX plus accessibles depuis le réseau amont. Ne l’activez que sur un réseau local de confiance et limitez les adresses sources avec le commutateur, le routeur ou le pare-feu amont. N’exposez pas directement ces ports sur internet.</p></aside>
+<h3 id="fr-section-24" data-heading-key="section-24"><a href="#fr-section-24">Risques et dépannage</a></h3>
+<aside class="guide-notice"><span>Important</span><p>« Access via LPMU » supprime les anciennes routes par défaut de LPMU, vide la table NAT et la chaîne FORWARD de <code>iptables</code>, définit DROP comme politique FORWARD par défaut, puis écrit les règles de routage, de NAT et de redirection de ports de RM-01. Cela peut interrompre immédiatement les sessions distantes et écraser une configuration réseau ou de pare-feu personnalisée. Si LPMU a été personnalisé, exportez d’abord les routes et règles actuelles et assurez-vous de disposer d’une voie de récupération locale.</p></aside>
+<p>En cas d’échec, vérifiez les points suivants dans l’ordre :</p>
+<ol><li>L’adaptateur USB-C vers RJ45 et le câble Ethernet raccordés à C3 sont bien branchés.</li><li>Le port du commutateur ou du routeur est activé.</li><li>La page d’accueil de TianshanOS affiche <code>LPMU</code> comme destination actuelle du port USB supérieur.</li><li>Le réseau amont fournit à LPMU une adresse, une passerelle et une configuration DNS valides.</li><li>Consultez l’erreur et la sortie affichées dans « Upstream Network Access ».</li><li>Vérifiez qu’AGX peut toujours joindre l’adresse interne de LPMU, <code>10.10.99.99</code>.</li><li>Recherchez des règles LPMU personnalisées en conflit avec la route par défaut, NAT, la chaîne FORWARD ou les redirections de ports.</li></ol>
+
+            <a class="footer-github guide-github-link" href="https://github.com/RMinte-AI/lpmu-agx-network-setup" target="_blank" rel="noopener noreferrer" aria-label="Voir le projet d’automatisation réseau sur GitHub">
+              <svg class="github" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true" focusable="false" style="display:inline-block;width:18px;height:18px;flex:none;vertical-align:middle"><path d="M12 0c6.63 0 12 5.276 12 11.79-.001 5.067-3.29 9.567-8.175 11.187-.6.118-.825-.25-.825-.56 0-.398.015-1.665.015-3.242 0-1.105-.375-1.813-.81-2.181 2.67-.295 5.475-1.297 5.475-5.822 0-1.297-.465-2.344-1.23-3.169.12-.295.54-1.503-.12-3.125 0 0-1.005-.324-3.3 1.209a11.32 11.32 0 00-3-.398c-1.02 0-2.04.133-3 .398-2.295-1.518-3.3-1.209-3.3-1.209-.66 1.622-.24 2.83-.12 3.125-.765.825-1.23 1.887-1.23 3.169 0 4.51 2.79 5.527 5.46 5.822-.345.294-.66.81-.765 1.577-.69.31-2.415.81-3.495-.973-.225-.354-.9-1.223-1.845-1.209-1.005.015-.405.56.015.781.51.28 1.095 1.327 1.23 1.666.24.663 1.02 1.93 4.035 1.385 0 .988.015 1.916.015 2.196 0 .31-.225.664-.825.56C3.303 21.374-.003 16.867 0 11.791 0 5.276 5.37 0 12 0z"/></svg>
+              <span>Voir le projet d’automatisation réseau sur <svg class="github-text" viewBox="0 0 78 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true" focusable="false" style="display:inline-block;width:42.25px;height:13px;flex:none;vertical-align:middle"><path d="M16.598 10.836v9.48c0 .066-.017.181-.1.214 0 0-2.07 1.47-5.484 1.47C6.888 22 2 20.712 2 12.223 2 3.734 6.275 1.983 10.45 2c3.613 0 5.07.81 5.303.958.066.083.1.149.1.231l-.697 2.94c0 .149-.149.33-.331.28-.597-.18-1.491-.544-3.596-.544-2.435 0-5.053.693-5.053 6.16 0 5.466 2.485 6.11 4.275 6.11 1.524 0 2.07-.181 2.07-.181v-3.799h-2.435c-.182 0-.315-.132-.315-.28v-3.04c0-.148.133-.28.315-.28h6.197c.182 0 .315.132.315.28zM76 14.684c0 5.664-1.84 7.283-5.054 7.283-2.717 0-4.175-1.37-4.175-1.37s-.067.759-.15.858c-.05.1-.132.132-.231.132h-2.453c-.165 0-.315-.132-.315-.28l.034-18.349a.29.29 0 01.281-.28h3.53a.29.29 0 01.281.28v6.226s1.359-.875 3.347-.875l-.016-.033c1.988 0 4.921.743 4.921 6.408zM47.865 2.71a.29.29 0 01.281.281V21.34a.29.29 0 01-.281.281h-3.53a.29.29 0 01-.281-.28l.033-7.845h-5.485v7.844a.29.29 0 01-.281.281h-3.53c-.132 0-.281-.132-.281-.28V2.99a.29.29 0 01.281-.28h3.53a.29.29 0 01.281.28v6.755h5.485V2.99a.29.29 0 01.282-.28h3.496zM61.55 8.722c.183 0 .315.132.315.28l-.033 12.337c0 .149-.1.281-.282.281h-2.22c-.116 0-.232-.066-.265-.148-.05-.1-.133-.744-.133-.744S57.061 22 54.758 22c-2.8 0-4.839-.908-4.839-4.542V9.02a.29.29 0 01.282-.28h3.546a.29.29 0 01.282.28v7.845c0 1.238.364 1.8 1.607 1.8 1.243 0 2.154-.644 2.154-.644V9.036c0-.182.1-.314.282-.314h3.48zm-28.84 9.861h.007c.14.029.239.154.234.296v2.477c0 .116-.05.231-.149.264-.166.083-1.226.363-2.104.363-1.922 0-4.74-.412-4.74-4.442v-5.417H24.12c-.149 0-.281-.132-.281-.314V9.564c0-.132.083-.248.215-.28.116-.017 1.922-.463 1.922-.463V5.237c0-.132.083-.215.232-.215h3.58c.148 0 .231.083.231.215v3.485h2.635c.132 0 .265.132.265.28v2.808c0 .182-.116.314-.265.314h-2.635v5.17c0 .777.448 1.372 1.74 1.372.41 0 .797-.081.951-.083zM22.28 8.705a.29.29 0 01.282.281v12.172c0 .297-.083.446-.414.446h-3.182c-.281 0-.497-.116-.497-.446V9.036c0-.182.133-.33.282-.33h3.53zm49.693 6.243c0-2.99-1.21-3.386-2.486-3.253-.994.066-1.79.561-1.79.561v5.813s.813.562 2.022.595c1.707.05 2.254-.562 2.254-3.716zM20.54 3.123a2.26 2.26 0 012.254 2.28A2.26 2.26 0 0120.54 7.68a2.266 2.266 0 01-2.286-2.279c0-1.271 1.01-2.279 2.286-2.279z"/></svg></span>
+            </a>
+          </article>
         <a class="guide-next" href="admin.html">
           <span data-guide-text data-zh="下一步" data-en="Next">下一步</span>
           <strong data-guide-text data-zh="继续阅读 Admin 指南" data-en="Continue to the Admin guide">继续阅读 Admin 指南</strong>
@@ -457,7 +1087,7 @@ ping -c 3 google.com    # Verify DNS resolution</code></pre></div>
 
             <h2 id="contactTitle" data-footer-text="contactTitle">联系我们</h2>
           </div>
-          <button class="contact-close" type="button" aria-label="关闭" data-contact-close><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+          <button class="contact-close" type="button" aria-label="关闭" data-contact-close data-i18n-aria-label-zh="关闭" data-i18n-aria-label-en="Close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
         </div>
         <div class="contact-links">
           <a href="mailto:jiezhu@rminte.com">

@@ -4,10 +4,10 @@
   const close = document.querySelector('[data-contact-close]');
 
   function updateLanguage() {
-    const lang = document.documentElement.lang.startsWith('zh') ? 'zh' : 'en';
-    const labels = window.RM_SOFT.ui[lang];
+    const lang = document.documentElement.lang.split('-')[0];
     document.querySelectorAll('[data-footer-text]').forEach((element) => {
-      const value = labels[element.dataset.footerText];
+      const key = element.dataset.footerText;
+      const value = RM_I18N.text({ zh: window.RM_SOFT.ui.zh[key], en: window.RM_SOFT.ui.en[key] }, lang);
       element.replaceChildren(...value.split(/(RMinte(?:\s+AI\b)?|RM-01)/g).filter(Boolean).map((part) => {
         if (!/^(RMinte(?:\s+AI\b)?|RM-01)$/.test(part)) return document.createTextNode(part);
         const span = document.createElement('span');
@@ -16,13 +16,19 @@
         return span;
       }));
     });
-    close.setAttribute('aria-label', lang === 'zh' ? '关闭' : 'Close');
+    close.setAttribute('aria-label', RM_I18N.text({zh: '关闭', en: 'Close'}, lang));
   }
 
+  popover.inert = true;
+
   function setOpen(open) {
+    const restoreFocus = !open && popover.contains(document.activeElement);
+    popover.inert = !open;
     popover.classList.toggle('active', open);
     popover.setAttribute('aria-hidden', String(!open));
     toggle.setAttribute('aria-expanded', String(open));
+    if (open) close.focus({ preventScroll: true });
+    else if (restoreFocus) toggle.focus({ preventScroll: true });
   }
 
   toggle.addEventListener('click', (event) => {

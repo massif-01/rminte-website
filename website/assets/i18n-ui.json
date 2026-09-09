@@ -1,0 +1,238 @@
+[
+  {
+    "zh": "并发请求",
+    "en": "Concurrent requests"
+  },
+  {
+    "zh": "模型 · 应用",
+    "en": "Model · Application"
+  },
+  {
+    "zh": "推理软件与 CUDA 计算平台的分层示意",
+    "en": "Software layers above the CUDA compute platform"
+  },
+  {
+    "zh": "两台计算模组分别经以太网控制器和 PHY 接入板载交换机，ESP32 经 W5500 接入并拥有自己的配置存储；两台计算机各有独立存储。",
+    "en": "Each computer connects through an Ethernet controller and PHY to the onboard switch and has dedicated storage. ESP32 connects through W5500 and has its own configuration storage."
+  },
+  {
+    "zh": "TianshanOS 功能",
+    "en": "TianshanOS capabilities"
+  },
+  {
+    "zh": "en",
+    "en": "zh"
+  },
+  {
+    "zh": "RM-01 便携 AI 超算",
+    "en": "RM-01 Portable AI Supercomputer"
+  },
+  {
+    "zh": "上一张照片",
+    "en": "Previous photo"
+  },
+  {
+    "zh": "下一张照片",
+    "en": "Next photo"
+  },
+  {
+    "zh": "en",
+    "en": "zh"
+  },
+  {
+    "zh": "en",
+    "en": "zh"
+  },
+  {
+    "zh": "en",
+    "en": "zh"
+  },
+  {
+    "zh": "已复制",
+    "en": "Copied"
+  },
+  {
+    "zh": "复制",
+    "en": "Copy"
+  },
+  {
+    "zh": "复制失败",
+    "en": "Copy failed"
+  },
+  {
+    "zh": "中文",
+    "en": "EN"
+  },
+  {
+    "zh": "搜索暂时不可用，请刷新页面重试。",
+    "en": "Search is unavailable. Refresh the page and try again."
+  },
+  {
+    "zh": "正在读取指南…",
+    "en": "Loading guides…"
+  },
+  {
+    "zh": "关闭",
+    "en": "Close"
+  },
+  {
+    "zh": "收起工作流程",
+    "en": "Close workflow"
+  },
+  {
+    "zh": "模型 · RMinte",
+    "en": "Models · RMinte"
+  },
+  {
+    "zh": "EN",
+    "en": "中文"
+  },
+  {
+    "zh": "切换到英文",
+    "en": "Switch to Chinese"
+  },
+  {
+    "zh": "打开菜单",
+    "en": "Open menu"
+  },
+  {
+    "zh": "关闭",
+    "en": "Close"
+  },
+  {
+    "zh": "模型主页即将公布",
+    "en": "Model page coming soon"
+  },
+  {
+    "zh": "导航菜单",
+    "en": "Navigation menu"
+  },
+  {
+    "zh": "主导航",
+    "en": "Main navigation"
+  },
+  {
+    "zh": "页面导航",
+    "en": "Page navigation"
+  },
+  {
+    "zh": "移动导航",
+    "en": "Mobile navigation"
+  },
+  {
+    "zh": "模型介绍",
+    "en": "Model overview"
+  },
+  {
+    "zh": "推理实现",
+    "en": "Inference engines"
+  },
+  {
+    "zh": "Dense 与 MoE 架构概念示意",
+    "en": "Conceptual view of dense and MoE architectures"
+  },
+  {
+    "zh": "：展开或收起结构",
+    "en": ": expand or collapse layers"
+  },
+  {
+    "zh": "en",
+    "en": "zh"
+  },
+  {
+    "zh": "关闭菜单",
+    "en": "Close menu"
+  },
+  {
+    "zh": "打开菜单",
+    "en": "Open menu"
+  },
+  {
+    "zh": "没有找到“{query}”，试试更短的功能名称。",
+    "en": "No result for “{query}”. Try a shorter feature name."
+  },
+  {
+    "zh": "显示 {count} 个最相关章节",
+    "en": "{count} most relevant sections"
+  },
+  {
+    "zh": "自研 C++ 推理实现示意",
+    "en": "RMinte C++ inference diagram"
+  },
+  {
+    "zh": "vLLM 定制推理实现示意",
+    "en": "Custom vLLM inference diagram"
+  },
+  {
+    "zh": "推理计算机",
+    "en": "Inference computer"
+  },
+  {
+    "zh": "应用计算机",
+    "en": "Application computer"
+  },
+  {
+    "zh": "独立存储",
+    "en": "Dedicated storage"
+  },
+  {
+    "zh": "板载以太网交换机",
+    "en": "Onboard Ethernet switch"
+  },
+  {
+    "zh": "配置存储",
+    "en": "Config storage"
+  },
+  {
+    "zh": "设备架构",
+    "en": "Device architecture"
+  },
+  {
+    "zh": "查看部件：{part}",
+    "en": "Inspect component: {part}"
+  },
+  {
+    "zh": "查看工作流程",
+    "en": "Explore workflow"
+  },
+  {
+    "zh": "技术解读",
+    "en": "TECHNICAL DETAILS"
+  },
+  {
+    "zh": "专业 Agent 工作流程",
+    "en": "SPECIALIST AGENT WORKFLOW"
+  },
+  {
+    "zh": "连接知识与工具",
+    "en": "Connect knowledge and tools"
+  },
+  {
+    "zh": "交付工作成果",
+    "en": "Deliver results"
+  },
+  {
+    "zh": "获取 RM-01 产品文档、技术资料、固件与软件发布包，并直接使用在线工具。",
+    "en": "Get RM-01 product documentation, technical materials, firmware and software releases, plus browser-based online tools."
+  },
+  {
+    "zh": "重要提示",
+    "en": "Important"
+  },
+  {
+    "zh": "操作提示",
+    "en": "Operational note"
+  },
+  {
+    "zh": "RMinte 推理引擎",
+    "en": "RMinte Inference"
+  },
+  {
+    "zh": "分页 KV 缓存",
+    "en": "Paged KV Cache"
+  },
+  {
+    "zh": "RMinte C++ 运行时",
+    "en": "RMinte C++ Runtime"
+  }
+]

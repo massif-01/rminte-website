@@ -473,7 +473,7 @@
         if (selectedCase < 0) return;
         const item = cases[selectedCase];
         const close = document.createElement('button'); close.type = 'button'; close.className = 'mp-case-close';
-        close.setAttribute('aria-label',lang === 'zh' ? '收起工作流程' : 'Close workflow'); close.append(caseActionIcon(true));
+        close.setAttribute('aria-label',RM_I18N.text({zh: '收起工作流程', en: 'Close workflow'}, lang)); close.append(caseActionIcon(true));
         close.addEventListener('click',() => { const previous = selectedCase; selectCase(-1); caseButtons[previous].focus(); });
         const title = bilingual('h3',item.zh.name,item.en.name); title.id = 'caseDetailTitle';
         const flow = document.createElement('div'); flow.className = 'mp-case-flow';
@@ -484,7 +484,7 @@
           stage.append(number,bilingual('h4',...label),bilingual('p',item.zh.stages[index],item.en.stages[index])); flow.append(stage);
         });
         caseDetail.replaceChildren(close,bilingual('span','专业 Agent 工作流程','SPECIALIST AGENT WORKFLOW','mp-case-detail-eyebrow'),title,flow);
-        caseDetail.querySelectorAll('[data-zh][data-en]').forEach(element => setBrandedText(element,element.dataset[lang]));
+        caseDetail.querySelectorAll('[data-zh][data-en]:not([data-i18n-attr]):not(title):not(meta)').forEach(element => setBrandedText(element,RM_I18N.text(element.dataset, lang)));
       }
       function selectCase(index) {
         selectedCase = index; caseButtons.forEach((button,i) => button.setAttribute('aria-expanded',String(i === index)));
@@ -523,8 +523,6 @@
       const menuToggle = document.getElementById('menuToggle');
       const contactToggle = document.getElementById('contactToggle');
       const languageToggle = document.getElementById('languageToggle');
-      const pageDescription = document.querySelector('meta[name="description"]');
-      const descriptionZh = pageDescription.content;
       let lang = 'zh';
       function setBrandedText(element,text) {
         const parts = text.split(/(RMinte(?:\s+AI\b)?|RMQ3x|RMQ4|RMQ|RM-01)/g);
@@ -534,29 +532,25 @@
         }));
       }
       function setLanguage(next) {
-        lang = next; localStorage.setItem('rm-soft-lang', lang); document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
-        document.title = lang === 'zh' ? '模型 · RMinte' : 'Models · RMinte';
-        pageDescription.content = lang === 'zh' ? descriptionZh : 'RMQ3x and RMQ4: RMinte’s specialist models with targeted training, dedicated inference engines, and architecture optimization.';
-        document.querySelectorAll('[data-zh][data-en]').forEach(element => { setBrandedText(element,element.dataset[lang]); });
-        languageToggle.textContent = lang === 'zh' ? 'EN' : '中文';
-        languageToggle.setAttribute('aria-label',lang === 'zh' ? '切换到英文' : 'Switch to Chinese');
-        menuToggle.setAttribute('aria-label',lang === 'zh' ? '打开菜单' : 'Open menu');
-        document.querySelectorAll('[data-close-dialog]').forEach(button => button.setAttribute('aria-label',lang === 'zh' ? '关闭' : 'Close'));
+        lang = next; RM_I18N.apply(lang);
+        document.querySelectorAll('[data-zh][data-en]:not([data-i18n-attr]):not(title):not(meta)').forEach(element => { setBrandedText(element,RM_I18N.text(element.dataset, lang)); });
+        menuToggle.setAttribute('aria-label',RM_I18N.text({zh: '打开菜单', en: 'Open menu'}, lang));
+        document.querySelectorAll('[data-close-dialog]').forEach(button => button.setAttribute('aria-label',RM_I18N.text({zh: '关闭', en: 'Close'}, lang)));
         document.querySelectorAll('.hf-button[disabled]').forEach(button => {
-          button.title = lang === 'zh' ? '模型主页即将公布' : 'Model page coming soon';
+          button.title = RM_I18N.text({zh: '模型主页即将公布', en: 'Model page coming soon'}, lang);
           button.setAttribute('aria-label',`${button.dataset.model} · Hugging Face · ${button.title}`);
         });
-        menu.setAttribute('aria-label',lang === 'zh' ? '导航菜单' : 'Navigation menu');
-        document.querySelector('.site-shell').setAttribute('aria-label',lang === 'zh' ? '主导航' : 'Main navigation');
-        document.querySelector('.nav-island').setAttribute('aria-label',lang === 'zh' ? '页面导航' : 'Page navigation');
-        document.querySelector('.mp-mobile-links').setAttribute('aria-label',lang === 'zh' ? '移动导航' : 'Mobile navigation');
-        document.getElementById('models').setAttribute('aria-label',lang === 'zh' ? '模型介绍' : 'Model overview');
+        menu.setAttribute('aria-label',RM_I18N.text({zh: '导航菜单', en: 'Navigation menu'}, lang));
+        document.querySelector('.site-shell').setAttribute('aria-label',RM_I18N.text({zh: '主导航', en: 'Main navigation'}, lang));
+        document.querySelector('.nav-island').setAttribute('aria-label',RM_I18N.text({zh: '页面导航', en: 'Page navigation'}, lang));
+        document.querySelector('.mp-mobile-links').setAttribute('aria-label',RM_I18N.text({zh: '移动导航', en: 'Mobile navigation'}, lang));
+        document.getElementById('models').setAttribute('aria-label',RM_I18N.text({zh: '模型介绍', en: 'Model overview'}, lang));
         renderCaseDetail();
-        document.querySelector('.mp-engine-tabs').setAttribute('aria-label',lang === 'zh' ? '推理实现' : 'Inference engines');
-        document.querySelector('.mp-hero-art').setAttribute('aria-label',lang === 'zh' ? 'Dense 与 MoE 架构概念示意' : 'Conceptual view of dense and MoE architectures');
+        document.querySelector('.mp-engine-tabs').setAttribute('aria-label',RM_I18N.text({zh: '推理实现', en: 'Inference engines'}, lang));
+        document.querySelector('.mp-hero-art').setAttribute('aria-label',RM_I18N.text({zh: 'Dense 与 MoE 架构概念示意', en: 'Conceptual view of dense and MoE architectures'}, lang));
         document.querySelectorAll('[data-visual-model]').forEach(button => {
           const architecture = button.classList.contains('dense') ? 'Dense' : 'MoE';
-          button.setAttribute('aria-label',`${button.dataset.visualModel} ${architecture}${lang === 'zh' ? '：展开或收起结构' : ': expand or collapse layers'}`);
+          button.setAttribute('aria-label',`${button.dataset.visualModel} ${architecture}${RM_I18N.text({zh: '：展开或收起结构', en: ': expand or collapse layers'}, lang)}`);
         });
         updateEngineArt();
       }
@@ -566,7 +560,7 @@
           if (event.key === 'Escape') button.setAttribute('aria-pressed','false');
         });
       });
-      languageToggle.addEventListener('click',() => setLanguage(lang === 'zh' ? 'en' : 'zh'));
+      RM_I18N.mount('#languageToggle', setLanguage);
       menuToggle.addEventListener('click',() => { menu.showModal(); menuToggle.setAttribute('aria-expanded','true'); });
       menu.addEventListener('close',() => menuToggle.setAttribute('aria-expanded','false'));
       document.querySelectorAll('[data-close-dialog]').forEach(button => button.addEventListener('click',() => button.closest('dialog').close()));
@@ -588,8 +582,9 @@
       let engine = 'cpp';
       function updateEngineArt() {
         document.getElementById('engineArt').dataset.engine = engine;
-        document.getElementById('runtimeLabel').innerHTML = engine === 'cpp' ? '<span class="rm-mark">RMinte</span> C++ Runtime' : 'Custom vLLM';
-        document.getElementById('engineArt').setAttribute('aria-label',lang === 'zh' ? `${engine === 'cpp' ? '自研 C++' : 'vLLM 定制'}推理实现示意` : `${engine === 'cpp' ? 'RMinte C++' : 'Custom vLLM'} inference diagram`);
+        const cppLabel = {zh: 'RMinte C++ 运行时', en: 'RMinte C++ Runtime'};
+        setBrandedText(document.getElementById('runtimeLabel'), engine === 'cpp' ? (lang === 'zh' || lang === 'en' ? cppLabel.en : RM_I18N.text(cppLabel, lang)) : RM_I18N.text({zh: 'vLLM 定制', en: 'Custom vLLM'}, lang));
+        document.getElementById('engineArt').setAttribute('aria-label',RM_I18N.text(engine === 'cpp' ? {zh: '自研 C++ 推理实现示意', en: 'RMinte C++ inference diagram'} : {zh: 'vLLM 定制推理实现示意', en: 'Custom vLLM inference diagram'}, lang));
       }
       function selectEngine(next,focus=false) {
         engine = next;
@@ -611,6 +606,5 @@
           if (target) { event.preventDefault(); selectEngine(target.dataset.engineTab,true); }
         });
       });
-      const initialLanguage = new URL(location.href).searchParams.get('lang');
-      setLanguage(['zh', 'en'].includes(initialLanguage) ? initialLanguage : localStorage.getItem('rm-soft-lang') || window.RM_DEFAULT_LANG || 'en');
+      setLanguage(RM_I18N.initial());
     })();

@@ -2,17 +2,25 @@
 <html lang="zh-CN" class="product-theme">
 <head>
   <meta charset="UTF-8">
+  <script>
+    // Reveal after deferred localization; without JavaScript the source page stays readable.
+    document.documentElement.classList.add('i18n-loading');
+    document.addEventListener('DOMContentLoaded', () => document.documentElement.classList.remove('i18n-loading'), { once: true });
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="RM-01 便携 AI 超算，面向本地部署、低功耗推理和生产级 AI 应用交付。">
-  <meta property="og:title" content="泛灵人工智能 - RM-01 便携 AI 超算">
-  <meta property="og:description" content="生产级本地 AI 交付基座。插卡即用，全栈交付。">
+  <meta name="description" content="RM-01 便携 AI 超算，面向本地部署、低功耗推理和生产级 AI 应用交付。" data-i18n-attr="content" data-zh="RM-01 便携 AI 超算，面向本地部署、低功耗推理和生产级 AI 应用交付。" data-en="RM-01 Portable AI Supercomputer for local deployment, low-power inference, and production AI applications.">
+  <meta property="og:title" content="RM-01 便携 AI 超算 · RMinte" data-i18n-attr="content" data-zh="RM-01 便携 AI 超算 · RMinte" data-en="RM-01 Portable AI Supercomputer · RMinte">
+  <meta property="og:description" content="RM-01 便携 AI 超算，面向本地部署、低功耗推理和生产级 AI 应用交付。" data-i18n-attr="content" data-zh="RM-01 便携 AI 超算，面向本地部署、低功耗推理和生产级 AI 应用交付。" data-en="RM-01 Portable AI Supercomputer for local deployment, low-power inference, and production AI applications.">
   <meta property="og:image" content="assets/images/img4.png">
-  <title>RMinte - RM-01 - Portable AI Supercomputer - 泛灵人工智能</title>
+  <title data-zh="RM-01 便携 AI 超算 · RMinte" data-en="RM-01 Portable AI Supercomputer · RMinte">RM-01 便携 AI 超算 · RMinte</title>
   <link rel="icon" type="image/png" sizes="512x512" href="assets/images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
   <meta name="theme-color" content="#000000">
+  <script src="visitor-language.js" defer></script>
+  <script src="assets/translations.js" defer></script>
+  <script src="assets/i18n.js" defer></script>
   <script>
     (function () {
       if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
@@ -25,25 +33,25 @@
       }
     })();
   </script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/brand.css?v=product-black-1">
   <link rel="stylesheet" href="assets/styles.css?v=craft-footer-1">
   <script src="assets/site-data.js?v=models-inference-2" defer></script>
-  <script src="visitor-language.js" defer></script>
   <script src="assets/home-architecture.js?v=architecture-610b2b5" defer></script>
   <script src="assets/main.js?v=craft-footer-1" defer></script>
   <script src="assets/footer.js?v=models-launch-1" defer></script>
 </head>
 <body class="home-body">
-  <a class="skip-link" href="#main">跳至主要内容</a>
+  <a class="skip-link" href="#main" data-i18n-text data-zh="跳至主要内容" data-en="Skip to main content">跳至主要内容</a>
 
-  <header class="site-shell" aria-label="主导航">
+  <header class="site-shell" aria-label="主导航" data-i18n-aria-label-zh="主导航" data-i18n-aria-label-en="Main navigation">
     <a class="brand-mark" href="#hero" aria-label="RMinte">
       <img src="assets/images/logo-white.svg" alt="RMinte">
     </a>
-    <nav class="nav-island" id="desktopNav" aria-label="页面导航"></nav>
+    <nav class="nav-island" id="desktopNav" aria-label="页面导航" data-i18n-aria-label-zh="页面导航" data-i18n-aria-label-en="Page navigation"></nav>
     <div class="nav-actions">
       <button class="language-toggle" type="button" data-lang-toggle>EN</button>
-      <button class="menu-button" type="button" aria-label="打开菜单" aria-controls="mobileOverlay" aria-expanded="false" data-menu-toggle>
+      <button class="menu-button" type="button" aria-label="打开菜单" aria-controls="mobileOverlay" aria-expanded="false" data-menu-toggle data-i18n-aria-label-zh="打开菜单" data-i18n-aria-label-en="Open menu">
         <span></span>
         <span></span>
       </button>
@@ -56,7 +64,7 @@
         <img class="mobile-menu-logo" src="assets/images/logo-white.svg" alt="RMinte">
         <button class="ghost-button" type="button" data-menu-close>关闭</button>
       </div>
-      <nav class="mobile-links" id="mobileNav" aria-label="移动导航"></nav>
+      <nav class="mobile-links" id="mobileNav" aria-label="移动导航" data-i18n-aria-label-zh="移动导航" data-i18n-aria-label-en="Mobile navigation"></nav>
     </div>
   </div>
 
@@ -77,7 +85,7 @@
               <svg class="cta-dot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>
             </a>
           </div>
-          <div class="hero-metrics-row" id="heroMetrics" aria-label="RM-01 核心指标"></div>
+          <div class="hero-metrics-row" id="heroMetrics" aria-label="RM-01 核心指标" data-i18n-aria-label-zh="RM-01 核心指标" data-i18n-aria-label-en="RM-01 key specifications"></div>
         </div>
       </div>
       <a class="scroll-cue" href="#engine">
@@ -94,7 +102,7 @@
           <p data-ui="engineLead">自研推理引擎提高算力与显存利用率，减少资源消耗。更大模型、更长上下文与更多并发任务，由此获得运行空间。</p>
         </div>
         <div class="engine-experience">
-          <figure class="engine-art" id="engineArt" aria-label="推理软件与 CUDA 计算平台的分层示意">
+          <figure class="engine-art" id="engineArt" aria-label="推理软件与 CUDA 计算平台的分层示意" data-i18n-aria-label-zh="推理软件与 CUDA 计算平台的分层示意" data-i18n-aria-label-en="Layered view of inference software and the CUDA computing platform">
             <div class="software-stack" aria-hidden="true">
               <div class="stack-plane stack-base"><span>NVIDIA CUDA</span><div class="compute-grid"></div></div>
               <div class="stack-plane stack-kernel"><span id="kernelLabel"><span class="rm-mark">RMinte</span> Inference</span><div class="memory-grid"></div></div>
@@ -113,7 +121,7 @@
           <h2 id="productTitle" data-ui="productTitle" data-title-size="large">TianshanOS 让整机协同有序</h2>
           <p data-ui="productLead">一台设备的运行，离不开内部各个部分的配合。TianshanOS 管理 RM-01 的内部设备与系统行为，让推理、应用与存储共同工作。无需专门建设供电、网络与机房环境，RM-01 就能走进业务现场。</p>
         </div>
-        <figure class="network-graph" id="networkGraph" aria-label="两台计算机分别经以太网控制器和 PHY 接入板载交换机，ESP32 经 W5500 接入并拥有配置存储；两台计算机各有独立存储。"></figure>
+        <figure class="network-graph" id="networkGraph" aria-label="两台计算机分别经以太网控制器和 PHY 接入板载交换机，ESP32 经 W5500 接入并拥有配置存储；两台计算机各有独立存储。" data-i18n-aria-label-zh="两台计算机分别经以太网控制器和 PHY 接入板载交换机，ESP32 经 W5500 接入并拥有配置存储；两台计算机各有独立存储。" data-i18n-aria-label-en="Both computers connect to the onboard switch through Ethernet controllers and PHYs. ESP32 connects through W5500 and has configuration storage. Each computer has its own storage."></figure>
         <div class="system-reading" id="systemReading"></div>
       </div>
     </section>
@@ -148,8 +156,8 @@
                 data-frame-prefix="assets/teardown-frames-v2/frame-"
                 data-frame-count="120"
                 data-frame-pad="3"
-                data-frame-ext=".jpg"></canvas>
-              <img class="teardown-fallback" src="assets/teardown-frames-v2/frame-001.jpg" alt="RM-01 硬件结构动态分解">
+                data-frame-ext=".jpg" data-i18n-aria-label-zh="RM-01 硬件结构滚动帧动画" data-i18n-aria-label-en="Scroll-driven animation of the RM-01 hardware structure"></canvas>
+              <img class="teardown-fallback" src="assets/teardown-frames-v2/frame-001.jpg" alt="RM-01 硬件结构动态分解" data-i18n-alt-zh="RM-01 硬件结构动态分解" data-i18n-alt-en="Animated exploded view of the RM-01 hardware structure">
             </div>
           </div>
         </div>
@@ -169,7 +177,7 @@
         </div>
         <figure class="thermal-detail">
           <div class="thermal-detail-photo">
-            <img src="assets/images/thermal-fan-blade.png" alt="EricLake 定制风扇叶片微距特写" width="1254" height="1254" loading="lazy" decoding="async">
+            <img src="assets/images/thermal-fan-blade.png" alt="EricLake 定制风扇叶片微距特写" width="1254" height="1254" loading="lazy" decoding="async" data-i18n-alt-zh="EricLake 定制风扇叶片微距特写" data-i18n-alt-en="Macro photograph of an EricLake custom fan blade">
           </div>
           <figcaption><strong>0.13 <small>mm</small></strong><span data-ui="thermalDetailCaption">超高速射出成型叶片承担持续散热</span></figcaption>
         </figure>
@@ -191,7 +199,7 @@
     </section>
 
     <section class="glass-touch-section" id="glass-touch" aria-labelledby="glassTouchTitle">
-      <img class="glass-touch-image" src="assets/gallery/DSC00043.jpg" alt="RM-01 中央绒光肤感玻璃面板特写" width="2000" height="3000" loading="lazy" decoding="async">
+      <img class="glass-touch-image" src="assets/gallery/DSC00043.jpg" alt="RM-01 中央绒光肤感玻璃面板特写" width="2000" height="3000" loading="lazy" decoding="async" data-i18n-alt-zh="RM-01 中央绒光肤感玻璃面板特写" data-i18n-alt-en="Close-up of the central soft-touch glass panel on RM-01">
       <div class="glass-touch-shade" aria-hidden="true"></div>
       <div class="section-inner glass-touch-stage">
         <div class="glass-touch-copy reveal">
@@ -204,7 +212,7 @@
 
     <section class="section agent-terminal-section" id="agent-terminal" aria-labelledby="agentTerminalTitle">
       <figure class="agent-terminal-media">
-        <img class="agent-terminal-image" src="assets/images/ports-rec709-gamma24-sdr.jpg" alt="RM-01 机身侧后方的数据连接与电源输入接口" width="3000" height="2000" loading="lazy" decoding="async">
+        <img class="agent-terminal-image" src="assets/images/ports-rec709-gamma24-sdr.jpg" alt="RM-01 机身侧后方的数据连接与电源输入接口" width="3000" height="2000" loading="lazy" decoding="async" data-i18n-alt-zh="RM-01 机身侧后方的数据连接与电源输入接口" data-i18n-alt-en="Data connections and power input on the rear side of RM-01">
       </figure>
       <div class="section-inner agent-terminal-grid">
         <div class="agent-terminal-copy reveal">
@@ -252,7 +260,7 @@
           <div class="craft-story-panels">
             <article class="craft-story-panel is-active">
               <figure class="craft-story-photo">
-                <img src="assets/gallery/DSC00150.jpg" alt="铝合金机身工艺细节" loading="lazy" decoding="async">
+                <img src="assets/gallery/DSC00150.jpg" alt="铝合金机身工艺细节" loading="lazy" decoding="async" data-i18n-alt-zh="铝合金机身工艺细节" data-i18n-alt-en="Aluminium chassis craftsmanship detail">
               </figure>
               <div class="craft-story-text">
                 <p class="craft-story-value">6063 <small></small></p>
@@ -262,7 +270,7 @@
             </article>
             <article class="craft-story-panel">
               <figure class="craft-story-photo">
-                <img src="assets/images/craft-surface-detail.webp" alt="精细喷砂工艺细节" loading="lazy" decoding="async">
+                <img src="assets/images/craft-surface-detail.webp" alt="精细喷砂工艺细节" loading="lazy" decoding="async" data-i18n-alt-zh="精细喷砂工艺细节" data-i18n-alt-en="Fine bead-blasted finish detail">
               </figure>
               <div class="craft-story-text">
                 <p class="craft-story-value">260 <small data-ui="craftMeshUnit">目</small></p>
@@ -272,7 +280,7 @@
             </article>
             <article class="craft-story-panel">
               <figure class="craft-story-photo">
-                <img src="assets/images/craft-panel-fit.webp" alt="玻璃圆角与铝合金机身装配细节" loading="lazy" decoding="async">
+                <img src="assets/images/craft-panel-fit.webp" alt="玻璃圆角与铝合金机身装配细节" loading="lazy" decoding="async" data-i18n-alt-zh="玻璃圆角与铝合金机身装配细节" data-i18n-alt-en="Detail of the rounded glass corners and aluminium chassis assembly">
               </figure>
               <div class="craft-story-text">
                 <p class="craft-story-value">R0.2 <small>mm</small></p>
@@ -282,7 +290,7 @@
             </article>
             <article class="craft-story-panel">
               <figure class="craft-story-photo">
-                <img src="assets/images/craft-card-slot-detail.png" alt="工艺公差工艺细节" loading="lazy" decoding="async">
+                <img src="assets/images/craft-card-slot-detail.png" alt="工艺公差工艺细节" loading="lazy" decoding="async" data-i18n-alt-zh="工艺公差工艺细节" data-i18n-alt-en="Manufacturing tolerance detail">
               </figure>
               <div class="craft-story-text">
                 <p class="craft-story-value">＜0.03 <small>mm</small></p>
@@ -326,7 +334,7 @@
 
             <h2 id="contactTitle" data-ui="contactTitle">联系我们</h2>
           </div>
-          <button class="contact-close" type="button" aria-label="关闭" data-contact-close><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+          <button class="contact-close" type="button" aria-label="关闭" data-contact-close data-i18n-aria-label-zh="关闭" data-i18n-aria-label-en="Close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
         </div>
         <div class="contact-links">
           <a href="mailto:jiezhu@rminte.com">

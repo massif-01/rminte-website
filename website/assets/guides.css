@@ -3,6 +3,8 @@
 .guide-home-main, .guide-doc-main { position: relative; z-index: 2; width: min(var(--section-w), calc(100% - var(--section-x) * 2)); margin: auto; padding: var(--page-top) 0 20px; }
 .guide-home-hero { max-width: 800px; }
 .guide-home-hero h1, .guide-doc-hero h1 { margin: 0; max-width: 980px; font-size: var(--page-title); font-weight: 550; line-height: 1.2; letter-spacing: -.035em; text-wrap: balance; }
+.guide-title-phrase { display: inline-block; white-space: nowrap; }
+html:lang(ja) .guide-doc-hero h1 .rm-mark { margin-inline-end: .12em; }
 .guide-home-lead, .guide-doc-lead { max-width: 700px; margin: 28px 0 0; color: var(--muted); font-size: var(--body-size); line-height: 1.9; }
 .guide-search { max-width: 800px; margin-top: 40px; }
 .guide-doc-main > .guide-search { margin-top: 40px; margin-bottom: 64px; }
@@ -19,7 +21,7 @@
 .lang-pane[hidden] { display: none !important; }
 .guide-search-results-head { padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid var(--line); }
 .guide-search-results-head p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
-.guide-search-results-head button { border: 0; min-height: 36px; padding: 6px; color: var(--muted); cursor: pointer; background: transparent; font: 500 12px var(--font-ui); }
+.guide-search-results-head button { border: 0; min-height: 36px; padding: 6px; color: var(--muted); cursor: pointer; background: transparent; font: 500 12px var(--font-ui); white-space: nowrap; flex-shrink: 0; }
 .guide-search-results-head button:hover { color: var(--ink); }
 .guide-search-result-list { display: grid; }
 .guide-search-result { position: relative; min-width: 0; padding: 24px 52px 24px 24px; display: grid; gap: 8px; border-bottom: 1px solid var(--line); transition: background 220ms ease; }
@@ -121,6 +123,7 @@
   .guide-doc-main > .guide-search { margin-bottom: 40px; }
 }
 @media (max-width: 440px) {
+  html:lang(ja) .guide-card h2 { white-space: pre-line; }
   .guide-search-field { padding-inline: 8px; }
   .guide-search-form > button { min-width: 60px; padding-inline: 12px; }
   .guide-search-field input { font-size: 14px; }

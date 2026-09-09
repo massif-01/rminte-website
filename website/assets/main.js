@@ -1,7 +1,7 @@
 (function () {
   const data = window.RM_SOFT;
   const imageBase = 'assets/images/';
-  let lang = localStorage.getItem('rm-soft-lang') || window.RM_DEFAULT_LANG || 'en';
+  let lang = RM_I18N.initial();
   let revealObserver;
   let activeNavCleanup;
 
@@ -10,9 +10,9 @@
   const t = (value) => {
     if (!value) return '';
     if (typeof value === 'string') return value;
-    return value[lang] || value.zh || '';
+    return RM_I18N.text(value, lang);
   };
-  const ui = (key) => data.ui[lang][key] || data.ui.zh[key] || '';
+  const ui = (key) => RM_I18N.text({zh: data.ui.zh[key], en: data.ui.en[key]}, lang);
   const asset = (file) => imageBase + file;
   const markedTermPattern = /(?:RM-01|TianshanOS|EricLake|RMinte(?:\s+AI\b)?)/g;
 
@@ -55,7 +55,7 @@
   }
 
   function setUiText() {
-    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+    RM_I18N.apply(lang);
     $$('[data-ui]').forEach((el) => {
       const key = el.getAttribute('data-ui');
       writeMarkedText(el, ui(key));
@@ -64,10 +64,7 @@
     if (title) {
       title.replaceChildren(...ui('heroTitle').split('\n').map((line) => textEl('span', line, 'hero-title-line')));
     }
-    $$('[data-lang-toggle]').forEach((button) => {
-      button.textContent = ui('langToggle');
-      button.setAttribute('aria-label', lang === 'zh' ? '切换到英文' : 'Switch to Chinese');
-    });
+
     const close = $('[data-menu-close]');
     if (close) close.textContent = ui('closeMenu');
   }
@@ -117,20 +114,22 @@
     });
   }
 
-  function restoreScroll(top) {
-    const html = document.documentElement;
-    const previousBehavior = html.style.scrollBehavior;
-    html.style.scrollBehavior = 'auto';
-    const restore = () => window.scrollTo(0, top);
+  function readingPosition() {
+    const sections = $$('main > section');
+    const section = sections.filter(item => item.getBoundingClientRect().top <= 132).at(-1) || sections[0];
+    const rect = section.getBoundingClientRect();
+    const pinned = (section.id === 'teardown' || section.classList.contains('is-scroll-story')) && rect.top <= 0 && rect.bottom >= innerHeight;
+    return {section, pinned, progress: pinned ? -rect.top / (rect.height - innerHeight) : (132 - rect.top) / rect.height};
+  }
+
+  function restoreReadingPosition({section, pinned, progress}) {
+    const restore = () => {
+      const rect = section.getBoundingClientRect();
+      const offset = pinned ? progress * (rect.height - innerHeight) : progress * rect.height - 132;
+      window.scrollTo({top: rect.top + scrollY + offset, behavior: 'instant'});
+    };
     restore();
-    requestAnimationFrame(() => {
-      restore();
-      requestAnimationFrame(() => {
-        restore();
-        html.style.scrollBehavior = previousBehavior;
-      });
-    });
-    [140, 360, 700].forEach((delay) => window.setTimeout(restore, delay));
+    document.fonts.ready.then(() => requestAnimationFrame(restore));
   }
 
   function forceInitialTop() {
@@ -213,8 +212,9 @@
 
   function updateEngine() {
     document.getElementById('engineArt').dataset.scene = Math.max(0, expandedEngine);
-    document.getElementById('ecosystemLabel').textContent = ['C++ · vLLM', lang === 'en' ? 'Concurrent requests' : '并发请求', lang === 'en' ? 'Model · Application' : '模型 · 应用'][Math.max(0, expandedEngine)];
-    document.getElementById('kernelLabel').innerHTML = expandedEngine === 1 ? 'Paged KV Cache' : '<span class="rm-mark">RMinte</span> Inference';
+    document.getElementById('ecosystemLabel').textContent = ['C++ · vLLM', RM_I18N.text({zh: '并发请求', en: 'Concurrent requests'}, lang), RM_I18N.text({zh: '模型 · 应用', en: 'Model · Application'}, lang)][Math.max(0, expandedEngine)];
+    const label = expandedEngine === 1 ? {zh: '分页 KV 缓存', en: 'Paged KV Cache'} : {zh: 'RMinte 推理引擎', en: 'RMinte Inference'};
+    writeMarkedText(document.getElementById('kernelLabel'), lang === 'zh' || lang === 'en' ? label.en : t(label));
     document.querySelectorAll('[data-engine-toggle]').forEach((button, index) => {
       button.setAttribute('aria-expanded', String(index === expandedEngine));
       document.getElementById(`engineDetail${index}`).hidden = index !== expandedEngine;
@@ -238,8 +238,8 @@
   }
 
   function renderExperience() {
-    document.getElementById('engineArt').setAttribute('aria-label', lang === 'en' ? 'Software layers above the CUDA compute platform' : '推理软件与 CUDA 计算平台的分层示意');
-    document.getElementById('networkGraph').setAttribute('aria-label', lang === 'en' ? 'Each computer connects through an Ethernet controller and PHY to the onboard switch and has dedicated storage. ESP32 connects through W5500 and has its own configuration storage.' : '两台计算模组分别经以太网控制器和 PHY 接入板载交换机，ESP32 经 W5500 接入并拥有自己的配置存储；两台计算机各有独立存储。');
+    document.getElementById('engineArt').setAttribute('aria-label', RM_I18N.text({zh: '推理软件与 CUDA 计算平台的分层示意', en: 'Software layers above the CUDA compute platform'}, lang));
+    document.getElementById('networkGraph').setAttribute('aria-label', RM_I18N.text({zh: '两台计算模组分别经以太网控制器和 PHY 接入板载交换机，ESP32 经 W5500 接入并拥有自己的配置存储；两台计算机各有独立存储。', en: 'Each computer connects through an Ethernet controller and PHY to the onboard switch and has dedicated storage. ESP32 connects through W5500 and has its own configuration storage.'}, lang));
     document.getElementById('engineReading').innerHTML = data.engine.map((item, index) => `<article class="engine-topic">
       <h3><button class="engine-topic-toggle" type="button" id="engineToggle${index}" data-engine-toggle="${index}" aria-expanded="${index === expandedEngine}" aria-controls="engineDetail${index}">${escapeHtml(t(item.title))}<svg class="topic-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></button></h3>
       <div class="engine-detail" id="engineDetail${index}" role="region" aria-labelledby="engineToggle${index}" ${index === expandedEngine ? '' : 'hidden'}><p>${escapeHtml(t(item.text))}</p></div>
@@ -249,7 +249,7 @@
       expandedEngine = expandedEngine === index ? -1 : index;
       updateEngine();
     }));
-    document.getElementById('systemReading').innerHTML = `<div class="system-tabs" role="tablist" aria-label="${lang === 'en' ? 'TianshanOS capabilities' : 'TianshanOS 功能'}">${data.pillars.map((item, index) => `<button type="button" role="tab" id="systemTab${index}" data-system-tab="${index}" aria-controls="systemPanel${index}" aria-selected="${index === activeSystem}" tabindex="${index === activeSystem ? 0 : -1}">${escapeHtml(t(item.title))}</button>`).join('')}</div><div class="system-panels">${data.pillars.map((item, index) => `<div role="tabpanel" tabindex="0" class="system-panel" id="systemPanel${index}" aria-labelledby="systemTab${index}" ${index === activeSystem ? '' : 'hidden'}><p>${escapeHtml(t(item.text))}</p></div>`).join('')}</div>`;
+    document.getElementById('systemReading').innerHTML = `<div class="system-tabs" role="tablist" aria-label="${escapeHtml(RM_I18N.text({zh: 'TianshanOS 功能', en: 'TianshanOS capabilities'}, lang))}">${data.pillars.map((item, index) => `<button type="button" role="tab" id="systemTab${index}" data-system-tab="${index}" aria-controls="systemPanel${index}" aria-selected="${index === activeSystem}" tabindex="${index === activeSystem ? 0 : -1}">${escapeHtml(t(item.title))}</button>`).join('')}</div><div class="system-panels">${data.pillars.map((item, index) => `<div role="tabpanel" tabindex="0" class="system-panel" id="systemPanel${index}" aria-labelledby="systemTab${index}" ${index === activeSystem ? '' : 'hidden'}><p>${escapeHtml(t(item.text))}</p></div>`).join('')}</div>`;
     const tabs = Array.from(document.querySelectorAll('[data-system-tab]'));
     tabs.forEach((button, index) => {
       button.addEventListener('click', () => {activeSystem = index; updateSystem();});
@@ -545,32 +545,36 @@
     const overlay = $('#mobileOverlay');
     const button = $('[data-menu-toggle]');
     if (!overlay || !button) return;
+    overlay.inert = false;
     overlay.classList.add('active');
+    requestAnimationFrame(() => $('[data-menu-close]')?.focus({ preventScroll: true }));
     overlay.setAttribute('aria-hidden', 'false');
     button.classList.add('active');
     button.setAttribute('aria-expanded', 'true');
+    button.setAttribute('aria-label', RM_I18N.text({zh:'关闭菜单',en:'Close menu'},lang));
   }
 
   function closeMenu() {
     const overlay = $('#mobileOverlay');
     const button = $('[data-menu-toggle]');
     if (!overlay || !button) return;
+    const restoreFocus = overlay.contains(document.activeElement);
+    overlay.inert = true;
     overlay.classList.remove('active');
+    if (restoreFocus) button.focus({ preventScroll: true });
     overlay.setAttribute('aria-hidden', 'true');
     button.classList.remove('active');
     button.setAttribute('aria-expanded', 'false');
+    button.setAttribute('aria-label', RM_I18N.text({zh:'打开菜单',en:'Open menu'},lang));
   }
 
   function setupControls() {
-    $$('[data-lang-toggle]').forEach((button) => {
-      button.addEventListener('click', () => {
-        const currentScroll = window.scrollY;
-        lang = lang === 'zh' ? 'en' : 'zh';
-        localStorage.setItem('rm-soft-lang', lang);
-        renderAll();
-        restoreScroll(currentScroll);
-      });
-    });
+    $('#mobileOverlay').inert = true;
+    RM_I18N.mount('[data-lang-toggle]', (next, position) => {
+      lang = next;
+      renderAll();
+      restoreReadingPosition(position);
+    }, readingPosition);
 
     const menuButton = $('[data-menu-toggle]');
     if (menuButton) {

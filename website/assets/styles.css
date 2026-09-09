@@ -1,5 +1,7 @@
 /* Brand tokens, typography and service components: brand.css. */
 
+html.i18n-loading body { visibility: hidden; }
+
 * {
   box-sizing: border-box;
 }
@@ -1448,9 +1450,9 @@ html[lang="en"] .hero-copy h1 {
   }
 
   .nav-actions .language-toggle {
-    width: 56px;
+    width: auto;
     height: 44px;
-    padding: 0;
+    padding: 0 14px;
   }
 }
 
@@ -2330,6 +2332,29 @@ main :is(h1,h2,h3) .rm-mark {
   min-height: 38px;
   min-width: 56px;
 }
+
+
+
+/* Language-specific glyphs, scoped to the six-language main site. */
+html:lang(ja) :is(.home-body, .models-page, .guide-body, .gallery-body), .language-options :lang(ja) {
+  --font-ui: "Geist", "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+}
+html:lang(ko) :is(.home-body, .models-page, .guide-body, .gallery-body), .language-options :lang(ko) {
+  --font-ui: "Geist", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+.language-options :is(:lang(ja), :lang(ko)) { font-family: var(--font-ui); }
+html:lang(ja) .home-body h2 { white-space: pre-line; }
+
+/* The language list stays attached to its existing navigation control. */
+.language-picker { position: relative; flex: 0 0 auto; }
+.language-picker-toggle { height: 42px; padding: 0 14px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; white-space: nowrap; }
+.language-options { position: absolute; top: calc(100% + 8px); right: 0; z-index: 100; min-width: 142px; padding: 6px; border: 1px solid var(--line); border-radius: 12px; background: #191c1f; box-shadow: 0 12px 36px #0006; }
+.language-options[hidden] { display: none; }
+.language-options button { display: block; width: 100%; min-height: 42px; padding: 9px 12px; border: 0; border-radius: 7px; color: var(--ink); background: transparent; text-align: left; font: inherit; font-size: 13px; cursor: pointer; }
+.language-options button:hover, .language-options button[aria-checked="true"] { background: #ffffff12; }
+.language-options button:focus-visible { outline: 2px solid var(--ink); outline-offset: -2px; }
 
 .menu-button {
   border-radius: var(--radius-button);
@@ -3465,6 +3490,8 @@ body.teardown-active .brand-mark { background: none; }
 .home-body .software-stack{--layer-step:clamp(22px,4vw,45px);position:absolute;width:58%;height:56%;left:23%;top:40%;transform:rotateX(48deg) rotateZ(-30deg);transform-style:preserve-3d}
 .home-body .stack-plane{position:absolute;inset:0;border:1px solid #737b80;border-radius:8px;background:linear-gradient(140deg,#373c40,#101315 55%,#23282c);box-shadow:2px 5px 0 #0b0d0f,3px 6px 0 #43494d,10px 22px 30px #0009;transform-style:preserve-3d;transition:transform 500ms ease,border-color 500ms ease}
 .home-body .stack-plane>span{position:absolute;bottom:18px;left:22px;font-size:clamp(13px,1.45vw,20px);font-weight:500;color:#e5e7e8;letter-spacing:-.015em}
+html:is(:lang(ja),:lang(ko),:lang(es),:lang(fr)) .home-body .stack-plane>span{right:22px;line-height:1.25}
+html:lang(ja) .home-body .stack-plane>span{word-break:keep-all}
 .home-body .stack-base{transform:translateZ(calc(var(--layer-step) * -1))}
 .home-body .stack-kernel{transform:translate3d(0,calc(var(--layer-step) * -1),var(--layer-step));background:linear-gradient(145deg,#535b61e8,#202629f5 62%,#14191b);border-color:#99a1a6}
 .home-body .stack-ecosystem{transform:translate3d(0,calc(var(--layer-step) * -2),calc(var(--layer-step) * 3));background:linear-gradient(135deg,#8a939ab0,#262e34b8 43%,#151b20ed);border-color:#bcc3c8;backdrop-filter:blur(2px)}
@@ -3506,6 +3533,9 @@ body.teardown-active .brand-mark { background: none; }
 .home-body .visual-heading h2{font-size:34px;line-height:1.2;letter-spacing:-.025em}.home-body .visual-heading>p:last-child{margin-top:22px;line-height:1.85}
 .home-body .engine-visual-section{padding-top:76px;padding-bottom:36px}.home-body .engine-experience{margin-top:24px;gap:24px}
 .home-body .engine-art{aspect-ratio:1.1}.home-body .software-stack{width:56%;height:52%;left:24%;top:37%}.home-body .stack-plane>span{font-size:13px;left:15px;bottom:12px}
+html:is(:lang(ja),:lang(ko),:lang(es),:lang(fr)) .home-body .software-stack{--layer-step:30px;top:43%}
+html:is(:lang(ja),:lang(ko),:lang(es),:lang(fr)) .home-body .stack-plane>span{right:15px}
+html:is(:lang(ja),:lang(ko),:lang(es),:lang(fr)) .home-body .memory-grid,html:is(:lang(ja),:lang(ko),:lang(es),:lang(fr)) .home-body .model-lines{bottom:60px}
 .home-body .compute-grid,.home-body .memory-grid{inset:18px 15px 44px;gap:4px}.home-body .model-lines{inset:18px 15px 45px;gap:15px}
 .home-body .engine-topic{padding:22px 0}.home-body .engine-topic-toggle{font-size:19px;gap:18px}.home-body .engine-detail p{font-size:15px;line-height:1.85;margin-top:16px}
 }

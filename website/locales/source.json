@@ -1,0 +1,3722 @@
+[
+  {
+    "zh": "图册",
+    "en": "Gallery",
+    "sources": [
+      "assets/site-data.js.nav.0.1",
+      "models/index.html:29",
+      "models/index.html:207",
+      "gallery/index.html:40",
+      "gallery/index.html:63",
+      "downloads/index.html:41",
+      "downloads/index.html:64",
+      "guides/index.html:40",
+      "guides/index.html:63",
+      "guides/admin.html:41",
+      "guides/admin.html:64",
+      "guides/root.html:41",
+      "guides/root.html:64",
+      "guides/network.html:41",
+      "guides/network.html:64",
+      "guides/security.html:41",
+      "guides/security.html:64",
+      "scripts/build-guides.mjs:444",
+      "scripts/build-guides.mjs:467"
+    ]
+  },
+  {
+    "zh": "模型",
+    "en": "Models",
+    "sources": [
+      "assets/site-data.js.nav.1.1",
+      "models/index.html:30",
+      "models/index.html:207",
+      "gallery/index.html:41",
+      "gallery/index.html:64",
+      "downloads/index.html:42",
+      "downloads/index.html:65",
+      "guides/index.html:41",
+      "guides/index.html:64",
+      "guides/admin.html:42",
+      "guides/admin.html:65",
+      "guides/root.html:42",
+      "guides/root.html:65",
+      "guides/network.html:42",
+      "guides/network.html:65",
+      "guides/security.html:42",
+      "guides/security.html:65",
+      "scripts/build-guides.mjs:445",
+      "scripts/build-guides.mjs:468"
+    ]
+  },
+  {
+    "zh": "产品",
+    "en": "Product",
+    "sources": [
+      "assets/site-data.js.nav.2.1",
+      "models/index.html:31",
+      "models/index.html:207",
+      "gallery/index.html:42",
+      "gallery/index.html:65",
+      "downloads/index.html:43",
+      "downloads/index.html:66",
+      "guides/index.html:42",
+      "guides/index.html:65",
+      "guides/admin.html:43",
+      "guides/admin.html:66",
+      "guides/root.html:43",
+      "guides/root.html:66",
+      "guides/network.html:43",
+      "guides/network.html:66",
+      "guides/security.html:43",
+      "guides/security.html:66",
+      "scripts/build-guides.mjs:446",
+      "scripts/build-guides.mjs:469"
+    ]
+  },
+  {
+    "zh": "架构",
+    "en": "Architecture",
+    "sources": [
+      "assets/site-data.js.nav.3.1",
+      "models/index.html:32",
+      "models/index.html:207",
+      "gallery/index.html:43",
+      "gallery/index.html:66",
+      "downloads/index.html:44",
+      "downloads/index.html:67",
+      "guides/index.html:43",
+      "guides/index.html:66",
+      "guides/admin.html:44",
+      "guides/admin.html:67",
+      "guides/root.html:44",
+      "guides/root.html:67",
+      "guides/network.html:44",
+      "guides/network.html:67",
+      "guides/security.html:44",
+      "guides/security.html:67",
+      "scripts/build-guides.mjs:447",
+      "scripts/build-guides.mjs:470"
+    ]
+  },
+  {
+    "zh": "指南",
+    "en": "Guides",
+    "sources": [
+      "assets/site-data.js.nav.4.1",
+      "models/index.html:33",
+      "models/index.html:207",
+      "gallery/index.html:44",
+      "gallery/index.html:67",
+      "downloads/index.html:45",
+      "downloads/index.html:68",
+      "guides/index.html:44",
+      "guides/index.html:67",
+      "guides/admin.html:45",
+      "guides/admin.html:68",
+      "guides/root.html:45",
+      "guides/root.html:68",
+      "guides/network.html:45",
+      "guides/network.html:68",
+      "guides/security.html:45",
+      "guides/security.html:68",
+      "scripts/build-guides.mjs:448",
+      "scripts/build-guides.mjs:471"
+    ]
+  },
+  {
+    "zh": "下载",
+    "en": "Downloads",
+    "sources": [
+      "assets/site-data.js.nav.5.1",
+      "models/index.html:34",
+      "models/index.html:207",
+      "gallery/index.html:45",
+      "gallery/index.html:68",
+      "downloads/index.html:46",
+      "downloads/index.html:69",
+      "guides/index.html:45",
+      "guides/index.html:68",
+      "guides/admin.html:46",
+      "guides/admin.html:69",
+      "guides/root.html:46",
+      "guides/root.html:69",
+      "guides/network.html:46",
+      "guides/network.html:69",
+      "guides/security.html:46",
+      "guides/security.html:69",
+      "scripts/build-guides.mjs:449",
+      "scripts/build-guides.mjs:472"
+    ]
+  },
+  {
+    "zh": "整机功耗",
+    "en": "total power",
+    "sources": [
+      "assets/site-data.js.metrics.0.label"
+    ]
+  },
+  {
+    "zh": "路峰值并发",
+    "en": "peak sessions",
+    "sources": [
+      "assets/site-data.js.metrics.1.label"
+    ]
+  },
+  {
+    "zh": "工业级运行",
+    "en": "industrial runtime",
+    "sources": [
+      "assets/site-data.js.metrics.2.label"
+    ]
+  },
+  {
+    "zh": "模型参数规模",
+    "en": "model scale",
+    "sources": [
+      "assets/site-data.js.metrics.3.label"
+    ]
+  },
+  {
+    "zh": "配置驱动硬件",
+    "en": "Configuration-driven hardware",
+    "sources": [
+      "assets/site-data.js.pillars.0.title"
+    ]
+  },
+  {
+    "zh": "引脚、服务与系统行为，都可以通过 JSON 配置定义。现场调试所需的代码修改因此减少，设备配置也有据可查。",
+    "en": "JSON configuration defines pins, services, and system behavior. That means fewer code changes during on-site setup and a clear record of how the device is configured.",
+    "sources": [
+      "assets/site-data.js.pillars.0.text"
+    ]
+  },
+  {
+    "zh": "南北向设备控制",
+    "en": "North-south device control",
+    "sources": [
+      "assets/site-data.js.pillars.1.title"
+    ]
+  },
+  {
+    "zh": "北向管理推理算力，南向管理通用计算与存储。TianshanOS 连接两端，协调内部设备，让各个模组各司其职。",
+    "en": "Northbound control manages inference compute; southbound control manages general-purpose compute and storage. TianshanOS links both sides and coordinates the internal devices, with each module serving its role.",
+    "sources": [
+      "assets/site-data.js.pillars.1.text"
+    ]
+  },
+  {
+    "zh": "安全配置包",
+    "en": "Secure config packs",
+    "sources": [
+      "assets/site-data.js.pillars.2.title"
+    ]
+  },
+  {
+    "zh": "模型、密钥与现场参数的交付，需要清楚的安全边界。配置包支持 ECDH、AES-256-GCM 与 ECDSA 签名，为交付提供加密与签名支持。",
+    "en": "Delivering models, keys, and site parameters calls for a clear security boundary. Config packs support ECDH, AES-256-GCM, and ECDSA signatures, providing encryption and signatures for delivery.",
+    "sources": [
+      "assets/site-data.js.pillars.2.text"
+    ]
+  },
+  {
+    "zh": "OTA 与自动化",
+    "en": "OTA and automation",
+    "sources": [
+      "assets/site-data.js.pillars.3.title"
+    ]
+  },
+  {
+    "zh": "设备可以通过 HTTPS 或 SD 卡升级，升级异常时自动回滚。WebUI、CLI 与 API 提供管理入口，规则引擎接手重复操作，让日常运维少一些手动处理。",
+    "en": "Update your device through HTTPS or an SD card, with automatic rollback if an update fails. Manage it through WebUI, CLI, or API. The rule engine handles repeat operations, reducing manual work in day-to-day maintenance.",
+    "sources": [
+      "assets/site-data.js.pillars.3.text"
+    ]
+  },
+  {
+    "zh": "应用模组",
+    "en": "Application module",
+    "sources": [
+      "assets/site-data.js.modules.0.name"
+    ]
+  },
+  {
+    "zh": "x86 / 8 核 8 线程 / 16GB–32GB ECC / 512GB–2TB NVMe",
+    "en": "x86 / 8 cores, 8 threads / 16GB–32GB ECC / 512GB–2TB NVMe",
+    "sources": [
+      "assets/site-data.js.modules.0.spec"
+    ]
+  },
+  {
+    "zh": "独立 x86 模组承载你的应用、数据库与软件依赖，减少迁移适配工作，也减少应用对显存的占用。从开发到现场运行，已有软件可以少走一些弯路。",
+    "en": "A dedicated x86 module runs your applications, databases, and software dependencies, reducing migration work and application use of GPU memory. Your existing software has a shorter path from development to on-site operation.",
+    "sources": [
+      "assets/site-data.js.modules.0.text"
+    ]
+  },
+  {
+    "zh": "推理模组",
+    "en": "Inference module",
+    "sources": [
+      "assets/site-data.js.modules.1.name"
+    ]
+  },
+  {
+    "zh": "自研推理引擎与高速互联线路提高推理效率。资源集中用于模型推理与 KV Cache，为更大模型、更长上下文与更高并发留出空间。",
+    "en": "Our inference engine and high-speed interconnect improve inference efficiency. Resources focus on model inference and KV Cache, making room for larger models, longer contexts, and higher concurrency.",
+    "sources": [
+      "assets/site-data.js.modules.1.text"
+    ]
+  },
+  {
+    "zh": "加密模组",
+    "en": "Encryption module",
+    "sources": [
+      "assets/site-data.js.modules.2.name"
+    ]
+  },
+  {
+    "zh": "你的后训练模型、RAG 知识库、业务数据与应用代码，都值得保护。独立安全模组隔离私钥，硬件级非对称密钥保护降低私钥导出与复制风险，为业务资产建立设备级安全边界。",
+    "en": "Your post-trained models, RAG knowledge bases, business data, and application code deserve protection. A dedicated security module isolates private keys. Hardware-backed asymmetric key protection reduces the risk of key export and duplication, creating a device-level security boundary for your business assets.",
+    "sources": [
+      "assets/site-data.js.modules.2.text"
+    ]
+  },
+  {
+    "zh": "网络模组",
+    "en": "Network module",
+    "sources": [
+      "assets/site-data.js.modules.3.name"
+    ]
+  },
+  {
+    "zh": "内部交换 / 路由 / 统一 API",
+    "en": "Internal switching / routing / unified API",
+    "sources": [
+      "assets/site-data.js.modules.3.spec"
+    ]
+  },
+  {
+    "zh": "调用本地 AI，也可以沿用熟悉的云服务接口体验。内部交换、路由与统一 API 连接各个模组，减少系统扩展与维护所需的改动。",
+    "en": "Access local AI through a familiar cloud-service interface. Internal switching, routing, and unified APIs connect the modules, reducing the changes needed for system expansion and maintenance.",
+    "sources": [
+      "assets/site-data.js.modules.3.text"
+    ]
+  },
+  {
+    "zh": "电源与热管理",
+    "en": "Power and thermal management",
+    "sources": [
+      "assets/site-data.js.modules.4.name"
+    ]
+  },
+  {
+    "zh": "USB-C PD 3.1 / 最高 140W / Z 型独立风道",
+    "en": "USB-C PD 3.1 / up to 140W / independent Z-shaped air duct",
+    "sources": [
+      "assets/site-data.js.modules.4.spec"
+    ]
+  },
+  {
+    "zh": "统一供电、启动时序与 Z 型独立风道共同支撑整机运行，降低频繁启停、高负载和积尘的影响。减少停机与现场维护，让工作少受打扰。",
+    "en": "Unified power delivery, startup sequencing, and a dedicated Z-shaped air duct support system operation, reducing the impact of frequent restarts, high loads, and dust buildup. Less downtime and on-site maintenance mean fewer interruptions to your work.",
+    "sources": [
+      "assets/site-data.js.modules.4.text"
+    ]
+  },
+  {
+    "zh": "沿用生态，减少适配",
+    "en": "Familiar ecosystem, less integration work",
+    "sources": [
+      "assets/site-data.js.engine.0.title"
+    ]
+  },
+  {
+    "zh": "定制 vLLM 沿用 Hugging Face 模型生态，自研内核优化推理计算；C++ 专用引擎面向模型架构与硬件平台，组织权重加载、算子和运行时。两条路线支持 RMQ 模型，并通过兼容 OpenAI 等接口的服务连接应用，减少接入与适配工作。",
+    "en": "Custom vLLM retains the Hugging Face model ecosystem and uses our kernels for inference. The dedicated C++ engine tailors weight loading, kernels, and the runtime to model architectures and hardware. Both paths support RMQ models and connect applications through services with interfaces such as the OpenAI-compatible API, reducing integration work.",
+    "sources": [
+      "assets/site-data.js.engine.0.text"
+    ]
+  },
+  {
+    "zh": "容纳更长的上下文，处理更多并发",
+    "en": "Longer contexts. More concurrent tasks.",
+    "sources": [
+      "assets/site-data.js.engine.1.title"
+    ]
+  },
+  {
+    "zh": "分页缓存与递归状态管理承接上下文，前缀缓存复用已有计算。专用引擎通过内存与 SSD 分层存储扩展上下文容量，结合批量输入处理与连续批处理，减少权重重复读取，让文档分析、多轮交互和并发请求共用推理资源。",
+    "en": "Paged caching and recurrent-state management retain context, while prefix caching reuses prior computation. The dedicated engine extends context capacity through memory and SSD storage tiers. Batched input processing and continuous batching reduce repeated weight reads, sharing inference resources across document analysis, multi-turn interaction, and concurrent requests.",
+    "sources": [
+      "assets/site-data.js.engine.1.text"
+    ]
+  },
+  {
+    "zh": "从推理需求出发，设计整机",
+    "en": "A system shaped by inference",
+    "sources": [
+      "assets/site-data.js.engine.2.title"
+    ]
+  },
+  {
+    "zh": "主板与推理引擎协同设计，围绕 GPU、内存带宽和缓存安排计算与数据访问。投影合并、算子融合与专家归组减少搬运开销；MTP 与批量解码分别服务于单请求生成和并发任务，将硬件资源转化为模型执行效率。",
+    "en": "The motherboard and inference engine are designed together, organizing computation and data access around GPU compute, memory bandwidth, and caches. Merged projections, kernel fusion, and expert grouping reduce data movement. MTP serves single-request generation and batched decoding serves concurrent tasks, turning hardware resources into model execution efficiency.",
+    "sources": [
+      "assets/site-data.js.engine.2.text"
+    ]
+  },
+  {
+    "zh": "为模型推理及AI应用原生设计",
+    "en": "PURPOSE-BUILT FOR MODEL INFERENCE AND AI APPLICATIONS",
+    "sources": [
+      "assets/site-data.js.ui.chapter0"
+    ]
+  },
+  {
+    "zh": "推理引擎",
+    "en": "INFERENCE ENGINE",
+    "sources": [
+      "assets/site-data.js.ui.chapter1"
+    ]
+  },
+  {
+    "zh": "整机协同",
+    "en": "SYSTEM ORCHESTRATION",
+    "sources": [
+      "assets/site-data.js.ui.chapter2"
+    ]
+  },
+  {
+    "zh": "硬件架构",
+    "en": "HARDWARE ARCHITECTURE",
+    "sources": [
+      "assets/site-data.js.ui.chapter3"
+    ]
+  },
+  {
+    "zh": "深入内部",
+    "en": "INSIDE RM-01",
+    "sources": [
+      "assets/site-data.js.ui.chapter4"
+    ]
+  },
+  {
+    "zh": "持续运行",
+    "en": "CONTINUOUS OPERATION",
+    "sources": [
+      "assets/site-data.js.ui.chapter5"
+    ]
+  },
+  {
+    "zh": "材料与光",
+    "en": "MATERIAL & LIGHT",
+    "sources": [
+      "assets/site-data.js.ui.chapter6"
+    ]
+  },
+  {
+    "zh": "触感与表面",
+    "en": "TOUCH & SURFACE",
+    "sources": [
+      "assets/site-data.js.ui.chapter7"
+    ]
+  },
+  {
+    "zh": "连接与访问",
+    "en": "CONNECTION",
+    "sources": [
+      "assets/site-data.js.ui.chapter8"
+    ]
+  },
+  {
+    "zh": "方案交付",
+    "en": "AI DELIVERY",
+    "sources": [
+      "assets/site-data.js.ui.chapter9"
+    ]
+  },
+  {
+    "zh": "制造精度",
+    "en": "PRECISION",
+    "sources": [
+      "assets/site-data.js.ui.chapter10"
+    ]
+  },
+  {
+    "zh": "菜单",
+    "en": "Menu",
+    "sources": [
+      "assets/site-data.js.ui.mobileMenu"
+    ]
+  },
+  {
+    "zh": "关闭",
+    "en": "Close",
+    "sources": [
+      "assets/site-data.js.ui.closeMenu",
+      "index.html:337",
+      "models/index.html:187",
+      "models/index.html:207",
+      "gallery/index.html:60",
+      "gallery/index.html:142",
+      "downloads/index.html:61",
+      "downloads/index.html:452",
+      "guides/index.html:60",
+      "guides/index.html:183",
+      "guides/admin.html:61",
+      "guides/admin.html:1509",
+      "guides/root.html:61",
+      "guides/root.html:2362",
+      "guides/network.html:61",
+      "guides/network.html:1090",
+      "guides/security.html:61",
+      "guides/security.html:1306",
+      "scripts/build-guides.mjs:464",
+      "scripts/build-guides.mjs:594",
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "RM-01\n让 AI 在本地，\n为你工作",
+    "en": "RM-01\nAI working for you, locally",
+    "sources": [
+      "assets/site-data.js.ui.heroTitle"
+    ]
+  },
+  {
+    "zh": "RM-01 将模型推理与应用运行带到你的业务现场。硬件架构、推理引擎与系统共同支撑 Agent，让它从理解需求走向执行任务。",
+    "en": "RM-01 brings model inference and applications to your business site. Its architecture, inference engine, and operating system support agents as they move from understanding your needs to carrying out tasks.",
+    "sources": [
+      "assets/site-data.js.ui.heroLead"
+    ]
+  },
+  {
+    "zh": "继续探索",
+    "en": "Keep exploring",
+    "sources": [
+      "assets/site-data.js.ui.explore"
+    ]
+  },
+  {
+    "zh": "继续向下",
+    "en": "Continue",
+    "sources": [
+      "assets/site-data.js.ui.scroll"
+    ]
+  },
+  {
+    "zh": "TianshanOS 让整机协同有序",
+    "en": "TianshanOS Bringing the system together",
+    "sources": [
+      "assets/site-data.js.ui.productTitle"
+    ]
+  },
+  {
+    "zh": "一台设备的运行，离不开内部各个部分的配合。TianshanOS 管理 RM-01 的内部设备与系统行为，让推理、应用与存储共同工作。无需专门建设供电、网络与机房环境，RM-01 就能走进业务现场。",
+    "en": "A system depends on its parts working in concert. TianshanOS manages the devices and system behavior inside RM-01, coordinating inference, applications, and storage. Bring RM-01 to your business site without building dedicated power, network, or server-room infrastructure.",
+    "sources": [
+      "assets/site-data.js.ui.productLead"
+    ]
+  },
+  {
+    "zh": "连接电源\n接入世界",
+    "en": "Connect to power.\nConnect to the world.",
+    "sources": [
+      "assets/site-data.js.ui.agentTitle"
+    ]
+  },
+  {
+    "zh": "一个接口连接电源，一个接口连接网络。智能眼镜、电脑、路由器、手机与平板，都是访问本地 AI 的入口。你熟悉的设备，由此连接身边的算力。",
+    "en": "One port for power. One for the network. Smart glasses, computers, routers, phones, and tablets give you access to local AI. The devices you know bring local AI within reach.",
+    "sources": [
+      "assets/site-data.js.ui.agentLead"
+    ]
+  },
+  {
+    "zh": "Ubuntu 系统",
+    "en": "Ubuntu system",
+    "sources": [
+      "assets/site-data.js.ui.agentPointOne"
+    ]
+  },
+  {
+    "zh": "Agent 执行",
+    "en": "Agent execution",
+    "sources": [
+      "assets/site-data.js.ui.agentPointTwo"
+    ]
+  },
+  {
+    "zh": "多终端访问",
+    "en": "Multi-device access",
+    "sources": [
+      "assets/site-data.js.ui.agentPointThree"
+    ]
+  },
+  {
+    "zh": "各司其职，整机交付",
+    "en": "Dedicated roles. One complete system.",
+    "sources": [
+      "assets/site-data.js.ui.hardwareTitle"
+    ]
+  },
+  {
+    "zh": "应用有自己的运行空间，推理有专属的计算资源。RM-01 将模型、应用与运行环境整合进一台设备，让各个模组的协作，服务于你的业务。",
+    "en": "Applications have their own space to run. Inference has dedicated compute. RM-01 brings models, applications, and their runtime into one device, with every module working to serve your business.",
+    "sources": [
+      "assets/site-data.js.ui.hardwareLead"
+    ]
+  },
+  {
+    "zh": "机身展开，协作可见",
+    "en": "See the system unfold",
+    "sources": [
+      "assets/site-data.js.ui.filmTitle"
+    ]
+  },
+  {
+    "zh": "紧凑机身之内，推理、应用、互联与散热各有其位。随着结构展开，模组之间的连接逐一显现，一套本地 AI 系统的构成也随之清晰。",
+    "en": "Inference, applications, connectivity, and cooling each have a place inside the compact chassis. As the structure unfolds, the connections between modules come into view, revealing how a complete local AI system takes shape.",
+    "sources": [
+      "assets/site-data.js.ui.filmLead"
+    ]
+  },
+  {
+    "zh": "让有限的算力，承载更多任务",
+    "en": "More work from the compute you have",
+    "sources": [
+      "assets/site-data.js.ui.engineTitle"
+    ]
+  },
+  {
+    "zh": "自研推理引擎提高算力与显存利用率，减少资源消耗。更大模型、更长上下文与更多并发任务，由此获得运行空间。",
+    "en": "Our inference engine improves compute and GPU memory utilization while reducing resource use. That creates room for larger models, longer contexts, and more concurrent tasks.",
+    "sources": [
+      "assets/site-data.js.ui.engineLead"
+    ]
+  },
+  {
+    "zh": "EricLake\n封闭式热管理系统",
+    "en": "EricLake\nclosed thermal system",
+    "sources": [
+      "assets/site-data.js.ui.thermalTitle"
+    ]
+  },
+  {
+    "zh": "推理持续，散热也持续。特制叶片、定制电机与 Z 型独立风道共同导出热量，支撑高并发任务。风道设计经过数次计算流体力学仿真优化；封闭式热管理结构大幅减少灰尘进入核心器件区域，照顾高负载下的运行，也照顾日复一日的使用。",
+    "en": "As inference runs, cooling keeps pace. Custom blades, a purpose-built motor, and a dedicated Z-shaped air duct remove heat to support high-concurrency tasks. Multiple rounds of computational fluid dynamics simulation refine the airflow design. The closed thermal system keeps most dust out of the core component area, supporting demanding workloads and everyday use.",
+    "sources": [
+      "assets/site-data.js.ui.thermalLead"
+    ]
+  },
+  {
+    "zh": "0.13mm",
+    "en": "0.13mm",
+    "sources": [
+      "assets/site-data.js.ui.thermalPointBlade"
+    ]
+  },
+  {
+    "zh": "Z 型风道",
+    "en": "Z-shaped duct",
+    "sources": [
+      "assets/site-data.js.ui.thermalPointDuct"
+    ]
+  },
+  {
+    "zh": "CFD 优化",
+    "en": "CFD optimized",
+    "sources": [
+      "assets/site-data.js.ui.thermalPointCfd"
+    ]
+  },
+  {
+    "zh": "蓝宝石亮起，\n智能开始工作",
+    "en": "When sapphire lights up,\nintelligence gets to work",
+    "sources": [
+      "assets/site-data.js.ui.sapphireTitle"
+    ]
+  },
+  {
+    "zh": "光掠过切面，蓝宝石的轮廓从深色机身上浮现。外覆合工艺让蓝宝石贴合机身表面，保留多重锐角切面。高硬度让成型与镜面抛光更为艰难，良品率也随之降低。56 小时的雕琢与抛光，凝结在这一刻的光泽里。",
+    "en": "Light catches the facets, revealing the sapphire against the dark chassis. An exterior bonding process joins the gemstone to the surface while preserving its sharp facets. Its hardness makes shaping and mirror polishing a challenge and reduces production yields. Fifty-six hours of carving and polishing find their expression in this moment of light.",
+    "sources": [
+      "assets/site-data.js.ui.sapphireLead"
+    ]
+  },
+  {
+    "zh": "56 小时雕琢",
+    "en": "56 hours of finishing",
+    "sources": [
+      "assets/site-data.js.ui.sapphireFactOne"
+    ]
+  },
+  {
+    "zh": "外覆合工艺",
+    "en": "Exterior bonding process",
+    "sources": [
+      "assets/site-data.js.ui.sapphireFactTwo"
+    ]
+  },
+  {
+    "zh": "蓝宝石 × 铝合金",
+    "en": "Sapphire × aluminum",
+    "sources": [
+      "assets/site-data.js.ui.sapphireLabel"
+    ]
+  },
+  {
+    "zh": "换一张卡，\n切换一套 AI",
+    "en": "Change the card,\nchange the AI",
+    "sources": [
+      "assets/site-data.js.ui.cartridgeTitle"
+    ]
+  },
+  {
+    "zh": "模型与应用存放在可更换的存储卡中。插入 RM-01，一套对应业务的本地 AI 方案随之装载。同一台设备，换一张卡，就能接手另一项工作。",
+    "en": "Models and applications live on replaceable storage cards. Insert one into RM-01 to load a local AI solution for your business. A different card gives the same device a new job.",
+    "sources": [
+      "assets/site-data.js.ui.cartridgeLead"
+    ]
+  },
+  {
+    "zh": "插卡即用",
+    "en": "Plug in and use",
+    "sources": [
+      "assets/site-data.js.ui.cartridgeFactOne"
+    ]
+  },
+  {
+    "zh": "模型应用",
+    "en": "Models + applications",
+    "sources": [
+      "assets/site-data.js.ui.cartridgeFactTwo"
+    ]
+  },
+  {
+    "zh": "绒光肤感玻璃",
+    "en": "VELVET-TOUCH GLASS",
+    "sources": [
+      "assets/site-data.js.ui.glassTouchMaterial"
+    ]
+  },
+  {
+    "zh": "绒光玻璃，温润触感",
+    "en": "Velvet-touch glass. A warmth you can feel.",
+    "sources": [
+      "assets/site-data.js.ui.glassTouchTitle"
+    ]
+  },
+  {
+    "zh": "整面绒光肤感玻璃柔化光线，呈现温润触感。目光与指尖，都能感知 RM-01 的表面质感。",
+    "en": "A full face of velvet-touch glass softens the light and feels warm to the touch. The surface of RM-01 invites both a closer look and a touch.",
+    "sources": [
+      "assets/site-data.js.ui.glassTouchLead"
+    ]
+  },
+  {
+    "zh": "向下滚动，查看更多工艺",
+    "en": "Scroll down to explore more craftsmanship",
+    "sources": [
+      "assets/site-data.js.ui.craftScrollHint"
+    ]
+  },
+  {
+    "zh": "材料、表面与装配\n每一处都有标准",
+    "en": "Materials, finish, and fit.\nA standard for every detail.",
+    "sources": [
+      "assets/site-data.js.ui.craftTitle"
+    ]
+  },
+  {
+    "zh": "超高速射出成型叶片承担持续散热",
+    "en": "Blades made with ultra-high-speed injection molding sustain cooling.",
+    "sources": [
+      "assets/site-data.js.ui.thermalDetailCaption"
+    ]
+  },
+  {
+    "zh": "铝合金机身",
+    "en": "Aluminium chassis",
+    "sources": [
+      "assets/site-data.js.ui.craftStoryMaterial"
+    ]
+  },
+  {
+    "zh": "6063 铝合金构成机身，握持时的扎实感，来自材料本身。",
+    "en": "The chassis is made from 6063 aluminium alloy. Its solid feel in your hand begins with the material itself.",
+    "sources": [
+      "assets/site-data.js.ui.craftStoryMaterialText"
+    ]
+  },
+  {
+    "zh": "精细喷砂",
+    "en": "Fine sandblasted finish",
+    "sources": [
+      "assets/site-data.js.ui.craftStoryFinish",
+      "assets/site-data.js.ui.craftFinish"
+    ],
+    "zhVariants": [
+      "精细喷砂表面工艺"
+    ]
+  },
+  {
+    "zh": "喷砂赋予金属细腻的表面。目光看见的纹理，指尖也能感知。",
+    "en": "Sandblasting gives the metal a fine texture you can see and feel.",
+    "sources": [
+      "assets/site-data.js.ui.craftStoryFinishText"
+    ]
+  },
+  {
+    "zh": "玻璃圆角",
+    "en": "Rounded glass edges",
+    "sources": [
+      "assets/site-data.js.ui.craftStoryRadius"
+    ]
+  },
+  {
+    "zh": "玻璃边缘采用 R0.2 mm 圆角，与铝合金机身精密贴合。两种材料在这里相接，也在这里体现装配的功夫。",
+    "en": "Glass edges with an R0.2 mm radius form a precision fit with the aluminium chassis. Where the two materials meet, the care in assembly comes into view.",
+    "sources": [
+      "assets/site-data.js.ui.craftStoryRadiusText"
+    ]
+  },
+  {
+    "zh": "工艺公差",
+    "en": "Manufacturing tolerance",
+    "sources": [
+      "assets/site-data.js.ui.craftStoryTolerance"
+    ]
+  },
+  {
+    "zh": "工艺公差小于 0.03 mm。精度落实在接缝与收口，让每一处衔接都经得起细看。",
+    "en": "Manufacturing tolerances stay below 0.03 mm. That precision shapes the seams and edges, rewarding a closer look at every joint.",
+    "sources": [
+      "assets/site-data.js.ui.craftStoryToleranceText"
+    ]
+  },
+  {
+    "zh": "从 6063 铝合金到 260 目精细喷砂，RM-01 对材料、表面处理与装配精度逐项把控。最终落到用户手上的，是细腻的触感、严密的接缝，以及从第一次上手就能感受到的整机品质。",
+    "en": "From 6063 aluminium alloy to a fine 260-mesh sandblasted finish, RM-01 controls material selection, surface treatment, and assembly precision. The result reflects both product quality and our ability to integrate the supply chain for consistent manufacturing.",
+    "sources": [
+      "assets/site-data.js.ui.craftLead"
+    ]
+  },
+  {
+    "zh": "高品质铝合金机身",
+    "en": "High-quality aluminium chassis",
+    "sources": [
+      "assets/site-data.js.ui.craftMaterial"
+    ]
+  },
+  {
+    "zh": "目",
+    "en": "mesh",
+    "sources": [
+      "assets/site-data.js.ui.craftMeshUnit"
+    ]
+  },
+  {
+    "zh": "均匀细腻的喷砂表面，让光线在金属上呈现克制的层次。",
+    "en": "A fine, even finish gives light a restrained depth across the metal surface.",
+    "sources": [
+      "assets/site-data.js.ui.craftCaptionSurface"
+    ]
+  },
+  {
+    "zh": "严密的接缝与干净的收口，让设计精度落到真实装配。",
+    "en": "Tight seams and clean edges carry design precision into real assembly.",
+    "sources": [
+      "assets/site-data.js.ui.craftCaptionFit"
+    ]
+  },
+  {
+    "zh": "从结构边缘到散热开槽，保持一致的加工与表面标准。",
+    "en": "Structural edges and cooling slots share one consistent manufacturing standard.",
+    "sources": [
+      "assets/site-data.js.ui.craftCaptionEdge"
+    ]
+  },
+  {
+    "zh": "卡槽开口、结构边缘与机身表面，保持一致的加工精度。",
+    "en": "The card opening, structural edges, and chassis surface share the same machining precision.",
+    "sources": [
+      "assets/site-data.js.ui.craftCaptionSlot"
+    ]
+  },
+  {
+    "zh": "泛灵（成都）人工智能科技有限公司",
+    "en": "RMinte AI",
+    "sources": [
+      "assets/site-data.js.ui.footer",
+      "models/index.html:177"
+    ]
+  },
+  {
+    "zh": "© 2026 RMinte ( Chengdu ) Artificial Intelligence Technology Co., Ltd. · RM-01 Protable AI Supercomputer",
+    "en": "© 2026 RMinte ( Chengdu ) Artificial Intelligence Technology Co., Ltd. · RM-01 Protable AI Supercomputer",
+    "sources": [
+      "assets/site-data.js.ui.copyright"
+    ]
+  },
+  {
+    "zh": "联系我们",
+    "en": "Contact",
+    "sources": [
+      "assets/site-data.js.ui.contactButton"
+    ]
+  },
+  {
+    "zh": "CONTACT",
+    "en": "CONTACT",
+    "sources": [
+      "assets/site-data.js.ui.contactKicker"
+    ]
+  },
+  {
+    "zh": "联系我们",
+    "en": "Contact us",
+    "sources": [
+      "assets/site-data.js.ui.contactTitle"
+    ]
+  },
+  {
+    "zh": "销售与渠道合作",
+    "en": "Sales & channel partnerships",
+    "sources": [
+      "assets/site-data.js.ui.salesContact"
+    ]
+  },
+  {
+    "zh": "制造与供应链合作",
+    "en": "Manufacturing & supply chain partnerships",
+    "sources": [
+      "assets/site-data.js.ui.manufacturingContact"
+    ]
+  },
+  {
+    "zh": "售前与售后服务",
+    "en": "Pre-sales & after-sales service",
+    "sources": [
+      "assets/site-data.js.ui.supportContact"
+    ]
+  },
+  {
+    "zh": "整机实拍·3/4视角",
+    "en": "Product photography · three-quarter view",
+    "sources": [
+      "assets/gallery.js.galleryItems.0.label"
+    ]
+  },
+  {
+    "zh": "RM-01 整机实拍 3/4 视角",
+    "en": "Three-quarter product photograph of RM-01",
+    "sources": [
+      "assets/gallery.js.galleryItems.0.alt"
+    ]
+  },
+  {
+    "zh": "整机实拍·正面",
+    "en": "Product photography · front view",
+    "sources": [
+      "assets/gallery.js.galleryItems.1.label"
+    ]
+  },
+  {
+    "zh": "RM-01 整机正面实拍",
+    "en": "Front product photograph of RM-01",
+    "sources": [
+      "assets/gallery.js.galleryItems.1.alt"
+    ]
+  },
+  {
+    "zh": "整机实拍·亮场",
+    "en": "Product photography · light studio",
+    "sources": [
+      "assets/gallery.js.galleryItems.2.label"
+    ]
+  },
+  {
+    "zh": "亮场中的 RM-01 整机实拍",
+    "en": "RM-01 product photograph in a light studio",
+    "sources": [
+      "assets/gallery.js.galleryItems.2.alt"
+    ]
+  },
+  {
+    "zh": "整机实拍·侧后方",
+    "en": "Product photography · rear-side view",
+    "sources": [
+      "assets/gallery.js.galleryItems.3.label"
+    ]
+  },
+  {
+    "zh": "RM-01 整机侧后方实拍",
+    "en": "Rear-side product photograph of RM-01",
+    "sources": [
+      "assets/gallery.js.galleryItems.3.alt"
+    ]
+  },
+  {
+    "zh": "接口与风道细节",
+    "en": "Ports and airflow detail",
+    "sources": [
+      "assets/gallery.js.galleryItems.4.label"
+    ]
+  },
+  {
+    "zh": "RM-01 接口与散热风道细节",
+    "en": "Close-up of RM-01 ports and thermal airflow channel",
+    "sources": [
+      "assets/gallery.js.galleryItems.4.alt"
+    ]
+  },
+  {
+    "zh": "CFe卡槽细节",
+    "en": "CFe card slot detail",
+    "sources": [
+      "assets/gallery.js.galleryItems.5.label"
+    ]
+  },
+  {
+    "zh": "RM-01 CFe 卡槽细节",
+    "en": "Close-up of the RM-01 CFe card slot",
+    "sources": [
+      "assets/gallery.js.galleryItems.5.alt"
+    ]
+  },
+  {
+    "zh": "蓝宝石状态灯",
+    "en": "Sapphire status light",
+    "sources": [
+      "assets/gallery.js.galleryItems.6.label"
+    ]
+  },
+  {
+    "zh": "RM-01 蓝宝石状态灯细节",
+    "en": "Close-up of the RM-01 sapphire status light",
+    "sources": [
+      "assets/gallery.js.galleryItems.6.alt"
+    ]
+  },
+  {
+    "zh": "铝合金工艺细节",
+    "en": "Aluminum-alloy craftsmanship",
+    "sources": [
+      "assets/gallery.js.galleryItems.7.label"
+    ]
+  },
+  {
+    "zh": "RM-01 铝合金工艺细节",
+    "en": "Close-up of RM-01 aluminum-alloy craftsmanship",
+    "sources": [
+      "assets/gallery.js.galleryItems.7.alt"
+    ]
+  },
+  {
+    "zh": "设计与加工细节",
+    "en": "Design and machining detail",
+    "sources": [
+      "assets/gallery.js.galleryItems.8.label"
+    ]
+  },
+  {
+    "zh": "RM-01 设计与加工细节",
+    "en": "Close-up of RM-01 design and machining details",
+    "sources": [
+      "assets/gallery.js.galleryItems.8.alt"
+    ]
+  },
+  {
+    "zh": "玻璃与装配工艺",
+    "en": "Glass and assembly craftsmanship",
+    "sources": [
+      "assets/gallery.js.galleryItems.9.label"
+    ]
+  },
+  {
+    "zh": "RM-01 玻璃与装配工艺细节",
+    "en": "Close-up of RM-01 glass and assembly craftsmanship",
+    "sources": [
+      "assets/gallery.js.galleryItems.9.alt"
+    ]
+  },
+  {
+    "zh": "R0.25圆角与装配工艺",
+    "en": "R0.25 corner radius and assembly",
+    "sources": [
+      "assets/gallery.js.galleryItems.10.label"
+    ]
+  },
+  {
+    "zh": "RM-01 R0.25 圆角与装配工艺细节",
+    "en": "Close-up of the RM-01 R0.25 corner radius and assembly",
+    "sources": [
+      "assets/gallery.js.galleryItems.10.alt"
+    ]
+  },
+  {
+    "zh": "司法与法律服务",
+    "en": "Justice & legal services",
+    "sources": [
+      "models/models.js.cases.0.name"
+    ]
+  },
+  {
+    "zh": "推进案件研究\n与诉讼准备",
+    "en": "Research cases and prepare for trial",
+    "sources": [
+      "models/models.js.cases.0.task"
+    ]
+  },
+  {
+    "zh": "合同修订稿",
+    "en": "Contract revisions",
+    "sources": [
+      "models/models.js.cases.0.outputs.0"
+    ]
+  },
+  {
+    "zh": "庭审提纲",
+    "en": "Trial outlines",
+    "sources": [
+      "models/models.js.cases.0.outputs.1"
+    ]
+  },
+  {
+    "zh": "卷宗、合同、法律数据库与相关判例。",
+    "en": "Case files, contracts, legal databases, and relevant precedents.",
+    "sources": [
+      "models/models.js.cases.0.stages.0"
+    ]
+  },
+  {
+    "zh": "检索依据，建立证据与法律要件的联系，起草文书并交叉验证引用。",
+    "en": "Find legal authorities, map evidence to legal elements, draft documents, and cross-check citations.",
+    "sources": [
+      "models/models.js.cases.0.stages.1"
+    ]
+  },
+  {
+    "zh": "附依据的法律意见、合同修订稿与庭审提纲。",
+    "en": "Legal opinions with supporting authorities, contract revisions, and trial outlines.",
+    "sources": [
+      "models/models.js.cases.0.stages.2"
+    ]
+  },
+  {
+    "zh": "刑事调查与数字取证",
+    "en": "Criminal investigation & digital forensics",
+    "sources": [
+      "models/models.js.cases.1.name"
+    ]
+  },
+  {
+    "zh": "追踪关键线索\n重建事件关联",
+    "en": "Trace key leads and reconstruct event links",
+    "sources": [
+      "models/models.js.cases.1.task"
+    ]
+  },
+  {
+    "zh": "事件时间线",
+    "en": "Event timelines",
+    "sources": [
+      "models/models.js.cases.1.outputs.0"
+    ]
+  },
+  {
+    "zh": "取证核查任务",
+    "en": "Forensic verification tasks",
+    "sources": [
+      "models/models.js.cases.1.outputs.1"
+    ]
+  },
+  {
+    "zh": "通信记录、设备数据与调查资料。",
+    "en": "Communication records, device data, and investigation records.",
+    "sources": [
+      "models/models.js.cases.1.stages.0"
+    ]
+  },
+  {
+    "zh": "联查实体和事件，检验竞争性解释，生成取证查询与后续核查任务。",
+    "en": "Cross-reference entities and events, test competing explanations, and generate forensic queries and follow-up verification tasks.",
+    "sources": [
+      "models/models.js.cases.1.stages.1"
+    ]
+  },
+  {
+    "zh": "可追溯的事件时间线、关联线索与核查计划。",
+    "en": "Traceable event timelines, related leads, and verification plans.",
+    "sources": [
+      "models/models.js.cases.1.stages.2"
+    ]
+  },
+  {
+    "zh": "网络安全防御",
+    "en": "Cyber defense",
+    "sources": [
+      "models/models.js.cases.2.name"
+    ]
+  },
+  {
+    "zh": "发现威胁\n推进响应处置",
+    "en": "Detect threats and drive incident response",
+    "sources": [
+      "models/models.js.cases.2.task"
+    ]
+  },
+  {
+    "zh": "检测查询",
+    "en": "Detection queries",
+    "sources": [
+      "models/models.js.cases.2.outputs.0"
+    ]
+  },
+  {
+    "zh": "修复方案",
+    "en": "Remediation plans",
+    "sources": [
+      "models/models.js.cases.2.outputs.1"
+    ]
+  },
+  {
+    "zh": "安全日志、威胁情报与检测工具。",
+    "en": "Security logs, threat intelligence, and detection tools.",
+    "sources": [
+      "models/models.js.cases.2.stages.0"
+    ]
+  },
+  {
+    "zh": "执行告警分诊，追踪攻击路径，编写检测查询与处置脚本。",
+    "en": "Triage alerts, trace attack paths, and write detection queries and response scripts.",
+    "sources": [
+      "models/models.js.cases.2.stages.1"
+    ]
+  },
+  {
+    "zh": "事件调查记录、修复方案与处置验证结果。",
+    "en": "Investigation records, remediation plans, and response validation results.",
+    "sources": [
+      "models/models.js.cases.2.stages.2"
+    ]
+  },
+  {
+    "zh": "平台内容治理",
+    "en": "Platform content governance",
+    "sources": [
+      "models/models.js.cases.3.name"
+    ]
+  },
+  {
+    "zh": "执行治理规则\n处理复杂争议",
+    "en": "Apply policies and handle complex disputes",
+    "sources": [
+      "models/models.js.cases.3.task"
+    ]
+  },
+  {
+    "zh": "审核任务分派",
+    "en": "Review assignments",
+    "sources": [
+      "models/models.js.cases.3.outputs.0"
+    ]
+  },
+  {
+    "zh": "申诉复核意见",
+    "en": "Appeal assessments",
+    "sources": [
+      "models/models.js.cases.3.outputs.1"
+    ]
+  },
+  {
+    "zh": "用户内容、平台规则、举报与申诉。",
+    "en": "User content, platform policies, reports, and appeals.",
+    "sources": [
+      "models/models.js.cases.3.stages.0"
+    ]
+  },
+  {
+    "zh": "识别语境与行为关联，完成风险分级，结合历史案例生成复核依据。",
+    "en": "Examine context and links between behaviors, classify risks by severity, and use prior cases to support review decisions.",
+    "sources": [
+      "models/models.js.cases.3.stages.1"
+    ]
+  },
+  {
+    "zh": "审核任务分派、复核意见与规则缺口清单。",
+    "en": "Review assignments, review recommendations, and a list of policy gaps.",
+    "sources": [
+      "models/models.js.cases.3.stages.2"
+    ]
+  },
+  {
+    "zh": "企业调查与反舞弊",
+    "en": "Corporate investigations & anti-fraud",
+    "sources": [
+      "models/models.js.cases.4.name"
+    ]
+  },
+  {
+    "zh": "穿透交易关系\n推进疑点核查",
+    "en": "Uncover transaction links and investigate anomalies",
+    "sources": [
+      "models/models.js.cases.4.task"
+    ]
+  },
+  {
+    "zh": "异常关系线索",
+    "en": "Unusual connections",
+    "sources": [
+      "models/models.js.cases.4.outputs.0"
+    ]
+  },
+  {
+    "zh": "调查报告",
+    "en": "Investigation reports",
+    "sources": [
+      "models/models.js.cases.4.outputs.1"
+    ]
+  },
+  {
+    "zh": "合同、资金流水、内部通信与工商信息。",
+    "en": "Contracts, transaction records, internal communications, and company registration records.",
+    "sources": [
+      "models/models.js.cases.4.stages.0"
+    ]
+  },
+  {
+    "zh": "交叉核验异常交易和实体关联，制定调查计划与访谈提纲。",
+    "en": "Cross-check unusual transactions and entity relationships, and prepare investigation plans and interview outlines.",
+    "sources": [
+      "models/models.js.cases.4.stages.1"
+    ]
+  },
+  {
+    "zh": "附证据索引的调查报告与待核实事项。",
+    "en": "Investigation reports with evidence indexes and items requiring verification.",
+    "sources": [
+      "models/models.js.cases.4.stages.2"
+    ]
+  },
+  {
+    "zh": "法医、毒理与事故调查",
+    "en": "Forensic medicine, toxicology & accident investigation",
+    "sources": [
+      "models/models.js.cases.5.name"
+    ]
+  },
+  {
+    "zh": "推演发生机制\n设计验证路径",
+    "en": "Explain mechanisms and plan tests",
+    "sources": [
+      "models/models.js.cases.5.task"
+    ]
+  },
+  {
+    "zh": "机制假设",
+    "en": "Mechanistic hypotheses",
+    "sources": [
+      "models/models.js.cases.5.outputs.0"
+    ]
+  },
+  {
+    "zh": "补充检验方案",
+    "en": "Follow-up testing plans",
+    "sources": [
+      "models/models.js.cases.5.outputs.1"
+    ]
+  },
+  {
+    "zh": "检验结果、现场记录与专业文献。",
+    "en": "Examination results, scene records, and specialist literature.",
+    "sources": [
+      "models/models.js.cases.5.stages.0"
+    ]
+  },
+  {
+    "zh": "构建竞争性解释，推演因果链条，识别可区分不同机制的关键证据。",
+    "en": "Develop competing explanations, examine causal chains, and identify evidence that distinguishes possible mechanisms.",
+    "sources": [
+      "models/models.js.cases.5.stages.1"
+    ]
+  },
+  {
+    "zh": "机制假设、鉴别问题与补充检验方案。",
+    "en": "Mechanistic hypotheses, questions that distinguish competing explanations, and follow-up testing plans.",
+    "sources": [
+      "models/models.js.cases.5.stages.2"
+    ]
+  },
+  {
+    "zh": "材料与工业化学研究",
+    "en": "Materials & industrial chemistry research",
+    "sources": [
+      "models/models.js.cases.6.name"
+    ]
+  },
+  {
+    "zh": "探索材料工艺\n推动研发迭代",
+    "en": "Explore materials and processes. Advance R&D.",
+    "sources": [
+      "models/models.js.cases.6.task"
+    ]
+  },
+  {
+    "zh": "实验矩阵",
+    "en": "Experimental matrices",
+    "sources": [
+      "models/models.js.cases.6.outputs.0"
+    ]
+  },
+  {
+    "zh": "仿真脚本",
+    "en": "Simulation scripts",
+    "sources": [
+      "models/models.js.cases.6.outputs.1"
+    ]
+  },
+  {
+    "zh": "研究文献、材料数据库、实验与仿真工具。",
+    "en": "Research literature, materials databases, and experimental and simulation tools.",
+    "sources": [
+      "models/models.js.cases.6.stages.0"
+    ]
+  },
+  {
+    "zh": "提出配方和机理假设，编写仿真脚本，设计实验矩阵并据结果修订方案。",
+    "en": "Propose formulations and hypotheses about mechanisms, write simulation scripts, design experimental matrices, and revise plans based on the results.",
+    "sources": [
+      "models/models.js.cases.6.stages.1"
+    ]
+  },
+  {
+    "zh": "候选方案、实验矩阵与可复现的数据处理脚本。",
+    "en": "Candidate approaches, experimental matrices, and reproducible data-processing scripts.",
+    "sources": [
+      "models/models.js.cases.6.stages.2"
+    ]
+  },
+  {
+    "zh": "生命科学与生物医学研究",
+    "en": "Life sciences & biomedical research",
+    "sources": [
+      "models/models.js.cases.7.name"
+    ]
+  },
+  {
+    "zh": "形成研究假设\n推进实验验证",
+    "en": "Develop hypotheses and test them through experiments",
+    "sources": [
+      "models/models.js.cases.7.task"
+    ]
+  },
+  {
+    "zh": "实验设计",
+    "en": "Experimental designs",
+    "sources": [
+      "models/models.js.cases.7.outputs.0"
+    ]
+  },
+  {
+    "zh": "研究脚本",
+    "en": "Research scripts",
+    "sources": [
+      "models/models.js.cases.7.outputs.1"
+    ]
+  },
+  {
+    "zh": "文献、生物数据库与实验数据。",
+    "en": "Literature, biological databases, and experimental data.",
+    "sources": [
+      "models/models.js.cases.7.stages.0"
+    ]
+  },
+  {
+    "zh": "建立机制假设和研究优先级，设计实验与数据处理流程，随反馈迭代。",
+    "en": "Develop mechanistic hypotheses, set research priorities, design experiments and data-processing workflows, and refine them based on feedback.",
+    "sources": [
+      "models/models.js.cases.7.stages.1"
+    ]
+  },
+  {
+    "zh": "实验设计、可复现脚本与研究方案。",
+    "en": "Experimental designs, reproducible scripts, and research plans.",
+    "sources": [
+      "models/models.js.cases.7.stages.2"
+    ]
+  },
+  {
+    "zh": "社会学、犯罪学与伦理研究",
+    "en": "Sociology, criminology & ethics",
+    "sources": [
+      "models/models.js.cases.8.name"
+    ]
+  },
+  {
+    "zh": "构建研究设计\n检验制度影响",
+    "en": "Design studies and examine institutional effects",
+    "sources": [
+      "models/models.js.cases.8.task"
+    ]
+  },
+  {
+    "zh": "研究设计",
+    "en": "Study designs",
+    "sources": [
+      "models/models.js.cases.8.outputs.0"
+    ]
+  },
+  {
+    "zh": "理论检验报告",
+    "en": "Theory-testing reports",
+    "sources": [
+      "models/models.js.cases.8.outputs.1"
+    ]
+  },
+  {
+    "zh": "访谈、案例、统计数据与理论文献。",
+    "en": "Interviews, cases, statistical data, and theoretical literature.",
+    "sources": [
+      "models/models.js.cases.8.stages.0"
+    ]
+  },
+  {
+    "zh": "制定抽样方案，执行质性编码与统计建模，检验解释并推演制度影响。",
+    "en": "Develop sampling plans, code qualitative data, build statistical models, test explanations, and examine the effects of institutions.",
+    "sources": [
+      "models/models.js.cases.8.stages.1"
+    ]
+  },
+  {
+    "zh": "研究设计、模型结果与有证据支撑的论证。",
+    "en": "Study designs, model results, and arguments supported by evidence.",
+    "sources": [
+      "models/models.js.cases.8.stages.2"
+    ]
+  },
+  {
+    "zh": "Gated DeltaNet 递归记忆",
+    "en": "Gated DeltaNet recurrent memory",
+    "sources": [
+      "models/models.js.optimizationItems.0"
+    ]
+  },
+  {
+    "zh": "以递归状态承接历史信息，减少缓存占用，并通过分块计算加快输入处理。",
+    "en": "Carry history in recurrent state to reduce cache use, with chunked computation to accelerate input processing.",
+    "sources": [
+      "models/models.js.optimizationItems.0.benefit"
+    ]
+  },
+  {
+    "zh": "Gated DeltaNet 将遗忘门控与 Delta 更新规则结合：门控调节旧状态的保留程度，Delta 规则用新信息修正当前状态的预测误差。GDN 层以固定规模的状态承接历史信息，避免逐 token 累积完整的键值缓存。",
+    "en": "Gated DeltaNet combines a forget gate with the delta update rule. The gate controls how much of the previous state is retained; the delta rule uses new information to correct the state’s prediction error. Each GDN layer stores history in a fixed-size state rather than growing a full key-value cache with every token.",
+    "sources": [
+      "models/models.js.optimizationItems.0.detail.0"
+    ]
+  },
+  {
+    "zh": "两款模型都以三个 GDN 层搭配一个注意力层。GDN 支持预填充阶段的分块并行与解码阶段的递归更新；注意力层保留对上下文细节的检索路径。状态记忆与注意力检索互补，共同处理长文档与多轮任务。",
+    "en": "Both models pair three GDN layers with one attention layer. GDN supports chunk-parallel prefill and recurrent updates during decode; attention retrieves details from the context. Recurrent memory and attention-based retrieval work together to process long documents and multi-turn tasks.",
+    "sources": [
+      "models/models.js.optimizationItems.0.detail.1"
+    ]
+  },
+  {
+    "zh": "引擎采用 WY 分块计算组织预填充，复用块内状态与输入，减少逐 token 更新中的重复访问。递归状态以 BF16 存储，在 FP32 中完成更新与累加，降低状态读写和并发请求的内存占用。",
+    "en": "The engine uses WY chunked computation for prefill, reusing state and inputs within each chunk to reduce repeated access during token-by-token updates. Recurrent state is stored in BF16, with updates and accumulation performed in FP32, reducing state traffic and memory use across concurrent requests.",
+    "sources": [
+      "models/models.js.optimizationItems.0.detail.2"
+    ]
+  },
+  {
+    "zh": "全局注意力与稠密计算",
+    "en": "Global attention & dense computation",
+    "sources": [
+      "models/models.js.optimizationItems.1"
+    ]
+  },
+  {
+    "zh": "全局检索连接上下文细节，规整的前馈计算便于持续执行与算子融合。",
+    "en": "Global attention retrieves details across the context; a regular feed-forward path supports sustained execution and operator fusion.",
+    "sources": [
+      "models/models.js.optimizationItems.1.benefit"
+    ]
+  },
+  {
+    "zh": "RMQ3x 在 GDN 之间保留 Gated Attention 层，对因果范围内的上下文计算全局注意力，再通过输出门控调节检索结果的贡献。每个 token 经过完整的稠密前馈网络，计算路径无需专家路由与重排。",
+    "en": "RMQ3x retains Gated Attention layers between GDN layers. These attend across the causal context, with an output gate controlling the contribution of retrieved information. Every token passes through the full dense feed-forward network, without expert routing or token reordering.",
+    "sources": [
+      "models/models.js.optimizationItems.1.detail.0"
+    ]
+  },
+  {
+    "zh": "引擎将 Q、K、V 投影合并为一次矩阵运算，将 QK 归一化与 RoPE 位置编码融合执行。单 token 解码中，输入 RMSNorm 与投影计算共用片上数据；SwiGLU、输出投影和残差相加按执行路径融合，减少中间张量的写回、读取与算子启动。",
+    "en": "The engine merges Q, K, and V projections into one matrix operation and fuses QK normalization with RoPE positional encoding. During single-token decoding, input RMSNorm and projection computation share on-chip data. SwiGLU, output projections, and residual addition are fused where the execution path allows, reducing intermediate tensor writes, reads, and kernel launches.",
+    "sources": [
+      "models/models.js.optimizationItems.1.detail.1"
+    ]
+  },
+  {
+    "zh": "QSA 块级稀疏注意力",
+    "en": "QSA block-sparse attention",
+    "sources": [
+      "models/models.js.optimizationItems.2"
+    ]
+  },
+  {
+    "zh": "先定位相关上下文，再读取原始 token，将注意力计算集中到选中的内容。",
+    "en": "Find relevant context blocks, then attend to their original tokens to focus computation on selected content.",
+    "sources": [
+      "models/models.js.optimizationItems.2.benefit"
+    ]
+  },
+  {
+    "zh": "QSA（Qwen Sparse Attention）通过轻量索引器，将历史键压缩为微块表示并评估相关性。选中的微块展开为原始 token 位置，交由主注意力模块计算；当前尚未填满的尾部块也参与计算。块级索引缩短了候选序列，细粒度注意力则保留对原始内容的读取。",
+    "en": "QSA (Qwen Sparse Attention) uses a lightweight indexer to compress past keys into micro-block representations and score their relevance. Selected blocks are mapped back to their original token positions for the main attention computation, along with the current incomplete tail block. Block indexing shortens the candidate sequence; token-level attention preserves access to the original content.",
+    "sources": [
+      "models/models.js.optimizationItems.2.detail.0"
+    ]
+  },
+  {
+    "zh": "RMQ4 用 QSA 承担 GDN 之外的上下文检索。工程重点贯穿块级索引、Top-k 选择、稀疏键值访问与注意力计算，控制索引成本和访存开销，使长上下文中的检索更有针对性。",
+    "en": "QSA handles context retrieval alongside GDN in RMQ4. Optimization covers block indexing, top-k selection, sparse key-value access, and attention computation to control indexing and memory-access costs while focusing retrieval on relevant context.",
+    "sources": [
+      "models/models.js.optimizationItems.2.detail.1"
+    ]
+  },
+  {
+    "zh": "稀疏专家与 Fused MoE",
+    "en": "Sparse experts & Fused MoE",
+    "sources": [
+      "models/models.js.optimizationItems.3"
+    ]
+  },
+  {
+    "zh": "每个 token 调用部分路由专家与共享专家，让模型容量与单次计算成本分开扩展。",
+    "en": "Each token activates selected routed experts and a shared expert, allowing model capacity to scale separately from per-token computation.",
+    "sources": [
+      "models/models.js.optimizationItems.3.benefit"
+    ]
+  },
+  {
+    "zh": "RMQ4 的路由器根据 token 表征选择专家，由被选中的专家与共享专家参与前馈计算，再将结果加权汇总。稀疏激活让模型容纳更多专家，同时控制每个 token 的计算量；完整权重仍需相应的存储与访问机制。",
+    "en": "RMQ4 selects experts based on each token’s representation. The selected experts and a shared expert perform feed-forward computation, and a weighted sum combines their outputs. Sparse activation supports a larger expert pool while limiting per-token computation. The full set of weights still needs storage and an access mechanism.",
+    "sources": [
+      "models/models.js.optimizationItems.3.detail.0"
+    ]
+  },
+  {
+    "zh": "Fused MoE 按专家归组与重排 token，将共享同一专家的输入合并计算，复用专家权重。引擎根据专家负载选择 GEMV 或 GEMM，并融合门控激活与加权归并，减少零散的小规模计算和中间结果搬运，保持路由关系与专家计算的语义。",
+    "en": "Fused MoE groups and reorders tokens by expert, combining inputs assigned to the same expert to reuse its weights. The engine selects GEMV or GEMM according to expert workload and fuses gated activation and weighted reduction. This reduces fragmented small operations and movement of intermediate results while preserving routing and expert-computation semantics.",
+    "sources": [
+      "models/models.js.optimizationItems.3.detail.1"
+    ]
+  },
+  {
+    "zh": "量化专家权重在加载时写入预分配的打包缓冲区，避免逐张量分配后再次搬运。专家的 Gate 与 Up 投影共享布局，让模型加载与推理计算使用同一套数据组织，缩短启动准备并减少内存开销。",
+    "en": "Quantized expert weights load into preallocated packed buffers, avoiding separate allocations and a second round of copies for each tensor. Gate and up projections share a layout, so loading and inference use the same data organization to reduce startup preparation and memory overhead.",
+    "sources": [
+      "models/models.js.optimizationItems.3.detail.2"
+    ]
+  },
+  {
+    "zh": "Gated Residual 门控残差",
+    "en": "Gated Residual",
+    "sources": [
+      "models/models.js.optimizationItems.4"
+    ]
+  },
+  {
+    "zh": "通过多分支残差与动态读写门控，调节各层接收和保留的信息。",
+    "en": "Use multiple residual branches and dynamic read-write gates to control what each layer receives and retains.",
+    "sources": [
+      "models/models.js.optimizationItems.4.benefit"
+    ]
+  },
+  {
+    "zh": "Gated Residual 将残差流扩展为多个分支。读取时，各分支分别归一化，按输入生成逐通道门控，再聚合为当前计算模块的输入；写入时，为每个分支生成标量权重，控制模块输出加入该分支的程度。",
+    "en": "Gated Residual widens the residual stream into multiple branches. Each read normalizes the branches, applies input-dependent gates to their channels, and aggregates them into the current block’s input. Each write assigns a scalar weight to each branch to control how much of the block output it receives.",
+    "sources": [
+      "models/models.js.optimizationItems.4.detail.0"
+    ]
+  },
+  {
+    "zh": "这种结构把跨层信息选择细化到分支与通道，增强深层网络的信息传递能力。读门控与归一化共用计算路径，分支不再经过额外的残差混合矩阵，减少宽残差流的重复读取。",
+    "en": "Branch- and channel-level selection improves information flow through deep networks. Read gating shares a computation path with normalization. Removing the additional residual-mixing matrix reduces repeated reads of the widened residual stream.",
+    "sources": [
+      "models/models.js.optimizationItems.4.detail.1"
+    ]
+  },
+  {
+    "zh": "N-gram 条件记忆",
+    "en": "N-gram conditional memory",
+    "sources": [
+      "models/models.js.optimizationItems.5"
+    ]
+  },
+  {
+    "zh": "用局部 token 组合检索嵌入表，以较少的额外计算扩展模型表达容量。",
+    "en": "Look up local token combinations in an embedding table to expand representational capacity with little extra computation.",
+    "sources": [
+      "models/models.js.optimizationItems.5.benefit"
+    ]
+  },
+  {
+    "zh": "N-gram 嵌入以当前 token 及其相邻前文构成短序列，生成确定的查表索引。取出的向量经投影与门控注入模型表征，让输入同时携带单 token 信息与局部组合特征。嵌入表中的知识来自训练，推理时按索引读取。",
+    "en": "N-gram embeddings combine the current token with nearby preceding tokens to form short sequences and deterministic lookup indices. Retrieved vectors are projected and gated into the model representation, adding features from local token combinations to individual-token information. The embedding table is learned during training and read by index during inference.",
+    "sources": [
+      "models/models.js.optimizationItems.5.detail.0"
+    ]
+  },
+  {
+    "zh": "这类容量扩展主要增加查表与投影开销，无需为每次访问执行完整专家网络。确定的索引便于将嵌入预取与前序层计算重叠。工程重点是查表带宽、数据布局和存储调度，控制大容量嵌入带来的访问成本。",
+    "en": "Most of the added cost comes from lookup and projection, without running a full expert network for each access. Deterministic indices let embedding prefetch overlap with computation in earlier layers. Optimization focuses on lookup bandwidth, data layout, and memory scheduling to control the cost of accessing a large embedding table.",
+    "sources": [
+      "models/models.js.optimizationItems.5.detail.1"
+    ]
+  },
+  {
+    "zh": "面向硬件的计算路径",
+    "en": "Hardware-specific computation paths",
+    "sources": [
+      "models/models.js.optimizationItems.6"
+    ]
+  },
+  {
+    "zh": "按计算规模组织算子与数据，让 GPU、内存带宽和缓存共同服务于模型推理。",
+    "en": "Organize kernels and data by workload size to put GPU compute, memory bandwidth, and caches to work on inference.",
+    "sources": [
+      "models/models.js.optimizationItems.6.benefit"
+    ]
+  },
+  {
+    "zh": "单 token 解码、小批量验证与大批量输入采用不同的计算路径。引擎按矩阵规模选择专用 GEMV、cuBLAS 或 CUTLASS GEMM，结合线程布局、向量化访存与缓存复用，匹配 RM-01 的 GPU 执行和内存结构。小批量计算利用 L2 缓存复用输入，减少共享内存占用对并行度的影响。",
+    "en": "Single-token decoding, small-batch verification, and large input batches use different computation paths. The engine selects specialized GEMV, cuBLAS, or CUTLASS GEMM by matrix size, combining thread layouts, vectorized memory access, and cache reuse to match RM-01’s GPU and memory architecture. Small batches reuse inputs through the L2 cache, reducing the impact of shared-memory use on parallelism.",
+    "sources": [
+      "models/models.js.optimizationItems.6.detail.0"
+    ]
+  },
+  {
+    "zh": "NVFP4（W4A16）以 4 位格式存储权重，配合 16 位激活参与计算。专用算子通过查表解码、向量化加载与投影合并降低权重访问成本。模型加载根据可用内存和权重分片大小选择映射与预读方式，使精度、容量和访问开销共同纳入推理设计。",
+    "en": "NVFP4 (W4A16) stores weights in a 4-bit format for computation with 16-bit activations. Specialized kernels use lookup-table decoding, vectorized loads, and merged projections to reduce weight-access costs. Loading selects memory-mapping and prefetch strategies according to available memory and shard size, bringing precision, capacity, and access costs into the inference design.",
+    "sources": [
+      "models/models.js.optimizationItems.6.detail.1"
+    ]
+  },
+  {
+    "zh": "多 token 预测与验证",
+    "en": "Multi-token prediction & verification",
+    "sources": [
+      "models/models.js.optimizationItems.7"
+    ]
+  },
+  {
+    "zh": "一次验证处理多个候选 token，减少生成过程中的重复计算与同步等待。",
+    "en": "Verify multiple candidate tokens in one pass to reduce repeated computation and synchronization during generation.",
+    "sources": [
+      "models/models.js.optimizationItems.7.benefit"
+    ]
+  },
+  {
+    "zh": "MTP 在 GPU 上生成候选 token，草稿链中的后续步骤使用前一步结果，减少 CPU 与 GPU 之间的同步。主模型批量验证草稿，接受匹配的连续前缀，再输出修正或追加的 token。小批量验证使用多行 GEMV，共享权重读取，降低验证开销。",
+    "en": "MTP generates candidate tokens on the GPU, feeding each draft step from the previous result to reduce CPU–GPU synchronization. The main model verifies the drafts in a batch, accepts the matching prefix, and emits a corrected or additional token. Small-batch verification uses multi-row GEMV to share weight reads and reduce verification overhead.",
+    "sources": [
+      "models/models.js.optimizationItems.7.detail.0"
+    ]
+  },
+  {
+    "zh": "对于 GDN 等有状态结构，引擎在验证过程中保存递归状态与卷积状态的检查点。当草稿部分通过时，恢复对应位置的状态，再继续生成。单请求采用投机解码，多请求切换批量解码，使预测、验证与权重复用匹配当前负载。",
+    "en": "For stateful architectures such as GDN, the engine checkpoints recurrent and convolution states during verification. When only part of a draft is accepted, it restores the state at that position before continuing. Single requests use speculative decoding; multiple requests switch to batched decoding, matching prediction, verification, and weight reuse to the workload.",
+    "sources": [
+      "models/models.js.optimizationItems.7.detail.1"
+    ]
+  },
+  {
+    "zh": "上下文与并发调度",
+    "en": "Context & concurrency scheduling",
+    "sources": [
+      "models/models.js.optimizationItems.8"
+    ]
+  },
+  {
+    "zh": "复用前序计算，合并并发请求，让有限内存与带宽承接更多任务。",
+    "en": "Reuse prior computation and batch concurrent requests so finite memory and bandwidth can serve more tasks.",
+    "sources": [
+      "models/models.js.optimizationItems.8.benefit"
+    ]
+  },
+  {
+    "zh": "分页 KV Cache 与递归状态管理保存各请求的计算进度，前缀缓存复用重复输入。长上下文采用分块预填充，并通过内存与 SSD 分层存储管理历史状态；流式注意力分批读取 SSD 中的键值块，合并各部分的注意力结果，扩展上下文容量。",
+    "en": "Paged KV cache and recurrent-state management retain each request’s progress, while prefix caching reuses repeated input. Long contexts use chunked prefill and memory–SSD storage tiers to manage historical state. Streaming attention reads key-value blocks from SSD in batches and merges partial attention results to extend context capacity.",
+    "sources": [
+      "models/models.js.optimizationItems.8.detail.0"
+    ]
+  },
+  {
+    "zh": "等长短输入可合并为一次批量 prefill，多个请求的输出投影也合并计算，减少权重重复读取和首字等待。连续批处理在生成阶段复用计算资源，各请求保留自己的上下文与状态，让文档处理、多轮交互和并发任务共用一套推理服务。",
+    "en": "Short inputs of equal length can share one batched prefill pass. Output projections are also combined across requests, reducing repeated weight reads and time to first token. Continuous batching shares compute resources during generation while each request retains its own context and state, bringing document processing, multi-turn interaction, and concurrent tasks into one inference service.",
+    "sources": [
+      "models/models.js.optimizationItems.8.detail.1"
+    ]
+  },
+  {
+    "zh": "领域适配与 Agent 训练",
+    "en": "Domain adaptation & agent training",
+    "sources": [
+      "models/models.js.optimizationItems.9"
+    ]
+  },
+  {
+    "zh": "围绕专业材料、任务轨迹与执行反馈，训练分析、工具使用和结果核查能力。",
+    "en": "Train analysis, tool use, and result verification with domain material, task trajectories, and execution feedback.",
+    "sources": [
+      "models/models.js.optimizationItems.9.benefit"
+    ]
+  },
+  {
+    "zh": "监督微调（SFT）将专业材料组织为问题分析、证据关联、工具调用与成果交付的任务轨迹。训练覆盖多轮对话、结构化输出与执行失败后的修正，对助手回答和动作施加监督，让模型学习完整的任务过程。LoRA 低秩适配与全参微调用于不同范围的权重更新。",
+    "en": "Supervised fine-tuning (SFT) uses task trajectories built from domain material, covering problem analysis, evidence synthesis, tool calls, and delivery. Training supervises assistant responses and actions across multi-turn dialogue, structured outputs, and recovery from execution failures to teach the full task process. Low-rank adaptation (LoRA) and full-parameter fine-tuning offer different approaches to updating weights.",
+    "sources": [
+      "models/models.js.optimizationItems.9.detail.0"
+    ]
+  },
+  {
+    "zh": "直接偏好优化（DPO）比较同一问题下的候选结果，将证据充分性、推理一致性和指令遵循纳入训练目标。对代码、计算与工具执行等可验证任务，GRPO 类强化学习利用结果反馈优化策略，并通过保留集检查专业能力与通用能力的变化。",
+    "en": "Direct Preference Optimization (DPO) uses preferences between responses to the same problem, with evidence quality, reasoning consistency, and instruction following as training criteria. For coding, computation, and tool tasks with verifiable outcomes, GRPO-style reinforcement learning uses result feedback to refine the policy. Held-out evaluations track changes in domain and general capabilities.",
+    "sources": [
+      "models/models.js.optimizationItems.9.detail.1"
+    ]
+  },
+  {
+    "zh": "价值观与安全对齐调整",
+    "en": "Adjusting value & safety alignment",
+    "sources": [
+      "models/models.js.optimizationItems.10"
+    ]
+  },
+  {
+    "zh": "结合偏好重塑与拒答表征干预，解除预设对齐对专业问题的响应限制，并控制对原有能力的扰动。",
+    "en": "Reshape preferences and edit refusal-related representations to remove preset alignment constraints on professional tasks and limit disruption to existing capabilities.",
+    "sources": [
+      "models/models.js.optimizationItems.10.benefit"
+    ]
+  },
+  {
+    "zh": "RMQ3x 与 RMQ4 针对基座模型的价值观与安全对齐进行后训练。SFT 通过任务示范训练直接回答、证据辨析和指令执行；DPO 通过回答对的偏好关系，调整预设立场、回避表达与泛化拒答。训练目标围绕问题证据和用户任务设定，使模型能够讨论争议内容、比较不同观点并完成专业分析。",
+    "en": "RMQ3x and RMQ4 use post-training to adjust their base models’ value and safety alignment. SFT uses task demonstrations to teach direct answers, evidence analysis, and instruction following. DPO uses preferences between paired responses to adjust predefined stances, evasive language, and overgeneralized refusals. Training objectives center on the evidence and the user’s task so models can discuss contested topics, compare viewpoints, and conduct professional analysis.",
+    "sources": [
+      "models/models.js.optimizationItems.10.detail.0"
+    ]
+  },
+  {
+    "zh": "Abliteration 从对照样本的中间激活中提取拒答相关方向，对写入残差流的权重实施定向编辑。按层与表征结构采用单方向投影、SVD 多方向子空间及 LEACE 线性概念擦除；结合分层强度搜索、投影修正、范数保持与权重融合控制干预，并针对残余拒答行为迭代校正。",
+    "en": "Abliteration extracts refusal-related directions from intermediate activations of contrasting examples and edits weights that write into the residual stream. We select single-direction projection, SVD-based multidirectional subspaces, and LEACE linear concept erasure to suit each layer and representation structure. Layer-wise strength search, projection refinement, norm preservation, and weight blending control the intervention. Successive edits target remaining refusal behavior.",
+    "sources": [
+      "models/models.js.optimizationItems.10.detail.1"
+    ]
+  },
+  {
+    "zh": "干预位置按架构适配：RMQ3x 处理注意力与稠密前馈输出；RMQ4 处理融合专家张量、共享专家与多分支残差，并区分嵌入投影和门控路径。以响应表现、KL 散度和任务评测共同选择编辑强度，通过中文、推理、代码、工具调用与长任务评测检查能力保持。",
+    "en": "Edit targets follow each architecture: attention and dense feed-forward outputs in RMQ3x; fused expert tensors, shared experts, and multiple residual branches in RMQ4. Embedding projections are treated separately from gating paths. Response behavior, KL divergence, and task evaluations guide edit strength. Evaluations of Chinese-language performance, reasoning, coding, tool use, and long-horizon tasks check capability retention.",
+    "sources": [
+      "models/models.js.optimizationItems.10.detail.2"
+    ]
+  },
+  {
+    "zh": "日常管理",
+    "en": "Daily administration",
+    "sources": [
+      "scripts/build-guides.mjs.guideConfig.admin.label",
+      "guides/admin.html:77"
+    ]
+  },
+  {
+    "zh": "TianshanOS admin 日常使用指南",
+    "en": "TianshanOS Admin User Guide",
+    "sources": [
+      "scripts/build-guides.mjs.guideConfig.admin.title",
+      "guides/admin.html:12",
+      "guides/admin.html:16",
+      "guides/admin.html:78"
+    ]
+  },
+  {
+    "zh": "面向使用 admin 账户管理 TianshanOS 的用户，覆盖系统状态、设备面板、网络、文件与 OTA 更新。",
+    "en": "For users managing TianshanOS with the admin account, covering system status, devices, networking, files, and OTA updates.",
+    "sources": [
+      "scripts/build-guides.mjs.guideConfig.admin.description",
+      "guides/admin.html:11",
+      "guides/admin.html:13",
+      "guides/admin.html:79"
+    ]
+  },
+  {
+    "zh": "9 个章节",
+    "en": "9 chapters",
+    "sources": [
+      "scripts/build-guides.mjs.guideConfig.admin.chapterCount",
+      "guides/index.html:108",
+      "guides/admin.html:81"
+    ]
+  },
+  {
+    "zh": "继续阅读 root 指南",
+    "en": "Continue to the root guide",
+    "sources": [
+      "scripts/build-guides.mjs.guideConfig.admin.next",
+      "guides/admin.html:1468"
+    ]
+  },
+  {
+    "zh": "系统运维",
+    "en": "System operations",
+    "sources": [
+      "scripts/build-guides.mjs.guideConfig.root.label",
+      "guides/root.html:77"
+    ]
+  },
+  {
+    "zh": "TianshanOS root 运维指南",
+    "en": "TianshanOS root Operations Guide",
+    "sources": [
+      "scripts/build-guides.mjs.guideConfig.root.title",
+      "guides/root.html:12",
+      "guides/root.html:16",
+      "guides/root.html:78"
+    ]
+  },
+  {
+    "zh": "面向使用 root 账户管理 TianshanOS 的运维人员，包含共用日常功能以及终端、指令与自动化。",
+    "en": "For operators managing TianshanOS with the root account, including shared daily tasks, terminal, commands, and automation.",
+    "sources": [
+      "scripts/build-guides.mjs.guideConfig.root.description",
+      "guides/root.html:11",
+      "guides/root.html:13",
+      "guides/root.html:79"
+    ]
+  },
+  {
+    "zh": "12 个章节",
+    "en": "12 chapters",
+    "sources": [
+      "scripts/build-guides.mjs.guideConfig.root.chapterCount",
+      "guides/root.html:81"
+    ]
+  },
+  {
+    "zh": "继续阅读安全指南",
+    "en": "Continue to the Security guide",
+    "sources": [
+      "scripts/build-guides.mjs.guideConfig.root.next",
+      "guides/root.html:2321"
+    ]
+  },
+  {
+    "zh": "安全管理",
+    "en": "Security operations",
+    "sources": [
+      "scripts/build-guides.mjs.guideConfig.security.label",
+      "guides/security.html:77"
+    ]
+  },
+  {
+    "zh": "TianshanOS 安全页面完整操作指南",
+    "en": "TianshanOS Security Page Guide",
+    "sources": [
+      "scripts/build-guides.mjs.guideConfig.security.title",
+      "guides/security.html:12",
+      "guides/security.html:16",
+      "guides/security.html:78"
+    ]
+  },
+  {
+    "zh": "面向个人用户、安全管理员与设备运维工程师，说明安全页面能做什么、不能做什么，以及如何验证每次关键操作。",
+    "en": "For individual users, security administrators, and device operators. Learn what the Security page can and cannot do, and how to verify every critical action.",
+    "sources": [
+      "scripts/build-guides.mjs.guideConfig.security.description",
+      "guides/security.html:11",
+      "guides/security.html:13",
+      "guides/security.html:79"
+    ]
+  },
+  {
+    "zh": "8 个章节",
+    "en": "8 chapters",
+    "sources": [
+      "scripts/build-guides.mjs.guideConfig.security.chapterCount",
+      "guides/security.html:81"
+    ]
+  },
+  {
+    "zh": "继续阅读 Admin 指南",
+    "en": "Continue to the Admin guide",
+    "sources": [
+      "scripts/build-guides.mjs.guideConfig.security.next",
+      "scripts/build-guides.mjs.guideConfig.network.next",
+      "guides/network.html:1049",
+      "guides/security.html:1265"
+    ]
+  },
+  {
+    "zh": "网络连接",
+    "en": "Network connectivity",
+    "sources": [
+      "scripts/build-guides.mjs.guideConfig.network.label",
+      "guides/network.html:77"
+    ]
+  },
+  {
+    "zh": "RM-01 网络配置指南",
+    "en": "RM-01 Network Configuration Guide",
+    "sources": [
+      "scripts/build-guides.mjs.guideConfig.network.title",
+      "guides/network.html:12",
+      "guides/network.html:16",
+      "guides/network.html:78"
+    ]
+  },
+  {
+    "zh": "说明 C1 与 C3 两条网络连接路径，以及用户设备接入、AI 辅助网络共享和整机接入上层网络的方法。",
+    "en": "Explains the C1 and C3 network paths, device access, AI-assisted internet sharing, and how to connect the complete RM-01 system to an upstream network.",
+    "sources": [
+      "scripts/build-guides.mjs.guideConfig.network.description",
+      "guides/network.html:11",
+      "guides/network.html:13",
+      "guides/network.html:79"
+    ]
+  },
+  {
+    "zh": "7 个章节",
+    "en": "7 chapters",
+    "sources": [
+      "scripts/build-guides.mjs.guideConfig.network.chapterCount",
+      "guides/network.html:81"
+    ]
+  },
+  {
+    "zh": "在 GitHub 查看网络自动化项目",
+    "en": "View the network automation project on GitHub",
+    "sources": [
+      "scripts/build-guides.mjs.guideConfig.network.sourceLink"
+    ]
+  },
+  {
+    "zh": "RM-01 便携 AI 超算，面向本地部署、低功耗推理和生产级 AI 应用交付。",
+    "en": "RM-01 Portable AI Supercomputer for local deployment, low-power inference, and production AI applications.",
+    "sources": [
+      "index.html:11",
+      "index.html:13"
+    ]
+  },
+  {
+    "zh": "RM-01 便携 AI 超算 · RMinte",
+    "en": "RM-01 Portable AI Supercomputer · RMinte",
+    "sources": [
+      "index.html:12",
+      "index.html:15"
+    ]
+  },
+  {
+    "zh": "跳至主要内容",
+    "en": "Skip to main content",
+    "sources": [
+      "index.html:45"
+    ]
+  },
+  {
+    "zh": "主导航",
+    "en": "Main navigation",
+    "sources": [
+      "index.html:47",
+      "models/index.html:26",
+      "gallery/index.html:35",
+      "downloads/index.html:36",
+      "guides/index.html:35",
+      "guides/admin.html:36",
+      "guides/root.html:36",
+      "guides/network.html:36",
+      "guides/security.html:36",
+      "scripts/build-guides.mjs:439",
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "页面导航",
+    "en": "Page navigation",
+    "sources": [
+      "index.html:51",
+      "models/index.html:28",
+      "gallery/index.html:39",
+      "downloads/index.html:40",
+      "guides/index.html:39",
+      "guides/admin.html:40",
+      "guides/root.html:40",
+      "guides/network.html:40",
+      "guides/security.html:40",
+      "scripts/build-guides.mjs:443",
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "打开菜单",
+    "en": "Open menu",
+    "sources": [
+      "index.html:54",
+      "models/index.html:38",
+      "gallery/index.html:49",
+      "downloads/index.html:50",
+      "guides/index.html:49",
+      "guides/admin.html:50",
+      "guides/root.html:50",
+      "guides/network.html:50",
+      "guides/security.html:50",
+      "scripts/build-guides.mjs:453",
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "移动导航",
+    "en": "Mobile navigation",
+    "sources": [
+      "index.html:67",
+      "models/index.html:207",
+      "gallery/index.html:62",
+      "downloads/index.html:63",
+      "guides/index.html:62",
+      "guides/admin.html:63",
+      "guides/root.html:63",
+      "guides/network.html:63",
+      "guides/security.html:63",
+      "scripts/build-guides.mjs:466",
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "RM-01 核心指标",
+    "en": "RM-01 key specifications",
+    "sources": [
+      "index.html:88"
+    ]
+  },
+  {
+    "zh": "推理软件与 CUDA 计算平台的分层示意",
+    "en": "Layered view of inference software and the CUDA computing platform",
+    "sources": [
+      "index.html:105"
+    ]
+  },
+  {
+    "zh": "两台计算机分别经以太网控制器和 PHY 接入板载交换机，ESP32 经 W5500 接入并拥有配置存储；两台计算机各有独立存储。",
+    "en": "Both computers connect to the onboard switch through Ethernet controllers and PHYs. ESP32 connects through W5500 and has configuration storage. Each computer has its own storage.",
+    "sources": [
+      "index.html:124"
+    ]
+  },
+  {
+    "zh": "RM-01 硬件结构滚动帧动画",
+    "en": "Scroll-driven animation of the RM-01 hardware structure",
+    "sources": [
+      "index.html:150"
+    ]
+  },
+  {
+    "zh": "RM-01 硬件结构动态分解",
+    "en": "Animated exploded view of the RM-01 hardware structure",
+    "sources": [
+      "index.html:160"
+    ]
+  },
+  {
+    "zh": "EricLake 定制风扇叶片微距特写",
+    "en": "Macro photograph of an EricLake custom fan blade",
+    "sources": [
+      "index.html:180"
+    ]
+  },
+  {
+    "zh": "RM-01 中央绒光肤感玻璃面板特写",
+    "en": "Close-up of the central soft-touch glass panel on RM-01",
+    "sources": [
+      "index.html:202"
+    ]
+  },
+  {
+    "zh": "RM-01 机身侧后方的数据连接与电源输入接口",
+    "en": "Data connections and power input on the rear side of RM-01",
+    "sources": [
+      "index.html:215"
+    ]
+  },
+  {
+    "zh": "铝合金机身工艺细节",
+    "en": "Aluminium chassis craftsmanship detail",
+    "sources": [
+      "index.html:263"
+    ]
+  },
+  {
+    "zh": "精细喷砂工艺细节",
+    "en": "Fine bead-blasted finish detail",
+    "sources": [
+      "index.html:273"
+    ]
+  },
+  {
+    "zh": "玻璃圆角与铝合金机身装配细节",
+    "en": "Detail of the rounded glass corners and aluminium chassis assembly",
+    "sources": [
+      "index.html:283"
+    ]
+  },
+  {
+    "zh": "工艺公差工艺细节",
+    "en": "Manufacturing tolerance detail",
+    "sources": [
+      "index.html:293"
+    ]
+  },
+  {
+    "zh": "RMQ3x 与 RMQ4，RMinte 专业模型系列。针对性训练、专用推理引擎与架构优化。",
+    "en": "RMQ3x and RMQ4: RMinte’s specialist models with targeted training, dedicated inference engines, and architecture optimization.",
+    "sources": [
+      "models/index.html:13"
+    ]
+  },
+  {
+    "zh": "模型 · RMinte",
+    "en": "Models · RMinte",
+    "sources": [
+      "models/index.html:14",
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "跳至主要内容",
+    "en": "Skip to content",
+    "sources": [
+      "models/index.html:25"
+    ]
+  },
+  {
+    "zh": "RMQ 系列模型",
+    "en": "RMQ MODELS",
+    "sources": [
+      "models/index.html:45"
+    ]
+  },
+  {
+    "zh": "专业分析，更深入。",
+    "en": "Deeper analysis.",
+    "sources": [
+      "models/index.html:46"
+    ]
+  },
+  {
+    "zh": "模型推理，更高效。",
+    "en": "More efficient inference.",
+    "sources": [
+      "models/index.html:46"
+    ]
+  },
+  {
+    "zh": "RMQ3x 与 RMQ4，RMinte 专业模型系列。为法律、调查、安全治理、科研与社会研究打造，连接领域知识、深度推理与工具执行，让 Agent 从理解问题、形成判断走向持续行动，交付文书、代码与研究成果。",
+    "en": "RMQ3x and RMQ4 are RMinte’s specialist models for law, investigations, security and governance, and scientific and social research. They combine domain knowledge, deep reasoning, and tool use so agents can understand problems, form judgments, and act on them to produce documents, code, and research findings.",
+    "sources": [
+      "models/index.html:47"
+    ]
+  },
+  {
+    "zh": "探索模型",
+    "en": "Explore models",
+    "sources": [
+      "models/index.html:49"
+    ]
+  },
+  {
+    "zh": "查看评测",
+    "en": "Benchmarks",
+    "sources": [
+      "models/index.html:50"
+    ]
+  },
+  {
+    "zh": "Dense 与 MoE 架构概念示意",
+    "en": "Conceptual view of dense and MoE architectures",
+    "sources": [
+      "models/index.html:54",
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "RMQ3x Dense：展开或收起结构",
+    "en": "RMQ3x Dense: expand or collapse the structure",
+    "sources": [
+      "models/index.html:55"
+    ]
+  },
+  {
+    "zh": "RMQ4 MoE：展开或收起结构",
+    "en": "RMQ4 MoE: expand or collapse the structure",
+    "sources": [
+      "models/index.html:69"
+    ]
+  },
+  {
+    "zh": "模型介绍",
+    "en": "Model overview",
+    "sources": [
+      "models/index.html:86",
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "专业推理，",
+    "en": "Expert reasoning.",
+    "sources": [
+      "models/index.html:90"
+    ]
+  },
+  {
+    "zh": "驱动实际行动。",
+    "en": "Driving action.",
+    "sources": [
+      "models/index.html:90"
+    ]
+  },
+  {
+    "zh": "针对法律、调查、安全治理、科研与社会研究打造的专业模型。连接方案设计、代码生成、工具调用与结果验证，让 Agent 将专业判断转化为行动，交付文书、代码与研究成果。",
+    "en": "A specialist model for law, investigations, security and governance, and scientific and social research. It combines planning, code generation, tool use, and verification so agents can turn professional judgment into action and produce documents, code, and research findings.",
+    "sources": [
+      "models/index.html:91"
+    ]
+  },
+  {
+    "zh": "理解专业问题",
+    "en": "Understand domain problems",
+    "sources": [
+      "models/index.html:93"
+    ]
+  },
+  {
+    "zh": "联系事实、证据与领域知识，推演因果、检验假设，形成有依据的判断与方案。",
+    "en": "Connect facts, evidence, and domain knowledge to examine cause and effect, test hypotheses, and develop sound judgments and plans.",
+    "sources": [
+      "models/index.html:93"
+    ]
+  },
+  {
+    "zh": "完成实际工作",
+    "en": "Execute tasks",
+    "sources": [
+      "models/index.html:94"
+    ]
+  },
+  {
+    "zh": "制定检索策略，生成数据查询与验证代码，调用专业工具执行任务、检验结果。",
+    "en": "Develop search strategies, generate data queries and validation code, and use specialist tools to execute tasks and verify results.",
+    "sources": [
+      "models/index.html:94"
+    ]
+  },
+  {
+    "zh": "延续任务进程",
+    "en": "Carry tasks forward",
+    "sources": [
+      "models/index.html:95"
+    ]
+  },
+  {
+    "zh": "承接前序发现与执行反馈，修订方案、推进验证，完成调查、研究与业务工作。",
+    "en": "Use prior findings and execution feedback to revise plans, verify results, and complete investigations, research, and business tasks.",
+    "sources": [
+      "models/index.html:95"
+    ]
+  },
+  {
+    "zh": "模型主页即将公布",
+    "en": "Model page coming soon",
+    "sources": [
+      "models/index.html:97",
+      "models/index.html:108",
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "深入复杂问题，",
+    "en": "Explore complex problems.",
+    "sources": [
+      "models/index.html:101"
+    ]
+  },
+  {
+    "zh": "驾驭长程任务。",
+    "en": "Manage long-horizon tasks.",
+    "sources": [
+      "models/index.html:101"
+    ]
+  },
+  {
+    "zh": "为跨领域、多阶段、需要反复验证的专业工作打造，覆盖法律、调查、安全治理、科研与社会研究。衔接任务规划、代码计算、工具使用与研究迭代，保持目标、约束和阶段成果的连续性，让 Agent 推进复杂调查与研究项目，完成从问题到成果的交付。",
+    "en": "Built for complex work in law, investigations, security and governance, and scientific and social research. It connects planning, code execution, tool use, and iterative research across disciplines and stages, retaining goals, constraints, and findings through repeated verification. Agents can carry investigations and research projects from the initial question to the final deliverable.",
+    "sources": [
+      "models/index.html:102"
+    ]
+  },
+  {
+    "zh": "建立完整论证",
+    "en": "Build a complete argument",
+    "sources": [
+      "models/index.html:104"
+    ]
+  },
+  {
+    "zh": "联结不同领域的知识与证据，解释问题机制，检验竞争性假设，形成逻辑严密的专业判断。",
+    "en": "Connect knowledge and evidence across disciplines, explain underlying mechanisms, and test competing hypotheses to reach sound professional judgments.",
+    "sources": [
+      "models/index.html:104"
+    ]
+  },
+  {
+    "zh": "贯通复杂任务",
+    "en": "Coordinate complex tasks",
+    "sources": [
+      "models/index.html:105"
+    ]
+  },
+  {
+    "zh": "统筹调查规划、信息检索、代码计算与结果复核，将阶段性发现转化为后续行动。",
+    "en": "Coordinate investigation planning, information retrieval, code execution, and result verification. Use findings at each stage to guide the next action.",
+    "sources": [
+      "models/index.html:105"
+    ]
+  },
+  {
+    "zh": "推进研究迭代",
+    "en": "Refine the research",
+    "sources": [
+      "models/index.html:106"
+    ]
+  },
+  {
+    "zh": "吸收新增证据、计算结果与实验反馈，修订假设、完善方案，产出可检验的研究成果。",
+    "en": "Incorporate new evidence, computational results, and experimental feedback to revise hypotheses, refine plans, and produce testable research findings.",
+    "sources": [
+      "models/index.html:106"
+    ]
+  },
+  {
+    "zh": "模型评测",
+    "en": "Model benchmarks",
+    "sources": [
+      "models/index.html:114"
+    ]
+  },
+  {
+    "zh": "测评结果即将推出",
+    "en": "Benchmark results coming soon",
+    "sources": [
+      "models/index.html:117"
+    ]
+  },
+  {
+    "zh": "驱动专业 Agent，完成复杂任务。",
+    "en": "Power specialist agents. Complete complex tasks.",
+    "sources": [
+      "models/index.html:122"
+    ]
+  },
+  {
+    "zh": "以 RMQ 构建专业 Agent。连接行业知识、业务系统与专业工具，将专业目标转化为连续行动。",
+    "en": "Build specialist agents with RMQ. Connect domain knowledge, business systems, and specialist tools to turn professional goals into sustained action.",
+    "sources": [
+      "models/index.html:123"
+    ]
+  },
+  {
+    "zh": "推理引擎",
+    "en": "INFERENCE ENGINES",
+    "sources": [
+      "models/index.html:128"
+    ]
+  },
+  {
+    "zh": "专用引擎，释放模型性能。",
+    "en": "Dedicated engines. Unlock model performance.",
+    "sources": [
+      "models/index.html:129"
+    ]
+  },
+  {
+    "zh": "RMQ3x 与 RMQ4 已运行于 RMinte 自研 C++ 推理引擎和深度定制的 vLLM。围绕模型结构与 RM-01 的硬件平台，我们深入优化算子、执行路径与运行时，让模型能力建立在高效的推理实现之上。",
+    "en": "RMQ3x and RMQ4 run on RMinte’s C++ inference engine and a custom vLLM implementation. We tailor kernels, execution paths, and runtimes to the model architectures and RM-01 hardware to turn model capability into efficient inference.",
+    "sources": [
+      "models/index.html:130"
+    ]
+  },
+  {
+    "zh": "自研 C++ 推理实现示意",
+    "en": "Diagram of the dedicated C++ inference engine",
+    "sources": [
+      "models/index.html:133"
+    ]
+  },
+  {
+    "zh": "推理实现",
+    "en": "Inference engines",
+    "sources": [
+      "models/index.html:140",
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "自研 C++",
+    "en": "Our C++ engine",
+    "sources": [
+      "models/index.html:141"
+    ]
+  },
+  {
+    "zh": "vLLM 定制",
+    "en": "Custom vLLM",
+    "sources": [
+      "models/index.html:142"
+    ]
+  },
+  {
+    "zh": "自研 C++ 推理引擎",
+    "en": "Our C++ inference engine",
+    "sources": [
+      "models/index.html:147"
+    ]
+  },
+  {
+    "zh": "更低的运行开销，更高的执行效率。",
+    "en": "Lower runtime overhead. More efficient execution.",
+    "sources": [
+      "models/index.html:148"
+    ]
+  },
+  {
+    "zh": "RMinte 自研 C++ 引擎的 Runner 自身内存开销约为 2 MB，不含模型权重、KV Cache 与上下文等占用。在相同模型、精度与量化配置下，prefill 与 decode 性能均优于我们已优化的 vLLM 实现，兼顾输入处理与逐 token 生成的效率。",
+    "en": "The runner in RMinte’s C++ engine uses about 2 MB of memory, excluding model weights, KV cache, context, and other model allocations. With identical model, precision, and quantization settings, it outperforms our optimized vLLM implementation in both input processing (prefill) and token-by-token generation (decode).",
+    "sources": [
+      "models/index.html:149"
+    ]
+  },
+  {
+    "zh": "匹配硬件，减少数据搬运。",
+    "en": "Match the hardware. Move less data.",
+    "sources": [
+      "models/index.html:150"
+    ]
+  },
+  {
+    "zh": "针对 RM-01 的 GPU、统一内存与缓存结构，我们设计 CUDA 算子，合并投影与相邻运算，并按矩阵规模选择计算路径。权重加载、量化存储与运行时布局共同减少内存分配和中间结果搬运，将资源留给模型计算。",
+    "en": "We design CUDA kernels for RM-01’s GPU, unified memory, and caches, merge projections and adjacent operations, and select computation paths by matrix size. Weight loading, quantized storage, and runtime layouts reduce memory allocations and movement of intermediate results, leaving more resources for model computation.",
+    "sources": [
+      "models/index.html:151"
+    ]
+  },
+  {
+    "zh": "持续 prefill，按需 decode。",
+    "en": "Continuous prefill. Decode on demand.",
+    "sources": [
+      "models/index.html:152"
+    ]
+  },
+  {
+    "zh": "引擎支持连续追加输入，将输入处理与回答生成分开调度。前缀缓存与递归状态管理复用已有计算，内存与 SSD 分层存储承接上下文。模型随新消息、文档与任务反馈推进处理，在需要输出时启动 decode。",
+    "en": "The engine accepts incremental input and schedules input processing separately from response generation. Prefix caching and recurrent-state management reuse prior computation, while memory and SSD tiers hold context. Models process new messages, documents, and task feedback, then decode when output is needed.",
+    "sources": [
+      "models/index.html:153"
+    ]
+  },
+  {
+    "zh": "这种执行方式让 Agent 能够持续接收上下文，无须每次输入都触发回答。从会议中的持续聆听，到案件材料的增量分析，模型随信息更新推进处理，在需要时参与判断与行动。",
+    "en": "Agents can keep receiving context without responding to every input. Whether listening throughout a meeting or analyzing new case material, models process information as it arrives and contribute to decisions and actions when needed.",
+    "sources": [
+      "models/index.html:154"
+    ]
+  },
+  {
+    "zh": "深度定制 vLLM",
+    "en": "vLLM, customized from the kernel up",
+    "sources": [
+      "models/index.html:157"
+    ]
+  },
+  {
+    "zh": "从算子到工具链，深入优化推理实现。",
+    "en": "Inference optimization, from kernels to toolchains.",
+    "sources": [
+      "models/index.html:158"
+    ]
+  },
+  {
+    "zh": "RMinte 围绕模型执行与硬件特性，完成 GPU 算子的移植与重写，处理 PTX 与编译工具链的兼容问题，并推进 FlashInfer 推理内核库、Transformers 5 模型库的适配与集成。",
+    "en": "RMinte has ported and rewritten GPU kernels to match model execution and hardware requirements, and resolved compatibility issues with PTX and the compiler toolchain. We adapt and integrate the FlashInfer inference kernel library and the Transformers 5 model library.",
+    "sources": [
+      "models/index.html:159"
+    ]
+  },
+  {
+    "zh": "在 Fused MoE 内核调优中，我们解决了相关流程中的 Triton 兼容问题，使内核参数能够针对模型配置与硬件特性进行调优。同时，对推测解码等执行流程进行定制优化，提升模型推理效率。",
+    "en": "We resolved Triton compatibility issues in the Fused MoE tuning workflow so kernel parameters can be tuned for each model configuration and hardware platform. We also optimize execution paths, including speculative decoding, to improve inference efficiency.",
+    "sources": [
+      "models/index.html:160"
+    ]
+  },
+  {
+    "zh": "支撑 RMQ，保留开放的模型选择。",
+    "en": "Built for RMQ. Open to more models.",
+    "sources": [
+      "models/index.html:161"
+    ]
+  },
+  {
+    "zh": "定制 vLLM 已支持 RMQ3x 与 RMQ4，也为 RM-01 运行其他适配的开源模型提供推理基础。用户可以围绕任务选择模型，在同一台设备上构建不同的专业应用与 Agent 工作流。",
+    "en": "Our custom vLLM supports RMQ3x and RMQ4, as well as other compatible open-source models on RM-01. Choose models to suit each task and build specialist applications and agent workflows on the same device.",
+    "sources": [
+      "models/index.html:162"
+    ]
+  },
+  {
+    "zh": "从架构到训练，",
+    "en": "From architecture to training. ",
+    "sources": [
+      "models/index.html:170"
+    ]
+  },
+  {
+    "zh": "构建专业能力。",
+    "en": "Built for professional work.",
+    "sources": [
+      "models/index.html:170"
+    ]
+  },
+  {
+    "zh": "从硬件到推理，",
+    "en": "From hardware to inference. ",
+    "sources": [
+      "models/index.html:170"
+    ]
+  },
+  {
+    "zh": "释放模型性能。",
+    "en": "Unlock model performance.",
+    "sources": [
+      "models/index.html:170"
+    ]
+  },
+  {
+    "zh": "RMQ3x 与 RMQ4 结合递归记忆、注意力检索与针对性训练，构建专业分析和工具执行能力。自研推理引擎围绕模型结构与硬件特性，优化计算路径、数据访问和任务调度，让这些能力服务于长文档、多轮交互与持续运行的 Agent。",
+    "en": "RMQ3x and RMQ4 combine recurrent memory, attention-based retrieval, and targeted training for professional analysis and tool use. Our inference engine tailors computation paths, data access, and task scheduling to the model architectures and hardware, supporting long documents, multi-turn interaction, and agents that keep working.",
+    "sources": [
+      "models/index.html:171"
+    ]
+  },
+  {
+    "zh": "© 2026 RMinte (Chengdu) Artificial Intelligence Technology Co., Ltd. · RM-01 Portable AI Supercomputer",
+    "en": "© 2026 RMinte (Chengdu) Artificial Intelligence Technology Co., Ltd. · RM-01 Portable AI Supercomputer",
+    "sources": [
+      "models/index.html:177"
+    ]
+  },
+  {
+    "zh": "导航菜单",
+    "en": "Navigation menu",
+    "sources": [
+      "models/index.html:207",
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "通过实拍图片查看 RM-01 的外观、材料与工艺细节。",
+    "en": "Explore RM-01 through product photographs of its design, materials, and craftsmanship.",
+    "sources": [
+      "gallery/index.html:11",
+      "gallery/index.html:13"
+    ]
+  },
+  {
+    "zh": "RM-01 图册 · RMinte",
+    "en": "RM-01 Gallery · RMinte",
+    "sources": [
+      "gallery/index.html:12",
+      "gallery/index.html:16"
+    ]
+  },
+  {
+    "zh": "跳至图册内容",
+    "en": "Skip to gallery",
+    "sources": [
+      "gallery/index.html:33"
+    ]
+  },
+  {
+    "zh": "RMinte 首页",
+    "en": "RMinte home",
+    "sources": [
+      "gallery/index.html:36",
+      "downloads/index.html:37",
+      "guides/index.html:36",
+      "guides/admin.html:37",
+      "guides/root.html:37",
+      "guides/network.html:37",
+      "guides/security.html:37",
+      "scripts/build-guides.mjs:440"
+    ]
+  },
+  {
+    "zh": "产品图册",
+    "en": "Product gallery",
+    "sources": [
+      "gallery/index.html:76"
+    ]
+  },
+  {
+    "zh": "11 张实拍影像，呈现 RM-01 的外观、结构与工艺细节。",
+    "en": "11 product images present RM-01's exterior, structure, and material details.",
+    "sources": [
+      "gallery/index.html:77"
+    ]
+  },
+  {
+    "zh": "本图册支持 HDR 浏览，兼容设备可呈现更丰富的明暗细节。",
+    "en": "HDR images. Enjoy richer highlight and shadow detail on compatible displays and browsers.",
+    "sources": [
+      "gallery/index.html:81"
+    ]
+  },
+  {
+    "zh": "图册浏览状态",
+    "en": "Gallery status",
+    "sources": [
+      "gallery/index.html:99"
+    ]
+  },
+  {
+    "zh": "照片切换",
+    "en": "Photo navigation",
+    "sources": [
+      "gallery/index.html:105"
+    ]
+  },
+  {
+    "zh": "上一张照片",
+    "en": "Previous photo",
+    "sources": [
+      "gallery/index.html:106",
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "下一张照片",
+    "en": "Next photo",
+    "sources": [
+      "gallery/index.html:107",
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "RM-01 下载中心，提供产品手册、技术资料、固件与软件发布包。",
+    "en": "Download RM-01 product manuals, technical materials, firmware, and software releases.",
+    "sources": [
+      "downloads/index.html:11",
+      "downloads/index.html:13"
+    ]
+  },
+  {
+    "zh": "RM-01 下载中心 · RMinte",
+    "en": "RM-01 Downloads · RMinte",
+    "sources": [
+      "downloads/index.html:12",
+      "downloads/index.html:16"
+    ]
+  },
+  {
+    "zh": "跳至下载内容",
+    "en": "Skip to downloads",
+    "sources": [
+      "downloads/index.html:34"
+    ]
+  },
+  {
+    "zh": "下载中心",
+    "en": "Download center",
+    "sources": [
+      "downloads/index.html:76"
+    ]
+  },
+  {
+    "zh": "获取 RM-01 产品文档、技术资料、固件与软件发布包，并直接使用在线工具。",
+    "en": "Get RM-01 product documentation, technical materials, firmware and software releases, plus browser-based online tools.",
+    "sources": [
+      "downloads/index.html:77",
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "下载资源分类",
+    "en": "Download categories",
+    "sources": [
+      "downloads/index.html:80"
+    ]
+  },
+  {
+    "zh": "产品文档",
+    "en": "Product documents",
+    "sources": [
+      "downloads/index.html:83",
+      "downloads/index.html:103"
+    ]
+  },
+  {
+    "zh": "产品资料",
+    "en": "Product materials",
+    "sources": [
+      "downloads/index.html:87",
+      "downloads/index.html:158"
+    ]
+  },
+  {
+    "zh": "固件与软件",
+    "en": "Firmware & software",
+    "sources": [
+      "downloads/index.html:91",
+      "downloads/index.html:290"
+    ]
+  },
+  {
+    "zh": "在线工具",
+    "en": "Online tools",
+    "sources": [
+      "downloads/index.html:95",
+      "downloads/index.html:393"
+    ]
+  },
+  {
+    "zh": "TianshanOS Admin 日常使用指南（中英双语）",
+    "en": "TianshanOS Admin User Guide (Bilingual)",
+    "sources": [
+      "downloads/index.html:110"
+    ]
+  },
+  {
+    "zh": "Admin 用户日常操作指南 · 中英双语 · 23 页 · PDF · 568 KB · 2026-09-07",
+    "en": "Daily operations guide for Admin users · Chinese and English · 23 pages · PDF · 568 KB · 2026-09-07",
+    "sources": [
+      "downloads/index.html:111"
+    ]
+  },
+  {
+    "zh": "下载",
+    "en": "Download",
+    "sources": [
+      "downloads/index.html:114",
+      "downloads/index.html:125",
+      "downloads/index.html:136",
+      "downloads/index.html:147",
+      "downloads/index.html:169",
+      "downloads/index.html:180",
+      "downloads/index.html:191",
+      "downloads/index.html:202",
+      "downloads/index.html:213",
+      "downloads/index.html:224",
+      "downloads/index.html:235",
+      "downloads/index.html:246",
+      "downloads/index.html:257",
+      "downloads/index.html:268",
+      "downloads/index.html:279",
+      "downloads/index.html:312",
+      "downloads/index.html:323",
+      "downloads/index.html:345",
+      "downloads/index.html:356",
+      "downloads/index.html:367",
+      "downloads/index.html:378"
+    ]
+  },
+  {
+    "zh": "TianshanOS root 运维指南（中英双语）",
+    "en": "TianshanOS root Operations Guide (Bilingual)",
+    "sources": [
+      "downloads/index.html:121"
+    ]
+  },
+  {
+    "zh": "root 用户运维操作指南 · 中英双语 · 42 页 · PDF · 665 KB · 2026-09-07",
+    "en": "Operations guide for root users · Chinese and English · 42 pages · PDF · 665 KB · 2026-09-07",
+    "sources": [
+      "downloads/index.html:122"
+    ]
+  },
+  {
+    "zh": "TianShanOS 安全页面完整操作指南（中文）",
+    "en": "TianShanOS Complete Security Page Guide (Chinese)",
+    "sources": [
+      "downloads/index.html:132"
+    ]
+  },
+  {
+    "zh": "安全页面操作、验证与恢复指南 · 中文 · 12 页 · PDF · 403 KB · 2026-09-07",
+    "en": "Security Page operations, verification, and recovery · Chinese · 12 pages · PDF · 403 KB · 2026-09-07",
+    "sources": [
+      "downloads/index.html:133"
+    ]
+  },
+  {
+    "zh": "TianShanOS 安全页面完整操作指南（英文）",
+    "en": "TianShanOS Complete Security Page Guide (English)",
+    "sources": [
+      "downloads/index.html:143"
+    ]
+  },
+  {
+    "zh": "安全页面操作、验证与恢复指南 · 英文 · 14 页 · PDF · 132 KB · 2026-09-07",
+    "en": "Security Page operations, verification, and recovery · English · 14 pages · PDF · 132 KB · 2026-09-07",
+    "sources": [
+      "downloads/index.html:144"
+    ]
+  },
+  {
+    "zh": "泛灵人工智能-中文介绍-2026",
+    "en": "RMinte AI Introduction 2026 — Chinese",
+    "sources": [
+      "downloads/index.html:165"
+    ]
+  },
+  {
+    "zh": "2026 产品介绍 · 中文 · 24 页 · PDF · 23.3 MB",
+    "en": "2026 product introduction · Chinese · 24 pages · PDF · 23.3 MB",
+    "sources": [
+      "downloads/index.html:166"
+    ]
+  },
+  {
+    "zh": "泛灵人工智能-英文介绍-2026",
+    "en": "RMinte AI Introduction 2026 — English",
+    "sources": [
+      "downloads/index.html:176"
+    ]
+  },
+  {
+    "zh": "2026 产品介绍 · 英文 · 24 页 · PDF · 23.2 MB",
+    "en": "2026 product introduction · English · 24 pages · PDF · 23.2 MB",
+    "sources": [
+      "downloads/index.html:177"
+    ]
+  },
+  {
+    "zh": "泛灵人工智能-日文介绍-2026",
+    "en": "RMinte AI Introduction 2026 — Japanese",
+    "sources": [
+      "downloads/index.html:187"
+    ]
+  },
+  {
+    "zh": "2026 产品介绍 · 日文 · 24 页 · PDF · 23.3 MB",
+    "en": "2026 product introduction · Japanese · 24 pages · PDF · 23.3 MB",
+    "sources": [
+      "downloads/index.html:188"
+    ]
+  },
+  {
+    "zh": "泛灵人工智能-韩文介绍-2026",
+    "en": "RMinte AI Introduction 2026 — Korean",
+    "sources": [
+      "downloads/index.html:198"
+    ]
+  },
+  {
+    "zh": "2026 产品介绍 · 韩文 · 24 页 · PDF · 23.2 MB",
+    "en": "2026 product introduction · Korean · 24 pages · PDF · 23.2 MB",
+    "sources": [
+      "downloads/index.html:199"
+    ]
+  },
+  {
+    "zh": "泛灵人工智能-西班牙文介绍-2026",
+    "en": "RMinte AI Introduction 2026 — Spanish",
+    "sources": [
+      "downloads/index.html:209"
+    ]
+  },
+  {
+    "zh": "2026 产品介绍 · 西班牙文 · 24 页 · PDF · 23.2 MB",
+    "en": "2026 product introduction · Spanish · 24 pages · PDF · 23.2 MB",
+    "sources": [
+      "downloads/index.html:210"
+    ]
+  },
+  {
+    "zh": "RMinte Logo 与字标",
+    "en": "RMinte logo & wordmark",
+    "sources": [
+      "downloads/index.html:220"
+    ]
+  },
+  {
+    "zh": "经销商印刷用 · Illustrator 可编辑文件 · 75 KB",
+    "en": "For dealer printing · Editable Illustrator file · 75 KB",
+    "sources": [
+      "downloads/index.html:221"
+    ]
+  },
+  {
+    "zh": "RM-01 产品结构爆炸图",
+    "en": "RM-01 product exploded view",
+    "sources": [
+      "downloads/index.html:231"
+    ]
+  },
+  {
+    "zh": "新一代生产级 AI 交付基座 · 4724 × 4606 · JPG · 21.7 MB",
+    "en": "Next-generation production AI delivery platform · 4724 × 4606 · JPG · 21.7 MB",
+    "sources": [
+      "downloads/index.html:232"
+    ]
+  },
+  {
+    "zh": "RM-01 场景示例片",
+    "en": "RM-01 scenario demo film",
+    "sources": [
+      "downloads/index.html:242"
+    ]
+  },
+  {
+    "zh": "产品宣传视频 · QuickTime MOV · 40.8 MB",
+    "en": "Product campaign film · QuickTime MOV · 40.8 MB",
+    "sources": [
+      "downloads/index.html:243"
+    ]
+  },
+  {
+    "zh": "RM-01 宣传片",
+    "en": "RM-01 promotional film",
+    "sources": [
+      "downloads/index.html:253"
+    ]
+  },
+  {
+    "zh": "视频平台高清版本 · QuickTime MOV · 48.9 MB",
+    "en": "HD edition for video platforms · QuickTime MOV · 48.9 MB",
+    "sources": [
+      "downloads/index.html:254"
+    ]
+  },
+  {
+    "zh": "RM-01 拆解片版本 A",
+    "en": "RM-01 teardown film · Version A",
+    "sources": [
+      "downloads/index.html:264"
+    ]
+  },
+  {
+    "zh": "产品主题视频 · MP4 · 260.3 MB",
+    "en": "Product feature film · MP4 · 260.3 MB",
+    "sources": [
+      "downloads/index.html:265"
+    ]
+  },
+  {
+    "zh": "RM-01 拆解片版本 B",
+    "en": "RM-01 teardown film · Version B",
+    "sources": [
+      "downloads/index.html:275"
+    ]
+  },
+  {
+    "zh": "云栖大会现场宣传视频 · MP4 · 63.3 MB",
+    "en": "Yunqi Conference campaign film · MP4 · 63.3 MB",
+    "sources": [
+      "downloads/index.html:276"
+    ]
+  },
+  {
+    "zh": "TianshanOS 固件",
+    "en": "TianshanOS firmware",
+    "sources": [
+      "downloads/index.html:297"
+    ]
+  },
+  {
+    "zh": "v0.5.1 · 刷写固件时必须同时准备 TianShanOS.bin 和 www.bin。",
+    "en": "v0.5.1 · Both TianShanOS.bin and www.bin are required when flashing the firmware.",
+    "sources": [
+      "downloads/index.html:298"
+    ]
+  },
+  {
+    "zh": "查看发布说明",
+    "en": "Release notes",
+    "sources": [
+      "downloads/index.html:301",
+      "downloads/index.html:334"
+    ]
+  },
+  {
+    "zh": "TianshanOS 主固件镜像 · v0.5.1 · 2.1 MB · 刷机必需",
+    "en": "TianshanOS main firmware image · v0.5.1 · 2.1 MB · Required for flashing",
+    "sources": [
+      "downloads/index.html:309"
+    ]
+  },
+  {
+    "zh": "TianshanOS WebUI 文件系统镜像 · v0.5.1 · 3.0 MB · 刷机必需",
+    "en": "TianshanOS WebUI filesystem image · v0.5.1 · 3.0 MB · Required for flashing",
+    "sources": [
+      "downloads/index.html:320"
+    ]
+  },
+  {
+    "zh": "RM-01 联网工具 · v1.1.5 · 选择与你的操作系统和使用方式匹配的版本。",
+    "en": "RM-01 network connectivity tool · v1.1.5 · Choose the build that matches your operating system and workflow.",
+    "sources": [
+      "downloads/index.html:331"
+    ]
+  },
+  {
+    "zh": "Linux x86_64 · AppImage · v1.1.5 · 47.1 MB",
+    "en": "Linux x86_64 · AppImage · v1.1.5 · 47.1 MB",
+    "sources": [
+      "downloads/index.html:342"
+    ]
+  },
+  {
+    "zh": "macOS 应用包 · ZIP 压缩包 · v1.1.5 · 3.9 MB",
+    "en": "macOS app bundle · ZIP archive · v1.1.5 · 3.9 MB",
+    "sources": [
+      "downloads/index.html:353"
+    ]
+  },
+  {
+    "zh": "macOS Apple 芯片命令行工具 · arm64 · v1.1.5 · 7.3 MB",
+    "en": "macOS command-line tool for Apple silicon · arm64 · v1.1.5 · 7.3 MB",
+    "sources": [
+      "downloads/index.html:364"
+    ]
+  },
+  {
+    "zh": "Windows 压缩包 · ZIP · v1.1.5 · 69.7 MB",
+    "en": "Windows package · ZIP archive · v1.1.5 · 69.7 MB",
+    "sources": [
+      "downloads/index.html:375"
+    ]
+  },
+  {
+    "zh": "发布原则",
+    "en": "RELEASE POLICY",
+    "sources": [
+      "downloads/index.html:384"
+    ]
+  },
+  {
+    "zh": "固件与软件只会在完成签名、适配性验证和完整性校验后开放下载，请根据发布说明选择与设备匹配的版本。",
+    "en": "Firmware and software downloads open only after signing, compatibility validation, and integrity checks. Select the release that matches your device according to its release notes.",
+    "sources": [
+      "downloads/index.html:385"
+    ]
+  },
+  {
+    "zh": "RM-01 灯板图形转换工具",
+    "en": "RM-01 LED matrix graphics converter",
+    "sources": [
+      "downloads/index.html:400"
+    ]
+  },
+  {
+    "zh": "Emoji2Pixel · 将 Emoji 或图片转换为适配 RM-01 灯板的像素图与动画。",
+    "en": "Emoji2Pixel · Convert emojis or images into pixel art and animations for the RM-01 LED matrix.",
+    "sources": [
+      "downloads/index.html:401"
+    ]
+  },
+  {
+    "zh": "打开工具",
+    "en": "Open tool",
+    "sources": [
+      "downloads/index.html:404"
+    ]
+  },
+  {
+    "zh": "TianShanOS OTA 更新服务",
+    "en": "TianShanOS OTA update service",
+    "sources": [
+      "downloads/index.html:411"
+    ]
+  },
+  {
+    "zh": "为 RM-01 本机 OTA 页面提供 TianShanOS 正式固件与 WebUI 更新文件。",
+    "en": "Provides official TianShanOS firmware and WebUI updates to the OTA page hosted on your RM-01.",
+    "sources": [
+      "downloads/index.html:412"
+    ]
+  },
+  {
+    "zh": "打开服务",
+    "en": "Open service",
+    "sources": [
+      "downloads/index.html:415"
+    ]
+  },
+  {
+    "zh": "查阅 RM-01 网络配置与 TianshanOS 日常管理、系统运维和安全操作指南。",
+    "en": "Read guides to RM-01 networking and TianshanOS administration, system operations, and security.",
+    "sources": [
+      "guides/index.html:11",
+      "guides/index.html:13"
+    ]
+  },
+  {
+    "zh": "RM-01 使用指南 · RMinte",
+    "en": "RM-01 Guides · RMinte",
+    "sources": [
+      "guides/index.html:12",
+      "guides/index.html:16"
+    ]
+  },
+  {
+    "zh": "跳至指南内容",
+    "en": "Skip to guide content",
+    "sources": [
+      "guides/index.html:33",
+      "guides/admin.html:34",
+      "guides/root.html:34",
+      "guides/network.html:34",
+      "guides/security.html:34",
+      "scripts/build-guides.mjs:517"
+    ],
+    "zhVariants": [
+      "跳至指南正文"
+    ]
+  },
+  {
+    "zh": "选择你的使用角色",
+    "en": "Choose your operating role",
+    "sources": [
+      "guides/index.html:75"
+    ]
+  },
+  {
+    "zh": "日常管理、系统运维与安全配置，各有对应的操作指南。选择你的角色，从手头要做的事开始。",
+    "en": "Find guidance for daily management, system operations, and security configuration. Choose your role and start with the task at hand.",
+    "sources": [
+      "guides/index.html:76"
+    ]
+  },
+  {
+    "zh": "搜索指南",
+    "en": "Search guides",
+    "sources": [
+      "guides/index.html:82",
+      "guides/admin.html:90",
+      "guides/root.html:90",
+      "guides/network.html:90",
+      "guides/security.html:90",
+      "scripts/build-guides.mjs:421"
+    ]
+  },
+  {
+    "zh": "输入功能，例如：OTA、SSH 密钥、风扇",
+    "en": "Search a feature, for example: OTA, SSH key, fan",
+    "sources": [
+      "guides/index.html:83",
+      "guides/admin.html:91",
+      "guides/root.html:91",
+      "guides/network.html:91",
+      "guides/security.html:91",
+      "scripts/build-guides.mjs:422"
+    ]
+  },
+  {
+    "zh": "搜索",
+    "en": "Search",
+    "sources": [
+      "guides/index.html:85",
+      "guides/admin.html:93",
+      "guides/root.html:93",
+      "guides/network.html:93",
+      "guides/security.html:93",
+      "scripts/build-guides.mjs:424"
+    ]
+  },
+  {
+    "zh": "试试：OTA 更新、远程主机、HTTPS 证书、自动化规则",
+    "en": "Try: OTA update, remote host, HTTPS certificate, automation rule",
+    "sources": [
+      "guides/index.html:87",
+      "guides/admin.html:95",
+      "guides/root.html:95",
+      "guides/network.html:95",
+      "guides/security.html:95",
+      "scripts/build-guides.mjs:426"
+    ]
+  },
+  {
+    "zh": "清除",
+    "en": "Clear",
+    "sources": [
+      "guides/index.html:91",
+      "guides/admin.html:99",
+      "guides/root.html:99",
+      "guides/network.html:99",
+      "guides/security.html:99",
+      "scripts/build-guides.mjs:430"
+    ]
+  },
+  {
+    "zh": "角色指南",
+    "en": "Role guides",
+    "sources": [
+      "guides/index.html:98",
+      "guides/index.html:102"
+    ],
+    "zhVariants": [
+      "角色指南列表"
+    ]
+  },
+  {
+    "zh": "面向设备管理员。覆盖系统状态、设备面板、风扇、LED、网络、文件与 OTA 更新。",
+    "en": "For device administrators. Covers system status, device panels, fans, LEDs, networking, files, and OTA updates.",
+    "sources": [
+      "guides/index.html:106"
+    ]
+  },
+  {
+    "zh": "六种语言",
+    "en": "Six languages",
+    "sources": [
+      "guides/index.html:108",
+      "guides/admin.html:82",
+      "guides/root.html:82",
+      "guides/network.html:82",
+      "guides/security.html:82",
+      "scripts/build-guides.mjs:528"
+    ]
+  },
+  {
+    "zh": "面向系统运维人员。在日常能力之外，增加终端、远程指令与自动化管理。",
+    "en": "For system operators. Adds terminal, remote command, and automation management to the shared daily capabilities.",
+    "sources": [
+      "guides/index.html:116"
+    ]
+  },
+  {
+    "zh": "12 个章节 · 高权限操作",
+    "en": "12 chapters · Privileged operations",
+    "sources": [
+      "guides/index.html:118"
+    ]
+  },
+  {
+    "zh": "安全指南",
+    "en": "Security guide",
+    "sources": [
+      "guides/index.html:125"
+    ]
+  },
+  {
+    "zh": "面向个人用户与安全管理员。覆盖账号安全、SSH 密钥、主机指纹、HTTPS、mTLS 与 Config Pack。",
+    "en": "For individual users and security administrators. Covers account security, SSH keys, host fingerprints, HTTPS, mTLS, and Config Pack.",
+    "sources": [
+      "guides/index.html:126"
+    ]
+  },
+  {
+    "zh": "8 个章节 · 安全操作",
+    "en": "8 chapters · Security operations",
+    "sources": [
+      "guides/index.html:128"
+    ]
+  },
+  {
+    "zh": "专题指南",
+    "en": "Topic guide",
+    "sources": [
+      "guides/index.html:135"
+    ]
+  },
+  {
+    "zh": "专题指南列表",
+    "en": "Topic guides",
+    "sources": [
+      "guides/index.html:139"
+    ]
+  },
+  {
+    "zh": "网络配置",
+    "en": "Network configuration",
+    "sources": [
+      "guides/index.html:142"
+    ]
+  },
+  {
+    "zh": "说明 C1 与 C3 两条网络路径，以及用户设备联网、AI 辅助网络共享和整机接入上层网络的方法。",
+    "en": "Covers the C1 and C3 network paths, device connectivity, AI-assisted internet sharing, and upstream access for the complete system.",
+    "sources": [
+      "guides/index.html:143"
+    ]
+  },
+  {
+    "zh": "7 个章节 · 网络操作",
+    "en": "7 chapters · Network operations",
+    "sources": [
+      "guides/index.html:145"
+    ]
+  },
+  {
+    "zh": "root 权限可能改变设备、远程主机和自动化流程。请根据实际职责选择指南。",
+    "en": "root privileges can change devices, remote hosts, and automation workflows. Choose the guide that matches your responsibilities.",
+    "sources": [
+      "guides/index.html:151"
+    ]
+  },
+  {
+    "zh": "全部指南",
+    "en": "All guides",
+    "sources": [
+      "guides/admin.html:76",
+      "guides/root.html:76",
+      "guides/network.html:76",
+      "guides/security.html:76",
+      "scripts/build-guides.mjs:522"
+    ]
+  },
+  {
+    "zh": "展开本页目录",
+    "en": "Open page contents",
+    "sources": [
+      "guides/admin.html:106",
+      "guides/root.html:106",
+      "guides/network.html:106",
+      "guides/security.html:106",
+      "scripts/build-guides.mjs:535"
+    ]
+  },
+  {
+    "zh": "本页目录",
+    "en": "On this page",
+    "sources": [
+      "guides/admin.html:368",
+      "guides/admin.html:369",
+      "guides/root.html:506",
+      "guides/root.html:507",
+      "guides/network.html:266",
+      "guides/network.html:267",
+      "guides/security.html:338",
+      "guides/security.html:339",
+      "scripts/build-guides.mjs:542",
+      "scripts/build-guides.mjs:543"
+    ]
+  },
+  {
+    "zh": "下一步",
+    "en": "Next",
+    "sources": [
+      "guides/admin.html:1467",
+      "guides/root.html:2320",
+      "guides/network.html:1048",
+      "guides/security.html:1264",
+      "scripts/build-guides.mjs:552"
+    ]
+  },
+  {
+    "zh": "阅读提示",
+    "en": "Reading note",
+    "sources": [
+      "guides/admin.html:1474",
+      "guides/root.html:2327",
+      "guides/network.html:1055",
+      "guides/security.html:1271",
+      "scripts/build-guides.mjs:559"
+    ]
+  },
+  {
+    "zh": "设备型号、硬件配置和当前状态会影响页面显示。以设备实际界面为准。",
+    "en": "Device model, hardware configuration, and current state affect what the interface displays.",
+    "sources": [
+      "guides/admin.html:1475",
+      "guides/root.html:2328",
+      "guides/network.html:1056",
+      "guides/security.html:1272",
+      "scripts/build-guides.mjs:560"
+    ]
+  },
+  {
+    "zh": "并发请求",
+    "en": "Concurrent requests",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "模型 · 应用",
+    "en": "Model · Application",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "推理软件与 CUDA 计算平台的分层示意",
+    "en": "Software layers above the CUDA compute platform",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "两台计算模组分别经以太网控制器和 PHY 接入板载交换机，ESP32 经 W5500 接入并拥有自己的配置存储；两台计算机各有独立存储。",
+    "en": "Each computer connects through an Ethernet controller and PHY to the onboard switch and has dedicated storage. ESP32 connects through W5500 and has its own configuration storage.",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "TianshanOS 功能",
+    "en": "TianshanOS capabilities",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "en",
+    "en": "zh",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "RM-01 便携 AI 超算",
+    "en": "RM-01 Portable AI Supercomputer",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "已复制",
+    "en": "Copied",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "复制",
+    "en": "Copy",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "复制失败",
+    "en": "Copy failed",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "中文",
+    "en": "EN",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "搜索暂时不可用，请刷新页面重试。",
+    "en": "Search is unavailable. Refresh the page and try again.",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "正在读取指南…",
+    "en": "Loading guides…",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "收起工作流程",
+    "en": "Close workflow",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "EN",
+    "en": "中文",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "切换到英文",
+    "en": "Switch to Chinese",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "：展开或收起结构",
+    "en": ": expand or collapse layers",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "关闭菜单",
+    "en": "Close menu",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "没有找到“{query}”，试试更短的功能名称。",
+    "en": "No result for “{query}”. Try a shorter feature name.",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "显示 {count} 个最相关章节",
+    "en": "{count} most relevant sections",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "自研 C++ 推理实现示意",
+    "en": "RMinte C++ inference diagram",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "vLLM 定制推理实现示意",
+    "en": "Custom vLLM inference diagram",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "推理计算机",
+    "en": "Inference computer",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "应用计算机",
+    "en": "Application computer",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "独立存储",
+    "en": "Dedicated storage",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "板载以太网交换机",
+    "en": "Onboard Ethernet switch",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "配置存储",
+    "en": "Config storage",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "设备架构",
+    "en": "Device architecture",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "查看部件：{part}",
+    "en": "Inspect component: {part}",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "查看工作流程",
+    "en": "Explore workflow",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "技术解读",
+    "en": "TECHNICAL DETAILS",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "专业 Agent 工作流程",
+    "en": "SPECIALIST AGENT WORKFLOW",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "连接知识与工具",
+    "en": "Connect knowledge and tools",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "交付工作成果",
+    "en": "Deliver results",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "重要提示",
+    "en": "Important",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "操作提示",
+    "en": "Operational note",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "RMinte 推理引擎",
+    "en": "RMinte Inference",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "分页 KV 缓存",
+    "en": "Paged KV Cache",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "RMinte C++ 运行时",
+    "en": "RMinte C++ Runtime",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  }
+]

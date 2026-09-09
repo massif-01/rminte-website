@@ -2,22 +2,30 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
+  <script>
+    // Reveal after deferred localization; without JavaScript the source page stays readable.
+    document.documentElement.classList.add('i18n-loading');
+    document.addEventListener('DOMContentLoaded', () => document.documentElement.classList.remove('i18n-loading'), { once: true });
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="面向个人用户、安全管理员与设备运维工程师，说明安全页面能做什么、不能做什么，以及如何验证每次关键操作。">
-  <meta property="og:title" content="TianshanOS 安全页面完整操作指南">
-  <meta property="og:description" content="面向个人用户、安全管理员与设备运维工程师，说明安全页面能做什么、不能做什么，以及如何验证每次关键操作。">
+  <meta name="description" content="面向个人用户、安全管理员与设备运维工程师，说明安全页面能做什么、不能做什么，以及如何验证每次关键操作。" data-i18n-attr="content" data-zh="面向个人用户、安全管理员与设备运维工程师，说明安全页面能做什么、不能做什么，以及如何验证每次关键操作。" data-en="For individual users, security administrators, and device operators. Learn what the Security page can and cannot do, and how to verify every critical action.">
+  <meta property="og:title" content="TianshanOS 安全页面完整操作指南" data-i18n-attr="content" data-zh="TianshanOS 安全页面完整操作指南" data-en="TianshanOS Security Page Guide">
+  <meta property="og:description" content="面向个人用户、安全管理员与设备运维工程师，说明安全页面能做什么、不能做什么，以及如何验证每次关键操作。" data-i18n-attr="content" data-zh="面向个人用户、安全管理员与设备运维工程师，说明安全页面能做什么、不能做什么，以及如何验证每次关键操作。" data-en="For individual users, security administrators, and device operators. Learn what the Security page can and cannot do, and how to verify every critical action.">
   <meta property="og:image" content="../assets/images/img4.png">
   <meta name="theme-color" content="#141618">
-  <title>RMinte - RM-01 - Portable AI Supercomputer - 泛灵人工智能</title>
+  <title data-zh="TianshanOS 安全页面完整操作指南" data-en="TianshanOS Security Page Guide">TianshanOS 安全页面完整操作指南</title>
   <link rel="icon" type="image/png" sizes="512x512" href="../assets/images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/brand.css?v=slate-2">
   <link rel="stylesheet" href="../assets/styles.css?v=solid-header-1">
   <link rel="stylesheet" href="../assets/guides.css?v=table-header-1">
-  <script id="guidePageData" type="application/json">{"title":{"zh":"TianshanOS 安全页面完整操作指南","en":"TianshanOS Security Page Guide"},"copy":{"zh":"已复制","en":"Copied"},"copyDefault":{"zh":"复制","en":"Copy"}}</script>
+  <script id="guidePageData" type="application/json">{"title":{"zh":"TianshanOS 安全页面完整操作指南","en":"TianshanOS Security Page Guide","ja":"TianshanOS セキュリティページ操作ガイド","ko":"TianshanOS 보안 페이지 전체 운영 가이드","es":"Guía de la página de seguridad de TianshanOS","fr":"Guide de la page Sécurité de TianshanOS"},"copy":{"zh":"已复制","en":"Copied"},"copyDefault":{"zh":"复制","en":"Copy"}}</script>
   <script src="../visitor-language.js" defer></script>
+  <script src="../assets/translations.js" defer></script>
+  <script src="../assets/i18n.js" defer></script>
   <script src="../assets/guides.js?v=docs-20260907" defer></script>
   <script src="../assets/site-data.js?v=models-launch-1" defer></script>
   <script src="../assets/footer.js?v=models-launch-1" defer></script>
@@ -25,11 +33,11 @@
 <body class="guide-body guide-doc-body guide-accent-security">
   <a class="skip-link" href="#guideContent" data-guide-text data-zh="跳至指南正文" data-en="Skip to guide content">跳至指南正文</a>
 
-  <header class="site-shell" aria-label="主导航">
-    <a class="brand-mark" href="../index.html#hero" aria-label="RMinte 首页">
+  <header class="site-shell" aria-label="主导航" data-i18n-aria-label-zh="主导航" data-i18n-aria-label-en="Main navigation">
+    <a class="brand-mark" href="../index.html#hero" aria-label="RMinte 首页" data-i18n-aria-label-zh="RMinte 首页" data-i18n-aria-label-en="RMinte home">
       <img src="../assets/images/logo-white.svg" alt="RMinte">
     </a>
-    <nav class="nav-island" aria-label="页面导航">
+    <nav class="nav-island" aria-label="页面导航" data-i18n-aria-label-zh="页面导航" data-i18n-aria-label-en="Page navigation">
       <a href="../gallery/index.html" data-guide-text data-zh="图册" data-en="Gallery">图册</a>
       <a href="../models/index.html" data-guide-text data-zh="模型" data-en="Models">模型</a>
       <a href="../index.html#engine" data-guide-text data-zh="产品" data-en="Product">产品</a>
@@ -39,7 +47,7 @@
     </nav>
     <div class="nav-actions">
       <button class="language-toggle" type="button" data-guide-lang-toggle>EN</button>
-      <button class="menu-button" type="button" aria-label="打开菜单" aria-controls="mobileOverlay" aria-expanded="false" data-menu-toggle>
+      <button class="menu-button" type="button" aria-label="打开菜单" aria-controls="mobileOverlay" aria-expanded="false" data-menu-toggle data-i18n-aria-label-zh="打开菜单" data-i18n-aria-label-en="Open menu">
         <span></span>
         <span></span>
       </button>
@@ -52,7 +60,7 @@
         <img class="mobile-menu-logo" src="../assets/images/logo-white.svg" alt="RMinte">
         <button class="ghost-button" type="button" data-menu-close data-guide-text data-zh="关闭" data-en="Close">关闭</button>
       </div>
-      <nav class="mobile-links" aria-label="移动导航">
+      <nav class="mobile-links" aria-label="移动导航" data-i18n-aria-label-zh="移动导航" data-i18n-aria-label-en="Mobile navigation">
         <a href="../gallery/index.html" data-guide-text data-zh="图册" data-en="Gallery">图册</a>
         <a href="../models/index.html" data-guide-text data-zh="模型" data-en="Models">模型</a>
         <a href="../index.html#engine" data-guide-text data-zh="产品" data-en="Product">产品</a>
@@ -71,7 +79,7 @@
       <p class="guide-doc-lead" data-guide-text data-zh="面向个人用户、安全管理员与设备运维工程师，说明安全页面能做什么、不能做什么，以及如何验证每次关键操作。" data-en="For individual users, security administrators, and device operators. Learn what the Security page can and cannot do, and how to verify every critical action.">面向个人用户、安全管理员与设备运维工程师，说明安全页面能做什么、不能做什么，以及如何验证每次关键操作。</p>
       <div class="guide-doc-meta">
         <span data-guide-text data-zh="8 个章节" data-en="8 chapters">8 个章节</span>
-        <span data-guide-text data-zh="中英双语" data-en="Chinese and English">中英双语</span>
+        <span data-guide-text data-zh="六种语言" data-en="Six languages">六种语言</span>
         <span>TianshanOS</span>
       </div>
     </section>
@@ -96,7 +104,7 @@
 
     <details class="guide-mobile-toc">
       <summary data-guide-text data-zh="展开本页目录" data-en="Open page contents">展开本页目录</summary>
-      <nav class="lang-pane" data-lang-pane="zh" aria-label="中文目录">
+<nav class="lang-pane" data-lang-pane="zh" aria-label="本页目录">
 <a class="toc-link toc-depth-0" href="#zh-section-1" data-toc-target="zh-section-1">1. 开始前先确认</a>
 <a class="toc-link toc-depth-1" href="#zh-section-2" data-toc-target="zh-section-2">1.1 找到你需要的功能</a>
 <a class="toc-link toc-depth-1" href="#zh-section-3" data-toc-target="zh-section-3">1.2 账号与设备身份不是一回事</a>
@@ -134,7 +142,7 @@
 <a class="toc-link toc-depth-1" href="#zh-section-35" data-toc-target="zh-section-35">8.1 本次如何核查</a>
 <a class="toc-link toc-depth-1" href="#zh-section-36" data-toc-target="zh-section-36">8.2 常用术语</a>
       </nav>
-      <nav class="lang-pane" data-lang-pane="en" aria-label="English contents" hidden>
+<nav class="lang-pane" data-lang-pane="en" aria-label="On this page" hidden>
 <a class="toc-link toc-depth-0" href="#en-section-1" data-toc-target="en-section-1">1. Before you begin</a>
 <a class="toc-link toc-depth-1" href="#en-section-2" data-toc-target="en-section-2">1.1 Find the task you need</a>
 <a class="toc-link toc-depth-1" href="#en-section-3" data-toc-target="en-section-3">1.2 Accounts and device identity</a>
@@ -172,12 +180,164 @@
 <a class="toc-link toc-depth-1" href="#en-section-35" data-toc-target="en-section-35">8.1 Basis of this guide</a>
 <a class="toc-link toc-depth-1" href="#en-section-36" data-toc-target="en-section-36">8.2 Terms used in this guide</a>
       </nav>
+<nav class="lang-pane" data-lang-pane="ja" aria-label="このページの内容" hidden>
+<a class="toc-link toc-depth-0" href="#ja-section-1" data-toc-target="ja-section-1">1. 始める前の確認</a>
+<a class="toc-link toc-depth-1" href="#ja-section-2" data-toc-target="ja-section-2">1.1 目的の機能を探す</a>
+<a class="toc-link toc-depth-1" href="#ja-section-3" data-toc-target="ja-section-3">1.2 アカウントと機器の識別情報は別物</a>
+<a class="toc-link toc-depth-1" href="#ja-section-4" data-toc-target="ja-section-4">1.3 操作の準備</a>
+<a class="toc-link toc-depth-0" href="#ja-section-5" data-toc-target="ja-section-5">2. 機器のログインパスワードを変更する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-6" data-toc-target="ja-section-6">2.1 初回ログイン後の変更通知</a>
+<a class="toc-link toc-depth-1" href="#ja-section-7" data-toc-target="ja-section-7">2.2 root によるパスワード設定</a>
+<a class="toc-link toc-depth-1" href="#ja-section-8" data-toc-target="ja-section-8">2.3 admin パスワードのリセット</a>
+<a class="toc-link toc-depth-0" href="#ja-section-9" data-toc-target="ja-section-9">3. SSH 鍵でサーバーに接続する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-10" data-toc-target="ja-section-10">3.1 鍵を生成する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-11" data-toc-target="ja-section-11">3.2 公開鍵を配備する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-12" data-toc-target="ja-section-12">3.3 接続をテストして結果を確認する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-13" data-toc-target="ja-section-13">3.4 リモート認可を取り消してからローカル鍵を削除する</a>
+<a class="toc-link toc-depth-0" href="#ja-section-14" data-toc-target="ja-section-14">4. 鍵・ホスト・フィンガープリントの管理</a>
+<a class="toc-link toc-depth-1" href="#ja-section-15" data-toc-target="ja-section-15">4.1 公開鍵のコピーと秘密鍵のエクスポート</a>
+<a class="toc-link toc-depth-1" href="#ja-section-16" data-toc-target="ja-section-16">4.2 取り消し・除去・削除の違い</a>
+<a class="toc-link toc-depth-1" href="#ja-section-17" data-toc-target="ja-section-17">4.3 SSH サーバーのフィンガープリントを照合する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-18" data-toc-target="ja-section-18">4.4 SSH ホスト設定のインポート・エクスポート</a>
+<a class="toc-link toc-depth-0" href="#ja-section-19" data-toc-target="ja-section-19">5. HTTPS 証明書と mTLS の設定</a>
+<a class="toc-link toc-depth-1" href="#ja-section-20" data-toc-target="ja-section-20">5.1 証明書の役割を区別する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-21" data-toc-target="ja-section-21">5.2 機器秘密鍵と証明書署名要求を生成する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-22" data-toc-target="ja-section-22">5.3 機器証明書をインストールする</a>
+<a class="toc-link toc-depth-1" href="#ja-section-23" data-toc-target="ja-section-23">5.4 クライアント CA チェーンを入れてテストする</a>
+<a class="toc-link toc-depth-1" href="#ja-section-24" data-toc-target="ja-section-24">5.5 証明書の更新と全資格情報の削除</a>
+<a class="toc-link toc-depth-0" href="#ja-section-25" data-toc-target="ja-section-25">6. Config Pack の利用前に制限を確認する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-26" data-toc-target="ja-section-26">6.1 現在の各ボタンの動作</a>
+<a class="toc-link toc-depth-1" href="#ja-section-27" data-toc-target="ja-section-27">6.2 署名有効の表示だけでなく出所を確認する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-28" data-toc-target="ja-section-28">6.3 機器証明書の提供と受信パッケージの検査</a>
+<a class="toc-link toc-depth-1" href="#ja-section-29" data-toc-target="ja-section-29">6.4 Developer 機器からエクスポートする</a>
+<a class="toc-link toc-depth-0" href="#ja-section-30" data-toc-target="ja-section-30">7. 障害・セキュリティインシデントへの対応</a>
+<a class="toc-link toc-depth-1" href="#ja-section-31" data-toc-target="ja-section-31">7.1 よくある問題</a>
+<a class="toc-link toc-depth-1" href="#ja-section-32" data-toc-target="ja-section-32">7.2 SSH 秘密鍵が漏えいした可能性がある場合</a>
+<a class="toc-link toc-depth-1" href="#ja-section-33" data-toc-target="ja-section-33">7.3 現バージョンで残るリスク</a>
+<a class="toc-link toc-depth-0" href="#ja-section-34" data-toc-target="ja-section-34">8. 調査根拠と用語</a>
+<a class="toc-link toc-depth-1" href="#ja-section-35" data-toc-target="ja-section-35">8.1 調査方法</a>
+<a class="toc-link toc-depth-1" href="#ja-section-36" data-toc-target="ja-section-36">8.2 用語</a>
+      </nav>
+<nav class="lang-pane" data-lang-pane="ko" aria-label="이 페이지의 내용" hidden>
+<a class="toc-link toc-depth-0" href="#ko-section-1" data-toc-target="ko-section-1">1. 시작 전 확인</a>
+<a class="toc-link toc-depth-1" href="#ko-section-2" data-toc-target="ko-section-2">1.1 필요한 기능 찾기</a>
+<a class="toc-link toc-depth-1" href="#ko-section-3" data-toc-target="ko-section-3">1.2 계정과 장치 신원은 다릅니다</a>
+<a class="toc-link toc-depth-1" href="#ko-section-4" data-toc-target="ko-section-4">1.3 작업 준비</a>
+<a class="toc-link toc-depth-0" href="#ko-section-5" data-toc-target="ko-section-5">2. 장치 로그인 비밀번호 변경</a>
+<a class="toc-link toc-depth-1" href="#ko-section-6" data-toc-target="ko-section-6">2.1 첫 로그인 후 비밀번호 알림</a>
+<a class="toc-link toc-depth-1" href="#ko-section-7" data-toc-target="ko-section-7">2.2 root가 비밀번호 설정</a>
+<a class="toc-link toc-depth-1" href="#ko-section-8" data-toc-target="ko-section-8">2.3 admin 비밀번호 초기화</a>
+<a class="toc-link toc-depth-0" href="#ko-section-9" data-toc-target="ko-section-9">3. SSH 키로 서버 연결</a>
+<a class="toc-link toc-depth-1" href="#ko-section-10" data-toc-target="ko-section-10">3.1 키 생성</a>
+<a class="toc-link toc-depth-1" href="#ko-section-11" data-toc-target="ko-section-11">3.2 공개키 배포</a>
+<a class="toc-link toc-depth-1" href="#ko-section-12" data-toc-target="ko-section-12">3.3 연결 시험 및 결과 확인</a>
+<a class="toc-link toc-depth-1" href="#ko-section-13" data-toc-target="ko-section-13">3.4 원격 권한 철회 후 로컬 키 삭제</a>
+<a class="toc-link toc-depth-0" href="#ko-section-14" data-toc-target="ko-section-14">4. 키·호스트·지문 관리</a>
+<a class="toc-link toc-depth-1" href="#ko-section-15" data-toc-target="ko-section-15">4.1 공개키 복사 및 개인키 내보내기</a>
+<a class="toc-link toc-depth-1" href="#ko-section-16" data-toc-target="ko-section-16">4.2 철회·제거·삭제 구분</a>
+<a class="toc-link toc-depth-1" href="#ko-section-17" data-toc-target="ko-section-17">4.3 SSH 서버 지문 확인</a>
+<a class="toc-link toc-depth-1" href="#ko-section-18" data-toc-target="ko-section-18">4.4 SSH 호스트 설정 가져오기 및 내보내기</a>
+<a class="toc-link toc-depth-0" href="#ko-section-19" data-toc-target="ko-section-19">5. HTTPS 인증서 및 mTLS 설정</a>
+<a class="toc-link toc-depth-1" href="#ko-section-20" data-toc-target="ko-section-20">5.1 인증서의 방향 구분</a>
+<a class="toc-link toc-depth-1" href="#ko-section-21" data-toc-target="ko-section-21">5.2 장치 개인키와 인증서 요청 생성</a>
+<a class="toc-link toc-depth-1" href="#ko-section-22" data-toc-target="ko-section-22">5.3 장치 인증서 설치</a>
+<a class="toc-link toc-depth-1" href="#ko-section-23" data-toc-target="ko-section-23">5.4 클라이언트 CA 체인 설치 및 시험</a>
+<a class="toc-link toc-depth-1" href="#ko-section-24" data-toc-target="ko-section-24">5.5 인증서 갱신 및 모든 자격 증명 삭제</a>
+<a class="toc-link toc-depth-0" href="#ko-section-25" data-toc-target="ko-section-25">6. Config Pack 사용 전 제한 확인</a>
+<a class="toc-link toc-depth-1" href="#ko-section-26" data-toc-target="ko-section-26">6.1 현재 각 버튼의 실제 동작</a>
+<a class="toc-link toc-depth-1" href="#ko-section-27" data-toc-target="ko-section-27">6.2 서명 유효 표시뿐 아니라 출처 확인</a>
+<a class="toc-link toc-depth-1" href="#ko-section-28" data-toc-target="ko-section-28">6.3 장치 인증서 제공 및 받은 패키지 검사</a>
+<a class="toc-link toc-depth-1" href="#ko-section-29" data-toc-target="ko-section-29">6.4 Developer 장치에서 패키지 내보내기</a>
+<a class="toc-link toc-depth-0" href="#ko-section-30" data-toc-target="ko-section-30">7. 장애 및 보안 사고 대응</a>
+<a class="toc-link toc-depth-1" href="#ko-section-31" data-toc-target="ko-section-31">7.1 자주 발생하는 문제</a>
+<a class="toc-link toc-depth-1" href="#ko-section-32" data-toc-target="ko-section-32">7.2 SSH 개인키 유출 가능성</a>
+<a class="toc-link toc-depth-1" href="#ko-section-33" data-toc-target="ko-section-33">7.3 현재 버전에 남아 있는 위험</a>
+<a class="toc-link toc-depth-0" href="#ko-section-34" data-toc-target="ko-section-34">8. 검토 근거 및 용어</a>
+<a class="toc-link toc-depth-1" href="#ko-section-35" data-toc-target="ko-section-35">8.1 검토 방법</a>
+<a class="toc-link toc-depth-1" href="#ko-section-36" data-toc-target="ko-section-36">8.2 주요 용어</a>
+      </nav>
+<nav class="lang-pane" data-lang-pane="es" aria-label="En esta página" hidden>
+<a class="toc-link toc-depth-0" href="#es-section-1" data-toc-target="es-section-1">1. Antes de empezar</a>
+<a class="toc-link toc-depth-1" href="#es-section-2" data-toc-target="es-section-2">1.1 Encontrar la tarea que necesitas</a>
+<a class="toc-link toc-depth-1" href="#es-section-3" data-toc-target="es-section-3">1.2 Cuentas e identidad del dispositivo</a>
+<a class="toc-link toc-depth-1" href="#es-section-4" data-toc-target="es-section-4">1.3 Preparar la operación</a>
+<a class="toc-link toc-depth-0" href="#es-section-5" data-toc-target="es-section-5">2. Cambiar las contraseñas del dispositivo</a>
+<a class="toc-link toc-depth-1" href="#es-section-6" data-toc-target="es-section-6">2.1 El aviso de contraseña tras iniciar sesión</a>
+<a class="toc-link toc-depth-1" href="#es-section-7" data-toc-target="es-section-7">2.2 Establecer una contraseña como root</a>
+<a class="toc-link toc-depth-1" href="#es-section-8" data-toc-target="es-section-8">2.3 Restablecer la contraseña de admin</a>
+<a class="toc-link toc-depth-0" href="#es-section-9" data-toc-target="es-section-9">3. Conectarse a un servidor con una clave SSH</a>
+<a class="toc-link toc-depth-1" href="#es-section-10" data-toc-target="es-section-10">3.1 Crear una clave</a>
+<a class="toc-link toc-depth-1" href="#es-section-11" data-toc-target="es-section-11">3.2 Instalar la clave pública</a>
+<a class="toc-link toc-depth-1" href="#es-section-12" data-toc-target="es-section-12">3.3 Probar la conexión</a>
+<a class="toc-link toc-depth-1" href="#es-section-13" data-toc-target="es-section-13">3.4 Revocar el acceso antes de eliminar la clave local</a>
+<a class="toc-link toc-depth-0" href="#es-section-14" data-toc-target="es-section-14">4. Gestionar claves, hosts y huellas</a>
+<a class="toc-link toc-depth-1" href="#es-section-15" data-toc-target="es-section-15">4.1 Copiar una clave pública o exportar una privada</a>
+<a class="toc-link toc-depth-1" href="#es-section-16" data-toc-target="es-section-16">4.2 Revocar, quitar y eliminar son operaciones distintas</a>
+<a class="toc-link toc-depth-1" href="#es-section-17" data-toc-target="es-section-17">4.3 Comprobar la huella del servidor SSH</a>
+<a class="toc-link toc-depth-1" href="#es-section-18" data-toc-target="es-section-18">4.4 Importar y exportar configuraciones de hosts SSH</a>
+<a class="toc-link toc-depth-0" href="#es-section-19" data-toc-target="es-section-19">5. Configurar certificados HTTPS y mTLS</a>
+<a class="toc-link toc-depth-1" href="#es-section-20" data-toc-target="es-section-20">5.1 Función de cada certificado</a>
+<a class="toc-link toc-depth-1" href="#es-section-21" data-toc-target="es-section-21">5.2 Generar una clave de dispositivo y una solicitud de certificado</a>
+<a class="toc-link toc-depth-1" href="#es-section-22" data-toc-target="es-section-22">5.3 Instalar el certificado del dispositivo</a>
+<a class="toc-link toc-depth-1" href="#es-section-23" data-toc-target="es-section-23">5.4 Instalar la cadena de CA de clientes y probar</a>
+<a class="toc-link toc-depth-1" href="#es-section-24" data-toc-target="es-section-24">5.5 Renovar certificados o eliminar todas las credenciales</a>
+<a class="toc-link toc-depth-0" href="#es-section-25" data-toc-target="es-section-25">6. Comprender las limitaciones de Config Pack</a>
+<a class="toc-link toc-depth-1" href="#es-section-26" data-toc-target="es-section-26">6.1 Qué hacen actualmente los controles</a>
+<a class="toc-link toc-depth-1" href="#es-section-27" data-toc-target="es-section-27">6.2 Verificar el origen, no solo la firma</a>
+<a class="toc-link toc-depth-1" href="#es-section-28" data-toc-target="es-section-28">6.3 Compartir el certificado del dispositivo e inspeccionar un paquete</a>
+<a class="toc-link toc-depth-1" href="#es-section-29" data-toc-target="es-section-29">6.4 Exportar un paquete desde un dispositivo Developer</a>
+<a class="toc-link toc-depth-0" href="#es-section-30" data-toc-target="es-section-30">7. Resolución de problemas y respuesta a incidentes</a>
+<a class="toc-link toc-depth-1" href="#es-section-31" data-toc-target="es-section-31">7.1 Problemas frecuentes</a>
+<a class="toc-link toc-depth-1" href="#es-section-32" data-toc-target="es-section-32">7.2 Posible exposición de una clave privada SSH</a>
+<a class="toc-link toc-depth-1" href="#es-section-33" data-toc-target="es-section-33">7.3 Otros riesgos de seguridad actuales</a>
+<a class="toc-link toc-depth-0" href="#es-section-34" data-toc-target="es-section-34">8. Alcance de la revisión y glosario</a>
+<a class="toc-link toc-depth-1" href="#es-section-35" data-toc-target="es-section-35">8.1 Base de esta guía</a>
+<a class="toc-link toc-depth-1" href="#es-section-36" data-toc-target="es-section-36">8.2 Términos utilizados</a>
+      </nav>
+<nav class="lang-pane" data-lang-pane="fr" aria-label="Sur cette page" hidden>
+<a class="toc-link toc-depth-0" href="#fr-section-1" data-toc-target="fr-section-1">1. Avant de commencer</a>
+<a class="toc-link toc-depth-1" href="#fr-section-2" data-toc-target="fr-section-2">1.1 Trouver la procédure adaptée</a>
+<a class="toc-link toc-depth-1" href="#fr-section-3" data-toc-target="fr-section-3">1.2 Comptes et identité de l’appareil</a>
+<a class="toc-link toc-depth-1" href="#fr-section-4" data-toc-target="fr-section-4">1.3 Préparer l’opération</a>
+<a class="toc-link toc-depth-0" href="#fr-section-5" data-toc-target="fr-section-5">2. Changer les mots de passe de l’appareil</a>
+<a class="toc-link toc-depth-1" href="#fr-section-6" data-toc-target="fr-section-6">2.1 L’invite de changement après connexion</a>
+<a class="toc-link toc-depth-1" href="#fr-section-7" data-toc-target="fr-section-7">2.2 Définir un mot de passe en tant que root</a>
+<a class="toc-link toc-depth-1" href="#fr-section-8" data-toc-target="fr-section-8">2.3 Réinitialiser le mot de passe admin</a>
+<a class="toc-link toc-depth-0" href="#fr-section-9" data-toc-target="fr-section-9">3. Se connecter à un serveur avec une clé SSH</a>
+<a class="toc-link toc-depth-1" href="#fr-section-10" data-toc-target="fr-section-10">3.1 Créer une clé</a>
+<a class="toc-link toc-depth-1" href="#fr-section-11" data-toc-target="fr-section-11">3.2 Déployer la clé publique</a>
+<a class="toc-link toc-depth-1" href="#fr-section-12" data-toc-target="fr-section-12">3.3 Tester la connexion</a>
+<a class="toc-link toc-depth-1" href="#fr-section-13" data-toc-target="fr-section-13">3.4 Révoquer l’accès avant de supprimer la clé locale</a>
+<a class="toc-link toc-depth-0" href="#fr-section-14" data-toc-target="fr-section-14">4. Gérer les clés, les hôtes et les empreintes</a>
+<a class="toc-link toc-depth-1" href="#fr-section-15" data-toc-target="fr-section-15">4.1 Copier une clé publique ou exporter une clé privée</a>
+<a class="toc-link toc-depth-1" href="#fr-section-16" data-toc-target="fr-section-16">4.2 Révoquer, retirer et supprimer sont des opérations distinctes</a>
+<a class="toc-link toc-depth-1" href="#fr-section-17" data-toc-target="fr-section-17">4.3 Vérifier l’empreinte du serveur SSH</a>
+<a class="toc-link toc-depth-1" href="#fr-section-18" data-toc-target="fr-section-18">4.4 Importer et exporter des configurations d’hôtes SSH</a>
+<a class="toc-link toc-depth-0" href="#fr-section-19" data-toc-target="fr-section-19">5. Configurer les certificats HTTPS et mTLS</a>
+<a class="toc-link toc-depth-1" href="#fr-section-20" data-toc-target="fr-section-20">5.1 Comprendre le rôle de chaque certificat</a>
+<a class="toc-link toc-depth-1" href="#fr-section-21" data-toc-target="fr-section-21">5.2 Générer une clé d’appareil et une demande de certificat</a>
+<a class="toc-link toc-depth-1" href="#fr-section-22" data-toc-target="fr-section-22">5.3 Installer le certificat de l’appareil</a>
+<a class="toc-link toc-depth-1" href="#fr-section-23" data-toc-target="fr-section-23">5.4 Installer la chaîne de CA de confiance pour les clients et tester</a>
+<a class="toc-link toc-depth-1" href="#fr-section-24" data-toc-target="fr-section-24">5.5 Renouveler les certificats ou supprimer tous les éléments d’authentification</a>
+<a class="toc-link toc-depth-0" href="#fr-section-25" data-toc-target="fr-section-25">6. Comprendre les limites de Config Pack</a>
+<a class="toc-link toc-depth-1" href="#fr-section-26" data-toc-target="fr-section-26">6.1 Ce que font actuellement les commandes</a>
+<a class="toc-link toc-depth-1" href="#fr-section-27" data-toc-target="fr-section-27">6.2 Vérifier l’origine, pas seulement la signature</a>
+<a class="toc-link toc-depth-1" href="#fr-section-28" data-toc-target="fr-section-28">6.3 Partager le certificat de l’appareil et inspecter un paquet</a>
+<a class="toc-link toc-depth-1" href="#fr-section-29" data-toc-target="fr-section-29">6.4 Exporter un paquet depuis un appareil Developer</a>
+<a class="toc-link toc-depth-0" href="#fr-section-30" data-toc-target="fr-section-30">7. Dépannage et réponse aux incidents</a>
+<a class="toc-link toc-depth-1" href="#fr-section-31" data-toc-target="fr-section-31">7.1 Problèmes courants</a>
+<a class="toc-link toc-depth-1" href="#fr-section-32" data-toc-target="fr-section-32">7.2 Exposition présumée d’une clé privée SSH</a>
+<a class="toc-link toc-depth-1" href="#fr-section-33" data-toc-target="fr-section-33">7.3 Autres risques de sécurité actuels</a>
+<a class="toc-link toc-depth-0" href="#fr-section-34" data-toc-target="fr-section-34">8. Périmètre de la revue et glossaire</a>
+<a class="toc-link toc-depth-1" href="#fr-section-35" data-toc-target="fr-section-35">8.1 Base de ce guide</a>
+<a class="toc-link toc-depth-1" href="#fr-section-36" data-toc-target="fr-section-36">8.2 Termes employés</a>
+      </nav>
     </details>
 
     <div class="guide-doc-layout">
-      <aside class="guide-toc" aria-label="本页目录">
+      <aside class="guide-toc" aria-label="本页目录" data-i18n-aria-label-zh="本页目录" data-i18n-aria-label-en="On this page">
         <p data-guide-text data-zh="本页目录" data-en="On this page">本页目录</p>
-        <nav class="lang-pane" data-lang-pane="zh">
+<nav class="lang-pane" data-lang-pane="zh">
 <a class="toc-link toc-depth-0" href="#zh-section-1" data-toc-target="zh-section-1">1. 开始前先确认</a>
 <a class="toc-link toc-depth-1" href="#zh-section-2" data-toc-target="zh-section-2">1.1 找到你需要的功能</a>
 <a class="toc-link toc-depth-1" href="#zh-section-3" data-toc-target="zh-section-3">1.2 账号与设备身份不是一回事</a>
@@ -215,7 +375,7 @@
 <a class="toc-link toc-depth-1" href="#zh-section-35" data-toc-target="zh-section-35">8.1 本次如何核查</a>
 <a class="toc-link toc-depth-1" href="#zh-section-36" data-toc-target="zh-section-36">8.2 常用术语</a>
         </nav>
-        <nav class="lang-pane" data-lang-pane="en" hidden>
+<nav class="lang-pane" data-lang-pane="en" hidden>
 <a class="toc-link toc-depth-0" href="#en-section-1" data-toc-target="en-section-1">1. Before you begin</a>
 <a class="toc-link toc-depth-1" href="#en-section-2" data-toc-target="en-section-2">1.1 Find the task you need</a>
 <a class="toc-link toc-depth-1" href="#en-section-3" data-toc-target="en-section-3">1.2 Accounts and device identity</a>
@@ -252,6 +412,158 @@
 <a class="toc-link toc-depth-0" href="#en-section-34" data-toc-target="en-section-34">8. Review scope and glossary</a>
 <a class="toc-link toc-depth-1" href="#en-section-35" data-toc-target="en-section-35">8.1 Basis of this guide</a>
 <a class="toc-link toc-depth-1" href="#en-section-36" data-toc-target="en-section-36">8.2 Terms used in this guide</a>
+        </nav>
+<nav class="lang-pane" data-lang-pane="ja" hidden>
+<a class="toc-link toc-depth-0" href="#ja-section-1" data-toc-target="ja-section-1">1. 始める前の確認</a>
+<a class="toc-link toc-depth-1" href="#ja-section-2" data-toc-target="ja-section-2">1.1 目的の機能を探す</a>
+<a class="toc-link toc-depth-1" href="#ja-section-3" data-toc-target="ja-section-3">1.2 アカウントと機器の識別情報は別物</a>
+<a class="toc-link toc-depth-1" href="#ja-section-4" data-toc-target="ja-section-4">1.3 操作の準備</a>
+<a class="toc-link toc-depth-0" href="#ja-section-5" data-toc-target="ja-section-5">2. 機器のログインパスワードを変更する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-6" data-toc-target="ja-section-6">2.1 初回ログイン後の変更通知</a>
+<a class="toc-link toc-depth-1" href="#ja-section-7" data-toc-target="ja-section-7">2.2 root によるパスワード設定</a>
+<a class="toc-link toc-depth-1" href="#ja-section-8" data-toc-target="ja-section-8">2.3 admin パスワードのリセット</a>
+<a class="toc-link toc-depth-0" href="#ja-section-9" data-toc-target="ja-section-9">3. SSH 鍵でサーバーに接続する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-10" data-toc-target="ja-section-10">3.1 鍵を生成する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-11" data-toc-target="ja-section-11">3.2 公開鍵を配備する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-12" data-toc-target="ja-section-12">3.3 接続をテストして結果を確認する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-13" data-toc-target="ja-section-13">3.4 リモート認可を取り消してからローカル鍵を削除する</a>
+<a class="toc-link toc-depth-0" href="#ja-section-14" data-toc-target="ja-section-14">4. 鍵・ホスト・フィンガープリントの管理</a>
+<a class="toc-link toc-depth-1" href="#ja-section-15" data-toc-target="ja-section-15">4.1 公開鍵のコピーと秘密鍵のエクスポート</a>
+<a class="toc-link toc-depth-1" href="#ja-section-16" data-toc-target="ja-section-16">4.2 取り消し・除去・削除の違い</a>
+<a class="toc-link toc-depth-1" href="#ja-section-17" data-toc-target="ja-section-17">4.3 SSH サーバーのフィンガープリントを照合する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-18" data-toc-target="ja-section-18">4.4 SSH ホスト設定のインポート・エクスポート</a>
+<a class="toc-link toc-depth-0" href="#ja-section-19" data-toc-target="ja-section-19">5. HTTPS 証明書と mTLS の設定</a>
+<a class="toc-link toc-depth-1" href="#ja-section-20" data-toc-target="ja-section-20">5.1 証明書の役割を区別する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-21" data-toc-target="ja-section-21">5.2 機器秘密鍵と証明書署名要求を生成する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-22" data-toc-target="ja-section-22">5.3 機器証明書をインストールする</a>
+<a class="toc-link toc-depth-1" href="#ja-section-23" data-toc-target="ja-section-23">5.4 クライアント CA チェーンを入れてテストする</a>
+<a class="toc-link toc-depth-1" href="#ja-section-24" data-toc-target="ja-section-24">5.5 証明書の更新と全資格情報の削除</a>
+<a class="toc-link toc-depth-0" href="#ja-section-25" data-toc-target="ja-section-25">6. Config Pack の利用前に制限を確認する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-26" data-toc-target="ja-section-26">6.1 現在の各ボタンの動作</a>
+<a class="toc-link toc-depth-1" href="#ja-section-27" data-toc-target="ja-section-27">6.2 署名有効の表示だけでなく出所を確認する</a>
+<a class="toc-link toc-depth-1" href="#ja-section-28" data-toc-target="ja-section-28">6.3 機器証明書の提供と受信パッケージの検査</a>
+<a class="toc-link toc-depth-1" href="#ja-section-29" data-toc-target="ja-section-29">6.4 Developer 機器からエクスポートする</a>
+<a class="toc-link toc-depth-0" href="#ja-section-30" data-toc-target="ja-section-30">7. 障害・セキュリティインシデントへの対応</a>
+<a class="toc-link toc-depth-1" href="#ja-section-31" data-toc-target="ja-section-31">7.1 よくある問題</a>
+<a class="toc-link toc-depth-1" href="#ja-section-32" data-toc-target="ja-section-32">7.2 SSH 秘密鍵が漏えいした可能性がある場合</a>
+<a class="toc-link toc-depth-1" href="#ja-section-33" data-toc-target="ja-section-33">7.3 現バージョンで残るリスク</a>
+<a class="toc-link toc-depth-0" href="#ja-section-34" data-toc-target="ja-section-34">8. 調査根拠と用語</a>
+<a class="toc-link toc-depth-1" href="#ja-section-35" data-toc-target="ja-section-35">8.1 調査方法</a>
+<a class="toc-link toc-depth-1" href="#ja-section-36" data-toc-target="ja-section-36">8.2 用語</a>
+        </nav>
+<nav class="lang-pane" data-lang-pane="ko" hidden>
+<a class="toc-link toc-depth-0" href="#ko-section-1" data-toc-target="ko-section-1">1. 시작 전 확인</a>
+<a class="toc-link toc-depth-1" href="#ko-section-2" data-toc-target="ko-section-2">1.1 필요한 기능 찾기</a>
+<a class="toc-link toc-depth-1" href="#ko-section-3" data-toc-target="ko-section-3">1.2 계정과 장치 신원은 다릅니다</a>
+<a class="toc-link toc-depth-1" href="#ko-section-4" data-toc-target="ko-section-4">1.3 작업 준비</a>
+<a class="toc-link toc-depth-0" href="#ko-section-5" data-toc-target="ko-section-5">2. 장치 로그인 비밀번호 변경</a>
+<a class="toc-link toc-depth-1" href="#ko-section-6" data-toc-target="ko-section-6">2.1 첫 로그인 후 비밀번호 알림</a>
+<a class="toc-link toc-depth-1" href="#ko-section-7" data-toc-target="ko-section-7">2.2 root가 비밀번호 설정</a>
+<a class="toc-link toc-depth-1" href="#ko-section-8" data-toc-target="ko-section-8">2.3 admin 비밀번호 초기화</a>
+<a class="toc-link toc-depth-0" href="#ko-section-9" data-toc-target="ko-section-9">3. SSH 키로 서버 연결</a>
+<a class="toc-link toc-depth-1" href="#ko-section-10" data-toc-target="ko-section-10">3.1 키 생성</a>
+<a class="toc-link toc-depth-1" href="#ko-section-11" data-toc-target="ko-section-11">3.2 공개키 배포</a>
+<a class="toc-link toc-depth-1" href="#ko-section-12" data-toc-target="ko-section-12">3.3 연결 시험 및 결과 확인</a>
+<a class="toc-link toc-depth-1" href="#ko-section-13" data-toc-target="ko-section-13">3.4 원격 권한 철회 후 로컬 키 삭제</a>
+<a class="toc-link toc-depth-0" href="#ko-section-14" data-toc-target="ko-section-14">4. 키·호스트·지문 관리</a>
+<a class="toc-link toc-depth-1" href="#ko-section-15" data-toc-target="ko-section-15">4.1 공개키 복사 및 개인키 내보내기</a>
+<a class="toc-link toc-depth-1" href="#ko-section-16" data-toc-target="ko-section-16">4.2 철회·제거·삭제 구분</a>
+<a class="toc-link toc-depth-1" href="#ko-section-17" data-toc-target="ko-section-17">4.3 SSH 서버 지문 확인</a>
+<a class="toc-link toc-depth-1" href="#ko-section-18" data-toc-target="ko-section-18">4.4 SSH 호스트 설정 가져오기 및 내보내기</a>
+<a class="toc-link toc-depth-0" href="#ko-section-19" data-toc-target="ko-section-19">5. HTTPS 인증서 및 mTLS 설정</a>
+<a class="toc-link toc-depth-1" href="#ko-section-20" data-toc-target="ko-section-20">5.1 인증서의 방향 구분</a>
+<a class="toc-link toc-depth-1" href="#ko-section-21" data-toc-target="ko-section-21">5.2 장치 개인키와 인증서 요청 생성</a>
+<a class="toc-link toc-depth-1" href="#ko-section-22" data-toc-target="ko-section-22">5.3 장치 인증서 설치</a>
+<a class="toc-link toc-depth-1" href="#ko-section-23" data-toc-target="ko-section-23">5.4 클라이언트 CA 체인 설치 및 시험</a>
+<a class="toc-link toc-depth-1" href="#ko-section-24" data-toc-target="ko-section-24">5.5 인증서 갱신 및 모든 자격 증명 삭제</a>
+<a class="toc-link toc-depth-0" href="#ko-section-25" data-toc-target="ko-section-25">6. Config Pack 사용 전 제한 확인</a>
+<a class="toc-link toc-depth-1" href="#ko-section-26" data-toc-target="ko-section-26">6.1 현재 각 버튼의 실제 동작</a>
+<a class="toc-link toc-depth-1" href="#ko-section-27" data-toc-target="ko-section-27">6.2 서명 유효 표시뿐 아니라 출처 확인</a>
+<a class="toc-link toc-depth-1" href="#ko-section-28" data-toc-target="ko-section-28">6.3 장치 인증서 제공 및 받은 패키지 검사</a>
+<a class="toc-link toc-depth-1" href="#ko-section-29" data-toc-target="ko-section-29">6.4 Developer 장치에서 패키지 내보내기</a>
+<a class="toc-link toc-depth-0" href="#ko-section-30" data-toc-target="ko-section-30">7. 장애 및 보안 사고 대응</a>
+<a class="toc-link toc-depth-1" href="#ko-section-31" data-toc-target="ko-section-31">7.1 자주 발생하는 문제</a>
+<a class="toc-link toc-depth-1" href="#ko-section-32" data-toc-target="ko-section-32">7.2 SSH 개인키 유출 가능성</a>
+<a class="toc-link toc-depth-1" href="#ko-section-33" data-toc-target="ko-section-33">7.3 현재 버전에 남아 있는 위험</a>
+<a class="toc-link toc-depth-0" href="#ko-section-34" data-toc-target="ko-section-34">8. 검토 근거 및 용어</a>
+<a class="toc-link toc-depth-1" href="#ko-section-35" data-toc-target="ko-section-35">8.1 검토 방법</a>
+<a class="toc-link toc-depth-1" href="#ko-section-36" data-toc-target="ko-section-36">8.2 주요 용어</a>
+        </nav>
+<nav class="lang-pane" data-lang-pane="es" hidden>
+<a class="toc-link toc-depth-0" href="#es-section-1" data-toc-target="es-section-1">1. Antes de empezar</a>
+<a class="toc-link toc-depth-1" href="#es-section-2" data-toc-target="es-section-2">1.1 Encontrar la tarea que necesitas</a>
+<a class="toc-link toc-depth-1" href="#es-section-3" data-toc-target="es-section-3">1.2 Cuentas e identidad del dispositivo</a>
+<a class="toc-link toc-depth-1" href="#es-section-4" data-toc-target="es-section-4">1.3 Preparar la operación</a>
+<a class="toc-link toc-depth-0" href="#es-section-5" data-toc-target="es-section-5">2. Cambiar las contraseñas del dispositivo</a>
+<a class="toc-link toc-depth-1" href="#es-section-6" data-toc-target="es-section-6">2.1 El aviso de contraseña tras iniciar sesión</a>
+<a class="toc-link toc-depth-1" href="#es-section-7" data-toc-target="es-section-7">2.2 Establecer una contraseña como root</a>
+<a class="toc-link toc-depth-1" href="#es-section-8" data-toc-target="es-section-8">2.3 Restablecer la contraseña de admin</a>
+<a class="toc-link toc-depth-0" href="#es-section-9" data-toc-target="es-section-9">3. Conectarse a un servidor con una clave SSH</a>
+<a class="toc-link toc-depth-1" href="#es-section-10" data-toc-target="es-section-10">3.1 Crear una clave</a>
+<a class="toc-link toc-depth-1" href="#es-section-11" data-toc-target="es-section-11">3.2 Instalar la clave pública</a>
+<a class="toc-link toc-depth-1" href="#es-section-12" data-toc-target="es-section-12">3.3 Probar la conexión</a>
+<a class="toc-link toc-depth-1" href="#es-section-13" data-toc-target="es-section-13">3.4 Revocar el acceso antes de eliminar la clave local</a>
+<a class="toc-link toc-depth-0" href="#es-section-14" data-toc-target="es-section-14">4. Gestionar claves, hosts y huellas</a>
+<a class="toc-link toc-depth-1" href="#es-section-15" data-toc-target="es-section-15">4.1 Copiar una clave pública o exportar una privada</a>
+<a class="toc-link toc-depth-1" href="#es-section-16" data-toc-target="es-section-16">4.2 Revocar, quitar y eliminar son operaciones distintas</a>
+<a class="toc-link toc-depth-1" href="#es-section-17" data-toc-target="es-section-17">4.3 Comprobar la huella del servidor SSH</a>
+<a class="toc-link toc-depth-1" href="#es-section-18" data-toc-target="es-section-18">4.4 Importar y exportar configuraciones de hosts SSH</a>
+<a class="toc-link toc-depth-0" href="#es-section-19" data-toc-target="es-section-19">5. Configurar certificados HTTPS y mTLS</a>
+<a class="toc-link toc-depth-1" href="#es-section-20" data-toc-target="es-section-20">5.1 Función de cada certificado</a>
+<a class="toc-link toc-depth-1" href="#es-section-21" data-toc-target="es-section-21">5.2 Generar una clave de dispositivo y una solicitud de certificado</a>
+<a class="toc-link toc-depth-1" href="#es-section-22" data-toc-target="es-section-22">5.3 Instalar el certificado del dispositivo</a>
+<a class="toc-link toc-depth-1" href="#es-section-23" data-toc-target="es-section-23">5.4 Instalar la cadena de CA de clientes y probar</a>
+<a class="toc-link toc-depth-1" href="#es-section-24" data-toc-target="es-section-24">5.5 Renovar certificados o eliminar todas las credenciales</a>
+<a class="toc-link toc-depth-0" href="#es-section-25" data-toc-target="es-section-25">6. Comprender las limitaciones de Config Pack</a>
+<a class="toc-link toc-depth-1" href="#es-section-26" data-toc-target="es-section-26">6.1 Qué hacen actualmente los controles</a>
+<a class="toc-link toc-depth-1" href="#es-section-27" data-toc-target="es-section-27">6.2 Verificar el origen, no solo la firma</a>
+<a class="toc-link toc-depth-1" href="#es-section-28" data-toc-target="es-section-28">6.3 Compartir el certificado del dispositivo e inspeccionar un paquete</a>
+<a class="toc-link toc-depth-1" href="#es-section-29" data-toc-target="es-section-29">6.4 Exportar un paquete desde un dispositivo Developer</a>
+<a class="toc-link toc-depth-0" href="#es-section-30" data-toc-target="es-section-30">7. Resolución de problemas y respuesta a incidentes</a>
+<a class="toc-link toc-depth-1" href="#es-section-31" data-toc-target="es-section-31">7.1 Problemas frecuentes</a>
+<a class="toc-link toc-depth-1" href="#es-section-32" data-toc-target="es-section-32">7.2 Posible exposición de una clave privada SSH</a>
+<a class="toc-link toc-depth-1" href="#es-section-33" data-toc-target="es-section-33">7.3 Otros riesgos de seguridad actuales</a>
+<a class="toc-link toc-depth-0" href="#es-section-34" data-toc-target="es-section-34">8. Alcance de la revisión y glosario</a>
+<a class="toc-link toc-depth-1" href="#es-section-35" data-toc-target="es-section-35">8.1 Base de esta guía</a>
+<a class="toc-link toc-depth-1" href="#es-section-36" data-toc-target="es-section-36">8.2 Términos utilizados</a>
+        </nav>
+<nav class="lang-pane" data-lang-pane="fr" hidden>
+<a class="toc-link toc-depth-0" href="#fr-section-1" data-toc-target="fr-section-1">1. Avant de commencer</a>
+<a class="toc-link toc-depth-1" href="#fr-section-2" data-toc-target="fr-section-2">1.1 Trouver la procédure adaptée</a>
+<a class="toc-link toc-depth-1" href="#fr-section-3" data-toc-target="fr-section-3">1.2 Comptes et identité de l’appareil</a>
+<a class="toc-link toc-depth-1" href="#fr-section-4" data-toc-target="fr-section-4">1.3 Préparer l’opération</a>
+<a class="toc-link toc-depth-0" href="#fr-section-5" data-toc-target="fr-section-5">2. Changer les mots de passe de l’appareil</a>
+<a class="toc-link toc-depth-1" href="#fr-section-6" data-toc-target="fr-section-6">2.1 L’invite de changement après connexion</a>
+<a class="toc-link toc-depth-1" href="#fr-section-7" data-toc-target="fr-section-7">2.2 Définir un mot de passe en tant que root</a>
+<a class="toc-link toc-depth-1" href="#fr-section-8" data-toc-target="fr-section-8">2.3 Réinitialiser le mot de passe admin</a>
+<a class="toc-link toc-depth-0" href="#fr-section-9" data-toc-target="fr-section-9">3. Se connecter à un serveur avec une clé SSH</a>
+<a class="toc-link toc-depth-1" href="#fr-section-10" data-toc-target="fr-section-10">3.1 Créer une clé</a>
+<a class="toc-link toc-depth-1" href="#fr-section-11" data-toc-target="fr-section-11">3.2 Déployer la clé publique</a>
+<a class="toc-link toc-depth-1" href="#fr-section-12" data-toc-target="fr-section-12">3.3 Tester la connexion</a>
+<a class="toc-link toc-depth-1" href="#fr-section-13" data-toc-target="fr-section-13">3.4 Révoquer l’accès avant de supprimer la clé locale</a>
+<a class="toc-link toc-depth-0" href="#fr-section-14" data-toc-target="fr-section-14">4. Gérer les clés, les hôtes et les empreintes</a>
+<a class="toc-link toc-depth-1" href="#fr-section-15" data-toc-target="fr-section-15">4.1 Copier une clé publique ou exporter une clé privée</a>
+<a class="toc-link toc-depth-1" href="#fr-section-16" data-toc-target="fr-section-16">4.2 Révoquer, retirer et supprimer sont des opérations distinctes</a>
+<a class="toc-link toc-depth-1" href="#fr-section-17" data-toc-target="fr-section-17">4.3 Vérifier l’empreinte du serveur SSH</a>
+<a class="toc-link toc-depth-1" href="#fr-section-18" data-toc-target="fr-section-18">4.4 Importer et exporter des configurations d’hôtes SSH</a>
+<a class="toc-link toc-depth-0" href="#fr-section-19" data-toc-target="fr-section-19">5. Configurer les certificats HTTPS et mTLS</a>
+<a class="toc-link toc-depth-1" href="#fr-section-20" data-toc-target="fr-section-20">5.1 Comprendre le rôle de chaque certificat</a>
+<a class="toc-link toc-depth-1" href="#fr-section-21" data-toc-target="fr-section-21">5.2 Générer une clé d’appareil et une demande de certificat</a>
+<a class="toc-link toc-depth-1" href="#fr-section-22" data-toc-target="fr-section-22">5.3 Installer le certificat de l’appareil</a>
+<a class="toc-link toc-depth-1" href="#fr-section-23" data-toc-target="fr-section-23">5.4 Installer la chaîne de CA de confiance pour les clients et tester</a>
+<a class="toc-link toc-depth-1" href="#fr-section-24" data-toc-target="fr-section-24">5.5 Renouveler les certificats ou supprimer tous les éléments d’authentification</a>
+<a class="toc-link toc-depth-0" href="#fr-section-25" data-toc-target="fr-section-25">6. Comprendre les limites de Config Pack</a>
+<a class="toc-link toc-depth-1" href="#fr-section-26" data-toc-target="fr-section-26">6.1 Ce que font actuellement les commandes</a>
+<a class="toc-link toc-depth-1" href="#fr-section-27" data-toc-target="fr-section-27">6.2 Vérifier l’origine, pas seulement la signature</a>
+<a class="toc-link toc-depth-1" href="#fr-section-28" data-toc-target="fr-section-28">6.3 Partager le certificat de l’appareil et inspecter un paquet</a>
+<a class="toc-link toc-depth-1" href="#fr-section-29" data-toc-target="fr-section-29">6.4 Exporter un paquet depuis un appareil Developer</a>
+<a class="toc-link toc-depth-0" href="#fr-section-30" data-toc-target="fr-section-30">7. Dépannage et réponse aux incidents</a>
+<a class="toc-link toc-depth-1" href="#fr-section-31" data-toc-target="fr-section-31">7.1 Problèmes courants</a>
+<a class="toc-link toc-depth-1" href="#fr-section-32" data-toc-target="fr-section-32">7.2 Exposition présumée d’une clé privée SSH</a>
+<a class="toc-link toc-depth-1" href="#fr-section-33" data-toc-target="fr-section-33">7.3 Autres risques de sécurité actuels</a>
+<a class="toc-link toc-depth-0" href="#fr-section-34" data-toc-target="fr-section-34">8. Périmètre de la revue et glossaire</a>
+<a class="toc-link toc-depth-1" href="#fr-section-35" data-toc-target="fr-section-35">8.1 Base de ce guide</a>
+<a class="toc-link toc-depth-1" href="#fr-section-36" data-toc-target="fr-section-36">8.2 Termes employés</a>
         </nav>
       </aside>
 
@@ -486,6 +798,468 @@
 <ul><li>Public key / private key: share the public key with an administrator who grants access; keep the private key secret. Authentication uses the matching pair.</li><li>NVS: a Flash storage area for device settings and keys. The name does not imply encryption.</li><li>CSR / CA: a certificate signing request, and a certificate authority or its certificate.</li><li>CN / O / OU: common name, organization, and organizational unit fields in a certificate subject.</li><li>SAN / EKU: the names or IP addresses a certificate covers, and the authentication purposes it permits.</li><li>PEM: a text format with BEGIN/END markers, used for certificates, CSRs, and keys.</li><li>PKI / mTLS: the certificate and trust-management system, and mutual TLS, in which both the client and server present certificates.</li></ul>
 
           </article>
+
+          <article class="guide-article lang-pane" data-lang-pane="ja" hidden>
+<p>機器のパスワード変更、SSH 接続の管理、証明書の設定を説明します。初めて使う方は第 1・2 章からお読みください。証明書と設定パッケージは、機器のセキュリティ担当管理者が扱ってください。</p>
+<p>対象：2026-09-07 に確認した作業ツリーのコード。基準コミットは <code>d6ed947</code> です。記述はコード調査に基づき、お使いの実機での動作確認を意味しません。各節の「結果の確認」は実際の環境で行う必要があります。以下では説明に日本語を使い、操作箇所を特定できるよう機器の中国語ラベルを併記します。</p>
+<aside class="guide-notice"><span>重要事項</span><p>まずネットワークの安全性を確認してください。現在の完全な管理画面は HTTP を使い、多くの API に共通のログイン・権限チェックがありません。管理された隔離ネットワークだけで操作し、機器をインターネットやゲストネットワークに直接公開しないでください。HTTPS 証明書を入れても、この管理画面は自動的に HTTPS には切り替わりません。</p></aside>
+<h2 id="ja-section-1" data-heading-key="section-1"><a href="#ja-section-1">1. 始める前の確認</a></h2>
+<h3 id="ja-section-2" data-heading-key="section-2"><a href="#ja-section-2">1.1 目的の機能を探す</a></h3>
+<div class="guide-table-wrap"><table><thead><tr><th>目的</th><th>操作場所</th></tr></thead><tbody><tr><td>root/admin のパスワード変更</td><td>アカウントセキュリティ。第 2 章</td></tr><tr><td>鍵でサーバーに接続</td><td>鍵管理・登録済みホスト。第 3 章</td></tr><tr><td>鍵のコピー、サーバーの識別情報変更への対応</td><td>鍵管理・既知ホストのフィンガープリント。第 4 章</td></tr><tr><td>機器証明書と相互証明書認証の設定</td><td>HTTPS 証明書。第 5 章</td></tr><tr><td>暗号化設定パッケージの受け渡し</td><td>Config Pack。第 6 章。汎用の適用機能は未完成</td></tr></tbody></table></div>
+<h3 id="ja-section-3" data-heading-key="section-3"><a href="#ja-section-3">1.2 アカウントと機器の識別情報は別物</a></h3>
+<ul><li>admin：セキュリティページを開き、鍵、ホスト、証明書、設定パッケージの機能を表示できます。ただしアカウントセキュリティ（「账号安全」）は表示されません。</li><li>root：root/admin のパスワード設定と admin パスワードのリセットもできます。これらの API はバックエンドで root を確認します。</li><li>Developer 機器：機器証明書の OU 属性で識別され、ログインアカウントとは異なります。現在、設定パッケージと SSH ホスト設定をエクスポートできるのはこの機器だけです。root でログインしても機器の識別は変わりません。</li></ul>
+<p>上記のパスワード管理など独自に認証を行う API を除き、画面にログインが必要であることだけでは API の直接呼び出しを防げません。ネットワーク隔離が現在の利用条件です。</p>
+<h3 id="ja-section-4" data-heading-key="section-4"><a href="#ja-section-4">1.3 操作の準備</a></h3>
+<ol><li>アドレスバーの IP が対象機器であり、パソコンも信頼できる管理ネットワークにあることを確認します。</li><li>サーバー管理者に SSH アドレス、ポート、ユーザー名を確認します。</li><li>画面から公開鍵を配備したり認可を取り消したりするには、対象アカウントのパスワードが必要で、そのアカウントでパスワードログインが許可されている必要があります。障害調査のためにサーバーの制限を緩めたままにしないでください。</li><li>鍵の削除、認可の取り消し、証明書交換の前に、サーバーコンソール、別の管理者鍵、機器の HTTP 管理画面など、代替経路が使えることを確認します。</li></ol>
+<h2 id="ja-section-5" data-heading-key="section-5"><a href="#ja-section-5">2. 機器のログインパスワードを変更する</a></h2>
+<p>ここで変えるのは TianShanOS のログインパスワードです。リモートサーバーの SSH パスワードではありません。</p>
+<h3 id="ja-section-6" data-heading-key="section-6"><a href="#ja-section-6">2.1 初回ログイン後の変更通知</a></h3>
+<p>パスワード変更済みと記録されていないアカウントでは、ログイン後に変更通知が出ます。他で使っていない長いパスワードを設定してください。「稍后修改」（後で変更）を選んで初期パスワードを使い続けないでください。</p>
+<p>この通知は、いつでも開けるアカウント設定ではありません。変更済みの admin が再度変更する場合は、root がセキュリティページで設定できます。</p>
+<h3 id="ja-section-7" data-heading-key="section-7"><a href="#ja-section-7">2.2 root によるパスワード設定</a></h3>
+<ol><li>root でログインし、セキュリティ（「安全」）を開きます。</li><li>アカウントセキュリティ（「账号安全」）でroot パスワードを設定（「设置 root 密码」）またはadmin パスワードを設定（「设置 admin 密码」）を選択します。</li><li>同じ新規パスワードを 2 回入力して送信します。入力範囲は 4-64 文字ですが、4 文字は技術的な下限であり、推奨する強度ではありません。</li></ol>
+<p>結果の確認：プライベートウィンドウで新しいパスワードのログインを確認してから元のセッションを閉じます。変更しても既存セッションは自動終了しません。</p>
+<p>ログインに失敗したら、アカウントと IP を確認します。5 回連続で失敗すると約 5 分間ロックされます。繰り返し推測しないでください。</p>
+<h3 id="ja-section-8" data-heading-key="section-8"><a href="#ja-section-8">2.3 admin パスワードのリセット</a></h3>
+<p>root はアカウントセキュリティで admin を初期パスワード <code>rm01</code> に戻し、ログインロックを解除できます。直後に新しいセッションで admin にログインし、新しいパスワードを設定してください。</p>
+<p>リセットは一時的な復旧手段です。初期パスワードを常用しないでください。また、パスワード変更が既存セッションをすべて無効にするわけではありません。</p>
+<h2 id="ja-section-9" data-heading-key="section-9"><a href="#ja-section-9">3. SSH 鍵でサーバーに接続する</a></h2>
+<p>初回は RSA 鍵の生成 → 公開鍵の配備 → 接続テスト → サーバーの識別確認の順で進めます。廃止時はリモート側の認可を取り消し、ログインできないことを確認してからローカル鍵を削除します。</p>
+<h3 id="ja-section-10" data-heading-key="section-10"><a href="#ja-section-10">3.1 鍵を生成する</a></h3>
+<ol><li>鍵管理（「密钥管理」）で新しい鍵を生成（「生成新密钥」）を選択します。</li><li>既存一覧を確認し、<code>backup01</code> など未使用の鍵 ID を入力します。現在は重複 ID を拒否しないため、既存 ID を使うと元の鍵を上書きするおそれがあります。</li><li>RSA 2048 または RSA 4096 を選びます。既定は RSA 2048 です。ECDSA も表示されますが、現在の SSH 公開鍵認証では使えません。</li><li>必要なら備考と別名を入力します。秘密鍵のバックアップ・移行が必要な場合だけ秘密鍵のエクスポートを許可（「允许导出私钥」）を選択してください。生成後にこの属性を変える画面はありません。</li><li>生成（「生成」）を選び、完了後に一覧を更新します。</li></ol>
+<p>結果の確認：正しい ID と RSA の種類を確認し、公開鍵（「公钥」）で全文が <code>ssh-rsa</code> から始まることを確かめます。</p>
+<p>注意：一覧の上限は 8 個です。満杯なら生成を続けず、取り消し手順に従って古い鍵を整理してください。保存と一覧登録は一体として完了するとは限らないため、成功通知後も一覧を確認します。鍵 ID を非表示（「隐藏密钥 ID」）は、API から実際の ID が読まれることを防ぎません。</p>
+<h3 id="ja-section-11" data-heading-key="section-11"><a href="#ja-section-11">3.2 公開鍵を配備する</a></h3>
+<p>配備はリモートアカウントの <code>~/.ssh/authorized_keys</code> に公開鍵を追加し、対応する秘密鍵でのログインを可能にするための処理です。サーバーのパスワードは変更しません。</p>
+<ol><li>新しい鍵の行で配備（「部署」）を選びます。</li><li>サーバーアドレス、ユーザー名、SSH ポート、そのアカウントのパスワードを入力します。</li><li>確認して配備を開始（「开始部署」）を選びます。</li><li>完了後、登録済みホスト（「已部署主机」）の記録を確認し、次節のテストを行います。</li></ol>
+<p>現在の処理はパスワードで SSH 認証した後にホストのフィンガープリントを確認し、初めてのホストを自動で信頼します。サーバーの識別を確認してからパスワードを送る保証はありません。初回接続は管理されたネットワークで行ってください。後でフィンガープリントを照合しても、すでにパスワードを送信したリスクは消えません。</p>
+<p>成功表示後に記録がない、またはテストが失敗した場合は、すぐに再配備しないでください。公開鍵の書き込みは済み、鍵ログインの再確認やローカル保存だけが失敗した可能性があります。別の管理経路から <code>authorized_keys</code> を調べてください。繰り返すと重複行が追加される場合があります。</p>
+<h3 id="ja-section-12" data-heading-key="section-12"><a href="#ja-section-12">3.3 接続をテストして結果を確認する</a></h3>
+<ol><li>登録済みホスト（「已部署主机」）でアドレス、ポート、ユーザー名、鍵 ID を確認します。</li><li>テスト（「测试」）を選びます。機器は固定コマンド echo &quot;TianshanOS SSH Test OK&quot; の実行を試みます。</li><li>初回接続後、第 4.3 節に従って保存されたホストフィンガープリントを照合します。</li></ol>
+<p>成功表示の意味：画面は API 要求の成否だけを見ており、リモートコマンドの終了コードと出力内容は確認しません。基本的な接続確認であり、完全な受け入れ試験でも sudo や業務コマンドの動作証明でもありません。重要な用途では実際のタスクで出力、終了コード、権限を確認してください。</p>
+<p>失敗したらネットワーク、SSH サービス、アカウント、リモート認可を確認します。フィンガープリント変更やサーバーの身元不明が関わる場合は再試行を止め、第 4.3 節に従ってください。</p>
+<h3 id="ja-section-13" data-heading-key="section-13"><a href="#ja-section-13">3.4 リモート認可を取り消してからローカル鍵を削除する</a></h3>
+<ol><li>別のサーバー管理経路が使え、機器の元の鍵が残っていることを確認します。</li><li>登録済みホスト（「已部署主机」）の対象行で認可を取り消す（「撤销」）を選び、サーバーパスワードを入力して認可を取り消して除去（「撤销并移除」）を確認します。鍵の行から対象情報を入力して開始することもできます。</li><li>結果を確認し、信頼できるサーバー管理経路から <code>authorized_keys</code> を調べ、対象公開鍵と重複行が消えていることを確かめます。</li><li>古い鍵でログインできないことを確認します。<code>authorized_keys.bak</code> が残るため、古い認可を復元しないようサーバーのバックアップ方針に沿って扱います。</li><li>ローカル一覧を更新します。画面は記録の削除を試みますが結果を確認しないため、必要なら手動で除去（「移除」）します。</li><li>すべての対象サーバーを処理してから、機器の古い鍵と不要な秘密鍵のコピーを削除します。</li></ol>
+<p>公開鍵が見つかりません（「未找到公钥」）と表示されたら、サーバー側で対象アカウントが正しく、公開鍵が本当にないことを確認してからローカル記録だけを削除します。</p>
+<p>失敗した場合やサーバーの身元が疑わしい場合は、ローカル鍵を残し、信頼できるコンソールや別の管理経路で処理してください。疑わしいサーバーにパスワードを送り続けないでください。</p>
+<h2 id="ja-section-14" data-heading-key="section-14"><a href="#ja-section-14">4. 鍵・ホスト・フィンガープリントの管理</a></h2>
+<h3 id="ja-section-15" data-heading-key="section-15"><a href="#ja-section-15">4.1 公開鍵のコピーと秘密鍵のエクスポート</a></h3>
+<p>公開鍵：公開鍵（「公钥」）で完全な 1 行をコピーし、サーバー管理者に渡します。公開鍵は秘密情報ではありません。誤送信だけで秘密鍵が漏れたことにはならず、直ちに鍵交換が必要になるわけでもありません。管理者が認可一覧に追加して初めてアクセス権が生じます。</p>
+<p>秘密鍵：生成時にエクスポートを許可した鍵だけが秘密鍵（「私钥」）から取り出せます。信頼できるパソコンと隔離ネットワークで操作し、管理された鍵保管庫に保存して、クリップボードやダウンロード先の一時コピーを消してください。チャット、問い合わせ票、ログに貼り付けないでください。</p>
+<p>コピーできない場合：HTTP ではブラウザーのクリップボード API が使えないことがあります。表示テキストを手動で選択してコピーし、先頭・末尾・全文を確認してください。コピーのためにブラウザーの保護を緩めないでください。</p>
+<h3 id="ja-section-16" data-heading-key="section-16"><a href="#ja-section-16">4.2 取り消し・除去・削除の違い</a></h3>
+<div class="guide-table-wrap"><table><thead><tr><th>操作</th><th>変更内容</th></tr></thead><tbody><tr><td>公開鍵の取り消し</td><td>サーバーの認可削除を試みます。リモートのパスワードが必要です</td></tr><tr><td>ホストの除去</td><td>機器内の接続記録だけを消します。サーバーの認可は残ります</td></tr><tr><td>鍵の削除</td><td>機器内の鍵を消します。サーバーには接続せず、認可も取り消しません</td></tr><tr><td>既知ホストフィンガープリントの削除</td><td>保存したサーバーの識別記録を消します。接続記録やサーバー認可は残ります</td></tr></tbody></table></div>
+<p>登録済みホスト（「已部署主机」）はローカル一覧で、サーバーを継続照会しません。空でもリモート認可が消えた証拠にはならず、記録があっても現在ログインできるとは限りません。</p>
+<h3 id="ja-section-17" data-heading-key="section-17"><a href="#ja-section-17">4.3 SSH サーバーのフィンガープリントを照合する</a></h3>
+<p>フィンガープリントは接続先サーバーを識別するための値です。現在の画面は SHA-256 ダイジェストを 64 桁の 16 進数で保存しますが、一般的な OpenSSH は <code>SHA256:base64</code> を出力します。管理者に形式をそろえてもらってください。文字列をそのまま比較することはできません。</p>
+<p>初回接続後：既知ホストのフィンガープリント（「已知主机指纹」）の表示（「查看」）で全文を開き、サーバーコンソール、資産管理システムなど別の信頼できる経路の値と照合します。表には先頭 32 桁しか表示されないため、それだけでは不十分です。</p>
+<p>不一致の場合：接続を止め、隔離して調査します。SSH パスワードを入力済みなら漏えいの可能性として扱い、信頼できる経路から変更し、ログインログと不正な公開鍵を調べます。疑わしい接続で画面の取り消し処理を行わないでください。</p>
+<p>保存済みのフィンガープリントが変わった場合：</p>
+<ol><li>再試行を止め、旧記録をすぐに消さないでください。</li><li>信頼できるコンソールで新しいフィンガープリント、IP、ポート、資産の識別情報、保守記録を照合します。</li><li>再インストールや正規の鍵交換だと確認できてから旧フィンガープリントを削除します。</li><li>管理されたネットワークで再接続し、新しい記録をもう一度照合します。</li></ol>
+<p>専用の比較ダイアログが出ず、一般的な接続エラーだけが表示される場合があります。</p>
+<p>SD カードの管理：フィンガープリントは機器ストレージに保存され、SD カードにも平文 JSON で同期されます。起動時に SD のフィンガープリント設定があれば、それを優先して対応する NVS 記録を置き換えます。署名による保護はありません。信頼できない人に SD カードを変更させないでください。</p>
+<h3 id="ja-section-18" data-heading-key="section-18"><a href="#ja-section-18">4.4 SSH ホスト設定のインポート・エクスポート</a></h3>
+<p>これは専用の <code>.tscfg</code> 手順で、第 6 章の未完成な汎用適用とは別です。アドレス、ポート、ユーザー、認証種別、鍵 ID を保存します。SSH パスワードや秘密鍵は含まず、リモート権限も付与しません。</p>
+<p>エクスポート：Developer 機器でホスト行のエクスポート（「导出」）を選びます。別機器向けなら対象の機器証明書を入力・照合してからダウンロードします。通常機器はボタンが見えてもバックエンドが拒否します。</p>
+<p>インポート：</p>
+<ol><li>本機器向けのパッケージで、SD カードが書き込み可能であることを確認し、信頼できる経路で出所を照合します。</li><li>参照される正しい鍵が本機器にあることを確認します。ID の一致だけでは足りず、鍵自体がサーバーの認可と対応している必要があります。</li><li>ホスト設定のインポートを開き、ファイルとプレビューを確認します。同名設定を置き換える場合だけ上書きを選択します。</li><li>確認後、案内に従って再起動します。インポートは SD に保存するだけで、読み込みと復号は再起動時に試みます。</li><li>読み込まれたアドレス、ユーザー、ポート、鍵 ID を確認して接続テストを行います。</li></ol>
+<p>プレビュー成功は利用可能の証明ではありません。署名者の信頼性も受信機器のフィンガープリントも確認しておらず、対象の確認は再起動時です。誤った記録は削除し、SD の該当パッケージも除いて再読込を防いでください。機器証明書の交換前には第 5.5 節もお読みください。</p>
+<h2 id="ja-section-19" data-heading-key="section-19"><a href="#ja-section-19">5. HTTPS 証明書と mTLS の設定</a></h2>
+<p>証明書管理者向けの章です。現在の 443 サービスは健全性・識別・権限テスト API のみを提供し、完全な管理画面は提供しません。既定の起動には機器秘密鍵、機器証明書、クライアント CA チェーンがすべて必要です。</p>
+<h3 id="ja-section-20" data-heading-key="section-20"><a href="#ja-section-20">5.1 証明書の役割を区別する</a></h3>
+<ul><li>機器秘密鍵・証明書：接続してくるクライアントに機器の身元を示します。</li><li>クライアント証明書・秘密鍵：パソコンやサービスが持ち、機器にクライアントの身元を示します。</li><li>機器に入れる CA チェーン：クライアント証明書を検証します。パソコンやブラウザーが機器証明書を自動で信頼するようになるわけではありません。</li></ul>
+<p>双方が証明書を提示する方式が mTLS です。クライアント側でも機器証明書の CA を信頼する設定と、接続名・用途の検証が必要です。</p>
+<h3 id="ja-section-21" data-heading-key="section-21"><a href="#ja-section-21">5.2 機器秘密鍵と証明書署名要求を生成する</a></h3>
+<ol><li>HTTPS 証明書（「HTTPS 证书」）で鍵ペアを生成（「生成密钥对」）を選びます。SSH とは別の ECDSA P-256 秘密鍵を生成します。この画面ではエクスポートできません。</li><li>既存鍵がある場合は中断し、第 5.5 節で影響を確認します。続けると上書きされます。</li><li>CSR を生成（「生成 CSR」）で機器 ID（CN）、組織（O）、組織単位（OU）を入力するか、すべて空欄にします。</li><li>CSR 全文を CA 管理者に渡します。CSR は申請であり、秘密鍵は含まず、証明書の自動インストールも行いません。</li></ol>
+<p>発行前の名前確認：項目を指定する経路では SAN を生成しません。全空欄なら CN は <code>TIANSHAN-DEVICE-001</code> 固定で、現在の IP が取得できる場合だけその IP の SAN を追加します。DNS SAN はありません。CA 管理者が CSR を調べ、管理された発行手順で実際の IP/DNS を最終証明書の SAN に加えてください。このフォームでは SAN を編集できません。</p>
+<p>結果の確認：更新後に秘密鍵の存在を確認します。CA 管理者が CSR を解析し、公開鍵、主体、SAN と、最終証明書に必要なサーバー認証用途（EKU）があることを確認します。</p>
+<h3 id="ja-section-22" data-heading-key="section-22"><a href="#ja-section-22">5.3 機器証明書をインストールする</a></h3>
+<ol><li>現在の機器秘密鍵に対応する PEM 証明書を用意します。</li><li>証明書をインストール（「安装证书」）に開始・終了マーカーを含む全文を貼り付けて送信します。</li><li>証明書を表示し、主体、発行者、有効期間を確認します。</li></ol>
+<p>成功通知が示すのは解析可能で、公開鍵が現在の秘密鍵と一致することだけです。信頼チェーン、SAN、EKU、現在の有効性、主体ポリシーの完全な検証は行いません。</p>
+<p>実際のクライアントがチェーン、接続先、用途、有効期間を確認して初めて信頼性を判断できます。鍵不一致なら現在の CSR に対応する証明書を探してください。エラーを消すためだけに秘密鍵を再生成しないでください。</p>
+<h3 id="ja-section-23" data-heading-key="section-23"><a href="#ja-section-23">5.4 クライアント CA チェーンを入れてテストする</a></h3>
+<ol><li>CA をインストール（「安装 CA」）に、クライアント証明書を信頼するための PEM CA 証明書を 1 つ以上貼り付けます。</li><li>HTTP 管理経路を残し、再起動を予定してからテストします。インストール API はストレージのみを更新し、稼働中の 443 サービスを再起動しません。</li><li>信頼され、用途とロールが正しいクライアント証明書で対応するテストエンドポイントに接続します。</li><li>信頼されない証明書、または証明書なしでも試し、拒否を確認します。</li></ol>
+<p>結果の確認：機器が意図した新証明書を使い、信頼できるクライアントも自分のロールに許可された API だけにアクセスでき、信頼されないクライアントは接続できないことを確認します。ハンドシェイクとロールの挙動は実機試験が必要で、インストール通知だけでは確認できません。</p>
+<h3 id="ja-section-24" data-heading-key="section-24"><a href="#ja-section-24">5.5 証明書の更新と全資格情報の削除</a></h3>
+<p>期限切れのみ：漏えいしていない秘密鍵を継続使用して新証明書を申請し、インストール後に再テストできます。ただし設定パッケージは受信側の証明書フィンガープリントに結び付いています。同じ秘密鍵でも新証明書のフィンガープリントが変わると、再初期化や再起動で読む古いパッケージは対象不一致で拒否されます。残す必要のあるパッケージを事前に作り直してください。</p>
+<p>秘密鍵交換：古い証明書と CSR は新しい鍵と対応しません。古い証明書が CA によって失効したという意味ではありません。漏えい時は別途失効・事故対応が必要です。古い秘密鍵がなければ、それに依存するパッケージは復旧できない場合があります。</p>
+<p>全 PKI 資格情報の削除：資格情報を削除（「删除凭证」）は機器秘密鍵、証明書、クライアント CA チェーンをまとめて消します。HTTP 管理経路と代替パッケージの準備を確認してから実行してください。公開証明書のバックアップでは秘密鍵は復元できません。</p>
+<p>削除後にページを更新して未初期化と表示されること、再起動後に 443 が古い資格情報を使わないことを確認します。再有効化には秘密鍵生成、証明書発行、CA チェーンのインストールとテストが必要です。</p>
+<h2 id="ja-section-25" data-heading-key="section-25"><a href="#ja-section-25">6. Config Pack の利用前に制限を確認する</a></h2>
+<p>Config Pack は暗号化・署名された <code>.tscfg</code> 設定パッケージです。現在は生成と検査ができますが、汎用の設定適用は未完成です。本番の一括設定、災害復旧、設定反映の証明には使わないでください。</p>
+<h3 id="ja-section-26" data-heading-key="section-26"><a href="#ja-section-26">6.1 現在の各ボタンの動作</a></h3>
+<div class="guide-table-wrap"><table><thead><tr><th>操作</th><th>現在の結果</th></tr></thead><tbody><tr><td>機器証明書のエクスポート</td><td>送信者が本機器向けパッケージを作るための公開証明書を表示します。秘密鍵は出しません</td></tr><tr><td>検証</td><td>構造と内蔵証明書による暗号文署名を確認します。署名者の信頼性や対象一致は確認しません</td></tr><tr><td>セキュリティページで選択・貼り付けてインポート</td><td>フロントエンドとバックエンドのパラメーターが合わず、完了できません</td></tr><tr><td>パッケージ一覧からインポート</td><td>既存ファイルを検証するだけで、コピー・復号・適用はしません</td></tr><tr><td>適用</td><td>復号してモジュール名を列挙しますが、設定は書き込みません。成功と表示される場合もあります</td></tr><tr><td>Developer のエクスポート</td><td>ダウンロード可能な暗号化署名パッケージを作り、SD 保存も試みます</td></tr></tbody></table></div>
+<h3 id="ja-section-27" data-heading-key="section-27"><a href="#ja-section-27">6.2 署名有効の表示だけでなく出所を確認する</a></h3>
+<p>受信機器はパッケージ内の証明書で署名を確認し、署名者の信頼チェーンを検証していません。署名が保護するのは暗号文で、すべての表示項目が信頼できる認証を受けたとは言えません。公式（「官方」）も出所の証明にはなりません。</p>
+<p>インポート・検査前に、資産管理システムや管理者が認める独立経路で署名者の証明書フィンガープリント、対象機器証明書、用途を確認してください。同じメールに添付された証明書とフィンガープリントだけで信頼を判断しないでください。プレビューの対象名もフィンガープリント照合の代わりにはなりません。</p>
+<h3 id="ja-section-28" data-heading-key="section-28"><a href="#ja-section-28">6.3 機器証明書の提供と受信パッケージの検査</a></h3>
+<p>機器証明書の提供：機器証明書をエクスポート（「导出设备证书」）で PEM 全文と表示されたフィンガープリントをコピーし、公開証明書を送信者に渡して、別の信頼できる経路でフィンガープリントを照合します。</p>
+<p>受信パッケージの検査：設定パッケージをインポート（「导入配置包」）で <code>.tscfg</code> を選ぶか貼り付け、検証（「验证」）を選択します。署名者と出所を確認します。検証は設定を適用せず、本機器向けであることも証明しません。出所不明、対象不一致、用途不明なら中断してください。</p>
+<p>検証に通っても現在の汎用インポート・適用に依存しないでください。各機能のページに戻り、対応済みの方法で設定し、実際の結果を確認します。</p>
+<h3 id="ja-section-29" data-heading-key="section-29"><a href="#ja-section-29">6.4 Developer 機器からエクスポートする</a></h3>
+<ol><li>SD カードに有効な JSON 設定ファイルを用意し、照合済みの対象機器証明書を入手します。</li><li>設定パッケージをエクスポート（「导出配置包」）でファイルを選び、名前と説明を入力し、対象証明書を貼り付けます。</li><li>生成後に <code>.tscfg</code> をダウンロードします。</li><li>ブラウザーのファイルと <code>/sdcard/output_config/</code> の保存結果を別々に確認します。SD 保存に失敗しても、API がダウンロード用データを返す場合があります。</li></ol>
+<p>元の設定は変更されません。対象が誤っている、または受信側証明書が交換された場合は再生成が必要です。受信側の汎用適用は未完成なので、エクスポート成功だけで配布フロー全体が使えるとは判断できません。</p>
+<h2 id="ja-section-30" data-heading-key="section-30"><a href="#ja-section-30">7. 障害・セキュリティインシデントへの対応</a></h2>
+<h3 id="ja-section-31" data-heading-key="section-31"><a href="#ja-section-31">7.1 よくある問題</a></h3>
+<div class="guide-table-wrap"><table><thead><tr><th>症状</th><th>対処</th></tr></thead><tbody><tr><td>アカウントセキュリティがない</td><td>root でログインします。admin には表示されません</td></tr><tr><td>鍵生成は成功したが一覧にない</td><td>更新し、上限を確認します。ID の再利用や連続生成は避けます</td></tr><tr><td>ECDSA の配備が失敗</td><td>新 ID で RSA を生成します。サーバー制限を繰り返し緩めないでください</td></tr><tr><td>配備成功後のテストが失敗</td><td>別経路で認可を確認し、すぐに再配備しないでください</td></tr><tr><td>ホスト除去後もログインできる</td><td>ローカル記録だけの削除です。リモート公開鍵を別途取り消します</td></tr><tr><td>フィンガープリント変更・身元不明</td><td>接続を止め、信頼できるコンソールで確認します。第 4.3 節</td></tr><tr><td>証明書導入後に 443 が使えない</td><td>秘密鍵、機器証明書、クライアント CA を確認し、再起動後に正しいクライアント証明書で試します</td></tr><tr><td>クライアントが証明書を信頼しない</td><td>クライアントの信頼ストア、SAN、EKU、有効期間、チェーンを確認します。機器内 CA はブラウザーの信頼ストアではありません</td></tr><tr><td>パッケージ適用成功なのに変化なし</td><td>現在はモジュール設定を書き込みません。各機能ページで操作します</td></tr></tbody></table></div>
+<h3 id="ja-section-32" data-heading-key="section-32"><a href="#ja-section-32">7.2 SSH 秘密鍵が漏えいした可能性がある場合</a></h3>
+<ol><li>機器とログへのアクセスを制限します。現在のログには秘密鍵の冒頭が含まれる場合があります。</li><li>信頼できる経路で各サーバーの認可を取り消し、バックアップを確認して、古い鍵でログインできないことを確かめます。</li><li>新 ID で RSA 鍵を生成・配備し、正常動作後に古い鍵とエクスポート済みコピーを削除します。</li><li>ログインログを調べます。機器の一覧が過去に認可した全サーバーを網羅するとは限りません。</li></ol>
+<p>HTTPS 秘密鍵なら第 5.5 節に従って資格情報を交換し、CA 管理者と旧証明書の失効・旧パッケージへの対応を進めます。</p>
+<h3 id="ja-section-33" data-heading-key="section-33"><a href="#ja-section-33">7.3 現バージョンで残るリスク</a></h3>
+<p>前述の HTTP、API 認証、初回ホスト信頼、パッケージ制限に加え、調査したビルド設定では NVS Encryption、Flash Encryption、Secure Boot が無効です。秘密鍵がこれらの保存・起動保護を受けているとは言えません。実機の書き込み設定と eFuse 状態は別途確認が必要です。</p>
+<p>許容できない用途ではネットワーク接続を停止し、セキュリティ責任者が隔離策または製品修正を判断してください。操作ガイドの確認手順は、欠けている製品のセキュリティ制御の代わりにはなりません。</p>
+<h2 id="ja-section-34" data-heading-key="section-34"><a href="#ja-section-34">8. 調査根拠と用語</a></h2>
+<h3 id="ja-section-35" data-heading-key="section-35"><a href="#ja-section-35">8.1 調査方法</a></h3>
+<p><code>d6ed947</code> を基準とする作業ツリーを調べました。画面操作と通知は <code>components/ts_webui/web/js/app.js</code>、API は <code>components/ts_api/src/</code>、鍵・ホスト保存は <code>components/ts_security/src/</code>、証明書・443 サービス・パッケージは順に <code>components/ts_cert/</code>、<code>components/ts_https/</code>、<code>components/ts_config_pack/</code> にあります。</p>
+<p>重複鍵 ID、テスト終了コード、取り消し後のローカル削除、証明書フィンガープリントへの結び付け、未完成のインポート・適用を重点確認しました。静的コード調査であり、この変更作業ではリモート接続、機器資格情報の変更、実機セキュリティ試験を行っていません。</p>
+<h3 id="ja-section-36" data-heading-key="section-36"><a href="#ja-section-36">8.2 用語</a></h3>
+<ul><li>公開鍵・秘密鍵：公開鍵は認可する側に渡せますが、秘密鍵は秘密に保ちます。サーバーは公開鍵を認可し、機器は対応する秘密鍵でログインします。</li><li>NVS：Flash 内の設定・鍵保存領域です。名称自体は暗号化を意味しません。</li><li>CSR・CA：CSR は証明書署名要求、CA は証明書を発行・検証する認証局またはその証明書です。</li><li>CN・O・OU：証明書主体のコモンネーム、組織、組織単位です。</li><li>SAN・EKU：利用できる接続名・IP と、認証用途をそれぞれ表します。</li><li>PEM：BEGIN/END マーカー付きのテキスト形式で、証明書、CSR、鍵に使います。</li><li>PKI・mTLS：PKI は証明書と信頼の管理基盤、mTLS はクライアントとサーバー双方が証明書を提示する接続方式です。</li></ul>
+
+          </article>
+
+          <article class="guide-article lang-pane" data-lang-pane="ko" hidden>
+<p>장치 비밀번호 변경, SSH 연결 관리, 인증서 설정 방법을 설명합니다. 처음 사용하는 경우 1장과 2장부터 읽으세요. 인증서와 설정 패키지는 장치 보안 담당 관리자가 처리해야 합니다.</p>
+<p>대상 버전: 2026-09-07에 확인한 작업 트리 코드이며 기준 커밋은 <code>d6ed947</code>입니다. 내용은 코드 검토 결과로, 사용자의 실제 장치에서 시험했다는 뜻은 아닙니다. 각 절의 ‘결과 확인’은 실제 환경에서 수행해야 합니다. 조작 위치를 찾을 수 있도록 아래 설명에는 장치의 중국어 UI 이름을 함께 표기합니다.</p>
+<aside class="guide-notice"><span>중요 사항</span><p>먼저 네트워크 보안을 확인하세요. 현재 전체 관리 페이지는 HTTP를 사용하며 대부분의 API에 공통 로그인·권한 검사가 없습니다. 통제되고 격리된 관리 네트워크에서만 사용하고 인터넷이나 게스트 네트워크에 직접 노출하지 마세요. HTTPS 인증서를 설치해도 전체 관리 페이지가 자동으로 HTTPS로 전환되지는 않습니다.</p></aside>
+<h2 id="ko-section-1" data-heading-key="section-1"><a href="#ko-section-1">1. 시작 전 확인</a></h2>
+<h3 id="ko-section-2" data-heading-key="section-2"><a href="#ko-section-2">1.1 필요한 기능 찾기</a></h3>
+<div class="guide-table-wrap"><table><thead><tr><th>작업</th><th>위치</th></tr></thead><tbody><tr><td>root/admin 비밀번호 변경</td><td>계정 보안, 2장</td></tr><tr><td>장치가 키로 서버에 연결</td><td>키 관리·배포된 호스트, 3장</td></tr><tr><td>키 복사·서버 신원 변경 처리</td><td>키 관리·알려진 호스트 지문, 4장</td></tr><tr><td>장치 인증서와 상호 인증 설정</td><td>HTTPS 인증서, 5장</td></tr><tr><td>암호화 설정 패키지 교환</td><td>Config Pack, 6장. 범용 적용 기능은 미완성</td></tr></tbody></table></div>
+<h3 id="ko-section-3" data-heading-key="section-3"><a href="#ko-section-3">1.2 계정과 장치 신원은 다릅니다</a></h3>
+<ul><li>admin: 보안 페이지에서 키, 호스트, 인증서, 패키지 기능을 볼 수 있지만 계정 보안(‘账号安全’)은 표시되지 않습니다.</li><li>root: root/admin 비밀번호 설정과 admin 비밀번호 초기화도 가능합니다. 이 API들은 백엔드에서 root 신원을 확인합니다.</li><li>Developer 장치: 로그인 계정이 아니라 장치 인증서의 OU 속성으로 식별합니다. 현재 설정 패키지와 SSH 호스트 설정은 이 장치만 내보낼 수 있습니다. root 로그인으로 장치 신원이 바뀌지는 않습니다.</li></ul>
+<p>비밀번호 관리처럼 자체 인증하는 API를 제외하면 페이지에 로그인이 필요하다는 사실만으로 API 직접 호출을 막을 수 없습니다. 네트워크 격리는 현재 사용의 전제 조건입니다.</p>
+<h3 id="ko-section-4" data-heading-key="section-4"><a href="#ko-section-4">1.3 작업 준비</a></h3>
+<ol><li>주소창 IP가 대상 장치인지, 컴퓨터가 신뢰할 수 있는 관리 네트워크에 있는지 확인합니다.</li><li>서버 관리자에게 SSH 주소, 포트, 사용자 이름을 확인합니다.</li><li>페이지에서 공개키를 배포하거나 철회하려면 대상 계정의 비밀번호가 필요하며 해당 계정에 비밀번호 로그인이 허용되어야 합니다. 문제 해결을 위해 서버 정책을 완화한 채로 두지 마세요.</li><li>키 삭제, 권한 철회, 인증서 교체 전에 서버 콘솔, 다른 관리자 키, 장치 HTTP 관리 페이지 등 대체 경로를 확보합니다.</li></ol>
+<h2 id="ko-section-5" data-heading-key="section-5"><a href="#ko-section-5">2. 장치 로그인 비밀번호 변경</a></h2>
+<p>여기서 바꾸는 것은 TianShanOS 로그인 비밀번호이며 원격 서버의 SSH 비밀번호가 아닙니다.</p>
+<h3 id="ko-section-6" data-heading-key="section-6"><a href="#ko-section-6">2.1 첫 로그인 후 비밀번호 알림</a></h3>
+<p>비밀번호 변경 완료로 표시되지 않은 계정은 로그인 후 알림이 나타납니다. 다른 곳에서 사용하지 않는 긴 비밀번호를 설정하세요. ‘稍后修改’(나중에 변경)를 선택한 뒤 초기 비밀번호를 계속 사용하지 마세요.</p>
+<p>이 알림은 언제든 열 수 있는 계정 설정 화면이 아닙니다. 이미 변경한 admin이 다시 바꾸려면 root가 보안 페이지에서 설정할 수 있습니다.</p>
+<h3 id="ko-section-7" data-heading-key="section-7"><a href="#ko-section-7">2.2 root가 비밀번호 설정</a></h3>
+<ol><li>root로 로그인하고 보안(‘安全’)을 엽니다.</li><li>계정 보안(‘账号安全’)에서 root 비밀번호 설정(‘设置 root 密码’) 또는 admin 비밀번호 설정(‘设置 admin 密码’)를 선택합니다.</li><li>동일한 새 비밀번호를 두 번 입력하고 제출합니다. 4-64자를 허용하지만 4자는 기술적 최솟값일 뿐 보안 권장 길이가 아닙니다.</li></ol>
+<p>결과 확인: 시크릿 창에서 새 비밀번호로 로그인한 뒤 기존 세션을 닫습니다. 비밀번호를 변경해도 기존 세션은 자동 종료되지 않습니다.</p>
+<p>로그인 실패 시 계정과 IP를 먼저 확인하세요. 5회 연속 실패하면 약 5분간 잠깁니다. 반복해서 추측하지 마세요.</p>
+<h3 id="ko-section-8" data-heading-key="section-8"><a href="#ko-section-8">2.3 admin 비밀번호 초기화</a></h3>
+<p>root는 계정 보안에서 admin을 기본 비밀번호 <code>rm01</code>로 되돌리고 로그인 잠금을 해제할 수 있습니다. 초기화 직후 새 세션에서 admin으로 로그인하여 새 비밀번호를 설정하세요.</p>
+<p>초기화는 임시 복구 수단입니다. 기본 비밀번호를 일상적으로 사용하지 마세요. 비밀번호 변경이 모든 기존 세션을 강제 종료한다는 뜻도 아닙니다.</p>
+<h2 id="ko-section-9" data-heading-key="section-9"><a href="#ko-section-9">3. SSH 키로 서버 연결</a></h2>
+<p>처음에는 RSA 키 생성 → 공개키 배포 → 연결 시험 → 서버 신원 확인 순서로 진행합니다. 폐기할 때는 원격 권한을 철회하고 로그인이 불가능한지 확인한 뒤 로컬 키를 삭제합니다.</p>
+<h3 id="ko-section-10" data-heading-key="section-10"><a href="#ko-section-10">3.1 키 생성</a></h3>
+<ol><li>키 관리(‘密钥管理’)에서 새 키 생성(‘生成新密钥’)를 선택합니다.</li><li>기존 목록을 확인한 뒤 <code>backup01</code>처럼 사용하지 않은 키 ID를 입력합니다. 현재 중복 ID를 차단하지 않으므로 재사용하면 기존 키를 덮어쓸 수 있습니다.</li><li>RSA 2048 또는 RSA 4096을 선택합니다. 기본값은 RSA 2048입니다. ECDSA도 표시되지만 현재 SSH 공개키 인증에서는 지원하지 않습니다.</li><li>필요하면 메모와 별칭을 입력합니다. 개인키 백업·이전이 꼭 필요할 때만 개인키 내보내기 허용(‘允许导出私钥’)를 선택하세요. 생성 후 이 속성을 바꾸는 화면은 없습니다.</li><li>생성(‘生成’)을 선택하고 완료 후 목록을 새로고침합니다.</li></ol>
+<p>결과 확인: 올바른 ID와 RSA 유형을 찾고 공개키(‘公钥’)에서 전체 텍스트가 <code>ssh-rsa</code>로 시작하는지 확인합니다.</p>
+<p>주의: 키 목록은 최대 8개입니다. 가득 차면 계속 생성하지 말고 철회 절차로 이전 키를 정리하세요. 저장과 목록 등록은 완전한 원자적 작업이 아니므로 성공 메시지 후에도 목록을 확인해야 합니다. 키 ID 숨기기(‘隐藏密钥 ID’)는 API에서 실제 ID를 읽는 것을 막지 않습니다.</p>
+<h3 id="ko-section-11" data-heading-key="section-11"><a href="#ko-section-11">3.2 공개키 배포</a></h3>
+<p>배포는 원격 계정의 <code>~/.ssh/authorized_keys</code>에 공개키를 추가하여 대응하는 개인키로 로그인할 수 있도록 하는 작업입니다. 서버 비밀번호는 바꾸지 않습니다.</p>
+<ol><li>새 키 행에서 배포(‘部署’)를 선택합니다.</li><li>서버 주소, 사용자 이름, SSH 포트, 해당 계정 비밀번호를 입력합니다.</li><li>확인한 뒤 배포 시작(‘开始部署’)를 선택합니다.</li><li>완료 후 배포된 호스트(‘已部署主机’)에서 기록을 확인하고 다음 절의 시험을 진행합니다.</li></ol>
+<p>현재 절차는 비밀번호로 SSH 인증을 마친 뒤 호스트 지문을 검사하며 처음 만나는 호스트는 자동으로 신뢰합니다. 서버 신원을 확인한 후 비밀번호를 전송한다는 보장은 없습니다. 첫 연결은 통제된 네트워크에서 해야 합니다. 사후 지문 확인으로 이미 비밀번호가 전송된 위험을 없앨 수는 없습니다.</p>
+<p>성공했지만 기록이 없거나 시험에 실패해도 바로 다시 배포하지 마세요. 공개키는 이미 기록되었고 키 로그인 재검증이나 로컬 저장만 실패했을 수 있습니다. 다른 관리 경로에서 <code>authorized_keys</code>를 확인하세요. 반복 배포하면 중복 행이 생길 수 있습니다.</p>
+<h3 id="ko-section-12" data-heading-key="section-12"><a href="#ko-section-12">3.3 연결 시험 및 결과 확인</a></h3>
+<ol><li>배포된 호스트(‘已部署主机’)에서 주소, 포트, 사용자 이름, 키 ID를 확인합니다.</li><li>테스트(‘测试’)를 선택합니다. 장치는 고정 명령 echo &quot;TianshanOS SSH Test OK&quot; 실행을 시도합니다.</li><li>첫 연결 후 4.3절에 따라 저장된 호스트 지문을 확인합니다.</li></ol>
+<p>성공 메시지의 의미: 화면은 API 요청 성공 여부만 확인하며 원격 명령의 종료 코드와 출력은 검사하지 않습니다. 기본 연결 시험일 뿐 완전한 검증이 아니며 sudo나 업무 명령의 사용 가능 여부를 증명하지도 않습니다. 중요한 용도라면 실제 작업에서 출력, 종료 코드, 권한을 확인하세요.</p>
+<p>실패하면 네트워크, SSH 서비스, 계정, 원격 권한을 확인합니다. 지문이 바뀌었거나 서버 신원이 불명확하면 재시도를 멈추고 4.3절에 따르세요.</p>
+<h3 id="ko-section-13" data-heading-key="section-13"><a href="#ko-section-13">3.4 원격 권한 철회 후 로컬 키 삭제</a></h3>
+<ol><li>다른 서버 관리 경로가 있고 장치에 기존 키가 남아 있는지 확인합니다.</li><li>배포된 호스트(‘已部署主机’)의 대상 행에서 권한 철회(‘撤销’)를 선택하고 서버 비밀번호를 입력한 뒤 권한 철회 및 제거(‘撤销并移除’)를 확인합니다. 키 행에서 시작하여 대상 정보를 입력할 수도 있습니다.</li><li>결과를 확인한 뒤 신뢰할 수 있는 서버 관리 경로로 <code>authorized_keys</code>에서 해당 공개키와 중복 행이 제거되었는지 확인합니다.</li><li>이전 키로 로그인할 수 없는지 확인합니다. <code>authorized_keys.bak</code>가 남으므로 이전 권한이 복구되지 않도록 서버 백업 정책에 따라 처리합니다.</li><li>로컬 목록을 새로고침합니다. 화면은 기록 제거를 시도하지만 결과는 확인하지 않으므로 필요하면 제거(‘移除’)를 직접 실행합니다.</li><li>모든 대상 서버를 처리한 뒤 장치의 이전 키와 불필요한 개인키 사본을 삭제합니다.</li></ol>
+<p>공개키를 찾을 수 없음(‘未找到公钥’)가 표시되면 서버에서 올바른 계정인지, 공개키가 정말 없는지 확인한 뒤 로컬 기록만 제거합니다.</p>
+<p>철회에 실패하거나 서버 신원이 의심스러우면 로컬 키를 보존하고 신뢰할 수 있는 콘솔이나 다른 관리자 경로로 처리하세요. 의심스러운 서버에 비밀번호를 계속 보내지 마세요.</p>
+<h2 id="ko-section-14" data-heading-key="section-14"><a href="#ko-section-14">4. 키·호스트·지문 관리</a></h2>
+<h3 id="ko-section-15" data-heading-key="section-15"><a href="#ko-section-15">4.1 공개키 복사 및 개인키 내보내기</a></h3>
+<p>공개키: 공개키(‘公钥’)에서 한 줄 전체를 복사해 서버 관리자에게 전달합니다. 공개키는 비밀이 아닙니다. 잘못 전달했다고 개인키가 유출된 것은 아니며 즉시 교체해야 하는 것도 아닙니다. 관리자가 별도로 허용 목록에 추가해야 접근 권한이 생깁니다.</p>
+<p>개인키: 생성 시 내보내기를 허용한 키만 개인키(‘私钥’)에서 내보낼 수 있습니다. 신뢰할 수 있는 컴퓨터와 격리 네트워크에서 작업하고 통제된 키 저장소에 보관하세요. 클립보드와 다운로드 폴더의 임시 사본을 지우고 채팅, 지원 티켓, 로그에 붙여 넣지 마세요.</p>
+<p>복사가 되지 않을 때: HTTP 페이지에서는 브라우저 클립보드 API가 동작하지 않을 수 있습니다. 보이는 텍스트를 직접 선택해 복사한 뒤 시작, 끝, 전체 내용이 온전한지 확인하세요. 복사를 위해 브라우저 보안 설정을 완화하지 마세요.</p>
+<h3 id="ko-section-16" data-heading-key="section-16"><a href="#ko-section-16">4.2 철회·제거·삭제 구분</a></h3>
+<div class="guide-table-wrap"><table><thead><tr><th>작업</th><th>변경 사항</th></tr></thead><tbody><tr><td>공개키 철회</td><td>서버의 권한 제거를 시도합니다. 원격 비밀번호가 필요합니다</td></tr><tr><td>호스트 제거</td><td>장치의 로컬 연결 기록만 지우고 서버 권한은 유지합니다</td></tr><tr><td>키 삭제</td><td>장치의 로컬 키만 지웁니다. 서버에 접속하거나 권한을 철회하지 않습니다</td></tr><tr><td>알려진 호스트 지문 삭제</td><td>저장한 서버 신원 기록만 지웁니다. 연결 기록과 서버 권한은 유지합니다</td></tr></tbody></table></div>
+<p>배포된 호스트(‘已部署主机’)는 로컬 목록이며 서버를 지속해서 조회하지 않습니다. 비어 있다고 원격 권한이 제거된 것은 아니며 기록이 있다고 현재 로그인할 수 있다는 뜻도 아닙니다.</p>
+<h3 id="ko-section-17" data-heading-key="section-17"><a href="#ko-section-17">4.3 SSH 서버 지문 확인</a></h3>
+<p>지문은 접속 서버를 식별하는 값입니다. 현재 화면은 SHA-256 요약을 64자리 16진수로 저장하며 일반적인 OpenSSH 출력은 <code>SHA256:base64</code>입니다. 관리자에게 형식을 통일해 달라고 요청하세요. 두 문자열을 그대로 비교할 수는 없습니다.</p>
+<p>첫 연결 후 알려진 호스트 지문(‘已知主机指纹’)의 보기(‘查看’)에서 전체 값을 열고 서버 콘솔, 자산 관리 시스템 등 별도의 신뢰할 수 있는 경로에서 받은 값과 비교합니다. 표에는 앞 32자리만 표시되어 충분하지 않습니다.</p>
+<p>불일치하면 연결을 중단하고 격리하여 조사합니다. SSH 비밀번호를 입력했다면 유출 가능성으로 취급하고 신뢰할 수 있는 경로에서 비밀번호를 바꾸며 로그인 로그와 불필요한 공개키를 점검합니다. 의심스러운 연결로 페이지의 철회를 실행하지 마세요.</p>
+<p>저장된 지문이 변경되었을 때:</p>
+<ol><li>재시도를 멈추고 기존 기록을 바로 지우지 않습니다.</li><li>신뢰할 수 있는 콘솔로 새 지문, IP, 포트, 자산 신원, 유지보수 기록을 확인합니다.</li><li>서버 재설치나 정상적인 키 교체임을 확인한 뒤에만 기존 지문을 지웁니다.</li><li>통제된 네트워크에서 다시 연결하고 새 기록을 재확인합니다.</li></ol>
+<p>현재 화면에는 전용 지문 비교 창 대신 일반 연결 오류만 나타날 수 있습니다.</p>
+<p>SD 카드 관리: 지문은 장치 저장소에 저장되고 SD 카드에도 평문 JSON으로 동기화됩니다. 부팅 시 SD 지문 설정이 있으면 이를 우선하여 해당 NVS 기록을 대체합니다. 파일에는 서명 보호가 없습니다. 신뢰할 수 없는 사람이 SD 카드를 수정하지 못하게 하세요.</p>
+<h3 id="ko-section-18" data-heading-key="section-18"><a href="#ko-section-18">4.4 SSH 호스트 설정 가져오기 및 내보내기</a></h3>
+<p>이것은 전용 <code>.tscfg</code> 절차이며 6장의 미완성 범용 적용과 다릅니다. 주소, 포트, 사용자, 인증 유형, 키 ID를 저장하지만 SSH 비밀번호나 개인키를 포함하지 않고 원격 권한도 부여하지 않습니다.</p>
+<p>내보내기: Developer 장치의 호스트 행에서 내보내기(‘导出’)를 선택합니다. 다른 장치용이면 대상 장치 인증서를 제공하고 확인한 뒤 다운로드합니다. 일반 장치는 버튼이 보여도 백엔드가 거부합니다.</p>
+<p>가져오기:</p>
+<ol><li>현재 장치용 패키지인지, SD 카드에 쓸 수 있는지 확인하고 신뢰할 수 있는 경로로 출처를 확인합니다.</li><li>패키지가 참조하는 올바른 키가 현재 장치에 있는지 확인합니다. ID만 같아서는 안 되며 키 자체가 서버 권한과 맞아야 합니다.</li><li>호스트 설정 가져오기를 열어 파일과 미리보기를 확인합니다. 같은 이름의 설정을 바꿀 때만 덮어쓰기를 선택합니다.</li><li>확인 후 안내에 따라 재시작합니다. 가져오기는 SD에 저장만 하며 로드와 복호화는 재시작할 때 시도합니다.</li><li>로드된 주소, 사용자, 포트, 키 ID를 확인한 뒤 연결을 시험합니다.</li></ol>
+<p>미리보기 통과는 사용 가능하다는 뜻이 아닙니다. 서명자 신뢰성과 수신 장치 지문을 확인하지 않으며 대상 검사는 재시작 시에 합니다. 잘못된 기록과 SD의 해당 패키지를 함께 지워 재로드를 막으세요. 장치 인증서 교체 전에는 5.5절도 읽으세요.</p>
+<h2 id="ko-section-19" data-heading-key="section-19"><a href="#ko-section-19">5. HTTPS 인증서 및 mTLS 설정</a></h2>
+<p>인증서 관리자용 내용입니다. 현재 443 서비스는 상태·신원·권한 시험 API만 제공하고 전체 관리 페이지는 제공하지 않습니다. 기본 시작에는 장치 개인키, 장치 인증서, 클라이언트 CA 체인이 모두 필요합니다.</p>
+<h3 id="ko-section-20" data-heading-key="section-20"><a href="#ko-section-20">5.1 인증서의 방향 구분</a></h3>
+<ul><li>장치 개인키와 인증서: 접속하는 클라이언트에 장치 신원을 증명합니다.</li><li>클라이언트 인증서와 개인키: 컴퓨터나 서비스가 보유하여 장치에 클라이언트 신원을 증명합니다.</li><li>장치에 설치하는 CA 체인: 클라이언트 인증서를 검증합니다. 컴퓨터나 브라우저가 장치 인증서를 자동으로 신뢰하게 하지는 않습니다.</li></ul>
+<p>양쪽 모두 인증서를 제시하는 방식이 mTLS입니다. 클라이언트도 장치 인증서의 CA를 신뢰하도록 설정하고 접속 이름과 인증서 용도를 검증해야 합니다.</p>
+<h3 id="ko-section-21" data-heading-key="section-21"><a href="#ko-section-21">5.2 장치 개인키와 인증서 요청 생성</a></h3>
+<ol><li>HTTPS 인증서(‘HTTPS 证书’)에서 키 쌍 생성(‘生成密钥对’)를 선택합니다. SSH와 별개인 ECDSA P-256 개인키를 생성하며 이 화면에서는 내보낼 수 없습니다.</li><li>기존 개인키가 있으면 중단하고 5.5절에서 교체 영향을 확인합니다. 계속하면 기존 키를 덮어씁니다.</li><li>CSR 생성(‘生成 CSR’)에서 장치 ID(CN), 조직(O), 조직 단위(OU)를 입력하거나 모두 비워 둡니다.</li><li>CSR 전체를 CA 관리자에게 전달합니다. CSR은 인증서 요청이며 개인키를 포함하거나 인증서를 자동 설치하지 않습니다.</li></ol>
+<p>발급 전 이름 확인: 필드를 직접 지정하는 경로에서는 SAN이 생성되지 않습니다. 모두 비우면 CN은 <code>TIANSHAN-DEVICE-001</code>로 고정되고 현재 IP를 얻을 수 있을 때만 해당 IP SAN을 추가합니다. DNS SAN은 없습니다. CA 관리자가 CSR을 확인하고 통제된 발급 절차로 실제 접속 IP/DNS를 최종 인증서 SAN에 추가해야 합니다. 이 양식에서는 SAN을 편집할 수 없습니다.</p>
+<p>결과 확인: 새로고침 후 개인키가 있는지 확인합니다. CA 관리자가 CSR의 공개키, 주체, SAN을 확인하고 최종 인증서에 필요한 서버 인증 용도(EKU)가 있는지 검증합니다.</p>
+<h3 id="ko-section-22" data-heading-key="section-22"><a href="#ko-section-22">5.3 장치 인증서 설치</a></h3>
+<ol><li>현재 장치 개인키와 일치하는 PEM 인증서를 준비합니다.</li><li>인증서 설치(‘安装证书’)에 시작·끝 표시를 포함한 전체 텍스트를 붙여 넣고 제출합니다.</li><li>인증서의 주체, 발급자, 유효 기간을 확인합니다.</li></ol>
+<p>성공 메시지는 인증서를 파싱할 수 있고 공개키가 현재 개인키와 일치한다는 뜻일 뿐입니다. 신뢰 체인, SAN, EKU, 현재 유효성, 주체 정책을 완전히 검증하지는 않습니다.</p>
+<p>실제 클라이언트가 체인, 접속 주소, 용도, 유효 기간을 확인해야 신뢰 여부를 판단할 수 있습니다. 키 불일치 오류가 나면 현재 CSR에 맞는 인증서를 찾으세요. 오류를 없애기 위해 개인키를 다시 생성하지 마세요.</p>
+<h3 id="ko-section-23" data-heading-key="section-23"><a href="#ko-section-23">5.4 클라이언트 CA 체인 설치 및 시험</a></h3>
+<ol><li>CA 설치(‘安装 CA’)에 클라이언트 인증서를 신뢰하기 위한 PEM CA 인증서를 하나 이상 붙여 넣습니다.</li><li>HTTP 관리 경로를 유지하고 장치 재시작을 계획한 뒤 시험합니다. 설치 API는 저장소만 갱신하고 실행 중인 443 서비스를 재시작하지 않습니다.</li><li>신뢰할 수 있고 용도와 역할이 올바른 클라이언트 인증서로 해당 시험 엔드포인트에 접속합니다.</li><li>신뢰하지 않는 인증서 또는 인증서 없이도 시험하여 연결이 거부되는지 확인합니다.</li></ol>
+<p>결과 확인: 장치가 의도한 새 인증서를 사용하고, 신뢰하는 클라이언트도 역할에 허용된 API만 사용하며, 신뢰하지 않는 클라이언트는 접속할 수 없어야 합니다. 핸드셰이크와 역할 동작은 실제 장치에서 검증해야 하며 설치 알림만으로 확인할 수 없습니다.</p>
+<h3 id="ko-section-24" data-heading-key="section-24"><a href="#ko-section-24">5.5 인증서 갱신 및 모든 자격 증명 삭제</a></h3>
+<p>인증서만 만료된 경우: 유출되지 않은 개인키를 유지하여 새 인증서를 신청하고 설치 후 다시 시험할 수 있습니다. 다만 패키지는 수신 인증서 지문에 묶입니다. 같은 개인키라도 새 인증서 지문이 달라지면 재초기화나 재시작 시 로드하는 이전 패키지는 대상 불일치로 거부됩니다. 필요한 패키지를 교체 전에 다시 만드세요.</p>
+<p>개인키 교체: 이전 인증서와 CSR은 새 키에 맞지 않습니다. 그렇다고 CA가 이전 인증서를 폐기한 것은 아닙니다. 유출되었다면 별도의 인증서 폐기와 사고 대응이 필요합니다. 이전 개인키가 없으면 이에 의존하는 패키지를 복구하지 못할 수 있습니다.</p>
+<p>모든 PKI 자격 증명 삭제: 자격 증명 삭제(‘删除凭证’)는 장치 개인키, 인증서, 클라이언트 CA 체인을 함께 지웁니다. HTTP 관리 경로와 패키지 대체 준비를 확인한 뒤 삭제하세요. 공개 인증서 백업으로 개인키를 복원할 수는 없습니다.</p>
+<p>삭제 후 새로고침하면 미초기화 상태여야 합니다. 재시작 후 443이 이전 자격 증명을 쓰지 않는지 확인합니다. 다시 켜려면 개인키 생성, 인증서 발급, CA 체인 설치와 시험을 다시 해야 합니다.</p>
+<h2 id="ko-section-25" data-heading-key="section-25"><a href="#ko-section-25">6. Config Pack 사용 전 제한 확인</a></h2>
+<p>Config Pack은 암호화·서명된 <code>.tscfg</code> 설정 패키지입니다. 현재 생성과 검사는 가능하지만 범용 설정 적용은 미완성입니다. 운영 환경의 일괄 설정, 재해 복구, 설정 반영 증명에 사용하지 마세요.</p>
+<h3 id="ko-section-26" data-heading-key="section-26"><a href="#ko-section-26">6.1 현재 각 버튼의 실제 동작</a></h3>
+<div class="guide-table-wrap"><table><thead><tr><th>작업</th><th>현재 결과</th></tr></thead><tbody><tr><td>장치 인증서 내보내기</td><td>발신자가 현재 장치용 패키지를 만들 수 있도록 공개 인증서를 표시합니다. 개인키는 내보내지 않습니다</td></tr><tr><td>검증</td><td>구조와 내장 인증서에 대응하는 암호문 서명을 검사합니다. 서명자 신뢰나 대상 일치는 확인하지 않습니다</td></tr><tr><td>보안 페이지에서 선택·붙여넣기 후 가져오기</td><td>프런트엔드와 백엔드 매개변수가 맞지 않아 완료할 수 없습니다</td></tr><tr><td>패키지 목록에서 가져오기</td><td>장치의 기존 파일만 검증하며 복사·복호화·적용하지 않습니다</td></tr><tr><td>적용</td><td>복호화하고 모듈 이름을 나열하지만 설정을 쓰지 않습니다. 성공이 표시될 수도 있습니다</td></tr><tr><td>Developer 패키지 내보내기</td><td>다운로드 가능한 암호화 서명 패키지를 만들고 SD 저장도 시도합니다</td></tr></tbody></table></div>
+<h3 id="ko-section-27" data-heading-key="section-27"><a href="#ko-section-27">6.2 서명 유효 표시뿐 아니라 출처 확인</a></h3>
+<p>수신 장치는 패키지 안의 인증서로 서명을 검사하며 서명자 인증서 체인 신뢰 검증은 완성되지 않았습니다. 서명이 보호하는 것은 암호문입니다. 모든 표시 필드가 신뢰할 수 있게 인증되었다고 추정하면 안 됩니다. 공식(‘官方’) 필드도 출처 증명이 아닙니다.</p>
+<p>가져오거나 검사하기 전에 자산 관리 시스템이나 관리자가 승인한 별도 경로로 서명자 인증서 지문, 대상 장치 인증서, 용도를 확인하세요. 같은 메일로 받은 인증서와 지문만으로 신뢰를 판단하지 마세요. 미리보기의 대상 이름도 지문 대조를 대신하지 못합니다.</p>
+<h3 id="ko-section-28" data-heading-key="section-28"><a href="#ko-section-28">6.3 장치 인증서 제공 및 받은 패키지 검사</a></h3>
+<p>장치 인증서 제공: 장치 인증서 내보내기(‘导出设备证书’)에서 전체 PEM과 지문을 복사하고 공개 인증서를 발신자에게 전달한 뒤 독립된 신뢰 경로로 지문을 확인합니다.</p>
+<p>받은 패키지 검사: 설정 패키지 가져오기(‘导入配置包’)에서 <code>.tscfg</code>를 선택하거나 붙여 넣고 검증(‘验证’)를 선택합니다. 서명자 정보와 출처를 확인하세요. 검증은 설정을 적용하지 않으며 현재 장치용임을 증명하지도 않습니다. 출처 불명, 대상 불일치, 용도 불명이면 중단하세요.</p>
+<p>검증을 통과해도 현재 범용 가져오기·적용으로 설정을 마칠 수 있다고 기대하지 마세요. 각 기능 페이지에서 지원되는 방식으로 설정하고 실제 결과를 확인합니다.</p>
+<h3 id="ko-section-29" data-heading-key="section-29"><a href="#ko-section-29">6.4 Developer 장치에서 패키지 내보내기</a></h3>
+<ol><li>SD 카드에 유효한 JSON 설정 파일을 준비하고 확인된 대상 장치 인증서를 확보합니다.</li><li>설정 패키지 내보내기(‘导出配置包’)에서 파일을 선택하고 이름과 설명을 입력한 뒤 대상 인증서를 붙여 넣습니다.</li><li>생성 후 <code>.tscfg</code>를 다운로드합니다.</li><li>브라우저 다운로드 파일과 장치의 <code>/sdcard/output_config/</code> 저장 결과를 각각 확인합니다. SD 저장에 실패해도 API가 다운로드할 패키지 내용을 반환할 수 있습니다.</li></ol>
+<p>원본 설정은 바뀌지 않습니다. 대상이 잘못되었거나 수신 인증서가 바뀌면 다시 생성해야 합니다. 수신 측 범용 적용은 여전히 미완성이므로 내보내기 성공만으로 전체 배포 흐름이 사용 가능하다고 판단하면 안 됩니다.</p>
+<h2 id="ko-section-30" data-heading-key="section-30"><a href="#ko-section-30">7. 장애 및 보안 사고 대응</a></h2>
+<h3 id="ko-section-31" data-heading-key="section-31"><a href="#ko-section-31">7.1 자주 발생하는 문제</a></h3>
+<div class="guide-table-wrap"><table><thead><tr><th>증상</th><th>대응</th></tr></thead><tbody><tr><td>계정 보안이 보이지 않음</td><td>root로 로그인합니다. admin에는 표시되지 않습니다</td></tr><tr><td>키 생성 성공 후 목록에 없음</td><td>새로고침하고 용량을 확인합니다. ID 재사용과 반복 생성은 피하세요</td></tr><tr><td>ECDSA 배포 실패</td><td>새 ID로 RSA 키를 만듭니다. 서버 정책을 반복해서 완화하지 마세요</td></tr><tr><td>배포 성공 후 시험 실패</td><td>다른 경로로 원격 권한을 확인합니다. 바로 재배포하지 마세요</td></tr><tr><td>호스트 제거 후에도 로그인 가능</td><td>로컬 기록만 지운 것입니다. 원격 공개키를 별도로 철회해야 합니다</td></tr><tr><td>지문 변경 또는 신원 불명</td><td>연결을 멈추고 신뢰할 수 있는 콘솔로 확인합니다. 4.3절 참고</td></tr><tr><td>인증서 설치 후 443 사용 불가</td><td>개인키, 장치 인증서, 클라이언트 CA를 확인하고 재시작 후 올바른 클라이언트 인증서로 시험합니다</td></tr><tr><td>클라이언트가 인증서를 신뢰하지 않음</td><td>클라이언트 신뢰 저장소, SAN, EKU, 기간, 체인을 확인합니다. 장치 CA는 브라우저 신뢰 저장소가 아닙니다</td></tr><tr><td>패키지 적용 성공 후 설정 변화 없음</td><td>현재 구현은 모듈 설정을 쓰지 않습니다. 각 기능 페이지에서 조작합니다</td></tr></tbody></table></div>
+<h3 id="ko-section-32" data-heading-key="section-32"><a href="#ko-section-32">7.2 SSH 개인키 유출 가능성</a></h3>
+<ol><li>장치와 로그 접근을 제한합니다. 현재 로그에는 개인키 앞부분이 포함될 수 있습니다.</li><li>신뢰할 수 있는 경로로 서버별 공개키를 철회하고 백업 사본을 확인하여 이전 키로 로그인할 수 없는지 검증합니다.</li><li>새 ID로 RSA 키를 생성·배포하고 정상 동작을 확인한 뒤 이전 키와 내보낸 사본을 지웁니다.</li><li>로그인 로그를 확인합니다. 로컬 목록이 과거에 권한을 부여한 모든 서버를 포함하지 않을 수 있습니다.</li></ol>
+<p>HTTPS 개인키가 유출되었다면 5.5절에 따라 자격 증명을 교체하고 CA 관리자와 이전 인증서 폐기 및 패키지 처리를 진행합니다.</p>
+<h3 id="ko-section-33" data-heading-key="section-33"><a href="#ko-section-33">7.3 현재 버전에 남아 있는 위험</a></h3>
+<p>앞서 설명한 HTTP, API 인증, 첫 호스트 신뢰, 패키지 제한 외에도 확인한 빌드 설정에는 NVS Encryption, Flash Encryption, Secure Boot가 켜져 있지 않습니다. 개인키가 이러한 저장·부팅 보호를 받는다고 말할 수 없습니다. 실제 장치의 펌웨어 기록 설정과 eFuse 상태는 별도로 검증해야 합니다.</p>
+<p>이 제한을 허용할 수 없는 환경이라면 해당 네트워크 접속을 중단하고 보안 책임자가 격리 조치나 제품 수정을 결정해야 합니다. 설명서의 확인 절차로 누락된 제품 보안 제어를 대체하지 마세요.</p>
+<h2 id="ko-section-34" data-heading-key="section-34"><a href="#ko-section-34">8. 검토 근거 및 용어</a></h2>
+<h3 id="ko-section-35" data-heading-key="section-35"><a href="#ko-section-35">8.1 검토 방법</a></h3>
+<p><code>d6ed947</code> 기준 작업 트리를 대조했습니다. 화면 동작과 알림은 <code>components/ts_webui/web/js/app.js</code>, API는 <code>components/ts_api/src/</code>, 키·호스트 저장은 <code>components/ts_security/src/</code>, 인증서·443 서비스·패키지는 각각 <code>components/ts_cert/</code>, <code>components/ts_https/</code>, <code>components/ts_config_pack/</code>에 있습니다.</p>
+<p>중복 키 ID, 시험 종료 코드, 철회 후 로컬 정리, 인증서 지문 결합, 미완성 가져오기·적용을 중점 확인했습니다. 정적 코드 검토이며 이번 변경 중 원격 서버 연결, 장치 자격 증명 변경, 실제 장치 보안 시험은 수행하지 않았습니다.</p>
+<h3 id="ko-section-36" data-heading-key="section-36"><a href="#ko-section-36">8.2 주요 용어</a></h3>
+<ul><li>공개키·개인키: 공개키는 권한을 부여할 상대에게 전달할 수 있지만 개인키는 비밀로 유지해야 합니다. 서버는 공개키를 허용하고 장치는 대응 개인키로 로그인합니다.</li><li>NVS: Flash의 설정·키 저장 영역입니다. 이름 자체가 암호화를 의미하지는 않습니다.</li><li>CSR·CA: CSR은 인증서 서명 요청, CA는 인증서를 발급·검증하는 기관 또는 해당 인증서입니다.</li><li>CN·O·OU: 인증서 주체의 일반 이름, 조직, 조직 단위입니다.</li><li>SAN·EKU: 각각 허용되는 접속 이름·IP와 인증 용도를 나타냅니다.</li><li>PEM: BEGIN/END 표시가 있는 텍스트 형식으로 인증서, CSR, 키에 사용합니다.</li><li>PKI·mTLS: PKI는 인증서·신뢰 관리 체계이며 mTLS는 클라이언트와 서버 모두 인증서를 제시하는 연결 방식입니다.</li></ul>
+
+          </article>
+
+          <article class="guide-article lang-pane" data-lang-pane="es" hidden>
+<p>Los nombres de botones y secciones se conservan en inglés para que puedas localizarlos en el dispositivo. La WebUI del dispositivo admite chino e inglés; cambiar el idioma de este sitio no cambia los idiomas del dispositivo.</p>
+<p>Utiliza esta guía para cambiar las contraseñas del dispositivo, gestionar el acceso SSH y configurar certificados. Si estás preparando el dispositivo por primera vez, comienza por los capítulos 1 y 2. Los procedimientos de certificados y Config Pack se dirigen a los administradores responsables de la seguridad del dispositivo.</p>
+<p>Versión comprobada: copia de trabajo revisada el 7 de septiembre de 2026, basada en el commit <code>d6ed947</code>. Esta guía refleja una revisión del código fuente, no pruebas en tu dispositivo. Realiza las comprobaciones de cada apartado en tu propio entorno.</p>
+<aside class="guide-notice"><span>Importante</span><p>Utiliza una red de gestión aislada. La interfaz web completa utiliza actualmente HTTP y la mayoría de las operaciones de API carecen de comprobaciones centralizadas y obligatorias de inicio de sesión y permisos. No expongas el dispositivo a internet ni a una red de invitados. Instalar un certificado HTTPS no cambia la interfaz web completa a HTTPS.</p></aside>
+<h2 id="es-section-1" data-heading-key="section-1"><a href="#es-section-1">1. Antes de empezar</a></h2>
+<h3 id="es-section-2" data-heading-key="section-2"><a href="#es-section-2">1.1 Encontrar la tarea que necesitas</a></h3>
+<div class="guide-table-wrap"><table><thead><tr><th>Tarea</th><th>Dónde acudir</th></tr></thead><tbody><tr><td>Cambiar la contraseña de root o admin del dispositivo</td><td>Account Security; capítulo 2</td></tr><tr><td>Conectarse a un servidor con una clave SSH</td><td>Key Management y Deployed Hosts; capítulo 3</td></tr><tr><td>Copiar claves o comprobar la identidad de un servidor</td><td>Key Management y huellas de host; capítulo 4</td></tr><tr><td>Configurar certificados y autenticación mutua</td><td>HTTPS Certificate; capítulo 5</td></tr><tr><td>Intercambiar paquetes de configuración cifrados</td><td>Config Pack; capítulo 6. La aplicación general de configuraciones aún no está implementada</td></tr></tbody></table></div>
+<h3 id="es-section-3" data-heading-key="section-3"><a href="#es-section-3">1.2 Cuentas e identidad del dispositivo</a></h3>
+<ul><li>admin puede abrir Security y ver las claves, los hosts, los certificados y los controles de Config Pack, pero no Account Security.</li><li>root también puede establecer las contraseñas de root y admin, o restablecer la contraseña predeterminada de admin. El servidor exige autorización root para estas operaciones de gestión de contraseñas.</li><li>Un dispositivo Developer se identifica por el campo OU de su certificado. No es una cuenta de usuario. Actualmente, solo estos dispositivos pueden exportar Config Packs y configuraciones de hosts SSH; iniciar sesión como root no cambia la identidad del dispositivo.</li></ul>
+<p>Salvo operaciones que comprueban por sí mismas la autorización, como la gestión de contraseñas, una pantalla de inicio de sesión no impide acceder directamente a las API. El aislamiento de red sigue siendo necesario.</p>
+<h3 id="es-section-4" data-heading-key="section-4"><a href="#es-section-4">1.3 Preparar la operación</a></h3>
+<ol><li>Comprueba que la dirección IP del navegador corresponde al dispositivo previsto y que tu ordenador está en una red de gestión de confianza.</li><li>Confirma con el administrador del servidor SSH la dirección, el puerto y el nombre de usuario.</li><li>Para instalar o revocar una clave pública desde esta página, necesitas la contraseña de la cuenta remota y esa cuenta debe admitir autenticación por contraseña. No dejes relajadas las restricciones del servidor solo para resolver un problema.</li><li>Antes de eliminar claves, revocar accesos o sustituir certificados, asegúrate de disponer de otra vía de acceso: una consola del servidor, otra clave de administrador o la interfaz HTTP de gestión del dispositivo.</li></ol>
+<h2 id="es-section-5" data-heading-key="section-5"><a href="#es-section-5">2. Cambiar las contraseñas del dispositivo</a></h2>
+<p>Estos controles modifican las contraseñas de inicio de sesión de TianShanOS, no la contraseña SSH de un servidor remoto.</p>
+<h3 id="es-section-6" data-heading-key="section-6"><a href="#es-section-6">2.1 El aviso de contraseña tras iniciar sesión</a></h3>
+<p>Si una cuenta sigue marcada como contraseña sin cambiar, aparece un aviso después de iniciar sesión. Establece una contraseña larga y única. Elegir cambiarla más tarde cierra el aviso; no hace seguro conservar la predeterminada.</p>
+<p>Este aviso no es una pantalla de ajustes de cuenta que puedas reabrir en cualquier momento. Si admin ya cambió su contraseña y necesita volver a hacerlo, root puede establecerla desde Security.</p>
+<h3 id="es-section-7" data-heading-key="section-7"><a href="#es-section-7">2.2 Establecer una contraseña como root</a></h3>
+<ol><li>Inicia sesión como root y abre Security.</li><li>En Account Security, selecciona Set root password o Set admin password.</li><li>Introduce dos veces la misma contraseña nueva y envíala. La interfaz admite 4-64 caracteres; cuatro caracteres son un mínimo técnico, no una recomendación de seguridad.</li></ol>
+<p>Comprueba el resultado: inicia sesión con la contraseña nueva en una ventana de navegación privada antes de cerrar la sesión original. Cambiar una contraseña no cierra automáticamente las sesiones existentes.</p>
+<p>Si no puedes iniciar sesión, comprueba primero la cuenta y la dirección del dispositivo. Cinco intentos fallidos consecutivos provocan un bloqueo de unos cinco minutos. Evita probar contraseñas repetidamente.</p>
+<h3 id="es-section-8" data-heading-key="section-8"><a href="#es-section-8">2.3 Restablecer la contraseña de admin</a></h3>
+<p>root puede restablecer la contraseña predeterminada de admin, <code>rm01</code>, y quitar su bloqueo de inicio de sesión. Después, inicia una sesión nueva como admin y establece una contraseña nueva de inmediato. El restablecimiento es una medida temporal de recuperación. No conserves la contraseña predeterminada ni supongas que cambiarla cierra todas las sesiones existentes.</p>
+<h2 id="es-section-9" data-heading-key="section-9"><a href="#es-section-9">3. Conectarse a un servidor con una clave SSH</a></h2>
+<p>En la primera configuración, crea una clave RSA, instala su clave pública, prueba la conexión y comprueba la huella del servidor. Para retirar una clave, revoca primero el acceso en los servidores, confirma que ya no funciona y solo entonces elimina la clave local.</p>
+<h3 id="es-section-10" data-heading-key="section-10"><a href="#es-section-10">3.1 Crear una clave</a></h3>
+<ol><li>En Key Management, selecciona Generate New Key.</li><li>Revisa la lista y elige un ID de clave sin utilizar, como <code>backup01</code>. No reutilices un ID: la API de generación no rechaza duplicados y puede sobrescribir la clave existente.</li><li>Elige RSA 2048 o RSA 4096. RSA 2048 es la opción predeterminada de la interfaz. Se muestran opciones ECDSA, pero la vía actual de autenticación SSH por clave pública no las admite.</li><li>Añade un comentario o alias si resulta útil. Permite exportar la clave privada solo si lo necesitas para copias de seguridad o migración; no hay una interfaz para cambiar este ajuste más adelante.</li><li>Selecciona Generate, espera a que termine y actualiza la lista.</li></ol>
+<p>Comprueba el resultado: localiza el ID previsto y el tipo RSA. Abre Public Key y comprueba que el texto completo empieza por <code>ssh-rsa</code>.</p>
+<p>Ten en cuenta que la lista admite ocho entradas. Si está llena, retira una clave que ya no utilices antes de generar otra. El almacenamiento de la clave y su registro en la lista pueden completarse o fallar por separado; comprueba la lista incluso tras un mensaje de éxito. Hide Key ID no impide que la API exponga el ID real.</p>
+<h3 id="es-section-11" data-heading-key="section-11"><a href="#es-section-11">3.2 Instalar la clave pública</a></h3>
+<p>La instalación añade la clave pública a <code>~/.ssh/authorized_keys</code> de la cuenta remota y permite que esa cuenta acepte la clave privada correspondiente. No cambia la contraseña del servidor.</p>
+<ol><li>Selecciona Deploy en la fila de la nueva clave.</li><li>Introduce la dirección del servidor, el usuario, el puerto SSH y la contraseña de esa cuenta.</li><li>Revisa los datos y selecciona Start Deploy.</li><li>Comprueba que el servidor aparece en Deployed Hosts y pruébalo como se describe a continuación.</li></ol>
+<p>La implementación actual se autentica con la contraseña antes de comprobar la huella del host y confía automáticamente en los hosts desconocidos. No garantiza que la identidad del servidor se verifique antes de enviar la contraseña. Realiza la primera conexión en una red controlada; comprobar la huella después no revierte la exposición de la contraseña. Si la instalación indica éxito, pero falta el registro o falla la prueba, no vuelvas a instalarla de inmediato. La clave pública puede estar instalada aunque haya fallado la prueba posterior con la clave o el guardado del registro local. Comprueba <code>authorized_keys</code> mediante otra conexión de gestión. Repetir la instalación puede añadir entradas duplicadas.</p>
+<h3 id="es-section-12" data-heading-key="section-12"><a href="#es-section-12">3.3 Probar la conexión</a></h3>
+<ol><li>En Deployed Hosts, comprueba la dirección, el puerto, el usuario y el ID de clave.</li><li>Selecciona Test. El dispositivo intenta ejecutar echo &quot;TianshanOS SSH Test OK&quot;.</li><li>Tras la primera conexión, comprueba la huella guardada del host siguiendo el apartado 4.3.</li></ol>
+<p>Qué significa el éxito: la página comprueba si la operación de API se completó, pero no verifica el código de salida ni la salida del comando remoto. Es una comprobación básica de conexión, no una prueba de aceptación completa. No demuestra que sudo ni los comandos de tu aplicación funcionen. Para una tarea importante, verifica la salida, el código de salida y los permisos del comando real.</p>
+<p>Si falla, comprueba la conectividad, el servicio SSH, la cuenta y la autorización remota. Deja de reintentar si la huella ha cambiado o la identidad del servidor es incierta; sigue el apartado 4.3.</p>
+<h3 id="es-section-13" data-heading-key="section-13"><a href="#es-section-13">3.4 Revocar el acceso antes de eliminar la clave local</a></h3>
+<ol><li>Confirma que funciona otra conexión de gestión al servidor y que la clave original sigue en el dispositivo.</li><li>Selecciona Revoke en la fila del host, introduce la contraseña del servidor y confirma Revoke &amp; Remove. También puedes empezar desde la fila de la clave e introducir los datos del destino.</li><li>Revisa el resultado y utiliza una conexión de gestión de confianza para comprobar que la clave pública y sus posibles duplicados han desaparecido de <code>authorized_keys</code>.</li><li>Confirma que la clave antigua ya no permite iniciar sesión. La revocación deja una copia <code>authorized_keys.bak</code>; gestiónala conforme a la política de copias de seguridad del servidor para no restaurar después una autorización antigua.</li><li>Actualiza la lista local de hosts. La página intenta eliminar el registro, pero no comprueba el resultado de esa solicitud. Si sigue presente, elimínalo manualmente.</li><li>Solo después de atender todos los servidores de destino, elimina la clave antigua del dispositivo y las copias de la clave privada que ya no necesites.</li></ol>
+<p>Si no se encuentra una clave pública coincidente, confirma en el servidor que has elegido la cuenta correcta y que la clave no está presente antes de optar por eliminar solo el registro local.</p>
+<p>Si la revocación falla o el servidor parece sospechoso, conserva la clave local y utiliza una consola de confianza u otra conexión de administrador. No sigas enviando una contraseña a un servidor de identidad dudosa.</p>
+<h2 id="es-section-14" data-heading-key="section-14"><a href="#es-section-14">4. Gestionar claves, hosts y huellas</a></h2>
+<h3 id="es-section-15" data-heading-key="section-15"><a href="#es-section-15">4.1 Copiar una clave pública o exportar una privada</a></h3>
+<p>Clave pública: selecciona Public Key y copia el valor completo en una sola línea para el administrador del servidor. Una clave pública no es secreta. Enviarla a la persona equivocada no expone por sí solo la clave privada ni exige sustituir el par. El acceso solo se concede cuando un administrador la añade a la lista de autorizaciones de una cuenta.</p>
+<p>Clave privada: solo puede exportarse si se permitió al crearla. Utiliza un ordenador de confianza en una red aislada, guárdala en un almacén de secretos aprobado y elimina las copias temporales del portapapeles y de la carpeta de descargas. No la pegues en chats, incidencias ni registros.</p>
+<p>Si Copy no hace nada, puede que el navegador bloquee el portapapeles en una página HTTP. Selecciona y copia el texto visible manualmente; comprueba que el principio, el final y todo el contenido estén intactos. No reduzcas la seguridad del navegador solo para habilitar la copia.</p>
+<h3 id="es-section-16" data-heading-key="section-16"><a href="#es-section-16">4.2 Revocar, quitar y eliminar son operaciones distintas</a></h3>
+<div class="guide-table-wrap"><table><thead><tr><th>Acción</th><th>Efecto</th></tr></thead><tbody><tr><td>Revocar una clave pública</td><td>Intenta quitar la autorización del servidor; requiere la contraseña remota</td></tr><tr><td>Quitar un host</td><td>Elimina el registro local de conexión del dispositivo, no la autorización remota</td></tr><tr><td>Eliminar una clave</td><td>Elimina el material de clave local; no contacta con el servidor ni revoca accesos</td></tr><tr><td>Eliminar una huella de host</td><td>Elimina el registro de identidad guardado del servidor, no el registro de conexión ni la autorización remota</td></tr></tbody></table></div>
+<p>Deployed Hosts es una lista local, no una vista en tiempo real de las autorizaciones del servidor. Una lista vacía no demuestra que se haya retirado el acceso remoto, ni la presencia de un host garantiza que sea accesible.</p>
+<h3 id="es-section-17" data-heading-key="section-17"><a href="#es-section-17">4.3 Comprobar la huella del servidor SSH</a></h3>
+<p>Una huella identifica el servidor al que te conectas. Esta página guarda el resumen SHA-256 como 64 caracteres hexadecimales. Las herramientas OpenSSH suelen mostrar <code>SHA256:base64</code>. Pide al administrador el mismo formato antes de comparar; las cadenas no son directamente intercambiables.</p>
+<p>Tras la primera conexión, abre la huella completa con View en la sección de huellas de host. Compárala con un valor obtenido desde una consola del servidor, un inventario de activos u otro canal de confianza. La tabla solo muestra los primeros 32 caracteres, insuficientes para una comprobación completa. Si difieren, deja de conectarte e investiga en un entorno aislado. Si introdujiste una contraseña SSH, trátala como posiblemente expuesta. Utiliza una conexión de confianza para cambiarla, revisar los registros de acceso y quitar autorizaciones de clave pública no deseadas. No uses la conexión sospechosa para revocar el acceso desde esta página.</p>
+<p>Si cambia una huella guardada:</p>
+<ol><li>Deja de reintentar. No te limites a eliminar la entrada antigua.</li><li>Utiliza una consola de confianza para verificar la nueva huella, la dirección IP, el puerto, la identidad del activo y el registro de mantenimiento.</li><li>Elimina la huella antigua solo después de confirmar una reinstalación autorizada del servidor o un cambio autorizado de su clave de host.</li><li>Vuelve a conectarte en una red controlada y consulta y comprueba la nueva huella guardada.</li></ol>
+<p>La página actual puede mostrar un error genérico de conexión en lugar de un cuadro específico de comparación de huellas.</p>
+<p>Protege la tarjeta SD: las huellas se almacenan localmente y se sincronizan en archivos JSON en texto claro en la tarjeta. Al arrancar, las configuraciones de huellas disponibles en SD sustituyen los registros NVS correspondientes. Estos archivos no están firmados; impide su modificación por fuentes no fiables.</p>
+<h3 id="es-section-18" data-heading-key="section-18"><a href="#es-section-18">4.4 Importar y exportar configuraciones de hosts SSH</a></h3>
+<p>Este flujo específico de <code>.tscfg</code> es independiente de la aplicación general de configuraciones aún incompleta del capítulo 6. Un paquete de host contiene dirección, puerto, usuario, tipo de autenticación e ID de clave. No contiene la contraseña SSH ni la clave privada y no concede acceso en el servidor.</p>
+<p>Para exportar, selecciona Export en la fila del host desde un dispositivo Developer. Si el destino es otro dispositivo, facilita y verifica su certificado y descarga el paquete. Un dispositivo normal puede mostrar el botón, pero el backend rechaza su solicitud de exportación.</p>
+<p>Para importar:</p>
+<ol><li>Confirma que el paquete se creó para este dispositivo, que la tarjeta SD admite escritura y que el origen se ha verificado por un canal de confianza.</li><li>Asegúrate de que este dispositivo ya dispone de la clave correcta referenciada por el paquete. Un ID coincidente no basta; el material de clave debe corresponder a la autorización del servidor.</li><li>Selecciona Import Host, elige el archivo y revisa la vista previa. Activa la sobrescritura solo si pretendes sustituir una configuración existente con el mismo nombre.</li><li>Confirma y reinicia cuando se indique. La importación guarda el paquete en SD; la carga y el descifrado se intentan al reiniciar.</li><li>Comprueba la dirección, el usuario, el puerto y el ID de clave cargados y prueba la conexión. Una vista previa correcta no demuestra que el paquete vaya a funcionar. No establece confianza en el firmante ni comprueba la huella del destinatario. La comprobación del destino se realiza al cargar tras el reinicio. Elimina un registro incorrecto y su paquete SD correspondiente para impedir que vuelva a cargarse. Antes de sustituir el certificado del dispositivo, lee también el apartado 5.5.</li></ol>
+<h2 id="es-section-19" data-heading-key="section-19"><a href="#es-section-19">5. Configurar certificados HTTPS y mTLS</a></h2>
+<p>Este capítulo se dirige a los administradores de certificados. El servicio actual del puerto 443 solo ofrece endpoints de salud, identidad y pruebas de permisos, no la interfaz web completa. Con sus ajustes predeterminados, el arranque requiere una clave privada de dispositivo, un certificado de dispositivo y una cadena de CA de clientes.</p>
+<h3 id="es-section-20" data-heading-key="section-20"><a href="#es-section-20">5.1 Función de cada certificado</a></h3>
+<ul><li>El certificado y la clave privada del dispositivo le permiten demostrar su identidad al cliente que se conecta.</li><li>El certificado y la clave privada del cliente, en poder de un ordenador o servicio, permiten que ese cliente demuestre su identidad al dispositivo.</li><li>La cadena de CA instalada en el dispositivo verifica los certificados de los clientes. No hace que un ordenador o navegador confíe automáticamente en el certificado del dispositivo.</li></ul>
+<p>Este intercambio de certificados en ambos sentidos se denomina TLS mutuo o mTLS. El cliente debe además confiar en la CA que emitió el certificado del dispositivo y comprobar su nombre y usos permitidos.</p>
+<h3 id="es-section-21" data-heading-key="section-21"><a href="#es-section-21">5.2 Generar una clave de dispositivo y una solicitud de certificado</a></h3>
+<ol><li>En HTTPS Certificate, selecciona Generate Key Pair. Se crea una clave privada ECDSA P-256 independiente de las claves SSH. No puede exportarse mediante esta interfaz.</li><li>Si ya existe una clave, detente y revisa el apartado 5.5 antes de continuar. Generar otra sobrescribe la anterior.</li><li>Selecciona Generate CSR. Introduce el ID del dispositivo (CN), la organización (O) y la unidad organizativa (OU), o deja todos los campos vacíos.</li><li>Envía el texto completo de la CSR al administrador de tu CA. Una CSR solicita un certificado; no contiene la clave privada ni instala un certificado.</li></ol>
+<p>Comprueba los nombres antes de la emisión: el flujo con campos personalizados no genera un SAN. Con todos los campos vacíos, el CN queda fijado en <code>TIANSHAN-DEVICE-001</code>; la IP actual solo se incluye como SAN de tipo IP si puede obtenerse. No se añade ningún SAN DNS. Pide al administrador de la CA que inspeccione la CSR y utilice un proceso de emisión controlado para incluir en el SAN del certificado final las IP o los nombres DNS necesarios. Este formulario no permite editar los SAN. Comprueba el resultado: actualiza la página para confirmar que existe la clave privada. El administrador de la CA debe inspeccionar la clave pública, el sujeto y el SAN de la CSR, y comprobar que el certificado emitido tiene el uso requerido de autenticación de servidor (EKU).</p>
+<h3 id="es-section-22" data-heading-key="section-22"><a href="#es-section-22">5.3 Instalar el certificado del dispositivo</a></h3>
+<ol><li>Obtén un certificado PEM que corresponda a la clave privada actual del dispositivo.</li><li>Selecciona Install Cert, pega el texto completo con sus delimitadores y envíalo.</li><li>Consulta el certificado y comprueba su sujeto, emisor y fechas de validez.</li></ol>
+<p>El mensaje de éxito solo indica que el certificado puede analizarse y que su clave pública corresponde a la clave privada actual. La instalación no valida por completo la cadena de confianza, SAN, EKU, la vigencia actual ni la política del sujeto.</p>
+<p>El cliente real debe comprobar la cadena, el nombre de acceso, los usos y la validez. Si la instalación indica que la clave no coincide, localiza el certificado emitido para la CSR actual. No generes otra clave privada solo para eliminar el error.</p>
+<h3 id="es-section-23" data-heading-key="section-23"><a href="#es-section-23">5.4 Instalar la cadena de CA de clientes y probar</a></h3>
+<ol><li>Selecciona Install CA y pega uno o varios certificados CA PEM utilizados para confiar en tus clientes.</li><li>Mantén disponible la interfaz HTTP de gestión y programa un reinicio antes de probar. La instalación actualiza el almacenamiento, pero no reinicia activamente el servicio del puerto 443.</li><li>Accede a los endpoints de prueba pertinentes con un certificado de cliente de confianza, con el uso y rol correctos.</li><li>Repite con un certificado no fiable o sin certificado y confirma que se rechaza la conexión.</li></ol>
+<p>Comprueba que el dispositivo presenta el nuevo certificado previsto, que los clientes de confianza solo acceden a los endpoints permitidos por su rol y que los demás no pueden conectarse. La negociación y los roles deben probarse en el dispositivo, no deducirse de un mensaje de instalación.</p>
+<h3 id="es-section-24" data-heading-key="section-24"><a href="#es-section-24">5.5 Renovar certificados o eliminar todas las credenciales</a></h3>
+<aside class="guide-notice"><span>Nota de operación</span><p>Si solo caduca el certificado, puedes reutilizar una clave privada no comprometida para solicitar uno nuevo, instalarlo y repetir las pruebas. Sin embargo, los Config Packs están vinculados a la huella del certificado del destinatario. Aunque se conserve la clave privada, una huella distinta hace que, tras reinicializar o reiniciar, los paquetes antiguos se rechacen por pertenecer a otro destinatario. Prepara paquetes de sustitución antes de cambiar el certificado.</p></aside>
+<p>Al sustituir la clave privada, la CSR y el certificado anteriores dejan de corresponder a la nueva clave. Eso no revoca el certificado antiguo en la CA. Si la clave anterior estuvo expuesta, gestiona por separado la revocación y la respuesta al incidente. Los paquetes que dependan de una clave privada perdida pueden ser irrecuperables. Para eliminar todas las credenciales PKI, Delete Credentials en la sección de certificados borra conjuntamente la clave privada, el certificado del dispositivo y la cadena de CA de clientes. Verifica tu acceso de recuperación HTTP y prepara paquetes de sustitución antes de confirmar. Una copia del certificado público no puede restaurar una clave privada.</p>
+<p>Después de eliminar, actualiza la página y comprueba que aparece un estado sin inicializar. Reinicia y verifica que el puerto 443 ya no utiliza las credenciales antiguas. Para restablecer el servicio, genera una clave nueva, obtén e instala el certificado del dispositivo, instala la cadena de CA y repite las pruebas.</p>
+<h2 id="es-section-25" data-heading-key="section-25"><a href="#es-section-25">6. Comprender las limitaciones de Config Pack</a></h2>
+<p>Un Config Pack es un paquete <code>.tscfg</code> cifrado y firmado. La implementación actual permite crear e inspeccionar paquetes, pero la aplicación general de configuraciones está incompleta. No dependas de ella para configurar flotas en producción, recuperar el sistema ante desastres ni demostrar que los ajustes han cambiado.</p>
+<h3 id="es-section-26" data-heading-key="section-26"><a href="#es-section-26">6.1 Qué hacen actualmente los controles</a></h3>
+<div class="guide-table-wrap"><table><thead><tr><th>Acción</th><th>Resultado actual</th></tr></thead><tbody><tr><td>Export Device Certificate</td><td>Muestra el certificado público para que un remitente cree un paquete destinado a este dispositivo; no exporta la clave privada</td></tr><tr><td>Verify</td><td>Comprueba la estructura y la firma del texto cifrado con el certificado incluido; no establece confianza en el firmante ni la identidad del destinatario</td></tr><tr><td>Import tras seleccionar o pegar un paquete</td><td>Los parámetros del frontend y del backend no coinciden; este flujo no puede completarse</td></tr><tr><td>Import desde la lista de paquetes</td><td>Valida un archivo existente en el dispositivo; no lo copia, descifra ni aplica</td></tr><tr><td>Apply</td><td>Descifra y enumera los nombres de módulos sin escribir sus ajustes; aun así puede indicar éxito</td></tr><tr><td>Export Config Pack en un dispositivo Developer</td><td>Crea un paquete cifrado y firmado descargable e intenta guardarlo en la tarjeta SD</td></tr></tbody></table></div>
+<h3 id="es-section-27" data-heading-key="section-27"><a href="#es-section-27">6.2 Verificar el origen, no solo la firma</a></h3>
+<p>Actualmente, el destinatario comprueba la firma con el certificado incluido en el paquete. No está implementada la validación de confianza de la cadena del certificado firmante. La firma cubre el texto cifrado; no supongas que por ello todos los metadatos mostrados están autenticados. La etiqueta Official tampoco demuestra un origen de confianza.</p>
+<p>Antes de importar o inspeccionar un paquete, utiliza un sistema de activos o un canal independiente y aprobado para confirmar la huella del certificado firmante, el certificado de destino y el cambio previsto. Recibir un certificado y su huella en el mismo correo no es una comprobación independiente. El nombre de destino de la vista previa no sustituye la verificación de la huella del certificado.</p>
+<h3 id="es-section-28" data-heading-key="section-28"><a href="#es-section-28">6.3 Compartir el certificado del dispositivo e inspeccionar un paquete</a></h3>
+<p>Para facilitar el certificado de este dispositivo, selecciona Export Device Certificate, copia el PEM completo y la huella mostrada, y envía el certificado público al remitente. Confirma la huella por otro canal de confianza.</p>
+<p>Para inspeccionar un paquete recibido, abre Import Config Pack, selecciona o pega el archivo <code>.tscfg</code> y selecciona Verify. Revisa los datos del firmante y comprueba el origen. La verificación no aplica ajustes ni demuestra que este dispositivo sea el destinatario. Detente si el origen, el destino o la finalidad no están claros.</p>
+<p>Aunque la verificación sea correcta, no dependas de los controles generales Import y Apply actuales para configurar el dispositivo. Utiliza los controles admitidos de las páginas de cada función y comprueba después los ajustes reales.</p>
+<h3 id="es-section-29" data-heading-key="section-29"><a href="#es-section-29">6.4 Exportar un paquete desde un dispositivo Developer</a></h3>
+<ol><li>Prepara archivos de configuración JSON válidos en la tarjeta SD y obtén un certificado verificado del dispositivo de destino.</li><li>Selecciona Export Config Pack, elige los archivos, introduce un nombre y una descripción y pega el certificado de destino.</li><li>Genera y descarga el archivo <code>.tscfg</code>.</li><li>Comprueba por separado la descarga del navegador y el archivo guardado en <code>/sdcard/output_config/</code>. Si falla la escritura en SD, la API puede devolver aun así el paquete para descargarlo.</li></ol>
+<p>La exportación no modifica los ajustes de origen. Vuelve a generar un paquete creado para un destino incorrecto o un certificado de destinatario obsoleto. Exportar correctamente no demuestra que funcione toda la distribución: la aplicación general en el dispositivo receptor sigue incompleta.</p>
+<h2 id="es-section-30" data-heading-key="section-30"><a href="#es-section-30">7. Resolución de problemas y respuesta a incidentes</a></h2>
+<h3 id="es-section-31" data-heading-key="section-31"><a href="#es-section-31">7.1 Problemas frecuentes</a></h3>
+<div class="guide-table-wrap"><table><thead><tr><th>Síntoma</th><th>Qué hacer</th></tr></thead><tbody><tr><td>No aparece Account Security</td><td>Inicia sesión como root; admin no ve esta sección</td></tr><tr><td>La creación indica éxito, pero la clave no aparece</td><td>Actualiza la lista y comprueba su capacidad; no reutilices ID ni generes claves repetidamente</td></tr><tr><td>Falla la instalación de ECDSA</td><td>Crea una clave RSA con otro ID; no relajes repetidamente la política del servidor</td></tr><tr><td>La instalación funciona, pero Test falla</td><td>Comprueba la autorización remota por otra conexión antes de reinstalar</td></tr><tr><td>El acceso sigue funcionando tras quitar un host</td><td>Remove solo afecta al registro local; revoca la clave pública remota por separado</td></tr><tr><td>Cambia una huella o la identidad del servidor no está clara</td><td>Deja de conectarte y verifica mediante una consola de confianza; consulta el apartado 4.3</td></tr><tr><td>El puerto 443 falla tras instalar certificados</td><td>Comprueba la clave, el certificado y la cadena de CA de clientes; reinicia y prueba con un certificado de cliente adecuado</td></tr><tr><td>Un cliente sigue rechazando el certificado</td><td>Comprueba su almacén de confianza, SAN, EKU, validez y cadena; el almacén CA del dispositivo no es el almacén de confianza del navegador</td></tr><tr><td>Apply indica éxito, pero los ajustes no cambian</td><td>La implementación actual no escribe los ajustes de módulos; utiliza las páginas de cada función</td></tr></tbody></table></div>
+<h3 id="es-section-32" data-heading-key="section-32"><a href="#es-section-32">7.2 Posible exposición de una clave privada SSH</a></h3>
+<ol><li>Restringe el acceso al dispositivo y a sus registros. Los registros actuales pueden contener el principio de una clave privada.</li><li>Revoca la clave pública en todos los servidores afectados mediante conexiones de confianza. Comprueba las copias de seguridad y confirma que la clave antigua ya no funciona.</li><li>Crea e instala una nueva clave RSA con otro ID. Cuando funcione, elimina la clave antigua y sus copias exportadas.</li><li>Revisa los registros de acceso. La lista local del dispositivo puede no incluir todos los servidores donde se autorizó la clave.</li></ol>
+<p>Si la expuesta es la clave privada HTTPS, sustituye las credenciales del dispositivo según el apartado 5.5 y coordina con el administrador de la CA la revocación del certificado y el tratamiento de los paquetes antiguos.</p>
+<h3 id="es-section-33" data-heading-key="section-33"><a href="#es-section-33">7.3 Otros riesgos de seguridad actuales</a></h3>
+<p>Además de las limitaciones de HTTP, autorización, confianza en la primera conexión y paquetes ya descritas, la configuración de compilación inspeccionada no activa NVS Encryption, Flash Encryption ni Secure Boot. No afirmes que estos mecanismos protegen las claves privadas almacenadas o la integridad del arranque. El firmware realmente grabado y los ajustes eFuse de cada dispositivo requieren comprobaciones aparte.</p>
+<p>Si tu uso no admite estas limitaciones, mantén el dispositivo fuera de esa red o entorno de confianza hasta que el responsable de seguridad apruebe medidas de aislamiento o una corrección del producto. Las comprobaciones de una guía no sustituyen controles de seguridad ausentes en el producto.</p>
+<h2 id="es-section-34" data-heading-key="section-34"><a href="#es-section-34">8. Alcance de la revisión y glosario</a></h2>
+<h3 id="es-section-35" data-heading-key="section-35"><a href="#es-section-35">8.1 Base de esta guía</a></h3>
+<p>La revisión utilizó la copia de trabajo actual basada en <code>d6ed947</code>. El comportamiento y los mensajes de la página están en <code>components/ts_webui/web/js/app.js</code>; el comportamiento de las API, en <code>components/ts_api/src/</code>; el almacenamiento de claves y hosts, en <code>components/ts_security/src/</code>. Los certificados, el servicio del puerto 443 y los paquetes se implementan en <code>components/ts_cert/</code>, <code>components/ts_https/</code> y <code>components/ts_config_pack/</code>.</p>
+<p>Se comprobaron en particular los ID de clave duplicados, el tratamiento del código de salida de la prueba SSH, la limpieza local tras revocar, las huellas del certificado del destinatario y la lógica incompleta de importación y aplicación de paquetes. Fue una revisión estática: no se conectó a servidores remotos, no cambió credenciales de dispositivos ni realizó pruebas de aceptación de seguridad en hardware.</p>
+<h3 id="es-section-36" data-heading-key="section-36"><a href="#es-section-36">8.2 Términos utilizados</a></h3>
+<ul><li>Clave pública / privada: comparte la pública con un administrador que conceda acceso; mantén la privada en secreto. La autenticación utiliza el par correspondiente.</li><li>NVS: área de almacenamiento Flash para ajustes y claves del dispositivo. El nombre no implica cifrado.</li><li>CSR / CA: solicitud de firma de certificado y autoridad de certificación o su certificado.</li><li>CN / O / OU: campos de nombre común, organización y unidad organizativa del sujeto de un certificado.</li><li>SAN / EKU: nombres o direcciones IP cubiertos por el certificado y usos de autenticación que permite.</li><li>PEM: formato de texto con delimitadores BEGIN/END, utilizado para certificados, CSR y claves.</li><li>PKI / mTLS: sistema de gestión de certificados y confianza, y TLS mutuo, en el que cliente y servidor presentan certificados.</li></ul>
+
+          </article>
+
+          <article class="guide-article lang-pane" data-lang-pane="fr" hidden>
+<p>Les noms des boutons et des rubriques sont conservés en anglais pour vous permettre de les retrouver sur l’appareil. Son interface web est disponible en chinois et en anglais ; changer la langue de ce site ne modifie pas les langues de l’appareil.</p>
+<p>Ce guide explique comment changer les mots de passe de l’appareil, gérer l’accès SSH et configurer les certificats. Pour une première mise en service, commencez par les chapitres 1 et 2. Les procédures relatives aux certificats et à Config Pack s’adressent aux administrateurs responsables de la sécurité de l’appareil.</p>
+<p>Version vérifiée : copie de travail examinée le 7 septembre 2026, fondée sur le commit <code>d6ed947</code>. Ce guide résulte d’une revue du code source, et non de tests sur votre appareil. Effectuez les contrôles de chaque section dans votre environnement.</p>
+<aside class="guide-notice"><span>Important</span><p>Utilisez un réseau d’administration isolé. L’interface web complète utilise actuellement HTTP et la plupart des opérations d’API ne disposent pas de contrôles centralisés et obligatoires de connexion et de permissions. N’exposez pas l’appareil à internet ni à un réseau invité. Installer un certificat HTTPS ne fait pas passer l’interface web complète en HTTPS.</p></aside>
+<h2 id="fr-section-1" data-heading-key="section-1"><a href="#fr-section-1">1. Avant de commencer</a></h2>
+<h3 id="fr-section-2" data-heading-key="section-2"><a href="#fr-section-2">1.1 Trouver la procédure adaptée</a></h3>
+<div class="guide-table-wrap"><table><thead><tr><th>Tâche</th><th>Où aller</th></tr></thead><tbody><tr><td>Changer le mot de passe root ou admin de l’appareil</td><td>Account Security ; chapitre 2</td></tr><tr><td>Se connecter à un serveur avec une clé SSH</td><td>Key Management et Deployed Hosts ; chapitre 3</td></tr><tr><td>Copier des clés ou vérifier l’identité d’un serveur</td><td>Key Management et empreintes d’hôtes ; chapitre 4</td></tr><tr><td>Configurer les certificats et l’authentification mutuelle</td><td>HTTPS Certificate ; chapitre 5</td></tr><tr><td>Échanger des paquets de configuration chiffrés</td><td>Config Pack ; chapitre 6. L’application générale des configurations n’est pas encore implémentée</td></tr></tbody></table></div>
+<h3 id="fr-section-3" data-heading-key="section-3"><a href="#fr-section-3">1.2 Comptes et identité de l’appareil</a></h3>
+<ul><li>admin peut ouvrir Security et voir les clés, hôtes, certificats et commandes Config Pack, mais pas Account Security.</li><li>root peut aussi définir les mots de passe root et admin ou rétablir le mot de passe admin par défaut. Le serveur impose une autorisation root pour ces opérations de gestion des mots de passe.</li><li>Un appareil Developer est identifié par le champ OU de son certificat. Il ne s’agit pas d’un compte utilisateur. Actuellement, seuls ces appareils peuvent exporter des Config Packs et des configurations d’hôtes SSH ; se connecter en tant que root ne change pas l’identité de l’appareil.</li></ul>
+<p>Hormis les opérations qui vérifient elles-mêmes l’autorisation, comme la gestion des mots de passe, un écran de connexion n’empêche pas l’accès direct aux API. L’isolation réseau reste nécessaire.</p>
+<h3 id="fr-section-4" data-heading-key="section-4"><a href="#fr-section-4">1.3 Préparer l’opération</a></h3>
+<ol><li>Vérifiez que l’adresse IP du navigateur correspond à l’appareil prévu et que votre ordinateur se trouve sur un réseau d’administration de confiance.</li><li>Confirmez l’adresse, le port et le nom d’utilisateur du serveur SSH avec son administrateur.</li><li>Pour déployer ou révoquer une clé publique depuis cette page, vous devez disposer du mot de passe du compte distant, qui doit accepter l’authentification par mot de passe. Ne laissez pas les restrictions du serveur assouplies uniquement pour résoudre un problème.</li><li>Avant de supprimer des clés, de révoquer un accès ou de remplacer des certificats, prévoyez une autre voie d’accès : console du serveur, autre clé d’administrateur ou interface HTTP d’administration de l’appareil.</li></ol>
+<h2 id="fr-section-5" data-heading-key="section-5"><a href="#fr-section-5">2. Changer les mots de passe de l’appareil</a></h2>
+<p>Ces commandes modifient les mots de passe de connexion à TianShanOS, pas le mot de passe SSH d’un serveur distant.</p>
+<h3 id="fr-section-6" data-heading-key="section-6"><a href="#fr-section-6">2.1 L’invite de changement après connexion</a></h3>
+<p>Si un compte est encore marqué comme utilisant un mot de passe inchangé, une invite apparaît après la connexion. Définissez un mot de passe long et unique. Choisir de le changer plus tard ferme l’invite ; cela ne rend pas le mot de passe par défaut sûr à conserver.</p>
+<p>Cette invite n’est pas un écran de réglages du compte que vous pouvez rouvrir à tout moment. Si admin a déjà changé son mot de passe et doit le modifier à nouveau, root peut le définir depuis Security.</p>
+<h3 id="fr-section-7" data-heading-key="section-7"><a href="#fr-section-7">2.2 Définir un mot de passe en tant que root</a></h3>
+<ol><li>Connectez-vous en tant que root et ouvrez Security.</li><li>Dans Account Security, sélectionnez Set root password ou Set admin password.</li><li>Saisissez deux fois le même nouveau mot de passe et validez. L’interface accepte 4-64 caractères ; quatre caractères constituent un minimum technique, pas une recommandation de sécurité.</li></ol>
+<p>Vérifiez le résultat : connectez-vous avec le nouveau mot de passe dans une fenêtre de navigation privée avant de fermer votre session d’origine. Changer un mot de passe ne ferme pas automatiquement les sessions existantes.</p>
+<p>Si la connexion échoue, vérifiez d’abord le compte et l’adresse de l’appareil. Cinq échecs consécutifs déclenchent un verrouillage d’environ cinq minutes. Évitez les essais répétés.</p>
+<h3 id="fr-section-8" data-heading-key="section-8"><a href="#fr-section-8">2.3 Réinitialiser le mot de passe admin</a></h3>
+<p>root peut rétablir le mot de passe admin par défaut, <code>rm01</code>, et lever son verrouillage de connexion. Après la réinitialisation, ouvrez une nouvelle session admin et définissez immédiatement un nouveau mot de passe. La réinitialisation est une mesure de récupération temporaire. Ne conservez pas le mot de passe par défaut et ne supposez pas que le changement ferme toutes les sessions existantes.</p>
+<h2 id="fr-section-9" data-heading-key="section-9"><a href="#fr-section-9">3. Se connecter à un serveur avec une clé SSH</a></h2>
+<p>Pour une première configuration, créez une clé RSA, déployez sa clé publique, testez la connexion, puis vérifiez l’empreinte du serveur. Pour retirer une clé, révoquez d’abord l’accès sur les serveurs, confirmez que l’ancienne clé ne fonctionne plus, puis supprimez la clé locale.</p>
+<h3 id="fr-section-10" data-heading-key="section-10"><a href="#fr-section-10">3.1 Créer une clé</a></h3>
+<ol><li>Dans Key Management, sélectionnez Generate New Key.</li><li>Vérifiez la liste et choisissez un ID de clé inutilisé, par exemple <code>backup01</code>. Ne réutilisez pas un ID : l’API de génération ne rejette pas les doublons et peut écraser la clé existante.</li><li>Choisissez RSA 2048 ou RSA 4096. RSA 2048 est le choix par défaut de l’interface. Des options ECDSA sont affichées, mais le chemin actuel d’authentification SSH par clé publique ne les prend pas en charge.</li><li>Ajoutez un commentaire ou un alias si utile. N’autorisez l’exportation de la clé privée que pour un besoin de sauvegarde ou de migration ; aucune interface ne permet de modifier ce réglage ultérieurement.</li><li>Sélectionnez Generate, attendez la fin et actualisez la liste.</li></ol>
+<p>Vérifiez le résultat : retrouvez l’ID prévu et le type RSA. Ouvrez Public Key et vérifiez que le texte complet commence par <code>ssh-rsa</code>.</p>
+<p>La liste contient au maximum huit entrées. Lorsqu’elle est pleine, retirez une clé inutilisée avant d’en générer une autre. Le stockage de la clé et son inscription dans la liste peuvent réussir ou échouer séparément ; vérifiez donc la liste même après un message de réussite. Hide Key ID n’empêche pas l’API d’exposer le véritable ID.</p>
+<h3 id="fr-section-11" data-heading-key="section-11"><a href="#fr-section-11">3.2 Déployer la clé publique</a></h3>
+<p>Le déploiement ajoute la clé publique à <code>~/.ssh/authorized_keys</code> du compte distant, ce qui permet à ce compte d’accepter la clé privée correspondante. Il ne change pas le mot de passe du serveur.</p>
+<ol><li>Sélectionnez Deploy sur la ligne de la nouvelle clé.</li><li>Saisissez l’adresse du serveur, le nom d’utilisateur, le port SSH et le mot de passe de ce compte.</li><li>Vérifiez les informations et sélectionnez Start Deploy.</li><li>Recherchez le serveur dans Deployed Hosts, puis testez-le comme indiqué ci-dessous.</li></ol>
+<p>L’implémentation actuelle s’authentifie avec le mot de passe avant de vérifier l’empreinte de l’hôte et fait automatiquement confiance aux hôtes inconnus. Elle ne garantit pas que l’identité du serveur soit vérifiée avant l’envoi du mot de passe. Effectuez la première connexion sur un réseau contrôlé ; vérifier ensuite l’empreinte ne peut pas annuler l’exposition du mot de passe. Si le déploiement annonce une réussite mais que l’entrée manque ou que le test échoue, ne recommencez pas immédiatement. La clé publique peut déjà être installée malgré l’échec du test par clé ou de l’enregistrement local qui suit. Vérifiez <code>authorized_keys</code> par une autre connexion d’administration. Des déploiements répétés peuvent ajouter des doublons.</p>
+<h3 id="fr-section-12" data-heading-key="section-12"><a href="#fr-section-12">3.3 Tester la connexion</a></h3>
+<ol><li>Dans Deployed Hosts, vérifiez l’adresse, le port, le nom d’utilisateur et l’ID de clé.</li><li>Sélectionnez Test. L’appareil tente d’exécuter echo &quot;TianshanOS SSH Test OK&quot;.</li><li>Après la première connexion, vérifiez l’empreinte enregistrée de l’hôte selon la section 4.3.</li></ol>
+<p>Ce que signifie la réussite : la page vérifie si l’opération d’API a réussi, mais pas le code de sortie ni la sortie de la commande distante. Il s’agit d’un contrôle élémentaire de connexion, pas d’un test d’acceptation complet. Il ne prouve pas que sudo ni les commandes de votre application fonctionneront. Pour une tâche importante, vérifiez la sortie, le code de sortie et les permissions de la commande réelle.</p>
+<p>En cas d’échec, vérifiez la connectivité, le service SSH, le compte et l’autorisation distante. Cessez les essais si l’empreinte a changé ou si l’identité du serveur est incertaine ; suivez la section 4.3.</p>
+<h3 id="fr-section-13" data-heading-key="section-13"><a href="#fr-section-13">3.4 Révoquer l’accès avant de supprimer la clé locale</a></h3>
+<ol><li>Confirmez qu’une autre connexion d’administration au serveur fonctionne et que la clé d’origine existe toujours sur l’appareil.</li><li>Sélectionnez Revoke sur la ligne de l’hôte, saisissez le mot de passe du serveur et confirmez Revoke &amp; Remove. Vous pouvez aussi partir de la ligne de la clé et saisir les informations de la cible.</li><li>Examinez le résultat, puis vérifiez par une connexion d’administration de confiance que la clé publique et ses éventuels doublons ont disparu de <code>authorized_keys</code>.</li><li>Confirmez que l’ancienne clé ne permet plus de se connecter. La révocation laisse une sauvegarde <code>authorized_keys.bak</code> ; traitez-la selon la politique de sauvegarde du serveur pour éviter de rétablir ultérieurement une ancienne autorisation.</li><li>Actualisez la liste locale des hôtes. La page tente de retirer l’entrée sans vérifier le résultat de cette requête. Supprimez-la manuellement si elle subsiste.</li><li>Une fois tous les serveurs cibles traités, supprimez l’ancienne clé de l’appareil et les copies privées devenues inutiles.</li></ol>
+<p>Si aucune clé publique correspondante n’est trouvée, confirmez sur le serveur que le compte choisi est correct et que la clé est absente avant de supprimer uniquement l’entrée locale.</p>
+<p>Si la révocation échoue ou si le serveur semble suspect, conservez la clé locale et utilisez une console de confiance ou une autre connexion d’administrateur. Ne continuez pas à envoyer un mot de passe à un serveur dont l’identité est douteuse.</p>
+<h2 id="fr-section-14" data-heading-key="section-14"><a href="#fr-section-14">4. Gérer les clés, les hôtes et les empreintes</a></h2>
+<h3 id="fr-section-15" data-heading-key="section-15"><a href="#fr-section-15">4.1 Copier une clé publique ou exporter une clé privée</a></h3>
+<p>Clé publique : sélectionnez Public Key et copiez la valeur complète, sur une seule ligne, pour l’administrateur du serveur. Une clé publique n’est pas secrète. L’envoyer à la mauvaise personne n’expose pas en soi la clé privée et n’impose pas de remplacer la paire. L’accès n’est accordé que lorsqu’un administrateur l’ajoute à la liste d’autorisation d’un compte.</p>
+<p>Clé privée : l’exportation n’est disponible que si elle a été autorisée à la création. Utilisez un ordinateur de confiance sur un réseau isolé, conservez la clé dans un coffre de secrets approuvé et effacez les copies temporaires du presse-papiers et du dossier de téléchargement. Ne la collez jamais dans une conversation, un ticket ou un journal.</p>
+<p>Si Copy ne fait rien, le navigateur peut bloquer le presse-papiers sur une page HTTP. Sélectionnez et copiez manuellement le texte visible, puis vérifiez son début, sa fin et l’intégralité de son contenu. N’affaiblissez pas les réglages de sécurité du navigateur pour permettre la copie.</p>
+<h3 id="fr-section-16" data-heading-key="section-16"><a href="#fr-section-16">4.2 Révoquer, retirer et supprimer sont des opérations distinctes</a></h3>
+<div class="guide-table-wrap"><table><thead><tr><th>Action</th><th>Effet</th></tr></thead><tbody><tr><td>Révoquer une clé publique</td><td>Tente de retirer l’autorisation sur le serveur ; exige le mot de passe distant</td></tr><tr><td>Retirer un hôte</td><td>Supprime l’entrée locale de connexion de l’appareil, pas l’autorisation distante</td></tr><tr><td>Supprimer une clé</td><td>Supprime les données de clé locales ; ne contacte pas le serveur et ne révoque pas l’accès</td></tr><tr><td>Supprimer une empreinte d’hôte</td><td>Supprime une identité de serveur enregistrée, pas l’entrée de connexion ni l’autorisation distante</td></tr></tbody></table></div>
+<p>Deployed Hosts est une liste locale, pas une vue en temps réel des autorisations du serveur. Une liste vide ne prouve pas le retrait de l’accès distant, et la présence d’un hôte ne garantit pas qu’il soit joignable.</p>
+<h3 id="fr-section-17" data-heading-key="section-17"><a href="#fr-section-17">4.3 Vérifier l’empreinte du serveur SSH</a></h3>
+<p>Une empreinte identifie le serveur auquel vous vous connectez. Cette page conserve le condensat SHA-256 sous forme de 64 caractères hexadécimaux. Les outils OpenSSH affichent souvent <code>SHA256:base64</code>. Demandez à l’administrateur le même format avant toute comparaison ; les chaînes ne sont pas directement interchangeables.</p>
+<p>Après la première connexion, ouvrez l’empreinte complète avec View dans la section des empreintes d’hôtes. Comparez-la à une valeur obtenue depuis une console du serveur, un inventaire d’actifs ou un autre canal de confiance. Le tableau n’affiche que les 32 premiers caractères, ce qui ne suffit pas à une vérification complète. En cas de différence, cessez les connexions et enquêtez dans un environnement isolé. Si vous avez saisi un mot de passe SSH, considérez-le comme potentiellement exposé. Changez-le par une connexion de confiance, examinez les journaux de connexion et retirez les autorisations de clé publique indésirables. N’utilisez pas la connexion suspecte pour révoquer l’accès depuis cette page.</p>
+<p>Si une empreinte enregistrée change :</p>
+<ol><li>Cessez les essais. Ne supprimez pas simplement l’ancienne entrée.</li><li>Utilisez une console de confiance pour vérifier la nouvelle empreinte, l’adresse IP, le port, l’identité de l’actif et son historique de maintenance.</li><li>Ne supprimez l’ancienne empreinte qu’après avoir confirmé une réinstallation autorisée du serveur ou un changement autorisé de sa clé d’hôte.</li><li>Reconnectez-vous sur un réseau contrôlé, puis consultez et vérifiez la nouvelle empreinte enregistrée.</li></ol>
+<p>La page actuelle peut afficher une erreur de connexion générique plutôt qu’un dialogue dédié à la comparaison des empreintes.</p>
+<p>Protégez la carte SD : les empreintes sont stockées localement et synchronisées dans des fichiers JSON en clair sur la carte. Au démarrage, les configurations d’empreintes disponibles sur SD remplacent les entrées NVS correspondantes. Ces fichiers ne sont pas signés ; empêchez leur modification par des sources non fiables.</p>
+<h3 id="fr-section-18" data-heading-key="section-18"><a href="#fr-section-18">4.4 Importer et exporter des configurations d’hôtes SSH</a></h3>
+<p>Ce processus <code>.tscfg</code> dédié est distinct de l’application générale des configurations, encore inachevée, décrite au chapitre 6. Un paquet d’hôte contient l’adresse, le port, le nom d’utilisateur, le type d’authentification et l’ID de clé. Il ne contient ni le mot de passe SSH ni la clé privée, et n’accorde aucun accès sur le serveur.</p>
+<p>Pour exporter, sélectionnez Export sur la ligne de l’hôte depuis un appareil Developer. Pour un autre appareil, fournissez et vérifiez le certificat de la cible, puis téléchargez le paquet. Un appareil ordinaire peut afficher le bouton, mais le backend rejette sa demande d’exportation.</p>
+<p>Pour importer :</p>
+<ol><li>Confirmez que le paquet a été créé pour cet appareil, que la carte SD est accessible en écriture et que l’origine a été vérifiée par un canal de confiance.</li><li>Assurez-vous que l’appareil possède déjà la bonne clé référencée par le paquet. Un ID identique ne suffit pas ; les données de clé doivent correspondre à l’autorisation du serveur.</li><li>Sélectionnez Import Host, choisissez le fichier et examinez l’aperçu. N’activez l’écrasement que pour remplacer volontairement une configuration portant le même nom.</li><li>Confirmez et redémarrez lorsque cela est demandé. L’importation enregistre le paquet sur SD ; le chargement et le déchiffrement sont tentés au redémarrage.</li><li>Vérifiez l’adresse, le nom d’utilisateur, le port et l’ID de clé chargés, puis testez la connexion. Un aperçu réussi ne prouve pas que le paquet fonctionnera. Il n’établit ni la confiance dans le signataire ni l’empreinte du destinataire. Le contrôle de la cible a lieu au chargement après redémarrage. Supprimez une entrée incorrecte et son paquet SD pour empêcher un nouveau chargement. Avant de remplacer le certificat de l’appareil, lisez aussi la section 5.5.</li></ol>
+<h2 id="fr-section-19" data-heading-key="section-19"><a href="#fr-section-19">5. Configurer les certificats HTTPS et mTLS</a></h2>
+<p>Ce chapitre s’adresse aux administrateurs de certificats. Le service actuel sur le port 443 ne propose que des points d’accès de santé, d’identité et de test des permissions, pas l’interface web complète. Avec ses réglages par défaut, son démarrage exige une clé privée d’appareil, un certificat d’appareil et une chaîne de CA de confiance pour les clients.</p>
+<h3 id="fr-section-20" data-heading-key="section-20"><a href="#fr-section-20">5.1 Comprendre le rôle de chaque certificat</a></h3>
+<ul><li>Le certificat et la clé privée de l’appareil lui permettent de prouver son identité au client qui se connecte.</li><li>Le certificat et la clé privée du client, détenus par un ordinateur ou un service, permettent à ce client de prouver son identité à l’appareil.</li><li>La chaîne de CA installée sur l’appareil sert à vérifier les certificats clients. Elle ne fait pas automatiquement reconnaître le certificat de l’appareil comme fiable par un ordinateur ou un navigateur.</li></ul>
+<p>Cet échange de certificats dans les deux sens est appelé TLS mutuel, ou mTLS. Le client doit aussi faire confiance à la CA ayant émis le certificat de l’appareil et vérifier son nom et ses usages autorisés.</p>
+<h3 id="fr-section-21" data-heading-key="section-21"><a href="#fr-section-21">5.2 Générer une clé d’appareil et une demande de certificat</a></h3>
+<ol><li>Dans HTTPS Certificate, sélectionnez Generate Key Pair. Cela crée une clé privée ECDSA P-256 distincte des clés SSH. Elle ne peut pas être exportée par cette interface.</li><li>Si une clé existe déjà, arrêtez-vous et consultez la section 5.5. En générer une nouvelle écrase l’ancienne.</li><li>Sélectionnez Generate CSR. Saisissez l’ID d’appareil (CN), l’organisation (O) et l’unité d’organisation (OU), ou laissez tous les champs vides.</li><li>Envoyez le texte complet de la CSR à l’administrateur de votre CA. Une CSR demande un certificat ; elle ne contient pas de clé privée et n’installe aucun certificat.</li></ol>
+<p>Vérifiez les noms avant l’émission : le chemin utilisant des champs personnalisés ne génère pas de SAN. Avec tous les champs vides, le CN est fixé à <code>TIANSHAN-DEVICE-001</code> ; l’IP actuelle n’est incluse comme SAN de type IP que si elle peut être obtenue. Aucun SAN DNS n’est ajouté. Demandez à l’administrateur de la CA d’examiner la CSR et d’utiliser un processus d’émission contrôlé pour inclure les adresses IP ou noms DNS requis dans le SAN du certificat final. Ce formulaire ne permet pas de modifier les SAN. Vérifiez le résultat : actualisez la page pour confirmer la présence de la clé privée. L’administrateur de la CA doit examiner la clé publique, le sujet et le SAN de la CSR, et vérifier que le certificat émis autorise l’authentification de serveur requise (EKU).</p>
+<h3 id="fr-section-22" data-heading-key="section-22"><a href="#fr-section-22">5.3 Installer le certificat de l’appareil</a></h3>
+<ol><li>Obtenez un certificat PEM correspondant à la clé privée actuelle de l’appareil.</li><li>Sélectionnez Install Cert, collez le texte complet avec ses délimiteurs et validez.</li><li>Consultez le certificat et vérifiez son sujet, son émetteur et ses dates de validité.</li></ol>
+<p>Le message de réussite signifie seulement que le certificat peut être analysé et que sa clé publique correspond à la clé privée actuelle. L’installation ne valide pas complètement la chaîne de confiance, le SAN, l’EKU, la validité actuelle ni la politique du sujet.</p>
+<p>Le client réel doit vérifier la chaîne, le nom d’accès, les usages et la validité. Si l’installation signale une incompatibilité de clé, retrouvez le certificat émis pour la CSR actuelle. Ne générez pas une nouvelle clé privée simplement pour faire disparaître l’erreur.</p>
+<h3 id="fr-section-23" data-heading-key="section-23"><a href="#fr-section-23">5.4 Installer la chaîne de CA de confiance pour les clients et tester</a></h3>
+<ol><li>Sélectionnez Install CA et collez un ou plusieurs certificats CA PEM utilisés pour faire confiance à vos clients.</li><li>Gardez l’interface HTTP d’administration disponible et prévoyez un redémarrage avant les tests. L’installation met à jour le stockage, mais ne redémarre pas activement le service du port 443.</li><li>Accédez aux points de test concernés avec un certificat client de confiance ayant l’usage et le rôle appropriés.</li><li>Répétez avec un certificat non fiable ou sans certificat et confirmez le rejet de la connexion.</li></ol>
+<p>Vérifiez que l’appareil présente le nouveau certificat prévu, que les clients de confiance n’accèdent qu’aux points autorisés par leur rôle et que les clients non fiables ne peuvent pas se connecter. La négociation et les rôles doivent être testés sur l’appareil, et non déduits d’un message d’installation.</p>
+<h3 id="fr-section-24" data-heading-key="section-24"><a href="#fr-section-24">5.5 Renouveler les certificats ou supprimer tous les éléments d’authentification</a></h3>
+<aside class="guide-notice"><span>Note d’utilisation</span><p>Si seul le certificat arrive à expiration, vous pouvez réutiliser une clé privée non compromise pour demander un nouveau certificat, l’installer et refaire les tests. Toutefois, les Config Packs sont liés à l’empreinte du certificat du destinataire. Même avec la même clé privée, un changement d’empreinte entraîne le rejet des anciens paquets comme destinés à un autre appareil après réinitialisation ou redémarrage. Préparez des paquets de remplacement avant de changer le certificat.</p></aside>
+<p>Lorsque vous remplacez la clé privée, l’ancienne CSR et l’ancien certificat ne correspondent plus à la nouvelle clé. Cela ne révoque pas l’ancien certificat auprès de la CA. Si l’ancienne clé a été exposée, traitez séparément la révocation et la réponse à l’incident. Les paquets dépendant d’une clé privée perdue peuvent être irrécupérables. Pour supprimer tous les éléments PKI, Delete Credentials dans la section des certificats efface ensemble la clé privée, le certificat de l’appareil et la chaîne de CA de confiance pour les clients. Vérifiez votre accès de récupération HTTP et préparez des paquets de remplacement avant de confirmer. Une sauvegarde du certificat public ne peut pas restaurer une clé privée.</p>
+<p>Après la suppression, actualisez la page et vérifiez l’état non initialisé. Redémarrez et vérifiez que le port 443 n’utilise plus les anciens éléments d’authentification. Pour rétablir le service, générez une nouvelle clé, obtenez et installez un certificat d’appareil, installez la chaîne de CA et répétez les tests.</p>
+<h2 id="fr-section-25" data-heading-key="section-25"><a href="#fr-section-25">6. Comprendre les limites de Config Pack</a></h2>
+<p>Un Config Pack est un paquet <code>.tscfg</code> chiffré et signé. L’implémentation actuelle permet de créer et d’inspecter des paquets, mais l’application générale des configurations est inachevée. Ne vous y fiez pas pour configurer un parc en production, assurer une reprise après sinistre ou prouver que des réglages ont changé.</p>
+<h3 id="fr-section-26" data-heading-key="section-26"><a href="#fr-section-26">6.1 Ce que font actuellement les commandes</a></h3>
+<div class="guide-table-wrap"><table><thead><tr><th>Action</th><th>Résultat actuel</th></tr></thead><tbody><tr><td>Export Device Certificate</td><td>Affiche le certificat public pour qu’un expéditeur crée un paquet destiné à cet appareil ; n’exporte pas la clé privée</td></tr><tr><td>Verify</td><td>Vérifie la structure et la signature du contenu chiffré avec le certificat inclus ; n’établit ni la confiance dans le signataire ni l’identité du destinataire</td></tr><tr><td>Import après sélection ou collage d’un paquet</td><td>Les paramètres du frontend et du backend ne correspondent pas ; ce processus ne peut pas aboutir</td></tr><tr><td>Import depuis la liste des paquets</td><td>Valide un fichier existant sur l’appareil ; ne le copie, ne le déchiffre et ne l’applique pas</td></tr><tr><td>Apply</td><td>Déchiffre et énumère les noms de modules sans écrire leurs réglages ; peut malgré tout annoncer une réussite</td></tr><tr><td>Export Config Pack sur un appareil Developer</td><td>Crée un paquet chiffré et signé téléchargeable et tente de l’enregistrer sur la carte SD</td></tr></tbody></table></div>
+<h3 id="fr-section-27" data-heading-key="section-27"><a href="#fr-section-27">6.2 Vérifier l’origine, pas seulement la signature</a></h3>
+<p>Le destinataire vérifie actuellement la signature avec le certificat inclus dans le paquet. La validation de confiance de la chaîne du certificat signataire n’est pas implémentée. La signature couvre le contenu chiffré ; n’en déduisez pas que toutes les métadonnées affichées sont authentifiées. Le libellé Official ne prouve pas non plus une origine fiable.</p>
+<p>Avant d’importer ou d’inspecter un paquet, utilisez un système de gestion des actifs ou un canal indépendant approuvé pour confirmer l’empreinte du certificat signataire, le certificat cible et le changement prévu. Recevoir un certificat et son empreinte dans le même courriel ne constitue pas une vérification indépendante. Le nom de cible affiché dans l’aperçu ne remplace pas la vérification de l’empreinte du certificat.</p>
+<h3 id="fr-section-28" data-heading-key="section-28"><a href="#fr-section-28">6.3 Partager le certificat de l’appareil et inspecter un paquet</a></h3>
+<p>Pour fournir le certificat de cet appareil, sélectionnez Export Device Certificate, copiez le PEM complet et l’empreinte affichée, puis transmettez le certificat public à l’expéditeur. Confirmez l’empreinte par un autre canal de confiance.</p>
+<p>Pour inspecter un paquet reçu, ouvrez Import Config Pack, sélectionnez ou collez le fichier <code>.tscfg</code>, puis sélectionnez Verify. Examinez les informations du signataire et vérifiez l’origine. La vérification n’applique aucun réglage et ne prouve pas que cet appareil est le destinataire. Arrêtez-vous si l’origine, la cible ou l’objectif n’est pas clair.</p>
+<p>Même si la vérification réussit, ne comptez pas sur les commandes générales Import et Apply actuelles pour configurer l’appareil. Utilisez les commandes prises en charge sur les pages des fonctions concernées, puis contrôlez les réglages réels.</p>
+<h3 id="fr-section-29" data-heading-key="section-29"><a href="#fr-section-29">6.4 Exporter un paquet depuis un appareil Developer</a></h3>
+<ol><li>Préparez des fichiers de configuration JSON valides sur la carte SD et obtenez un certificat vérifié de l’appareil cible.</li><li>Sélectionnez Export Config Pack, choisissez les fichiers, saisissez un nom et une description, puis collez le certificat cible.</li><li>Générez et téléchargez le fichier <code>.tscfg</code>.</li><li>Vérifiez séparément le téléchargement du navigateur et le fichier enregistré dans <code>/sdcard/output_config/</code>. Si l’écriture SD échoue, l’API peut tout de même renvoyer le paquet à télécharger.</li></ol>
+<p>L’exportation ne modifie pas les réglages sources. Régénérez un paquet créé pour la mauvaise cible ou pour un certificat destinataire obsolète. Une exportation réussie ne prouve pas le fonctionnement de toute la distribution : l’application générale sur l’appareil récepteur reste inachevée.</p>
+<h2 id="fr-section-30" data-heading-key="section-30"><a href="#fr-section-30">7. Dépannage et réponse aux incidents</a></h2>
+<h3 id="fr-section-31" data-heading-key="section-31"><a href="#fr-section-31">7.1 Problèmes courants</a></h3>
+<div class="guide-table-wrap"><table><thead><tr><th>Symptôme</th><th>Mesure à prendre</th></tr></thead><tbody><tr><td>Account Security est absent</td><td>Connectez-vous en tant que root ; admin ne voit pas cette section</td></tr><tr><td>La création annonce une réussite, mais la clé manque</td><td>Actualisez la liste et vérifiez sa capacité ; ne réutilisez pas les ID et ne générez pas des clés à répétition</td></tr><tr><td>Le déploiement ECDSA échoue</td><td>Créez une clé RSA avec un nouvel ID ; n’assouplissez pas sans cesse la politique du serveur</td></tr><tr><td>Le déploiement réussit, mais Test échoue</td><td>Vérifiez l’autorisation distante par une autre connexion avant de redéployer</td></tr><tr><td>L’accès fonctionne encore après le retrait d’un hôte</td><td>Remove ne touche que l’entrée locale ; révoquez séparément la clé publique distante</td></tr><tr><td>Une empreinte change ou l’identité du serveur est incertaine</td><td>Cessez les connexions et vérifiez par une console de confiance ; voir la section 4.3</td></tr><tr><td>Le port 443 échoue après l’installation des certificats</td><td>Vérifiez la clé, le certificat et la chaîne de CA de confiance pour les clients ; redémarrez et testez avec un certificat client adapté</td></tr><tr><td>Un client rejette toujours le certificat</td><td>Vérifiez son magasin de confiance, le SAN, l’EKU, la validité et la chaîne ; le magasin CA de l’appareil n’est pas celui du navigateur</td></tr><tr><td>Apply réussit, mais les réglages ne changent pas</td><td>L’implémentation actuelle n’écrit pas les réglages des modules ; utilisez les pages des fonctions concernées</td></tr></tbody></table></div>
+<h3 id="fr-section-32" data-heading-key="section-32"><a href="#fr-section-32">7.2 Exposition présumée d’une clé privée SSH</a></h3>
+<ol><li>Restreignez l’accès à l’appareil et aux journaux. Les journaux actuels peuvent contenir le début d’une clé privée.</li><li>Révoquez la clé publique sur tous les serveurs concernés par des connexions de confiance. Vérifiez les sauvegardes et confirmez que l’ancienne clé ne fonctionne plus.</li><li>Créez et déployez une nouvelle clé RSA avec un nouvel ID. Une fois son fonctionnement confirmé, supprimez l’ancienne clé et ses copies exportées.</li><li>Examinez les journaux de connexion. La liste locale de l’appareil peut ne pas contenir tous les serveurs ayant autorisé cette clé.</li></ol>
+<p>Si c’est la clé privée HTTPS qui a été exposée, remplacez les éléments d’authentification selon la section 5.5 et coordonnez avec l’administrateur de la CA la révocation du certificat et le traitement des anciens paquets.</p>
+<h3 id="fr-section-33" data-heading-key="section-33"><a href="#fr-section-33">7.3 Autres risques de sécurité actuels</a></h3>
+<p>Outre les limites déjà décrites concernant HTTP, les autorisations, la confiance à la première connexion et les paquets, la configuration de compilation examinée n’active ni NVS Encryption, ni Flash Encryption, ni Secure Boot. N’affirmez pas que ces mécanismes protègent les clés privées stockées ou l’intégrité du démarrage. Le firmware réellement installé et les réglages eFuse de l’appareil exigent des contrôles distincts.</p>
+<p>Si votre usage ne peut pas accepter ces limites, maintenez l’appareil hors de ce réseau ou de cet environnement de confiance jusqu’à l’approbation de mesures d’isolation ou d’une correction du produit par le responsable de la sécurité. Les vérifications d’un guide utilisateur ne remplacent pas les contrôles de sécurité absents du produit.</p>
+<h2 id="fr-section-34" data-heading-key="section-34"><a href="#fr-section-34">8. Périmètre de la revue et glossaire</a></h2>
+<h3 id="fr-section-35" data-heading-key="section-35"><a href="#fr-section-35">8.1 Base de ce guide</a></h3>
+<p>La revue a utilisé la copie de travail actuelle fondée sur <code>d6ed947</code>. Le comportement et les messages de la page se trouvent dans <code>components/ts_webui/web/js/app.js</code> ; celui des API, dans <code>components/ts_api/src/</code> ; le stockage des clés et des hôtes, dans <code>components/ts_security/src/</code>. Les certificats, le service du port 443 et les paquets sont implémentés dans <code>components/ts_cert/</code>, <code>components/ts_https/</code> et <code>components/ts_config_pack/</code>.</p>
+<p>Les contrôles ont notamment porté sur les ID de clé en double, le traitement du code de sortie du test SSH, le nettoyage local après révocation, les empreintes du certificat destinataire et la logique inachevée d’importation et d’application des paquets. Il s’agissait d’une revue statique : aucune connexion à un serveur distant, aucune modification des éléments d’authentification d’un appareil ni aucun test d’acceptation de sécurité sur matériel n’a été effectué.</p>
+<h3 id="fr-section-36" data-heading-key="section-36"><a href="#fr-section-36">8.2 Termes employés</a></h3>
+<ul><li>Clé publique / clé privée : partagez la clé publique avec l’administrateur qui accorde l’accès ; gardez la clé privée secrète. L’authentification utilise la paire correspondante.</li><li>NVS : zone de stockage Flash des réglages et des clés de l’appareil. Ce nom n’implique aucun chiffrement.</li><li>CSR / CA : demande de signature de certificat, et autorité de certification ou son certificat.</li><li>CN / O / OU : champs de nom commun, d’organisation et d’unité d’organisation du sujet d’un certificat.</li><li>SAN / EKU : noms ou adresses IP couverts par un certificat, et usages d’authentification autorisés.</li><li>PEM : format texte avec des délimiteurs BEGIN/END, utilisé pour les certificats, CSR et clés.</li><li>PKI / mTLS : système de gestion des certificats et de la confiance, et TLS mutuel où client et serveur présentent des certificats.</li></ul>
+
+          </article>
         <a class="guide-next" href="admin.html">
           <span data-guide-text data-zh="下一步" data-en="Next">下一步</span>
           <strong data-guide-text data-zh="继续阅读 Admin 指南" data-en="Continue to the Admin guide">继续阅读 Admin 指南</strong>
@@ -529,7 +1303,7 @@
 
             <h2 id="contactTitle" data-footer-text="contactTitle">联系我们</h2>
           </div>
-          <button class="contact-close" type="button" aria-label="关闭" data-contact-close><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+          <button class="contact-close" type="button" aria-label="关闭" data-contact-close data-i18n-aria-label-zh="关闭" data-i18n-aria-label-en="Close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
         </div>
         <div class="contact-links">
           <a href="mailto:jiezhu@rminte.com">

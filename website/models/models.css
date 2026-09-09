@@ -105,6 +105,8 @@
     .mp-engine-stack { position:absolute; width:60%; height:54%; left:23%; top:36%; transform:rotateX(48deg) rotateZ(-30deg); transform-style:preserve-3d; }
     .mp-engine-plane { position:absolute; inset:0; border:1px solid #727c83; border-radius:8px; background:linear-gradient(140deg,#353d43,#151b20 70%); box-shadow:2px 5px 0 #0b0e10,3px 6px 0 #58616a,12px 24px 28px #0009; transform-style:preserve-3d; }
     .mp-engine-plane > span { position:absolute; bottom:16px; left:20px; font-size:17px; font-weight:500; white-space:nowrap; color:var(--ink); }
+    html:is(:lang(ja),:lang(ko),:lang(es),:lang(fr)) .mp-engine-plane.runtime > span { right:20px; white-space:normal; line-height:1.25; }
+    html:is(:lang(ja),:lang(ko),:lang(es),:lang(fr)) .mp-engine-core { bottom:70px; }
     .mp-engine-plane.base { transform:translateZ(-45px); border-color:#737b80; background:linear-gradient(140deg,#373c40,#101315 55%,#23282c); box-shadow:2px 5px 0 #0b0d0f,3px 6px 0 #43494d,10px 22px 30px #0009; }
     .mp-engine-plane.runtime { transform:translate3d(0,-30px,30px); background:linear-gradient(145deg,#6d7985e6,#26333ee8 70%); border-color:#a6b2bc; transition:transform .45s var(--motion); }
     .mp-engine-plane.model { transform:translate3d(0,-60px,85px); background:linear-gradient(140deg,#83909b80,#263440be 60%,#1b2732df); border-color:#afb9c1; backdrop-filter:blur(2.5px); }
@@ -137,6 +139,7 @@
     .mp-optimization-list summary { list-style:none; display:grid; grid-template-columns:230px minmax(0,1fr) 24px; column-gap:46px; align-items:center; padding:30px 0; cursor:pointer; }
     .mp-optimization-list summary::-webkit-details-marker { display:none; }
     .mp-opt-name h3 { margin:0; font-size:20px; font-weight:500; line-height:1.4; letter-spacing:-.015em; }
+    html:lang(ja) .mp-opt-name h3 { white-space:pre-line; }
     .mp-opt-model { display:block; margin-top:9px; font-family:var(--font-brand); font-size:12px; font-weight:700; color:var(--dim); letter-spacing:.025em; }
     .mp-opt-benefit { margin:0; color:var(--muted); font-size:15px; line-height:1.8; }
     .mp-opt-plus { color:var(--muted); }
@@ -189,6 +192,8 @@
       .mp-section { scroll-margin-top:92px; }
     }
     @media(max-width:560px) {
+      html:lang(ja) .mp-hero h1 span { white-space:pre-line; }
+      html:lang(ja) .mp-case-detail h3, html:lang(ja) .mp-case-detail-eyebrow { white-space:pre-line; }
       .mp-hero { padding-top:131px; }
       .mp-eyebrow { margin-bottom:24px; }
       .mp-hero h1 { font-size:34px; line-height:1.3; letter-spacing:-.04em; }
@@ -220,9 +225,12 @@
       .mp-engine-plane.base { transform:translateZ(-22px); }
       .mp-engine-plane.runtime { transform:translate3d(0,-20px,22px); }
       .mp-engine-plane.model { transform:translate3d(0,-40px,58px); }
+      html:lang(fr) .mp-engine-plane.model { transform:translate3d(0,-58px,80px); }
       .mp-engine-art[data-engine="vllm"] .runtime { transform:translate3d(0,-24px,31px); }
       .mp-engine-traces { left:15px; right:15px; top:20px; gap:12px; }
       .mp-engine-core { inset:17px 14px 40px; gap:4px; }
+      html:is(:lang(ja),:lang(ko),:lang(es),:lang(fr)) .mp-engine-plane.runtime > span { right:13px; }
+      html:is(:lang(ja),:lang(ko),:lang(es),:lang(fr)) .mp-engine-core { bottom:55px; }
       .mp-engine-compute { inset:18px 15px 44px; gap:4px; }
       .mp-engine-tabs { margin-top:16px; }
       .mp-engine-tabs button { font-size:12px; padding:10px 15px; }

@@ -49,8 +49,13 @@
   .download-note { grid-template-columns: 1fr; gap: 10px; padding-left: 20px; }
 }
 @media (max-width: 520px) {
+  html:lang(ja) .download-hero h1 { white-space: pre-line; }
   .download-copy h3 { font-size: 18px; }
   .download-row { grid-template-columns: 42px minmax(0, 1fr); gap: 14px; }
   .download-filetype { width: 40px; height: 48px; font-size: 9px; }
   .download-release-row { padding: 24px 20px; }
+  /* Keep Japanese and Korean category names together at phone widths. */
+  html:is(:lang(ja), :lang(ko)) .download-overview { grid-template-columns: 1fr; }
+  html:is(:lang(ja), :lang(ko)) .download-overview-item { border-left: 0; padding: 16px 0; min-height: 64px; }
+  html:is(:lang(ja), :lang(ko)) .download-overview-item + .download-overview-item { border-top: 1px solid var(--line); }
 }

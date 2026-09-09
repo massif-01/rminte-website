@@ -1,7 +1,7 @@
 (function () {
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
-  let lang = localStorage.getItem('rm-soft-lang') || window.RM_DEFAULT_LANG || 'en';
+  let lang = RM_I18N.initial();
 
   function applyBrandFonts(root = document.body) {
     const textNodes = [];
@@ -31,38 +31,31 @@
     });
   }
 
-  function applyLanguage(nextLang, remember = true) {
+  function applyLanguage(nextLang) {
     lang = nextLang;
-    if (remember) localStorage.setItem('rm-soft-lang', lang);
-    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+
+    RM_I18N.apply(lang);
 
     $$('[data-download-text]').forEach((element) => {
-      const value = element.dataset[lang];
+      const value = RM_I18N.text(element.dataset, lang);
       if (value !== undefined) element.textContent = value;
     });
     applyBrandFonts();
 
-    $$('[data-download-lang-toggle]').forEach((button) => {
-      button.textContent = lang === 'zh' ? 'EN' : '中文';
-      button.setAttribute('aria-label', lang === 'zh' ? '切换到英文' : 'Switch to Chinese');
-    });
+
 
     const menuButton = $('[data-menu-toggle]');
     if (menuButton) {
       const open = menuButton.getAttribute('aria-expanded') === 'true';
-      menuButton.setAttribute('aria-label', lang === 'zh'
-        ? (open ? '关闭菜单' : '打开菜单')
-        : (open ? 'Close menu' : 'Open menu'));
+      menuButton.setAttribute('aria-label', RM_I18N.text({zh: open ? '关闭菜单' : '打开菜单', en: open ? 'Close menu' : 'Open menu'}, lang));
     }
 
-    document.title = 'RMinte - RM-01 - Portable AI Supercomputer - 泛灵人工智能';
+    RM_I18N.apply(lang);
   }
 
   function setupLanguage() {
-    $$('[data-download-lang-toggle]').forEach((button) => {
-      button.addEventListener('click', () => applyLanguage(lang === 'zh' ? 'en' : 'zh'));
-    });
-    applyLanguage(lang, false);
+    RM_I18N.mount('[data-download-lang-toggle]', next => applyLanguage(next));
+    applyLanguage(lang);
   }
 
   function setupMenu() {
@@ -70,14 +63,17 @@
     const button = $('[data-menu-toggle]');
     if (!overlay || !button) return;
 
+    overlay.inert = true;
     function setOpen(open) {
+      const restoreFocus = !open && overlay.contains(document.activeElement);
+      overlay.inert = !open;
+      if (open) requestAnimationFrame(() => $('[data-menu-close]')?.focus({ preventScroll: true }));
+      else if (restoreFocus) button.focus({ preventScroll: true });
       overlay.classList.toggle('active', open);
       overlay.setAttribute('aria-hidden', open ? 'false' : 'true');
       button.classList.toggle('active', open);
       button.setAttribute('aria-expanded', open ? 'true' : 'false');
-      button.setAttribute('aria-label', lang === 'zh'
-        ? (open ? '关闭菜单' : '打开菜单')
-        : (open ? 'Close menu' : 'Open menu'));
+      button.setAttribute('aria-label', RM_I18N.text({zh: open ? '关闭菜单' : '打开菜单', en: open ? 'Close menu' : 'Open menu'}, lang));
     }
 
     button.addEventListener('click', () => setOpen(!button.classList.contains('active')));

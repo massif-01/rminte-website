@@ -5,6 +5,24 @@ import { fileURLToPath } from 'node:url';
 const scriptDir = dirname(fileURLToPath(import.meta.url));
 const siteDir = join(scriptDir, '..');
 const guidesDir = join(siteDir, 'guides');
+const languages = ['zh', 'en', 'ja', 'ko', 'es', 'fr'];
+const translations = Object.fromEntries(languages.slice(2).map(lang => [lang,
+  JSON.parse(readFileSync(join(siteDir, 'locales', `${lang}.json`), 'utf8'))
+]));
+function translated(pair, lang) {
+  if (lang === 'zh' || lang === 'en') return pair[lang];
+  const value = translations[lang][pair.en];
+  if (typeof value !== 'string' || !value.trim()) throw new Error(`Missing ${lang} translation: ${pair.en}`);
+  return value;
+}
+function extendPairs(value) {
+  if (!value || typeof value !== 'object') return;
+  if (typeof value.zh === 'string' && typeof value.en === 'string') {
+    for (const lang of languages.slice(2)) value[lang] = translated(value, lang);
+  }
+  for (const [key, child] of Object.entries(value)) if (key !== 'source') extendPairs(child);
+}
+
 
 const guideConfig = {
   admin: {
@@ -68,6 +86,8 @@ const guideConfig = {
     next: { href: 'admin.html', zh: '继续阅读 Admin 指南', en: 'Continue to the Admin guide' }
   }
 };
+
+extendPairs(guideConfig);
 
 function escapeHtml(value) {
   return String(value)
@@ -163,15 +183,28 @@ function isCaution(text, lang) {
   return /(?:may (?:interrupt|disconnect|affect|cause)|force power|high-impact|before (?:changing|running|saving|starting)|during the test)/i.test(text);
 }
 
-function renderMarkdown(source, lang) {
+function renderMarkdown(source, lang, noticeSource = null) {
   const lines = source.replaceAll('\r\n', '\n').split('\n');
   const headings = [];
   const output = [];
   let index = 0;
   let headingIndex = 0;
+  let paragraphIndex = 0;
+  const paragraphs = [];
+  const cautionKeys = [];
+  let operationalNote = false;
 
   while (index < lines.length) {
     const line = lines[index];
+    if (line.trim() === '<!-- operational-note -->') {
+      if (operationalNote) throw new Error(`${lang}: duplicate operational-note marker.`);
+      operationalNote = true;
+      index += 1;
+      continue;
+    }
+    if (operationalNote && line.trim() && (isHeading(line) || isListItem(line) || line.startsWith('```') || line.startsWith('>') || isTableStart(lines, index))) {
+      throw new Error(`${lang}: operational-note marker must precede a paragraph.`);
+    }
     if (!line.trim() || /^!\[[^\]]*]\([^)]*\)\s*$/.test(line)) {
       index += 1;
       continue;
@@ -188,7 +221,7 @@ function renderMarkdown(source, lang) {
         quote.push(lines[index].replace(/^>\s?/, '').trim());
         index += 1;
       }
-      output.push(`<aside class="guide-notice"><span>${lang === 'zh' ? '重要提示' : 'Important'}</span><p>${inlineMarkdown(quote.join(' '))}</p></aside>`);
+      output.push(`<aside class="guide-notice"><span>${escapeHtml(translated({zh: '重要提示', en: 'Important'}, lang))}</span><p>${inlineMarkdown(quote.join(' '))}</p></aside>`);
       continue;
     }
 
@@ -201,7 +234,7 @@ function renderMarkdown(source, lang) {
         index += 1;
       }
       index += 1;
-      output.push(`<div class="guide-code"><button type="button" data-copy-code>${lang === 'zh' ? '复制' : 'Copy'}</button><pre><code${language ? ` class="language-${escapeHtml(language)}"` : ''}>${escapeHtml(code.join('\n'))}</code></pre></div>`);
+      output.push(`<div class="guide-code"><button type="button" data-copy-code>${escapeHtml(translated({ zh: '复制', en: 'Copy' }, lang))}</button><pre><code${language ? ` class="language-${escapeHtml(language)}"` : ''}>${escapeHtml(code.join('\n'))}</code></pre></div>`);
       continue;
     }
 
@@ -210,6 +243,7 @@ function renderMarkdown(source, lang) {
       const level = headingMatch[1].length;
       const text = headingMatch[2].trim();
       headingIndex += 1;
+      paragraphIndex = 0;
       const id = `${lang}-section-${headingIndex}`;
       const key = `section-${headingIndex}`;
       headings.push({ level, text, id, key });
@@ -246,20 +280,29 @@ function renderMarkdown(source, lang) {
     const paragraph = [];
     while (index < lines.length) {
       const current = lines[index];
-      if (!current.trim() || current.startsWith('```') || isHeading(current) || isListItem(current) || isTableStart(lines, index)) break;
+      if (!current.trim() || current.trim() === '<!-- operational-note -->' || current.startsWith('```') || isHeading(current) || isListItem(current) || isTableStart(lines, index)) break;
       if (!/^!\[[^\]]*]\([^)]*\)\s*$/.test(current)) paragraph.push(current.trim());
       index += 1;
     }
     const text = paragraph.join(' ');
     if (text) {
-      output.push(isCaution(text, lang)
-        ? `<aside class="guide-notice"><span>${lang === 'zh' ? '操作提示' : 'Operational note'}</span><p>${inlineMarkdown(text)}</p></aside>`
+      const key = `${headingIndex}:${paragraphIndex++}`;
+      const caution = noticeSource ? operationalNote : isCaution(text, lang);
+      paragraphs.push({key, text});
+      operationalNote = false;
+      if (caution) cautionKeys.push(key);
+      output.push(caution
+        ? `<aside class="guide-notice"><span>${escapeHtml(translated({zh: '操作提示', en: 'Operational note'}, lang))}</span><p>${inlineMarkdown(text)}</p></aside>`
         : `<p>${inlineMarkdown(text)}</p>`);
     }
     if (!paragraph.length) index += 1;
   }
 
-  return { html: output.join('\n'), headings };
+  if (operationalNote) throw new Error(`${lang}: operational-note marker has no paragraph.`);
+  if (noticeSource && cautionKeys.length !== noticeSource.cautionKeys.length) {
+    throw new Error(`${lang}: expected ${noticeSource.cautionKeys.length} source-aligned operational-note markers, found ${cautionKeys.length}.`);
+  }
+  return { html: output.join('\n'), headings, paragraphs, cautionKeys };
 }
 
 function splitLanguages(markdown) {
@@ -276,7 +319,8 @@ function splitLanguages(markdown) {
 function documentBody(markdown) {
   const lines = markdown.replaceAll('\r\n', '\n').split('\n');
   if (/^#\s+/.test(lines[0] || '')) lines.shift();
-  while (!lines[0]?.trim()) lines.shift();
+  while (lines.length && !lines[0].trim()) lines.shift();
+  if (!lines.length) throw new Error('Guide source contains no body.');
   if (/^\[(?:English|中文)]\([^)]+\)\s*$/.test(lines[0] || '')) lines.shift();
   return lines.join('\n');
 }
@@ -332,6 +376,7 @@ function buildSearchEntries(source, lang, slug, config) {
       return;
     }
 
+    if (line.trim() === '<!-- operational-note -->') return;
     if (!current || /^\s*(?:---+|___+|\*\*\*+|\|?(?:\s*:?-+:?\s*\|)+)\s*$/.test(line)) return;
     const text = plainSearchText(line);
     if (text) current.parts.push(text);
@@ -362,7 +407,7 @@ function sourceLinkTemplate(config, lang) {
 
 function renderLanguagePane(lang, rendered, config) {
   return `
-          <article class="guide-article lang-pane" data-lang-pane="${lang}"${lang === 'en' ? ' hidden' : ''}>
+          <article class="guide-article lang-pane" data-lang-pane="${lang}"${lang !== 'zh' ? ' hidden' : ''}>
 ${rendered.html}
 ${sourceLinkTemplate(config, lang)}
           </article>`;
@@ -391,11 +436,11 @@ function searchTemplate() {
 
 function siteNavigationTemplate() {
   return `
-  <header class="site-shell" aria-label="主导航">
-    <a class="brand-mark" href="../index.html#hero" aria-label="RMinte 首页">
+  <header class="site-shell" aria-label="主导航" data-i18n-aria-label-zh="主导航" data-i18n-aria-label-en="Main navigation">
+    <a class="brand-mark" href="../index.html#hero" aria-label="RMinte 首页" data-i18n-aria-label-zh="RMinte 首页" data-i18n-aria-label-en="RMinte home">
       <img src="../assets/images/logo-white.svg" alt="RMinte">
     </a>
-    <nav class="nav-island" aria-label="页面导航">
+    <nav class="nav-island" aria-label="页面导航" data-i18n-aria-label-zh="页面导航" data-i18n-aria-label-en="Page navigation">
       <a href="../gallery/index.html" data-guide-text data-zh="图册" data-en="Gallery">图册</a>
       <a href="../models/index.html" data-guide-text data-zh="模型" data-en="Models">模型</a>
       <a href="../index.html#engine" data-guide-text data-zh="产品" data-en="Product">产品</a>
@@ -405,7 +450,7 @@ function siteNavigationTemplate() {
     </nav>
     <div class="nav-actions">
       <button class="language-toggle" type="button" data-guide-lang-toggle>EN</button>
-      <button class="menu-button" type="button" aria-label="打开菜单" aria-controls="mobileOverlay" aria-expanded="false" data-menu-toggle>
+      <button class="menu-button" type="button" aria-label="打开菜单" aria-controls="mobileOverlay" aria-expanded="false" data-menu-toggle data-i18n-aria-label-zh="打开菜单" data-i18n-aria-label-en="Open menu">
         <span></span>
         <span></span>
       </button>
@@ -418,7 +463,7 @@ function siteNavigationTemplate() {
         <img class="mobile-menu-logo" src="../assets/images/logo-white.svg" alt="RMinte">
         <button class="ghost-button" type="button" data-menu-close data-guide-text data-zh="关闭" data-en="Close">关闭</button>
       </div>
-      <nav class="mobile-links" aria-label="移动导航">
+      <nav class="mobile-links" aria-label="移动导航" data-i18n-aria-label-zh="移动导航" data-i18n-aria-label-en="Mobile navigation">
         <a href="../gallery/index.html" data-guide-text data-zh="图册" data-en="Gallery">图册</a>
         <a href="../models/index.html" data-guide-text data-zh="模型" data-en="Models">模型</a>
         <a href="../index.html#engine" data-guide-text data-zh="产品" data-en="Product">产品</a>
@@ -440,22 +485,30 @@ function pageTemplate(config, rendered) {
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
+  <script>
+    // Reveal after deferred localization; without JavaScript the source page stays readable.
+    document.documentElement.classList.add('i18n-loading');
+    document.addEventListener('DOMContentLoaded', () => document.documentElement.classList.remove('i18n-loading'), { once: true });
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="${escapeHtml(config.description.zh)}">
-  <meta property="og:title" content="${escapeHtml(config.title.zh)}">
-  <meta property="og:description" content="${escapeHtml(config.description.zh)}">
+  <meta name="description" content="${escapeHtml(config.description.zh)}" data-i18n-attr="content" data-zh="${escapeHtml(config.description.zh)}" data-en="${escapeHtml(config.description.en)}">
+  <meta property="og:title" content="${escapeHtml(config.title.zh)}" data-i18n-attr="content" data-zh="${escapeHtml(config.title.zh)}" data-en="${escapeHtml(config.title.en)}">
+  <meta property="og:description" content="${escapeHtml(config.description.zh)}" data-i18n-attr="content" data-zh="${escapeHtml(config.description.zh)}" data-en="${escapeHtml(config.description.en)}">
   <meta property="og:image" content="../assets/images/img4.png">
   <meta name="theme-color" content="#141618">
-  <title>RMinte - RM-01 - Portable AI Supercomputer - 泛灵人工智能</title>
+  <title data-zh="${escapeHtml(config.title.zh)}" data-en="${escapeHtml(config.title.en)}">${escapeHtml(config.title.zh)}</title>
   <link rel="icon" type="image/png" sizes="512x512" href="../assets/images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/brand.css?v=slate-2">
   <link rel="stylesheet" href="../assets/styles.css?v=solid-header-1">
   <link rel="stylesheet" href="../assets/guides.css?v=table-header-1">
   <script id="guidePageData" type="application/json">${pageData}</script>
   <script src="../visitor-language.js" defer></script>
+  <script src="../assets/translations.js" defer></script>
+  <script src="../assets/i18n.js" defer></script>
   <script src="../assets/guides.js?v=docs-20260907" defer></script>
   <script src="../assets/site-data.js?v=models-launch-1" defer></script>
   <script src="../assets/footer.js?v=models-launch-1" defer></script>
@@ -472,7 +525,7 @@ ${siteNavigationTemplate()}
       <p class="guide-doc-lead" data-guide-text data-zh="${escapeHtml(config.description.zh)}" data-en="${escapeHtml(config.description.en)}">${escapeHtml(config.description.zh)}</p>
       <div class="guide-doc-meta">
         <span data-guide-text data-zh="${escapeHtml(config.chapterCount.zh)}" data-en="${escapeHtml(config.chapterCount.en)}">${escapeHtml(config.chapterCount.zh)}</span>
-        <span data-guide-text data-zh="中英双语" data-en="Chinese and English">中英双语</span>
+        <span data-guide-text data-zh="六种语言" data-en="Six languages">六种语言</span>
         <span>TianshanOS</span>
       </div>
     </section>
@@ -480,28 +533,21 @@ ${searchTemplate()}
 
     <details class="guide-mobile-toc">
       <summary data-guide-text data-zh="展开本页目录" data-en="Open page contents">展开本页目录</summary>
-      <nav class="lang-pane" data-lang-pane="zh" aria-label="中文目录">
-${tocItems(rendered.zh.headings, 'zh')}
-      </nav>
-      <nav class="lang-pane" data-lang-pane="en" aria-label="English contents" hidden>
-${tocItems(rendered.en.headings, 'en')}
-      </nav>
+${languages.map(lang => `<nav class="lang-pane" data-lang-pane="${lang}" aria-label="${escapeHtml(translated({zh:'本页目录',en:'On this page'},lang))}"${lang !== 'zh' ? ' hidden' : ''}>
+${tocItems(rendered[lang].headings, lang)}
+      </nav>`).join('\n')}
     </details>
 
     <div class="guide-doc-layout">
-      <aside class="guide-toc" aria-label="本页目录">
+      <aside class="guide-toc" aria-label="本页目录" data-i18n-aria-label-zh="本页目录" data-i18n-aria-label-en="On this page">
         <p data-guide-text data-zh="本页目录" data-en="On this page">本页目录</p>
-        <nav class="lang-pane" data-lang-pane="zh">
-${tocItems(rendered.zh.headings, 'zh')}
-        </nav>
-        <nav class="lang-pane" data-lang-pane="en" hidden>
-${tocItems(rendered.en.headings, 'en')}
-        </nav>
+${languages.map(lang => `<nav class="lang-pane" data-lang-pane="${lang}"${lang !== 'zh' ? ' hidden' : ''}>
+${tocItems(rendered[lang].headings, lang)}
+        </nav>`).join('\n')}
       </aside>
 
       <div class="guide-article-column">
-${renderLanguagePane('zh', rendered.zh, config)}
-${renderLanguagePane('en', rendered.en, config)}
+${languages.map(lang => renderLanguagePane(lang, rendered[lang], config)).join('\n')}
         <a class="guide-next" href="${config.next.href}">
           <span data-guide-text data-zh="下一步" data-en="Next">下一步</span>
           <strong data-guide-text data-zh="${escapeHtml(config.next.zh)}" data-en="${escapeHtml(config.next.en)}">${escapeHtml(config.next.zh)}</strong>
@@ -545,7 +591,7 @@ ${renderLanguagePane('en', rendered.en, config)}
 
             <h2 id="contactTitle" data-footer-text="contactTitle">联系我们</h2>
           </div>
-          <button class="contact-close" type="button" aria-label="关闭" data-contact-close><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+          <button class="contact-close" type="button" aria-label="关闭" data-contact-close data-i18n-aria-label-zh="关闭" data-i18n-aria-label-en="Close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
         </div>
         <div class="contact-links">
           <a href="mailto:jiezhu@rminte.com">
@@ -578,20 +624,24 @@ for (const [slug, config] of Object.entries(guideConfig)) {
         zh: documentBody(readFileSync(config.source.zh, 'utf8')),
         en: documentBody(readFileSync(config.source.en, 'utf8'))
       };
-  const rendered = {
-    zh: renderMarkdown(split.zh, 'zh'),
-    en: renderMarkdown(split.en, 'en')
-  };
-  if (rendered.zh.headings.length !== rendered.en.headings.length) {
-    throw new Error(`${config.output}: Chinese and English heading counts differ.`);
+  for (const lang of languages.slice(2)) {
+    split[lang] = documentBody(readFileSync(join(guidesDir, 'content', `${slug}.${lang}.md`), 'utf8'));
   }
-  searchEntries.push(
-    ...buildSearchEntries(split.zh, 'zh', slug, config),
-    ...buildSearchEntries(split.en, 'en', slug, config)
-  );
+  const rendered = {zh: renderMarkdown(split.zh, 'zh'), en: renderMarkdown(split.en, 'en')};
+  for (const lang of languages.slice(2)) {
+    const reference = rendered[lang === 'ja' || lang === 'ko' ? 'zh' : 'en'];
+    rendered[lang] = renderMarkdown(split[lang], lang, reference);
+  }
+  const referenceLevels = rendered.zh.headings.map(heading => heading.level).join(',');
+  for (const lang of languages) {
+    if (rendered[lang].headings.map(heading => heading.level).join(',') !== referenceLevels) {
+      throw new Error(`${config.output}: ${lang} heading structure differs from Chinese.`);
+    }
+    searchEntries.push(...buildSearchEntries(split[lang], lang, slug, config));
+  }
   writeFileSync(config.output, pageTemplate(config, rendered));
   console.log(`Built ${config.output} (${rendered.zh.headings.length} headings per language)`);
 }
 
-writeFileSync(join(guidesDir, 'search-index.json'), `${JSON.stringify({ version: 1, entries: searchEntries }, null, 2)}\n`);
+writeFileSync(join(guidesDir, 'search-index.json'), `${JSON.stringify({ version: 2, languages, entries: searchEntries }, null, 2)}\n`);
 console.log(`Built search index (${searchEntries.length} sections)`);

@@ -2,13 +2,8 @@
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
 
-  function languageFromHash(hash = window.location.hash) {
-    if (hash.startsWith('#en-')) return 'en';
-    if (hash.startsWith('#zh-')) return 'zh';
-    return null;
-  }
-
-  let lang = languageFromHash() || (localStorage.getItem('rm-soft-lang') || window.RM_DEFAULT_LANG || 'en');
+  const languageFromHash = RM_I18N.fromHash;
+  let lang = RM_I18N.initial();
   let scrollTicking = false;
   let refreshSearch = function () {};
 
@@ -76,19 +71,28 @@
     });
   }
 
-  function applyLanguage(nextLang, preserveHeading = false, remember = true) {
-    const headingKey = preserveHeading ? currentHeadingKey() : null;
+  function applyLanguage(nextLang, headingKey = null) {
     lang = nextLang;
-    if (remember) localStorage.setItem('rm-soft-lang', lang);
-    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+
+    RM_I18N.apply(lang);
 
     $$('[data-guide-text]').forEach((element) => {
-      const value = element.dataset[lang];
+      const value = RM_I18N.text(element.dataset, lang);
       if (value !== undefined) element.textContent = value;
+      if (lang === 'ja' && element.matches('h1')) {
+        const phrases = /((?:ユーザー|ページ操作|運用)ガイド|ネットワーク|セキュリティ)/g;
+        element.replaceChildren(...value.split(phrases).filter(Boolean).map(part => {
+          if (!/^(?:(?:ユーザー|ページ操作|運用)ガイド|ネットワーク|セキュリティ)$/.test(part)) return document.createTextNode(part);
+          const phrase = document.createElement('span');
+          phrase.className = 'guide-title-phrase';
+          phrase.textContent = part;
+          return phrase;
+        }));
+      }
     });
 
     $$('[data-guide-placeholder]').forEach((element) => {
-      const value = element.dataset[lang];
+      const value = RM_I18N.text(element.dataset, lang);
       if (value !== undefined) element.setAttribute('placeholder', value);
     });
 
@@ -96,19 +100,12 @@
       pane.hidden = pane.dataset.langPane !== lang;
     });
 
-    $$('[data-guide-lang-toggle]').forEach((button) => {
-      button.textContent = lang === 'zh' ? 'EN' : '中文';
-      button.setAttribute('aria-label', lang === 'zh' ? '切换到英文' : 'Switch to Chinese');
-    });
-
     $$('[data-menu-toggle]').forEach((button) => {
       const isOpen = button.getAttribute('aria-expanded') === 'true';
-      button.setAttribute('aria-label', lang === 'zh'
-        ? (isOpen ? '关闭菜单' : '打开菜单')
-        : (isOpen ? 'Close menu' : 'Open menu'));
+      button.setAttribute('aria-label', RM_I18N.text({zh: isOpen ? '关闭菜单' : '打开菜单', en: isOpen ? 'Close menu' : 'Open menu'}, lang));
     });
 
-    document.title = 'RMinte - RM-01 - Portable AI Supercomputer - 泛灵人工智能';
+    RM_I18N.apply(lang);
 
     refreshSearch();
     markBrandText();
@@ -138,18 +135,14 @@
   }
 
   function setupLanguage() {
-    $$('[data-guide-lang-toggle]').forEach((button) => {
-      button.addEventListener('click', () => {
-        applyLanguage(lang === 'zh' ? 'en' : 'zh', true);
-      });
-    });
+    RM_I18N.mount('[data-guide-lang-toggle]', applyLanguage, currentHeadingKey);
 
     window.addEventListener('hashchange', () => {
       const hashLanguage = languageFromHash();
       if (hashLanguage && hashLanguage !== lang) applyLanguage(hashLanguage);
     });
 
-    applyLanguage(lang, false, Boolean(languageFromHash()));
+    applyLanguage(lang);
   }
 
   function setupToc() {
@@ -175,14 +168,17 @@
     const button = $('[data-menu-toggle]');
     if (!overlay || !button) return;
 
+    overlay.inert = true;
     function setOpen(open) {
+      const restoreFocus = !open && overlay.contains(document.activeElement);
+      overlay.inert = !open;
+      if (open) requestAnimationFrame(() => $('[data-menu-close]')?.focus({ preventScroll: true }));
+      else if (restoreFocus) button.focus({ preventScroll: true });
       overlay.classList.toggle('active', open);
       overlay.setAttribute('aria-hidden', open ? 'false' : 'true');
       button.classList.toggle('active', open);
       button.setAttribute('aria-expanded', open ? 'true' : 'false');
-      button.setAttribute('aria-label', lang === 'zh'
-        ? (open ? '关闭菜单' : '打开菜单')
-        : (open ? 'Close menu' : 'Open menu'));
+      button.setAttribute('aria-label', RM_I18N.text({zh: open ? '关闭菜单' : '打开菜单', en: open ? 'Close menu' : 'Open menu'}, lang));
     }
 
     button.addEventListener('click', () => setOpen(!button.classList.contains('active')));
@@ -199,14 +195,15 @@
       button.addEventListener('click', async () => {
         const code = $('code', button.closest('.guide-code'));
         if (!code) return;
+        const codeLanguage = button.closest('[data-lang-pane]').dataset.langPane;
         try {
           await navigator.clipboard.writeText(code.textContent);
-          button.textContent = data?.copy?.[lang] || (lang === 'zh' ? '已复制' : 'Copied');
+          button.textContent = (RM_I18N.text({zh: '已复制', en: 'Copied'}, codeLanguage));
           window.setTimeout(() => {
-            button.textContent = data?.copyDefault?.[lang] || (lang === 'zh' ? '复制' : 'Copy');
+            button.textContent = (RM_I18N.text({zh: '复制', en: 'Copy'}, codeLanguage));
           }, 1400);
         } catch {
-          button.textContent = lang === 'zh' ? '复制失败' : 'Copy failed';
+          button.textContent = RM_I18N.text({zh: '复制失败', en: 'Copy failed'}, codeLanguage);
         }
       });
     });
@@ -280,7 +277,7 @@
 
       const meta = document.createElement('span');
       meta.className = 'guide-search-result-meta';
-      meta.textContent = `${entry.guideLabel} · ${entry.lang === 'zh' ? '中文' : 'EN'}`;
+      meta.textContent = `${entry.guideLabel} · ${RM_I18N.names[entry.lang]}`;
 
       const title = document.createElement('strong');
       title.textContent = entry.title;
@@ -318,15 +315,16 @@
 
         panel.hidden = false;
         if (loadFailed) {
-          summary.textContent = lang === 'zh' ? '搜索暂时不可用，请刷新页面重试。' : 'Search is unavailable. Refresh the page and try again.';
+          summary.textContent = RM_I18N.text({zh: '搜索暂时不可用，请刷新页面重试。', en: 'Search is unavailable. Refresh the page and try again.'}, lang);
           return;
         }
         if (!index) {
-          summary.textContent = lang === 'zh' ? '正在读取指南…' : 'Loading guides…';
+          summary.textContent = RM_I18N.text({zh: '正在读取指南…', en: 'Loading guides…'}, lang);
           return;
         }
 
         const results = index
+          .filter((entry) => entry.lang === lang)
           .map((entry) => ({ entry, score: searchScore(entry, normalizedQuery) }))
           .filter(({ score }) => score > 0)
           .sort((a, b) => b.score - a.score || a.entry.title.localeCompare(b.entry.title))
@@ -334,16 +332,12 @@
           .map(({ entry }) => entry);
 
         if (!results.length) {
-          summary.textContent = lang === 'zh'
-            ? `没有找到“${query.trim()}”，试试更短的功能名称。`
-            : `No result for “${query.trim()}”. Try a shorter feature name.`;
+          summary.textContent = RM_I18N.text({zh: '没有找到“{query}”，试试更短的功能名称。', en: 'No result for “{query}”. Try a shorter feature name.'}, lang).replace('{query}', query.trim());
           return;
         }
 
         firstResultHref = results[0].href;
-        summary.textContent = lang === 'zh'
-          ? `显示 ${results.length} 个最相关章节`
-          : `${results.length} most relevant sections`;
+        summary.textContent = RM_I18N.text({zh: '显示 {count} 个最相关章节', en: '{count} most relevant sections'}, lang).replace('{count}', results.length);
         results.forEach((entry) => list.append(createResult(entry, normalizedQuery)));
       });
       markBrandText();

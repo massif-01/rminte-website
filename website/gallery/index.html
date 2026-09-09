@@ -2,21 +2,29 @@
 <html lang="zh-CN" class="product-theme">
 <head>
   <meta charset="UTF-8">
+  <script>
+    // Reveal after deferred localization; without JavaScript the source page stays readable.
+    document.documentElement.classList.add('i18n-loading');
+    document.addEventListener('DOMContentLoaded', () => document.documentElement.classList.remove('i18n-loading'), { once: true });
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="RM-01 产品图册，展示便携 AI 超算的产品外观、结构与工艺细节。">
-  <meta property="og:title" content="RM-01 产品图册">
-  <meta property="og:description" content="11 张实拍影像，呈现 RM-01 的外观、结构与工艺细节。">
+  <meta name="description" content="通过实拍图片查看 RM-01 的外观、材料与工艺细节。" data-i18n-attr="content" data-zh="通过实拍图片查看 RM-01 的外观、材料与工艺细节。" data-en="Explore RM-01 through product photographs of its design, materials, and craftsmanship.">
+  <meta property="og:title" content="RM-01 图册 · RMinte" data-i18n-attr="content" data-zh="RM-01 图册 · RMinte" data-en="RM-01 Gallery · RMinte">
+  <meta property="og:description" content="通过实拍图片查看 RM-01 的外观、材料与工艺细节。" data-i18n-attr="content" data-zh="通过实拍图片查看 RM-01 的外观、材料与工艺细节。" data-en="Explore RM-01 through product photographs of its design, materials, and craftsmanship.">
   <meta property="og:image" content="../assets/gallery/DSC00043.jpg">
   <meta name="theme-color" content="#000000">
-  <title>RMinte - RM-01 - Portable AI Supercomputer - 泛灵人工智能</title>
+  <title data-zh="RM-01 图册 · RMinte" data-en="RM-01 Gallery · RMinte">RM-01 图册 · RMinte</title>
   <link rel="icon" type="image/png" sizes="512x512" href="../assets/images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/brand.css?v=product-black-1">
   <link rel="stylesheet" href="../assets/styles.css?v=solid-header-1">
   <link rel="stylesheet" href="../assets/gallery.css?v=hdr-note-3">
   <script src="../visitor-language.js" defer></script>
+  <script src="../assets/translations.js" defer></script>
+  <script src="../assets/i18n.js" defer></script>
   <script src="../assets/gallery.js?v=language-label-1" defer></script>
   <script src="../assets/site-data.js?v=models-launch-1" defer></script>
   <script src="../assets/footer.js?v=models-launch-1" defer></script>
@@ -24,11 +32,11 @@
 <body class="gallery-body">
   <a class="skip-link" href="#galleryMain" data-gallery-text data-zh="跳至图册内容" data-en="Skip to gallery">跳至图册内容</a>
 
-  <header class="site-shell" aria-label="主导航">
-    <a class="brand-mark" href="../index.html#hero" aria-label="RMinte 首页">
+  <header class="site-shell" aria-label="主导航" data-i18n-aria-label-zh="主导航" data-i18n-aria-label-en="Main navigation">
+    <a class="brand-mark" href="../index.html#hero" aria-label="RMinte 首页" data-i18n-aria-label-zh="RMinte 首页" data-i18n-aria-label-en="RMinte home">
       <img src="../assets/images/logo-white.svg" alt="RMinte">
     </a>
-    <nav class="nav-island" aria-label="页面导航">
+    <nav class="nav-island" aria-label="页面导航" data-i18n-aria-label-zh="页面导航" data-i18n-aria-label-en="Page navigation">
       <a class="active" href="#galleryMain" aria-current="page" data-gallery-text data-zh="图册" data-en="Gallery">图册</a>
       <a href="../models/index.html" data-gallery-text data-zh="模型" data-en="Models">模型</a>
       <a href="../index.html#engine" data-gallery-text data-zh="产品" data-en="Product">产品</a>
@@ -38,7 +46,7 @@
     </nav>
     <div class="nav-actions">
       <button class="language-toggle" type="button" data-gallery-lang-toggle aria-label="切换到英文">EN</button>
-      <button class="menu-button" type="button" aria-label="打开菜单" aria-controls="mobileOverlay" aria-expanded="false" data-menu-toggle>
+      <button class="menu-button" type="button" aria-label="打开菜单" aria-controls="mobileOverlay" aria-expanded="false" data-menu-toggle data-i18n-aria-label-zh="打开菜单" data-i18n-aria-label-en="Open menu">
         <span></span>
         <span></span>
       </button>
@@ -51,7 +59,7 @@
         <img class="mobile-menu-logo" src="../assets/images/logo-white.svg" alt="RMinte">
         <button class="ghost-button" type="button" data-menu-close data-gallery-text data-zh="关闭" data-en="Close">关闭</button>
       </div>
-      <nav class="mobile-links" aria-label="移动导航">
+      <nav class="mobile-links" aria-label="移动导航" data-i18n-aria-label-zh="移动导航" data-i18n-aria-label-en="Mobile navigation">
         <a class="active" href="#galleryMain" aria-current="page" data-gallery-text data-zh="图册" data-en="Gallery">图册</a>
         <a href="../models/index.html" data-gallery-text data-zh="模型" data-en="Models">模型</a>
         <a href="../index.html#engine" data-gallery-text data-zh="产品" data-en="Product">产品</a>
@@ -88,15 +96,15 @@
           </div>
         </div>
 
-      <div class="gallery-navigation" aria-label="图册浏览状态">
+      <div class="gallery-navigation" aria-label="图册浏览状态" data-i18n-aria-label-zh="图册浏览状态" data-i18n-aria-label-en="Gallery status">
         <div class="gallery-count">
           <strong>01</strong>
           <span>/</span>
           <span>11</span>
         </div>
-        <div class="gallery-arrows" aria-label="照片切换">
-          <button type="button" data-gallery-previous aria-label="上一张照片"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M19 12H5m5-5-5 5 5 5"/></svg></button>
-          <button type="button" data-gallery-next aria-label="下一张照片"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></button>
+        <div class="gallery-arrows" aria-label="照片切换" data-i18n-aria-label-zh="照片切换" data-i18n-aria-label-en="Photo navigation">
+          <button type="button" data-gallery-previous aria-label="上一张照片" data-i18n-aria-label-zh="上一张照片" data-i18n-aria-label-en="Previous photo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M19 12H5m5-5-5 5 5 5"/></svg></button>
+          <button type="button" data-gallery-next aria-label="下一张照片" data-i18n-aria-label-zh="下一张照片" data-i18n-aria-label-en="Next photo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></button>
         </div>
       </div>
       </div>
@@ -131,7 +139,7 @@
 
             <h2 id="contactTitle" data-footer-text="contactTitle">联系我们</h2>
           </div>
-          <button class="contact-close" type="button" aria-label="关闭" data-contact-close><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+          <button class="contact-close" type="button" aria-label="关闭" data-contact-close data-i18n-aria-label-zh="关闭" data-i18n-aria-label-en="Close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
         </div>
         <div class="contact-links">
           <a href="mailto:jiezhu@rminte.com">
