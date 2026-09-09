@@ -18,14 +18,14 @@ const guideConfig = {
       en: 'For users managing TianshanOS with the admin account, covering system status, devices, networking, files, and OTA updates.'
     },
     chapterCount: { zh: '9 个章节', en: '9 chapters' },
-    next: { href: 'root.html', zh: '继续阅读 Root 指南', en: 'Continue to the Root guide' }
+    next: { href: 'root.html', zh: '继续阅读 root 指南', en: 'Continue to the root guide' }
   },
   root: {
     source: join(guidesDir, 'content', 'root.md'),
     output: join(guidesDir, 'root.html'),
     accent: 'root',
     label: { zh: '系统运维', en: 'System operations' },
-    title: { zh: 'TianshanOS root 运维指南', en: 'TianshanOS Root Operations Guide' },
+    title: { zh: 'TianshanOS root 运维指南', en: 'TianshanOS root Operations Guide' },
     description: {
       zh: '面向使用 root 账户管理 TianshanOS 的运维人员，包含共用日常功能以及终端、指令与自动化。',
       en: 'For operators managing TianshanOS with the root account, including shared daily tasks, terminal, commands, and automation.'
@@ -373,7 +373,7 @@ function searchTemplate() {
     <section class="guide-search" data-guide-search>
       <form class="guide-search-form" role="search" data-guide-search-form>
         <label class="guide-search-field">
-          <span class="guide-search-kicker" data-guide-text data-zh="搜索指南" data-en="Search guides">搜索指南</span>
+          <span class="guide-search-label" data-guide-text data-zh="搜索指南" data-en="Search guides">搜索指南</span>
           <input type="search" autocomplete="off" spellcheck="false" data-guide-search-input data-guide-placeholder data-zh="输入功能，例如：OTA、SSH 密钥、风扇" data-en="Search a feature, for example: OTA, SSH key, fan" placeholder="输入功能，例如：OTA、SSH 密钥、风扇">
         </label>
         <button type="submit" data-guide-text data-zh="搜索" data-en="Search">搜索</button>
@@ -453,7 +453,7 @@ function pageTemplate(config, rendered) {
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/brand.css?v=slate-2">
   <link rel="stylesheet" href="../assets/styles.css?v=solid-header-1">
-  <link rel="stylesheet" href="../assets/guides.css?v=breadcrumb-layout-1">
+  <link rel="stylesheet" href="../assets/guides.css?v=table-header-1">
   <script id="guidePageData" type="application/json">${pageData}</script>
   <script src="../visitor-language.js" defer></script>
   <script src="../assets/guides.js?v=docs-20260907" defer></script>

@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/brand.css?v=slate-2">
   <link rel="stylesheet" href="../assets/styles.css?v=solid-header-1">
-  <link rel="stylesheet" href="../assets/guides.css?v=breadcrumb-layout-1">
+  <link rel="stylesheet" href="../assets/guides.css?v=table-header-1">
   <script id="guidePageData" type="application/json">{"title":{"zh":"TianshanOS 安全页面完整操作指南","en":"TianshanOS Security Page Guide"},"copy":{"zh":"已复制","en":"Copied"},"copyDefault":{"zh":"复制","en":"Copy"}}</script>
   <script src="../visitor-language.js" defer></script>
   <script src="../assets/guides.js?v=docs-20260907" defer></script>
@@ -79,7 +79,7 @@
     <section class="guide-search" data-guide-search>
       <form class="guide-search-form" role="search" data-guide-search-form>
         <label class="guide-search-field">
-          <span class="guide-search-kicker" data-guide-text data-zh="搜索指南" data-en="Search guides">搜索指南</span>
+          <span class="guide-search-label" data-guide-text data-zh="搜索指南" data-en="Search guides">搜索指南</span>
           <input type="search" autocomplete="off" spellcheck="false" data-guide-search-input data-guide-placeholder data-zh="输入功能，例如：OTA、SSH 密钥、风扇" data-en="Search a feature, for example: OTA, SSH key, fan" placeholder="输入功能，例如：OTA、SSH 密钥、风扇">
         </label>
         <button type="submit" data-guide-text data-zh="搜索" data-en="Search">搜索</button>
@@ -397,7 +397,7 @@
 <p>Check the result: sign in with the new password in a private browsing window before closing your original session. Changing a password does not automatically end existing sessions.</p>
 <p>If sign-in fails: check the account and device address first. Five consecutive failed attempts trigger a lockout of about five minutes. Avoid repeated guesses.</p>
 <h3 id="en-section-8" data-heading-key="section-8"><a href="#en-section-8">2.3 Reset the admin password</a></h3>
-<p>Root can reset admin to the default password, <code>rm01</code>, and clear its login lockout. After resetting, sign in as admin in a new session and set a new password immediately. A reset is a temporary recovery measure. Do not keep the default password, and do not assume a password change signs out every existing session.</p>
+<p>root can reset admin to the default password, <code>rm01</code>, and clear its login lockout. After resetting, sign in as admin in a new session and set a new password immediately. A reset is a temporary recovery measure. Do not keep the default password, and do not assume a password change signs out every existing session.</p>
 <h2 id="en-section-9" data-heading-key="section-9"><a href="#en-section-9">3. Connect to a server with an SSH key</a></h2>
 <p>For initial setup: create an RSA key, deploy its public key, test the connection, then check the server fingerprint. When retiring a key, revoke access on the servers first, confirm that the old key no longer works, and only then delete the local key.</p>
 <h3 id="en-section-10" data-heading-key="section-10"><a href="#en-section-10">3.1 Create a key</a></h3>

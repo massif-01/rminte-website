@@ -1644,9 +1644,9 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
-      "title": "Part I: Routine Tasks Shared by Admin and Root",
+      "title": "Part I: Routine Tasks Shared by Admin and root",
       "level": 2,
       "href": "root.html#en-section-1",
       "text": ""
@@ -1654,7 +1654,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Getting Started",
       "level": 2,
@@ -1664,7 +1664,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Open the WebUI",
       "level": 3,
@@ -1674,7 +1674,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Switch Languages",
       "level": 3,
@@ -1684,17 +1684,17 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Page Navigation",
       "level": 3,
       "href": "root.html#en-section-5",
-      "text": "Root can use these pages: “System”: View device status, control modules, fans, and LEDs, and open OTA Update. “Network”: Check Ethernet status and DHCP clients, configure WiFi, and manage NAT forwarding. “Files”: Manage files on the SD Card and SPIFFS. “Terminal”: Use the device console and view system logs. “Automation”: Manage data sources, variables, action templates, and rules. “Commands”: Manage and run remote SSH commands. “Security”: Open the separate security management page. See the Security Guide for instructions."
+      "text": "root can use these pages: “System”: View device status, control modules, fans, and LEDs, and open OTA Update. “Network”: Check Ethernet status and DHCP clients, configure WiFi, and manage NAT forwarding. “Files”: Manage files on the SD Card and SPIFFS. “Terminal”: Use the device console and view system logs. “Automation”: Manage data sources, variables, action templates, and rules. “Commands”: Manage and run remote SSH commands. “Security”: Open the separate security management page. See the Security Guide for instructions."
     },
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "System Status and Routine Operations",
       "level": 2,
@@ -1704,7 +1704,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "View Resource and Service Status",
       "level": 3,
@@ -1714,7 +1714,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "View System and Power Information",
       "level": 3,
@@ -1724,7 +1724,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "View Network and Time",
       "level": 3,
@@ -1734,7 +1734,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Advanced Operations",
       "level": 3,
@@ -1744,7 +1744,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Reboot TianshanOS",
       "level": 4,
@@ -1754,7 +1754,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Restart One Service",
       "level": 4,
@@ -1764,7 +1764,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Change Shutdown Settings",
       "level": 4,
@@ -1774,7 +1774,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Switch the Top USB Target",
       "level": 4,
@@ -1784,7 +1784,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Device Panel",
       "level": 2,
@@ -1794,7 +1794,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Control AGX and LPMU",
       "level": 3,
@@ -1804,7 +1804,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Use Quick Actions",
       "level": 3,
@@ -1814,7 +1814,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Manage Data Widgets",
       "level": 3,
@@ -1824,7 +1824,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Fan Management",
       "level": 2,
@@ -1834,7 +1834,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "View Fan Status",
       "level": 3,
@@ -1844,7 +1844,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Select an Operating Mode",
       "level": 3,
@@ -1854,7 +1854,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Configure a Fan Curve",
       "level": 3,
@@ -1864,7 +1864,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Import and Export a Curve",
       "level": 3,
@@ -1874,7 +1874,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Use a Test Temperature",
       "level": 3,
@@ -1884,7 +1884,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "LED Management",
       "level": 2,
@@ -1894,7 +1894,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Routine Controls",
       "level": 3,
@@ -1904,7 +1904,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Advanced LED Matrix Features",
       "level": 3,
@@ -1914,7 +1914,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Network Management",
       "level": 2,
@@ -1924,7 +1924,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "View Network Status",
       "level": 3,
@@ -1934,7 +1934,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Select a WiFi Mode",
       "level": 3,
@@ -1944,7 +1944,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Connect to WiFi",
       "level": 3,
@@ -1954,7 +1954,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Configure the WiFi AP",
       "level": 3,
@@ -1964,7 +1964,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Set the Hostname",
       "level": 3,
@@ -1974,7 +1974,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "View DHCP Clients",
       "level": 3,
@@ -1984,7 +1984,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Advanced Network Operations",
       "level": 3,
@@ -1994,7 +1994,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Configure the NAT Gateway",
       "level": 4,
@@ -2004,7 +2004,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Access the Upstream Network via LPMU",
       "level": 4,
@@ -2014,7 +2014,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "File Management",
       "level": 2,
@@ -2024,7 +2024,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Browse and Manage Files",
       "level": 3,
@@ -2034,7 +2034,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Upload Files",
       "level": 3,
@@ -2044,7 +2044,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Batch Operations",
       "level": 3,
@@ -2054,7 +2054,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Delete a File or Folder",
       "level": 3,
@@ -2064,7 +2064,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Mount and Unmount the SD Card",
       "level": 3,
@@ -2074,7 +2074,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "OTA Updates",
       "level": 2,
@@ -2084,7 +2084,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Check for Updates from an OTA Server",
       "level": 3,
@@ -2094,7 +2094,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Manual Upgrade",
       "level": 3,
@@ -2104,7 +2104,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Partition Management and Rollback",
       "level": 3,
@@ -2114,7 +2114,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Security Management Entry",
       "level": 2,
@@ -2124,9 +2124,9 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
-      "title": "Part II: Root-only Operations",
+      "title": "Part II: root-only Operations",
       "level": 2,
       "href": "root.html#en-section-49",
       "text": ""
@@ -2134,7 +2134,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Terminal and System Logs",
       "level": 2,
@@ -2144,7 +2144,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Connect to and Use Terminal",
       "level": 3,
@@ -2154,7 +2154,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Open a Remote SSH Shell",
       "level": 3,
@@ -2164,7 +2164,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "View System Logs",
       "level": 3,
@@ -2174,7 +2174,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Manage and Run Remote Commands",
       "level": 2,
@@ -2184,7 +2184,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Select a Host and View Commands",
       "level": 3,
@@ -2194,7 +2194,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Create or Edit a Command",
       "level": 3,
@@ -2204,7 +2204,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Execute a Command and Review the Result",
       "level": 3,
@@ -2214,7 +2214,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Configure Result Matching",
       "level": 3,
@@ -2224,7 +2224,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Use Background Execution and Service Mode",
       "level": 3,
@@ -2234,7 +2234,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Import and Export Commands",
       "level": 3,
@@ -2244,7 +2244,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Automation Management",
       "level": 2,
@@ -2254,7 +2254,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "View and Control the Automation Engine",
       "level": 3,
@@ -2264,7 +2264,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Build a Minimal Automation Workflow",
       "level": 3,
@@ -2274,7 +2274,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Manage Data Sources",
       "level": 3,
@@ -2284,7 +2284,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "View Variables",
       "level": 3,
@@ -2294,7 +2294,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Create and Test Action Templates",
       "level": 3,
@@ -2304,7 +2304,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Create a Rule",
       "level": 3,
@@ -2314,7 +2314,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Configure Repetition and Action Conditions",
       "level": 3,
@@ -2324,7 +2324,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Create a Quick Action",
       "level": 3,
@@ -2334,7 +2334,7 @@
     {
       "lang": "en",
       "guide": "root",
-      "guideTitle": "TianshanOS Root Operations Guide",
+      "guideTitle": "TianshanOS root Operations Guide",
       "guideLabel": "System operations",
       "title": "Maintain Rules and Configuration",
       "level": 3,
@@ -2779,7 +2779,7 @@
       "title": "2.3 Reset the admin password",
       "level": 3,
       "href": "security.html#en-section-8",
-      "text": "Root can reset admin to the default password, rm01, and clear its login lockout. After resetting, sign in as admin in a new session and set a new password immediately. A reset is a temporary recovery measure. Do not keep the default password, and do not assume a password change signs out every existing session."
+      "text": "root can reset admin to the default password, rm01, and clear its login lockout. After resetting, sign in as admin in a new session and set a new password immediately. A reset is a temporary recovery measure. Do not keep the default password, and do not assume a password change signs out every existing session."
     },
     {
       "lang": "en",
