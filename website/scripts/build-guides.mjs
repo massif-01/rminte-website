@@ -507,10 +507,10 @@ function pageTemplate(config, rendered) {
   <link rel="stylesheet" href="../assets/guides.css?v=table-header-1">
   <script id="guidePageData" type="application/json">${pageData}</script>
   <script src="../visitor-language.js" defer></script>
-  <script src="../assets/translations.js" defer></script>
+  <script src="../assets/translations.js?v=contact-discussions-20260911" defer></script>
   <script src="../assets/i18n.js" defer></script>
   <script src="../assets/guides.js?v=docs-20260907" defer></script>
-  <script src="../assets/site-data.js?v=models-launch-1" defer></script>
+  <script src="../assets/site-data.js?v=contact-discussions-20260911" defer></script>
   <script src="../assets/footer.js?v=models-launch-1" defer></script>
 </head>
 <body class="guide-body guide-doc-body guide-accent-${config.accent}">
