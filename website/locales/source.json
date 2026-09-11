@@ -461,7 +461,7 @@
       "gallery/index.html:60",
       "gallery/index.html:142",
       "downloads/index.html:61",
-      "downloads/index.html:452",
+      "downloads/index.html:474",
       "guides/index.html:60",
       "guides/index.html:183",
       "guides/admin.html:61",
@@ -2780,7 +2780,7 @@
     "en": "Product materials",
     "sources": [
       "downloads/index.html:87",
-      "downloads/index.html:158"
+      "downloads/index.html:180"
     ]
   },
   {
@@ -2788,7 +2788,7 @@
     "en": "Firmware & software",
     "sources": [
       "downloads/index.html:91",
-      "downloads/index.html:290"
+      "downloads/index.html:312"
     ]
   },
   {
@@ -2796,19 +2796,19 @@
     "en": "Online tools",
     "sources": [
       "downloads/index.html:95",
-      "downloads/index.html:393"
+      "downloads/index.html:415"
     ]
   },
   {
-    "zh": "TianshanOS Admin 日常使用指南（中英双语）",
-    "en": "TianshanOS Admin User Guide (Bilingual)",
+    "zh": "RM-01 硬件安全说明（中文）",
+    "en": "RM-01 Hardware Security (Chinese)",
     "sources": [
       "downloads/index.html:110"
     ]
   },
   {
-    "zh": "Admin 用户日常操作指南 · 中英双语 · 23 页 · PDF · 568 KB · 2026-09-07",
-    "en": "Daily operations guide for Admin users · Chinese and English · 23 pages · PDF · 568 KB · 2026-09-07",
+    "zh": "硬件安全与配套管理能力 · 中文 · 11 页 · PDF · 350 KB · 2026-09-11",
+    "en": "Hardware security and supporting management functions · Chinese · 11 pages · PDF · 350 KB · 2026-09-11",
     "sources": [
       "downloads/index.html:111"
     ]
@@ -2821,8 +2821,8 @@
       "downloads/index.html:125",
       "downloads/index.html:136",
       "downloads/index.html:147",
+      "downloads/index.html:158",
       "downloads/index.html:169",
-      "downloads/index.html:180",
       "downloads/index.html:191",
       "downloads/index.html:202",
       "downloads/index.html:213",
@@ -2832,335 +2832,365 @@
       "downloads/index.html:257",
       "downloads/index.html:268",
       "downloads/index.html:279",
-      "downloads/index.html:312",
-      "downloads/index.html:323",
+      "downloads/index.html:290",
+      "downloads/index.html:301",
+      "downloads/index.html:334",
       "downloads/index.html:345",
-      "downloads/index.html:356",
       "downloads/index.html:367",
-      "downloads/index.html:378"
+      "downloads/index.html:378",
+      "downloads/index.html:389",
+      "downloads/index.html:400"
+    ]
+  },
+  {
+    "zh": "RM-01 硬件安全说明（英文）",
+    "en": "RM-01 Hardware Security (English)",
+    "sources": [
+      "downloads/index.html:121"
+    ]
+  },
+  {
+    "zh": "硬件安全与配套管理能力 · 英文 · 13 页 · PDF · 93 KB · 2026-09-11",
+    "en": "Hardware security and supporting management functions · English · 13 pages · PDF · 93 KB · 2026-09-11",
+    "sources": [
+      "downloads/index.html:122"
+    ]
+  },
+  {
+    "zh": "TianshanOS Admin 日常使用指南（中英双语）",
+    "en": "TianshanOS Admin User Guide (Bilingual)",
+    "sources": [
+      "downloads/index.html:132"
+    ]
+  },
+  {
+    "zh": "Admin 用户日常操作指南 · 中英双语 · 23 页 · PDF · 568 KB · 2026-09-07",
+    "en": "Daily operations guide for Admin users · Chinese and English · 23 pages · PDF · 568 KB · 2026-09-07",
+    "sources": [
+      "downloads/index.html:133"
     ]
   },
   {
     "zh": "TianshanOS root 运维指南（中英双语）",
     "en": "TianshanOS root Operations Guide (Bilingual)",
     "sources": [
-      "downloads/index.html:121"
+      "downloads/index.html:143"
     ]
   },
   {
     "zh": "root 用户运维操作指南 · 中英双语 · 42 页 · PDF · 665 KB · 2026-09-07",
     "en": "Operations guide for root users · Chinese and English · 42 pages · PDF · 665 KB · 2026-09-07",
     "sources": [
-      "downloads/index.html:122"
+      "downloads/index.html:144"
     ]
   },
   {
     "zh": "TianShanOS 安全页面完整操作指南（中文）",
     "en": "TianShanOS Complete Security Page Guide (Chinese)",
     "sources": [
-      "downloads/index.html:132"
+      "downloads/index.html:154"
     ]
   },
   {
     "zh": "安全页面操作、验证与恢复指南 · 中文 · 12 页 · PDF · 403 KB · 2026-09-07",
     "en": "Security Page operations, verification, and recovery · Chinese · 12 pages · PDF · 403 KB · 2026-09-07",
     "sources": [
-      "downloads/index.html:133"
+      "downloads/index.html:155"
     ]
   },
   {
     "zh": "TianShanOS 安全页面完整操作指南（英文）",
     "en": "TianShanOS Complete Security Page Guide (English)",
     "sources": [
-      "downloads/index.html:143"
+      "downloads/index.html:165"
     ]
   },
   {
     "zh": "安全页面操作、验证与恢复指南 · 英文 · 14 页 · PDF · 132 KB · 2026-09-07",
     "en": "Security Page operations, verification, and recovery · English · 14 pages · PDF · 132 KB · 2026-09-07",
     "sources": [
-      "downloads/index.html:144"
+      "downloads/index.html:166"
     ]
   },
   {
     "zh": "泛灵人工智能-中文介绍-2026",
     "en": "RMinte AI Introduction 2026 — Chinese",
     "sources": [
-      "downloads/index.html:165"
+      "downloads/index.html:187"
     ]
   },
   {
     "zh": "2026 产品介绍 · 中文 · 24 页 · PDF · 23.3 MB",
     "en": "2026 product introduction · Chinese · 24 pages · PDF · 23.3 MB",
     "sources": [
-      "downloads/index.html:166"
+      "downloads/index.html:188"
     ]
   },
   {
     "zh": "泛灵人工智能-英文介绍-2026",
     "en": "RMinte AI Introduction 2026 — English",
     "sources": [
-      "downloads/index.html:176"
+      "downloads/index.html:198"
     ]
   },
   {
     "zh": "2026 产品介绍 · 英文 · 24 页 · PDF · 23.2 MB",
     "en": "2026 product introduction · English · 24 pages · PDF · 23.2 MB",
     "sources": [
-      "downloads/index.html:177"
+      "downloads/index.html:199"
     ]
   },
   {
     "zh": "泛灵人工智能-日文介绍-2026",
     "en": "RMinte AI Introduction 2026 — Japanese",
     "sources": [
-      "downloads/index.html:187"
+      "downloads/index.html:209"
     ]
   },
   {
     "zh": "2026 产品介绍 · 日文 · 24 页 · PDF · 23.3 MB",
     "en": "2026 product introduction · Japanese · 24 pages · PDF · 23.3 MB",
     "sources": [
-      "downloads/index.html:188"
+      "downloads/index.html:210"
     ]
   },
   {
     "zh": "泛灵人工智能-韩文介绍-2026",
     "en": "RMinte AI Introduction 2026 — Korean",
     "sources": [
-      "downloads/index.html:198"
+      "downloads/index.html:220"
     ]
   },
   {
     "zh": "2026 产品介绍 · 韩文 · 24 页 · PDF · 23.2 MB",
     "en": "2026 product introduction · Korean · 24 pages · PDF · 23.2 MB",
     "sources": [
-      "downloads/index.html:199"
+      "downloads/index.html:221"
     ]
   },
   {
     "zh": "泛灵人工智能-西班牙文介绍-2026",
     "en": "RMinte AI Introduction 2026 — Spanish",
     "sources": [
-      "downloads/index.html:209"
+      "downloads/index.html:231"
     ]
   },
   {
     "zh": "2026 产品介绍 · 西班牙文 · 24 页 · PDF · 23.2 MB",
     "en": "2026 product introduction · Spanish · 24 pages · PDF · 23.2 MB",
     "sources": [
-      "downloads/index.html:210"
+      "downloads/index.html:232"
     ]
   },
   {
     "zh": "RMinte Logo 与字标",
     "en": "RMinte logo & wordmark",
     "sources": [
-      "downloads/index.html:220"
+      "downloads/index.html:242"
     ]
   },
   {
     "zh": "经销商印刷用 · Illustrator 可编辑文件 · 75 KB",
     "en": "For dealer printing · Editable Illustrator file · 75 KB",
     "sources": [
-      "downloads/index.html:221"
+      "downloads/index.html:243"
     ]
   },
   {
     "zh": "RM-01 产品结构爆炸图",
     "en": "RM-01 product exploded view",
     "sources": [
-      "downloads/index.html:231"
+      "downloads/index.html:253"
     ]
   },
   {
     "zh": "新一代生产级 AI 交付基座 · 4724 × 4606 · JPG · 21.7 MB",
     "en": "Next-generation production AI delivery platform · 4724 × 4606 · JPG · 21.7 MB",
     "sources": [
-      "downloads/index.html:232"
+      "downloads/index.html:254"
     ]
   },
   {
     "zh": "RM-01 场景示例片",
     "en": "RM-01 scenario demo film",
     "sources": [
-      "downloads/index.html:242"
+      "downloads/index.html:264"
     ]
   },
   {
     "zh": "产品宣传视频 · QuickTime MOV · 40.8 MB",
     "en": "Product campaign film · QuickTime MOV · 40.8 MB",
     "sources": [
-      "downloads/index.html:243"
+      "downloads/index.html:265"
     ]
   },
   {
     "zh": "RM-01 宣传片",
     "en": "RM-01 promotional film",
     "sources": [
-      "downloads/index.html:253"
+      "downloads/index.html:275"
     ]
   },
   {
     "zh": "视频平台高清版本 · QuickTime MOV · 48.9 MB",
     "en": "HD edition for video platforms · QuickTime MOV · 48.9 MB",
     "sources": [
-      "downloads/index.html:254"
+      "downloads/index.html:276"
     ]
   },
   {
     "zh": "RM-01 拆解片版本 A",
     "en": "RM-01 teardown film · Version A",
     "sources": [
-      "downloads/index.html:264"
+      "downloads/index.html:286"
     ]
   },
   {
     "zh": "产品主题视频 · MP4 · 260.3 MB",
     "en": "Product feature film · MP4 · 260.3 MB",
     "sources": [
-      "downloads/index.html:265"
+      "downloads/index.html:287"
     ]
   },
   {
     "zh": "RM-01 拆解片版本 B",
     "en": "RM-01 teardown film · Version B",
     "sources": [
-      "downloads/index.html:275"
+      "downloads/index.html:297"
     ]
   },
   {
     "zh": "云栖大会现场宣传视频 · MP4 · 63.3 MB",
     "en": "Yunqi Conference campaign film · MP4 · 63.3 MB",
     "sources": [
-      "downloads/index.html:276"
+      "downloads/index.html:298"
     ]
   },
   {
     "zh": "TianshanOS 固件",
     "en": "TianshanOS firmware",
     "sources": [
-      "downloads/index.html:297"
+      "downloads/index.html:319"
     ]
   },
   {
     "zh": "v0.5.1 · 刷写固件时必须同时准备 TianShanOS.bin 和 www.bin。",
     "en": "v0.5.1 · Both TianShanOS.bin and www.bin are required when flashing the firmware.",
     "sources": [
-      "downloads/index.html:298"
+      "downloads/index.html:320"
     ]
   },
   {
     "zh": "查看发布说明",
     "en": "Release notes",
     "sources": [
-      "downloads/index.html:301",
-      "downloads/index.html:334"
+      "downloads/index.html:323",
+      "downloads/index.html:356"
     ]
   },
   {
     "zh": "TianshanOS 主固件镜像 · v0.5.1 · 2.1 MB · 刷机必需",
     "en": "TianshanOS main firmware image · v0.5.1 · 2.1 MB · Required for flashing",
     "sources": [
-      "downloads/index.html:309"
+      "downloads/index.html:331"
     ]
   },
   {
     "zh": "TianshanOS WebUI 文件系统镜像 · v0.5.1 · 3.0 MB · 刷机必需",
     "en": "TianshanOS WebUI filesystem image · v0.5.1 · 3.0 MB · Required for flashing",
     "sources": [
-      "downloads/index.html:320"
+      "downloads/index.html:342"
     ]
   },
   {
     "zh": "RM-01 联网工具 · v1.1.5 · 选择与你的操作系统和使用方式匹配的版本。",
     "en": "RM-01 network connectivity tool · v1.1.5 · Choose the build that matches your operating system and workflow.",
     "sources": [
-      "downloads/index.html:331"
+      "downloads/index.html:353"
     ]
   },
   {
     "zh": "Linux x86_64 · AppImage · v1.1.5 · 47.1 MB",
     "en": "Linux x86_64 · AppImage · v1.1.5 · 47.1 MB",
     "sources": [
-      "downloads/index.html:342"
+      "downloads/index.html:364"
     ]
   },
   {
     "zh": "macOS 应用包 · ZIP 压缩包 · v1.1.5 · 3.9 MB",
     "en": "macOS app bundle · ZIP archive · v1.1.5 · 3.9 MB",
     "sources": [
-      "downloads/index.html:353"
+      "downloads/index.html:375"
     ]
   },
   {
     "zh": "macOS Apple 芯片命令行工具 · arm64 · v1.1.5 · 7.3 MB",
     "en": "macOS command-line tool for Apple silicon · arm64 · v1.1.5 · 7.3 MB",
     "sources": [
-      "downloads/index.html:364"
+      "downloads/index.html:386"
     ]
   },
   {
     "zh": "Windows 压缩包 · ZIP · v1.1.5 · 69.7 MB",
     "en": "Windows package · ZIP archive · v1.1.5 · 69.7 MB",
     "sources": [
-      "downloads/index.html:375"
+      "downloads/index.html:397"
     ]
   },
   {
     "zh": "发布原则",
     "en": "RELEASE POLICY",
     "sources": [
-      "downloads/index.html:384"
+      "downloads/index.html:406"
     ]
   },
   {
     "zh": "固件与软件只会在完成签名、适配性验证和完整性校验后开放下载，请根据发布说明选择与设备匹配的版本。",
     "en": "Firmware and software downloads open only after signing, compatibility validation, and integrity checks. Select the release that matches your device according to its release notes.",
     "sources": [
-      "downloads/index.html:385"
+      "downloads/index.html:407"
     ]
   },
   {
     "zh": "RM-01 灯板图形转换工具",
     "en": "RM-01 LED matrix graphics converter",
     "sources": [
-      "downloads/index.html:400"
+      "downloads/index.html:422"
     ]
   },
   {
     "zh": "Emoji2Pixel · 将 Emoji 或图片转换为适配 RM-01 灯板的像素图与动画。",
     "en": "Emoji2Pixel · Convert emojis or images into pixel art and animations for the RM-01 LED matrix.",
     "sources": [
-      "downloads/index.html:401"
+      "downloads/index.html:423"
     ]
   },
   {
     "zh": "打开工具",
     "en": "Open tool",
     "sources": [
-      "downloads/index.html:404"
+      "downloads/index.html:426"
     ]
   },
   {
     "zh": "TianShanOS OTA 更新服务",
     "en": "TianShanOS OTA update service",
     "sources": [
-      "downloads/index.html:411"
+      "downloads/index.html:433"
     ]
   },
   {
     "zh": "为 RM-01 本机 OTA 页面提供 TianShanOS 正式固件与 WebUI 更新文件。",
     "en": "Provides official TianShanOS firmware and WebUI updates to the OTA page hosted on your RM-01.",
     "sources": [
-      "downloads/index.html:412"
+      "downloads/index.html:434"
     ]
   },
   {
     "zh": "打开服务",
     "en": "Open service",
     "sources": [
-      "downloads/index.html:415"
+      "downloads/index.html:437"
     ]
   },
   {
