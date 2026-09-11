@@ -5,7 +5,7 @@
     "sources": [
       "assets/site-data.js.nav.0.1",
       "models/index.html:29",
-      "models/index.html:207",
+      "models/index.html:211",
       "gallery/index.html:40",
       "gallery/index.html:63",
       "downloads/index.html:41",
@@ -30,7 +30,7 @@
     "sources": [
       "assets/site-data.js.nav.1.1",
       "models/index.html:30",
-      "models/index.html:207",
+      "models/index.html:211",
       "gallery/index.html:41",
       "gallery/index.html:64",
       "downloads/index.html:42",
@@ -55,7 +55,7 @@
     "sources": [
       "assets/site-data.js.nav.2.1",
       "models/index.html:31",
-      "models/index.html:207",
+      "models/index.html:211",
       "gallery/index.html:42",
       "gallery/index.html:65",
       "downloads/index.html:43",
@@ -80,7 +80,7 @@
     "sources": [
       "assets/site-data.js.nav.3.1",
       "models/index.html:32",
-      "models/index.html:207",
+      "models/index.html:211",
       "gallery/index.html:43",
       "gallery/index.html:66",
       "downloads/index.html:44",
@@ -105,7 +105,7 @@
     "sources": [
       "assets/site-data.js.nav.4.1",
       "models/index.html:33",
-      "models/index.html:207",
+      "models/index.html:211",
       "gallery/index.html:44",
       "gallery/index.html:67",
       "downloads/index.html:45",
@@ -130,7 +130,7 @@
     "sources": [
       "assets/site-data.js.nav.5.1",
       "models/index.html:34",
-      "models/index.html:207",
+      "models/index.html:211",
       "gallery/index.html:45",
       "gallery/index.html:68",
       "downloads/index.html:46",
@@ -457,7 +457,7 @@
       "assets/site-data.js.ui.closeMenu",
       "index.html:337",
       "models/index.html:187",
-      "models/index.html:207",
+      "models/index.html:211",
       "gallery/index.html:60",
       "gallery/index.html:142",
       "downloads/index.html:61",
@@ -900,6 +900,13 @@
     "en": "Pre-sales & after-sales service",
     "sources": [
       "assets/site-data.js.ui.supportContact"
+    ]
+  },
+  {
+    "zh": "产品与技术交流",
+    "en": "Product & technical discussions",
+    "sources": [
+      "assets/site-data.js.ui.communityContact"
     ]
   },
   {
@@ -2083,7 +2090,7 @@
     "en": "Mobile navigation",
     "sources": [
       "index.html:67",
-      "models/index.html:207",
+      "models/index.html:211",
       "gallery/index.html:62",
       "downloads/index.html:63",
       "guides/index.html:62",
@@ -2630,7 +2637,7 @@
     "zh": "导航菜单",
     "en": "Navigation menu",
     "sources": [
-      "models/index.html:207",
+      "models/index.html:211",
       "assets/i18n-ui.json"
     ]
   },
