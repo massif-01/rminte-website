@@ -1,0 +1,65 @@
+requested_url,production_status_chain_before,production_final_url,local_pages_status_chain_after,local_final_url,decision
+https://rminte.com/,200,https://rminte.com/,200,http://127.0.0.1:4189/,metadata or unchanged response
+https://rminte.com/models/,200,https://rminte.com/models/,200,http://127.0.0.1:4189/models/,metadata or unchanged response
+https://rminte.com/gallery/,200,https://rminte.com/gallery/,200,http://127.0.0.1:4189/gallery/,metadata or unchanged response
+https://rminte.com/guides/,200,https://rminte.com/guides/,200,http://127.0.0.1:4189/guides/,metadata or unchanged response
+https://rminte.com/guides/admin.html,308 -> 200,https://rminte.com/guides/admin,308 -> 200,http://127.0.0.1:4189/guides/admin,existing Pages alias retained
+https://rminte.com/guides/root.html,308 -> 200,https://rminte.com/guides/root,308 -> 200,http://127.0.0.1:4189/guides/root,existing Pages alias retained
+https://rminte.com/guides/security.html,308 -> 200,https://rminte.com/guides/security,308 -> 200,http://127.0.0.1:4189/guides/security,existing Pages alias retained
+https://rminte.com/guides/network.html,308 -> 200,https://rminte.com/guides/network,308 -> 200,http://127.0.0.1:4189/guides/network,existing Pages alias retained
+https://rminte.com/downloads/,200,https://rminte.com/downloads/,200,http://127.0.0.1:4189/downloads/,metadata or unchanged response
+https://rminte.com/zh/,200,https://rminte.com/zh/,404,http://127.0.0.1:4189/zh/,implicit SPA fallback disabled; no source route
+https://rminte.com/?lang=en,200,https://rminte.com/?lang=en,200,http://127.0.0.1:4189/?lang=en,metadata or unchanged response
+https://rminte.com/models/?lang=en,200,https://rminte.com/models/?lang=en,200,http://127.0.0.1:4189/models/?lang=en,metadata or unchanged response
+https://rminte.com/contact,200,https://rminte.com/contact,404,http://127.0.0.1:4189/contact,implicit SPA fallback disabled; no source route
+https://rminte.com/waitlist,200,https://rminte.com/waitlist,404,http://127.0.0.1:4189/waitlist,implicit SPA fallback disabled; no source route
+https://rminte.com/privacy-policy,200,https://rminte.com/privacy-policy,404,http://127.0.0.1:4189/privacy-policy,implicit SPA fallback disabled; no source route
+https://rminte.com/zh/blog,200,https://rminte.com/zh/blog,404,http://127.0.0.1:4189/zh/blog,implicit SPA fallback disabled; no source route
+https://rminte.com/unlikely-seo-route-check-20261011-7b6f,200,https://rminte.com/unlikely-seo-route-check-20261011-7b6f,404,http://127.0.0.1:4189/unlikely-seo-route-check-20261011-7b6f,implicit SPA fallback disabled; no source route
+https://rminte.com/zh/assets/images/favicon.svg?v=20261009,200,https://rminte.com/zh/assets/images/favicon.svg?v=20261009,404,http://127.0.0.1:4189/zh/assets/images/favicon.svg?v=20261009,implicit SPA fallback disabled; no source route
+https://rminte.com/robots.txt,200,https://rminte.com/robots.txt,200,http://127.0.0.1:4189/robots.txt,machine-readable response fixed
+https://rminte.com/sitemap.xml,200,https://rminte.com/sitemap.xml,200,http://127.0.0.1:4189/sitemap.xml,machine-readable response fixed
+https://rminte.com/unlikely-seo-route-check-2,200,https://rminte.com/unlikely-seo-route-check-2,404,http://127.0.0.1:4189/unlikely-seo-route-check-2,implicit SPA fallback disabled; no source route
+https://rminte.com/models/index.html,308 -> 200,https://rminte.com/models/,308 -> 200,http://127.0.0.1:4189/models/,existing Pages alias retained
+https://rminte.com/guides/admin,200,https://rminte.com/guides/admin,200,http://127.0.0.1:4189/guides/admin,metadata or unchanged response
+https://rminte.com/assets/images/favicon.svg,200,https://rminte.com/assets/images/favicon.svg,200,http://127.0.0.1:4189/assets/images/favicon.svg,metadata or unchanged response
+https://rminte.com/assets/styles.css,200,https://rminte.com/assets/styles.css,200,http://127.0.0.1:4189/assets/styles.css,metadata or unchanged response
+https://rminte.com/assets/i18n.js,200,https://rminte.com/assets/i18n.js,200,http://127.0.0.1:4189/assets/i18n.js,metadata or unchanged response
+https://rminte.com/assets/fonts/Geist-latin-v1800.woff2,200,https://rminte.com/assets/fonts/Geist-latin-v1800.woff2,200,http://127.0.0.1:4189/assets/fonts/Geist-latin-v1800.woff2,metadata or unchanged response
+https://rminte.com/assets/gallery/DSC00043.jpg,200,https://rminte.com/assets/gallery/DSC00043.jpg,200,http://127.0.0.1:4189/assets/gallery/DSC00043.jpg,metadata or unchanged response
+https://rminte.com/assets/downloads/tianshanos-admin-user-guide-bilingual.pdf,200,https://rminte.com/assets/downloads/tianshanos-admin-user-guide-bilingual.pdf,200,http://127.0.0.1:4189/assets/downloads/tianshanos-admin-user-guide-bilingual.pdf,metadata or unchanged response
+https://rminte.com/assets/missing-seo.svg,200,https://rminte.com/assets/missing-seo.svg,404,http://127.0.0.1:4189/assets/missing-seo.svg,implicit SPA fallback disabled; no source route
+https://rminte.com/tianshanos-demo/system,200,https://rminte.com/tianshanos-demo/system,200,http://127.0.0.1:4189/tianshanos-demo/system,metadata or unchanged response
+https://rminte.com/tools/emoji2pixel/,200,https://rminte.com/tools/emoji2pixel/,200,http://127.0.0.1:4189/tools/emoji2pixel/,metadata or unchanged response
+https://www.rminte.com/,200,https://www.rminte.com/,200,http://127.0.0.1:4189/,metadata or unchanged response
+https://www.rminte.com/models/,200,https://www.rminte.com/models/,200,http://127.0.0.1:4189/models/,metadata or unchanged response
+https://www.rminte.com/gallery/,200,https://www.rminte.com/gallery/,200,http://127.0.0.1:4189/gallery/,metadata or unchanged response
+https://www.rminte.com/guides/,200,https://www.rminte.com/guides/,200,http://127.0.0.1:4189/guides/,metadata or unchanged response
+https://www.rminte.com/guides/admin.html,308 -> 200,https://www.rminte.com/guides/admin,308 -> 200,http://127.0.0.1:4189/guides/admin,existing Pages alias retained
+https://www.rminte.com/guides/root.html,308 -> 200,https://www.rminte.com/guides/root,308 -> 200,http://127.0.0.1:4189/guides/root,existing Pages alias retained
+https://www.rminte.com/guides/security.html,308 -> 200,https://www.rminte.com/guides/security,308 -> 200,http://127.0.0.1:4189/guides/security,existing Pages alias retained
+https://www.rminte.com/guides/network.html,308 -> 200,https://www.rminte.com/guides/network,308 -> 200,http://127.0.0.1:4189/guides/network,existing Pages alias retained
+https://www.rminte.com/downloads/,200,https://www.rminte.com/downloads/,200,http://127.0.0.1:4189/downloads/,metadata or unchanged response
+https://www.rminte.com/zh/,200,https://www.rminte.com/zh/,404,http://127.0.0.1:4189/zh/,implicit SPA fallback disabled; no source route
+https://www.rminte.com/?lang=en,200,https://www.rminte.com/?lang=en,200,http://127.0.0.1:4189/?lang=en,metadata or unchanged response
+https://www.rminte.com/models/?lang=en,200,https://www.rminte.com/models/?lang=en,200,http://127.0.0.1:4189/models/?lang=en,metadata or unchanged response
+https://www.rminte.com/contact,200,https://www.rminte.com/contact,404,http://127.0.0.1:4189/contact,implicit SPA fallback disabled; no source route
+https://www.rminte.com/waitlist,200,https://www.rminte.com/waitlist,404,http://127.0.0.1:4189/waitlist,implicit SPA fallback disabled; no source route
+https://www.rminte.com/privacy-policy,200,https://www.rminte.com/privacy-policy,404,http://127.0.0.1:4189/privacy-policy,implicit SPA fallback disabled; no source route
+https://www.rminte.com/zh/blog,200,https://www.rminte.com/zh/blog,404,http://127.0.0.1:4189/zh/blog,implicit SPA fallback disabled; no source route
+https://www.rminte.com/unlikely-seo-route-check-20261011-7b6f,200,https://www.rminte.com/unlikely-seo-route-check-20261011-7b6f,404,http://127.0.0.1:4189/unlikely-seo-route-check-20261011-7b6f,implicit SPA fallback disabled; no source route
+https://www.rminte.com/zh/assets/images/favicon.svg?v=20261009,200,https://www.rminte.com/zh/assets/images/favicon.svg?v=20261009,404,http://127.0.0.1:4189/zh/assets/images/favicon.svg?v=20261009,implicit SPA fallback disabled; no source route
+https://www.rminte.com/robots.txt,200,https://www.rminte.com/robots.txt,200,http://127.0.0.1:4189/robots.txt,machine-readable response fixed
+https://www.rminte.com/sitemap.xml,200,https://www.rminte.com/sitemap.xml,200,http://127.0.0.1:4189/sitemap.xml,machine-readable response fixed
+https://www.rminte.com/unlikely-seo-route-check-2,200,https://www.rminte.com/unlikely-seo-route-check-2,404,http://127.0.0.1:4189/unlikely-seo-route-check-2,implicit SPA fallback disabled; no source route
+https://www.rminte.com/models/index.html,308 -> 200,https://www.rminte.com/models/,308 -> 200,http://127.0.0.1:4189/models/,existing Pages alias retained
+https://www.rminte.com/guides/admin,200,https://www.rminte.com/guides/admin,200,http://127.0.0.1:4189/guides/admin,metadata or unchanged response
+https://www.rminte.com/assets/images/favicon.svg,200,https://www.rminte.com/assets/images/favicon.svg,200,http://127.0.0.1:4189/assets/images/favicon.svg,metadata or unchanged response
+https://www.rminte.com/assets/styles.css,200,https://www.rminte.com/assets/styles.css,200,http://127.0.0.1:4189/assets/styles.css,metadata or unchanged response
+https://www.rminte.com/assets/i18n.js,200,https://www.rminte.com/assets/i18n.js,200,http://127.0.0.1:4189/assets/i18n.js,metadata or unchanged response
+https://www.rminte.com/assets/fonts/Geist-latin-v1800.woff2,200,https://www.rminte.com/assets/fonts/Geist-latin-v1800.woff2,200,http://127.0.0.1:4189/assets/fonts/Geist-latin-v1800.woff2,metadata or unchanged response
+https://www.rminte.com/assets/gallery/DSC00043.jpg,200,https://www.rminte.com/assets/gallery/DSC00043.jpg,200,http://127.0.0.1:4189/assets/gallery/DSC00043.jpg,metadata or unchanged response
+https://www.rminte.com/assets/downloads/tianshanos-admin-user-guide-bilingual.pdf,200,https://www.rminte.com/assets/downloads/tianshanos-admin-user-guide-bilingual.pdf,200,http://127.0.0.1:4189/assets/downloads/tianshanos-admin-user-guide-bilingual.pdf,metadata or unchanged response
+https://www.rminte.com/assets/missing-seo.svg,200,https://www.rminte.com/assets/missing-seo.svg,404,http://127.0.0.1:4189/assets/missing-seo.svg,implicit SPA fallback disabled; no source route
+https://www.rminte.com/tianshanos-demo/system,200,https://www.rminte.com/tianshanos-demo/system,200,http://127.0.0.1:4189/tianshanos-demo/system,metadata or unchanged response
+https://www.rminte.com/tools/emoji2pixel/,200,https://www.rminte.com/tools/emoji2pixel/,200,http://127.0.0.1:4189/tools/emoji2pixel/,metadata or unchanged response

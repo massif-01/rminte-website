@@ -1,0 +1,180 @@
+{
+  "paired_states": 36,
+  "body_layout_language_resource_differences": 0,
+  "pixel_differences": [
+    {
+      "file": "before--en1440.png",
+      "bbox": [
+        437,
+        216,
+        554,
+        252
+      ],
+      "differing_pixels": 8,
+      "pixels": 1296000
+    },
+    {
+      "file": "before--downloads-zh390.png",
+      "bbox": [
+        26,
+        314,
+        322,
+        864
+      ],
+      "differing_pixels": 121,
+      "pixels": 351000
+    }
+  ],
+  "interactions": [
+    {
+      "base": "http://127.0.0.1:4175",
+      "galleryAll11": true,
+      "galleryKeyboard": true,
+      "gallerySwipe": true,
+      "mobileMenuEscape": true,
+      "languageMenu": true,
+      "guideSearch": true,
+      "guideAnchor": true,
+      "pdfBytes": 671671,
+      "videos": [
+        {
+          "paused": false,
+          "time": 0.698165,
+          "ready": 4
+        },
+        {
+          "paused": true,
+          "time": 0,
+          "ready": 4
+        },
+        {
+          "paused": false,
+          "time": 0.706574,
+          "ready": 4
+        }
+      ],
+      "teardown": true,
+      "errors": []
+    },
+    {
+      "base": "http://127.0.0.1:4174",
+      "galleryAll11": true,
+      "galleryKeyboard": true,
+      "gallerySwipe": true,
+      "mobileMenuEscape": true,
+      "languageMenu": true,
+      "guideSearch": true,
+      "guideAnchor": true,
+      "pdfBytes": 671671,
+      "videos": [
+        {
+          "paused": false,
+          "time": 0.702307,
+          "ready": 4
+        },
+        {
+          "paused": true,
+          "time": 0,
+          "ready": 4
+        },
+        {
+          "paused": false,
+          "time": 0.710807,
+          "ready": 4
+        }
+      ],
+      "teardown": true,
+      "errors": []
+    }
+  ],
+  "additional_language_loads": 72,
+  "additional_language_differences": [],
+  "normal_motion": [
+    {
+      "base": "http://127.0.0.1:4175",
+      "frames": [
+        {
+          "frame": 1,
+          "progress": "0.000",
+          "decoded": "10"
+        },
+        {
+          "frame": 61,
+          "progress": "0.500",
+          "decoded": "26"
+        },
+        {
+          "frame": 120,
+          "progress": "1.000",
+          "decoded": "33"
+        },
+        {
+          "frame": 61,
+          "progress": "0.500",
+          "decoded": "33"
+        },
+        {
+          "frame": 1,
+          "progress": "0.000",
+          "decoded": "33"
+        }
+      ],
+      "glow": [
+        "0.000",
+        "0.000",
+        "0.000",
+        "0.348",
+        "1.000"
+      ],
+      "panels": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "base": "http://127.0.0.1:4174",
+      "frames": [
+        {
+          "frame": 1,
+          "progress": "0.000",
+          "decoded": "10"
+        },
+        {
+          "frame": 61,
+          "progress": "0.500",
+          "decoded": "26"
+        },
+        {
+          "frame": 120,
+          "progress": "1.000",
+          "decoded": "33"
+        },
+        {
+          "frame": 61,
+          "progress": "0.500",
+          "decoded": "33"
+        },
+        {
+          "frame": 1,
+          "progress": "0.000",
+          "decoded": "33"
+        }
+      ],
+      "glow": [
+        "0.000",
+        "0.000",
+        "0.000",
+        "0.348",
+        "1.000"
+      ],
+      "panels": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

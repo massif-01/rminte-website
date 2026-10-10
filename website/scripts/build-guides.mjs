@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { seoHead } from './seo.mjs';
 
 const scriptDir = dirname(fileURLToPath(import.meta.url));
 const siteDir = join(scriptDir, '..');
@@ -500,12 +501,8 @@ function pageTemplate(config, rendered) {
     document.addEventListener('DOMContentLoaded', () => document.documentElement.classList.remove('i18n-loading'), { once: true });
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="${escapeHtml(config.description.zh)}" data-i18n-attr="content" data-zh="${escapeHtml(config.description.zh)}" data-en="${escapeHtml(config.description.en)}">
-  <meta property="og:title" content="${escapeHtml(config.title.zh)}" data-i18n-attr="content" data-zh="${escapeHtml(config.title.zh)}" data-en="${escapeHtml(config.title.en)}">
-  <meta property="og:description" content="${escapeHtml(config.description.zh)}" data-i18n-attr="content" data-zh="${escapeHtml(config.description.zh)}" data-en="${escapeHtml(config.description.en)}">
-  <meta property="og:image" content="../assets/images/img4.png">
+  ${seoHead(config.accent)}
   <meta name="theme-color" content="#0d0f12">
-  <title data-zh="${escapeHtml(config.title.zh)}" data-en="${escapeHtml(config.title.en)}">${escapeHtml(config.title.zh)}</title>
   <link rel="icon" type="image/png" sizes="512x512" href="../assets/images/favicon.png?v=20261009"><link rel="icon" type="image/svg+xml" sizes="any" href="../assets/images/favicon.svg?v=20261009">
   <link rel="preload" href="../assets/fonts/Geist-latin-v1800.woff2" as="font" type="font/woff2" crossorigin>
   <script src="../assets/motion.js?v=stage2-2" defer></script>

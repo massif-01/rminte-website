@@ -1,0 +1,277 @@
+{
+  "passed": true,
+  "requests": 45,
+  "imageAndAssetByteChecks": 16,
+  "results": [
+    {
+      "path": "/",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/?lang=en",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/?lang=en",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/?lang=zh&utm_source=seo-check",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/?lang=zh&utm_source=seo-check",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/index.html?lang=en&utm_source=seo-check",
+      "status": 308,
+      "finalUrl": "http://127.0.0.1:4189/index.html?lang=en&utm_source=seo-check",
+      "mime": null
+    },
+    {
+      "path": "/models/",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/models/",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/models/?lang=en",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/models/?lang=en",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/models/?lang=zh&utm_source=seo-check",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/models/?lang=zh&utm_source=seo-check",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/models/index.html?lang=en&utm_source=seo-check",
+      "status": 308,
+      "finalUrl": "http://127.0.0.1:4189/models/index.html?lang=en&utm_source=seo-check",
+      "mime": null
+    },
+    {
+      "path": "/gallery/",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/gallery/",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/gallery/?lang=en",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/gallery/?lang=en",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/gallery/?lang=zh&utm_source=seo-check",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/gallery/?lang=zh&utm_source=seo-check",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/gallery/index.html?lang=en&utm_source=seo-check",
+      "status": 308,
+      "finalUrl": "http://127.0.0.1:4189/gallery/index.html?lang=en&utm_source=seo-check",
+      "mime": null
+    },
+    {
+      "path": "/guides/",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/guides/",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/guides/?lang=en",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/guides/?lang=en",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/guides/?lang=zh&utm_source=seo-check",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/guides/?lang=zh&utm_source=seo-check",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/guides/index.html?lang=en&utm_source=seo-check",
+      "status": 308,
+      "finalUrl": "http://127.0.0.1:4189/guides/index.html?lang=en&utm_source=seo-check",
+      "mime": null
+    },
+    {
+      "path": "/guides/admin",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/guides/admin",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/guides/admin?lang=en",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/guides/admin?lang=en",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/guides/admin?lang=zh&utm_source=seo-check",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/guides/admin?lang=zh&utm_source=seo-check",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/guides/admin.html?lang=en&utm_source=seo-check",
+      "status": 308,
+      "finalUrl": "http://127.0.0.1:4189/guides/admin.html?lang=en&utm_source=seo-check",
+      "mime": null
+    },
+    {
+      "path": "/guides/root",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/guides/root",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/guides/root?lang=en",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/guides/root?lang=en",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/guides/root?lang=zh&utm_source=seo-check",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/guides/root?lang=zh&utm_source=seo-check",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/guides/root.html?lang=en&utm_source=seo-check",
+      "status": 308,
+      "finalUrl": "http://127.0.0.1:4189/guides/root.html?lang=en&utm_source=seo-check",
+      "mime": null
+    },
+    {
+      "path": "/guides/security",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/guides/security",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/guides/security?lang=en",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/guides/security?lang=en",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/guides/security?lang=zh&utm_source=seo-check",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/guides/security?lang=zh&utm_source=seo-check",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/guides/security.html?lang=en&utm_source=seo-check",
+      "status": 308,
+      "finalUrl": "http://127.0.0.1:4189/guides/security.html?lang=en&utm_source=seo-check",
+      "mime": null
+    },
+    {
+      "path": "/guides/network",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/guides/network",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/guides/network?lang=en",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/guides/network?lang=en",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/guides/network?lang=zh&utm_source=seo-check",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/guides/network?lang=zh&utm_source=seo-check",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/guides/network.html?lang=en&utm_source=seo-check",
+      "status": 308,
+      "finalUrl": "http://127.0.0.1:4189/guides/network.html?lang=en&utm_source=seo-check",
+      "mime": null
+    },
+    {
+      "path": "/downloads/",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/downloads/",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/downloads/?lang=en",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/downloads/?lang=en",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/downloads/?lang=zh&utm_source=seo-check",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/downloads/?lang=zh&utm_source=seo-check",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/downloads/index.html?lang=en&utm_source=seo-check",
+      "status": 308,
+      "finalUrl": "http://127.0.0.1:4189/downloads/index.html?lang=en&utm_source=seo-check",
+      "mime": null
+    },
+    {
+      "path": "/nonexistent-seo-check-one",
+      "status": 404,
+      "finalUrl": "http://127.0.0.1:4189/nonexistent-seo-check-one",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/a/nonexistent-seo-check-two",
+      "status": 404,
+      "finalUrl": "http://127.0.0.1:4189/a/nonexistent-seo-check-two",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/assets/missing-seo.svg",
+      "status": 404,
+      "finalUrl": "http://127.0.0.1:4189/assets/missing-seo.svg",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/assets/missing-seo.css",
+      "status": 404,
+      "finalUrl": "http://127.0.0.1:4189/assets/missing-seo.css",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/assets/missing-seo.js",
+      "status": 404,
+      "finalUrl": "http://127.0.0.1:4189/assets/missing-seo.js",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/models/nonexistent-seo",
+      "status": 404,
+      "finalUrl": "http://127.0.0.1:4189/models/nonexistent-seo",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/guides/nonexistent-seo",
+      "status": 404,
+      "finalUrl": "http://127.0.0.1:4189/guides/nonexistent-seo",
+      "mime": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/robots.txt",
+      "mime": "text/plain; charset=utf-8"
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:4189/sitemap.xml",
+      "mime": "application/xml"
+    }
+  ]
+}
