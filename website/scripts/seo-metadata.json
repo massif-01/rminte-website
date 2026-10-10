@@ -1,0 +1,110 @@
+{
+  "home": {
+    "file": "index.html",
+    "path": "/",
+    "title": {
+      "zh": "RM-01 便携 AI 超算 | 本地大模型推理与 AI Agent 部署 | RMinte",
+      "en": "RM-01 Portable AI Supercomputer | Local LLM Inference & AI Agents | RMinte"
+    },
+    "description": {
+      "zh": "RM-01 是一款面向本地大模型推理与 AI Agent 部署的便携 AI 计算系统，集成专用推理计算、应用运行环境及整机管理能力。",
+      "en": "RM-01 is a portable AI computing system for local LLM inference and AI agent deployment, bringing dedicated inference, applications, and system management together."
+    }
+  },
+  "models": {
+    "file": "models/index.html",
+    "path": "/models/",
+    "title": {
+      "zh": "RMQ3x 与 RMQ4 专业 AI 模型 | 推理引擎与 Agent 能力 | RMinte",
+      "en": "RMQ3x & RMQ4 Models | Specialized Reasoning & Inference | RMinte"
+    },
+    "description": {
+      "zh": "了解 RMinte 的 RMQ3x Dense 与 RMQ4 MoE 专业模型，以及自研 C++ 推理引擎、定制 vLLM、CUDA 优化与 Agent 工具执行能力。",
+      "en": "Explore the RMQ3x Dense and RMQ4 MoE specialist models, the RMinte C++ inference runtime, customized vLLM and CUDA optimizations for agent workflows."
+    }
+  },
+  "gallery": {
+    "file": "gallery/index.html",
+    "path": "/gallery/",
+    "title": {
+      "zh": "RM-01 产品图册 | 实拍影像、结构与工业设计 | RMinte",
+      "en": "RM-01 Gallery | Product Photography & Industrial Design | RMinte"
+    },
+    "description": {
+      "zh": "浏览 RM-01 便携 AI 超算的产品实拍影像，查看机身外观、硬件结构与工业设计细节。图册支持 HDR 浏览。",
+      "en": "Explore RM-01 product photography, chassis details, hardware structure and industrial design in the existing HDR-capable gallery."
+    }
+  },
+  "guides": {
+    "file": "guides/index.html",
+    "path": "/guides/",
+    "title": {
+      "zh": "RM-01 使用指南 | TianshanOS 管理、运维与网络配置 | RMinte",
+      "en": "RM-01 Guides | TianshanOS Setup, Security & Operations | RMinte"
+    },
+    "description": {
+      "zh": "浏览 RM-01 与 TianshanOS 使用指南，按 admin、root、安全或网络配置查找设备管理、OTA、SSH、HTTPS 与自动化操作说明。",
+      "en": "Browse RM-01 and TianshanOS guides for admin and root operations, security, networking, OTA updates, SSH, HTTPS and automation."
+    }
+  },
+  "admin": {
+    "file": "guides/admin.html",
+    "path": "/guides/admin",
+    "title": {
+      "zh": "TianshanOS Admin 使用指南 | RM-01 日常设备管理 | RMinte",
+      "en": "TianshanOS Admin Guide | Daily RM-01 Device Management | RMinte"
+    },
+    "description": {
+      "zh": "了解 TianshanOS admin 日常管理操作，包括系统状态、设备面板、风扇、LED、网络、文件和 OTA 更新。",
+      "en": "Find TianshanOS admin instructions for device status, control panels, fans, LEDs, network settings, files and OTA updates."
+    }
+  },
+  "root": {
+    "file": "guides/root.html",
+    "path": "/guides/root",
+    "title": {
+      "zh": "TianshanOS Root 运维指南 | 终端、远程指令与自动化 | RMinte",
+      "en": "TianshanOS Root Guide | Terminal, Remote Commands & Automation | RMinte"
+    },
+    "description": {
+      "zh": "查看 TianshanOS root 运维操作，了解终端、远程指令、自动化和高权限设备管理的操作说明。",
+      "en": "Read the TianshanOS root operations guide covering terminal access, remote commands, automation and privileged device management."
+    }
+  },
+  "security": {
+    "file": "guides/security.html",
+    "path": "/guides/security",
+    "title": {
+      "zh": "TianshanOS 安全指南 | SSH 密钥、HTTPS 与 mTLS | RMinte",
+      "en": "TianshanOS Security Guide | SSH Keys, HTTPS & mTLS | RMinte"
+    },
+    "description": {
+      "zh": "了解 TianshanOS 安全设置，包括账号管理、SSH 密钥、主机指纹、HTTPS、mTLS 与 Config Pack 的操作说明。",
+      "en": "Explore TianshanOS security instructions for account access, SSH keys, host fingerprints, HTTPS, mTLS and Config Pack workflows."
+    }
+  },
+  "network": {
+    "file": "guides/network.html",
+    "path": "/guides/network",
+    "title": {
+      "zh": "RM-01 网络配置指南 | C1、C3 与设备联网 | RMinte",
+      "en": "RM-01 Network Guide | C1, C3 & Connectivity Setup | RMinte"
+    },
+    "description": {
+      "zh": "了解 RM-01 的 C1 与 C3 网络路径、设备联网、AI 辅助网络共享，以及整机接入上层网络的方法。",
+      "en": "Learn RM-01 network configuration, C1 and C3 network paths, device connectivity, AI-assisted internet sharing and upstream network access."
+    }
+  },
+  "downloads": {
+    "file": "downloads/index.html",
+    "path": "/downloads/",
+    "title": {
+      "zh": "RM-01 下载中心 | TianshanOS 固件、文档与软件 | RMinte",
+      "en": "RM-01 Downloads | TianshanOS Firmware, Guides & Software | RMinte"
+    },
+    "description": {
+      "zh": "获取 RM-01 产品资料、TianshanOS 固件、设备使用指南及配套软件，查看当前公开的下载资源与工具。",
+      "en": "Download available RM-01 product documents, TianshanOS firmware, user guides, product materials and related software tools."
+    }
+  }
+}
