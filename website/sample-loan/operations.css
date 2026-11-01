@@ -78,7 +78,7 @@
 .tag-dot {
   width: 4px;
   height: 4px;
-  background: var(--sapphire-300);
+  background: var(--text-1);
   border-radius: 50%;
 }
 .deadline-date {
@@ -200,7 +200,7 @@
   height: 5px;
   margin-right: 10px;
   border-radius: 50%;
-  background: var(--sapphire-300);
+  background: var(--text-1);
 }
 .availability-notice[data-available="true"] {
   color: var(--text-3);
@@ -396,13 +396,6 @@
 }
 .email-content input {
   font-size: 13px;
-}
-.document-revision {
-  margin-top: 24px;
-  border-top: 1px solid #ddd;
-  padding-top: 12px;
-  font-size: 11px;
-  color: #777;
 }
 @media (max-width: 1120px) {
   .table-head,
