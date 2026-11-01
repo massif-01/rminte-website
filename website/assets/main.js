@@ -449,6 +449,11 @@
     const failed = new Set();
     const decodeQueue = [];
     const maxConcurrentDecodes = 3;
+    // Every decoded frame is a full bitmap (about 4 MB); keeping all 120 of them used ~550 MB and got the page killed on iPhone.
+    // Only the frames around the one on screen are held, and none once the section is well behind the viewer.
+    const keepFrames = 16;
+    let held = 0;
+    let pastSection = false;
     let activeDecodes = 0;
     let targetFrame = 0;
     let displayedFrame = 0;
@@ -531,6 +536,25 @@
       image.src = frameSrc(index);
     });
 
+    const isKept = (index) => !pastSection && Math.abs(index - Math.round(targetFrame)) <= keepFrames;
+
+    const trimFrames = () => {
+      for (let index = 0; index < frameCount; index += 1) {
+        if (!frames[index] || isKept(index)) continue;
+        const image = frames[index];
+        frames[index] = undefined;
+        held -= 1;
+        image.close?.();
+        queued.delete(index);
+      }
+      for (let at = decodeQueue.length - 1; at >= 0; at -= 1) {
+        if (isKept(decodeQueue[at])) continue;
+        queued.delete(decodeQueue[at]);
+        decodeQueue.splice(at, 1);
+      }
+      canvas.dataset.decodedFrames = String(held);
+    };
+
     const decodeFrame = async (index) => {
       try {
         let image;
@@ -542,8 +566,14 @@
           image = await decodeWithImageElement(index);
           if (image.decode) await image.decode();
         }
+        if (!isKept(index)) {
+          image.close?.();
+          queued.delete(index);
+          return;
+        }
         frames[index] = image;
-        canvas.dataset.decodedFrames = String(frames.filter(Boolean).length);
+        held += 1;
+        canvas.dataset.decodedFrames = String(held);
         if (index === Math.round(targetFrame) || renderedFrame < 0) requestUpdate();
       } catch (error) {
         failed.add(index);
@@ -580,9 +610,11 @@
         ? Math.min(1, Math.max(0, -rect.top / scrollRange))
         : 0;
       setTeardownActive(rect.top < window.innerHeight * 0.9 && rect.bottom > window.innerHeight * 0.1);
+      pastSection = rect.bottom < -window.innerHeight * 1.5;
       targetFrame = progress * (frameCount - 1);
       if (progress) canvas.dataset.progress = progress.toFixed(3);
-      loadAround(Math.round(targetFrame));
+      trimFrames();
+      if (!pastSection) loadAround(Math.round(targetFrame));
       startAnimation();
       updatePending = false;
     };
