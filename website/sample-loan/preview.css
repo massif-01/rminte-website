@@ -440,7 +440,7 @@ body:has(dialog[open]) {
   color: var(--text-2);
   margin-top: -8px;
   padding-left: 14px;
-  border-left: 1px solid var(--sapphire-300);
+  border-left: 1px solid var(--line-3);
 }
 .email-help strong {
   font-weight: 500;
@@ -743,7 +743,7 @@ body:has(dialog[open]) {
 .completion-note {
   margin-top: 24px;
   padding: 20px 24px;
-  border-left: 1px solid var(--sapphire-300);
+  border-left: 1px solid var(--line-3);
   background: var(--n-2);
   font-size: 14px;
 }
@@ -796,7 +796,7 @@ body:has(dialog[open]) {
   color: var(--text-3);
   font-size: 14px;
 }
-.request-table + .fine {
+#load-more + .fine {
   margin-top: 20px;
 }
 .back {
@@ -866,7 +866,7 @@ body:has(dialog[open]) {
   color: var(--text-3);
 }
 .section-nav a:hover {
-  border-color: var(--sapphire-300);
+  border-color: var(--line-3);
   color: var(--text-1);
 }
 .form-section {
@@ -1007,7 +1007,7 @@ body:has(dialog[open]) {
   height: 16px;
 }
 .photo-caption button:hover {
-  color: var(--sapphire-300);
+  color: var(--text-1);
 }
 .attachment-notes {
   margin-top: 24px;
@@ -1114,27 +1114,6 @@ body:has(dialog[open]) {
 }
 .small-dialog .footer-actions {
   margin-top: 24px;
-}
-.role-options {
-  display: grid;
-  margin-top: 24px;
-}
-.role-options button {
-  border: 0;
-  border-top: 1px solid var(--line-2);
-  background: none;
-  text-align: left;
-  padding: 20px 0;
-  font-size: 15px;
-}
-.role-options button span {
-  display: block;
-  margin-top: 6px;
-  color: var(--text-3);
-  font-size: 12px;
-}
-.role-options button:hover {
-  color: var(--sapphire-300);
 }
 #admin-denied {
   padding: 72px 0;
@@ -2056,7 +2035,7 @@ body:has(dialog[open]) {
 }
 .key-terms .shipping-emphasis {
   padding-left: 14px;
-  border-left: 1px solid var(--sapphire-300);
+  border-left: 1px solid var(--line-3);
 }
 .confirmation-dialog {
   width: min(760px, calc(100vw - 48px));

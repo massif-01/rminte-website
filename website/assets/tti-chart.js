@@ -9,7 +9,8 @@
   const ctx = canvas && canvas.getContext('2d');
   if (!ctx) return;
   const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
-  const WHITE = '255,255,255', SAPPHIRE = '168,184,240', MUTED = '150,158,168', TAU = Math.PI * 2;
+  let WHITE, SAPPHIRE, MUTED; // r,g,b strings read from the colour tokens in refresh()
+  const TAU = Math.PI * 2;
   const LEAD = 0.13; // how far (of the axis) the fan runs ahead of the heat
   const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
   const smooth = (from, to, x) => { const k = clamp((x - from) / (to - from)); return k * k * (3 - 2 * k); };
@@ -23,6 +24,8 @@
     ['Now', 'Lead', 'Temp', 'Airflow', 'Network', 'Observe', 'Predict', 'Regulate', 'Cool'].forEach((key) => { copy[key] = RM_I18N.text({ zh: ui.zh[`tti${key}`], en: ui.en[`tti${key}`] }, lang); });
     const style = getComputedStyle(document.body);
     fonts.mono = style.getPropertyValue('--font-mono').trim(); fonts.sans = style.getPropertyValue('--font-ui').trim();
+    const rgb = (token) => { const hex = style.getPropertyValue(token).trim().slice(1); return [0, 2, 4].map((i) => parseInt(hex.slice(i, i + 2), 16)).join(','); };
+    WHITE = rgb('--text-1'); MUTED = rgb('--text-2'); SAPPHIRE = rgb('--sapphire-300');
   };
 
   const wobble = (x) => Math.sin(x * 9.1) * 0.5 + Math.sin(x * 23.7 + 1.3) * 0.28 + Math.sin(x * 51.3 + 0.4) * 0.12;

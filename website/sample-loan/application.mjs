@@ -20,7 +20,7 @@ async function mount() {
     "color:var(--text-1);font:400 15px/1.7 var(--font-ui);-webkit-font-smoothing:antialiased;color-scheme:dark";
   const root = host.attachShadow({ mode: "open" });
   root.innerHTML =
-    '<link rel="stylesheet" href="/sample-loan/preview.css?v=sample-3"><link rel="stylesheet" href="/sample-loan/operations.css?v=sample-3"><style>:host([data-input="pointer"]) button:focus-visible,:host([data-input="pointer"]) a:focus-visible{outline:none}</style>' +
+    '<link rel="stylesheet" href="/sample-loan/preview.css?v=sample-4"><link rel="stylesheet" href="/sample-loan/operations.css?v=sample-4"><style>:host([data-input="pointer"]) button:focus-visible,:host([data-input="pointer"]) a:focus-visible{outline:none}</style>' +
     definition.html;
   document.body.append(host);
   try {
