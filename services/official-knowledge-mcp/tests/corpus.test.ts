@@ -19,10 +19,15 @@ test('Every nonblank original source line is preserved in body or original headi
  for(const d of m.documents){if(!d.default_retrieval)continue;const text=await readFile(resolve(corpusRoot,d.path),'utf8');const body=text.split('---\n\n',2)[1];assert(body,d.path);const built=c.sections.filter(s=>s.doc_id===d.id&&s.language===d.language);const original=built.map(s=>s.body+'\n'+s.heading_path.join('\n')).join('\n');for(const line of body.split('\n')){const normalized=line.replace(/^#{1,6}\s+/, '').trim();if(normalized)assert(original.includes(normalized),`${d.path}: ${normalized}`);}}
 });
 test('Security-page inherited HTTP limitation follows certificate operation',()=>{
- for(const lang of ['zh','en']){const s=c.sections.find(s=>s.doc_id==='guide-security'&&s.language===lang&&/5\.3/.test(s.heading_path.join(' ')));assert(s);const r=kb.read(s.section_id,c.revision);assert.equal(r.version,'0.6.1');assert(/HTTP/.test(r.context));assert(/多数接口|most API operations/i.test(r.context));}
+ for(const lang of ['zh','en']){const s=c.sections.find(s=>s.doc_id==='guide-security'&&s.language===lang&&/5\.3/.test(s.heading_path.join(' ')));assert(s);const r=kb.read(s.section_id,c.revision);assert.equal(r.version,'0.6.4');assert(/HTTP/.test(r.context));assert(/部分证书操作|Some certificate operations/i.test(r.context));}
 });
 test('Source versions and history policy are enforced at search and read',()=>{
- assert(!kb.search({query:'security HTTPS certificate',version:'0.6.3',limit:8}).results.some(s=>s.version==='0.6.1'));
+ for(const id of ['guide-admin','guide-root','guide-security'])for(const language of ['zh','en']){
+  const sections=c.sections.filter(s=>s.doc_id===id&&s.language===language);assert(sections.length);
+  for(const s of sections){const r=kb.read(s.section_id,c.revision);assert.equal(r.version,'0.6.4');assert.equal(r.source_date,'2026-11-03');}
+ }
+ const current=kb.search({query:'security HTTPS certificate',version:'0.6.4',limit:8});assert(current.results.some(s=>s.doc_id==='guide-security'&&s.version==='0.6.4'));
+ assert(!kb.search({query:'security HTTPS certificate',version:'0.6.3',limit:8}).results.some(s=>s.version==='0.6.4'));
  assert(!kb.search({query:'Lite Pro Ultra 256GB',limit:8}).results.some(s=>s.historical));assert(kb.search({query:'Lite Pro Ultra 256GB',include_history:true,limit:8}).results.some(s=>s.historical));
  assert.throws(()=>kb.read('zh/company-brochure-ocr/page-1',c.revision),/not available/);assert.throws(()=>kb.read('../../secret',c.revision),/not available/);assert.throws(()=>kb.read(c.sections[0].section_id,'0'.repeat(64)),/Corpus changed/);
 });

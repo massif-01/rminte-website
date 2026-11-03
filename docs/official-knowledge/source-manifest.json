@@ -6,10 +6,10 @@
       "id": "guide-admin",
       "language": "zh",
       "title": "TianshanOS admin 日常使用指南",
-      "source_commit": "c9b0897aa87a7e22a0ab264f9007a131f43a1135",
-      "prepared_on": "2026-10-30",
+      "source_commit": "92736a77e6441ce9af9ba232a3c355760e754df6",
+      "prepared_on": "2026-11-03",
       "content_kind": "operating-instructions",
-      "applicability": "TianshanOS 0.6.3",
+      "applicability": "TianshanOS 0.6.4",
       "source_files": [
         "website/guides/content/admin.md"
       ],
@@ -17,7 +17,7 @@
         "https://rminte.com/guides/admin"
       ],
       "path": "zh/guide-admin.md",
-      "sha256": "89d5c48f5fd90d27e3edbf9765abc864db4ced7fde2f7d9e0d53c371340a5b8a",
+      "sha256": "01b8173460fa5264fb243418a2645941e652f41d01df25760e31ded13e411e0a",
       "default_retrieval": true,
       "evidence_status": "source transcription; not independent operational verification"
     },
@@ -25,10 +25,10 @@
       "id": "guide-admin",
       "language": "en",
       "title": "TianshanOS Admin User Guide",
-      "source_commit": "c9b0897aa87a7e22a0ab264f9007a131f43a1135",
-      "prepared_on": "2026-10-30",
+      "source_commit": "92736a77e6441ce9af9ba232a3c355760e754df6",
+      "prepared_on": "2026-11-03",
       "content_kind": "operating-instructions",
-      "applicability": "TianshanOS 0.6.3",
+      "applicability": "TianshanOS 0.6.4",
       "source_files": [
         "website/guides/content/admin.md"
       ],
@@ -36,7 +36,7 @@
         "https://rminte.com/guides/admin"
       ],
       "path": "en/guide-admin.md",
-      "sha256": "e6f14697148ff68ff2f86b09830a52b2b009843fd3cfb43bddb4c15a16217ee5",
+      "sha256": "4b26477e6ed6ee6d272cfdbab2282ab23550fc0247c182a5c185d8b788ac8a9b",
       "default_retrieval": true,
       "evidence_status": "source transcription; not independent operational verification"
     },
@@ -44,10 +44,10 @@
       "id": "guide-root",
       "language": "zh",
       "title": "TianshanOS root 运维指南",
-      "source_commit": "c9b0897aa87a7e22a0ab264f9007a131f43a1135",
-      "prepared_on": "2026-10-30",
+      "source_commit": "92736a77e6441ce9af9ba232a3c355760e754df6",
+      "prepared_on": "2026-11-03",
       "content_kind": "operating-instructions",
-      "applicability": "TianshanOS 0.6.3",
+      "applicability": "TianshanOS 0.6.4",
       "source_files": [
         "website/guides/content/root.md"
       ],
@@ -55,7 +55,7 @@
         "https://rminte.com/guides/root"
       ],
       "path": "zh/guide-root.md",
-      "sha256": "37e63cddfc7d9882c1dae67db134657677575a51e99535885e337c468c378070",
+      "sha256": "b8a01dfeaaeabf56e50fb92ea0330fd67e3d3a7edd2668999f58e1166168224d",
       "default_retrieval": true,
       "evidence_status": "source transcription; not independent operational verification"
     },
@@ -63,10 +63,10 @@
       "id": "guide-root",
       "language": "en",
       "title": "TianshanOS Root Operations Guide",
-      "source_commit": "c9b0897aa87a7e22a0ab264f9007a131f43a1135",
-      "prepared_on": "2026-10-30",
+      "source_commit": "92736a77e6441ce9af9ba232a3c355760e754df6",
+      "prepared_on": "2026-11-03",
       "content_kind": "operating-instructions",
-      "applicability": "TianshanOS 0.6.3",
+      "applicability": "TianshanOS 0.6.4",
       "source_files": [
         "website/guides/content/root.md"
       ],
@@ -74,7 +74,7 @@
         "https://rminte.com/guides/root"
       ],
       "path": "en/guide-root.md",
-      "sha256": "79b40eed3a92c78136f07d7144788e32a284c8992c7d00266da6df7b5eb88f75",
+      "sha256": "0a19f0b92feabcb0c40039b152f5279e524d3f6f7d1d71b07aac2f0b0a1b62c1",
       "default_retrieval": true,
       "evidence_status": "source transcription; not independent operational verification"
     },
@@ -119,11 +119,11 @@
     {
       "id": "guide-security",
       "language": "zh",
-      "title": "TianShanOS 安全页面完整操作指南",
-      "source_commit": "c9b0897aa87a7e22a0ab264f9007a131f43a1135",
-      "prepared_on": "2026-10-30",
+      "title": "TianshanOS 安全页面完整操作指南",
+      "source_commit": "92736a77e6441ce9af9ba232a3c355760e754df6",
+      "prepared_on": "2026-11-03",
       "content_kind": "operating-instructions",
-      "applicability": "Based on 0.6.1; unchanged features remain applicable; later-version differences require checking.",
+      "applicability": "TianshanOS 0.6.4",
       "source_files": [
         "website/guides/content/security.zh.md"
       ],
@@ -131,18 +131,18 @@
         "https://rminte.com/guides/security"
       ],
       "path": "zh/guide-security.md",
-      "sha256": "1740b750f80cefd59dcdb254a2904cbc42e4aeeffd383a977f5f9843fbc908e1",
+      "sha256": "577354186952fc5d593db32619e3c724ba0a803691df3eafbe507ef04911edab",
       "default_retrieval": true,
       "evidence_status": "source transcription; not independent operational verification"
     },
     {
       "id": "guide-security",
       "language": "en",
-      "title": "TianShanOS Security Page Guide",
-      "source_commit": "c9b0897aa87a7e22a0ab264f9007a131f43a1135",
-      "prepared_on": "2026-10-30",
+      "title": "TianshanOS Complete Guide to the Security Page",
+      "source_commit": "92736a77e6441ce9af9ba232a3c355760e754df6",
+      "prepared_on": "2026-11-03",
       "content_kind": "operating-instructions",
-      "applicability": "Based on 0.6.1; unchanged features remain applicable; later-version differences require checking.",
+      "applicability": "TianshanOS 0.6.4",
       "source_files": [
         "website/guides/content/security.en.md"
       ],
@@ -150,7 +150,7 @@
         "https://rminte.com/guides/security"
       ],
       "path": "en/guide-security.md",
-      "sha256": "8db686d17684ed826168730b4200f25b5f66c367ce1656f165b3db20d73cd2e3",
+      "sha256": "046bbe24049affd97a328d5c131b46a873d6d8ed9f05856de2fcf00265b9357b",
       "default_retrieval": true,
       "evidence_status": "source transcription; not independent operational verification"
     },
@@ -1852,7 +1852,7 @@
     },
     {
       "path": "website/guides/content/admin.md",
-      "sha256": "ced0466f1757086a61866883a399549dfd0d043ff8c996f175daac48a55d10ca"
+      "sha256": "6fc531444861fd541195e8f4eded9dd36aed328d18c24a397f10436da37d9ecb"
     },
     {
       "path": "website/guides/content/network.md",
@@ -1860,15 +1860,15 @@
     },
     {
       "path": "website/guides/content/root.md",
-      "sha256": "8c10b5864c00ced419924eafa2f9e167cda4a4309073ffcce133e0bbf761a397"
+      "sha256": "bbe09ff7c65958bdc770776cdb3e44fc3fa7db69b4eddbe17c4f72cd83f87dab"
     },
     {
       "path": "website/guides/content/security.en.md",
-      "sha256": "3b496fda747007b66ebcbbf665fab021c58c895fc2c85111eed2e7953ffd0370"
+      "sha256": "ca30c7bfe70a7f572905e9828878301b87e18cef95462fa15090c03cc5aef6cf"
     },
     {
       "path": "website/guides/content/security.zh.md",
-      "sha256": "a8ef530053836b75626b709f224054979dfb31957182463f1610eecb09e3d7e0"
+      "sha256": "d35374f8f93eb34a65bbd1d1db5a7b31831b8db137b9b821d9a1ec41e950a4a7"
     },
     {
       "path": "website/guides/index.html",

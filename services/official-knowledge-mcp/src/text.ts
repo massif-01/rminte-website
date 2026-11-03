@@ -4,7 +4,7 @@ export function normalize(text: string): string {
   return text.normalize('NFKC').toLowerCase().replace(/rm[‐‑–—-]?01/g, 'rm01');
 }
 const VOCABULARY: [RegExp,string][] = [
-  [/\bwattage\b|功耗/gi,'power 功率'],
+  [/\bwattage\b|功耗|功率/gi,'w 功率'],
   [/\bpower supply\b|供电|电源/gi,'power 供电'],
   [/\bconfigurations?\b|配置/gi,'configuration 配置'],
   [/\b(?:memory|vram)\b|显存/gi,'memory vram 显存'],

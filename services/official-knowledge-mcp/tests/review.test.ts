@@ -66,3 +66,21 @@ test('Non-searchable preambles remain readable context for the real source secti
  }
  for(const postings of Object.values(corpus.postings))assert(!postings.some(([i])=>corpus.sections[i].section_id.endsWith('/preamble')));
 });
+
+test('Wattage queries match numeric watt specifications without treating supply alone as wattage',()=>{
+ for(const query of ['wattage','功耗','功率'])assert(terms(query).includes('w'));
+ assert(terms('140W').includes('w'));assert(!terms('power supply').includes('w'));
+ const kb=createKnowledge(corpus);
+ for(const [language,query]of [['zh','RM-01 的供电标准和功耗是什么？'],['en','What power supply standard and wattage does RM-01 use?']]as const){
+  const r=kb.search({language,query});assert(r.results.some(s=>s.doc_id==='hardware-modules'&&/140W/.test(kb.read(s.section_id,r.corpus_revision).body)));
+ }
+});
+test('Conversational HTTPS queries retain the original HTTP limitation; unknown queries stay empty',()=>{
+ const kb=createKnowledge(corpus);
+ for(const [language,query]of [['zh','装 HTTPS 证书会让完整管理页面自动变成 HTTPS 吗？'],['en','Does installing an HTTPS certificate automatically switch the entire interface to HTTPS?']]as const){
+  const r=kb.search({language,query});const hit=r.results.find(s=>s.doc_id==='guide-security');assert(hit);
+  const s=kb.read(hit.section_id,r.corpus_revision);assert(/HTTP/.test(s.body+'\n'+s.context));
+  assert(/安装证书不会把它切换到 HTTPS|installing a certificate does not switch it to HTTPS/.test(s.body+'\n'+s.context));
+ }
+ for(const query of ['unfindableXYZ314159 unknownXYZ271828','certificate unfindableXYZ'])assert.equal(kb.search({query}).results.length,0);
+});
