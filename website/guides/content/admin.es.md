@@ -1,8 +1,8 @@
 # TianshanOS
 
-Esta guía está basada en TianshanOS 0.6.3. Para otras versiones, consulte las instrucciones específicas de la versión correspondiente.
-
 Esta guía cubre comprobaciones del sistema, controles de dispositivos, redes, archivos y actualizaciones de firmware para la cuenta admin. La Guía de operaciones raíz cubre el acceso al terminal, los comandos remotos y la configuración de automatización. Consulte la Guía de seguridad separada para conocer la gestión de la seguridad.
+
+Versión cubierta: 0.6.4. Revisado el 3 de noviembre de 2026.
 
 Utilice los controles que se muestran en su dispositivo. Algunos necesitan hardware o configuración específicos. En una computadora, coloque el cursor sobre un botón con un ícono para ver su nombre. En un teléfono, deslícese dentro de una tabla amplia para ver sus otras columnas.
 
@@ -18,6 +18,8 @@ Utilice los controles que se muestran en su dispositivo. Algunos necesitan hardw
 Al iniciar sesión con la contraseña predeterminada se abre un "Recordatorio de seguridad". Ingrese la contraseña actual, luego ingrese la nueva contraseña dos veces y seleccione "Cambiar ahora". Ambas entradas de nueva contraseña deben coincidir. Seleccione "Más tarde" para cerrar el recordatorio.
 
 Cuando haya terminado, seleccione "Cerrar sesión" en la esquina superior derecha. Deberá iniciar sesión nuevamente para usar el dispositivo.
+
+Si se le niega el permiso, verifique la cuenta. Si el inicio de sesión ha caducado, inicie sesión nuevamente. Luego verifique el resultado de la operación anterior. Iniciar sesión no repite una tarea anterior. No cargue, elimine ni actualice de nuevo inmediatamente.
 
 ### Cambiar idioma
 
@@ -38,9 +40,10 @@ Seleccione "Sistema" en la navegación superior.
 
 ### Ver el estado de los recursos y servicios
 
-«Recursos del chip de administración» muestra el uso de CPU, DRAM y PSRAM de ese chip. Los valores no corresponden a AGX ni a LPMU.
+“Recursos del chip de administración” muestra el uso de CPU, DRAM y PSRAM en el chip de administración. Estas lecturas no muestran el uso de recursos en la equipo de inferencia o en la equipo de aplicaciones.
 
 - Seleccione "Detalles" para ver la memoria total, utilizada y libre y otra información de la memoria.
+- Los valores marcados como "estimados" en los detalles de la memoria son solo como referencia. Si aparece una advertencia, conserve la información de la página y siga sus instrucciones.
 - “Servicios” muestra el número de servicios en ejecución y el total. Selecciónelo para ver el estado y la etapa de inicio de cada servicio.
 - Si un servicio informa un problema, actualice su estado. Para reiniciarlo, siga "Reiniciar un servicio" a continuación.
 
@@ -86,41 +89,52 @@ Seleccione "Configuración de apagado" para cambiar:
 
 Guarde el formulario para aplicar la configuración de protección actualizada.
 
+<!-- operational-note -->
+Al abrir «Configuración de apagado», espere a que se carguen los ajustes actuales. Si se muestran valores predeterminados, no los tome como los valores del dispositivo. Revise las tensiones y los tiempos de espera antes de guardar. Puede cancelar durante la carga.
+
 #### Cambia el objetivo superior USB
 
 Cambiar el objetivo USB puede desconectar temporalmente un dispositivo conectado. Confirme el objetivo y finalice el trabajo activo antes de continuar.
 
-Los dispositivos que admiten la conmutación USB muestran un botón "USB". Cada clic cambia el puerto USB superior al siguiente destino: ESP, AGX y luego LPMU. Verifique el objetivo que se muestra en el botón y el mensaje de la página para confirmar el resultado.
+Los dispositivos que admiten conmutación USB muestran un botón "USB". Cada clic cambia el puerto USB superior al siguiente objetivo: ESP, Equipo de inferencia y luego Equipo de aplicaciones. "Desconectado" significa que no hay ningún objetivo conectado. Verifique el objetivo que se muestra en el botón y el mensaje de la página para confirmar el resultado.
 
 ## 3. Panel de dispositivos
 
 El "Panel de dispositivos" está en la página "Sistema". Contiene controles de energía del módulo, acciones rápidas y widgets de datos.
 
-### Controla AGX y LPMU
+### Controlar la equipo de inferencia y la equipo de aplicaciones
+
+«Equipo de inferencia» es el nombre que sustituye a AGX en la pantalla; «Equipo de aplicaciones» sustituye a LPMU. Los identificadores y comandos pueden seguir usando `agx` y `lpmu`. No cambie esos identificadores por su cuenta.
 
 Guarde el trabajo en el módulo y complete su proceso de apagado normal antes de desconectar la alimentación. El apagado forzado puede provocar la pérdida de datos no guardados.
 
-- “AGX Power” muestra el estado de control de energía. Selecciónelo para encender o apagar, luego espere la confirmación.
-- “LPMU Power” muestra “En línea”, “Fuera de línea” o “Desconocido”. Estos estados provienen de una verificación de red. En línea significa que se puede acceder al módulo; fuera de línea significa que no lo es. Ninguno de los estados por sí solo confirma si el módulo está encendido o apagado.
-- Seleccionar el botón LPMU desencadena la misma acción que presionar su botón de encendido físico. Espere la verificación y el resultado mostrado. Si desconoce el resultado, verifique el módulo y la red antes de presionar el botón nuevamente.
+- «Alimentación del equipo de inferencia» muestra el estado del control de alimentación. Seleccione el botón para encenderlo o apagarlo y espere la confirmación.
+- En «Alimentación del equipo de aplicaciones», «Accesible por red» y «No accesible por red» indican si hay acceso a través de la red. Si falla la comprobación, el estado de alimentación sigue sin conocerse. Estos resultados no confirman por sí solos si el equipo está encendido o apagado.
+- Seleccionar el botón Equipo de aplicaciones desencadena la misma acción que presionar su botón de encendido físico. Espere la verificación y el resultado mostrado. Si desconoce el resultado, verifique la equipo y la red antes de presionar el botón nuevamente.
 
 ### Usar acciones rápidas
 
 Un usuario root configura las tarjetas de acciones rápidas. Mostrar una tarjeta y permitir su ejecución manual son ajustes distintos. Una tarjeta visible puede no permitir iniciar la tarea.
 
 1. Lea el nombre de la tarjeta y la descripción para identificar la tarea.
-2. Selecciona la tarjeta y lee el resultado. No lo inicie nuevamente mientras procesa.
-3. Un mensaje ejecutado o en cola aún necesita una verificación de resultados real en el dispositivo o tarea de destino. Pídale a un usuario de root que verifique, vea registros o detenga un servicio en segundo plano.
+2. Seleccione “Inicio” o la tarjeta y lea el resultado. No lo inicie nuevamente mientras procesa.
+3. Un mensaje ejecutado o en cola aún necesita una verificación de resultados real en el dispositivo o tarea de destino. Si se muestra un estado de servicio, distinga "Proceso en ejecución" de "Listo". Una tarjeta con varias tareas puede mostrar "Algunas tareas no están listas".
+
+Las tarjetas con tareas remotas en segundo plano también ofrecen "Ver registro" y "Detener". Abra los registros para revisar las tareas relacionadas. Si aparecen varios registros, elija por nombre de tarea y host original. Verifique el objetivo antes de detenerlo, espere el resultado y luego verifique que se detuvo. Cerrar el registro o detener las actualizaciones del registro no detiene la tarea.
+
+«Registros de ejecución» puede incluir tareas iniciadas antes. Que aparezcan no significa que sigan en ejecución. Seleccione «Verificar estado remoto» cuando sea necesario. admin puede entrar desde la tarjeta correspondiente; el botón independiente de Sistema solo se muestra a root. Si no puede usar un control o el resultado sigue sin estar claro, pida a root que lo compruebe.
 
 Si no puede iniciar la tarea, siga las indicaciones del mensaje. No pulse Inicio repetidamente:
 
 - Regla deshabilitada o activación manual no permitida: solicite a un usuario de root que verifique la configuración de la regla. Una tarjeta visible no es permiso para ejecutarla.
 - Una tarea u operación en segundo plano está en progreso: espere su resultado. No lo empieces de nuevo.
-- Ya existe un registro de ejecución en segundo plano para la tarea: solicite a un usuario root que verifique la tarea original y confirme que finalizó antes de comenzar de nuevo.
+- Ya existe un registro de ejecución para la tarea: verifique el estado y los registros de la tarea original en lugar de iniciarla nuevamente. Si necesita finalizar, deténgase y verifíquelo. Pídale a un usuario root que verifique si no puede resolverlo.
 - Configuración no cargada, falta un elemento requerido o automatización en pausa: solicite a un usuario de root que verifique la configuración y habilite el estado.
 
+Si la página informa un inicio automático o una espera de reintento, déjela continuar. Los fallos de inicio temporales se reintentan cada 30 segundos durante un máximo de 6 minutos. Un inicio no confirmado se verifica antes de otro lanzamiento. Una ejecución manual fallida no se repite automáticamente. Cuando termine la espera, verifique el dispositivo y la red como se indica antes de decidir si desea seleccionar "Iniciar".
+
 <!-- operational-note -->
-Después de activar una acción, espere unos segundos antes de iniciar otra. Cerrar la página, eliminar una tarjeta o reiniciar TianshanOS no detiene los servicios en segundo plano en los hosts remotos.
+Después de activar una acción, espere unos segundos antes de iniciar otra. Cerrar la página, eliminar una tarjeta o reiniciar TianshanOS no detiene los servicios en segundo plano en los hosts remotos. Para mantener un servicio detenido, solicite a un usuario root que desactive cualquier regla automática que pueda iniciarlo nuevamente.
 
 Mantenga presionada una tarjeta hasta que aparezca el indicador de reorden, luego arrástrela para cambiar el orden de visualización.
 
@@ -141,6 +155,10 @@ Los widgets de datos muestran los datos del dispositivo en el «Panel de disposi
 4. Edite su etiqueta, estilo de visualización y unidad según sea necesario y luego guárdelo.
 
 Los widgets existentes se pueden editar, eliminar y reordenar. También puede seleccionar una tarjeta de widget para editarla. Mantenga presionado un widget y luego arrástrelo a una nueva posición.
+
+«Pequeño», «Mediano» y «Grande» ocupan una, dos y tres columnas, y se adaptan a las pantallas estrechas. Al editar un icono, escriba su nombre siguiendo el ejemplo. En un widget de dos valores, cada uno tiene su propio origen de datos. Compruebe ambos orígenes y que los valores se actualicen.
+
+"Error al cargar los widgets de datos" no significa que no exista ninguna configuración. Resuelva la causa y léala nuevamente. Si el guardado falla o su resultado no está confirmado, mantenga el contenido actual y verifique el mensaje. Ver sus cambios en la página no confirma que se hayan guardado.
 
 ## 4. Gestión de ventiladores
 
@@ -184,6 +202,11 @@ Seleccione "Curva" en el encabezado de la sección Control del ventilador para a
 
 Si falla el guardado, lea el mensaje y verifique el estado actual antes de volver a intentarlo. Después de desvincular las variables de temperatura, verifique también la temperatura efectiva y el estado del ventilador.
 
+<!-- operational-note -->
+Después de abrir los ajustes o elegir otro ventilador, espere a que se cargue su configuración. Si se muestran valores predeterminados o un borrador anterior, no los tome como los valores actuales del dispositivo. Revíselos antes de guardar. Compruebe también los resultados de lectura y guardado de las asociaciones de temperatura.
+
+Si el mensaje dice que la configuración del ventilador se aplicó pero no se guardó por completo, es posible que el ajuste actual ya esté vigente. Un reinicio puede restaurar la configuración anterior. Verifique el estado real del ventilador, confirme que el almacenamiento del dispositivo esté disponible y luego guarde nuevamente. No reinicie el dispositivo solo para probar si el guardado funcionó.
+
 ### Importar y exportar una curva
 
 - Seleccione "Importar configuración" y elija un archivo de curva JSON. JSON es el formato de archivo utilizado para almacenar datos de curvas. Revise los nodos, los límites y el número de ventilador, luego seleccione "Guardar curva" para aplicarlos.
@@ -204,7 +227,7 @@ Una temperatura de prueba reemplaza temporalmente la fuente normal y afecta el c
 ### Controles habituales
 
 - Utilice el botón de la bombilla en la parte inferior de una tarjeta para encender o apagar el LED.
-- Mueva el control deslizante "Brillo" o elija un color o ajuste preestablecido.
+- Use los controles de brillo, tono y saturación. El brillo regula la intensidad de la luz; el tono elige el color, y la saturación va del blanco al color. Una saturación de 0 da luz blanca. Los cambios de tono y saturación se aplican al soltar el control.
 - Utilice el botón de animación para abrir "Configuración de LED". Seleccione una animación en "Animación programática" y luego use su control de reproducción o detención.
 - Seleccione el icono de guardar en la parte inferior derecha de la tarjeta para guardar la configuración de LED actual.
 - Seleccione "Todo apagado" para apagar todos los LED y verificar el resultado informado. Si algunos fallan, verifique esos dispositivos.
@@ -214,7 +237,7 @@ Una temperatura de prueba reemplaza temporalmente la fuente normal y afecta el c
 Las tarjetas de la matriz tienen iconos para las funciones disponibles. Abra una función y cambie de grupo en «Ajustes LED»:
 
 - “Animación programática”: seleccione y ejecute una animación.
-- “Imagen/Código QR”: elija una imagen de la tarjeta SD o ingrese el contenido para un código QR.
+- “Imagen/Código QR”: elija una imagen o un código QR en “Tipo” en la tarjeta, luego seleccione una imagen de tarjeta SD o ingrese el contenido QR.
 - “Visualización de texto”: establece texto, fuente, alineación, desplazamiento, primer plano y fondo.
 - “Filtro de posprocesamiento”: elija un filtro y parámetros, luego aplíquelos o deténgalos.
 - “Corrección de color”: ajuste la pantalla y utilice los controles de reinicio, importación o exportación disponibles.
@@ -277,16 +300,19 @@ DHCP asigna automáticamente direcciones de red a los dispositivos conectados. S
 
 NAT reenvía el tráfico de red entre las interfaces de red del dispositivo. Habilite o deshabilite NAT, luego seleccione "Guardar" para conservar la configuración. Verifique el estado del WiFi y de Ethernet luego.
 
-#### Acceda a la red ascendente a través de LPMU
+#### Acceda a la red ascendente a través de la equipo de aplicaciones
 
-<!-- operational-note -->
-Esta operación utiliza el host LPMU configurado para configurar el acceso a la red. Antes de comenzar, confirme que se pueda acceder a LPMU y que los cables de red estén conectados. Obtenga la contraseña sudo para la cuenta SSH en ese host. Esta contraseña autoriza cambios en el sistema y puede diferir de la contraseña de WebUI.
+Esta operación utiliza la equipo de aplicaciones configurada para configurar el acceso a la red. En Sistema, primero cambie el USB a "Equipo de aplicaciones" y verifique los cables de red. Su host SSH debe utilizar autenticación de clave y tener una huella digital de host verificada. Pídale a un usuario root que verifique estas configuraciones usando la Guía de seguridad.
 
-1. En "Acceso a la red ascendente", seleccione "Acceso a través de LPMU".
-2. Ingrese la contraseña sudo LPMU y seleccione el botón de acceso. La contraseña se utiliza sólo para esta ejecución y no se guarda; ingréselo nuevamente para una ejecución posterior.
+Obtenga la contraseña sudo para la cuenta SSH en ese host. Esta contraseña autoriza cambios en el sistema y puede diferir de la contraseña de WebUI.
+
+1. En "Acceso a la red ascendente", seleccione "Acceso a través de la equipo de aplicaciones".
+2. Ingrese la contraseña sudo de la equipo de aplicaciones y seleccione el botón de acceso. La contraseña se utiliza sólo para esta ejecución y no se guarda; ingréselo nuevamente para una ejecución posterior.
 3. Espere a que finalice la operación. No lo inicie nuevamente mientras procesa.
 4. El acceso se confirma solo cuando el resultado informa tanto una conexión a Internet como una configuración de red completa.
-5. Si falla o el resultado no está confirmado, lea primero el motivo. Expanda "Registro de ejecución" para obtener más detalles. Verifique la contraseña para ver si hay un error de contraseña, o el cableado y la red ascendente si no se encuentra una conexión a Internet.
+5. Después de cerrar la ventana de resultados, seleccione "Ver resultado" para abrirla nuevamente. Si falla o el resultado no está confirmado, lea el motivo y la etapa de falla. Expanda "Registro de ejecución" para obtener más detalles. Verifique la contraseña para ver si hay un error de contraseña, o el cableado y la red ascendente si no se encuentra una conexión a Internet.
+
+Si la huella del host no está confirmada o ha cambiado, pida a root que verifique su identidad. No siga intentando la conexión ni omita la comprobación. La salida del script remoto puede conservar su idioma original; guárdela si hace falta investigar.
 
 Una solicitud de estado fallida no significa que el script se haya detenido. Utilice el control "Actualizar estado" disponible para verificar la ejecución actual antes de decidir si desea volver a intentarlo.
 
@@ -303,6 +329,8 @@ La tarjeta SD es un almacenamiento extraíble y SPIFFS es un almacenamiento de a
 - Seleccione el botón de cambio de nombre, ingrese un nuevo nombre y confirme.
 - Seleccione “Nueva carpeta”, ingrese un nombre de carpeta y créela.
 - Seleccione el botón Actualizar para recargar el directorio actual y el estado de almacenamiento.
+
+Subir archivos, eliminarlos, renombrarlos, crear carpetas y montar o desmontar la tarjeta SD requiere una sesión válida. Leer y descargar archivos protegidos de Automatización también requiere permiso root. Si se deniega el acceso a admin, pida a root que use las páginas de configuración. No cambie la ruta ni use otra entrada para eludir los permisos.
 
 ### Cargar archivos
 
@@ -353,7 +381,9 @@ El dispositivo se reinicia durante una actualización, desconectando temporalmen
 
 La primera actualización desde una estructura de almacenamiento anterior, como 0.6.2, necesita un paquete USB/serial compatible aprobado por el proveedor. Cargar solo el firmware o WebUI no puede completar esta actualización. Pídale al administrador o proveedor del dispositivo que siga las instrucciones del paquete. No borre toda la memoria flash ni utilice una tabla de particiones antigua.
 
-Guarde los archivos importantes y mantenga instalada la tarjeta SD original. El primer inicio migra la configuración existente; mantenga la energía conectada. Luego, verifique el inicio de sesión, las redes, los ventiladores, la iluminación, los hosts SSH y las reglas de automatización. Revise las reglas antes de probar cualquier tarea que controle la energía, reinicie un dispositivo o ejecute comandos remotos.
+Guarde los archivos importantes antes de actualizar. La herramienta combinada conserva las claves y la tarjeta SD; No borra la configuración de la tarjeta. El primer inicio aún puede leer o migrar la configuración existente. La entrega al cliente sigue el procedimiento de “borrar la configuración anterior y configurarla nuevamente”. El administrador o proveedor del dispositivo debe seguir las instrucciones de entrega. No borre toda la memoria flash usted mismo ni trate los archivos conservados como una configuración completa.
+
+Mantenga la alimentación conectada durante la actualización y el primer inicio. Luego, verifique el inicio de sesión, las redes, los ventiladores, la iluminación, los hosts SSH y las reglas de automatización. Revise las reglas antes de probar cualquier tarea que controle la energía, reinicie un dispositivo o ejecute comandos remotos.
 
 El paquete compatible actualiza ambas ranuras de aplicaciones. No asuma que la otra ranura todavía contiene la versión anterior. Si se pierde la contraseña root, utilice únicamente un método de recuperación confirmado por el proveedor para que coincida con la estructura de 0.6.3. No instale una imagen antigua para restablecer la contraseña.
 
@@ -361,7 +391,7 @@ Los métodos de actualización web que aparecen a continuación se aplican únic
 
 ### Buscar actualizaciones desde un servidor OTA
 
-1. Revisar el “Current Version”.
+1. Revise la “Versión actual”. Dos instalaciones de 0.6.3 pueden ser versiones de revisión diferentes. Consulte la versión completa, el tiempo de compilación y las instrucciones del editor en lugar de solo los tres primeros números.
 2. Introduzca la dirección del servidor OTA proporcionada por un administrador o proveedor.
 3. Seleccione “Save” y luego seleccione “Check Update”.
 4. La página informa “Update Available” “Already up to date” de una versión anterior del servidor o de un error.
@@ -406,6 +436,8 @@ Un error en el campo rojo le indica qué corregir. Arréglelo y luego guárdelo.
 Compruebe qué operación falló y lea el motivo y el siguiente paso. Si el mensaje no da un motivo, no lo suponga.
 
 Seleccione “Details” cuando esté disponible. Seleccione “Hide” para ocultar los detalles. Si se muestra un botón ×, selecciónelo para descartar el mensaje. Cuando solicite ayuda, mantenga un registro del mensaje y los detalles para que un usuario de root los revise.
+
+Si un mensaje o sus detalles son largos, desplácese dentro de esa área para leer el contenido completo antes de decidir qué hacer a continuación.
 
 Si el resultado no está confirmado, actualice y compruebe el estado del dispositivo, archivo o tarea. Un tiempo de espera agotado o una desconexión no significa que la operación no se haya ejecutado. No repita de inmediato las operaciones de alimentación, eliminación, inicio de tareas o actualización. Pida ayuda a un usuario root si sigue sin poder confirmar el resultado.
 

@@ -1,8 +1,8 @@
 # TianshanOS Guide de l'utilisateur de l'administrateur
 
-Ce guide est basé sur TianshanOS 0.6.3. Pour les autres versions, consultez les instructions spécifiques à la version correspondante.
-
 Ce guide couvre les vérifications du système, les contrôles des appareils, la mise en réseau, les fichiers et les mises à jour du micrologiciel pour le compte admin. Le Guide des opérations racine couvre l'accès au terminal, les commandes à distance et la configuration de l'automatisation. Consultez le Guide de sécurité séparé pour la gestion de la sécurité.
+
+Version couverte : 0.6.4. Révisé le 3 novembre 2026.
 
 Utilisez les commandes affichées sur votre appareil. Certains nécessitent un matériel ou une configuration spécifique. Sur un ordinateur, passez la souris sur un bouton icône pour voir son nom. Sur un téléphone, faites glisser votre doigt dans un large tableau pour afficher ses autres colonnes.
 
@@ -18,6 +18,8 @@ Utilisez les commandes affichées sur votre appareil. Certains nécessitent un m
 La connexion avec le mot de passe par défaut ouvre un « rappel de sécurité ». Saisissez le mot de passe actuel, puis saisissez le nouveau mot de passe deux fois et sélectionnez « Modifier maintenant ». Les deux entrées de nouveau mot de passe doivent correspondre. Sélectionnez « Plus tard » pour fermer le rappel.
 
 Lorsque vous avez terminé, sélectionnez « Déconnexion » dans le coin supérieur droit. Vous devrez vous reconnecter pour utiliser l'appareil.
+
+Si l’accès est refusé, vérifiez le compte. Si la session a expiré, reconnectez-vous, puis vérifiez le résultat de l’opération précédente. Se reconnecter ne relance pas la tâche. Ne répétez pas aussitôt un envoi de fichier, une suppression ou une mise à jour.
 
 ### Changer de langue
 
@@ -38,9 +40,10 @@ Sélectionnez « Système » dans la navigation supérieure.
 
 ### Afficher l'état des ressources et des services
 
-« Ressources de la puce de gestion » affiche l’utilisation du CPU, de la DRAM et de la PSRAM de cette puce. Ces valeurs ne concernent ni AGX ni LPMU.
+« Ressources de la puce de gestion » affiche l'utilisation du processeur, de la DRAM et de la PSRAM sur la puce de gestion. Ces lectures n'indiquent pas l'utilisation des ressources sur l'ordinateur d’inférence ou l'ordinateur d’applications.
 
 - Sélectionnez « Détails » pour afficher la mémoire totale, utilisée et libre ainsi que d'autres informations sur la mémoire.
+- Les valeurs marquées « estimées » dans les détails de la mémoire sont uniquement à titre de référence. Si un avertissement apparaît, conservez les informations de la page et suivez ses instructions.
 - « Services » affiche le nombre de services en cours d'exécution et le total. Sélectionnez-le pour afficher l’état et l’étape de démarrage de chaque service.
 - Si un service signale un problème, actualisez son état. Pour le redémarrer, suivez « Redémarrer un service » ci-dessous.
 
@@ -86,41 +89,52 @@ Sélectionnez « Paramètres d'arrêt » pour modifier :
 
 Enregistrez le formulaire pour appliquer les paramètres de protection mis à jour.
 
+<!-- operational-note -->
+Après avoir ouvert « Paramètres d'arrêt », attendez que les paramètres actuels se chargent. Si la page indique qu'elle affiche les paramètres par défaut, ne les traitez pas comme les paramètres actuels de l'appareil. Vérifiez les tensions et les temps d'attente avant de sauvegarder. Vous pouvez annuler pendant le chargement.
+
 #### Changer la cible supérieure USB
 
 Le changement de cible USB peut déconnecter temporairement un périphérique connecté. Confirmez l'objectif et terminez le travail actif avant de continuer.
 
-Les appareils prenant en charge la commutation USB affichent un bouton « USB ». Chaque clic fait basculer le port USB supérieur vers la cible suivante : ESP, AGX, puis LPMU. Vérifiez la cible affichée sur le bouton et le message de la page pour confirmer le résultat.
+Les appareils prenant en charge la commutation USB affichent un bouton « USB ». Chaque clic fait basculer le port USB supérieur vers la cible suivante : ESP, ordinateur d’inférence, puis ordinateur d’applications. « Déconnecté » signifie qu'aucune cible n'est connectée. Vérifiez la cible affichée sur le bouton et le message de la page pour confirmer le résultat.
 
 ## 3. Panneau de périphérique
 
 Le « Panneau des périphériques » se trouve sur la page « Système ». Il contient des commandes d'alimentation de module, des actions rapides et des widgets de données.
 
-### AGX et LPMU
+### Contrôler l'ordinateur d’inférence et l'ordinateur d’applications
+
+« Ordinateur d’inférence » remplace l’ancien libellé AGX ; « Ordinateur d’applications » remplace LPMU. Les identifiants et commandes peuvent toujours utiliser `agx` et `lpmu`. Ne renommez pas ces identifiants vous-même.
 
 Enregistrez le travail sur le module et terminez son processus d'arrêt normal avant de couper l'alimentation. Une mise hors tension forcée peut entraîner la perte de données non enregistrées.
 
-- « AGX Power » affiche l'état de contrôle de l'alimentation. Sélectionnez-le pour allumer ou éteindre l'appareil, puis attendez la confirmation.
-- « LPMU Power » affiche « En ligne », « Hors ligne » ou « Inconnu ». Ces états proviennent d'une vérification du réseau. En ligne signifie que le module est accessible ; hors ligne signifie que ce n'est pas le cas. Aucun des deux états ne confirme à lui seul si le module est allumé ou éteint.
-- La sélection du bouton LPMU déclenche la même action que l'appui sur son bouton d'alimentation physique. Attendez le contrôle et le résultat affiché. Si le résultat est inconnu, vérifiez le module et le réseau avant d'appuyer à nouveau sur le bouton.
+- « Alimentation de l’ordinateur d’inférence » indique l’état du contrôle d’alimentation. Sélectionnez ce bouton pour allumer ou éteindre l’ordinateur, puis attendez la confirmation.
+- Dans « Alimentation de l’ordinateur d’applications », « Accessible par le réseau » et « Inaccessible par le réseau » indiquent si une connexion réseau est possible. Si la vérification échoue, l’état de l’alimentation reste inconnu. Ces résultats ne suffisent pas à savoir si l’ordinateur est allumé ou éteint.
+- La sélection du bouton Ordinateur d’applications déclenche la même action que l’appui sur son bouton d’alimentation physique. Attendez le contrôle et le résultat affiché. Si le résultat est inconnu, vérifiez l'ordinateur et le réseau avant d'appuyer à nouveau sur le bouton.
 
 ### Utiliser des actions rapides
 
 Un utilisateur root configure les cartes d’actions rapides. Leur affichage et l’autorisation de lancer une tâche sont deux réglages distincts. Une carte visible ne permet pas toujours de lancer sa tâche.
 
 1. Lisez le nom et la description de la carte pour identifier la tâche.
-2. Sélectionnez la carte et lisez le résultat. Ne le redémarrez pas pendant le traitement.
-3. Un message exécuté ou mis en file d'attente nécessite toujours une vérification réelle des résultats sur le périphérique ou la tâche cible. Demandez à un utilisateur root de vérifier, d'afficher les journaux ou d'arrêter un service en arrière-plan.
+2. Sélectionnez « Démarrer » ou la carte et lisez le résultat. Ne le redémarrez pas pendant le traitement.
+3. Un message exécuté ou mis en file d'attente nécessite toujours une vérification réelle des résultats sur le périphérique ou la tâche cible. Si un état de service est affiché, distinguez « Processus en cours d'exécution » de « Prêt ». Une carte comportant plusieurs tâches peut afficher « Certaines tâches ne sont pas prêtes ».
+
+Les cartes avec des tâches en arrière-plan à distance proposent également « Afficher le journal » et « Arrêter ». Ouvrez les journaux pour examiner les tâches associées. Si plusieurs enregistrements apparaissent, choisissez par nom de tâche et hôte d'origine. Vérifiez la cible avant de l'arrêter, attendez le résultat, puis vérifiez qu'elle s'est arrêtée. La fermeture du journal ou l'arrêt des mises à jour du journal n'arrête pas la tâche.
+
+« Historique d’exécution » contient aussi des tâches lancées auparavant. Leur présence ne prouve pas qu’elles sont toujours actives. Sélectionnez « Vérifier l’état distant » si nécessaire. admin peut l’ouvrir depuis la carte concernée ; le bouton indépendant dans Système est réservé à root. Si une commande est indisponible ou si le résultat reste incertain, demandez à root de vérifier.
 
 Si la tâche ne peut pas démarrer, suivez le motif affiché. N’appuyez pas plusieurs fois sur Démarrer :
 
 - Règle désactivée ou déclenchement manuel non autorisé : demandez à un utilisateur root de vérifier les paramètres de la règle. Une carte visible ne constitue pas une autorisation de l'exécuter.
 - Une tâche ou une opération en arrière-plan est en cours : Attendez son résultat. Ne le redémarrez pas.
-- Un enregistrement d'exécution en arrière-plan existe déjà pour la tâche : demandez à un utilisateur root de vérifier la tâche d'origine et de confirmer qu'elle est terminée avant de la recommencer.
+- Un enregistrement d'exécution existe déjà pour la tâche : vérifiez l'état et les journaux de la tâche d'origine au lieu de la redémarrer. S'il doit se terminer, arrêtez-le et vérifiez-le. Demandez à un utilisateur root de vérifier si vous ne parvenez pas à le résoudre.
 - Configuration non chargée, élément requis manquant ou automatisation en pause : demandez à un utilisateur root de vérifier la configuration et son état d’activation.
 
+Si la page signale un démarrage automatique ou une nouvelle tentative d'attente, laissez-la continuer. Les échecs de démarrage temporaires sont réessayés toutes les 30 secondes pendant 6 minutes maximum. Un démarrage non confirmé est vérifié avant un autre lancement. Une exécution manuelle ayant échoué n’est pas automatiquement répétée. Une fois l'attente terminée, vérifiez l'appareil et le réseau comme indiqué avant de décider si vous souhaitez sélectionner « Démarrer ».
+
 <!-- operational-note -->
-Après avoir déclenché une action, attendez quelques secondes avant d’en lancer une autre. La fermeture de la page, la suppression d'une carte ou le redémarrage de TianshanOS n'arrêtent pas les services en arrière-plan sur les hôtes distants.
+Après avoir déclenché une action, attendez quelques secondes avant d’en lancer une autre. La fermeture de la page, la suppression d'une carte ou le redémarrage de TianshanOS n'arrêtent pas les services en arrière-plan sur les hôtes distants. Pour maintenir un service arrêté, demandez à un utilisateur root de désactiver toute règle automatique susceptible de le redémarrer.
 
 Appuyez et maintenez une carte jusqu'à ce que l'indicateur de réorganisation apparaisse, puis faites-la glisser pour modifier l'ordre d'affichage.
 
@@ -141,6 +155,10 @@ Les widgets de données affichent et actualisent les données de l’appareil da
 4. Modifiez son étiquette, son style d'affichage et son unité selon vos besoins, puis enregistrez.
 
 Les widgets existants peuvent être modifiés, supprimés et réorganisés. Vous pouvez également sélectionner une carte de widget pour la modifier. Appuyez longuement sur un widget, puis faites-le glisser vers une nouvelle position.
+
+« Petit », « Moyen » et « Grand » utilisent une, deux et trois colonnes ; ils s'intègrent dans des écrans plus étroits. Lors de la modification d'une icône, saisissez son nom en utilisant l'exemple sur la page. Chaque valeur d'un widget à double valeur possède son propre paramètre de données. Vérifiez que les deux sources sont correctes et que les données sont mises à jour.
+
+« Échec du chargement des widgets de données » ne signifie pas qu'aucune configuration n'existe. Résolvez la cause et relisez-la. Si l'enregistrement échoue ou si son résultat n'est pas confirmé, conservez le contenu actuel et vérifiez le message. Voir vos modifications sur la page ne confirme pas qu’elles ont été enregistrées.
 
 ## 4. Gestion des ventilateurs
 
@@ -184,6 +202,11 @@ Sélectionnez « Courbe » dans l'en-tête de la section Contrôle du ventilateu
 
 Si l'enregistrement échoue, lisez le message et vérifiez l'état actuel avant de réessayer. Après avoir dissocié les variables de température, vérifiez également la température effective et l’état du ventilateur.
 
+<!-- operational-note -->
+Après avoir ouvert les paramètres ou choisi un autre ventilateur, attendez que ses paramètres actuels se chargent. Si la page indique qu'elle affiche les valeurs par défaut ou une version antérieure, ces valeurs ne confirment pas les paramètres actuels de l'appareil. Vérifiez-les avant de les enregistrer. Vérifiez également les résultats de lecture et d'enregistrement pour les liaisons de température.
+
+Si le message indique que les paramètres du ventilateur ont été appliqués mais pas entièrement enregistrés, le réglage actuel est peut-être déjà en vigueur. Un redémarrage peut restaurer les paramètres antérieurs. Vérifiez l'état réel du ventilateur, confirmez que le stockage de l'appareil est disponible, puis enregistrez à nouveau. Ne redémarrez pas l'appareil uniquement pour tester si la sauvegarde a fonctionné.
+
 ### Importer et exporter une courbe
 
 - Sélectionnez « Importer Config » et choisissez un fichier de courbe JSON. JSON est le format de fichier utilisé pour stocker les données de courbe. Passez en revue les nœuds, les limites et le numéro de ventilateur, puis sélectionnez « Enregistrer la courbe » pour les appliquer.
@@ -204,7 +227,7 @@ Une température de test remplace temporairement la source normale et affecte le
 ### Commandes courantes
 
 - Utilisez le bouton ampoule situé en bas d'une carte pour allumer ou éteindre la LED.
-- Déplacez le curseur « Luminosité » ou choisissez une couleur ou un préréglage.
+- Utilisez les curseurs de luminosité, de teinte et de saturation. La luminosité contrôle la luminosité de la lumière ; la teinte choisit la couleur ; la saturation se déplace entre le blanc et la couleur. La saturation à 0 donne une lumière blanche. Les changements de teinte et de saturation sont appliqués lorsque vous relâchez le curseur.
 - Utilisez le bouton d'animation pour ouvrir les « Paramètres LED ». Sélectionnez une animation sous « Animation programmatique », puis utilisez son contrôle de lecture ou d'arrêt.
 - Sélectionnez l'icône de sauvegarde en bas à droite de la carte pour enregistrer la configuration actuelle des LED.
 - Sélectionnez « All Off » pour éteindre toutes les LED et vérifier le résultat rapporté. Si certains échouent, vérifiez ces appareils.
@@ -214,7 +237,7 @@ Une température de test remplace temporairement la source normale et affecte le
 Les cartes de la matrice proposent des icônes pour les fonctions disponibles. Ouvrez une fonction, puis changez de groupe dans « Paramètres LED » :
 
 - « Animation programmatique » : sélectionnez et exécutez une animation.
-- « Image/QR Code » : choisissez une image de la carte SD ou saisissez le contenu d'un code QR.
+- « Image/Code QR » : Choisissez une image ou un code QR sous « Type » dans la carte, puis sélectionnez une image de la carte SD ou saisissez le contenu QR.
 - « Affichage du texte » : définissez le texte, la police, l'alignement, le défilement, le premier plan et l'arrière-plan.
 - « Filtre de post-traitement » : Choisissez un filtre et des paramètres, puis appliquez-le ou arrêtez-le.
 - « Correction des couleurs » : ajustez l'affichage et utilisez les commandes de réinitialisation, d'importation ou d'exportation disponibles.
@@ -277,16 +300,19 @@ DHCP attribue automatiquement des adresses réseau aux appareils connectés. Sé
 
 NAT transmet le trafic réseau entre les interfaces réseau de l'appareil. Activez ou désactivez NAT, puis sélectionnez « Enregistrer » pour conserver le paramètre. Vérifiez ensuite l'état du WiFi et d'Ethernet.
 
-#### Accédez au réseau en amont via LPMU
+#### Accéder au réseau en amont via l'ordinateur d’applications
 
-<!-- operational-note -->
-Cette opération utilise l'hôte LPMU configuré pour configurer l'accès au réseau. Avant de commencer, vérifiez que LPMU est accessible et que les câbles réseau sont connectés. Obtenez le mot de passe sudo pour le compte SSH sur cet hôte. Ce mot de passe autorise les modifications du système et peut différer du mot de passe WebUI.
+Cette opération utilise l'ordinateur d’applications configuré pour configurer l'accès au réseau. Sur le système, basculez d’abord USB sur « Ordinateur d’applications » et vérifiez les câbles réseau. Son hôte SSH doit utiliser l'authentification par clé et disposer d'une empreinte d'hôte vérifiée. Demandez à un utilisateur root de vérifier ces paramètres à l'aide du Guide de sécurité.
 
-1. Sous « Accès au réseau en amont », sélectionnez « Accès via LPMU ».
-2. Entrez le mot de passe sudo LPMU et sélectionnez le bouton d'accès. Le mot de passe est utilisé uniquement pour cette exécution et n'est pas enregistré ; saisissez-le à nouveau pour une exécution ultérieure.
+Obtenez le mot de passe sudo du compte SSH sur cet hôte. Ce mot de passe autorise les modifications du système et peut différer du mot de passe WebUI.
+
+1. Sous « Accès au réseau en amont », sélectionnez « Accès via l'ordinateur d’applications ».
+2. Entrez le mot de passe sudo de l'ordinateur d’applications et sélectionnez le bouton d'accès. Le mot de passe est utilisé uniquement pour cette exécution et n'est pas enregistré ; saisissez-le à nouveau pour une exécution ultérieure.
 3. Attendez la fin de l'opération. Ne le redémarrez pas pendant le traitement.
 4. L'accès est confirmé uniquement lorsque le résultat indique à la fois une connexion Internet et une configuration réseau terminée.
-5. En cas d'échec ou si le résultat n'est pas confirmé, lisez d'abord la raison. Développez « Journal d'exécution » pour plus de détails. Vérifiez le mot de passe pour une erreur de mot de passe, ou le câblage et le réseau en amont si aucune connexion Internet n'est trouvée.
+5. Après avoir fermé la fenêtre de résultats, sélectionnez « Afficher le résultat » pour l'ouvrir à nouveau. En cas d'échec ou si le résultat n'est pas confirmé, lisez la raison et l'étape de l'échec. Développez « Journal d'exécution » pour plus de détails. Vérifiez le mot de passe pour une erreur de mot de passe, ou le câblage et le réseau en amont si aucune connexion Internet n'est trouvée.
+
+Si l'empreinte de l'hôte n'est pas confirmée ou a changé, demandez d'abord à un utilisateur root de vérifier l'identité de l'hôte. Ne réessayez pas d’accéder et n’ignorez pas la vérification. La sortie du script distant peut rester dans sa langue d'origine ; conservez-le pour enquête si nécessaire.
 
 Un échec de demande d'état ne signifie pas que le script s'est arrêté. Utilisez le contrôle « Actualiser l'état » disponible pour vérifier l'exécution en cours avant de décider de réessayer.
 
@@ -303,6 +329,8 @@ La carte SD est un stockage amovible et SPIFFS est un stockage de fichiers inter
 - Sélectionnez le bouton Renommer, saisissez un nouveau nom et confirmez.
 - Sélectionnez « Nouveau dossier », saisissez un nom de dossier et créez-le.
 - Sélectionnez le bouton d'actualisation pour recharger le répertoire actuel et l'état de stockage.
+
+L’envoi, la suppression, le renommage de fichiers, la création de dossiers et le montage ou démontage de la carte SD exigent une session valide. Lire et télécharger des fichiers protégés d’Automatisation exige aussi les droits root. Si l’accès est refusé à admin, demandez à root d’utiliser les pages de configuration. Ne changez pas de chemin ou d’entrée pour contourner les permissions.
 
 ### Envoyer des fichiers
 
@@ -353,7 +381,9 @@ L'appareil redémarre lors d'une mise à jour, déconnectant temporairement l'in
 
 La première mise à niveau à partir d'une ancienne configuration de stockage, telle que la version 0.6.2, nécessite un package USB/série correspondant approuvé par le fournisseur. L’envoi du micrologiciel ou de WebUI seul ne suffit pas pour effectuer cette mise à niveau. Demandez à l'administrateur de l'appareil ou au fournisseur de suivre les instructions du package. N'effacez pas l'intégralité du flash et n'utilisez pas une ancienne table de partition.
 
-Enregistrez les fichiers importants et conservez la carte SD d'origine installée. Le premier démarrage migre la configuration existante ; garder l'alimentation connectée. Ensuite, vérifiez la connexion, la mise en réseau, les ventilateurs, l'éclairage, les hôtes SSH et les règles d'automatisation. Passez en revue les règles avant de tester une tâche qui contrôle l’alimentation, redémarre un appareil ou exécute des commandes à distance.
+Enregistrez les fichiers importants avant la mise à niveau. L'outil correspondant préserve les clés et la carte SD ; cela n'efface pas la configuration sur la carte. Le premier démarrage peut toujours lire ou migrer la configuration existante. La livraison au client suit la procédure « effacer l'ancienne configuration et configurer à nouveau ». L'administrateur de l'appareil ou le fournisseur doit suivre les instructions de livraison. N'effacez pas l'intégralité du flash vous-même et ne traitez pas les fichiers conservés comme une configuration terminée.
+
+Gardez l'alimentation connectée pendant la mise à niveau et le premier démarrage. Ensuite, vérifiez la connexion, la mise en réseau, les ventilateurs, l'éclairage, les hôtes SSH et les règles d'automatisation. Passez en revue les règles avant de tester une tâche qui contrôle l’alimentation, redémarre un appareil ou exécute des commandes à distance.
 
 Le package correspondant met à jour les deux emplacements d’application. Ne présumez pas que l’autre emplacement contient toujours l’ancienne version. Si le mot de passe root est perdu, utilisez uniquement une méthode de récupération confirmée par le fournisseur pour correspondre à la mise en page 0.6.3. Ne flashez pas une ancienne image de réinitialisation de mot de passe.
 
@@ -361,7 +391,7 @@ Les méthodes de mise à jour Web ci-dessous s'appliquent uniquement aux version
 
 ### Rechercher des mises à jour à partir d'un serveur OTA
 
-1. Revoir le “Current Version”.
+1. Consultez la « version actuelle ». Deux installations 0.6.3 peuvent être des versions de révision différentes. Vérifiez la version complète, la durée de construction et les instructions de l'éditeur plutôt que seulement les trois premiers chiffres.
 2. Saisissez l'adresse du serveur OTA fournie par un administrateur ou un éditeur.
 3. Sélectionnez “Save” puis sélectionnez “Check Update”.
 4. La page signale “Update Available” “Already up to date” une ancienne version du serveur ou une erreur.
@@ -406,6 +436,8 @@ Un champ d'erreur rouge vous indique ce qu'il faut corriger. Corrigez-le, puis e
 Identifiez l’opération qui a échoué, puis lisez le motif et l’étape suivante. Si le message ne donne aucun motif, ne le devinez pas.
 
 Sélectionnez “Details” lorsque disponible. Sélectionnez “Hide” pour masquer les détails. Si un bouton × s'affiche, sélectionnez-le pour ignorer le message. Lorsque vous demandez de l'aide, conservez une trace du message et des détails pour qu'un utilisateur root puisse les vérifier.
+
+Si un message ou ses détails sont longs, faites défiler cette zone pour lire l'intégralité du contenu avant de décider quoi faire ensuite.
 
 Si le résultat n’est pas confirmé, actualisez et vérifiez l’état de l’appareil, du fichier ou de la tâche. Un délai expiré ou une déconnexion ne signifie pas que l’opération n’a pas été exécutée. Ne répétez pas aussitôt une opération d’alimentation, de suppression, de lancement de tâche ou de mise à jour. Demandez à un utilisateur root de vérifier si le résultat reste inconnu.
 

@@ -31,7 +31,7 @@
   <script>
     // ja/ko/es/fr carry their own catalog file; zh and en need none. Resolve the language the way i18n.js does and load only that file.
     (function (up) {
-      var ok = /^(zh|en|ja|ko|es|fr)$/, c = window.RM_CATALOG = { base: up + 'assets/translations/', v: 'guides-063-20261028' };
+      var ok = /^(zh|en|ja|ko|es|fr)$/, c = window.RM_CATALOG = { base: up + 'assets/translations/', v: 'guides-064-20261103' };
       c.load = function () {
         var s; try { s = localStorage.getItem('rm-soft-lang'); } catch (e) {}
         var l = [new URLSearchParams(location.search).get('lang'), (location.hash.match(/^#(zh|en|ja|ko|es|fr)-/) || [])[1], s, window.RM_DEFAULT_LANG].filter(function (x) { return ok.test(x); })[0];
@@ -42,7 +42,7 @@
       // Each CJK face is requested only when its language is shown: every page used to ask for Noto Sans SC, JP and KR (about 0.9 MB of fonts and
       // 210 KB of stylesheet that English, Spanish and French visitors never use). While the head is parsing, document.write keeps the link
       // render-blocking like a static one; i18n.js calls this again (late) when the visitor switches language.
-      var cjk = { zh: 'assets/fonts/noto-sans-sc.css?v=guides-063-20261028', ja: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap', ko: 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap' };
+      var cjk = { zh: 'assets/fonts/noto-sans-sc.css?v=guides-064-20261103', ja: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap', ko: 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap' };
       c.fonts = function (l, late) {
         if (!cjk[l] || document.querySelector('link[data-cjk="' + l + '"]')) return;
         var h = /^https:/.test(cjk[l]) ? cjk[l] : up + cjk[l];
@@ -53,7 +53,7 @@
     })('../');
   </script>
   <script src="../assets/i18n.js?v=catalogs-20261004" defer></script>
-  <script src="../assets/guides.js?v=guides-063-20261028" defer></script>
+  <script src="../assets/guides.js?v=guides-064-20261103" defer></script>
   <script src="../assets/site-data.js?v=sample-2" defer></script>
   <script src="../assets/footer.js?v=sample-3" defer></script>
   <script src="../assets/nav-glide.js?v=glide-1" defer></script>
@@ -151,7 +151,7 @@
 <a class="toc-link toc-depth-1" href="#zh-section-8" data-toc-target="zh-section-8">查看网络与时间</a>
 <a class="toc-link toc-depth-1" href="#zh-section-9" data-toc-target="zh-section-9">高级操作</a>
 <a class="toc-link toc-depth-0" href="#zh-section-14" data-toc-target="zh-section-14">3. 设备面板</a>
-<a class="toc-link toc-depth-1" href="#zh-section-15" data-toc-target="zh-section-15">控制 AGX 和 LPMU</a>
+<a class="toc-link toc-depth-1" href="#zh-section-15" data-toc-target="zh-section-15">控制推理计算机和应用计算机</a>
 <a class="toc-link toc-depth-1" href="#zh-section-16" data-toc-target="zh-section-16">使用快捷操作</a>
 <a class="toc-link toc-depth-1" href="#zh-section-17" data-toc-target="zh-section-17">管理数据组件</a>
 <a class="toc-link toc-depth-0" href="#zh-section-18" data-toc-target="zh-section-18">4. 风扇管理</a>
@@ -196,7 +196,7 @@
 <a class="toc-link toc-depth-1" href="#en-section-8" data-toc-target="en-section-8">View Network and Time</a>
 <a class="toc-link toc-depth-1" href="#en-section-9" data-toc-target="en-section-9">Advanced Operations</a>
 <a class="toc-link toc-depth-0" href="#en-section-14" data-toc-target="en-section-14">3. Device Panel</a>
-<a class="toc-link toc-depth-1" href="#en-section-15" data-toc-target="en-section-15">Control AGX and LPMU</a>
+<a class="toc-link toc-depth-1" href="#en-section-15" data-toc-target="en-section-15">Control the Inference Computer and Application Computer</a>
 <a class="toc-link toc-depth-1" href="#en-section-16" data-toc-target="en-section-16">Use Quick Actions</a>
 <a class="toc-link toc-depth-1" href="#en-section-17" data-toc-target="en-section-17">Manage Data Widgets</a>
 <a class="toc-link toc-depth-0" href="#en-section-18" data-toc-target="en-section-18">4. Fan Management</a>
@@ -241,7 +241,7 @@
 <a class="toc-link toc-depth-1" href="#ja-section-8" data-toc-target="ja-section-8">ネットワークと時刻の表示</a>
 <a class="toc-link toc-depth-1" href="#ja-section-9" data-toc-target="ja-section-9">高度な操作</a>
 <a class="toc-link toc-depth-0" href="#ja-section-14" data-toc-target="ja-section-14">3. デバイスパネル</a>
-<a class="toc-link toc-depth-1" href="#ja-section-15" data-toc-target="ja-section-15">AGX と LPMU の制御</a>
+<a class="toc-link toc-depth-1" href="#ja-section-15" data-toc-target="ja-section-15">推論コンピューターとアプリケーションコンピューターを制御する</a>
 <a class="toc-link toc-depth-1" href="#ja-section-16" data-toc-target="ja-section-16">クイック アクションを使用する</a>
 <a class="toc-link toc-depth-1" href="#ja-section-17" data-toc-target="ja-section-17">データ ウィジェットの管理</a>
 <a class="toc-link toc-depth-0" href="#ja-section-18" data-toc-target="ja-section-18">4. ファン管理</a>
@@ -286,7 +286,7 @@
 <a class="toc-link toc-depth-1" href="#ko-section-8" data-toc-target="ko-section-8">네트워크 및 시간 보기</a>
 <a class="toc-link toc-depth-1" href="#ko-section-9" data-toc-target="ko-section-9">고급 작업</a>
 <a class="toc-link toc-depth-0" href="#ko-section-14" data-toc-target="ko-section-14">3. 장치 패널</a>
-<a class="toc-link toc-depth-1" href="#ko-section-15" data-toc-target="ko-section-15">AGX 및 LPMU 제어</a>
+<a class="toc-link toc-depth-1" href="#ko-section-15" data-toc-target="ko-section-15">추론 컴퓨터 및 애플리케이션 컴퓨터 제어</a>
 <a class="toc-link toc-depth-1" href="#ko-section-16" data-toc-target="ko-section-16">빠른 작업 사용</a>
 <a class="toc-link toc-depth-1" href="#ko-section-17" data-toc-target="ko-section-17">데이터 위젯 관리</a>
 <a class="toc-link toc-depth-0" href="#ko-section-18" data-toc-target="ko-section-18">4. 팬 관리</a>
@@ -331,7 +331,7 @@
 <a class="toc-link toc-depth-1" href="#es-section-8" data-toc-target="es-section-8">Ver red y hora</a>
 <a class="toc-link toc-depth-1" href="#es-section-9" data-toc-target="es-section-9">Operaciones avanzadas</a>
 <a class="toc-link toc-depth-0" href="#es-section-14" data-toc-target="es-section-14">3. Panel de dispositivos</a>
-<a class="toc-link toc-depth-1" href="#es-section-15" data-toc-target="es-section-15">Controla AGX y LPMU</a>
+<a class="toc-link toc-depth-1" href="#es-section-15" data-toc-target="es-section-15">Controlar la equipo de inferencia y la equipo de aplicaciones</a>
 <a class="toc-link toc-depth-1" href="#es-section-16" data-toc-target="es-section-16">Usar acciones rápidas</a>
 <a class="toc-link toc-depth-1" href="#es-section-17" data-toc-target="es-section-17">Administrar widgets de datos</a>
 <a class="toc-link toc-depth-0" href="#es-section-18" data-toc-target="es-section-18">4. Gestión de ventiladores</a>
@@ -376,7 +376,7 @@
 <a class="toc-link toc-depth-1" href="#fr-section-8" data-toc-target="fr-section-8">Afficher le réseau et l'heure</a>
 <a class="toc-link toc-depth-1" href="#fr-section-9" data-toc-target="fr-section-9">Opérations avancées</a>
 <a class="toc-link toc-depth-0" href="#fr-section-14" data-toc-target="fr-section-14">3. Panneau de périphérique</a>
-<a class="toc-link toc-depth-1" href="#fr-section-15" data-toc-target="fr-section-15">AGX et LPMU</a>
+<a class="toc-link toc-depth-1" href="#fr-section-15" data-toc-target="fr-section-15">Contrôler l'ordinateur d’inférence et l'ordinateur d’applications</a>
 <a class="toc-link toc-depth-1" href="#fr-section-16" data-toc-target="fr-section-16">Utiliser des actions rapides</a>
 <a class="toc-link toc-depth-1" href="#fr-section-17" data-toc-target="fr-section-17">Gérer les widgets de données</a>
 <a class="toc-link toc-depth-0" href="#fr-section-18" data-toc-target="fr-section-18">4. Gestion des ventilateurs</a>
@@ -426,7 +426,7 @@
 <a class="toc-link toc-depth-1" href="#zh-section-8" data-toc-target="zh-section-8">查看网络与时间</a>
 <a class="toc-link toc-depth-1" href="#zh-section-9" data-toc-target="zh-section-9">高级操作</a>
 <a class="toc-link toc-depth-0" href="#zh-section-14" data-toc-target="zh-section-14">3. 设备面板</a>
-<a class="toc-link toc-depth-1" href="#zh-section-15" data-toc-target="zh-section-15">控制 AGX 和 LPMU</a>
+<a class="toc-link toc-depth-1" href="#zh-section-15" data-toc-target="zh-section-15">控制推理计算机和应用计算机</a>
 <a class="toc-link toc-depth-1" href="#zh-section-16" data-toc-target="zh-section-16">使用快捷操作</a>
 <a class="toc-link toc-depth-1" href="#zh-section-17" data-toc-target="zh-section-17">管理数据组件</a>
 <a class="toc-link toc-depth-0" href="#zh-section-18" data-toc-target="zh-section-18">4. 风扇管理</a>
@@ -471,7 +471,7 @@
 <a class="toc-link toc-depth-1" href="#en-section-8" data-toc-target="en-section-8">View Network and Time</a>
 <a class="toc-link toc-depth-1" href="#en-section-9" data-toc-target="en-section-9">Advanced Operations</a>
 <a class="toc-link toc-depth-0" href="#en-section-14" data-toc-target="en-section-14">3. Device Panel</a>
-<a class="toc-link toc-depth-1" href="#en-section-15" data-toc-target="en-section-15">Control AGX and LPMU</a>
+<a class="toc-link toc-depth-1" href="#en-section-15" data-toc-target="en-section-15">Control the Inference Computer and Application Computer</a>
 <a class="toc-link toc-depth-1" href="#en-section-16" data-toc-target="en-section-16">Use Quick Actions</a>
 <a class="toc-link toc-depth-1" href="#en-section-17" data-toc-target="en-section-17">Manage Data Widgets</a>
 <a class="toc-link toc-depth-0" href="#en-section-18" data-toc-target="en-section-18">4. Fan Management</a>
@@ -516,7 +516,7 @@
 <a class="toc-link toc-depth-1" href="#ja-section-8" data-toc-target="ja-section-8">ネットワークと時刻の表示</a>
 <a class="toc-link toc-depth-1" href="#ja-section-9" data-toc-target="ja-section-9">高度な操作</a>
 <a class="toc-link toc-depth-0" href="#ja-section-14" data-toc-target="ja-section-14">3. デバイスパネル</a>
-<a class="toc-link toc-depth-1" href="#ja-section-15" data-toc-target="ja-section-15">AGX と LPMU の制御</a>
+<a class="toc-link toc-depth-1" href="#ja-section-15" data-toc-target="ja-section-15">推論コンピューターとアプリケーションコンピューターを制御する</a>
 <a class="toc-link toc-depth-1" href="#ja-section-16" data-toc-target="ja-section-16">クイック アクションを使用する</a>
 <a class="toc-link toc-depth-1" href="#ja-section-17" data-toc-target="ja-section-17">データ ウィジェットの管理</a>
 <a class="toc-link toc-depth-0" href="#ja-section-18" data-toc-target="ja-section-18">4. ファン管理</a>
@@ -561,7 +561,7 @@
 <a class="toc-link toc-depth-1" href="#ko-section-8" data-toc-target="ko-section-8">네트워크 및 시간 보기</a>
 <a class="toc-link toc-depth-1" href="#ko-section-9" data-toc-target="ko-section-9">고급 작업</a>
 <a class="toc-link toc-depth-0" href="#ko-section-14" data-toc-target="ko-section-14">3. 장치 패널</a>
-<a class="toc-link toc-depth-1" href="#ko-section-15" data-toc-target="ko-section-15">AGX 및 LPMU 제어</a>
+<a class="toc-link toc-depth-1" href="#ko-section-15" data-toc-target="ko-section-15">추론 컴퓨터 및 애플리케이션 컴퓨터 제어</a>
 <a class="toc-link toc-depth-1" href="#ko-section-16" data-toc-target="ko-section-16">빠른 작업 사용</a>
 <a class="toc-link toc-depth-1" href="#ko-section-17" data-toc-target="ko-section-17">데이터 위젯 관리</a>
 <a class="toc-link toc-depth-0" href="#ko-section-18" data-toc-target="ko-section-18">4. 팬 관리</a>
@@ -606,7 +606,7 @@
 <a class="toc-link toc-depth-1" href="#es-section-8" data-toc-target="es-section-8">Ver red y hora</a>
 <a class="toc-link toc-depth-1" href="#es-section-9" data-toc-target="es-section-9">Operaciones avanzadas</a>
 <a class="toc-link toc-depth-0" href="#es-section-14" data-toc-target="es-section-14">3. Panel de dispositivos</a>
-<a class="toc-link toc-depth-1" href="#es-section-15" data-toc-target="es-section-15">Controla AGX y LPMU</a>
+<a class="toc-link toc-depth-1" href="#es-section-15" data-toc-target="es-section-15">Controlar la equipo de inferencia y la equipo de aplicaciones</a>
 <a class="toc-link toc-depth-1" href="#es-section-16" data-toc-target="es-section-16">Usar acciones rápidas</a>
 <a class="toc-link toc-depth-1" href="#es-section-17" data-toc-target="es-section-17">Administrar widgets de datos</a>
 <a class="toc-link toc-depth-0" href="#es-section-18" data-toc-target="es-section-18">4. Gestión de ventiladores</a>
@@ -651,7 +651,7 @@
 <a class="toc-link toc-depth-1" href="#fr-section-8" data-toc-target="fr-section-8">Afficher le réseau et l'heure</a>
 <a class="toc-link toc-depth-1" href="#fr-section-9" data-toc-target="fr-section-9">Opérations avancées</a>
 <a class="toc-link toc-depth-0" href="#fr-section-14" data-toc-target="fr-section-14">3. Panneau de périphérique</a>
-<a class="toc-link toc-depth-1" href="#fr-section-15" data-toc-target="fr-section-15">AGX et LPMU</a>
+<a class="toc-link toc-depth-1" href="#fr-section-15" data-toc-target="fr-section-15">Contrôler l'ordinateur d’inférence et l'ordinateur d’applications</a>
 <a class="toc-link toc-depth-1" href="#fr-section-16" data-toc-target="fr-section-16">Utiliser des actions rapides</a>
 <a class="toc-link toc-depth-1" href="#fr-section-17" data-toc-target="fr-section-17">Gérer les widgets de données</a>
 <a class="toc-link toc-depth-0" href="#fr-section-18" data-toc-target="fr-section-18">4. Gestion des ventilateurs</a>
@@ -690,14 +690,15 @@
       <div class="guide-article-column">
 
           <article class="guide-article lang-pane" data-lang-pane="zh">
-<p>本指南依据 TianshanOS 0.6.3 编写。使用其他版本时，请结合对应版本的说明核对操作。</p>
 <p>本指南面向使用 admin 账户的用户，介绍系统查看、设备控制、网络、文件和固件升级。终端、远程指令与自动化配置由 root 运维指南说明；安全管理请参阅单独的安全指南。</p>
+<p>对应版本：0.6.4 · 修订日期：2026-11-03。</p>
 <p>按设备页面显示的功能操作。部分选项需要指定硬件或配置才会出现。电脑上将指针停在图标按钮上，可查看按钮名称。手机表格较宽时，在表格内左右滑动查看其他列。</p>
 <h2 id="zh-section-1" data-heading-key="section-1"><a href="#zh-section-1">1. 开始使用</a></h2>
 <h3 id="zh-section-2" data-heading-key="section-2"><a href="#zh-section-2">进入 WebUI</a></h3>
 <ol><li>在浏览器中打开管理员提供的设备网页地址（WebUI）。</li><li>点击页面右上角的“登录”。</li><li>用户名保持为 <code>admin</code>，输入设备提供的 admin 密码。</li><li>点击“登录”。登录成功后，右上角会显示当前用户名。</li></ol>
 <p>使用默认密码登录后，页面会显示“安全提醒”。输入当前密码，再输入两次新密码，点击“立即修改”。两次新密码必须一致。点击“稍后修改”可关闭提醒。</p>
 <p>使用完毕后，点击右上角的“退出登录”。再次操作设备时需要重新登录。</p>
+<p>页面提示没有权限时，先确认当前账户；登录失效时重新登录。随后检查刚才的操作结果。登录恢复不会重做之前的任务；不要直接重复上传、删除或升级。</p>
 <h3 id="zh-section-3" data-heading-key="section-3"><a href="#zh-section-3">切换语言</a></h3>
 <p>点击页面顶部的语言按钮，在菜单中选择中文或 English。页面内容和按钮名称会立即切换到所选语言。</p>
 <h3 id="zh-section-4" data-heading-key="section-4"><a href="#zh-section-4">页面导航</a></h3>
@@ -706,8 +707,8 @@
 <h2 id="zh-section-5" data-heading-key="section-5"><a href="#zh-section-5">2. 系统状态与常用操作</a></h2>
 <p>点击顶部导航中的“系统”进入系统页面。</p>
 <h3 id="zh-section-6" data-heading-key="section-6"><a href="#zh-section-6">查看资源与服务状态</a></h3>
-<p>“带外管理芯片资源监控”显示管理芯片的 CPU、DRAM 和 PSRAM 使用情况。这些读数不代表 AGX 或 LPMU 的资源使用率。</p>
-<ul><li>点击“详情”，查看内存总量、已用和空闲空间等信息。</li><li>“服务”按钮显示运行中的服务数和服务总数。点击后可查看各项服务的状态和启动阶段。</li><li>服务状态异常时，先刷新。需要重启的服务按下方“重启单项服务”操作。</li></ul>
+<p>“带外管理芯片资源监控”显示管理芯片的 CPU、DRAM 和 PSRAM 使用情况。这些读数不代表推理计算机或应用计算机的资源使用率。</p>
+<ul><li>点击“详情”，查看内存总量、已用和空闲空间等信息。</li><li>内存详情中标为“估算”的数值只供参考。出现警示时，保留页面信息，按说明检查。</li><li>“服务”按钮显示运行中的服务数和服务总数。点击后可查看各项服务的状态和启动阶段。</li><li>服务状态异常时，先刷新。需要重启的服务按下方“重启单项服务”操作。</li></ul>
 <h3 id="zh-section-7" data-heading-key="section-7"><a href="#zh-section-7">查看系统与电源信息</a></h3>
 <p>“系统总览”显示芯片、固件版本、ESP-IDF 版本和运行时间。日常使用主要核对固件版本；ESP-IDF 是设备所用系统框架的版本。</p>
 <p>卡片右侧显示输入电压、内部电压、电流、功率和保护状态。</p>
@@ -726,20 +727,25 @@
 <p>点击“关机设置”，可以调整以下内容：</p>
 <ul><li>“低电压阈值”：低于该电压后开始关机倒计时。</li><li>“恢复电压阈值”：高于该电压后开始恢复流程。</li><li>“关机倒计时”：检测到低电压后等待多久执行关机。</li><li>“恢复保持时间”：电压恢复后等待多久确认供电稳定。</li><li>“风扇停止延迟”：关机后等待多久关闭风扇。</li></ul>
 <p>保存后，页面会应用新的保护设置。</p>
+<p>打开“关机设置”后，等待当前设置读取完成。提示显示默认值时，不要把它当作设备当前设置；核对电压和等待时间后再保存。读取期间可以取消。</p>
 <h4 id="zh-section-13" data-heading-key="section-13"><a href="#zh-section-13">切换顶部 USB 连接目标</a></h4>
 <aside class="guide-notice"><span>操作提示</span><p>切换 USB 目标可能使当前连接的外设暂时断开。确认目标设备和正在进行的工作后再操作。</p></aside>
-<p>设备提供 USB 切换功能时，页面会显示“USB”按钮。每点击一次，顶部 USB 接口按 ESP、AGX、LPMU 的顺序切换到下一个目标。查看按钮上的目标名称和页面提示，确认切换结果。</p>
+<p>设备提供 USB 切换功能时，页面会显示“USB”按钮。每点击一次，顶部 USB 接口按 ESP、推理计算机、应用计算机的顺序切换到下一个目标。显示“已断开”时，表示当前没有接通目标。查看按钮上的目标名称和页面提示，确认切换结果。</p>
 <h2 id="zh-section-14" data-heading-key="section-14"><a href="#zh-section-14">3. 设备面板</a></h2>
 <p>“设备面板”位于“系统”页面，包含模组电源控制、快捷操作和数据组件。</p>
-<h3 id="zh-section-15" data-heading-key="section-15"><a href="#zh-section-15">控制 AGX 和 LPMU</a></h3>
+<h3 id="zh-section-15" data-heading-key="section-15"><a href="#zh-section-15">控制推理计算机和应用计算机</a></h3>
+<p>界面中的“推理计算机”对应原 AGX，“应用计算机”对应原 LPMU。设备标识或命令中的 <code>agx</code>、<code>lpmu</code> 仍可能保留原写法，不要自行改名。</p>
 <aside class="guide-notice"><span>操作提示</span><p>关闭模组前，先保存其中的工作并完成正常关机流程。强制断电可能造成未保存的数据丢失。</p></aside>
-<ul><li>“AGX 电源”显示电源控制状态。点击按钮可上电或断电；操作后等待页面确认。</li><li>“LPMU 电源”显示“在线”“离线”或“未知”。在线表示网络能够连通，离线表示网络无法连通。这些状态不能单独证明模组已开机或关机。</li><li>点击 LPMU 按钮会触发一次与物理电源按钮相同的操作。随后等待检测和页面提示；结果未知时，先检查模组和网络，不要连续点击。</li></ul>
+<ul><li>“推理计算机电源”显示电源控制状态。点击按钮可上电或断电；操作后等待页面确认。</li><li>“应用计算机电源”的“网络可达”表示网络能够连通，“网络不可达”表示网络无法连通；检测失败时，电源状态仍未知。这些结果不能单独证明计算机已开机或关机。</li><li>点击应用计算机按钮会触发一次与物理电源按钮相同的操作。随后等待检测和页面提示；结果未知时，先检查计算机和网络，不要连续点击。</li></ul>
 <h3 id="zh-section-16" data-heading-key="section-16"><a href="#zh-section-16">使用快捷操作</a></h3>
 <p>快捷操作卡片由 root 用户配置。显示卡片和允许手动运行是两项设置；看得到卡片，不代表可以启动任务。</p>
-<ol><li>查看卡片名称和说明，确认将要执行的任务。</li><li>点击卡片，阅读结果提示。处理中不要再次启动。</li><li>提示已执行或已排队后，还要确认目标设备或任务的实际结果。需要核验、查看日志或停止后台服务时，请 root 用户处理。</li></ol>
+<ol><li>查看卡片名称和说明，确认将要执行的任务。</li><li>点击“启动”或卡片，阅读结果提示。处理中不要再次启动。</li><li>提示已执行或已排队后，还要确认目标设备或任务的实际结果。有服务状态时，区分“进程运行中”和“已就绪”；多项任务可能显示“部分任务未就绪”。</li></ol>
+<p>包含远程后台任务的卡片还会提供“查看日志”和“停止”。点击日志按钮查看相关任务；有多条记录时，按任务名称和原主机选择。停止前确认目标，提交后等待结果，再检查是否已停止。关闭日志或停止实时查看，不会停止任务。</p>
+<p>“运行记录”可能包含以前启动的任务，不代表它们仍在运行。需要时点击“核验远端状态”。Admin 可通过相关卡片进入；系统页独立的“运行记录”按钮只对 root 显示。没有对应按钮或无法确认结果时，请 root 用户检查。</p>
 <p>无法启动时，按提示处理，不要连续点击：</p>
-<ul><li>规则已停用，或不允许手动触发：请 root 用户检查规则设置。看得到卡片，不代表可以运行。</li><li>任务或后台操作正在处理：等待结果，不要重复启动。</li><li>同一任务已有后台运行记录：请 root 用户核验原任务，确认结束后再启动。</li><li>配置尚未加载、缺少关联项或自动化已暂停：请 root 用户检查配置和启停状态。</li></ul>
-<p>完成一次点击后，等待几秒再启动其他操作。关闭页面、删除卡片或重启 TianshanOS，都不会替你停止远程主机上的后台服务。</p>
+<ul><li>规则已停用，或不允许手动触发：请 root 用户检查规则设置。看得到卡片，不代表可以运行。</li><li>任务或后台操作正在处理：等待结果，不要重复启动。</li><li>同一任务已有运行记录：先检查原任务的状态和日志，不要重复启动。需要结束原任务时，停止并核验；无法处理时，请 root 用户检查。</li><li>配置尚未加载、缺少关联项或自动化已暂停：请 root 用户检查配置和启停状态。</li></ul>
+<p>显示正在自动启动或等待重试时，按页面提示等待。暂时无法启动时，每 30 秒再试，最多等待 6 分钟；上次结果未确认时先检查，不重复启动。手动执行失败不会自动重跑。等待结束后，按提示检查设备和网络，再决定是否点击“启动”。</p>
+<p>完成一次点击后，等待几秒再启动其他操作。关闭页面、删除卡片或重启 TianshanOS，都不会替你停止远程主机上的后台服务。要让服务保持停止，请 root 用户先停用可能再次启动它的自动规则。</p>
 <p>长按卡片，出现排序提示后拖动，可以调整显示顺序。</p>
 <p>没有卡片时，先阅读说明。配置加载中就等待；页面报告无法加载时，保留原因并联系 root 用户。只是没有配置快捷操作时，请 root 用户检查规则的“显示在面板”设置。</p>
 <p>规则修改或导入后，当前配置会更新，不需要为了切换规则而重启。卡片任务刚被调整时，先请 root 用户确认任务内容，再执行。</p>
@@ -748,6 +754,8 @@
 <p>数据组件用于在“设备面板”中持续显示设备数据。</p>
 <ol><li>点击“组件管理”。</li><li>选择刷新间隔，或关闭自动刷新。</li><li>添加预设组件，或选择页面提供的组件样式和数据来源。</li><li>根据需要编辑名称、显示方式和单位，然后保存。</li></ol>
 <p>已有组件可以编辑、删除和调整顺序。也可以直接点击组件卡片进入编辑界面。长按组件后拖动，可以改变它在面板中的位置。</p>
+<p>宽度选项中的“小”“中”“大”分别占一、二、三列；窄屏会自动收窄。编辑图标时，按页面示例填写图标名称。双数值组件的两个数值分别取自各自的数据设置，核对两项来源是否正确、数据是否更新。</p>
+<p>“加载数据组件失败”不代表没有配置，处理原因后再读取。保存失败或保存结果未确认时，保留当前内容并检查提示；不要把页面仍显示着修改内容当作已经保存成功。</p>
 <h2 id="zh-section-18" data-heading-key="section-18"><a href="#zh-section-18">4. 风扇管理</a></h2>
 <p>“风扇控制”位于“系统”页面。卡片显示设备提供的风扇。设置曲线前，核对风扇编号。</p>
 <h3 id="zh-section-19" data-heading-key="section-19"><a href="#zh-section-19">查看风扇状态</a></h3>
@@ -763,6 +771,8 @@
 <p>点击“风扇控制”区域顶部的“曲线”，打开“风扇曲线管理”。卡片内的“曲线”只切换运行模式。</p>
 <ol><li>在“风扇”中选择要调整的编号，并与系统页卡片核对。</li><li>在“温度变量绑定”中点击“添加变量”，选择温度来源并填写权重。</li><li>点击“绑定”。绑定的温度来源由曲线、智能模式的风扇共用，修改会影响使用该来源的风扇。</li><li>在“曲线节点”中添加或编辑节点。每条曲线至少需要 2 个节点，最多支持 10 个。</li><li>设置“最小转速”和“最大转速”。这里填写的是调速百分比，最小值不能高于最大值。</li><li>设置“温度回差”和“最小调节间隔”。回差范围为 0-20°C，可减少温度小幅波动造成的频繁调速。间隔范围为 500-30000 ms，1000 ms 等于 1 秒。</li><li>点击“保存曲线”。成功后，设置被保存，所选风扇切换到曲线模式。若希望继续使用智能热控，返回风扇卡片点击“智能”。</li></ol>
 <p>保存失败时，先查看具体提示并检查当前状态，再决定是否重试。解除温度绑定后，也应检查有效温度和风扇状态。</p>
+<p>打开设置或切换风扇后，等待当前设置读取完成。页面提示显示默认值或此前草稿时，这些值不代表设备当前设置，核对后再保存。温度绑定也要确认读取和绑定结果。</p>
+<p>出现“风扇设置已应用，但配置未全部保存”时，当前调节可能已经生效，重启后却可能恢复旧设置。检查风扇实际状态，确认设备内部存储可用后再保存；不要靠重启判断是否保存成功。</p>
 <h3 id="zh-section-22" data-heading-key="section-22"><a href="#zh-section-22">导入和导出曲线</a></h3>
 <ul><li>点击“导入配置”，选择曲线 JSON 文件。JSON 是保存曲线数据的文件格式。检查载入的节点、限制和风扇编号，再点击“保存曲线”使其生效。</li><li>点击“导出配置”，浏览器会下载当前曲线，并尝试将副本保存到 SD 卡的 <code>/sdcard/config</code> 目录。分别检查浏览器下载结果和页面提示的 SD 卡保存结果。</li></ul>
 <h3 id="zh-section-23" data-heading-key="section-23"><a href="#zh-section-23">使用测试温度</a></h3>
@@ -771,10 +781,10 @@
 <h2 id="zh-section-24" data-heading-key="section-24"><a href="#zh-section-24">5. LED 管理</a></h2>
 <p>“LED 控制”位于“系统”页面，只显示设备提供的 LED。不同 LED 可用的功能不同。</p>
 <h3 id="zh-section-25" data-heading-key="section-25"><a href="#zh-section-25">常用控制</a></h3>
-<ul><li>使用卡片底部的灯泡按钮开启或关闭 LED。</li><li>拖动“亮度”滑块调整亮度，或选择颜色和预设色。</li><li>点击动画按钮进入“LED 设置”，在“程序动画”中选择动画并使用对应的播放或停止按钮。</li><li>点击卡片右下角的保存图标，保存当前 LED 配置。</li><li>点击“全部关闭”关闭所有 LED，并查看页面报告的结果。部分关闭失败时，检查对应设备。</li></ul>
+<ul><li>使用卡片底部的灯泡按钮开启或关闭 LED。</li><li>拖动亮度、色相和饱和度三条滑块。亮度控制明暗，色相选择颜色，饱和度在白色和彩色之间调整；饱和度为 0 时是白光。松开色相或饱和度滑块后才应用颜色。</li><li>点击动画按钮进入“LED 设置”，在“程序动画”中选择动画并使用对应的播放或停止按钮。</li><li>点击卡片右下角的保存图标，保存当前 LED 配置。</li><li>点击“全部关闭”关闭所有 LED，并查看页面报告的结果。部分关闭失败时，检查对应设备。</li></ul>
 <h3 id="zh-section-26" data-heading-key="section-26"><a href="#zh-section-26">LED 矩阵高级功能</a></h3>
 <p>矩阵设备的卡片提供相应功能图标，打开后可在“LED 设置”中切换分组：</p>
-<ul><li>“程序动画”：选择和运行动画。</li><li>“图像/QR码”：从 SD 卡选择图像，或输入内容生成 QR 码。</li><li>“文本显示”：填写文字，并设置字体、对齐、滚动、前景色和背景。</li><li>“后处理滤镜”：选择滤镜及参数，再应用或停止。</li><li>“色彩校正”：调整显示效果，并按页面按钮重置、导入或导出设置。</li></ul>
+<ul><li>“程序动画”：选择和运行动画。</li><li>“图像/QR码”：在卡片的“类型”中选择图像或 QR 码，再从 SD 卡选择图像，或输入 QR 码内容。</li><li>“文本显示”：填写文字，并设置字体、对齐、滚动、前景色和背景。</li><li>“后处理滤镜”：选择滤镜及参数，再应用或停止。</li><li>“色彩校正”：调整显示效果，并按页面按钮重置、导入或导出设置。</li></ul>
 <p>操作后检查灯光或矩阵画面。只使用页面提供的功能。设置失败时，按提示检查文件、输入和设备状态。</p>
 <h2 id="zh-section-27" data-heading-key="section-27"><a href="#zh-section-27">6. 网络管理</a></h2>
 <aside class="guide-notice"><span>操作提示</span><p>点击顶部导航中的“网络”进入“网络设置”。修改网络模式、热点或 NAT 设置可能断开 WebUI。保存前，确认能用新的网络地址重新连接设备。</p></aside>
@@ -797,15 +807,18 @@
 <h3 id="zh-section-34" data-heading-key="section-34"><a href="#zh-section-34">高级网络操作</a></h3>
 <h4 id="zh-section-35" data-heading-key="section-35"><a href="#zh-section-35">设置 NAT 网关</a></h4>
 <p>NAT 用于在设备的网络接口之间转发网络流量。启用或停用 NAT 后，点击“保存”保留当前设置。操作完成后检查 WiFi 和 Ethernet 状态。</p>
-<h4 id="zh-section-36" data-heading-key="section-36"><a href="#zh-section-36">通过 LPMU 接入上层网络</a></h4>
-<p>此操作通过已配置的 LPMU 主机接入网络。先确认能连接 LPMU、网络线缆已接好，再准备该主机 SSH 账号的 sudo 密码。这个密码用于允许账号修改系统设置，可能与 WebUI 登录密码不同。</p>
-<ol><li>在“接入上层网络”区域点击“通过 LPMU 接入”。</li><li>在弹窗中输入“LPMU sudo 密码”，再点击接入按钮。密码仅用于本次操作，不保存；下次执行需要重新输入。</li><li>等待处理结束，不要重复启动。</li><li>结果窗口显示互联网连接正常和网络配置已完成时，才表示接入成功。</li><li>失败或结果未确认时，先阅读具体原因；需要更多信息时展开“执行日志”。密码错误时核对密码，找不到互联网连接时检查网络接线与上层网络。</li></ol>
+<h4 id="zh-section-36" data-heading-key="section-36"><a href="#zh-section-36">通过应用计算机接入上层网络</a></h4>
+<p>此操作通过已配置的应用计算机接入网络。先在系统页将 USB 切换到“应用计算机”，确认网络线缆已接好。该计算机的 SSH 主机需要启用密钥认证，并已核对主机指纹；相关设置由 root 用户按安全指南检查。</p>
+<p>准备该主机 SSH 账号的 sudo 密码。这个密码用于允许账号修改系统设置，可能与 WebUI 登录密码不同。</p>
+<ol><li>在“接入上层网络”区域点击“通过应用计算机接入”。</li><li>在弹窗中输入“应用计算机 sudo 密码”，再点击接入按钮。密码仅用于本次操作，不保存；下次执行需要重新输入。</li><li>等待处理结束，不要重复启动。</li><li>结果窗口显示互联网连接正常和网络配置已完成时，才表示接入成功。</li><li>关闭结果窗口后，可点击“查看结果”再次打开。失败或结果未确认时，阅读原因和失败阶段；需要更多信息时展开“执行日志”。密码错误时核对密码，找不到互联网连接时检查网络接线与上层网络。</li></ol>
+<p>提示主机指纹未确认或发生变化时，先请 root 用户核对身份，不要反复接入或跳过校验。日志中的远程脚本输出可能保留原语言；可以保留输出供检查。</p>
 <p>状态获取失败不等于脚本已经停止。先点击页面提供的“刷新状态”确认当前执行情况，再决定是否重新接入。</p>
 <h2 id="zh-section-37" data-heading-key="section-37"><a href="#zh-section-37">7. 文件管理</a></h2>
 <p>点击顶部导航中的“文件”进入“文件管理”。</p>
 <p>SD 卡是可插拔存储，SPIFFS 是设备内部文件存储。点击“SD 卡”或“SPIFFS”切换位置。页面上方显示当前文件夹路径；点击路径中的文件夹名称，可以返回上一级或更早的目录。</p>
 <h3 id="zh-section-38" data-heading-key="section-38"><a href="#zh-section-38">浏览和管理文件</a></h3>
 <ul><li>点击文件夹名称进入该目录。</li><li>点击文件右侧的下载按钮，将文件保存到浏览器的下载位置。</li><li>点击重命名按钮，输入新名称并确认。</li><li>点击“新建文件夹”，输入文件夹名称并创建。</li><li>点击刷新按钮重新加载当前目录和存储状态。</li></ul>
+<p>上传、删除、重命名、新建文件夹及挂载、卸载 SD 卡需要有效登录。受保护的自动化配置文件还限制读取和下载；Admin 遇到无权访问时，请 root 用户从正式配置入口处理。不要改路径或换入口绕过权限。</p>
 <h3 id="zh-section-39" data-heading-key="section-39"><a href="#zh-section-39">上传文件</a></h3>
 <p>文件只能上传到 SD 卡，不能上传到 SPIFFS。先确认 SD 卡已挂载。</p>
 <ol><li>点击“SD 卡”，进入要上传文件的目录。</li><li>点击“上传文件”。</li><li>点击上传区域选择一个或多个文件，或将文件拖入该区域。</li><li>检查上传列表，移除不需要的文件。</li><li>点击“上传”，等待每个文件显示完成状态。</li></ol>
@@ -827,11 +840,12 @@
 <p>更新过程中设备会重启，WebUI 会暂时断开。开始前应保存正在进行的工作，并保持设备供电稳定。升级进度尚未完成时不要关闭设备。</p>
 <h3 id="zh-section-44" data-heading-key="section-44"><a href="#zh-section-44">首次从旧版本升级到 0.6.3</a></h3>
 <p>首次从 0.6.2 等旧存储布局升级时，需要发行方确认的配套 USB／串口升级包。只上传主固件或 WebUI，不能完成这次升级。请设备管理员或提供方按包内说明操作，不要自行全片擦除或使用旧分区表。</p>
-<p>升级前保存重要文件，保留原 SD 卡。首次启动会迁移原配置，期间不要断电。完成后，检查登录、网络、风扇、灯光、SSH 主机和自动化规则。不要在尚未确认规则内容时测试带有断电、重启或远程命令的任务。</p>
+<p>升级前保存重要文件。配套工具保留密钥和 SD 卡，不会自动清空卡内配置；首次启动仍可能读取或迁移原配置。客户交付按“清空旧配置、重新配置”流程实施，由设备管理员或提供方按交付说明处理。不要自行全片擦除，也不要把保留文件当作已经完成重新配置。</p>
+<p>升级和首次启动期间不要断电。完成后，检查登录、网络、风扇、灯光、SSH 主机和自动化规则。不要在尚未确认规则内容时测试带有断电、重启或远程命令的任务。</p>
 <p>该配套包会更新两个应用槽，不能假定另一个槽仍保留旧版本。忘记 root 密码时，只使用提供方确认与 0.6.3 布局匹配的恢复方案，不要刷入旧版密码重置固件。</p>
 <p>下面的网页更新方法用于发行方确认可通过 OTA 安装的版本，不能代替首次布局升级。</p>
 <h3 id="zh-section-45" data-heading-key="section-45"><a href="#zh-section-45">从 OTA 服务器检查更新</a></h3>
-<ol><li>查看页面显示的“当前版本”。</li><li>在“OTA 服务器”中输入管理员或发行方提供的服务器地址。</li><li>点击“保存”，随后点击“检查更新”。</li><li>页面会显示“发现新版本”“已是最新版本”“服务器版本较旧”或错误信息。</li><li>确认目标版本后，点击“立即升级”或页面显示的升级按钮。</li><li>等待下载、安装和重启完成。需要中止时，使用页面显示的中止按钮；只在按钮可用的阶段操作。</li><li>等待页面确认升级后的固件，再重新连接 WebUI，核对“当前版本”和设备状态。</li></ol>
+<ol><li>查看页面显示的“当前版本”。同为 0.6.3 也可能是不同修订构建；同时核对完整版本、构建时间和发行方说明，不要只比较前三位数字。</li><li>在“OTA 服务器”中输入管理员或发行方提供的服务器地址。</li><li>点击“保存”，随后点击“检查更新”。</li><li>页面会显示“发现新版本”“已是最新版本”“服务器版本较旧”或错误信息。</li><li>确认目标版本后，点击“立即升级”或页面显示的升级按钮。</li><li>等待下载、安装和重启完成。需要中止时，使用页面显示的中止按钮；只在按钮可用的阶段操作。</li><li>等待页面确认升级后的固件，再重新连接 WebUI，核对“当前版本”和设备状态。</li></ol>
 <p>“升级进度”单独显示当前阶段。进度达到 100% 或显示文件已写入，不代表重启和版本核对已完成。出现“升级结果未确认”或“启动的固件与升级目标不符”时，保留提示，检查设备当前版本；不要直接重复升级。无法确认时，请 root 用户或设备提供方检查。</p>
 <p>升级同时包含 WebUI 时，固件和 WebUI 会依次更新。请使用同一发布版本的配套主固件和 WebUI 资源。升级后仍显示旧界面时，尝试强制刷新浏览器，再核对版本和页面。</p>
 <h3 id="zh-section-46" data-heading-key="section-46"><a href="#zh-section-46">手动升级</a></h3>
@@ -850,20 +864,22 @@
 <p>字段旁出现红色错误说明时，按提示修正后再保存。标记消失不代表已经保存成功；还要检查保存提示和列表。</p>
 <p>先看哪项操作失败，再阅读原因和下一步。提示没有说明原因时，不要猜测。</p>
 <p>有“详情”时，点击查看。点击“收起”可隐藏详情。页面提供 × 时，可点击它关闭提示。需要求助时，保留提示和详情，交给 root 用户检查。</p>
+<p>提示或详情较长时，在该区域内滚动查看完整内容，再决定下一步。</p>
 <p>出现“结果未确认”时，先刷新并检查设备、文件或任务状态。超时或断开连接不代表操作没有执行；不要立即重复断电、删除、启动任务或升级。仍无法确认时，请 root 用户检查。</p>
 <p>批量操作后，分别核对成功、失败和未确认的项目。下载文件后，检查浏览器下载列表。</p>
 
           </article>
 
           <article class="guide-article lang-pane" data-lang-pane="en" hidden>
-<p>This guide is based on TianshanOS 0.6.3. For other versions, check the corresponding version-specific instructions.</p>
 <p>This guide covers system checks, device controls, networking, files, and firmware updates for the admin account. The Root Operations Guide covers terminal access, remote commands, and Automation configuration. See the separate Security Guide for security management.</p>
+<p>Version covered: 0.6.4. Revised November 3, 2026.</p>
 <p>Use the controls shown on your device. Some need specific hardware or configuration. On a computer, hover over an icon button to see its name. On a phone, swipe within a wide table to view its other columns.</p>
 <h2 id="en-section-1" data-heading-key="section-1"><a href="#en-section-1">1. Getting Started</a></h2>
 <h3 id="en-section-2" data-heading-key="section-2"><a href="#en-section-2">Open the WebUI</a></h3>
 <ol><li>Open the device’s web interface (WebUI) using the address provided by your administrator.</li><li>Select “Login” in the upper-right corner.</li><li>Keep <code>admin</code> as the username and enter the admin password supplied with the device.</li><li>Select “Login.” After a successful login, the current username appears in the upper-right corner.</li></ol>
 <p>Logging in with the default password opens a “Security Reminder.” Enter the current password, then enter the new password twice and select “Change Now.” Both new-password entries must match. Select “Later” to close the reminder.</p>
 <p>When you have finished, select “Logout” in the upper-right corner. You will need to sign in again to use the device.</p>
+<p>If permission is denied, check the account. If the login has expired, sign in again. Then check the result of the previous operation. Signing in does not repeat an earlier task. Do not immediately upload, delete, or upgrade again.</p>
 <h3 id="en-section-3" data-heading-key="section-3"><a href="#en-section-3">Switch Languages</a></h3>
 <p>Select the language button at the top of the page, then choose Chinese or English. Page content and control labels switch immediately.</p>
 <h3 id="en-section-4" data-heading-key="section-4"><a href="#en-section-4">Page Navigation</a></h3>
@@ -872,8 +888,8 @@
 <h2 id="en-section-5" data-heading-key="section-5"><a href="#en-section-5">2. System Status and Routine Operations</a></h2>
 <p>Select “System” in the top navigation.</p>
 <h3 id="en-section-6" data-heading-key="section-6"><a href="#en-section-6">View Resource and Service Status</a></h3>
-<p>“Management Chip Resources” shows CPU, DRAM, and PSRAM usage on the management chip. These readings do not show resource usage on AGX or LPMU.</p>
-<ul><li>Select “Details” to view total, used, and free memory and other memory information.</li><li>“Services” shows the number of running services and the total. Select it to view each service’s state and startup stage.</li><li>If a service reports a problem, refresh its status. To restart it, follow “Restart One Service” below.</li></ul>
+<p>“Management Chip Resources” shows CPU, DRAM, and PSRAM usage on the management chip. These readings do not show resource usage on the Inference Computer or Application Computer.</p>
+<ul><li>Select “Details” to view total, used, and free memory and other memory information.</li><li>Values marked “estimated” in memory details are for reference only. If a warning appears, keep the page information and follow its guidance.</li><li>“Services” shows the number of running services and the total. Select it to view each service’s state and startup stage.</li><li>If a service reports a problem, refresh its status. To restart it, follow “Restart One Service” below.</li></ul>
 <h3 id="en-section-7" data-heading-key="section-7"><a href="#en-section-7">View System and Power Information</a></h3>
 <p>“System Overview” shows the chip, firmware version, ESP-IDF version, and uptime. For routine use, check the firmware version. ESP-IDF is the version of the system framework used by the device.</p>
 <p>The right side of the card shows input voltage, internal voltage, current, power, and protection status.</p>
@@ -892,20 +908,25 @@
 <p>Select “Shutdown Settings” to change:</p>
 <ul><li>“Low Voltage Threshold”: Starts the shutdown countdown below this voltage.</li><li>“Recovery voltage threshold”: Starts recovery above this voltage.</li><li>“Shutdown Countdown”: Sets the delay before shutdown after low voltage is detected.</li><li>“Recovery hold time”: Sets the wait time used to confirm stable power recovery.</li><li>“Fan Stop Delay”: Sets the delay before fans stop after shutdown.</li></ul>
 <p>Save the form to apply the updated protection settings.</p>
+<aside class="guide-notice"><span>Operational note</span><p>After opening “Shutdown Settings,” wait for the current settings to load. If the page says it is showing defaults, do not treat them as the device's current settings. Review the voltages and wait times before saving. You can cancel while loading.</p></aside>
 <h4 id="en-section-13" data-heading-key="section-13"><a href="#en-section-13">Switch the Top USB Target</a></h4>
 <p>Switching the USB target may temporarily disconnect an attached device. Confirm the target and finish active work before continuing.</p>
-<p>Devices that support USB switching show a “USB” button. Each click switches the top USB port to the next target: ESP, AGX, then LPMU. Check the target shown on the button and the page message to confirm the result.</p>
+<p>Devices that support USB switching show a “USB” button. Each click switches the top USB port to the next target: ESP, Inference Computer, then Application Computer. “Disconnected” means no target is connected. Check the target shown on the button and the page message to confirm the result.</p>
 <h2 id="en-section-14" data-heading-key="section-14"><a href="#en-section-14">3. Device Panel</a></h2>
 <p>The “Device Panel” is on the “System” page. It contains module power controls, Quick Actions, and data widgets.</p>
-<h3 id="en-section-15" data-heading-key="section-15"><a href="#en-section-15">Control AGX and LPMU</a></h3>
+<h3 id="en-section-15" data-heading-key="section-15"><a href="#en-section-15">Control the Inference Computer and Application Computer</a></h3>
+<p>“Inference Computer” is the former AGX label; “Application Computer” is the former LPMU label. Device identifiers and commands may still use <code>agx</code> and <code>lpmu</code>. Do not rename those identifiers yourself.</p>
 <p>Save work on the module and complete its normal shutdown process before removing power. Forced power-off can cause loss of unsaved data.</p>
-<ul><li>“AGX Power” shows the power-control state. Select it to switch power on or off, then wait for confirmation.</li><li>“LPMU Power” shows “Online,” “Offline,” or “Unknown.” These states come from a network check. Online means the module is reachable; offline means it is not. Neither state alone confirms whether the module is powered on or off.</li><li>Selecting the LPMU button triggers the same action as pressing its physical power button. Wait for the check and the displayed result. If the result is unknown, check the module and network before pressing the button again.</li></ul>
+<ul><li>“Inference Computer Power” shows the power-control state. Select it to switch power on or off, then wait for confirmation.</li><li>On “Application Computer Power,” “Network reachable” means the network can be reached; “Network unreachable” means it cannot. A failed check leaves the power state unknown. These results alone do not confirm whether the computer is powered on or off.</li><li>Selecting the Application Computer button triggers the same action as pressing its physical power button. Wait for the check and the displayed result. If the result is unknown, check the computer and network before pressing the button again.</li></ul>
 <h3 id="en-section-16" data-heading-key="section-16"><a href="#en-section-16">Use Quick Actions</a></h3>
 <p>A root user configures Quick Action cards. Card visibility and manual execution are separate settings. Seeing a card does not mean you can start its task.</p>
-<ol><li>Read the card name and description to identify the task.</li><li>Select the card and read the result. Do not start it again while processing.</li><li>An executed or queued message still needs an actual result check on the target device or task. Ask a root user to verify, view logs, or stop a background service.</li></ol>
+<ol><li>Read the card name and description to identify the task.</li><li>Select “Start” or the card and read the result. Do not start it again while processing.</li><li>An executed or queued message still needs an actual result check on the target device or task. If a service state is shown, distinguish “Process running” from “Ready.” A card with several tasks may show “Some tasks are not ready.”</li></ol>
+<p>Cards with remote background tasks also offer “View Log” and “Stop.” Open the logs to review the related tasks. If several records appear, choose by task name and original host. Check the target before stopping it, wait for the result, then verify that it stopped. Closing the log or stopping log updates does not stop the task.</p>
+<p>“Run records” can include tasks started earlier; their presence does not mean they are still running. Select “Verify remote state” when needed. Admin users can enter through the relevant card; the separate “Run records” button on System is shown only to root. If a control is unavailable or the result remains unclear, ask a root user to check.</p>
 <p>If starting is blocked, follow the reason shown. Do not keep selecting start:</p>
-<ul><li>Rule disabled or manual triggering not allowed: Ask a root user to check the rule settings. A visible card is not permission to run it.</li><li>A task or background operation is in progress: Wait for its result. Do not start it again.</li><li>A background run record already exists for the task: Ask a root user to verify the original task and confirm that it has ended before starting again.</li><li>Configuration not loaded, a required item missing, or Automation paused: Ask a root user to check the configuration and enable state.</li></ul>
-<aside class="guide-notice"><span>Operational note</span><p>After triggering one action, wait a few seconds before starting another. Closing the page, deleting a card, or restarting TianshanOS does not stop background services on remote hosts.</p></aside>
+<ul><li>Rule disabled or manual triggering not allowed: Ask a root user to check the rule settings. A visible card is not permission to run it.</li><li>A task or background operation is in progress: Wait for its result. Do not start it again.</li><li>A run record already exists for the task: Check the original task's state and logs instead of starting it again. If it needs to end, stop and verify it. Ask a root user to check if you cannot resolve it.</li><li>Configuration not loaded, a required item missing, or Automation paused: Ask a root user to check the configuration and enable state.</li></ul>
+<p>If the page reports automatic starting or a retry wait, let it continue. Temporary start failures are retried every 30 seconds for up to 6 minutes. An unconfirmed start is checked before another launch. A failed manual run is not automatically repeated. When the wait ends, check the device and network as directed before deciding whether to select “Start.”</p>
+<aside class="guide-notice"><span>Operational note</span><p>After triggering one action, wait a few seconds before starting another. Closing the page, deleting a card, or restarting TianshanOS does not stop background services on remote hosts. To keep a service stopped, ask a root user to disable any automatic rule that could start it again.</p></aside>
 <p>Press and hold a card until the reorder indicator appears, then drag it to change the display order.</p>
 <p>If no cards appear, read the explanation. Wait if configuration is loading. If loading failed, keep the reason and contact a root user. If no Quick Actions are configured, ask a root user to check the rules’ “Show on panel” setting.</p>
 <aside class="guide-notice"><span>Operational note</span><p>Editing or importing a rule updates the current configuration; a restart is not needed to switch rules. If a card's task was changed, ask a root user to confirm its contents before running it.</p></aside>
@@ -914,6 +935,8 @@
 <p>Data widgets continuously display device data in the “Device Panel.”</p>
 <ol><li>Select “Widget Manager.”</li><li>Choose a refresh interval or disable automatic refresh.</li><li>Add a preset widget, or choose a component style and data source offered by the page.</li><li>Edit its label, display style, and unit as needed, then save.</li></ol>
 <p>Existing widgets can be edited, deleted, and reordered. You can also select a widget card to edit it. Press and hold a widget, then drag it to a new position.</p>
+<p>“Small,” “Medium,” and “Large” use one, two, and three columns; they fit within narrower screens. When editing an icon, enter its name using the example on the page. Each value in a dual-value widget has its own data setting. Check that both sources are correct and the data updates.</p>
+<p>“Failed to load data widgets” does not mean no configuration exists. Resolve the cause and read it again. If saving fails or its result is unconfirmed, keep the current content and check the message. Seeing your changes on the page does not confirm they were saved.</p>
 <h2 id="en-section-18" data-heading-key="section-18"><a href="#en-section-18">4. Fan Management</a></h2>
 <aside class="guide-notice"><span>Operational note</span><p>“Fan Control” is on the “System” page. Fan cards show the fans provided by your device. Check the fan number before changing a curve.</p></aside>
 <h3 id="en-section-19" data-heading-key="section-19"><a href="#en-section-19">View Fan Status</a></h3>
@@ -929,6 +952,8 @@
 <p>Select “Curve” in the Fan Control section header to open “Fan Curve Management.” The “Curve” button inside a card only changes the operating mode.</p>
 <ol><li>Under “Fan,” choose the number to adjust and check it against the System page.</li><li>Under “Temperature variable binding,” add temperature variables and assign weights.</li><li>Select “Bind.” The temperature source is shared by fans in Curve and Smart modes, so changing it affects the fans using that source.</li><li>Add or edit “Curve nodes.” Each curve needs at least 2 nodes and supports up to 10.</li><li>Set “Minimum speed” and “Maximum speed” as control percentages. The minimum must not exceed the maximum.</li><li>Set “Temperature hysteresis” and “Minimum interval.” Hysteresis accepts 0-20°C and reduces frequent adjustments caused by small temperature changes. The interval accepts 500-30000 ms; 1000 ms is 1 second.</li><li>Select “Save curve.” After a successful save, the selected fan switches to Curve mode. To use Smart thermal control, return to the card and select “Smart.”</li></ol>
 <p>If saving fails, read the message and check the current state before retrying. After unbinding temperature variables, check the effective temperature and fan state as well.</p>
+<aside class="guide-notice"><span>Operational note</span><p>After opening settings or choosing another fan, wait for its current settings to load. If the page says it is showing defaults or an earlier draft, those values do not confirm the device's current settings. Review them before saving. Check the read and save results for temperature bindings too.</p></aside>
+<p>If the message says the fan settings were applied but not fully saved, the current adjustment may already be in effect. A restart may restore earlier settings. Check the actual fan state, confirm that device storage is available, then save again. Do not restart the device just to test whether the save worked.</p>
 <h3 id="en-section-22" data-heading-key="section-22"><a href="#en-section-22">Import and Export a Curve</a></h3>
 <ul><li>Select “Import Config” and choose a curve JSON file. JSON is the file format used to store curve data. Review the nodes, limits, and fan number, then select “Save curve” to apply them.</li><li>Select “Export Config” to download the current curve. The page also attempts to save a copy under <code>/sdcard/config</code> on the SD card. Check the browser download and the reported SD-card result separately.</li></ul>
 <h3 id="en-section-23" data-heading-key="section-23"><a href="#en-section-23">Use a Test Temperature</a></h3>
@@ -937,10 +962,10 @@
 <h2 id="en-section-24" data-heading-key="section-24"><a href="#en-section-24">5. LED Management</a></h2>
 <p>“LED Control” is on the “System” page and shows the LEDs provided by the device. Available features vary by LED.</p>
 <h3 id="en-section-25" data-heading-key="section-25"><a href="#en-section-25">Routine Controls</a></h3>
-<ul><li>Use the light-bulb button at the bottom of a card to turn the LED on or off.</li><li>Move the “Brightness” slider, or choose a color or preset.</li><li>Use the animation button to open “LED Settings.” Select an animation under “Programmatic Animation,” then use its play or stop control.</li><li>Select the save icon at the bottom right of the card to save the current LED configuration.</li><li>Select “All Off” to turn off all LEDs and check the reported result. If some fail, check those devices.</li></ul>
+<ul><li>Use the light-bulb button at the bottom of a card to turn the LED on or off.</li><li>Use the brightness, hue, and saturation sliders. Brightness controls how bright the light is; hue chooses the color; saturation moves between white and color. Saturation at 0 gives white light. Hue and saturation changes are applied when you release the slider.</li><li>Use the animation button to open “LED Settings.” Select an animation under “Programmatic Animation,” then use its play or stop control.</li><li>Select the save icon at the bottom right of the card to save the current LED configuration.</li><li>Select “All Off” to turn off all LEDs and check the reported result. If some fail, check those devices.</li></ul>
 <h3 id="en-section-26" data-heading-key="section-26"><a href="#en-section-26">Advanced LED Matrix Features</a></h3>
 <p>Matrix cards provide icons for the available features. Open one, then switch between these groups in “LED Settings”:</p>
-<ul><li>“Programmatic Animation”: Select and run an animation.</li><li>“Image/QR Code”: Choose an image from the SD card or enter content for a QR code.</li><li>“Text Display”: Set text, font, alignment, scrolling, foreground, and background.</li><li>“Post-processing Filter”: Choose a filter and parameters, then apply or stop it.</li><li>“Color Correction”: Adjust the display and use the available reset, import, or export controls.</li></ul>
+<ul><li>“Programmatic Animation”: Select and run an animation.</li><li>“Image/QR Code”: Choose image or QR code under “Type” in the card, then select an SD-card image or enter the QR content.</li><li>“Text Display”: Set text, font, alignment, scrolling, foreground, and background.</li><li>“Post-processing Filter”: Choose a filter and parameters, then apply or stop it.</li><li>“Color Correction”: Adjust the display and use the available reset, import, or export controls.</li></ul>
 <p>Check the actual light or matrix display after applying a change. Use only the features shown. If a setting fails, follow the message to check the file, input, or device state.</p>
 <h2 id="en-section-27" data-heading-key="section-27"><a href="#en-section-27">6. Network Management</a></h2>
 <aside class="guide-notice"><span>Operational note</span><p>Select “Network” in the top navigation to open “Network Settings.” Changing the network mode, hotspot, or NAT settings may interrupt the current WebUI connection. Before saving, make sure you can reconnect through the new network address.</p></aside>
@@ -963,15 +988,18 @@
 <h3 id="en-section-34" data-heading-key="section-34"><a href="#en-section-34">Advanced Network Operations</a></h3>
 <h4 id="en-section-35" data-heading-key="section-35"><a href="#en-section-35">Configure the NAT Gateway</a></h4>
 <p>NAT forwards network traffic between the device's network interfaces. Enable or disable NAT, then select “Save” to retain the setting. Check the WiFi and Ethernet status afterward.</p>
-<h4 id="en-section-36" data-heading-key="section-36"><a href="#en-section-36">Access the Upstream Network via LPMU</a></h4>
-<aside class="guide-notice"><span>Operational note</span><p>This operation uses the configured LPMU host to set up network access. Before starting, confirm that LPMU is reachable and the network cables are connected. Obtain the sudo password for the SSH account on that host. This password authorizes system changes and may differ from the WebUI password.</p></aside>
-<ol><li>Under “Upstream Network Access,” select “Access via LPMU.”</li><li>Enter the LPMU sudo password and select the access button. The password is used only for this run and is not saved; enter it again for a later run.</li><li>Wait for the operation to finish. Do not start it again while processing.</li><li>Access is confirmed only when the result reports both an internet connection and completed network configuration.</li><li>If it fails or the result is unconfirmed, read the reason first. Expand “Execution Log” for more detail. Check the password for a password error, or the cabling and upstream network if no internet connection is found.</li></ol>
+<h4 id="en-section-36" data-heading-key="section-36"><a href="#en-section-36">Access the Upstream Network via the Application Computer</a></h4>
+<p>This operation uses the configured Application Computer to set up network access. On System, first switch USB to “Application Computer” and check the network cables. Its SSH host must use key authentication and have a verified host fingerprint. Ask a root user to check these settings using the Security Guide.</p>
+<p>Obtain the sudo password for the SSH account on that host. This password authorizes system changes and may differ from the WebUI password.</p>
+<ol><li>Under “Upstream Network Access,” select “Access via Application Computer.”</li><li>Enter the Application Computer sudo password and select the access button. The password is used only for this run and is not saved; enter it again for a later run.</li><li>Wait for the operation to finish. Do not start it again while processing.</li><li>Access is confirmed only when the result reports both an internet connection and completed network configuration.</li><li>After closing the result window, select “View Result” to open it again. If it fails or the result is unconfirmed, read the reason and failure stage. Expand “Execution Log” for more detail. Check the password for a password error, or the cabling and upstream network if no internet connection is found.</li></ol>
+<p>If the host fingerprint is unconfirmed or has changed, ask a root user to verify the host's identity first. Do not keep retrying access or skip verification. Remote script output may remain in its original language; keep it for investigation if needed.</p>
 <p>A failed status request does not mean the script has stopped. Use the available “Refresh Status” control to check the current run before deciding whether to try again.</p>
 <h2 id="en-section-37" data-heading-key="section-37"><a href="#en-section-37">7. File Management</a></h2>
 <p>Select “Files” in the top navigation to open “File Manager.”</p>
 <p>The SD Card is removable storage, and SPIFFS is internal device file storage. Select “SD Card” or “SPIFFS” to switch locations. The path at the top shows your current folder. Select a folder name in the path to go back to it.</p>
 <h3 id="en-section-38" data-heading-key="section-38"><a href="#en-section-38">Browse and Manage Files</a></h3>
 <ul><li>Select a folder name to open it.</li><li>Select the download button beside a file to save it to the browser's download location.</li><li>Select the rename button, enter a new name, and confirm.</li><li>Select “New Folder,” enter a folder name, and create it.</li><li>Select the refresh button to reload the current directory and storage state.</li></ul>
+<p>Uploading, deleting, renaming, creating folders, and mounting or unmounting the SD card require a valid login. Reading and downloading protected Automation files also has a root permission check. If access is denied to admin, ask a root user to use the configuration pages. Do not change the path or use another entry to bypass permission checks.</p>
 <h3 id="en-section-39" data-heading-key="section-39"><a href="#en-section-39">Upload Files</a></h3>
 <p>Files can only be uploaded to the SD Card, not SPIFFS. Confirm that the SD Card is mounted first.</p>
 <ol><li>Select “SD Card” and open the folder where you want to upload the files.</li><li>Select “Upload Files.”</li><li>Select one or more files, or drag files into the upload area.</li><li>Review the upload list and remove unwanted files.</li><li>Select “Upload” and wait for each file to show completion.</li></ol>
@@ -993,11 +1021,12 @@
 <aside class="guide-notice"><span>Operational note</span><p>The device reboots during an update, temporarily disconnecting the WebUI. Save active work and keep device power stable before starting. Do not power off the device while update progress is incomplete.</p></aside>
 <h3 id="en-section-44" data-heading-key="section-44"><a href="#en-section-44">First Upgrade from an Older Version to 0.6.3</a></h3>
 <p>The first upgrade from an older storage layout, such as 0.6.2, needs a matched USB / serial package approved by the publisher. Uploading only the firmware or WebUI cannot complete this upgrade. Ask the device administrator or provider to follow the package instructions. Do not erase the whole flash or use an old partition table.</p>
-<p>Save important files and keep the original SD card installed. The first startup migrates existing configuration; keep power connected. Afterward, check login, networking, fans, lighting, SSH hosts, and Automation rules. Review rules before testing any task that controls power, restarts a device, or runs remote commands.</p>
+<p>Save important files before upgrading. The matched tool preserves keys and the SD card; it does not clear configuration on the card. The first startup may still read or migrate existing configuration. Customer delivery follows the “clear old configuration and configure again” procedure. The device administrator or provider must follow the delivery instructions. Do not erase the whole flash yourself or treat preserved files as completed configuration.</p>
+<p>Keep power connected during the upgrade and first startup. Afterward, check login, networking, fans, lighting, SSH hosts, and Automation rules. Review rules before testing any task that controls power, restarts a device, or runs remote commands.</p>
 <p>The matched package updates both application slots. Do not assume that the other slot still contains the old version. If the root password is lost, use only a recovery method confirmed by the provider to match the 0.6.3 layout. Do not flash an old password-reset image.</p>
 <p>The web update methods below apply only to versions the publisher has approved for OTA. They do not replace the first layout upgrade.</p>
 <h3 id="en-section-45" data-heading-key="section-45"><a href="#en-section-45">Check for Updates from an OTA Server</a></h3>
-<ol><li>Review the “Current Version.”</li><li>Enter the OTA server address supplied by an administrator or publisher.</li><li>Select “Save,” then select “Check Update.”</li><li>The page reports “Update Available,” “Already up to date,” an older server version, or an error.</li><li>Confirm the target version, then select “Upgrade Now” or the upgrade control shown by the page.</li><li>Wait for download, installation, and reboot to finish. To cancel, use the “Abort” button when it is available. Not every stage supports cancellation.</li><li>Wait for the page to confirm the firmware after the upgrade. Reconnect to the WebUI and check “Current Version” and device status.</li></ol>
+<ol><li>Review the “Current Version.” Two 0.6.3 installations can be different revision builds. Check the full version, build time, and publisher's instructions rather than only the first three numbers.</li><li>Enter the OTA server address supplied by an administrator or publisher.</li><li>Select “Save,” then select “Check Update.”</li><li>The page reports “Update Available,” “Already up to date,” an older server version, or an error.</li><li>Confirm the target version, then select “Upgrade Now” or the upgrade control shown by the page.</li><li>Wait for download, installation, and reboot to finish. To cancel, use the “Abort” button when it is available. Not every stage supports cancellation.</li><li>Wait for the page to confirm the firmware after the upgrade. Reconnect to the WebUI and check “Current Version” and device status.</li></ol>
 <p>“Upgrade Progress” shows the current stage in its own section. A 100% reading or a message that files were written does not confirm a completed restart and version check. If the result is unconfirmed or the running firmware differs from the target, keep the message and check the current version. Do not repeat the upgrade without checking. Ask a root user or the provider to investigate if needed.</p>
 <p>When “Also upgrade www” is enabled, the firmware and WebUI are updated in sequence. Use matched firmware and WebUI resources from the same release. If the old interface remains after upgrading, force-refresh the browser and check the version and page again.</p>
 <h3 id="en-section-46" data-heading-key="section-46"><a href="#en-section-46">Manual Upgrade</a></h3>
@@ -1016,20 +1045,22 @@
 <p>A red field error tells you what to correct. Fix it, then save. A cleared error mark does not confirm a successful save; check the message and list.</p>
 <p>Check which operation failed, then read the reason and next step. If the message gives no reason, do not guess.</p>
 <p>Select “Details” when available. Select “Hide” to hide the details. If a × button is shown, select it to dismiss the message. When asking for help, keep a record of the message and details for a root user to check.</p>
+<p>If a message or its details are long, scroll within that area to read the full content before deciding what to do next.</p>
 <p>If the result is unconfirmed, refresh and check the device, file, or task state. A timeout or lost connection does not mean the operation failed to run. Do not immediately repeat power, delete, task-start, or upgrade operations. Ask a root user to investigate if the result remains unclear.</p>
 <p>Check successful, failed, and unconfirmed batch results separately. Confirm saved files in the browser’s download list.</p>
 
           </article>
 
           <article class="guide-article lang-pane" data-lang-pane="ja" hidden>
-<p>このガイドは TianshanOS 0.6.3 を対象としています。他のバージョンをご使用の場合は、該当バージョンの説明も確認してください。</p>
 <p>このガイドでは、admin アカウントのシステム チェック、デバイス コントロール、ネットワーク、ファイル、およびファームウェアのアップデートについて説明します。ルート操作ガイドでは、端末アクセス、リモート コマンド、および自動化構成について説明します。セキュリティ管理については、別冊の「セキュリティガイド」を参照してください。</p>
+<p>対象バージョン：0.6.4。改訂日：2026 年 11 月 3 日。</p>
 <p>お使いのデバイスに表示されている項目に従って操作してください。項目によっては、特定のハードウェアや設定が必要です。パソコンでは、アイコンにポインターを合わせるとボタン名を確認できます。スマートフォンで表が画面に収まらない場合は、表の中を左右にスワイプすると他の列を確認できます。</p>
 <h2 id="ja-section-1" data-heading-key="section-1"><a href="#ja-section-1">1. はじめに</a></h2>
 <h3 id="ja-section-2" data-heading-key="section-2"><a href="#ja-section-2">WebUI を開く</a></h3>
 <ol><li>管理者から提供されたアドレスを使用して、デバイスの Web インターフェイス (WebUI) を開きます。</li><li>右上隅の「ログイン」を選択します。</li><li>ユーザー名は <code>admin</code> のままにし、デバイスに付属の admin パスワードを入力します。</li><li>「ログイン」を選択します。ログインに成功すると、現在のユーザー名が右上隅に表示されます。</li></ol>
 <p>デフォルトのパスワードでログインすると、「セキュリティリマインダー」が開きます。現在のパスワードを入力し、新しいパスワードを 2 回入力して、「今すぐ変更」を選択します。両方の新しいパスワードのエントリが一致する必要があります。 「後で」を選択してリマインダーを閉じます。</p>
 <p>完了したら、右上隅の「ログアウト」を選択します。デバイスを使用するには、再度サインインする必要があります。</p>
+<p>許可が拒否された場合は、アカウントを確認してください。ログインの有効期限が切れている場合は、再度サインインしてください。次に、前の操作の結果を確認します。サインインしても、以前のタスクは繰り返されません。すぐにアップロード、削除、または再度アップグレードしないでください。</p>
 <h3 id="ja-section-3" data-heading-key="section-3"><a href="#ja-section-3">言語を切り替える</a></h3>
 <p>ページの上部にある言語ボタンを選択し、中国語または英語を選択します。ページのコンテンツとコントロールのラベルはすぐに切り替わります。</p>
 <h3 id="ja-section-4" data-heading-key="section-4"><a href="#ja-section-4">ページナビゲーション</a></h3>
@@ -1038,8 +1069,8 @@
 <h2 id="ja-section-5" data-heading-key="section-5"><a href="#ja-section-5">2. システムのステータスと日常の操作</a></h2>
 <p>上部のナビゲーションで「システム」を選択します。</p>
 <h3 id="ja-section-6" data-heading-key="section-6"><a href="#ja-section-6">リソースとサービスのステータスの表示</a></h3>
-<p>「管理チップ リソース」には、管理チップの CPU、DRAM、PSRAM 使用率が表示されます。AGX や LPMU の使用率ではありません。</p>
-<ul><li>「詳細」を選択すると、合計メモリ、使用メモリ、空きメモリ、その他のメモリ情報が表示されます。</li><li>「サービス」には、実行中のサービスの数とその合計が表示されます。これを選択すると、各サービスの状態と起動段階が表示されます。</li><li>サービスが問題を報告した場合は、そのステータスを更新します。再起動するには、以下の「1 つのサービスを再起動する」に従ってください。</li></ul>
+<p>「管理チップのリソース」には、管理チップ上の CPU、DRAM、PSRAM の使用状況が表示されます。これらの測定値は、推論コンピューターまたはアプリケーションコンピューターのリソース使用量を示しません。</p>
+<ul><li>「詳細」を選択すると、合計メモリ、使用メモリ、空きメモリ、その他のメモリ情報が表示されます。</li><li>メモリの詳細で「推定」とマークされている値は参考値です。警告が表示された場合は、ページの情報を保管し、その指示に従ってください。</li><li>「サービス」には、実行中のサービスの数とその合計が表示されます。これを選択すると、各サービスの状態と起動段階が表示されます。</li><li>サービスが問題を報告した場合は、そのステータスを更新します。再起動するには、以下の「1 つのサービスを再起動する」に従ってください。</li></ul>
 <h3 id="ja-section-7" data-heading-key="section-7"><a href="#ja-section-7">システムと電源情報の表示</a></h3>
 <p>「システム概要」には、チップ、ファームウェアのバージョン、ESP-IDF のバージョン、稼働時間が表示されます。日常的に使用する場合は、ファームウェアのバージョンを確認してください。 ESP-IDF は、デバイスで使用されるシステム フレームワークのバージョンです。</p>
 <p>カードの右側には、入力電圧、内部電圧、電流、電力、保護ステータスが表示されます。</p>
@@ -1058,20 +1089,25 @@
 <p>「シャットダウン設定」を選択して変更します。</p>
 <ul><li>「低電圧しきい値」: この電圧を下回るとシャットダウンのカウントダウンが開始されます。</li><li>「回復電圧しきい値」: この電圧を超えると回復を開始します。</li><li>「シャットダウンカウントダウン」: 低電圧が検出されてからシャットダウンするまでの遅延時間を設定します。</li><li>「復帰ホールド時間」：安定した電力の復帰を確認するまでの待ち時間を設定します。</li><li>「ファン停止遅延」: シャットダウン後にファンが停止するまでの遅延を設定します。</li></ul>
 <p>フォームを保存して、更新された保護設定を適用します。</p>
+<p>「シャットダウン設定」を開いたら、現在の設定が読み込まれるまで待ちます。ページにデフォルトが表示されていると表示されている場合は、それをデバイスの現在の設定として扱わないでください。保存する前に、電圧と待ち時間を確認してください。ロード中でもキャンセル可能です。</p>
 <h4 id="ja-section-13" data-heading-key="section-13"><a href="#ja-section-13">上位の USB ターゲットを切り替える</a></h4>
 <aside class="guide-notice"><span>操作上の注意</span><p>USB ターゲットを切り替えると、接続されているデバイスが一時的に切断される場合があります。ターゲットを確認し、実行中の作業を終了してから続行してください。</p></aside>
-<p>USB 切り替えをサポートするデバイスには、「USB」ボタンが表示されます。クリックするたびに、最上位の USB ポートが次のターゲット (ESP、AGX、LPMU) に切り替わります。ボタンに表示されるターゲットとページのメッセージを確認して結果を確認してください。</p>
+<p>USB 切り替えをサポートするデバイスには、「USB」ボタンが表示されます。クリックするたびに、上部の USB ポートが次のターゲット (ESP、推論コンピューター、アプリケーションコンピューター) に切り替わります。 「切断」はターゲットが接続されていないことを意味します。ボタンに表示されるターゲットとページのメッセージを確認して結果を確認してください。</p>
 <h2 id="ja-section-14" data-heading-key="section-14"><a href="#ja-section-14">3. デバイスパネル</a></h2>
 <p>「デバイスパネル」は「システム」ページにあります。これには、モジュールの電源制御、クイック アクション、およびデータ ウィジェットが含まれています。</p>
-<h3 id="ja-section-15" data-heading-key="section-15"><a href="#ja-section-15">AGX と LPMU の制御</a></h3>
+<h3 id="ja-section-15" data-heading-key="section-15"><a href="#ja-section-15">推論コンピューターとアプリケーションコンピューターを制御する</a></h3>
+<p>「推論コンピューター」は旧 AGX、「アプリケーションコンピューター」は旧 LPMU の画面上の名称です。デバイス識別子やコマンドには <code>agx</code> と <code>lpmu</code> が残る場合があります。これらの識別子を自分で変更しないでください。</p>
 <aside class="guide-notice"><span>操作上の注意</span><p>モジュールの作業を保存し、電源を切る前に通常のシャットダウン プロセスを完了してください。強制的に電源を切ると、保存されていないデータが失われる可能性があります。</p></aside>
-<ul><li>「AGX Power」は電源制御状態を示します。それを選択して電源をオンまたはオフに切り替え、確認を待ちます。</li><li>「LPMU 電源」は「オンライン」、「オフライン」、または「不明」を表示します。これらの状態はネットワーク チェックから得られます。オンラインとは、モジュールが到達可能であることを意味します。オフラインとは、そうではないことを意味します。どちらの状態だけでも、モジュールの電源がオンであるかオフであるかを確認することはできません。</li><li>LPMU ボタンを選択すると、物理的な電源ボタンを押した場合と同じアクションがトリガーされます。チェックが行われ、結果が表示されるまで待ちます。結果が不明な場合は、ボタンを再度押す前にモジュールとネットワークを確認してください。</li></ul>
+<ul><li>「推論コンピューターの電源」は電源制御状態を示します。それを選択して電源をオンまたはオフに切り替え、確認を待ちます。</li><li>「アプリケーションコンピューターの電源」に表示される「ネットワーク到達可能／到達不可」は、通信できるかどうかの結果です。確認に失敗した場合、電源状態は不明のままです。この結果だけで、コンピューターの電源のオン・オフは判断できません。</li><li>[アプリケーションコンピューター] ボタンを選択すると、物理的な電源ボタンを押した場合と同じアクションがトリガーされます。チェックが行われ、結果が表示されるまで待ちます。結果が不明な場合は、もう一度ボタンを押す前にコンピューターとネットワークを確認してください。</li></ul>
 <h3 id="ja-section-16" data-heading-key="section-16"><a href="#ja-section-16">クイック アクションを使用する</a></h3>
 <p>クイック アクションのカードは root ユーザーが設定します。カードの表示と手動実行の許可は別の設定です。カードが表示されていても、実行できるとは限りません。</p>
-<ol><li>カードの名前と説明を読み、実行するタスクを確認します。</li><li>カードを選び、結果のメッセージを確認します。処理中は再度起動しないでください。</li><li>実行済みまたはキューに追加されたというメッセージが表示された後も、対象デバイスやタスクの実際の結果を確認してください。バックグラウンドサービスの状態確認、ログの表示、停止が必要な場合は、root ユーザーに依頼してください。</li></ol>
+<ol><li>カードの名前と説明を読み、実行するタスクを確認します。</li><li>「開始」またはカードを選び、結果を確認します。処理中に再度開始しないでください。</li><li>「実行済み」や「キューに追加」と表示されても、対象デバイスやタスクの実際の結果を確認してください。サービスの状態では「プロセス動作中」と「準備完了」を区別します。複数タスクのカードでは、「一部のタスクが未準備」と表示されることがあります。</li></ol>
+<p>リモート バックグラウンド タスクを備えたカードでは、「ログの表示」と「停止」も利用できます。ログを開いて関連タスクを確認します。複数のレコードが表示される場合は、タスク名と元のホストで選択します。停止する前にターゲットを確認し、結果を待って、停止したことを確認します。ログを閉じたり、ログの更新を停止しても、タスクは停止しません。</p>
+<p>「実行記録」には以前に開始したタスクも残ります。記録があるだけでは、現在も動作中とは限りません。必要に応じて「リモート状態を確認」を選びます。admin は関連カードから開けますが、「システム」の独立した「実行記録」ボタンは root 専用です。操作できない場合や結果が不明な場合は、root ユーザーに確認してもらってください。</p>
 <p>開始できないときは、表示された理由に従って対処してください。開始ボタンを繰り返し押さないでください：</p>
-<ul><li>ルールが無効、または手動実行が許可されていない場合：root ユーザーにルール設定の確認を依頼してください。カードが表示されていても、実行が許可されているとは限りません。</li><li>タスクやバックグラウンド操作の処理中：結果を待ち、重ねて起動しないでください。</li><li>同じタスクのバックグラウンド実行記録がある場合：root ユーザーに元のタスクを確認してもらい、終了を確認してから再度起動してください。</li><li>設定が読み込まれていない、必要な項目がない、または自動化が一時停止している場合：root ユーザーに設定と有効・無効の状態を確認してもらってください。</li></ul>
-<p>操作を一つ実行したら、次の操作を始めるまで数秒待ってください。ページを閉じたり、カードを削除したり、TianshanOS を再起動したりしても、リモートホスト上のバックグラウンドサービスは停止しません。</p>
+<ul><li>ルールが無効、または手動実行が許可されていない場合：root ユーザーにルール設定の確認を依頼してください。カードが表示されていても、実行が許可されているとは限りません。</li><li>タスクやバックグラウンド操作の処理中：結果を待ち、重ねて起動しないでください。</li><li>このタスクの実行記録がある場合：再度開始せず、元のタスクの状態とログを確認してください。終了させる場合は、停止して結果を確認します。対処できない場合は root ユーザーに確認を依頼してください。</li><li>設定が読み込まれていない、必要な項目がない、または自動化が一時停止している場合：root ユーザーに設定と有効・無効の状態を確認してもらってください。</li></ul>
+<p>ページで自動開始または再試行待機が報告された場合は、続行します。一時的な起動の失敗は、30 秒ごとに最大 6 分間再試行されます。未確認の起動は、別の起動の前にチェックされます。失敗した手動実行は自動的に繰り返されません。待機が終了したら、指示に従ってデバイスとネットワークを確認してから、「開始」を選択するかどうかを決定します。</p>
+<p>1 つのアクションをトリガーした後、別のアクションを開始するまで数秒待ってください。ページを閉じたり、カードを削除したり、TianshanOS を再起動しても、リモート ホスト上のバックグラウンド サービスは停止しません。サービスを停止したままにするには、サービスを再開する可能性がある自動ルールを無効にするように root ユーザーに依頼します。</p>
 <p>並べ替えインジケーターが表示されるまでカードを長押しし、ドラッグして表示順序を変更します。</p>
 <p>カードが表示されない場合は、画面の説明を確認してください。設定の読み込み中なら待ちます。読み込みに失敗した場合は、原因を控えて root ユーザーに連絡してください。クイック操作が設定されていない場合は、root ユーザーにルールの「Show on panel」設定を確認してもらってください。</p>
 <p>ルールを編集またはインポートすると、現在の設定が更新されます。ルールの切り替えのために再起動する必要はありません。カードのタスクが変更された場合は、実行前に root ユーザーに内容を確認してもらってください。</p>
@@ -1080,6 +1116,8 @@
 <p>データ ウィジェットは、「デバイス パネル」にデバイス データを継続的に表示します。</p>
 <ol><li>「ウィジェットマネージャー」を選択します。</li><li>更新間隔を選択するか、自動更新を無効にします。</li><li>プリセット ウィジェットを追加するか、ページが提供するコンポーネント スタイルとデータ ソースを選択します。</li><li>必要に応じてラベル、表示スタイル、単位を編集し、保存します。</li></ol>
 <p>既存のウィジェットを編集、削除、並べ替えることができます。ウィジェット カードを選択して編集することもできます。ウィジェットを長押しして、新しい位置にドラッグします。</p>
+<p>「小」、「中」、「大」では 1 列、2 列、および 3 列が使用されます。狭い画面内に収まります。アイコンを編集するときは、ページの例を使用してアイコンの名前を入力します。二重値ウィジェットの各値には独自のデータ設定があります。両方のソースが正しく、データが更新されていることを確認してください。</p>
+<p>「データ ウィジェットのロードに失敗しました」ということは、構成が存在しないことを意味するものではありません。原因を取り除いて再度読み直してください。保存に失敗した場合や結果が確認できない場合は、現在の内容を保持してメッセージを確認してください。ページ上に変更内容が表示されても、変更内容が保存されたことは確認されません。</p>
 <h2 id="ja-section-18" data-heading-key="section-18"><a href="#ja-section-18">4. ファン管理</a></h2>
 <p>「ファンコントロール」は「システム」ページにあります。ファン カードには、デバイスが提供するファンが表示されます。カーブを変更する前にファン番号を確認してください。</p>
 <h3 id="ja-section-19" data-heading-key="section-19"><a href="#ja-section-19">ファンステータスの表示</a></h3>
@@ -1095,6 +1133,8 @@
 <p>ファン制御セクションのヘッダーで「曲線」を選択し、「ファン曲線管理」を開きます。カード内の「Curve」ボタンは動作モードを変更するだけです。</p>
 <ol><li>「ファン」で調整する数値を選択し、システムページと照らし合わせて確認します。</li><li>「温度変数バインディング」で、温度変数を追加し、重みを割り当てます。</li><li>「バインド」を選択します。温度ソースはカーブ モードとスマート モードのファンによって共有されるため、温度ソースを変更すると、そのソースを使用するファンに影響します。</li><li>「曲線ノード」を追加または編集します。各カーブには少なくとも 2 つのノードが必要で、最大 10 個のノードがサポートされます。</li><li>「最低速度」と「最高速度」を制御パーセンテージとして設定します。最小値が最大値を超えてはなりません。</li><li>「温度ヒステリシス」と「最小インターバル」を設定します。ヒステリシスは 0-20°C で設定でき、温度の小さな変化による頻繁な調整を抑えます。最小インターバルは 500-30000 ms です。1000 ms は 1 秒です。</li><li>「カーブを保存」を選択します。保存が成功すると、選択したファンが曲線モードに切り替わります。スマート温度制御を使用するには、カードに戻って「スマート」を選択します。</li></ol>
 <p>保存に失敗した場合は、メッセージを読み、現在の状態を確認してから再試行してください。温度変数のバインドを解除した後、実効温度とファンの状態も確認します。</p>
+<p>設定を開くか、別のファンを選択した後、現在の設定が読み込まれるまで待ちます。ページにデフォルトまたは以前のドラフトが表示されていると記載されている場合、それらの値はデバイスの現在の設定を確認するものではありません。保存する前に確認してください。温度バインディングの読み取り結果と保存結果も確認してください。</p>
+<p>ファン設定は適用されたが完全には保存されていないというメッセージが表示された場合は、現在の調整がすでに有効になっている可能性があります。再起動すると以前の設定が復元される場合があります。実際のファンの状態を確認し、デバイスのストレージが利用可能であることを確認してから、再度保存します。保存が機能したかどうかをテストするためだけにデバイスを再起動しないでください。</p>
 <h3 id="ja-section-22" data-heading-key="section-22"><a href="#ja-section-22">曲線のインポートとエクスポート</a></h3>
 <ul><li>「Import Config」を選択し、カーブ JSON ファイルを選択します。 JSON は、曲線データを保存するために使用されるファイル形式です。ノード、制限、ファン数を確認し、「カーブを保存」を選択して適用します。</li><li>「Export Config」を選択して現在のカーブをダウンロードします。このページは、SD カードの <code>/sdcard/config</code> にコピーを保存しようとします。ブラウザのダウンロードと報告された SD カードの結果を個別に確認してください。</li></ul>
 <h3 id="ja-section-23" data-heading-key="section-23"><a href="#ja-section-23">テスト温度を使用する</a></h3>
@@ -1103,10 +1143,10 @@
 <h2 id="ja-section-24" data-heading-key="section-24"><a href="#ja-section-24">5. LED 管理</a></h2>
 <p>「LED コントロール」は「システム」ページにあり、デバイスが提供する LED を表示します。利用可能な機能は LED によって異なります。</p>
 <h3 id="ja-section-25" data-heading-key="section-25"><a href="#ja-section-25">基本操作</a></h3>
-<ul><li>カードの下部にある電球ボタンを使用して、LED をオンまたはオフにします。</li><li>「明るさ」スライダーを移動するか、色またはプリセットを選択します。</li><li>アニメーションボタンを使用して「LED設定」を開きます。 「プログラム アニメーション」でアニメーションを選択し、その再生または停止コントロールを使用します。</li><li>カードの右下にある保存アイコンを選択して、現在の LED 設定を保存します。</li><li>「All Off」を選択すると、すべての LED がオフになり、報告された結果を確認できます。一部に障害が発生した場合は、それらのデバイスを確認してください。</li></ul>
+<ul><li>カードの下部にある電球ボタンを使用して、LED をオンまたはオフにします。</li><li>明るさ、色相、彩度のスライダーを使用します。明るさは光の明るさを制御します。色相は色を選択します。彩度は白とカラーの間を移動します。彩度が 0 の場合は白色光になります。スライダーを放すと、色相と彩度の変更が適用されます。</li><li>アニメーションボタンを使用して「LED設定」を開きます。 「プログラム アニメーション」でアニメーションを選択し、その再生または停止コントロールを使用します。</li><li>カードの右下にある保存アイコンを選択して、現在の LED 設定を保存します。</li><li>「All Off」を選択すると、すべての LED がオフになり、報告された結果を確認できます。一部に障害が発生した場合は、それらのデバイスを確認してください。</li></ul>
 <h3 id="ja-section-26" data-heading-key="section-26"><a href="#ja-section-26">LED マトリクスの高度な機能</a></h3>
 <p>マトリックス カードには、利用可能な機能のアイコンが表示されます。いずれかを開き、「LED 設定」で次のグループを切り替えます。</p>
-<ul><li>「プログラムによるアニメーション」: アニメーションを選択して実行します。</li><li>「画像/QR コード」: SD カードから画像を選択するか、QR コードの内容を入力します。</li><li>「テキスト表示」：テキスト、フォント、配置、スクロール、前景、背景を設定します。</li><li>「後処理フィルター」: フィルターとパラメーターを選択し、適用または停止します。</li><li>「色補正」: 表示を調整し、利用可能なリセット、インポート、またはエクスポートのコントロールを使用します。</li></ul>
+<ul><li>「プログラムによるアニメーション」: アニメーションを選択して実行します。</li><li>「画像/QR コード」: カードの「タイプ」で画像または QR コードを選択し、SD カードの画像を選択するか、QR コンテンツを入力します。</li><li>「テキスト表示」：テキスト、フォント、配置、スクロール、前景、背景を設定します。</li><li>「後処理フィルター」: フィルターとパラメーターを選択し、適用または停止します。</li><li>「色補正」: 表示を調整し、利用可能なリセット、インポート、またはエクスポートのコントロールを使用します。</li></ul>
 <p>変更を適用した後、実際のライトまたはマトリックスの表示を確認します。示されている機能のみを使用してください。設定に失敗した場合は、メッセージに従ってファイル、入力、またはデバイスの状態を確認してください。</p>
 <h2 id="ja-section-27" data-heading-key="section-27"><a href="#ja-section-27">6. ネットワーク管理</a></h2>
 <aside class="guide-notice"><span>操作上の注意</span><p>上部のナビゲーションで [ネットワーク] を選択し、[ネットワーク設定] を開きます。ネットワーク モード、ホットスポット、または NAT 設定を変更すると、現在の WebUI 接続が中断される場合があります。保存する前に、新しいネットワーク アドレスを介して再接続できることを確認してください。</p></aside>
@@ -1129,15 +1169,18 @@
 <h3 id="ja-section-34" data-heading-key="section-34"><a href="#ja-section-34">高度なネットワーク操作</a></h3>
 <h4 id="ja-section-35" data-heading-key="section-35"><a href="#ja-section-35">NAT ゲートウェイを構成する</a></h4>
 <p>NAT は、デバイスのネットワーク インターフェイス間でネットワーク トラフィックを転送します。 NAT を有効または無効にし、「保存」を選択して設定を保持します。その後、WiFi とイーサネットのステータスを確認してください。</p>
-<h4 id="ja-section-36" data-heading-key="section-36"><a href="#ja-section-36">LPMU 経由でアップストリーム ネットワークにアクセス</a></h4>
-<p>この操作では、構成された LPMU ホストを使用してネットワーク アクセスを設定します。開始する前に、LPMU に到達可能であり、ネットワーク ケーブルが接続されていることを確認してください。そのホスト上の SSH アカウントの sudo パスワードを取得します。このパスワードはシステムの変更を許可するもので、WebUI のパスワードとは異なる場合があります。</p>
-<ol><li>「アップストリーム ネットワーク アクセス」で、「LPMU 経由でアクセス」を選択します。</li><li>LPMU sudo パスワードを入力し、アクセス ボタンを選択します。パスワードはこの実行にのみ使用され、保存されません。後で実行するためにもう一度入力します。</li><li>操作が完了するまで待ちます。処理中に再起動しないでください。</li><li>インターネット接続と完了したネットワーク構成の両方が結果で報告された場合にのみ、アクセスが確認されます。</li><li>失敗した場合や結果が未確認の場合は、まず理由を読んでください。詳細については、「実行ログ」を展開してください。パスワードにパスワード エラーがないかどうか、インターネット接続が見つからない場合はケーブル配線とアップストリーム ネットワークを確認してください。</li></ol>
+<h4 id="ja-section-36" data-heading-key="section-36"><a href="#ja-section-36">アプリケーションコンピューター経由でアップストリームネットワークにアクセス</a></h4>
+<p>この操作では、構成されたアプリケーションコンピューターを使用してネットワーク アクセスを設定します。システムで、まず USB を「アプリケーションコンピューター」に切り替え、ネットワーク ケーブルを確認します。 SSH ホストはキー認証を使用し、検証済みのホスト フィンガープリントを持っている必要があります。 root ユーザーに、セキュリティ ガイドを使用してこれらの設定を確認するよう依頼してください。</p>
+<p>そのホスト上の SSH アカウントの sudo パスワードを取得します。このパスワードはシステムの変更を許可するもので、WebUI のパスワードとは異なる場合があります。</p>
+<ol><li>「アップストリーム ネットワーク アクセス」で、「アプリケーションコンピューター経由のアクセス」を選択します。</li><li>アプリケーションコンピューターの sudo パスワードを入力し、アクセス ボタンを選択します。パスワードはこの実行にのみ使用され、保存されません。後で実行するためにもう一度入力します。</li><li>操作が完了するまで待ちます。処理中に再起動しないでください。</li><li>インターネット接続と完了したネットワーク構成の両方が結果で報告された場合にのみ、アクセスが確認されます。</li><li>結果画面を閉じた後も、「結果を表示」で開き直せます。失敗または結果未確認の場合は、理由と失敗した段階を確認します。「実行ログ」を開くと詳細を読めます。パスワードのエラーならパスワードを、インターネット接続が見つからない場合はケーブルと上位ネットワークを確認してください。</li></ol>
+<p>ホストのフィンガープリントが未確認であるか変更されている場合は、まず root ユーザーにホストの ID を確認するよう依頼してください。アクセスを再試行し続けたり、検証をスキップしたりしないでください。リモート スクリプトの出力は元の言語のままになる場合があります。必要に応じて調査のために保管してください。</p>
 <p>ステータス要求が失敗しても、スクリプトが停止したわけではありません。利用可能な「ステータスの更新」コントロールを使用して、再試行するかどうかを決定する前に現在の実行を確認します。</p>
 <h2 id="ja-section-37" data-heading-key="section-37"><a href="#ja-section-37">7. ファイル管理</a></h2>
 <p>上部のナビゲーションで [ファイル] を選択し、[ファイル マネージャー] を開きます。</p>
 <p>SD カードはリムーバブル ストレージであり、SPIFFS は内部デバイス ファイル ストレージです。場所を切り替えるには、「SD カード」または「SPIFFS」を選択します。上部のパスは現在のフォルダーを示しています。パス内のフォルダー名を選択すると、そのフォルダーに戻ります。</p>
 <h3 id="ja-section-38" data-heading-key="section-38"><a href="#ja-section-38">ファイルの参照と管理</a></h3>
 <ul><li>フォルダー名を選択して開きます。</li><li>ファイルの横にあるダウンロード ボタンを選択して、ファイルをブラウザのダウンロード場所に保存します。</li><li>名前変更ボタンを選択し、新しい名前を入力して確認します。</li><li>「新しいフォルダー」を選択し、フォルダー名を入力して作成します。</li><li>[更新] ボタンを選択して、現在のディレクトリとストレージの状態を再ロードします。</li></ul>
+<p>ファイルのアップロード、削除、名前変更、フォルダー作成、SD カードのマウントと解除には、有効なログインが必要です。保護された自動化ファイルの読み取りとダウンロードには root 権限も必要です。admin が拒否された場合は、root ユーザーに設定ページから操作してもらってください。パスや入口を変えて権限確認を回避しないでください。</p>
 <h3 id="ja-section-39" data-heading-key="section-39"><a href="#ja-section-39">ファイルをアップロードする</a></h3>
 <p>ファイルのアップロード先は SD カードだけです。SPIFFS にはアップロードできません。先に SD カードがマウントされていることを確認してください。</p>
 <ol><li>「SD カード」を選択し、ファイルをアップロードするフォルダーを開きます。</li><li>「ファイルをアップロード」を選択します。</li><li>1 つ以上のファイルを選択するか、ファイルをアップロード領域にドラッグします。</li><li>アップロード リストを確認し、不要なファイルを削除します。</li><li>「アップロード」を選択し、各ファイルが完了を示すまで待ち​​ます。</li></ol>
@@ -1159,11 +1202,12 @@
 <p>アップデート中にデバイスが再起動し、WebUI が一時的に切断されます。アクティブな作業を保存し、開始する前にデバイスの電源を安定させます。アップデートの進行が不完全な間はデバイスの電源を切らないでください。</p>
 <h3 id="ja-section-44" data-heading-key="section-44"><a href="#ja-section-44">旧バージョンから 0.6.3 への初回アップグレード</a></h3>
 <p>0.6.2 など、旧ストレージ構成からの初回アップグレードには、提供元が承認した対応する USB／シリアル用パッケージが必要です。ファームウェアまたは WebUI だけをアップロードしても、アップグレードは完了しません。デバイスの管理者または提供元に、パッケージ内の手順に従った作業を依頼してください。フラッシュ全体を消去したり、古いパーティションテーブルを使用したりしないでください。</p>
-<p>重要なファイルを保存し、元の SD カードを装着したままにしてください。初回起動時に既存の設定が移行されます。移行中は電源を切らないでください。完了後、ログイン、ネットワーク、ファン、照明、SSH ホスト、自動化ルールを確認します。電源操作、デバイスの再起動、リモートコマンドを含むタスクは、ルールの内容を確認してからテストしてください。</p>
+<p>更新前に重要なファイルを保存してください。対応する更新ツールは鍵と SD カードを保持しますが、カード上の設定は消去しません。初回起動では既存設定の読み込みや移行が行われることがあります。顧客への納品は「古い設定を消して再設定する」手順に従います。デバイス管理者や提供元が納品手順を実施してください。自分でフラッシュ全体を消去したり、ファイルが残っているだけで設定が完了したと判断したりしないでください。</p>
+<p>アップグレード中および最初の起動中は、電源を接続したままにしてください。その後、ログイン、ネットワーク、ファン、照明、SSH ホスト、および自動化ルールを確認します。電源の制御、デバイスの再起動、リモート コマンドの実行などのタスクをテストする前に、ルールを確認してください。</p>
 <p>対応パッケージは両方のアプリケーションスロットを更新します。もう一方のスロットに旧バージョンが残っていると決めつけないでください。root パスワードを忘れた場合は、0.6.3 の構成に対応すると提供元が確認した復旧方法だけを使用してください。旧版のパスワードリセット用イメージを書き込まないでください。</p>
 <p>以下の Web 更新方法は、提供元が OTA でのインストールを承認したバージョンにのみ使用できます。初回のストレージ構成移行の代わりにはなりません。</p>
 <h3 id="ja-section-45" data-heading-key="section-45"><a href="#ja-section-45">OTA サーバーからのアップデートを確認する</a></h3>
-<ol><li>「Current Version」を確認します。</li><li>管理者または提供元から指定された OTA サーバーのアドレスを入力します。</li><li>「Save」を選び、続けて「Check Update」を選びます。</li><li>新しいバージョンが見つかったか、最新であるか、サーバー側が古いか、またはエラーが表示されます。</li><li>更新先のバージョンを確認し、「Upgrade Now」または画面に表示された更新ボタンを選びます。</li><li>ダウンロード、インストール、再起動の完了を待ちます。中止する場合は、「Abort」ボタンが使用可能なときに操作します。すべての段階で中止できるわけではありません。</li><li>更新後のファームウェアが画面で確認されるまで待ちます。WebUI に再接続し、「Current Version」とデバイスの状態を確認します。</li></ol>
+<ol><li>「現在のバージョン」を確認してください。 2 つの 0.6.3 インストールは、異なるリビジョン ビルドにすることができます。最初の 3 つの数字だけではなく、完全なバージョン、ビルド時間、発行者の指示を確認してください。</li><li>管理者または提供元から指定された OTA サーバーのアドレスを入力します。</li><li>「Save」を選び、続けて「Check Update」を選びます。</li><li>新しいバージョンが見つかったか、最新であるか、サーバー側が古いか、またはエラーが表示されます。</li><li>更新先のバージョンを確認し、「Upgrade Now」または画面に表示された更新ボタンを選びます。</li><li>ダウンロード、インストール、再起動の完了を待ちます。中止する場合は、「Abort」ボタンが使用可能なときに操作します。すべての段階で中止できるわけではありません。</li><li>更新後のファームウェアが画面で確認されるまで待ちます。WebUI に再接続し、「Current Version」とデバイスの状態を確認します。</li></ol>
 <p>「Upgrade Progress」には、現在の段階が専用の領域に表示されます。100% の表示やファイル書き込み完了のメッセージだけでは、再起動とバージョン確認が完了したとはいえません。結果が未確認の場合や、実行中のファームウェアが更新先と異なる場合は、メッセージを控え、現在のバージョンを確認してください。確認せずにアップグレードを繰り返さないでください。必要に応じて root ユーザーまたは提供元に調査を依頼してください。</p>
 <p>「Also upgrade www」を有効にすると、ファームウェアと WebUI が順に更新されます。同じリリースの対応するファームウェアと WebUI リソースを使用してください。更新後も旧画面が表示される場合は、ブラウザーを強制再読み込みし、バージョンと画面を再確認してください。</p>
 <h3 id="ja-section-46" data-heading-key="section-46"><a href="#ja-section-46">手動アップグレード</a></h3>
@@ -1182,20 +1226,22 @@
 <p>入力欄に赤いエラーが表示された場合は、指示に従って修正し、保存してください。エラー表示が消えても保存成功を意味するわけではありません。メッセージと一覧を確認してください。</p>
 <p>どの操作が失敗したかを確認し、理由と次の手順を読んでください。理由が表示されていない場合は、推測で対処しないでください。</p>
 <p>「Details」がある場合は選択して詳細を確認します。「Hide」を選ぶと詳細を閉じられます。× ボタンが表示されている場合は、選択するとメッセージを閉じられます。助けを求める場合は、root ユーザーが確認できるようメッセージと詳細を控えておいてください。</p>
+<p>メッセージまたはその詳細が長い場合は、次に何をするかを決定する前に、その領域内でスクロールして内容全体を読んでください。</p>
 <p>結果が未確認の場合は、表示を更新し、デバイス、ファイル、またはタスクの状態を確認してください。タイムアウトや接続切断は、操作が実行されなかったことを意味しません。電源の切り替え、削除、タスク開始、更新をすぐに繰り返さないでください。確認できない場合は、root ユーザーに調査を依頼してください。</p>
 <p>一括操作の結果は、成功、失敗、未確認の項目をそれぞれ確認してください。ファイルをダウンロードした後は、ブラウザーのダウンロード一覧で保存を確認してください。</p>
 
           </article>
 
           <article class="guide-article lang-pane" data-lang-pane="ko" hidden>
-<p>본 가이드는 TianshanOS 0.6.3을 기준으로 작성되었습니다. 다른 버전의 경우 해당 버전별 지침을 확인하세요.</p>
 <p>이 가이드에서는 admin 계정에 대한 시스템 검사, 장치 제어, 네트워킹, 파일 및 펌웨어 업데이트를 다룹니다. 루트 운영 가이드에서는 터미널 액세스, 원격 명령 및 자동화 구성을 다룹니다. 보안 관리는 별도의 보안 가이드를 참조하세요.</p>
+<p>대상 버전: 0.6.4. 개정일: 2026년 11월 3일.</p>
 <p>장치에 표시된 컨트롤을 사용하십시오. 일부는 특정 하드웨어나 구성이 필요합니다. 컴퓨터에서는 아이콘 버튼 위로 마우스를 가져가면 해당 이름을 볼 수 있습니다. 휴대전화에서는 넓은 표 내에서 스와이프하여 다른 열을 볼 수 있습니다.</p>
 <h2 id="ko-section-1" data-heading-key="section-1"><a href="#ko-section-1">1. 시작하기</a></h2>
 <h3 id="ko-section-2" data-heading-key="section-2"><a href="#ko-section-2">WebUI 열기</a></h3>
 <ol><li>관리자가 제공한 주소를 사용하여 장치의 웹 인터페이스(WebUI)를 엽니다.</li><li>오른쪽 상단에서 &quot;로그인&quot;을 선택합니다.</li><li><code>admin</code>를 사용자 이름으로 유지하고 장치와 함께 제공된 admin 비밀번호를 입력하십시오.</li><li>&quot;로그인&quot;을 선택합니다. 로그인에 성공하면 현재 사용자 이름이 오른쪽 상단에 나타납니다.</li></ol>
 <p>기본 비밀번호로 로그인하면 &quot;보안 알림&quot;이 열립니다. 현재 비밀번호를 입력한 후 새 비밀번호를 두 번 입력하고 '지금 변경'을 선택하세요. 두 새 비밀번호 항목이 모두 일치해야 합니다. 알림을 닫으려면 “나중에”를 선택하세요.</p>
 <p>작업이 끝나면 오른쪽 상단에 있는 “로그아웃”을 선택하세요. 기기를 사용하려면 다시 로그인해야 합니다.</p>
+<p>권한이 거부된 경우 계정을 확인하세요. 로그인이 만료된 경우 다시 로그인하세요. 그런 다음 이전 작업의 결과를 확인합니다. 로그인해도 이전 작업이 반복되지 않습니다. 즉시 업로드하거나 삭제하거나 다시 업그레이드하지 마세요.</p>
 <h3 id="ko-section-3" data-heading-key="section-3"><a href="#ko-section-3">언어 전환</a></h3>
 <p>페이지 상단의 언어 버튼을 선택한 다음 중국어 또는 영어를 선택하세요. 페이지 콘텐츠와 컨트롤 레이블이 즉시 전환됩니다.</p>
 <h3 id="ko-section-4" data-heading-key="section-4"><a href="#ko-section-4">페이지 탐색</a></h3>
@@ -1204,8 +1250,8 @@
 <h2 id="ko-section-5" data-heading-key="section-5"><a href="#ko-section-5">2. 시스템 상태 및 일상적인 작업</a></h2>
 <p>상단 탐색에서 &quot;시스템&quot;을 선택합니다.</p>
 <h3 id="ko-section-6" data-heading-key="section-6"><a href="#ko-section-6">리소스 및 서비스 상태 보기</a></h3>
-<p>“관리 칩 리소스”는 관리 칩의 CPU, DRAM, PSRAM 사용량을 표시합니다. AGX나 LPMU의 사용량이 아닙니다.</p>
-<ul><li>&quot;세부 정보&quot;를 선택하면 전체 메모리, 사용된 메모리, 사용 가능한 메모리 및 기타 메모리 정보를 볼 수 있습니다.</li><li>“서비스”는 실행 중인 서비스 수와 총계를 보여줍니다. 각 서비스의 상태와 시작 단계를 보려면 선택하세요.</li><li>서비스에서 문제를 보고하면 해당 상태를 새로 고칩니다. 다시 시작하려면 아래 &quot;One Service 다시 시작&quot;을 따르세요.</li></ul>
+<p>&quot;관리 칩 리소스&quot;에는 관리 칩의 CPU, DRAM 및 PSRAM 사용량이 표시됩니다. 이러한 판독값에는 추론 컴퓨터 또는 애플리케이션 컴퓨터의 리소스 사용량이 표시되지 않습니다.</p>
+<ul><li>&quot;세부 정보&quot;를 선택하면 전체 메모리, 사용된 메모리, 사용 가능한 메모리 및 기타 메모리 정보를 볼 수 있습니다.</li><li>메모리 세부 정보에서 &quot;추정&quot;이라고 표시된 값은 단지 참고용입니다. 경고가 나타나면 페이지 정보를 유지하고 안내에 따르세요.</li><li>“서비스”는 실행 중인 서비스 수와 총계를 보여줍니다. 각 서비스의 상태와 시작 단계를 보려면 선택하세요.</li><li>서비스에서 문제를 보고하면 해당 상태를 새로 고칩니다. 다시 시작하려면 아래 &quot;One Service 다시 시작&quot;을 따르세요.</li></ul>
 <h3 id="ko-section-7" data-heading-key="section-7"><a href="#ko-section-7">시스템 및 전원 정보 보기</a></h3>
 <p>“시스템 개요”에는 칩, 펌웨어 버전, ESP-IDF 버전 및 가동 시간이 표시됩니다. 일상적으로 사용하려면 펌웨어 버전을 확인하세요. ESP-IDF는 장치에서 사용되는 시스템 프레임워크 버전입니다.</p>
 <p>카드 오른쪽에는 입력 전압, 내부 전압, 전류, 전력 및 보호 상태가 표시됩니다.</p>
@@ -1224,20 +1270,25 @@
 <p>변경하려면 &quot;종료 설정&quot;을 선택하십시오.</p>
 <ul><li>&quot;저전압 임계값&quot;: 이 전압 아래에서 종료 카운트다운을 시작합니다.</li><li>“복구 전압 임계값”: 전압이 이 값보다 높아지면 복구를 시작합니다.</li><li>“종료 카운트다운”: 저전압을 감지한 후 종료까지 기다리는 시간을 설정합니다.</li><li>“복구 유지 시간”: 전원이 안정적으로 복구되었는지 확인하기 위해 기다리는 시간을 설정합니다.</li><li>“팬 정지 지연”: 종료 후 팬이 멈출 때까지 기다리는 시간을 설정합니다.</li></ul>
 <p>변경한 보호 설정을 적용하려면 양식을 저장하세요.</p>
+<p>&quot;종료 설정&quot;을 연 후 현재 설정이 로드될 때까지 기다립니다. 페이지에 기본값이 표시되어 있다고 표시되면 이를 장치의 현재 설정으로 취급하지 마십시오. 저장하기 전에 전압과 대기 시간을 검토하십시오. 로딩 중에 취소할 수 있습니다.</p>
 <h4 id="ko-section-13" data-heading-key="section-13"><a href="#ko-section-13">상단 USB 연결 대상 변경</a></h4>
 <aside class="guide-notice"><span>작업 시 주의 사항</span><p>USB 연결 대상을 바꾸면 연결된 장치가 일시적으로 끊길 수 있습니다. 진행하기 전에 대상을 확인하고 진행 중인 작업을 마치세요.</p></aside>
-<p>USB 전환을 지원하는 장치에는 “USB” 버튼이 표시됩니다. 클릭할 때마다 상단 USB 포트의 대상이 ESP, AGX, LPMU 순서로 바뀝니다. 버튼에 표시된 대상과 페이지 메시지로 결과를 확인하세요.</p>
+<p>USB 전환을 지원하는 장치에는 &quot;USB&quot; 버튼이 표시됩니다. 클릭할 때마다 상단 USB 포트가 다음 대상인 ESP, 추론 컴퓨터, 애플리케이션 컴퓨터로 전환됩니다. &quot;연결 끊김&quot;은 연결된 대상이 없음을 의미합니다. 버튼에 표시된 대상과 페이지 메시지를 확인하여 결과를 확인하세요.</p>
 <h2 id="ko-section-14" data-heading-key="section-14"><a href="#ko-section-14">3. 장치 패널</a></h2>
 <p>“장치 패널”은 “시스템” 페이지에 있습니다. 모듈 전원 제어, 빠른 작업, 데이터 위젯을 제공합니다.</p>
-<h3 id="ko-section-15" data-heading-key="section-15"><a href="#ko-section-15">AGX 및 LPMU 제어</a></h3>
+<h3 id="ko-section-15" data-heading-key="section-15"><a href="#ko-section-15">추론 컴퓨터 및 애플리케이션 컴퓨터 제어</a></h3>
+<p>&quot;추론 컴퓨터&quot;는 이전 AGX 레이블입니다. &quot;애플리케이션 컴퓨터&quot;는 이전 LPMU 레이블입니다. 장치 식별자와 명령은 계속해서 <code>agx</code> 및 <code>lpmu</code> 를 사용할 수 있습니다. 해당 식별자의 이름을 직접 바꾸지 마십시오.</p>
 <aside class="guide-notice"><span>작업 시 주의 사항</span><p>모듈의 전원을 끄기 전에 작업을 저장하고 정상 종료를 완료하세요. 강제 전원 차단으로 저장하지 않은 데이터가 사라질 수 있습니다.</p></aside>
-<ul><li>“AGX 전원”은 전원 제어 상태를 표시합니다. 버튼을 눌러 전원을 켜거나 끈 뒤 확인 메시지를 기다리세요.</li><li>“LPMU 전원”은 “온라인”, “오프라인”, “알 수 없음”을 표시합니다. 이 상태는 네트워크 확인 결과입니다. 온라인은 모듈에 연결할 수 있다는 뜻이고, 오프라인은 연결할 수 없다는 뜻입니다. 이 상태만으로 모듈의 전원이 켜졌는지 꺼졌는지는 확인할 수 없습니다.</li><li>LPMU 버튼을 누르면 실제 전원 버튼을 누를 때와 같은 동작을 실행합니다. 확인이 끝나고 결과가 표시될 때까지 기다리세요. 결과를 알 수 없으면 다시 누르기 전에 모듈과 네트워크를 확인하세요.</li></ul>
+<ul><li>「추론 컴퓨터 전원」은 전원 제어 상태를 표시합니다. 버튼으로 전원을 켜거나 끈 뒤 확인 결과를 기다리세요.</li><li>「애플리케이션 컴퓨터 전원」의 「네트워크 연결 가능／불가」는 네트워크로 접근할 수 있는지를 뜻합니다. 확인에 실패하면 전원 상태는 알 수 없는 상태로 남습니다. 이 결과만으로 컴퓨터 전원이 켜졌는지 꺼졌는지 판단하지 마세요.</li><li>애플리케이션 컴퓨터 버튼을 선택하면 물리적 전원 버튼을 누르는 것과 동일한 동작이 트리거됩니다. 검사와 표시된 결과를 기다립니다. 결과를 알 수 없는 경우 버튼을 다시 누르기 전에 컴퓨터와 네트워크를 확인하세요.</li></ul>
 <h3 id="ko-section-16" data-heading-key="section-16"><a href="#ko-section-16">빠른 작업 사용</a></h3>
 <p>빠른 작업 카드는 root 사용자가 설정합니다. 카드 표시와 수동 실행 허용은 별도의 설정입니다. 카드가 보여도 작업을 실행할 수 없는 경우가 있습니다.</p>
-<ol><li>카드 이름과 설명을 읽고 작업을 식별하세요.</li><li>카드를 선택하고 결과를 읽어보세요. 처리하는 동안 다시 시작하지 마십시오.</li><li>실행되거나 대기 중인 메시지에는 여전히 대상 장치 또는 작업에 대한 실제 결과 확인이 필요합니다. root 사용자에게 로그를 확인하고 보거나 백그라운드 서비스를 중지하도록 요청하세요.</li></ol>
+<ol><li>카드 이름과 설명을 읽고 작업을 식별하세요.</li><li>&quot;시작&quot; 또는 카드를 선택하고 결과를 읽습니다. 처리하는 동안 다시 시작하지 마십시오.</li><li>실행되거나 대기 중인 메시지에는 여전히 대상 장치 또는 작업에 대한 실제 결과 확인이 필요합니다. 서비스 상태가 표시되면 &quot;프로세스 실행 중&quot;과 &quot;준비&quot;를 구분합니다. 여러 작업이 포함된 카드에는 '일부 작업이 준비되지 않았습니다.'라고 표시될 수 있습니다.</li></ol>
+<p>원격 백그라운드 작업이 포함된 카드는 '로그 보기' 및 '중지'도 제공합니다. 로그를 열어 관련 작업을 검토하세요. 여러 레코드가 나타나면 작업 이름과 원래 호스트를 기준으로 선택하세요. 중지하기 전에 대상을 확인하고 결과를 기다린 다음 중지되었는지 확인하십시오. 로그를 닫거나 로그 업데이트를 중지해도 작업이 중지되지 않습니다.</p>
+<p>「실행 기록」에는 이전에 시작한 작업도 남아 있습니다. 기록만으로 현재 실행 중이라고 판단하면 안 됩니다. 필요하면 「원격 상태 확인」을 선택하세요. admin은 관련 카드에서 열 수 있지만 「시스템」의 별도 「실행 기록」 버튼은 root에게만 보입니다. 조작할 수 없거나 결과가 불분명하면 root 사용자에게 확인을 요청하세요.</p>
 <p>시작할 수 없으면 표시된 이유에 따라 처리하세요. 시작 버튼을 반복해서 누르지 마세요:</p>
-<ul><li>규칙 비활성화 또는 수동 트리거링이 허용되지 않음: root 사용자에게 규칙 설정을 확인하도록 요청하세요. 눈에 보이는 카드는 실행 권한이 없습니다.</li><li>작업 또는 백그라운드 작업이 진행 중입니다. 결과를 기다립니다. 다시 시작하지 마십시오.</li><li>작업에 대한 백그라운드 실행 기록이 이미 존재합니다. root 사용자에게 원래 작업을 확인하고 다시 시작하기 전에 종료되었는지 확인하도록 요청하세요.</li><li>구성이 로드되지 않았거나 필수 항목이 누락되었거나 자동화가 일시 중지되었습니다. root 사용자에게 구성 및 활성화 상태를 확인하도록 요청하세요.</li></ul>
-<p>하나의 작업을 실행한 후 다른 작업을 시작하기 전에 몇 초 정도 기다리십시오. 페이지를 닫거나, 카드를 삭제하거나, TianshanOS를 다시 시작해도 원격 호스트의 백그라운드 서비스가 중지되지 않습니다.</p>
+<ul><li>규칙 비활성화 또는 수동 트리거링이 허용되지 않음: root 사용자에게 규칙 설정을 확인하도록 요청하세요. 눈에 보이는 카드는 실행 권한이 없습니다.</li><li>작업 또는 백그라운드 작업이 진행 중입니다. 결과를 기다립니다. 다시 시작하지 마십시오.</li><li>작업에 대한 실행 기록이 이미 존재합니다. 다시 시작하는 대신 원래 작업의 상태와 로그를 확인하세요. 종료해야 하는 경우 중지하고 확인하세요. 문제를 해결할 수 없는지 root 사용자에게 문의하여 확인하세요.</li><li>구성이 로드되지 않았거나 필수 항목이 누락되었거나 자동화가 일시 중지되었습니다. root 사용자에게 구성 및 활성화 상태를 확인하도록 요청하세요.</li></ul>
+<p>자동 시작 중이거나 재시도를 기다린다는 안내가 나오면 기다리세요. 일시적인 시작 실패는 30초마다, 최대 6분 동안 재시도합니다. 시작 결과가 불분명하면 다시 시작하기 전에 상태를 확인합니다. 수동 실행 실패는 자동으로 반복하지 않습니다. 대기 시간이 끝나면 안내에 따라 장치와 네트워크를 확인한 뒤 「시작」 여부를 결정하세요.</p>
+<p>하나의 작업을 실행한 후 다른 작업을 시작하기 전에 몇 초 정도 기다리십시오. 페이지를 닫거나, 카드를 삭제하거나, TianshanOS를 다시 시작해도 원격 호스트의 백그라운드 서비스가 중지되지 않습니다. 서비스를 중지된 상태로 유지하려면 root 사용자에게 서비스를 다시 시작할 수 있는 자동 규칙을 비활성화하도록 요청하십시오.</p>
 <p>재정렬 표시가 나타날 때까지 카드를 길게 누른 다음 끌어서 표시 순서를 변경합니다.</p>
 <p>카드가 나타나지 않으면 설명을 읽어보세요. 구성이 로드되는 동안 기다리십시오. 로딩이 실패한 경우 이유를 기록하고 root 사용자에게 문의하세요. 빠른 작업이 구성되지 않은 경우 root 사용자에게 규칙의 “Show on panel” 설정을 확인하도록 요청하세요.</p>
 <p>규칙을 편집하거나 가져오면 현재 구성이 업데이트됩니다. 규칙을 전환하기 위해 다시 시작할 필요는 없습니다. 카드의 작업이 변경된 경우 실행하기 전에 root 사용자에게 내용을 확인하도록 요청하세요.</p>
@@ -1246,6 +1297,8 @@
 <p>데이터 위젯은 &quot;장치 패널&quot;에 장치 데이터를 지속적으로 표시합니다.</p>
 <ol><li>&quot;위젯 관리자&quot;를 선택합니다.</li><li>새로 고침 간격을 선택하거나 자동 새로 고침을 비활성화합니다.</li><li>사전 설정된 위젯을 추가하거나 페이지에서 제공하는 구성요소 스타일 및 데이터 소스를 선택하세요.</li><li>필요에 따라 레이블, 표시 스타일 및 단위를 편집한 다음 저장합니다.</li></ol>
 <p>기존 위젯을 편집, 삭제 및 재정렬할 수 있습니다. 위젯 카드를 선택하여 편집할 수도 있습니다. 위젯을 길게 누른 다음 새 위치로 드래그하세요.</p>
+<p>&quot;Small&quot;, &quot;Medium&quot; 및 &quot;Large&quot;는 1개, 2개, 3개 열을 사용합니다. 더 좁은 화면에 맞습니다. 아이콘을 편집할 때 페이지의 예시를 사용하여 이름을 입력하세요. 이중 값 위젯의 각 값에는 고유한 데이터 설정이 있습니다. 두 소스가 모두 올바른지, 데이터가 업데이트되는지 확인하세요.</p>
+<p>&quot;데이터 위젯을 로드하지 못했습니다&quot;라고 해서 구성이 존재하지 않는다는 의미는 아닙니다. 원인을 해결하고 다시 읽어보세요. 저장에 실패하거나 결과가 확인되지 않는 경우 현재 내용을 유지하고 메시지를 확인하세요. 페이지에서 변경 사항을 확인한다고 해서 저장되었는지 확인할 수는 없습니다.</p>
 <h2 id="ko-section-18" data-heading-key="section-18"><a href="#ko-section-18">4. 팬 관리</a></h2>
 <p>&quot;팬 제어&quot;는 &quot;시스템&quot; 페이지에 있습니다. 팬 카드에는 장치에서 제공하는 팬이 표시됩니다. 곡선을 변경하기 전에 팬 수를 확인하십시오.</p>
 <h3 id="ko-section-19" data-heading-key="section-19"><a href="#ko-section-19">팬 상태 보기</a></h3>
@@ -1261,6 +1314,8 @@
 <p>팬 제어 섹션 헤더에서 &quot;곡선&quot;을 선택하여 &quot;팬 곡선 관리&quot;를 엽니다. 카드 내부의 &quot;곡선&quot; 버튼은 작동 모드만 변경합니다.</p>
 <ol><li>&quot;Fan&quot;에서 조정할 숫자를 선택하고 시스템 페이지에서 확인합니다.</li><li>'온도 변수 바인딩'에서 온도 변수를 추가하고 가중치를 할당합니다.</li><li>&quot;바인딩&quot;을 선택합니다. 온도 소스는 곡선 및 스마트 모드의 팬이 공유하므로 온도 소스를 변경하면 해당 소스를 사용하는 팬에 영향을 줍니다.</li><li>&quot;곡선 노드&quot;를 추가하거나 편집합니다. 각 곡선에는 최소 2 노드가 필요하며 최대 10를 지원합니다.</li><li>&quot;최소 속도&quot;와 &quot;최대 속도&quot;를 제어 비율로 설정합니다. 최소값은 최대값을 초과하면 안 됩니다.</li><li>“온도 히스테리시스”와 “최소 간격”을 설정하세요. 히스테리시스 범위는 0-20°C이며, 작은 온도 변화로 팬이 자주 조절되는 것을 줄입니다. 최소 간격은 500-30000 ms입니다. 1000 ms는 1초입니다.</li><li>&quot;곡선 저장&quot;을 선택합니다. 성공적으로 저장되면 선택한 팬이 곡선 모드로 전환됩니다. 스마트 열 제어를 사용하려면 카드로 돌아가서 '스마트'를 선택하세요.</li></ol>
 <p>저장에 실패하면 메시지를 읽고 현재 상태를 확인한 후 다시 시도하세요. 온도 변수 바인딩을 해제한 후 유효 온도와 팬 상태도 확인하세요.</p>
+<p>설정을 열거나 다른 팬을 선택한 후 현재 설정이 로드될 때까지 기다립니다. 페이지에 기본값이나 이전 초안이 표시되고 있다고 표시되면 해당 값은 장치의 현재 설정을 확인하지 않는 것입니다. 저장하기 전에 검토하세요. 온도 바인딩에 대한 읽기 및 저장 결과도 확인하세요.</p>
+<p>팬 설정이 적용되었지만 완전히 저장되지 않았다는 메시지가 나타나면 현재 조정이 이미 적용되었을 수 있습니다. 다시 시작하면 이전 설정이 복원될 수 있습니다. 실제 팬 상태를 확인하고 기기 저장 공간이 사용 가능한지 확인한 후 다시 저장하세요. 저장이 작동했는지 테스트하기 위해 장치를 다시 시작하지 마십시오.</p>
 <h3 id="ko-section-22" data-heading-key="section-22"><a href="#ko-section-22">곡선 가져오기 및 내보내기</a></h3>
 <ul><li>&quot;Import Config&quot;를 선택하고 곡선 JSON 파일을 선택합니다. JSON는 곡선 데이터를 저장하는 데 사용되는 파일 형식입니다. 노드, 제한 및 팬 수를 검토한 다음 &quot;곡선 저장&quot;을 선택하여 적용합니다.</li><li>현재 곡선을 다운로드하려면 &quot;구성 내보내기&quot;를 선택하십시오. 또한 페이지는 SD 카드의 <code>/sdcard/config</code> 아래에 복사본을 저장하려고 시도합니다. 브라우저 다운로드와 보고된 SD 카드 결과를 별도로 확인하세요.</li></ul>
 <h3 id="ko-section-23" data-heading-key="section-23"><a href="#ko-section-23">테스트 온도 사용</a></h3>
@@ -1269,10 +1324,10 @@
 <h2 id="ko-section-24" data-heading-key="section-24"><a href="#ko-section-24">5. LED 관리</a></h2>
 <p>&quot;LED 제어&quot;는 &quot;시스템&quot; 페이지에 있으며 장치에서 제공하는 LED를 표시합니다. 사용 가능한 기능은 LED에 따라 다릅니다.</p>
 <h3 id="ko-section-25" data-heading-key="section-25"><a href="#ko-section-25">일상 제어</a></h3>
-<ul><li>카드 하단에 있는 전구 버튼을 사용하여 LED를 켜거나 끌 수 있습니다.</li><li>&quot;밝기&quot; 슬라이더를 이동하거나 색상 또는 사전 설정을 선택합니다.</li><li>애니메이션 버튼을 사용하여 &quot;LED 설정&quot;을 엽니다. &quot;프로그래밍 방식 애니메이션&quot;에서 애니메이션을 선택한 다음 해당 애니메이션의 재생 또는 중지 제어를 사용합니다.</li><li>현재 LED 구성을 저장하려면 카드 오른쪽 하단에 있는 저장 아이콘을 선택하세요.</li><li>&quot;All Off&quot;를 선택하면 모든 LED가 꺼지고 보고된 결과를 확인할 수 있습니다. 일부가 실패하면 해당 장치를 확인하십시오.</li></ul>
+<ul><li>카드 하단에 있는 전구 버튼을 사용하여 LED를 켜거나 끌 수 있습니다.</li><li>밝기, 색조 및 채도 슬라이더를 사용하십시오. 밝기는 빛의 밝기를 제어합니다. 색조는 색상을 선택합니다. 채도는 흰색과 색상 사이를 이동합니다. 0의 채도는 백색광을 제공합니다. 슬라이더를 놓으면 색조 및 채도 변경 사항이 적용됩니다.</li><li>애니메이션 버튼을 사용하여 &quot;LED 설정&quot;을 엽니다. &quot;프로그래밍 방식 애니메이션&quot;에서 애니메이션을 선택한 다음 해당 애니메이션의 재생 또는 중지 제어를 사용합니다.</li><li>현재 LED 구성을 저장하려면 카드 오른쪽 하단에 있는 저장 아이콘을 선택하세요.</li><li>&quot;All Off&quot;를 선택하면 모든 LED가 꺼지고 보고된 결과를 확인할 수 있습니다. 일부가 실패하면 해당 장치를 확인하십시오.</li></ul>
 <h3 id="ko-section-26" data-heading-key="section-26"><a href="#ko-section-26">고급 LED 매트릭스 기능</a></h3>
 <p>매트릭스 카드는 사용 가능한 기능에 대한 아이콘을 제공합니다. 하나를 연 다음 &quot;LED 설정&quot;에서 다음 그룹 간에 전환하세요.</p>
-<ul><li>“프로그래밍 방식 애니메이션”: 애니메이션을 선택하고 실행합니다.</li><li>“이미지/QR 코드”: SD 카드에서 이미지를 선택하거나 QR 코드에 대한 콘텐츠를 입력합니다.</li><li>&quot;텍스트 표시&quot;: 텍스트, 글꼴, 정렬, 스크롤, 전경 및 배경을 설정합니다.</li><li>&quot;사후 처리 필터&quot;: 필터와 매개변수를 선택한 다음 적용하거나 중지합니다.</li><li>&quot;색상 교정&quot;: 디스플레이를 조정하고 사용 가능한 재설정, 가져오기 또는 내보내기 컨트롤을 사용합니다.</li></ul>
+<ul><li>“프로그래밍 방식 애니메이션”: 애니메이션을 선택하고 실행합니다.</li><li>&quot;이미지/QR 코드&quot;: 카드의 &quot;유형&quot;에서 이미지 또는 QR 코드를 선택한 다음 SD 카드 이미지를 선택하거나 QR 콘텐츠를 입력합니다.</li><li>&quot;텍스트 표시&quot;: 텍스트, 글꼴, 정렬, 스크롤, 전경 및 배경을 설정합니다.</li><li>&quot;사후 처리 필터&quot;: 필터와 매개변수를 선택한 다음 적용하거나 중지합니다.</li><li>&quot;색상 교정&quot;: 디스플레이를 조정하고 사용 가능한 재설정, 가져오기 또는 내보내기 컨트롤을 사용합니다.</li></ul>
 <p>변경 사항을 적용한 후 실제 조명 또는 매트릭스 디스플레이를 확인하십시오. 표시된 기능만 사용하세요. 설정에 실패할 경우 메시지에 따라 파일, 입력, 기기 상태를 확인하세요.</p>
 <h2 id="ko-section-27" data-heading-key="section-27"><a href="#ko-section-27">6. 네트워크 관리</a></h2>
 <aside class="guide-notice"><span>작업 시 주의 사항</span><p>상단 탐색 메뉴에서 &quot;네트워크&quot;를 선택하여 &quot;네트워크 설정&quot;을 엽니다. 네트워크 모드, 핫스팟 또는 NAT 설정을 변경하면 현재 WebUI 연결이 중단될 수 있습니다. 저장하기 전에 새 네트워크 주소를 통해 다시 연결할 수 있는지 확인하세요.</p></aside>
@@ -1295,15 +1350,18 @@
 <h3 id="ko-section-34" data-heading-key="section-34"><a href="#ko-section-34">고급 네트워크 운영</a></h3>
 <h4 id="ko-section-35" data-heading-key="section-35"><a href="#ko-section-35">NAT 게이트웨이 구성</a></h4>
 <p>NAT는 장치의 네트워크 인터페이스 간에 네트워크 트래픽을 전달합니다. NAT를 활성화 또는 비활성화한 다음 &quot;저장&quot;을 선택하여 설정을 유지합니다. 이후에는 WiFi 및 이더넷 상태를 확인하세요.</p>
-<h4 id="ko-section-36" data-heading-key="section-36"><a href="#ko-section-36">LPMU를 통해 업스트림 네트워크에 액세스</a></h4>
-<p>이 작업은 구성된 LPMU 호스트를 사용하여 네트워크 액세스를 설정합니다. 시작하기 전에 LPMU에 연결할 수 있고 네트워크 케이블이 연결되어 있는지 확인하세요. 해당 호스트의 SSH 계정에 대한 sudo 비밀번호를 얻습니다. 이 비밀번호는 시스템 변경을 승인하며 WebUI 비밀번호와 다를 수 있습니다.</p>
-<ol><li>&quot;업스트림 네트워크 액세스&quot;에서 &quot;LPMU를 통한 액세스&quot;를 선택합니다.</li><li>LPMU sudo 비밀번호를 입력하고 접속 버튼을 선택하세요. 비밀번호는 이 실행에만 사용되며 저장되지 않습니다. 나중에 실행하려면 다시 입력하세요.</li><li>작업이 완료될 때까지 기다립니다. 처리하는 동안 다시 시작하지 마십시오.</li><li>결과가 인터넷 연결과 완료된 네트워크 구성을 모두 보고하는 경우에만 액세스가 확인됩니다.</li><li>실패하거나 결과가 확인되지 않는 경우 먼저 이유를 읽어보세요. 자세한 내용을 보려면 &quot;실행 로그&quot;를 확장하세요. 비밀번호 오류가 있는 경우 비밀번호를 확인하고, 인터넷에 연결되지 않은 경우 케이블링 및 업스트림 네트워크를 확인하세요.</li></ol>
+<h4 id="ko-section-36" data-heading-key="section-36"><a href="#ko-section-36">애플리케이션 컴퓨터를 통해 업스트림 네트워크에 액세스</a></h4>
+<p>이 작업은 구성된 애플리케이션 컴퓨터를 사용하여 네트워크 액세스를 설정합니다. 시스템에서 먼저 USB를 &quot;애플리케이션 컴퓨터&quot;로 전환하고 네트워크 케이블을 확인하십시오. 해당 SSH 호스트는 키 인증을 사용해야 하며 확인된 호스트 지문이 있어야 합니다. root 사용자에게 보안 가이드를 사용하여 이러한 설정을 확인하도록 요청하십시오.</p>
+<p>해당 호스트의 SSH 계정에 대한 sudo 비밀번호를 얻습니다. 이 비밀번호는 시스템 변경을 승인하며 WebUI 비밀번호와 다를 수 있습니다.</p>
+<ol><li>&quot;업스트림 네트워크 액세스&quot;에서 &quot;애플리케이션 컴퓨터를 통한 액세스&quot;를 선택합니다.</li><li>애플리케이션 컴퓨터 sudo 비밀번호를 입력하고 접속 버튼을 선택하세요. 비밀번호는 이 실행에만 사용되며 저장되지 않습니다. 나중에 실행하려면 다시 입력하세요.</li><li>작업이 완료될 때까지 기다립니다. 처리하는 동안 다시 시작하지 마십시오.</li><li>결과가 인터넷 연결과 완료된 네트워크 구성을 모두 보고하는 경우에만 액세스가 확인됩니다.</li><li>결과 창을 닫은 후, “결과 보기”를 선택하면 다시 열립니다. 실패하거나 결과가 확인되지 않은 경우 이유와 실패 단계를 읽어보세요. 자세한 내용을 보려면 &quot;실행 로그&quot;를 확장하세요. 비밀번호 오류가 있는 경우 비밀번호를 확인하고, 인터넷에 연결되지 않은 경우 케이블링 및 업스트림 네트워크를 확인하세요.</li></ol>
+<p>호스트 지문이 확인되지 않았거나 변경된 경우 root 사용자에게 먼저 호스트의 ID를 확인하도록 요청하십시오. 계속해서 접속을 재시도하거나 인증을 건너뛰지 마세요. 원격 스크립트 출력은 원래 언어로 유지될 수 있습니다. 필요한 경우 조사를 위해 보관하십시오.</p>
 <p>실패한 상태 요청은 스크립트가 중지되었음을 의미하지 않습니다. 다시 시도할지 여부를 결정하기 전에 사용 가능한 &quot;새로 고침 상태&quot; 컨트롤을 사용하여 현재 실행을 확인하십시오.</p>
 <h2 id="ko-section-37" data-heading-key="section-37"><a href="#ko-section-37">7. 파일 관리</a></h2>
 <p>상단 탐색 메뉴에서 &quot;파일&quot;을 선택하여 &quot;파일 관리자&quot;를 엽니다.</p>
 <p>SD 카드는 이동식 저장소이고 SPIFFS는 내부 장치 파일 저장소입니다. 위치를 전환하려면 “SD 카드” 또는 “SPIFFS”를 선택하세요. 상단의 경로에는 현재 폴더가 표시됩니다. 경로에서 폴더 이름을 선택하면 해당 폴더로 돌아갑니다.</p>
 <h3 id="ko-section-38" data-heading-key="section-38"><a href="#ko-section-38">파일 찾아보기 및 관리</a></h3>
 <ul><li>폴더 이름을 선택하여 엽니다.</li><li>파일 옆에 있는 다운로드 버튼을 선택하여 브라우저의 다운로드 위치에 저장합니다.</li><li>이름 바꾸기 버튼을 선택하고 새 이름을 입력한 후 확인합니다.</li><li>“새 폴더”를 선택하고 폴더 이름을 입력한 후 생성합니다.</li><li>현재 디렉터리와 저장소 상태를 다시 로드하려면 새로 고침 버튼을 선택하세요.</li></ul>
+<p>파일 업로드, 삭제, 이름 변경, 폴더 생성, SD 카드 마운트와 해제에는 유효한 로그인이 필요합니다. 보호된 자동화 파일의 읽기와 다운로드에는 root 권한도 필요합니다. admin 접근이 거부되면 root 사용자에게 설정 페이지에서 처리해 달라고 요청하세요. 경로나 진입점을 바꿔 권한 검사를 우회하지 마세요.</p>
 <h3 id="ko-section-39" data-heading-key="section-39"><a href="#ko-section-39">파일 업로드</a></h3>
 <p>파일은 SD 카드에만 업로드할 수 있습니다. SPIFFS에는 업로드할 수 없습니다. 먼저 SD 카드가 마운트되어 있는지 확인하세요.</p>
 <ol><li>“SD 카드”를 선택하고 파일을 업로드할 폴더를 여세요.</li><li>&quot;파일 업로드&quot;를 선택합니다.</li><li>하나 이상의 파일을 선택하거나 파일을 업로드 영역으로 끌어다 놓습니다.</li><li>업로드 목록을 검토하고 원하지 않는 파일을 제거합니다.</li><li>&quot;업로드&quot;를 선택하고 각 파일이 완료될 때까지 기다립니다.</li></ol>
@@ -1325,11 +1383,12 @@
 <p>업데이트 중에 장치가 재부팅되어 WebUI 연결이 일시적으로 끊어집니다. 시작하기 전에 활성 작업을 저장하고 장치 전원을 안정적으로 유지하세요. 업데이트 진행이 완료되지 않은 동안 장치의 전원을 끄지 마십시오.</p>
 <h3 id="ko-section-44" data-heading-key="section-44"><a href="#ko-section-44">이전 버전에서 0.6.3으로 처음 업그레이드</a></h3>
 <p>0.6.2와 같은 이전 스토리지 레이아웃의 첫 번째 업그레이드에는 배포자가 승인한 호환 USB/시리얼 패키지가 필요합니다. 펌웨어 또는 WebUI만 업로드하면 이 업그레이드를 완료할 수 없습니다. 장치 관리자나 공급자에게 패키지 지침을 따르도록 요청하세요. 전체 플래시를 지우거나 오래된 파티션 테이블을 사용하지 마십시오.</p>
-<p>중요한 파일을 저장하고 원래 SD 카드를 설치된 상태로 유지하십시오. 처음 시작하면 기존 구성이 마이그레이션됩니다. 전원을 연결해 두세요. 그런 다음 로그인, 네트워킹, 팬, 조명, SSH 호스트 및 자동화 규칙을 확인하세요. 전원을 제어하거나 장치를 다시 시작하거나 원격 명령을 실행하는 작업을 테스트하기 전에 규칙을 검토하세요.</p>
+<p>업그레이드하기 전에 중요한 파일을 저장하세요. 일치하는 도구는 키와 SD 카드를 보존합니다. 카드의 구성은 지워지지 않습니다. 처음 시작할 때 기존 구성을 읽거나 마이그레이션할 수 있습니다. 고객 배송은 &quot;이전 구성을 지우고 다시 구성&quot; 절차를 따릅니다. 장치 관리자 또는 공급자는 배송 지침을 따라야 합니다. 전체 플래시를 직접 삭제하거나 보존된 파일을 완료된 구성으로 취급하지 마십시오.</p>
+<p>업그레이드 및 처음 시작하는 동안 전원을 연결된 상태로 유지하세요. 그런 다음 로그인, 네트워킹, 팬, 조명, SSH 호스트 및 자동화 규칙을 확인하세요. 전원을 제어하거나 장치를 다시 시작하거나 원격 명령을 실행하는 작업을 테스트하기 전에 규칙을 검토하세요.</p>
 <p>일치하는 패키지는 두 애플리케이션 슬롯을 모두 업데이트합니다. 다른 슬롯에 여전히 이전 버전이 포함되어 있다고 가정하지 마십시오. root 비밀번호를 분실한 경우 0.6.3 레이아웃과 일치하도록 공급자가 확인한 복구 방법만 사용하세요. 이전 비밀번호 재설정 이미지를 플래시하지 마세요.</p>
 <p>아래 웹 업데이트 방법은 게시자가 OTA에 대해 승인한 버전에만 적용됩니다. 첫 번째 레이아웃 업그레이드를 대체하지 않습니다.</p>
 <h3 id="ko-section-45" data-heading-key="section-45"><a href="#ko-section-45">OTA 서버에서 업데이트 확인</a></h3>
-<ol><li>“Current Version”. 검토</li><li>관리자나 게시자가 제공한 OTA 서버 주소를 입력하세요.</li><li>“Save”를 선택한 다음 “Check Update”를 선택합니다.</li><li>페이지에서는 “Update Available” “Already up to date” 이전 서버 버전 또는 오류를 보고합니다.</li><li>대상 버전을 확인한 다음 “Upgrade Now” 또는 페이지에 표시된 업그레이드 제어를 선택하십시오.</li><li>다운로드, 설치, 재부팅이 완료될 때까지 기다립니다. 취소하려면 사용 가능한 경우 “Abort” 버튼을 사용하십시오. 모든 단계에서 취소가 지원되는 것은 아닙니다.</li><li>업그레이드 후 펌웨어를 확인하는 페이지를 기다립니다. WebUI에 다시 연결하여 “Current Version” 및 장치 상태를 확인하세요.</li></ol>
+<ol><li>&quot;현재 버전&quot;을 검토하십시오. 두 개의 0.6.3 설치는 서로 다른 개정 빌드일 수 있습니다. 처음 세 숫자만 확인하기보다는 정식 버전, 빌드 시간, 게시자의 지침을 확인하세요.</li><li>관리자나 게시자가 제공한 OTA 서버 주소를 입력하세요.</li><li>“Save”를 선택한 다음 “Check Update”를 선택합니다.</li><li>페이지에서는 “Update Available” “Already up to date” 이전 서버 버전 또는 오류를 보고합니다.</li><li>대상 버전을 확인한 다음 “Upgrade Now” 또는 페이지에 표시된 업그레이드 제어를 선택하십시오.</li><li>다운로드, 설치, 재부팅이 완료될 때까지 기다립니다. 취소하려면 사용 가능한 경우 “Abort” 버튼을 사용하십시오. 모든 단계에서 취소가 지원되는 것은 아닙니다.</li><li>업그레이드 후 펌웨어를 확인하는 페이지를 기다립니다. WebUI에 다시 연결하여 “Current Version” 및 장치 상태를 확인하세요.</li></ol>
 <p>“Upgrade Progress”는 자체 섹션에 현재 단계를 표시합니다.100% 읽거나 파일이 작성되었다는 메시지는 재시작 및 버전 확인이 완료되었음을 확인하지 않습니다. 결과가 확인되지 않거나 실행 중인 펌웨어가 대상과 다른 경우 메시지를 유지하고 현재 버전을 확인하십시오. 확인하지 않고 업그레이드를 반복하지 마십시오. 필요한 경우 root 사용자나 공급자에게 조사를 요청하세요.</p>
 <p>“Also upgrade www”가 활성화되면 펌웨어와 WebUI가 순차적으로 업데이트됩니다. 동일한 릴리스의 일치하는 펌웨어 및 WebUI 리소스를 사용하십시오. 업그레이드 후에도 이전 인터페이스가 남아 있는 경우 브라우저를 강제 새로 고침한 후 버전과 페이지를 다시 확인하세요.</p>
 <h3 id="ko-section-46" data-heading-key="section-46"><a href="#ko-section-46">수동 업그레이드</a></h3>
@@ -1348,20 +1407,22 @@
 <p>빨간색 필드 오류는 수정해야 할 사항을 알려줍니다. 수정한 후 저장하세요. 오류 표시가 지워졌다고 해서 성공적으로 저장되었다는 의미는 아닙니다. 메시지와 목록을 확인하세요.</p>
 <p>어떤 작업이 실패했는지 확인한 뒤 이유와 다음 조치를 읽으세요. 이유가 표시되지 않으면 추측하지 마세요.</p>
 <p>사용 가능한 경우 “Details”를 선택합니다. 세부정보를 숨기려면 “Hide”를 선택하세요. × 버튼이 표시되면 이를 선택하여 메시지를 닫습니다. 도움을 요청할 때 root 사용자가 확인할 수 있도록 메시지와 세부 정보를 기록해 두십시오.</p>
+<p>메시지나 세부정보가 긴 경우 다음에 수행할 작업을 결정하기 전에 해당 영역 내에서 스크롤하여 전체 내용을 읽어보세요.</p>
 <p>결과가 확인되지 않으면 새로고침하고 장치·파일·작업 상태를 확인하세요. 시간 초과나 연결 끊김은 작업이 실행되지 않았다는 뜻이 아닙니다. 전원 제어·삭제·작업 시작·업그레이드를 곧바로 반복하지 마세요. 계속 확인할 수 없으면 root 사용자에게 점검을 요청하세요.</p>
 <p>성공, 실패, 미확인 배치 결과를 별도로 확인하세요. 브라우저의 다운로드 목록에서 저장된 파일을 확인하세요.</p>
 
           </article>
 
           <article class="guide-article lang-pane" data-lang-pane="es" hidden>
-<p>Esta guía está basada en TianshanOS 0.6.3. Para otras versiones, consulte las instrucciones específicas de la versión correspondiente.</p>
 <p>Esta guía cubre comprobaciones del sistema, controles de dispositivos, redes, archivos y actualizaciones de firmware para la cuenta admin. La Guía de operaciones raíz cubre el acceso al terminal, los comandos remotos y la configuración de automatización. Consulte la Guía de seguridad separada para conocer la gestión de la seguridad.</p>
+<p>Versión cubierta: 0.6.4. Revisado el 3 de noviembre de 2026.</p>
 <p>Utilice los controles que se muestran en su dispositivo. Algunos necesitan hardware o configuración específicos. En una computadora, coloque el cursor sobre un botón con un ícono para ver su nombre. En un teléfono, deslícese dentro de una tabla amplia para ver sus otras columnas.</p>
 <h2 id="es-section-1" data-heading-key="section-1"><a href="#es-section-1">1. Empezando</a></h2>
 <h3 id="es-section-2" data-heading-key="section-2"><a href="#es-section-2">Abra la interfaz de usuario web</a></h3>
 <ol><li>Abra la interfaz web del dispositivo (WebUI) utilizando la dirección proporcionada por su administrador.</li><li>Seleccione &quot;Iniciar sesión&quot; en la esquina superior derecha.</li><li>Mantenga <code>admin</code> como nombre de usuario e ingrese la contraseña admin proporcionada con el dispositivo.</li><li>Seleccione &quot;Iniciar sesión&quot;. Después de iniciar sesión correctamente, el nombre de usuario actual aparece en la esquina superior derecha.</li></ol>
 <p>Al iniciar sesión con la contraseña predeterminada se abre un &quot;Recordatorio de seguridad&quot;. Ingrese la contraseña actual, luego ingrese la nueva contraseña dos veces y seleccione &quot;Cambiar ahora&quot;. Ambas entradas de nueva contraseña deben coincidir. Seleccione &quot;Más tarde&quot; para cerrar el recordatorio.</p>
 <p>Cuando haya terminado, seleccione &quot;Cerrar sesión&quot; en la esquina superior derecha. Deberá iniciar sesión nuevamente para usar el dispositivo.</p>
+<p>Si se le niega el permiso, verifique la cuenta. Si el inicio de sesión ha caducado, inicie sesión nuevamente. Luego verifique el resultado de la operación anterior. Iniciar sesión no repite una tarea anterior. No cargue, elimine ni actualice de nuevo inmediatamente.</p>
 <h3 id="es-section-3" data-heading-key="section-3"><a href="#es-section-3">Cambiar idioma</a></h3>
 <p>Seleccione el botón de idioma en la parte superior de la página, luego elija chino o inglés. El contenido de la página y las etiquetas de control cambian inmediatamente.</p>
 <h3 id="es-section-4" data-heading-key="section-4"><a href="#es-section-4">Navegación por las páginas</a></h3>
@@ -1370,8 +1431,8 @@
 <h2 id="es-section-5" data-heading-key="section-5"><a href="#es-section-5">2. Estado del sistema y operaciones de rutina</a></h2>
 <p>Seleccione &quot;Sistema&quot; en la navegación superior.</p>
 <h3 id="es-section-6" data-heading-key="section-6"><a href="#es-section-6">Ver el estado de los recursos y servicios</a></h3>
-<p>«Recursos del chip de administración» muestra el uso de CPU, DRAM y PSRAM de ese chip. Los valores no corresponden a AGX ni a LPMU.</p>
-<ul><li>Seleccione &quot;Detalles&quot; para ver la memoria total, utilizada y libre y otra información de la memoria.</li><li>“Servicios” muestra el número de servicios en ejecución y el total. Selecciónelo para ver el estado y la etapa de inicio de cada servicio.</li><li>Si un servicio informa un problema, actualice su estado. Para reiniciarlo, siga &quot;Reiniciar un servicio&quot; a continuación.</li></ul>
+<p>“Recursos del chip de administración” muestra el uso de CPU, DRAM y PSRAM en el chip de administración. Estas lecturas no muestran el uso de recursos en la equipo de inferencia o en la equipo de aplicaciones.</p>
+<ul><li>Seleccione &quot;Detalles&quot; para ver la memoria total, utilizada y libre y otra información de la memoria.</li><li>Los valores marcados como &quot;estimados&quot; en los detalles de la memoria son solo como referencia. Si aparece una advertencia, conserve la información de la página y siga sus instrucciones.</li><li>“Servicios” muestra el número de servicios en ejecución y el total. Selecciónelo para ver el estado y la etapa de inicio de cada servicio.</li><li>Si un servicio informa un problema, actualice su estado. Para reiniciarlo, siga &quot;Reiniciar un servicio&quot; a continuación.</li></ul>
 <h3 id="es-section-7" data-heading-key="section-7"><a href="#es-section-7">Ver información del sistema y de energía</a></h3>
 <p>«Vista general del sistema» muestra el chip, la versión del firmware, la versión de ESP-IDF y el tiempo de funcionamiento. Para el uso diario, compruebe la versión del firmware. ESP-IDF es el marco de software que utiliza el dispositivo.</p>
 <p>El lado derecho de la tarjeta muestra el voltaje de entrada, el voltaje interno, la corriente, la potencia y el estado de protección.</p>
@@ -1390,20 +1451,25 @@
 <p>Seleccione &quot;Configuración de apagado&quot; para cambiar:</p>
 <ul><li>“Umbral de Bajo Voltaje”: Inicia la cuenta regresiva de apagado por debajo de este voltaje.</li><li>“Umbral de voltaje de recuperación”: Inicia la recuperación por encima de este voltaje.</li><li>“Cuenta regresiva de apagado”: ​​establece el retraso antes del apagado después de que se detecta bajo voltaje.</li><li>“Tiempo de espera de recuperación”: establece el tiempo de espera utilizado para confirmar la recuperación de energía estable.</li><li>“Retraso de parada del ventilador”: establece el retraso antes de que los ventiladores se detengan después del apagado.</li></ul>
 <p>Guarde el formulario para aplicar la configuración de protección actualizada.</p>
+<aside class="guide-notice"><span>Nota de operación</span><p>Al abrir «Configuración de apagado», espere a que se carguen los ajustes actuales. Si se muestran valores predeterminados, no los tome como los valores del dispositivo. Revise las tensiones y los tiempos de espera antes de guardar. Puede cancelar durante la carga.</p></aside>
 <h4 id="es-section-13" data-heading-key="section-13"><a href="#es-section-13">Cambia el objetivo superior USB</a></h4>
 <p>Cambiar el objetivo USB puede desconectar temporalmente un dispositivo conectado. Confirme el objetivo y finalice el trabajo activo antes de continuar.</p>
-<p>Los dispositivos que admiten la conmutación USB muestran un botón &quot;USB&quot;. Cada clic cambia el puerto USB superior al siguiente destino: ESP, AGX y luego LPMU. Verifique el objetivo que se muestra en el botón y el mensaje de la página para confirmar el resultado.</p>
+<p>Los dispositivos que admiten conmutación USB muestran un botón &quot;USB&quot;. Cada clic cambia el puerto USB superior al siguiente objetivo: ESP, Equipo de inferencia y luego Equipo de aplicaciones. &quot;Desconectado&quot; significa que no hay ningún objetivo conectado. Verifique el objetivo que se muestra en el botón y el mensaje de la página para confirmar el resultado.</p>
 <h2 id="es-section-14" data-heading-key="section-14"><a href="#es-section-14">3. Panel de dispositivos</a></h2>
 <p>El &quot;Panel de dispositivos&quot; está en la página &quot;Sistema&quot;. Contiene controles de energía del módulo, acciones rápidas y widgets de datos.</p>
-<h3 id="es-section-15" data-heading-key="section-15"><a href="#es-section-15">Controla AGX y LPMU</a></h3>
+<h3 id="es-section-15" data-heading-key="section-15"><a href="#es-section-15">Controlar la equipo de inferencia y la equipo de aplicaciones</a></h3>
+<p>«Equipo de inferencia» es el nombre que sustituye a AGX en la pantalla; «Equipo de aplicaciones» sustituye a LPMU. Los identificadores y comandos pueden seguir usando <code>agx</code> y <code>lpmu</code>. No cambie esos identificadores por su cuenta.</p>
 <p>Guarde el trabajo en el módulo y complete su proceso de apagado normal antes de desconectar la alimentación. El apagado forzado puede provocar la pérdida de datos no guardados.</p>
-<ul><li>“AGX Power” muestra el estado de control de energía. Selecciónelo para encender o apagar, luego espere la confirmación.</li><li>“LPMU Power” muestra “En línea”, “Fuera de línea” o “Desconocido”. Estos estados provienen de una verificación de red. En línea significa que se puede acceder al módulo; fuera de línea significa que no lo es. Ninguno de los estados por sí solo confirma si el módulo está encendido o apagado.</li><li>Seleccionar el botón LPMU desencadena la misma acción que presionar su botón de encendido físico. Espere la verificación y el resultado mostrado. Si desconoce el resultado, verifique el módulo y la red antes de presionar el botón nuevamente.</li></ul>
+<ul><li>«Alimentación del equipo de inferencia» muestra el estado del control de alimentación. Seleccione el botón para encenderlo o apagarlo y espere la confirmación.</li><li>En «Alimentación del equipo de aplicaciones», «Accesible por red» y «No accesible por red» indican si hay acceso a través de la red. Si falla la comprobación, el estado de alimentación sigue sin conocerse. Estos resultados no confirman por sí solos si el equipo está encendido o apagado.</li><li>Seleccionar el botón Equipo de aplicaciones desencadena la misma acción que presionar su botón de encendido físico. Espere la verificación y el resultado mostrado. Si desconoce el resultado, verifique la equipo y la red antes de presionar el botón nuevamente.</li></ul>
 <h3 id="es-section-16" data-heading-key="section-16"><a href="#es-section-16">Usar acciones rápidas</a></h3>
 <p>Un usuario root configura las tarjetas de acciones rápidas. Mostrar una tarjeta y permitir su ejecución manual son ajustes distintos. Una tarjeta visible puede no permitir iniciar la tarea.</p>
-<ol><li>Lea el nombre de la tarjeta y la descripción para identificar la tarea.</li><li>Selecciona la tarjeta y lee el resultado. No lo inicie nuevamente mientras procesa.</li><li>Un mensaje ejecutado o en cola aún necesita una verificación de resultados real en el dispositivo o tarea de destino. Pídale a un usuario de root que verifique, vea registros o detenga un servicio en segundo plano.</li></ol>
+<ol><li>Lea el nombre de la tarjeta y la descripción para identificar la tarea.</li><li>Seleccione “Inicio” o la tarjeta y lea el resultado. No lo inicie nuevamente mientras procesa.</li><li>Un mensaje ejecutado o en cola aún necesita una verificación de resultados real en el dispositivo o tarea de destino. Si se muestra un estado de servicio, distinga &quot;Proceso en ejecución&quot; de &quot;Listo&quot;. Una tarjeta con varias tareas puede mostrar &quot;Algunas tareas no están listas&quot;.</li></ol>
+<p>Las tarjetas con tareas remotas en segundo plano también ofrecen &quot;Ver registro&quot; y &quot;Detener&quot;. Abra los registros para revisar las tareas relacionadas. Si aparecen varios registros, elija por nombre de tarea y host original. Verifique el objetivo antes de detenerlo, espere el resultado y luego verifique que se detuvo. Cerrar el registro o detener las actualizaciones del registro no detiene la tarea.</p>
+<p>«Registros de ejecución» puede incluir tareas iniciadas antes. Que aparezcan no significa que sigan en ejecución. Seleccione «Verificar estado remoto» cuando sea necesario. admin puede entrar desde la tarjeta correspondiente; el botón independiente de Sistema solo se muestra a root. Si no puede usar un control o el resultado sigue sin estar claro, pida a root que lo compruebe.</p>
 <p>Si no puede iniciar la tarea, siga las indicaciones del mensaje. No pulse Inicio repetidamente:</p>
-<ul><li>Regla deshabilitada o activación manual no permitida: solicite a un usuario de root que verifique la configuración de la regla. Una tarjeta visible no es permiso para ejecutarla.</li><li>Una tarea u operación en segundo plano está en progreso: espere su resultado. No lo empieces de nuevo.</li><li>Ya existe un registro de ejecución en segundo plano para la tarea: solicite a un usuario root que verifique la tarea original y confirme que finalizó antes de comenzar de nuevo.</li><li>Configuración no cargada, falta un elemento requerido o automatización en pausa: solicite a un usuario de root que verifique la configuración y habilite el estado.</li></ul>
-<aside class="guide-notice"><span>Nota de operación</span><p>Después de activar una acción, espere unos segundos antes de iniciar otra. Cerrar la página, eliminar una tarjeta o reiniciar TianshanOS no detiene los servicios en segundo plano en los hosts remotos.</p></aside>
+<ul><li>Regla deshabilitada o activación manual no permitida: solicite a un usuario de root que verifique la configuración de la regla. Una tarjeta visible no es permiso para ejecutarla.</li><li>Una tarea u operación en segundo plano está en progreso: espere su resultado. No lo empieces de nuevo.</li><li>Ya existe un registro de ejecución para la tarea: verifique el estado y los registros de la tarea original en lugar de iniciarla nuevamente. Si necesita finalizar, deténgase y verifíquelo. Pídale a un usuario root que verifique si no puede resolverlo.</li><li>Configuración no cargada, falta un elemento requerido o automatización en pausa: solicite a un usuario de root que verifique la configuración y habilite el estado.</li></ul>
+<p>Si la página informa un inicio automático o una espera de reintento, déjela continuar. Los fallos de inicio temporales se reintentan cada 30 segundos durante un máximo de 6 minutos. Un inicio no confirmado se verifica antes de otro lanzamiento. Una ejecución manual fallida no se repite automáticamente. Cuando termine la espera, verifique el dispositivo y la red como se indica antes de decidir si desea seleccionar &quot;Iniciar&quot;.</p>
+<aside class="guide-notice"><span>Nota de operación</span><p>Después de activar una acción, espere unos segundos antes de iniciar otra. Cerrar la página, eliminar una tarjeta o reiniciar TianshanOS no detiene los servicios en segundo plano en los hosts remotos. Para mantener un servicio detenido, solicite a un usuario root que desactive cualquier regla automática que pueda iniciarlo nuevamente.</p></aside>
 <p>Mantenga presionada una tarjeta hasta que aparezca el indicador de reorden, luego arrástrela para cambiar el orden de visualización.</p>
 <p>Si no aparecen tarjetas, lea la explicación. Espere si se está cargando la configuración. Si la carga falla, conserve el motivo y comuníquese con un usuario de root. Si no se configuran acciones rápidas, solicite a un usuario de root que verifique la configuración de las reglas “Show on panel”.</p>
 <aside class="guide-notice"><span>Nota de operación</span><p>Editar o importar una regla actualiza la configuración actual; No es necesario reiniciar para cambiar las reglas. Si se cambió la tarea de una tarjeta, solicite a un usuario root que confirme su contenido antes de ejecutarla.</p></aside>
@@ -1412,6 +1478,8 @@
 <p>Los widgets de datos muestran los datos del dispositivo en el «Panel de dispositivos» y los actualizan durante el uso.</p>
 <ol><li>Seleccione &quot;Administrador de widgets&quot;.</li><li>Elija un intervalo de actualización o desactive la actualización automática.</li><li>Agregue un widget preestablecido o elija un estilo de componente y fuente de datos ofrecidos por la página.</li><li>Edite su etiqueta, estilo de visualización y unidad según sea necesario y luego guárdelo.</li></ol>
 <p>Los widgets existentes se pueden editar, eliminar y reordenar. También puede seleccionar una tarjeta de widget para editarla. Mantenga presionado un widget y luego arrástrelo a una nueva posición.</p>
+<p>«Pequeño», «Mediano» y «Grande» ocupan una, dos y tres columnas, y se adaptan a las pantallas estrechas. Al editar un icono, escriba su nombre siguiendo el ejemplo. En un widget de dos valores, cada uno tiene su propio origen de datos. Compruebe ambos orígenes y que los valores se actualicen.</p>
+<p>&quot;Error al cargar los widgets de datos&quot; no significa que no exista ninguna configuración. Resuelva la causa y léala nuevamente. Si el guardado falla o su resultado no está confirmado, mantenga el contenido actual y verifique el mensaje. Ver sus cambios en la página no confirma que se hayan guardado.</p>
 <h2 id="es-section-18" data-heading-key="section-18"><a href="#es-section-18">4. Gestión de ventiladores</a></h2>
 <aside class="guide-notice"><span>Nota de operación</span><p>&quot;Control del ventilador&quot; está en la página &quot;Sistema&quot;. Las tarjetas de fans muestran los fans proporcionados por su dispositivo. Verifique el número del ventilador antes de cambiar una curva.</p></aside>
 <h3 id="es-section-19" data-heading-key="section-19"><a href="#es-section-19">Ver estado del ventilador</a></h3>
@@ -1427,6 +1495,8 @@
 <p>Seleccione &quot;Curva&quot; en el encabezado de la sección Control del ventilador para abrir &quot;Gestión de la curva del ventilador&quot;. El botón “Curva” dentro de una tarjeta solo cambia el modo de funcionamiento.</p>
 <ol><li>En &quot;Ventilador&quot;, elija el número que desea ajustar y compárelo con la página Sistema.</li><li>En “Enlace de variable de temperatura”, agregue variables de temperatura y asigne pesos.</li><li>Seleccione &quot;Enlazar&quot;. La fuente de temperatura es compartida por los ventiladores en los modos Curva e Inteligente, por lo que cambiarla afecta a los ventiladores que usan esa fuente.</li><li>Agregue o edite “Nodos de curva”. Cada curva necesita al menos nodos 2 y admite hasta 10.</li><li>Establezca “Velocidad mínima” y “Velocidad máxima” como porcentajes de control. El mínimo no debe exceder el máximo.</li><li>Ajuste «Histéresis de temperatura» e «Intervalo mínimo». La histéresis admite 0-20°C y evita ajustes frecuentes ante pequeños cambios de temperatura. El intervalo admite 500-30000 ms. 1000 ms equivalen a 1 segundo.</li><li>Seleccione &quot;Guardar curva&quot;. Después de guardar correctamente, el ventilador seleccionado cambia al modo Curva. Para utilizar el control térmico inteligente, regrese a la tarjeta y seleccione &quot;Inteligente&quot;.</li></ol>
 <p>Si falla el guardado, lea el mensaje y verifique el estado actual antes de volver a intentarlo. Después de desvincular las variables de temperatura, verifique también la temperatura efectiva y el estado del ventilador.</p>
+<aside class="guide-notice"><span>Nota de operación</span><p>Después de abrir los ajustes o elegir otro ventilador, espere a que se cargue su configuración. Si se muestran valores predeterminados o un borrador anterior, no los tome como los valores actuales del dispositivo. Revíselos antes de guardar. Compruebe también los resultados de lectura y guardado de las asociaciones de temperatura.</p></aside>
+<p>Si el mensaje dice que la configuración del ventilador se aplicó pero no se guardó por completo, es posible que el ajuste actual ya esté vigente. Un reinicio puede restaurar la configuración anterior. Verifique el estado real del ventilador, confirme que el almacenamiento del dispositivo esté disponible y luego guarde nuevamente. No reinicie el dispositivo solo para probar si el guardado funcionó.</p>
 <h3 id="es-section-22" data-heading-key="section-22"><a href="#es-section-22">Importar y exportar una curva</a></h3>
 <ul><li>Seleccione &quot;Importar configuración&quot; y elija un archivo de curva JSON. JSON es el formato de archivo utilizado para almacenar datos de curvas. Revise los nodos, los límites y el número de ventilador, luego seleccione &quot;Guardar curva&quot; para aplicarlos.</li><li>Seleccione &quot;Exportar configuración&quot; para descargar la curva actual. La página también intenta guardar una copia en <code>/sdcard/config</code> en la tarjeta SD. Verifique la descarga del navegador y el resultado informado de la tarjeta SD por separado.</li></ul>
 <h3 id="es-section-23" data-heading-key="section-23"><a href="#es-section-23">Utilice una temperatura de prueba</a></h3>
@@ -1435,10 +1505,10 @@
 <h2 id="es-section-24" data-heading-key="section-24"><a href="#es-section-24">5. Gestión de LED</a></h2>
 <p>“Control LED” está en la página “Sistema” y muestra los LED proporcionados por el dispositivo. Las funciones disponibles varían según el LED.</p>
 <h3 id="es-section-25" data-heading-key="section-25"><a href="#es-section-25">Controles habituales</a></h3>
-<ul><li>Utilice el botón de la bombilla en la parte inferior de una tarjeta para encender o apagar el LED.</li><li>Mueva el control deslizante &quot;Brillo&quot; o elija un color o ajuste preestablecido.</li><li>Utilice el botón de animación para abrir &quot;Configuración de LED&quot;. Seleccione una animación en &quot;Animación programática&quot; y luego use su control de reproducción o detención.</li><li>Seleccione el icono de guardar en la parte inferior derecha de la tarjeta para guardar la configuración de LED actual.</li><li>Seleccione &quot;Todo apagado&quot; para apagar todos los LED y verificar el resultado informado. Si algunos fallan, verifique esos dispositivos.</li></ul>
+<ul><li>Utilice el botón de la bombilla en la parte inferior de una tarjeta para encender o apagar el LED.</li><li>Use los controles de brillo, tono y saturación. El brillo regula la intensidad de la luz; el tono elige el color, y la saturación va del blanco al color. Una saturación de 0 da luz blanca. Los cambios de tono y saturación se aplican al soltar el control.</li><li>Utilice el botón de animación para abrir &quot;Configuración de LED&quot;. Seleccione una animación en &quot;Animación programática&quot; y luego use su control de reproducción o detención.</li><li>Seleccione el icono de guardar en la parte inferior derecha de la tarjeta para guardar la configuración de LED actual.</li><li>Seleccione &quot;Todo apagado&quot; para apagar todos los LED y verificar el resultado informado. Si algunos fallan, verifique esos dispositivos.</li></ul>
 <h3 id="es-section-26" data-heading-key="section-26"><a href="#es-section-26">Funciones avanzadas de la matriz LED</a></h3>
 <p>Las tarjetas de la matriz tienen iconos para las funciones disponibles. Abra una función y cambie de grupo en «Ajustes LED»:</p>
-<ul><li>“Animación programática”: seleccione y ejecute una animación.</li><li>“Imagen/Código QR”: elija una imagen de la tarjeta SD o ingrese el contenido para un código QR.</li><li>“Visualización de texto”: establece texto, fuente, alineación, desplazamiento, primer plano y fondo.</li><li>“Filtro de posprocesamiento”: elija un filtro y parámetros, luego aplíquelos o deténgalos.</li><li>“Corrección de color”: ajuste la pantalla y utilice los controles de reinicio, importación o exportación disponibles.</li></ul>
+<ul><li>“Animación programática”: seleccione y ejecute una animación.</li><li>“Imagen/Código QR”: elija una imagen o un código QR en “Tipo” en la tarjeta, luego seleccione una imagen de tarjeta SD o ingrese el contenido QR.</li><li>“Visualización de texto”: establece texto, fuente, alineación, desplazamiento, primer plano y fondo.</li><li>“Filtro de posprocesamiento”: elija un filtro y parámetros, luego aplíquelos o deténgalos.</li><li>“Corrección de color”: ajuste la pantalla y utilice los controles de reinicio, importación o exportación disponibles.</li></ul>
 <p>Verifique la luz real o la visualización de la matriz después de aplicar un cambio. Utilice únicamente las funciones que se muestran. Si falla una configuración, siga el mensaje para verificar el archivo, la entrada o el estado del dispositivo.</p>
 <h2 id="es-section-27" data-heading-key="section-27"><a href="#es-section-27">6. Gestión de red</a></h2>
 <aside class="guide-notice"><span>Nota de operación</span><p>Seleccione &quot;Red&quot; en la navegación superior para abrir &quot;Configuración de red&quot;. Cambiar el modo de red, el punto de acceso o la configuración de NAT puede interrumpir la conexión WebUI actual. Antes de guardar, asegúrese de poder volver a conectarse a través de la nueva dirección de red.</p></aside>
@@ -1461,15 +1531,18 @@
 <h3 id="es-section-34" data-heading-key="section-34"><a href="#es-section-34">Operaciones de red avanzadas</a></h3>
 <h4 id="es-section-35" data-heading-key="section-35"><a href="#es-section-35">Configurar la puerta de enlace NAT</a></h4>
 <p>NAT reenvía el tráfico de red entre las interfaces de red del dispositivo. Habilite o deshabilite NAT, luego seleccione &quot;Guardar&quot; para conservar la configuración. Verifique el estado del WiFi y de Ethernet luego.</p>
-<h4 id="es-section-36" data-heading-key="section-36"><a href="#es-section-36">Acceda a la red ascendente a través de LPMU</a></h4>
-<aside class="guide-notice"><span>Nota de operación</span><p>Esta operación utiliza el host LPMU configurado para configurar el acceso a la red. Antes de comenzar, confirme que se pueda acceder a LPMU y que los cables de red estén conectados. Obtenga la contraseña sudo para la cuenta SSH en ese host. Esta contraseña autoriza cambios en el sistema y puede diferir de la contraseña de WebUI.</p></aside>
-<ol><li>En &quot;Acceso a la red ascendente&quot;, seleccione &quot;Acceso a través de LPMU&quot;.</li><li>Ingrese la contraseña sudo LPMU y seleccione el botón de acceso. La contraseña se utiliza sólo para esta ejecución y no se guarda; ingréselo nuevamente para una ejecución posterior.</li><li>Espere a que finalice la operación. No lo inicie nuevamente mientras procesa.</li><li>El acceso se confirma solo cuando el resultado informa tanto una conexión a Internet como una configuración de red completa.</li><li>Si falla o el resultado no está confirmado, lea primero el motivo. Expanda &quot;Registro de ejecución&quot; para obtener más detalles. Verifique la contraseña para ver si hay un error de contraseña, o el cableado y la red ascendente si no se encuentra una conexión a Internet.</li></ol>
+<h4 id="es-section-36" data-heading-key="section-36"><a href="#es-section-36">Acceda a la red ascendente a través de la equipo de aplicaciones</a></h4>
+<p>Esta operación utiliza la equipo de aplicaciones configurada para configurar el acceso a la red. En Sistema, primero cambie el USB a &quot;Equipo de aplicaciones&quot; y verifique los cables de red. Su host SSH debe utilizar autenticación de clave y tener una huella digital de host verificada. Pídale a un usuario root que verifique estas configuraciones usando la Guía de seguridad.</p>
+<p>Obtenga la contraseña sudo para la cuenta SSH en ese host. Esta contraseña autoriza cambios en el sistema y puede diferir de la contraseña de WebUI.</p>
+<ol><li>En &quot;Acceso a la red ascendente&quot;, seleccione &quot;Acceso a través de la equipo de aplicaciones&quot;.</li><li>Ingrese la contraseña sudo de la equipo de aplicaciones y seleccione el botón de acceso. La contraseña se utiliza sólo para esta ejecución y no se guarda; ingréselo nuevamente para una ejecución posterior.</li><li>Espere a que finalice la operación. No lo inicie nuevamente mientras procesa.</li><li>El acceso se confirma solo cuando el resultado informa tanto una conexión a Internet como una configuración de red completa.</li><li>Después de cerrar la ventana de resultados, seleccione &quot;Ver resultado&quot; para abrirla nuevamente. Si falla o el resultado no está confirmado, lea el motivo y la etapa de falla. Expanda &quot;Registro de ejecución&quot; para obtener más detalles. Verifique la contraseña para ver si hay un error de contraseña, o el cableado y la red ascendente si no se encuentra una conexión a Internet.</li></ol>
+<p>Si la huella del host no está confirmada o ha cambiado, pida a root que verifique su identidad. No siga intentando la conexión ni omita la comprobación. La salida del script remoto puede conservar su idioma original; guárdela si hace falta investigar.</p>
 <p>Una solicitud de estado fallida no significa que el script se haya detenido. Utilice el control &quot;Actualizar estado&quot; disponible para verificar la ejecución actual antes de decidir si desea volver a intentarlo.</p>
 <h2 id="es-section-37" data-heading-key="section-37"><a href="#es-section-37">7. Gestión de archivos</a></h2>
 <p>Seleccione &quot;Archivos&quot; en la navegación superior para abrir el &quot;Administrador de archivos&quot;.</p>
 <p>La tarjeta SD es un almacenamiento extraíble y SPIFFS es un almacenamiento de archivos interno del dispositivo. Seleccione “Tarjeta SD” o “SPIFFS” para cambiar de ubicación. La ruta en la parte superior muestra su carpeta actual. Seleccione un nombre de carpeta en la ruta para volver a ella.</p>
 <h3 id="es-section-38" data-heading-key="section-38"><a href="#es-section-38">Explorar y administrar archivos</a></h3>
 <ul><li>Seleccione un nombre de carpeta para abrirla.</li><li>Seleccione el botón de descarga al lado de un archivo para guardarlo en la ubicación de descarga del navegador.</li><li>Seleccione el botón de cambio de nombre, ingrese un nuevo nombre y confirme.</li><li>Seleccione “Nueva carpeta”, ingrese un nombre de carpeta y créela.</li><li>Seleccione el botón Actualizar para recargar el directorio actual y el estado de almacenamiento.</li></ul>
+<p>Subir archivos, eliminarlos, renombrarlos, crear carpetas y montar o desmontar la tarjeta SD requiere una sesión válida. Leer y descargar archivos protegidos de Automatización también requiere permiso root. Si se deniega el acceso a admin, pida a root que use las páginas de configuración. No cambie la ruta ni use otra entrada para eludir los permisos.</p>
 <h3 id="es-section-39" data-heading-key="section-39"><a href="#es-section-39">Cargar archivos</a></h3>
 <p>Los archivos solo se pueden subir a la tarjeta SD, no a SPIFFS. Compruebe primero que la tarjeta SD esté montada.</p>
 <ol><li>Seleccione «Tarjeta SD» y abra la carpeta donde desea subir los archivos.</li><li>Seleccione &quot;Cargar archivos&quot;.</li><li>Seleccione uno o más archivos o arrastre archivos al área de carga.</li><li>Revise la lista de carga y elimine archivos no deseados.</li><li>Seleccione &quot;Cargar&quot; y espere a que cada archivo muestre su finalización.</li></ol>
@@ -1491,11 +1564,12 @@
 <aside class="guide-notice"><span>Nota de operación</span><p>El dispositivo se reinicia durante una actualización, desconectando temporalmente la WebUI. Guarde el trabajo activo y mantenga estable la energía del dispositivo antes de comenzar. No apague el dispositivo mientras el progreso de la actualización esté incompleto.</p></aside>
 <h3 id="es-section-44" data-heading-key="section-44"><a href="#es-section-44">Primera actualización de una versión anterior a 0.6.3</a></h3>
 <p>La primera actualización desde una estructura de almacenamiento anterior, como 0.6.2, necesita un paquete USB/serial compatible aprobado por el proveedor. Cargar solo el firmware o WebUI no puede completar esta actualización. Pídale al administrador o proveedor del dispositivo que siga las instrucciones del paquete. No borre toda la memoria flash ni utilice una tabla de particiones antigua.</p>
-<p>Guarde los archivos importantes y mantenga instalada la tarjeta SD original. El primer inicio migra la configuración existente; mantenga la energía conectada. Luego, verifique el inicio de sesión, las redes, los ventiladores, la iluminación, los hosts SSH y las reglas de automatización. Revise las reglas antes de probar cualquier tarea que controle la energía, reinicie un dispositivo o ejecute comandos remotos.</p>
+<p>Guarde los archivos importantes antes de actualizar. La herramienta combinada conserva las claves y la tarjeta SD; No borra la configuración de la tarjeta. El primer inicio aún puede leer o migrar la configuración existente. La entrega al cliente sigue el procedimiento de “borrar la configuración anterior y configurarla nuevamente”. El administrador o proveedor del dispositivo debe seguir las instrucciones de entrega. No borre toda la memoria flash usted mismo ni trate los archivos conservados como una configuración completa.</p>
+<p>Mantenga la alimentación conectada durante la actualización y el primer inicio. Luego, verifique el inicio de sesión, las redes, los ventiladores, la iluminación, los hosts SSH y las reglas de automatización. Revise las reglas antes de probar cualquier tarea que controle la energía, reinicie un dispositivo o ejecute comandos remotos.</p>
 <p>El paquete compatible actualiza ambas ranuras de aplicaciones. No asuma que la otra ranura todavía contiene la versión anterior. Si se pierde la contraseña root, utilice únicamente un método de recuperación confirmado por el proveedor para que coincida con la estructura de 0.6.3. No instale una imagen antigua para restablecer la contraseña.</p>
 <p>Los métodos de actualización web que aparecen a continuación se aplican únicamente a las versiones que el proveedor ha aprobado para OTA. No sustituyen la primera actualización de la estructura de almacenamiento.</p>
 <h3 id="es-section-45" data-heading-key="section-45"><a href="#es-section-45">Buscar actualizaciones desde un servidor OTA</a></h3>
-<ol><li>Revisar el “Current Version”.</li><li>Introduzca la dirección del servidor OTA proporcionada por un administrador o proveedor.</li><li>Seleccione “Save” y luego seleccione “Check Update”.</li><li>La página informa “Update Available” “Already up to date” de una versión anterior del servidor o de un error.</li><li>Confirme la versión de destino, luego seleccione “Upgrade Now” o el control de actualización que se muestra en la página.</li><li>Espere a que finalice la descarga, la instalación y el reinicio. Para cancelar utilice el botón “Abort” cuando esté disponible. No todas las etapas admiten la cancelación.</li><li>Espere a que la página confirme el firmware después de la actualización. Vuelva a conectarse al WebUI y verifique el “Current Version” y el estado del dispositivo.</li></ol>
+<ol><li>Revise la “Versión actual”. Dos instalaciones de 0.6.3 pueden ser versiones de revisión diferentes. Consulte la versión completa, el tiempo de compilación y las instrucciones del editor en lugar de solo los tres primeros números.</li><li>Introduzca la dirección del servidor OTA proporcionada por un administrador o proveedor.</li><li>Seleccione “Save” y luego seleccione “Check Update”.</li><li>La página informa “Update Available” “Already up to date” de una versión anterior del servidor o de un error.</li><li>Confirme la versión de destino, luego seleccione “Upgrade Now” o el control de actualización que se muestra en la página.</li><li>Espere a que finalice la descarga, la instalación y el reinicio. Para cancelar utilice el botón “Abort” cuando esté disponible. No todas las etapas admiten la cancelación.</li><li>Espere a que la página confirme el firmware después de la actualización. Vuelva a conectarse al WebUI y verifique el “Current Version” y el estado del dispositivo.</li></ol>
 <p>“Upgrade Progress” muestra la etapa actual en su propia sección. Una lectura del 100% o un mensaje de que se escribieron archivos no confirma que se haya completado el reinicio y la verificación de la versión. Si el resultado no está confirmado o el firmware en ejecución difiere del objetivo, conserve el mensaje y verifique la versión actual. No repita la actualización sin verificar. Pídale a un usuario de root o al proveedor que investigue si es necesario.</p>
 <p>Cuando “Also upgrade www” está habilitado, el firmware y WebUI se actualizan en secuencia. Utilice firmware coincidente y recursos WebUI de la misma versión. Si la interfaz anterior permanece después de la actualización, fuerce la actualización del navegador y verifique la versión y la página nuevamente.</p>
 <h3 id="es-section-46" data-heading-key="section-46"><a href="#es-section-46">Actualización manual</a></h3>
@@ -1514,20 +1588,22 @@
 <p>Un error en el campo rojo le indica qué corregir. Arréglelo y luego guárdelo. Una marca de error borrada no confirma que se haya guardado correctamente; revisa el mensaje y la lista.</p>
 <p>Compruebe qué operación falló y lea el motivo y el siguiente paso. Si el mensaje no da un motivo, no lo suponga.</p>
 <p>Seleccione “Details” cuando esté disponible. Seleccione “Hide” para ocultar los detalles. Si se muestra un botón ×, selecciónelo para descartar el mensaje. Cuando solicite ayuda, mantenga un registro del mensaje y los detalles para que un usuario de root los revise.</p>
+<p>Si un mensaje o sus detalles son largos, desplácese dentro de esa área para leer el contenido completo antes de decidir qué hacer a continuación.</p>
 <p>Si el resultado no está confirmado, actualice y compruebe el estado del dispositivo, archivo o tarea. Un tiempo de espera agotado o una desconexión no significa que la operación no se haya ejecutado. No repita de inmediato las operaciones de alimentación, eliminación, inicio de tareas o actualización. Pida ayuda a un usuario root si sigue sin poder confirmar el resultado.</p>
 <p>Verifique los resultados de los lotes exitosos, fallidos y no confirmados por separado. Confirme los archivos guardados en la lista de descargas del navegador.</p>
 
           </article>
 
           <article class="guide-article lang-pane" data-lang-pane="fr" hidden>
-<p>Ce guide est basé sur TianshanOS 0.6.3. Pour les autres versions, consultez les instructions spécifiques à la version correspondante.</p>
 <p>Ce guide couvre les vérifications du système, les contrôles des appareils, la mise en réseau, les fichiers et les mises à jour du micrologiciel pour le compte admin. Le Guide des opérations racine couvre l'accès au terminal, les commandes à distance et la configuration de l'automatisation. Consultez le Guide de sécurité séparé pour la gestion de la sécurité.</p>
+<p>Version couverte : 0.6.4. Révisé le 3 novembre 2026.</p>
 <p>Utilisez les commandes affichées sur votre appareil. Certains nécessitent un matériel ou une configuration spécifique. Sur un ordinateur, passez la souris sur un bouton icône pour voir son nom. Sur un téléphone, faites glisser votre doigt dans un large tableau pour afficher ses autres colonnes.</p>
 <h2 id="fr-section-1" data-heading-key="section-1"><a href="#fr-section-1">1. Commencer</a></h2>
 <h3 id="fr-section-2" data-heading-key="section-2"><a href="#fr-section-2">Ouvrez l'interface Web</a></h3>
 <ol><li>Ouvrez l'interface Web de l'appareil (WebUI) à l'aide de l'adresse fournie par votre administrateur.</li><li>Sélectionnez « Connexion » dans le coin supérieur droit.</li><li>Conservez <code>admin</code> comme nom d'utilisateur et saisissez le mot de passe admin fourni avec l'appareil.</li><li>Sélectionnez « Connexion ». Après une connexion réussie, le nom d'utilisateur actuel apparaît dans le coin supérieur droit.</li></ol>
 <p>La connexion avec le mot de passe par défaut ouvre un « rappel de sécurité ». Saisissez le mot de passe actuel, puis saisissez le nouveau mot de passe deux fois et sélectionnez « Modifier maintenant ». Les deux entrées de nouveau mot de passe doivent correspondre. Sélectionnez « Plus tard » pour fermer le rappel.</p>
 <p>Lorsque vous avez terminé, sélectionnez « Déconnexion » dans le coin supérieur droit. Vous devrez vous reconnecter pour utiliser l'appareil.</p>
+<p>Si l’accès est refusé, vérifiez le compte. Si la session a expiré, reconnectez-vous, puis vérifiez le résultat de l’opération précédente. Se reconnecter ne relance pas la tâche. Ne répétez pas aussitôt un envoi de fichier, une suppression ou une mise à jour.</p>
 <h3 id="fr-section-3" data-heading-key="section-3"><a href="#fr-section-3">Changer de langue</a></h3>
 <p>Sélectionnez le bouton de langue en haut de la page, puis choisissez chinois ou anglais. Le contenu de la page et les étiquettes de contrôle changent immédiatement.</p>
 <h3 id="fr-section-4" data-heading-key="section-4"><a href="#fr-section-4">Navigation dans les pages</a></h3>
@@ -1536,8 +1612,8 @@
 <h2 id="fr-section-5" data-heading-key="section-5"><a href="#fr-section-5">2. État du système et opérations de routine</a></h2>
 <p>Sélectionnez « Système » dans la navigation supérieure.</p>
 <h3 id="fr-section-6" data-heading-key="section-6"><a href="#fr-section-6">Afficher l'état des ressources et des services</a></h3>
-<p>« Ressources de la puce de gestion » affiche l’utilisation du CPU, de la DRAM et de la PSRAM de cette puce. Ces valeurs ne concernent ni AGX ni LPMU.</p>
-<ul><li>Sélectionnez « Détails » pour afficher la mémoire totale, utilisée et libre ainsi que d'autres informations sur la mémoire.</li><li>« Services » affiche le nombre de services en cours d'exécution et le total. Sélectionnez-le pour afficher l’état et l’étape de démarrage de chaque service.</li><li>Si un service signale un problème, actualisez son état. Pour le redémarrer, suivez « Redémarrer un service » ci-dessous.</li></ul>
+<p>« Ressources de la puce de gestion » affiche l'utilisation du processeur, de la DRAM et de la PSRAM sur la puce de gestion. Ces lectures n'indiquent pas l'utilisation des ressources sur l'ordinateur d’inférence ou l'ordinateur d’applications.</p>
+<ul><li>Sélectionnez « Détails » pour afficher la mémoire totale, utilisée et libre ainsi que d'autres informations sur la mémoire.</li><li>Les valeurs marquées « estimées » dans les détails de la mémoire sont uniquement à titre de référence. Si un avertissement apparaît, conservez les informations de la page et suivez ses instructions.</li><li>« Services » affiche le nombre de services en cours d'exécution et le total. Sélectionnez-le pour afficher l’état et l’étape de démarrage de chaque service.</li><li>Si un service signale un problème, actualisez son état. Pour le redémarrer, suivez « Redémarrer un service » ci-dessous.</li></ul>
 <h3 id="fr-section-7" data-heading-key="section-7"><a href="#fr-section-7">Afficher les informations sur le système et l'alimentation</a></h3>
 <p>« Vue d’ensemble du système » affiche la puce, la version du micrologiciel, celle d’ESP-IDF et la durée de fonctionnement. Pour l’usage courant, vérifiez la version du micrologiciel. ESP-IDF est le cadre logiciel utilisé par l’appareil.</p>
 <p>Le côté droit de la carte affiche la tension d'entrée, la tension interne, le courant, la puissance et l'état de protection.</p>
@@ -1556,20 +1632,25 @@
 <p>Sélectionnez « Paramètres d'arrêt » pour modifier :</p>
 <ul><li>« Seuil de basse tension » : démarre le compte à rebours d'arrêt en dessous de cette tension.</li><li>« Seuil de tension de récupération » : démarre la récupération au-dessus de cette tension.</li><li>« Compte à rebours d'arrêt » : définit le délai avant l'arrêt après la détection d'une basse tension.</li><li>« Temps de maintien de la récupération » : définit le temps d'attente utilisé pour confirmer une récupération de puissance stable.</li><li>« Fan Stop Delay » : définit le délai avant l'arrêt des ventilateurs après l'arrêt.</li></ul>
 <p>Enregistrez le formulaire pour appliquer les paramètres de protection mis à jour.</p>
+<aside class="guide-notice"><span>Note d’utilisation</span><p>Après avoir ouvert « Paramètres d'arrêt », attendez que les paramètres actuels se chargent. Si la page indique qu'elle affiche les paramètres par défaut, ne les traitez pas comme les paramètres actuels de l'appareil. Vérifiez les tensions et les temps d'attente avant de sauvegarder. Vous pouvez annuler pendant le chargement.</p></aside>
 <h4 id="fr-section-13" data-heading-key="section-13"><a href="#fr-section-13">Changer la cible supérieure USB</a></h4>
 <p>Le changement de cible USB peut déconnecter temporairement un périphérique connecté. Confirmez l'objectif et terminez le travail actif avant de continuer.</p>
-<p>Les appareils prenant en charge la commutation USB affichent un bouton « USB ». Chaque clic fait basculer le port USB supérieur vers la cible suivante : ESP, AGX, puis LPMU. Vérifiez la cible affichée sur le bouton et le message de la page pour confirmer le résultat.</p>
+<p>Les appareils prenant en charge la commutation USB affichent un bouton « USB ». Chaque clic fait basculer le port USB supérieur vers la cible suivante : ESP, ordinateur d’inférence, puis ordinateur d’applications. « Déconnecté » signifie qu'aucune cible n'est connectée. Vérifiez la cible affichée sur le bouton et le message de la page pour confirmer le résultat.</p>
 <h2 id="fr-section-14" data-heading-key="section-14"><a href="#fr-section-14">3. Panneau de périphérique</a></h2>
 <p>Le « Panneau des périphériques » se trouve sur la page « Système ». Il contient des commandes d'alimentation de module, des actions rapides et des widgets de données.</p>
-<h3 id="fr-section-15" data-heading-key="section-15"><a href="#fr-section-15">AGX et LPMU</a></h3>
+<h3 id="fr-section-15" data-heading-key="section-15"><a href="#fr-section-15">Contrôler l'ordinateur d’inférence et l'ordinateur d’applications</a></h3>
+<p>« Ordinateur d’inférence » remplace l’ancien libellé AGX ; « Ordinateur d’applications » remplace LPMU. Les identifiants et commandes peuvent toujours utiliser <code>agx</code> et <code>lpmu</code>. Ne renommez pas ces identifiants vous-même.</p>
 <p>Enregistrez le travail sur le module et terminez son processus d'arrêt normal avant de couper l'alimentation. Une mise hors tension forcée peut entraîner la perte de données non enregistrées.</p>
-<ul><li>« AGX Power » affiche l'état de contrôle de l'alimentation. Sélectionnez-le pour allumer ou éteindre l'appareil, puis attendez la confirmation.</li><li>« LPMU Power » affiche « En ligne », « Hors ligne » ou « Inconnu ». Ces états proviennent d'une vérification du réseau. En ligne signifie que le module est accessible ; hors ligne signifie que ce n'est pas le cas. Aucun des deux états ne confirme à lui seul si le module est allumé ou éteint.</li><li>La sélection du bouton LPMU déclenche la même action que l'appui sur son bouton d'alimentation physique. Attendez le contrôle et le résultat affiché. Si le résultat est inconnu, vérifiez le module et le réseau avant d'appuyer à nouveau sur le bouton.</li></ul>
+<ul><li>« Alimentation de l’ordinateur d’inférence » indique l’état du contrôle d’alimentation. Sélectionnez ce bouton pour allumer ou éteindre l’ordinateur, puis attendez la confirmation.</li><li>Dans « Alimentation de l’ordinateur d’applications », « Accessible par le réseau » et « Inaccessible par le réseau » indiquent si une connexion réseau est possible. Si la vérification échoue, l’état de l’alimentation reste inconnu. Ces résultats ne suffisent pas à savoir si l’ordinateur est allumé ou éteint.</li><li>La sélection du bouton Ordinateur d’applications déclenche la même action que l’appui sur son bouton d’alimentation physique. Attendez le contrôle et le résultat affiché. Si le résultat est inconnu, vérifiez l'ordinateur et le réseau avant d'appuyer à nouveau sur le bouton.</li></ul>
 <h3 id="fr-section-16" data-heading-key="section-16"><a href="#fr-section-16">Utiliser des actions rapides</a></h3>
 <p>Un utilisateur root configure les cartes d’actions rapides. Leur affichage et l’autorisation de lancer une tâche sont deux réglages distincts. Une carte visible ne permet pas toujours de lancer sa tâche.</p>
-<ol><li>Lisez le nom et la description de la carte pour identifier la tâche.</li><li>Sélectionnez la carte et lisez le résultat. Ne le redémarrez pas pendant le traitement.</li><li>Un message exécuté ou mis en file d'attente nécessite toujours une vérification réelle des résultats sur le périphérique ou la tâche cible. Demandez à un utilisateur root de vérifier, d'afficher les journaux ou d'arrêter un service en arrière-plan.</li></ol>
+<ol><li>Lisez le nom et la description de la carte pour identifier la tâche.</li><li>Sélectionnez « Démarrer » ou la carte et lisez le résultat. Ne le redémarrez pas pendant le traitement.</li><li>Un message exécuté ou mis en file d'attente nécessite toujours une vérification réelle des résultats sur le périphérique ou la tâche cible. Si un état de service est affiché, distinguez « Processus en cours d'exécution » de « Prêt ». Une carte comportant plusieurs tâches peut afficher « Certaines tâches ne sont pas prêtes ».</li></ol>
+<p>Les cartes avec des tâches en arrière-plan à distance proposent également « Afficher le journal » et « Arrêter ». Ouvrez les journaux pour examiner les tâches associées. Si plusieurs enregistrements apparaissent, choisissez par nom de tâche et hôte d'origine. Vérifiez la cible avant de l'arrêter, attendez le résultat, puis vérifiez qu'elle s'est arrêtée. La fermeture du journal ou l'arrêt des mises à jour du journal n'arrête pas la tâche.</p>
+<p>« Historique d’exécution » contient aussi des tâches lancées auparavant. Leur présence ne prouve pas qu’elles sont toujours actives. Sélectionnez « Vérifier l’état distant » si nécessaire. admin peut l’ouvrir depuis la carte concernée ; le bouton indépendant dans Système est réservé à root. Si une commande est indisponible ou si le résultat reste incertain, demandez à root de vérifier.</p>
 <p>Si la tâche ne peut pas démarrer, suivez le motif affiché. N’appuyez pas plusieurs fois sur Démarrer :</p>
-<ul><li>Règle désactivée ou déclenchement manuel non autorisé : demandez à un utilisateur root de vérifier les paramètres de la règle. Une carte visible ne constitue pas une autorisation de l'exécuter.</li><li>Une tâche ou une opération en arrière-plan est en cours : Attendez son résultat. Ne le redémarrez pas.</li><li>Un enregistrement d'exécution en arrière-plan existe déjà pour la tâche : demandez à un utilisateur root de vérifier la tâche d'origine et de confirmer qu'elle est terminée avant de la recommencer.</li><li>Configuration non chargée, élément requis manquant ou automatisation en pause : demandez à un utilisateur root de vérifier la configuration et son état d’activation.</li></ul>
-<aside class="guide-notice"><span>Note d’utilisation</span><p>Après avoir déclenché une action, attendez quelques secondes avant d’en lancer une autre. La fermeture de la page, la suppression d'une carte ou le redémarrage de TianshanOS n'arrêtent pas les services en arrière-plan sur les hôtes distants.</p></aside>
+<ul><li>Règle désactivée ou déclenchement manuel non autorisé : demandez à un utilisateur root de vérifier les paramètres de la règle. Une carte visible ne constitue pas une autorisation de l'exécuter.</li><li>Une tâche ou une opération en arrière-plan est en cours : Attendez son résultat. Ne le redémarrez pas.</li><li>Un enregistrement d'exécution existe déjà pour la tâche : vérifiez l'état et les journaux de la tâche d'origine au lieu de la redémarrer. S'il doit se terminer, arrêtez-le et vérifiez-le. Demandez à un utilisateur root de vérifier si vous ne parvenez pas à le résoudre.</li><li>Configuration non chargée, élément requis manquant ou automatisation en pause : demandez à un utilisateur root de vérifier la configuration et son état d’activation.</li></ul>
+<p>Si la page signale un démarrage automatique ou une nouvelle tentative d'attente, laissez-la continuer. Les échecs de démarrage temporaires sont réessayés toutes les 30 secondes pendant 6 minutes maximum. Un démarrage non confirmé est vérifié avant un autre lancement. Une exécution manuelle ayant échoué n’est pas automatiquement répétée. Une fois l'attente terminée, vérifiez l'appareil et le réseau comme indiqué avant de décider si vous souhaitez sélectionner « Démarrer ».</p>
+<aside class="guide-notice"><span>Note d’utilisation</span><p>Après avoir déclenché une action, attendez quelques secondes avant d’en lancer une autre. La fermeture de la page, la suppression d'une carte ou le redémarrage de TianshanOS n'arrêtent pas les services en arrière-plan sur les hôtes distants. Pour maintenir un service arrêté, demandez à un utilisateur root de désactiver toute règle automatique susceptible de le redémarrer.</p></aside>
 <p>Appuyez et maintenez une carte jusqu'à ce que l'indicateur de réorganisation apparaisse, puis faites-la glisser pour modifier l'ordre d'affichage.</p>
 <p>Si aucune carte n’apparaît, lisez l’explication. Attendez si la configuration est en cours de chargement. Si le chargement échoue, conservez la raison et contactez un utilisateur root. Si aucune action rapide n'est configurée, demandez à un utilisateur root de vérifier le paramètre “Show on panel” des règles.</p>
 <aside class="guide-notice"><span>Note d’utilisation</span><p>La modification ou l'importation d'une règle met à jour la configuration actuelle ; un redémarrage n'est pas nécessaire pour changer de règle. Si la tâche d'une carte a été modifiée, demandez à un utilisateur root de confirmer son contenu avant de l'exécuter.</p></aside>
@@ -1578,6 +1659,8 @@
 <p>Les widgets de données affichent et actualisent les données de l’appareil dans le « Panneau des appareils ».</p>
 <ol><li>Sélectionnez « Gestionnaire de widgets ».</li><li>Choisissez un intervalle d'actualisation ou désactivez l'actualisation automatique.</li><li>Ajoutez un widget prédéfini ou choisissez un style de composant et une source de données proposés par la page.</li><li>Modifiez son étiquette, son style d'affichage et son unité selon vos besoins, puis enregistrez.</li></ol>
 <p>Les widgets existants peuvent être modifiés, supprimés et réorganisés. Vous pouvez également sélectionner une carte de widget pour la modifier. Appuyez longuement sur un widget, puis faites-le glisser vers une nouvelle position.</p>
+<p>« Petit », « Moyen » et « Grand » utilisent une, deux et trois colonnes ; ils s'intègrent dans des écrans plus étroits. Lors de la modification d'une icône, saisissez son nom en utilisant l'exemple sur la page. Chaque valeur d'un widget à double valeur possède son propre paramètre de données. Vérifiez que les deux sources sont correctes et que les données sont mises à jour.</p>
+<p>« Échec du chargement des widgets de données » ne signifie pas qu'aucune configuration n'existe. Résolvez la cause et relisez-la. Si l'enregistrement échoue ou si son résultat n'est pas confirmé, conservez le contenu actuel et vérifiez le message. Voir vos modifications sur la page ne confirme pas qu’elles ont été enregistrées.</p>
 <h2 id="fr-section-18" data-heading-key="section-18"><a href="#fr-section-18">4. Gestion des ventilateurs</a></h2>
 <aside class="guide-notice"><span>Note d’utilisation</span><p>« Contrôle du ventilateur » se trouve sur la page « Système ». Les cartes de ventilateur montrent les ventilateurs fournis par votre appareil. Vérifiez le numéro du ventilateur avant de modifier une courbe.</p></aside>
 <h3 id="fr-section-19" data-heading-key="section-19"><a href="#fr-section-19">Afficher l'état du ventilateur</a></h3>
@@ -1593,6 +1676,8 @@
 <p>Sélectionnez « Courbe » dans l'en-tête de la section Contrôle du ventilateur pour ouvrir « Gestion des courbes de ventilateur ». Le bouton « Courbe » à l’intérieur d’une carte change uniquement le mode de fonctionnement.</p>
 <ol><li>Sous « Ventilateur », choisissez le nombre à ajuster et vérifiez-le par rapport à la page Système.</li><li>Sous « Liaison des variables de température », ajoutez des variables de température et attribuez des poids.</li><li>Sélectionnez « Relier ». La source de température est partagée par les ventilateurs en modes Courbe et Intelligent, donc sa modification affecte les ventilateurs utilisant cette source.</li><li>Ajoutez ou modifiez des « nœuds de courbe ». Chaque courbe nécessite au moins des nœuds 2 et prend en charge jusqu'à 10.</li><li>Définissez la « Vitesse minimale » et la « Vitesse maximale » comme pourcentages de contrôle. Le minimum ne doit pas dépasser le maximum.</li><li>Réglez « Hystérésis de température » et « Intervalle minimum ». L’hystérésis accepte 0-20°C et limite les réglages fréquents dus à de petites variations de température. L’intervalle accepte 500-30000 ms. 1000 ms correspondent à 1 seconde.</li><li>Sélectionnez « Enregistrer la courbe ». Après une sauvegarde réussie, le ventilateur sélectionné passe en mode Courbe. Pour utiliser le contrôle thermique intelligent, revenez à la carte et sélectionnez « Smart ».</li></ol>
 <p>Si l'enregistrement échoue, lisez le message et vérifiez l'état actuel avant de réessayer. Après avoir dissocié les variables de température, vérifiez également la température effective et l’état du ventilateur.</p>
+<aside class="guide-notice"><span>Note d’utilisation</span><p>Après avoir ouvert les paramètres ou choisi un autre ventilateur, attendez que ses paramètres actuels se chargent. Si la page indique qu'elle affiche les valeurs par défaut ou une version antérieure, ces valeurs ne confirment pas les paramètres actuels de l'appareil. Vérifiez-les avant de les enregistrer. Vérifiez également les résultats de lecture et d'enregistrement pour les liaisons de température.</p></aside>
+<p>Si le message indique que les paramètres du ventilateur ont été appliqués mais pas entièrement enregistrés, le réglage actuel est peut-être déjà en vigueur. Un redémarrage peut restaurer les paramètres antérieurs. Vérifiez l'état réel du ventilateur, confirmez que le stockage de l'appareil est disponible, puis enregistrez à nouveau. Ne redémarrez pas l'appareil uniquement pour tester si la sauvegarde a fonctionné.</p>
 <h3 id="fr-section-22" data-heading-key="section-22"><a href="#fr-section-22">Importer et exporter une courbe</a></h3>
 <ul><li>Sélectionnez « Importer Config » et choisissez un fichier de courbe JSON. JSON est le format de fichier utilisé pour stocker les données de courbe. Passez en revue les nœuds, les limites et le numéro de ventilateur, puis sélectionnez « Enregistrer la courbe » pour les appliquer.</li><li>Sélectionnez « Exporter la configuration » pour télécharger la courbe actuelle. La page tente également d'enregistrer une copie sous <code>/sdcard/config</code> sur la carte SD. Vérifiez séparément le téléchargement du navigateur et le résultat de la carte SD rapporté.</li></ul>
 <h3 id="fr-section-23" data-heading-key="section-23"><a href="#fr-section-23">Utiliser une température de test</a></h3>
@@ -1601,10 +1686,10 @@
 <h2 id="fr-section-24" data-heading-key="section-24"><a href="#fr-section-24">5. Gestion des LED</a></h2>
 <p>« LED Control » se trouve sur la page « Système » et affiche les LED fournies par l'appareil. Les fonctionnalités disponibles varient selon les LED.</p>
 <h3 id="fr-section-25" data-heading-key="section-25"><a href="#fr-section-25">Commandes courantes</a></h3>
-<ul><li>Utilisez le bouton ampoule situé en bas d'une carte pour allumer ou éteindre la LED.</li><li>Déplacez le curseur « Luminosité » ou choisissez une couleur ou un préréglage.</li><li>Utilisez le bouton d'animation pour ouvrir les « Paramètres LED ». Sélectionnez une animation sous « Animation programmatique », puis utilisez son contrôle de lecture ou d'arrêt.</li><li>Sélectionnez l'icône de sauvegarde en bas à droite de la carte pour enregistrer la configuration actuelle des LED.</li><li>Sélectionnez « All Off » pour éteindre toutes les LED et vérifier le résultat rapporté. Si certains échouent, vérifiez ces appareils.</li></ul>
+<ul><li>Utilisez le bouton ampoule situé en bas d'une carte pour allumer ou éteindre la LED.</li><li>Utilisez les curseurs de luminosité, de teinte et de saturation. La luminosité contrôle la luminosité de la lumière ; la teinte choisit la couleur ; la saturation se déplace entre le blanc et la couleur. La saturation à 0 donne une lumière blanche. Les changements de teinte et de saturation sont appliqués lorsque vous relâchez le curseur.</li><li>Utilisez le bouton d'animation pour ouvrir les « Paramètres LED ». Sélectionnez une animation sous « Animation programmatique », puis utilisez son contrôle de lecture ou d'arrêt.</li><li>Sélectionnez l'icône de sauvegarde en bas à droite de la carte pour enregistrer la configuration actuelle des LED.</li><li>Sélectionnez « All Off » pour éteindre toutes les LED et vérifier le résultat rapporté. Si certains échouent, vérifiez ces appareils.</li></ul>
 <h3 id="fr-section-26" data-heading-key="section-26"><a href="#fr-section-26">Fonctions avancées de la matrice LED</a></h3>
 <p>Les cartes de la matrice proposent des icônes pour les fonctions disponibles. Ouvrez une fonction, puis changez de groupe dans « Paramètres LED » :</p>
-<ul><li>« Animation programmatique » : sélectionnez et exécutez une animation.</li><li>« Image/QR Code » : choisissez une image de la carte SD ou saisissez le contenu d'un code QR.</li><li>« Affichage du texte » : définissez le texte, la police, l'alignement, le défilement, le premier plan et l'arrière-plan.</li><li>« Filtre de post-traitement » : Choisissez un filtre et des paramètres, puis appliquez-le ou arrêtez-le.</li><li>« Correction des couleurs » : ajustez l'affichage et utilisez les commandes de réinitialisation, d'importation ou d'exportation disponibles.</li></ul>
+<ul><li>« Animation programmatique » : sélectionnez et exécutez une animation.</li><li>« Image/Code QR » : Choisissez une image ou un code QR sous « Type » dans la carte, puis sélectionnez une image de la carte SD ou saisissez le contenu QR.</li><li>« Affichage du texte » : définissez le texte, la police, l'alignement, le défilement, le premier plan et l'arrière-plan.</li><li>« Filtre de post-traitement » : Choisissez un filtre et des paramètres, puis appliquez-le ou arrêtez-le.</li><li>« Correction des couleurs » : ajustez l'affichage et utilisez les commandes de réinitialisation, d'importation ou d'exportation disponibles.</li></ul>
 <p>Vérifiez la lumière réelle ou l'affichage matriciel après avoir appliqué une modification. Utilisez uniquement les fonctionnalités affichées. Si un paramètre échoue, suivez le message pour vérifier l’état du fichier, de l’entrée ou du périphérique.</p>
 <h2 id="fr-section-27" data-heading-key="section-27"><a href="#fr-section-27">6. Gestion du réseau</a></h2>
 <aside class="guide-notice"><span>Note d’utilisation</span><p>Sélectionnez « Réseau » dans la navigation supérieure pour ouvrir « Paramètres réseau ». La modification des paramètres du mode réseau, du point d'accès ou de NAT peut interrompre la connexion WebUI actuelle. Avant d'enregistrer, assurez-vous que vous pouvez vous reconnecter via la nouvelle adresse réseau.</p></aside>
@@ -1627,15 +1712,18 @@
 <h3 id="fr-section-34" data-heading-key="section-34"><a href="#fr-section-34">Opérations réseau avancées</a></h3>
 <h4 id="fr-section-35" data-heading-key="section-35"><a href="#fr-section-35">Configurer la passerelle NAT</a></h4>
 <p>NAT transmet le trafic réseau entre les interfaces réseau de l'appareil. Activez ou désactivez NAT, puis sélectionnez « Enregistrer » pour conserver le paramètre. Vérifiez ensuite l'état du WiFi et d'Ethernet.</p>
-<h4 id="fr-section-36" data-heading-key="section-36"><a href="#fr-section-36">Accédez au réseau en amont via LPMU</a></h4>
-<aside class="guide-notice"><span>Note d’utilisation</span><p>Cette opération utilise l'hôte LPMU configuré pour configurer l'accès au réseau. Avant de commencer, vérifiez que LPMU est accessible et que les câbles réseau sont connectés. Obtenez le mot de passe sudo pour le compte SSH sur cet hôte. Ce mot de passe autorise les modifications du système et peut différer du mot de passe WebUI.</p></aside>
-<ol><li>Sous « Accès au réseau en amont », sélectionnez « Accès via LPMU ».</li><li>Entrez le mot de passe sudo LPMU et sélectionnez le bouton d'accès. Le mot de passe est utilisé uniquement pour cette exécution et n'est pas enregistré ; saisissez-le à nouveau pour une exécution ultérieure.</li><li>Attendez la fin de l'opération. Ne le redémarrez pas pendant le traitement.</li><li>L'accès est confirmé uniquement lorsque le résultat indique à la fois une connexion Internet et une configuration réseau terminée.</li><li>En cas d'échec ou si le résultat n'est pas confirmé, lisez d'abord la raison. Développez « Journal d'exécution » pour plus de détails. Vérifiez le mot de passe pour une erreur de mot de passe, ou le câblage et le réseau en amont si aucune connexion Internet n'est trouvée.</li></ol>
+<h4 id="fr-section-36" data-heading-key="section-36"><a href="#fr-section-36">Accéder au réseau en amont via l'ordinateur d’applications</a></h4>
+<p>Cette opération utilise l'ordinateur d’applications configuré pour configurer l'accès au réseau. Sur le système, basculez d’abord USB sur « Ordinateur d’applications » et vérifiez les câbles réseau. Son hôte SSH doit utiliser l'authentification par clé et disposer d'une empreinte d'hôte vérifiée. Demandez à un utilisateur root de vérifier ces paramètres à l'aide du Guide de sécurité.</p>
+<p>Obtenez le mot de passe sudo du compte SSH sur cet hôte. Ce mot de passe autorise les modifications du système et peut différer du mot de passe WebUI.</p>
+<ol><li>Sous « Accès au réseau en amont », sélectionnez « Accès via l'ordinateur d’applications ».</li><li>Entrez le mot de passe sudo de l'ordinateur d’applications et sélectionnez le bouton d'accès. Le mot de passe est utilisé uniquement pour cette exécution et n'est pas enregistré ; saisissez-le à nouveau pour une exécution ultérieure.</li><li>Attendez la fin de l'opération. Ne le redémarrez pas pendant le traitement.</li><li>L'accès est confirmé uniquement lorsque le résultat indique à la fois une connexion Internet et une configuration réseau terminée.</li><li>Après avoir fermé la fenêtre de résultats, sélectionnez « Afficher le résultat » pour l'ouvrir à nouveau. En cas d'échec ou si le résultat n'est pas confirmé, lisez la raison et l'étape de l'échec. Développez « Journal d'exécution » pour plus de détails. Vérifiez le mot de passe pour une erreur de mot de passe, ou le câblage et le réseau en amont si aucune connexion Internet n'est trouvée.</li></ol>
+<p>Si l'empreinte de l'hôte n'est pas confirmée ou a changé, demandez d'abord à un utilisateur root de vérifier l'identité de l'hôte. Ne réessayez pas d’accéder et n’ignorez pas la vérification. La sortie du script distant peut rester dans sa langue d'origine ; conservez-le pour enquête si nécessaire.</p>
 <p>Un échec de demande d'état ne signifie pas que le script s'est arrêté. Utilisez le contrôle « Actualiser l'état » disponible pour vérifier l'exécution en cours avant de décider de réessayer.</p>
 <h2 id="fr-section-37" data-heading-key="section-37"><a href="#fr-section-37">7. Gestion des fichiers</a></h2>
 <p>Sélectionnez « Fichiers » dans la navigation supérieure pour ouvrir le « Gestionnaire de fichiers ».</p>
 <p>La carte SD est un stockage amovible et SPIFFS est un stockage de fichiers interne à l'appareil. Sélectionnez « Carte SD » ou « SPIFFS » pour changer d'emplacement. Le chemin en haut montre votre dossier actuel. Sélectionnez un nom de dossier dans le chemin pour y revenir.</p>
 <h3 id="fr-section-38" data-heading-key="section-38"><a href="#fr-section-38">Parcourir et gérer les fichiers</a></h3>
 <ul><li>Sélectionnez un nom de dossier pour l'ouvrir.</li><li>Sélectionnez le bouton de téléchargement à côté d'un fichier pour l'enregistrer à l'emplacement de téléchargement du navigateur.</li><li>Sélectionnez le bouton Renommer, saisissez un nouveau nom et confirmez.</li><li>Sélectionnez « Nouveau dossier », saisissez un nom de dossier et créez-le.</li><li>Sélectionnez le bouton d'actualisation pour recharger le répertoire actuel et l'état de stockage.</li></ul>
+<p>L’envoi, la suppression, le renommage de fichiers, la création de dossiers et le montage ou démontage de la carte SD exigent une session valide. Lire et télécharger des fichiers protégés d’Automatisation exige aussi les droits root. Si l’accès est refusé à admin, demandez à root d’utiliser les pages de configuration. Ne changez pas de chemin ou d’entrée pour contourner les permissions.</p>
 <h3 id="fr-section-39" data-heading-key="section-39"><a href="#fr-section-39">Envoyer des fichiers</a></h3>
 <p>Les fichiers peuvent être envoyés uniquement sur la carte SD, pas dans SPIFFS. Vérifiez d’abord que la carte SD est montée.</p>
 <ol><li>Sélectionnez « Carte SD » et ouvrez le dossier où vous souhaitez envoyer les fichiers.</li><li>Sélectionnez « Envoyer des fichiers ».</li><li>Sélectionnez un ou plusieurs fichiers, ou faites-les glisser dans la zone d’envoi.</li><li>Vérifiez la liste des fichiers à envoyer et retirez ceux dont vous n’avez pas besoin.</li><li>Sélectionnez « Envoyer » et attendez la confirmation pour chaque fichier.</li></ol>
@@ -1657,11 +1745,12 @@
 <aside class="guide-notice"><span>Note d’utilisation</span><p>L'appareil redémarre lors d'une mise à jour, déconnectant temporairement l'interface Web. Enregistrez le travail actif et maintenez la alimentation de l’appareil stable avant de commencer. N'éteignez pas l'appareil tant que la progression de la mise à jour est incomplète.</p></aside>
 <h3 id="fr-section-44" data-heading-key="section-44"><a href="#fr-section-44">Première mise à niveau d'une ancienne version vers 0.6.3</a></h3>
 <p>La première mise à niveau à partir d'une ancienne configuration de stockage, telle que la version 0.6.2, nécessite un package USB/série correspondant approuvé par le fournisseur. L’envoi du micrologiciel ou de WebUI seul ne suffit pas pour effectuer cette mise à niveau. Demandez à l'administrateur de l'appareil ou au fournisseur de suivre les instructions du package. N'effacez pas l'intégralité du flash et n'utilisez pas une ancienne table de partition.</p>
-<p>Enregistrez les fichiers importants et conservez la carte SD d'origine installée. Le premier démarrage migre la configuration existante ; garder l'alimentation connectée. Ensuite, vérifiez la connexion, la mise en réseau, les ventilateurs, l'éclairage, les hôtes SSH et les règles d'automatisation. Passez en revue les règles avant de tester une tâche qui contrôle l’alimentation, redémarre un appareil ou exécute des commandes à distance.</p>
+<p>Enregistrez les fichiers importants avant la mise à niveau. L'outil correspondant préserve les clés et la carte SD ; cela n'efface pas la configuration sur la carte. Le premier démarrage peut toujours lire ou migrer la configuration existante. La livraison au client suit la procédure « effacer l'ancienne configuration et configurer à nouveau ». L'administrateur de l'appareil ou le fournisseur doit suivre les instructions de livraison. N'effacez pas l'intégralité du flash vous-même et ne traitez pas les fichiers conservés comme une configuration terminée.</p>
+<p>Gardez l'alimentation connectée pendant la mise à niveau et le premier démarrage. Ensuite, vérifiez la connexion, la mise en réseau, les ventilateurs, l'éclairage, les hôtes SSH et les règles d'automatisation. Passez en revue les règles avant de tester une tâche qui contrôle l’alimentation, redémarre un appareil ou exécute des commandes à distance.</p>
 <p>Le package correspondant met à jour les deux emplacements d’application. Ne présumez pas que l’autre emplacement contient toujours l’ancienne version. Si le mot de passe root est perdu, utilisez uniquement une méthode de récupération confirmée par le fournisseur pour correspondre à la mise en page 0.6.3. Ne flashez pas une ancienne image de réinitialisation de mot de passe.</p>
 <p>Les méthodes de mise à jour Web ci-dessous s'appliquent uniquement aux versions que l'éditeur a approuvées pour OTA. Ils ne remplacent pas la première mise à niveau de la mise en page.</p>
 <h3 id="fr-section-45" data-heading-key="section-45"><a href="#fr-section-45">Rechercher des mises à jour à partir d'un serveur OTA</a></h3>
-<ol><li>Revoir le “Current Version”.</li><li>Saisissez l'adresse du serveur OTA fournie par un administrateur ou un éditeur.</li><li>Sélectionnez “Save” puis sélectionnez “Check Update”.</li><li>La page signale “Update Available” “Already up to date” une ancienne version du serveur ou une erreur.</li><li>Confirmez la version cible, puis sélectionnez “Upgrade Now” ou le contrôle de mise à niveau affiché sur la page.</li><li>Attendez la fin du téléchargement, de l'installation et du redémarrage. Pour annuler, utilisez le bouton “Abort” lorsqu'il est disponible. Toutes les étapes ne prennent pas en charge l'annulation.</li><li>Attendez la page pour confirmer le firmware après la mise à niveau. Reconnectez-vous au WebUI et vérifiez le “Current Version” et l'état de l'appareil.</li></ol>
+<ol><li>Consultez la « version actuelle ». Deux installations 0.6.3 peuvent être des versions de révision différentes. Vérifiez la version complète, la durée de construction et les instructions de l'éditeur plutôt que seulement les trois premiers chiffres.</li><li>Saisissez l'adresse du serveur OTA fournie par un administrateur ou un éditeur.</li><li>Sélectionnez “Save” puis sélectionnez “Check Update”.</li><li>La page signale “Update Available” “Already up to date” une ancienne version du serveur ou une erreur.</li><li>Confirmez la version cible, puis sélectionnez “Upgrade Now” ou le contrôle de mise à niveau affiché sur la page.</li><li>Attendez la fin du téléchargement, de l'installation et du redémarrage. Pour annuler, utilisez le bouton “Abort” lorsqu'il est disponible. Toutes les étapes ne prennent pas en charge l'annulation.</li><li>Attendez la page pour confirmer le firmware après la mise à niveau. Reconnectez-vous au WebUI et vérifiez le “Current Version” et l'état de l'appareil.</li></ol>
 <p>“Upgrade Progress” affiche l'étape actuelle dans sa propre section. Une lecture à 100 % ou un message indiquant que les fichiers ont été écrits ne confirme pas un redémarrage et une vérification de version terminés. Si le résultat n'est pas confirmé ou si le micrologiciel en cours d'exécution diffère de la cible, conservez le message et vérifiez la version actuelle. Ne répétez pas la mise à niveau sans vérifier. Demandez à un utilisateur root ou au fournisseur d'enquêter si nécessaire.</p>
 <p>Lorsque “Also upgrade www” est activé, le micrologiciel et WebUI sont mis à jour en séquence. Utilisez le micrologiciel correspondant et les ressources WebUI de la même version. Si l'ancienne interface reste après la mise à niveau, actualisez de force le navigateur et vérifiez à nouveau la version et la page.</p>
 <h3 id="fr-section-46" data-heading-key="section-46"><a href="#fr-section-46">Mise à jour manuelle</a></h3>
@@ -1680,6 +1769,7 @@
 <p>Un champ d'erreur rouge vous indique ce qu'il faut corriger. Corrigez-le, puis enregistrez. Une marque d'erreur effacée ne confirme pas une sauvegarde réussie ; vérifiez le message et la liste.</p>
 <p>Identifiez l’opération qui a échoué, puis lisez le motif et l’étape suivante. Si le message ne donne aucun motif, ne le devinez pas.</p>
 <p>Sélectionnez “Details” lorsque disponible. Sélectionnez “Hide” pour masquer les détails. Si un bouton × s'affiche, sélectionnez-le pour ignorer le message. Lorsque vous demandez de l'aide, conservez une trace du message et des détails pour qu'un utilisateur root puisse les vérifier.</p>
+<p>Si un message ou ses détails sont longs, faites défiler cette zone pour lire l'intégralité du contenu avant de décider quoi faire ensuite.</p>
 <p>Si le résultat n’est pas confirmé, actualisez et vérifiez l’état de l’appareil, du fichier ou de la tâche. Un délai expiré ou une déconnexion ne signifie pas que l’opération n’a pas été exécutée. Ne répétez pas aussitôt une opération d’alimentation, de suppression, de lancement de tâche ou de mise à jour. Demandez à un utilisateur root de vérifier si le résultat reste inconnu.</p>
 <p>Vérifiez séparément les résultats de lots réussis, échoués et non confirmés. Confirmez les fichiers enregistrés dans la liste de téléchargement du navigateur.</p>
 

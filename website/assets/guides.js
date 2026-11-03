@@ -85,7 +85,7 @@
   }
 
   const TITLE_PHRASES = {
-    ja: /((?:ユーザー|ページ操作|運用)ガイド|ネットワーク|セキュリティ)/g,
+    ja: /((?:ユーザー|操作|運用)ガイド|ネットワーク|セキュリティ|ページ)/g,
     zh: /(日常使用指南|运维指南|安全页面|完整操作指南|网络配置指南)/g,
   };
 
@@ -284,7 +284,7 @@
     let query = '';
     let firstResultHref = null;
 
-    const indexPromise = fetch('search-index.json?v=guides-063-20261028')
+    const indexPromise = fetch('search-index.json?v=guides-064-20261103')
       .then((response) => {
         if (!response.ok) throw new Error(`Search index returned ${response.status}`);
         return response.json();
