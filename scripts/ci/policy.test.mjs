@@ -222,6 +222,8 @@ test('official knowledge runtime and original corpus select offline checks witho
   for(const file of ['services/official-knowledge-mcp/.gitignore','services/official-knowledge-mcp/src/worker.ts','docs/official-knowledge/zh/product-overview.md']) {
     const scope=classify([{status:'M',paths:[file]}]);assert.equal(scope.knowledgeMcp,true);assert.equal(scope.pages.length,0);
   }
+  for(const name of ['admin.md','root.md','network.md','security.zh.md','security.en.md'])assert.equal(classify([{status:'M',paths:['website/guides/content/'+name]}]).knowledgeMcp,true);
+  for(const name of ['admin.ja.md','security.fr.md'])assert.equal(classify([{status:'M',paths:['website/guides/content/'+name]}]).knowledgeMcp,false);
   assert.equal(classify([{status:'M',paths:['docs/knowledge-mcp/README.md']}]).knowledgeMcp,false);
   assert.equal(classify([{status:'M',paths:['services/official-knowledge-mcp/wrangler.jsonc']}]).configurationFiles.length,1);
 });

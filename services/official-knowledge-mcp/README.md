@@ -26,7 +26,8 @@ npm run verify
 
 ## 文件与数据
 
-- `scripts/build.ts`：只构建来源清单登记、已批准类型的中英文件；检查原文哈希。OCR 不进入运行包；历史宣传册仅在明确的历史搜索中出现。
+- `scripts/sources.ts`：读取来源清单中的 82 份快照，以及 `website/guides/content/` 中四类指南的 8 份中英文原文。指南版本、日期来自原文，两种语言必须一致；网络指南保持无软件版本。指南来源提交取构建时的 Git HEAD，章节行号对应原始官网 Markdown。
+- `scripts/build.ts`：构建上述已批准的中英原文；检查快照哈希，计算指南哈希。OCR 不进入运行包；历史宣传册仅在明确的历史搜索中出现。
 - `src/text.ts`：中英文规范化、少量术语同义词及中文分词后的二元组。Node 构建和 Worker 查询使用同一代码；本轮协议测试也检查了两种运行环境对固定问题的结果。
 - `src/knowledge.ts`：BM25 搜索、语言优先、版本过滤、精确章节去重和只读章节返回。所有正文连同上下文分别附带哈希。
 - `src/server.ts`：通过官方 SDK 注册两个工具及只读声明，校验参数和返回量。
@@ -35,7 +36,7 @@ npm run verify
 - `tests/corpus.test.ts`：来源漏行、表格/代码块边界、版本与历史过滤、上下文、哈希、确定性和大小等检查。
 - `.generated/`：可重建、未跟踪的运行数据和构建报告。语料、索引、来源元数据共同决定 `corpus_revision`，不单独热换正文。
 
-所有公开答案依据来自 `../../docs/official-knowledge/`。方案和验证记录不会作为企业事实索引。按完整章节的内容哈希去重搜索结果，保留原始重复正文以便审计；没有为了减少重复而删除原文行。
+公开答案依据来自 `../../docs/official-knowledge/` 中的快照及 `../../website/guides/content/` 中的四类中英文指南。方案和验证记录不会作为企业事实索引。按完整章节的内容哈希去重搜索结果，保留原始重复正文以便审计；没有为了减少重复而删除原文行。
 
 ## 接口
 
@@ -57,4 +58,10 @@ npm run verify
 
 ## 发布
 
-在服务目录运行 `npm ci --ignore-scripts`，再运行 `npx --no-install wrangler deploy`。构建钩子从仓库内已登记的中英原文重建语料。正式接口为 `https://mcp.rminte.com/mcp`，健康检查为 `/health`。发布后应核对健康接口的语料版本与本地构建一致。
+在服务目录运行 `npm ci --ignore-scripts`，再运行 `npx --no-install wrangler deploy`。构建钩子从已登记快照和官网指南原文重建语料，部署需要包含 Git 信息的完整仓库检出。正式接口为 `https://mcp.rminte.com/mcp`，健康检查为 `/health`。发布后应核对健康接口的语料版本与本地构建一致。
+
+### 指南自动更新
+
+四类中英文指南只维护 `website/guides/content/{admin,root,network}.md` 与 `security.{zh,en}.md`。修改这些文件时，PR 同时运行 MCP 原文、构建及离线检索检查；其他翻译语言不作为 MCP 输入。版本和日期须保留现有标注格式，且中英文一致。
+
+知识 Worker 的 Cloudflare Git 构建应连接 `RMinte-AI/rminte-website:main`，根目录为 `services/official-knowledge-mcp`，部署前运行构建、类型检查、原文检查及离线检索。监视上述 5 个文件、`services/official-knowledge-mcp/*` 与 `docs/official-knowledge/*`，关闭分支预览。合并后自动构建完整语料并发布；失败不更新正在服务的版本。正式核对以 Cloudflare 构建结果和 `/health` 的语料版本为准。
