@@ -310,7 +310,7 @@
       "expected_docs": [
         "guide-security"
       ],
-      "evidence_regex": "0.6.4"
+      "evidence_regex": "(?:对应版本：|Version covered:).*\\d+\\.\\d+\\.\\d+"
     },
     {
       "id": "securityversion-en",
@@ -319,7 +319,7 @@
       "expected_docs": [
         "guide-security"
       ],
-      "evidence_regex": "0.6.4"
+      "evidence_regex": "(?:对应版本：|Version covered:).*\\d+\\.\\d+\\.\\d+"
     },
     {
       "id": "https-zh",

@@ -1,9 +1,9 @@
 # Official knowledge: English index
 
-- [TianshanOS Admin User Guide](guide-admin.md)
-- [TianshanOS Root Operations Guide](guide-root.md)
-- [RM-01 Network Configuration Guide](guide-network.md)
-- [TianShanOS Security Page Guide](guide-security.md)
+- [TianshanOS Admin User Guide](../../../website/guides/content/admin.md)
+- [TianshanOS Root Operations Guide](../../../website/guides/content/root.md)
+- [RM-01 Network Configuration Guide](../../../website/guides/content/network.md)
+- [TianShanOS Security Page Guide](../../../website/guides/content/security.en.md)
 - [RM-01 Hardware Security](hardware-security.md)
 - [RM-01 AI working for you, locally](product-overview.md)
 - [Compute that takes on more tasks](inference-engine.md)

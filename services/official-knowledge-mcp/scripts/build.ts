@@ -1,14 +1,15 @@
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { writeFile, mkdir } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { resolve, dirname } from 'node:path';
 import { terms, bytes } from '../src/text.ts';
-import type { SourceDoc, Section, Corpus } from '../src/types.ts';
+import { loadSources, corpusRoot, repository } from './sources.ts';
+export { corpusRoot } from './sources.ts';
+import type { Section, Corpus } from '../src/types.ts';
 const service = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-export const corpusRoot = resolve(service, '../../docs/official-knowledge');
 export const hash = (s:string) => createHash('sha256').update(s).digest('hex');
 const ALLOWED = new Set(['operating-instructions','product-security-document','official-product-copy','official-site-text','official-source-text','public-contact-information','public-case-description','public-application-instructions','public-agreement-template','source-availability-note','public-company-identification','source-interpretation','historical-company-brochure','public-service-instructions']);
-const POLICY='source-headings-v4-intl-segmenter-bigrams-wattage-bm25-v5';
+const POLICY='live-guides-v1-intl-segmenter-bigrams-wattage-bm25-v5';
 interface Heading { level:number;title:string;start:number;end:number;path:string[];body:string;id:string;parents:Heading[] }
 export function parseHeadings(lines:string[], offset:number, docId:string, language:string, title:string):Heading[]{
  const headings:Heading[]=[];const stack:Heading[]=[];const ids=new Map<string,number>();let fence:string|null=null;
@@ -51,13 +52,11 @@ export function splitBlocks(body:string, max=7000):string[] {
     if(current&&bytes(current+'\n\n'+b)>max){parts.push(current);current='';} current+=(current?'\n\n':'')+b;
   }if(current)parts.push(current);return parts;
 }
-export async function buildCorpus():Promise<Corpus> {
- const manifest=JSON.parse(await readFile(resolve(corpusRoot,'source-manifest.json'),'utf8'));
+export async function buildCorpus(root=repository):Promise<Corpus> {
+ const sources=await loadSources(root);
  const sections:Section[]=[];const documents:Corpus['documents']=[];
- for(const d of manifest.documents as SourceDoc[]){
-  const full=await readFile(resolve(corpusRoot,d.path),'utf8');if(hash(full)!==d.sha256)throw Error(`Source hash mismatch: ${d.path}`);
+ for(const {doc:d,lines,offset,lineOffset} of sources){
   if(!d.default_retrieval||!ALLOWED.has(d.content_kind)){documents.push({id:d.id,language:d.language,status:'excluded',reason:'unverified or unapproved source type',sections:0});continue;}
-  const lines=full.split('\n');const offset=lines.findIndex((s,i)=>i>0&&s==='---')+1; if(offset<2)throw Error('Missing front matter');
   const headings=parseHeadings(lines,offset,d.id,d.language,d.title);
   const before=sections.length;
   for(const h of headings){
@@ -68,7 +67,7 @@ export async function buildCorpus():Promise<Corpus> {
    const parts=splitBlocks(originalBody);
    for(let i=0;i<parts.length;i++){
     const body=parts[i];const id=h.id+(parts.length>1?`/part-${i+1}`:''); const page=h.path.join(' ').match(/(?:原 PDF 第|Original PDF page)\s*(\d+)/);
-    sections.push({section_id:id,doc_id:d.id,language:d.language,title:d.title,heading_path:h.path,body,context,related_sections:[],source_urls:d.source_urls,source_lines:[h.start+1,h.end],pdf_page:page?Number(page[1]):null,source_commit:d.source_commit,source_date:d.id==='hardware-security'?'2026-09-11':['guide-admin','guide-root','guide-security'].includes(d.id)?'2026-11-03':d.id==='company-brochure'?'2026-09-07':null,prepared_on:d.prepared_on,navigation_only,applicability:d.applicability,version:['guide-admin','guide-root','guide-security'].includes(d.id)?'0.6.4':null,historical:d.content_kind==='historical-company-brochure',evidence_status:d.evidence_status,content_kind:d.content_kind,content_hash:hash(body),context_hash:hash(context),length:terms(body).length});
+    sections.push({section_id:id,doc_id:d.id,language:d.language,title:d.title,heading_path:h.path,body,context,related_sections:[],source_urls:d.source_urls,source_lines:[h.start+1+lineOffset,h.end+lineOffset],pdf_page:page?Number(page[1]):null,source_commit:d.source_commit,source_date:d.source_date??(d.id==='hardware-security'?'2026-09-11':d.id==='company-brochure'?'2026-09-07':null),prepared_on:d.prepared_on,navigation_only,applicability:d.applicability,version:d.version??null,historical:d.content_kind==='historical-company-brochure',evidence_status:d.evidence_status,content_kind:d.content_kind,content_hash:hash(body),context_hash:hash(context),length:terms(body).length});
    }
   }
   documents.push({id:d.id,language:d.language,status:d.content_kind==='historical-company-brochure'?'history-only':'indexed',reason:'approved source; retain original heading/body and inherited preamble',sections:sections.length-before});
@@ -77,7 +76,7 @@ export async function buildCorpus():Promise<Corpus> {
  for(const s of sections){const paths=[...s.body.matchAll(/\]\(([^)]+\.md)(?:#[^)]*)?\)/g)].map(x=>resolve(corpusRoot,s.language,x[1]));s.related_sections=sections.filter(t=>paths.includes(resolve(corpusRoot,t.language,t.doc_id+'.md'))).map(t=>t.section_id);}
  const postings:Corpus['postings']=Object.create(null);
  sections.forEach((s,i)=>{const freq=new Map<string,number>();for(const t of terms(s.body))freq.set(t,(freq.get(t)||0)+1);for(const t of terms(s.context))freq.set(t,(freq.get(t)||0)+0.1);for(const t of terms(s.title+' '+s.heading_path.join(' ')+' '+s.doc_id))freq.set(t,(freq.get(t)||0)+2);s.length=[...freq.values()].reduce((a,b)=>a+b,0);if(!s.navigation_only)for(const [t,n]of freq)(postings[t]??=[]).push([i,n]);});
- const revision=hash(JSON.stringify({policy:POLICY,sources:manifest.documents.map((d:SourceDoc)=>[d.path,d.sha256,d.default_retrieval,d.content_kind]),sections,postings}));
+ const revision=hash(JSON.stringify({policy:POLICY,sources:sources.map(({doc:d})=>[d.path,d.sha256,d.default_retrieval,d.content_kind]),sections,postings}));
  return{revision,build_policy:POLICY,sections,postings,average_length:sections.reduce((sum,s)=>sum+s.length,0)/sections.length,documents};
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)){

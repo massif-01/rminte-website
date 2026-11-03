@@ -1,9 +1,9 @@
 # 中英文官方资料：中文目录
 
-- [TianshanOS admin 日常使用指南](guide-admin.md)
-- [TianshanOS root 运维指南](guide-root.md)
-- [RM-01 网络配置指南](guide-network.md)
-- [TianShanOS 安全页面完整操作指南](guide-security.md)
+- [TianshanOS admin 日常使用指南](../../../website/guides/content/admin.md)
+- [TianshanOS root 运维指南](../../../website/guides/content/root.md)
+- [RM-01 网络配置指南](../../../website/guides/content/network.md)
+- [TianShanOS 安全页面完整操作指南](../../../website/guides/content/security.zh.md)
 - [RM-01 硬件安全说明](hardware-security.md)
 - [RM-01 让 AI 在本地， 为你工作](product-overview.md)
 - [让算力，承载更多任务](inference-engine.md)
