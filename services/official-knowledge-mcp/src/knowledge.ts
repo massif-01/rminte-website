@@ -29,7 +29,8 @@ export function createKnowledge(c:Corpus){
    }
   }
   const weight=(t:string)=>Math.log(1+(c.sections.length+0.5)/((postingFor(t)?.length||0)+0.5));
-  const totalWeight=queryTerms.reduce((n,t)=>n+weight(t),0);
+  // Unknown Han segments/bigrams are not rare indexed terms; keep unknown identifiers significant.
+  const totalWeight=queryTerms.filter(t=>postingFor(t)||!/^\p{Script=Han}+$/u.test(t)).reduce((n,t)=>n+weight(t),0);
   const unsupportedShortQuery=queryTerms.length<=2&&queryTerms.some(t=>/^\p{L}+$/u.test(t)&&!postingFor(t));
   const ranked=(unsupportedShortQuery?[]:[...scores]).filter(([i])=>[...matches.get(i)!].reduce((n,t)=>n+weight(t),0)/Math.max(1,totalWeight)>=0.25).map(([i,score])=>{
    const s=c.sections[i];let boost=language===s.language?1.3:1;

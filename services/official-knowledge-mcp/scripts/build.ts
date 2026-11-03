@@ -8,7 +8,7 @@ const service = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 export const corpusRoot = resolve(service, '../../docs/official-knowledge');
 export const hash = (s:string) => createHash('sha256').update(s).digest('hex');
 const ALLOWED = new Set(['operating-instructions','product-security-document','official-product-copy','official-site-text','official-source-text','public-contact-information','public-case-description','public-application-instructions','public-agreement-template','source-availability-note','public-company-identification','source-interpretation','historical-company-brochure','public-service-instructions']);
-const POLICY='source-headings-v4-intl-segmenter-bigrams-bm25-v4';
+const POLICY='source-headings-v4-intl-segmenter-bigrams-wattage-bm25-v5';
 interface Heading { level:number;title:string;start:number;end:number;path:string[];body:string;id:string;parents:Heading[] }
 export function parseHeadings(lines:string[], offset:number, docId:string, language:string, title:string):Heading[]{
  const headings:Heading[]=[];const stack:Heading[]=[];const ids=new Map<string,number>();let fence:string|null=null;
@@ -68,7 +68,7 @@ export async function buildCorpus():Promise<Corpus> {
    const parts=splitBlocks(originalBody);
    for(let i=0;i<parts.length;i++){
     const body=parts[i];const id=h.id+(parts.length>1?`/part-${i+1}`:''); const page=h.path.join(' ').match(/(?:原 PDF 第|Original PDF page)\s*(\d+)/);
-    sections.push({section_id:id,doc_id:d.id,language:d.language,title:d.title,heading_path:h.path,body,context,related_sections:[],source_urls:d.source_urls,source_lines:[h.start+1,h.end],pdf_page:page?Number(page[1]):null,source_commit:d.source_commit,source_date:d.id==='hardware-security'?'2026-09-11':['guide-admin','guide-root'].includes(d.id)?'2026-10-28':d.id==='guide-security'?'2026-10-09':d.id==='company-brochure'?'2026-09-07':null,prepared_on:d.prepared_on,navigation_only,applicability:d.applicability,version:d.id==='guide-security'?'0.6.1':['guide-root','guide-admin'].includes(d.id)?'0.6.3':null,historical:d.content_kind==='historical-company-brochure',evidence_status:d.evidence_status,content_kind:d.content_kind,content_hash:hash(body),context_hash:hash(context),length:terms(body).length});
+    sections.push({section_id:id,doc_id:d.id,language:d.language,title:d.title,heading_path:h.path,body,context,related_sections:[],source_urls:d.source_urls,source_lines:[h.start+1,h.end],pdf_page:page?Number(page[1]):null,source_commit:d.source_commit,source_date:d.id==='hardware-security'?'2026-09-11':['guide-admin','guide-root','guide-security'].includes(d.id)?'2026-11-03':d.id==='company-brochure'?'2026-09-07':null,prepared_on:d.prepared_on,navigation_only,applicability:d.applicability,version:['guide-admin','guide-root','guide-security'].includes(d.id)?'0.6.4':null,historical:d.content_kind==='historical-company-brochure',evidence_status:d.evidence_status,content_kind:d.content_kind,content_hash:hash(body),context_hash:hash(context),length:terms(body).length});
    }
   }
   documents.push({id:d.id,language:d.language,status:d.content_kind==='historical-company-brochure'?'history-only':'indexed',reason:'approved source; retain original heading/body and inherited preamble',sections:sections.length-before});
