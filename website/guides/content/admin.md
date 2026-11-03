@@ -1,8 +1,8 @@
 # TianshanOS admin 日常使用指南
 
-本指南依据 TianshanOS 0.6.3 编写。使用其他版本时，请结合对应版本的说明核对操作。
-
 本指南面向使用 admin 账户的用户，介绍系统查看、设备控制、网络、文件和固件升级。终端、远程指令与自动化配置由 root 运维指南说明；安全管理请参阅单独的安全指南。
+
+对应版本：0.6.4 · 修订日期：2026-11-03。
 
 按设备页面显示的功能操作。部分选项需要指定硬件或配置才会出现。电脑上将指针停在图标按钮上，可查看按钮名称。手机表格较宽时，在表格内左右滑动查看其他列。
 
@@ -18,6 +18,8 @@
 使用默认密码登录后，页面会显示“安全提醒”。输入当前密码，再输入两次新密码，点击“立即修改”。两次新密码必须一致。点击“稍后修改”可关闭提醒。
 
 使用完毕后，点击右上角的“退出登录”。再次操作设备时需要重新登录。
+
+页面提示没有权限时，先确认当前账户；登录失效时重新登录。随后检查刚才的操作结果。登录恢复不会重做之前的任务；不要直接重复上传、删除或升级。
 
 ### 切换语言
 
@@ -38,9 +40,10 @@ admin 日常使用的主要入口如下：
 
 ### 查看资源与服务状态
 
-“带外管理芯片资源监控”显示管理芯片的 CPU、DRAM 和 PSRAM 使用情况。这些读数不代表 AGX 或 LPMU 的资源使用率。
+“带外管理芯片资源监控”显示管理芯片的 CPU、DRAM 和 PSRAM 使用情况。这些读数不代表推理计算机或应用计算机的资源使用率。
 
 - 点击“详情”，查看内存总量、已用和空闲空间等信息。
+- 内存详情中标为“估算”的数值只供参考。出现警示时，保留页面信息，按说明检查。
 - “服务”按钮显示运行中的服务数和服务总数。点击后可查看各项服务的状态和启动阶段。
 - 服务状态异常时，先刷新。需要重启的服务按下方“重启单项服务”操作。
 
@@ -86,40 +89,50 @@ admin 日常使用的主要入口如下：
 
 保存后，页面会应用新的保护设置。
 
+打开“关机设置”后，等待当前设置读取完成。提示显示默认值时，不要把它当作设备当前设置；核对电压和等待时间后再保存。读取期间可以取消。
+
 #### 切换顶部 USB 连接目标
 
 切换 USB 目标可能使当前连接的外设暂时断开。确认目标设备和正在进行的工作后再操作。
 
-设备提供 USB 切换功能时，页面会显示“USB”按钮。每点击一次，顶部 USB 接口按 ESP、AGX、LPMU 的顺序切换到下一个目标。查看按钮上的目标名称和页面提示，确认切换结果。
+设备提供 USB 切换功能时，页面会显示“USB”按钮。每点击一次，顶部 USB 接口按 ESP、推理计算机、应用计算机的顺序切换到下一个目标。显示“已断开”时，表示当前没有接通目标。查看按钮上的目标名称和页面提示，确认切换结果。
 
 ## 3. 设备面板
 
 “设备面板”位于“系统”页面，包含模组电源控制、快捷操作和数据组件。
 
-### 控制 AGX 和 LPMU
+### 控制推理计算机和应用计算机
+
+界面中的“推理计算机”对应原 AGX，“应用计算机”对应原 LPMU。设备标识或命令中的 `agx`、`lpmu` 仍可能保留原写法，不要自行改名。
 
 关闭模组前，先保存其中的工作并完成正常关机流程。强制断电可能造成未保存的数据丢失。
 
-- “AGX 电源”显示电源控制状态。点击按钮可上电或断电；操作后等待页面确认。
-- “LPMU 电源”显示“在线”“离线”或“未知”。在线表示网络能够连通，离线表示网络无法连通。这些状态不能单独证明模组已开机或关机。
-- 点击 LPMU 按钮会触发一次与物理电源按钮相同的操作。随后等待检测和页面提示；结果未知时，先检查模组和网络，不要连续点击。
+- “推理计算机电源”显示电源控制状态。点击按钮可上电或断电；操作后等待页面确认。
+- “应用计算机电源”的“网络可达”表示网络能够连通，“网络不可达”表示网络无法连通；检测失败时，电源状态仍未知。这些结果不能单独证明计算机已开机或关机。
+- 点击应用计算机按钮会触发一次与物理电源按钮相同的操作。随后等待检测和页面提示；结果未知时，先检查计算机和网络，不要连续点击。
 
 ### 使用快捷操作
 
 快捷操作卡片由 root 用户配置。显示卡片和允许手动运行是两项设置；看得到卡片，不代表可以启动任务。
 
 1. 查看卡片名称和说明，确认将要执行的任务。
-2. 点击卡片，阅读结果提示。处理中不要再次启动。
-3. 提示已执行或已排队后，还要确认目标设备或任务的实际结果。需要核验、查看日志或停止后台服务时，请 root 用户处理。
+2. 点击“启动”或卡片，阅读结果提示。处理中不要再次启动。
+3. 提示已执行或已排队后，还要确认目标设备或任务的实际结果。有服务状态时，区分“进程运行中”和“已就绪”；多项任务可能显示“部分任务未就绪”。
+
+包含远程后台任务的卡片还会提供“查看日志”和“停止”。点击日志按钮查看相关任务；有多条记录时，按任务名称和原主机选择。停止前确认目标，提交后等待结果，再检查是否已停止。关闭日志或停止实时查看，不会停止任务。
+
+“运行记录”可能包含以前启动的任务，不代表它们仍在运行。需要时点击“核验远端状态”。Admin 可通过相关卡片进入；系统页独立的“运行记录”按钮只对 root 显示。没有对应按钮或无法确认结果时，请 root 用户检查。
 
 无法启动时，按提示处理，不要连续点击：
 
 - 规则已停用，或不允许手动触发：请 root 用户检查规则设置。看得到卡片，不代表可以运行。
 - 任务或后台操作正在处理：等待结果，不要重复启动。
-- 同一任务已有后台运行记录：请 root 用户核验原任务，确认结束后再启动。
+- 同一任务已有运行记录：先检查原任务的状态和日志，不要重复启动。需要结束原任务时，停止并核验；无法处理时，请 root 用户检查。
 - 配置尚未加载、缺少关联项或自动化已暂停：请 root 用户检查配置和启停状态。
 
-完成一次点击后，等待几秒再启动其他操作。关闭页面、删除卡片或重启 TianshanOS，都不会替你停止远程主机上的后台服务。
+显示正在自动启动或等待重试时，按页面提示等待。暂时无法启动时，每 30 秒再试，最多等待 6 分钟；上次结果未确认时先检查，不重复启动。手动执行失败不会自动重跑。等待结束后，按提示检查设备和网络，再决定是否点击“启动”。
+
+完成一次点击后，等待几秒再启动其他操作。关闭页面、删除卡片或重启 TianshanOS，都不会替你停止远程主机上的后台服务。要让服务保持停止，请 root 用户先停用可能再次启动它的自动规则。
 
 长按卡片，出现排序提示后拖动，可以调整显示顺序。
 
@@ -139,6 +152,10 @@ admin 日常使用的主要入口如下：
 4. 根据需要编辑名称、显示方式和单位，然后保存。
 
 已有组件可以编辑、删除和调整顺序。也可以直接点击组件卡片进入编辑界面。长按组件后拖动，可以改变它在面板中的位置。
+
+宽度选项中的“小”“中”“大”分别占一、二、三列；窄屏会自动收窄。编辑图标时，按页面示例填写图标名称。双数值组件的两个数值分别取自各自的数据设置，核对两项来源是否正确、数据是否更新。
+
+“加载数据组件失败”不代表没有配置，处理原因后再读取。保存失败或保存结果未确认时，保留当前内容并检查提示；不要把页面仍显示着修改内容当作已经保存成功。
 
 ## 4. 风扇管理
 
@@ -181,6 +198,10 @@ admin 日常使用的主要入口如下：
 
 保存失败时，先查看具体提示并检查当前状态，再决定是否重试。解除温度绑定后，也应检查有效温度和风扇状态。
 
+打开设置或切换风扇后，等待当前设置读取完成。页面提示显示默认值或此前草稿时，这些值不代表设备当前设置，核对后再保存。温度绑定也要确认读取和绑定结果。
+
+出现“风扇设置已应用，但配置未全部保存”时，当前调节可能已经生效，重启后却可能恢复旧设置。检查风扇实际状态，确认设备内部存储可用后再保存；不要靠重启判断是否保存成功。
+
 ### 导入和导出曲线
 
 - 点击“导入配置”，选择曲线 JSON 文件。JSON 是保存曲线数据的文件格式。检查载入的节点、限制和风扇编号，再点击“保存曲线”使其生效。
@@ -201,7 +222,7 @@ admin 日常使用的主要入口如下：
 ### 常用控制
 
 - 使用卡片底部的灯泡按钮开启或关闭 LED。
-- 拖动“亮度”滑块调整亮度，或选择颜色和预设色。
+- 拖动亮度、色相和饱和度三条滑块。亮度控制明暗，色相选择颜色，饱和度在白色和彩色之间调整；饱和度为 0 时是白光。松开色相或饱和度滑块后才应用颜色。
 - 点击动画按钮进入“LED 设置”，在“程序动画”中选择动画并使用对应的播放或停止按钮。
 - 点击卡片右下角的保存图标，保存当前 LED 配置。
 - 点击“全部关闭”关闭所有 LED，并查看页面报告的结果。部分关闭失败时，检查对应设备。
@@ -211,7 +232,7 @@ admin 日常使用的主要入口如下：
 矩阵设备的卡片提供相应功能图标，打开后可在“LED 设置”中切换分组：
 
 - “程序动画”：选择和运行动画。
-- “图像/QR码”：从 SD 卡选择图像，或输入内容生成 QR 码。
+- “图像/QR码”：在卡片的“类型”中选择图像或 QR 码，再从 SD 卡选择图像，或输入 QR 码内容。
 - “文本显示”：填写文字，并设置字体、对齐、滚动、前景色和背景。
 - “后处理滤镜”：选择滤镜及参数，再应用或停止。
 - “色彩校正”：调整显示效果，并按页面按钮重置、导入或导出设置。
@@ -273,15 +294,19 @@ DHCP 会自动为接入设备分配网络地址。点击“客户端”，选择
 
 NAT 用于在设备的网络接口之间转发网络流量。启用或停用 NAT 后，点击“保存”保留当前设置。操作完成后检查 WiFi 和 Ethernet 状态。
 
-#### 通过 LPMU 接入上层网络
+#### 通过应用计算机接入上层网络
 
-此操作通过已配置的 LPMU 主机接入网络。先确认能连接 LPMU、网络线缆已接好，再准备该主机 SSH 账号的 sudo 密码。这个密码用于允许账号修改系统设置，可能与 WebUI 登录密码不同。
+此操作通过已配置的应用计算机接入网络。先在系统页将 USB 切换到“应用计算机”，确认网络线缆已接好。该计算机的 SSH 主机需要启用密钥认证，并已核对主机指纹；相关设置由 root 用户按安全指南检查。
 
-1. 在“接入上层网络”区域点击“通过 LPMU 接入”。
-2. 在弹窗中输入“LPMU sudo 密码”，再点击接入按钮。密码仅用于本次操作，不保存；下次执行需要重新输入。
+准备该主机 SSH 账号的 sudo 密码。这个密码用于允许账号修改系统设置，可能与 WebUI 登录密码不同。
+
+1. 在“接入上层网络”区域点击“通过应用计算机接入”。
+2. 在弹窗中输入“应用计算机 sudo 密码”，再点击接入按钮。密码仅用于本次操作，不保存；下次执行需要重新输入。
 3. 等待处理结束，不要重复启动。
 4. 结果窗口显示互联网连接正常和网络配置已完成时，才表示接入成功。
-5. 失败或结果未确认时，先阅读具体原因；需要更多信息时展开“执行日志”。密码错误时核对密码，找不到互联网连接时检查网络接线与上层网络。
+5. 关闭结果窗口后，可点击“查看结果”再次打开。失败或结果未确认时，阅读原因和失败阶段；需要更多信息时展开“执行日志”。密码错误时核对密码，找不到互联网连接时检查网络接线与上层网络。
+
+提示主机指纹未确认或发生变化时，先请 root 用户核对身份，不要反复接入或跳过校验。日志中的远程脚本输出可能保留原语言；可以保留输出供检查。
 
 状态获取失败不等于脚本已经停止。先点击页面提供的“刷新状态”确认当前执行情况，再决定是否重新接入。
 
@@ -298,6 +323,8 @@ SD 卡是可插拔存储，SPIFFS 是设备内部文件存储。点击“SD 卡�
 - 点击重命名按钮，输入新名称并确认。
 - 点击“新建文件夹”，输入文件夹名称并创建。
 - 点击刷新按钮重新加载当前目录和存储状态。
+
+上传、删除、重命名、新建文件夹及挂载、卸载 SD 卡需要有效登录。受保护的自动化配置文件还限制读取和下载；Admin 遇到无权访问时，请 root 用户从正式配置入口处理。不要改路径或换入口绕过权限。
 
 ### 上传文件
 
@@ -347,7 +374,9 @@ SD 卡未挂载时，页面会显示“挂载 SD”。点击该按钮，等待�
 
 首次从 0.6.2 等旧存储布局升级时，需要发行方确认的配套 USB／串口升级包。只上传主固件或 WebUI，不能完成这次升级。请设备管理员或提供方按包内说明操作，不要自行全片擦除或使用旧分区表。
 
-升级前保存重要文件，保留原 SD 卡。首次启动会迁移原配置，期间不要断电。完成后，检查登录、网络、风扇、灯光、SSH 主机和自动化规则。不要在尚未确认规则内容时测试带有断电、重启或远程命令的任务。
+升级前保存重要文件。配套工具保留密钥和 SD 卡，不会自动清空卡内配置；首次启动仍可能读取或迁移原配置。客户交付按“清空旧配置、重新配置”流程实施，由设备管理员或提供方按交付说明处理。不要自行全片擦除，也不要把保留文件当作已经完成重新配置。
+
+升级和首次启动期间不要断电。完成后，检查登录、网络、风扇、灯光、SSH 主机和自动化规则。不要在尚未确认规则内容时测试带有断电、重启或远程命令的任务。
 
 该配套包会更新两个应用槽，不能假定另一个槽仍保留旧版本。忘记 root 密码时，只使用提供方确认与 0.6.3 布局匹配的恢复方案，不要刷入旧版密码重置固件。
 
@@ -355,7 +384,7 @@ SD 卡未挂载时，页面会显示“挂载 SD”。点击该按钮，等待�
 
 ### 从 OTA 服务器检查更新
 
-1. 查看页面显示的“当前版本”。
+1. 查看页面显示的“当前版本”。同为 0.6.3 也可能是不同修订构建；同时核对完整版本、构建时间和发行方说明，不要只比较前三位数字。
 2. 在“OTA 服务器”中输入管理员或发行方提供的服务器地址。
 3. 点击“保存”，随后点击“检查更新”。
 4. 页面会显示“发现新版本”“已是最新版本”“服务器版本较旧”或错误信息。
@@ -401,15 +430,17 @@ SD 卡未挂载时，页面会显示“挂载 SD”。点击该按钮，等待�
 
 有“详情”时，点击查看。点击“收起”可隐藏详情。页面提供 × 时，可点击它关闭提示。需要求助时，保留提示和详情，交给 root 用户检查。
 
+提示或详情较长时，在该区域内滚动查看完整内容，再决定下一步。
+
 出现“结果未确认”时，先刷新并检查设备、文件或任务状态。超时或断开连接不代表操作没有执行；不要立即重复断电、删除、启动任务或升级。仍无法确认时，请 root 用户检查。
 
 批量操作后，分别核对成功、失败和未确认的项目。下载文件后，检查浏览器下载列表。
 
 # TianshanOS Admin User Guide
 
-This guide is based on TianshanOS 0.6.3. For other versions, check the corresponding version-specific instructions.
-
 This guide covers system checks, device controls, networking, files, and firmware updates for the admin account. The Root Operations Guide covers terminal access, remote commands, and Automation configuration. See the separate Security Guide for security management.
+
+Version covered: 0.6.4. Revised November 3, 2026.
 
 Use the controls shown on your device. Some need specific hardware or configuration. On a computer, hover over an icon button to see its name. On a phone, swipe within a wide table to view its other columns.
 
@@ -425,6 +456,8 @@ Use the controls shown on your device. Some need specific hardware or configurat
 Logging in with the default password opens a “Security Reminder.” Enter the current password, then enter the new password twice and select “Change Now.” Both new-password entries must match. Select “Later” to close the reminder.
 
 When you have finished, select “Logout” in the upper-right corner. You will need to sign in again to use the device.
+
+If permission is denied, check the account. If the login has expired, sign in again. Then check the result of the previous operation. Signing in does not repeat an earlier task. Do not immediately upload, delete, or upgrade again.
 
 ### Switch Languages
 
@@ -445,9 +478,10 @@ Select “System” in the top navigation.
 
 ### View Resource and Service Status
 
-“Management Chip Resources” shows CPU, DRAM, and PSRAM usage on the management chip. These readings do not show resource usage on AGX or LPMU.
+“Management Chip Resources” shows CPU, DRAM, and PSRAM usage on the management chip. These readings do not show resource usage on the Inference Computer or Application Computer.
 
 - Select “Details” to view total, used, and free memory and other memory information.
+- Values marked “estimated” in memory details are for reference only. If a warning appears, keep the page information and follow its guidance.
 - “Services” shows the number of running services and the total. Select it to view each service’s state and startup stage.
 - If a service reports a problem, refresh its status. To restart it, follow “Restart One Service” below.
 
@@ -493,40 +527,50 @@ Select “Shutdown Settings” to change:
 
 Save the form to apply the updated protection settings.
 
+After opening “Shutdown Settings,” wait for the current settings to load. If the page says it is showing defaults, do not treat them as the device's current settings. Review the voltages and wait times before saving. You can cancel while loading.
+
 #### Switch the Top USB Target
 
 Switching the USB target may temporarily disconnect an attached device. Confirm the target and finish active work before continuing.
 
-Devices that support USB switching show a “USB” button. Each click switches the top USB port to the next target: ESP, AGX, then LPMU. Check the target shown on the button and the page message to confirm the result.
+Devices that support USB switching show a “USB” button. Each click switches the top USB port to the next target: ESP, Inference Computer, then Application Computer. “Disconnected” means no target is connected. Check the target shown on the button and the page message to confirm the result.
 
 ## 3. Device Panel
 
 The “Device Panel” is on the “System” page. It contains module power controls, Quick Actions, and data widgets.
 
-### Control AGX and LPMU
+### Control the Inference Computer and Application Computer
+
+“Inference Computer” is the former AGX label; “Application Computer” is the former LPMU label. Device identifiers and commands may still use `agx` and `lpmu`. Do not rename those identifiers yourself.
 
 Save work on the module and complete its normal shutdown process before removing power. Forced power-off can cause loss of unsaved data.
 
-- “AGX Power” shows the power-control state. Select it to switch power on or off, then wait for confirmation.
-- “LPMU Power” shows “Online,” “Offline,” or “Unknown.” These states come from a network check. Online means the module is reachable; offline means it is not. Neither state alone confirms whether the module is powered on or off.
-- Selecting the LPMU button triggers the same action as pressing its physical power button. Wait for the check and the displayed result. If the result is unknown, check the module and network before pressing the button again.
+- “Inference Computer Power” shows the power-control state. Select it to switch power on or off, then wait for confirmation.
+- On “Application Computer Power,” “Network reachable” means the network can be reached; “Network unreachable” means it cannot. A failed check leaves the power state unknown. These results alone do not confirm whether the computer is powered on or off.
+- Selecting the Application Computer button triggers the same action as pressing its physical power button. Wait for the check and the displayed result. If the result is unknown, check the computer and network before pressing the button again.
 
 ### Use Quick Actions
 
 A root user configures Quick Action cards. Card visibility and manual execution are separate settings. Seeing a card does not mean you can start its task.
 
 1. Read the card name and description to identify the task.
-2. Select the card and read the result. Do not start it again while processing.
-3. An executed or queued message still needs an actual result check on the target device or task. Ask a root user to verify, view logs, or stop a background service.
+2. Select “Start” or the card and read the result. Do not start it again while processing.
+3. An executed or queued message still needs an actual result check on the target device or task. If a service state is shown, distinguish “Process running” from “Ready.” A card with several tasks may show “Some tasks are not ready.”
+
+Cards with remote background tasks also offer “View Log” and “Stop.” Open the logs to review the related tasks. If several records appear, choose by task name and original host. Check the target before stopping it, wait for the result, then verify that it stopped. Closing the log or stopping log updates does not stop the task.
+
+“Run records” can include tasks started earlier; their presence does not mean they are still running. Select “Verify remote state” when needed. Admin users can enter through the relevant card; the separate “Run records” button on System is shown only to root. If a control is unavailable or the result remains unclear, ask a root user to check.
 
 If starting is blocked, follow the reason shown. Do not keep selecting start:
 
 - Rule disabled or manual triggering not allowed: Ask a root user to check the rule settings. A visible card is not permission to run it.
 - A task or background operation is in progress: Wait for its result. Do not start it again.
-- A background run record already exists for the task: Ask a root user to verify the original task and confirm that it has ended before starting again.
+- A run record already exists for the task: Check the original task's state and logs instead of starting it again. If it needs to end, stop and verify it. Ask a root user to check if you cannot resolve it.
 - Configuration not loaded, a required item missing, or Automation paused: Ask a root user to check the configuration and enable state.
 
-After triggering one action, wait a few seconds before starting another. Closing the page, deleting a card, or restarting TianshanOS does not stop background services on remote hosts.
+If the page reports automatic starting or a retry wait, let it continue. Temporary start failures are retried every 30 seconds for up to 6 minutes. An unconfirmed start is checked before another launch. A failed manual run is not automatically repeated. When the wait ends, check the device and network as directed before deciding whether to select “Start.”
+
+After triggering one action, wait a few seconds before starting another. Closing the page, deleting a card, or restarting TianshanOS does not stop background services on remote hosts. To keep a service stopped, ask a root user to disable any automatic rule that could start it again.
 
 Press and hold a card until the reorder indicator appears, then drag it to change the display order.
 
@@ -546,6 +590,10 @@ Data widgets continuously display device data in the “Device Panel.”
 4. Edit its label, display style, and unit as needed, then save.
 
 Existing widgets can be edited, deleted, and reordered. You can also select a widget card to edit it. Press and hold a widget, then drag it to a new position.
+
+“Small,” “Medium,” and “Large” use one, two, and three columns; they fit within narrower screens. When editing an icon, enter its name using the example on the page. Each value in a dual-value widget has its own data setting. Check that both sources are correct and the data updates.
+
+“Failed to load data widgets” does not mean no configuration exists. Resolve the cause and read it again. If saving fails or its result is unconfirmed, keep the current content and check the message. Seeing your changes on the page does not confirm they were saved.
 
 ## 4. Fan Management
 
@@ -588,6 +636,10 @@ Select “Curve” in the Fan Control section header to open “Fan Curve Manage
 
 If saving fails, read the message and check the current state before retrying. After unbinding temperature variables, check the effective temperature and fan state as well.
 
+After opening settings or choosing another fan, wait for its current settings to load. If the page says it is showing defaults or an earlier draft, those values do not confirm the device's current settings. Review them before saving. Check the read and save results for temperature bindings too.
+
+If the message says the fan settings were applied but not fully saved, the current adjustment may already be in effect. A restart may restore earlier settings. Check the actual fan state, confirm that device storage is available, then save again. Do not restart the device just to test whether the save worked.
+
 ### Import and Export a Curve
 
 - Select “Import Config” and choose a curve JSON file. JSON is the file format used to store curve data. Review the nodes, limits, and fan number, then select “Save curve” to apply them.
@@ -608,7 +660,7 @@ A test temperature temporarily replaces the normal source and affects Curve or S
 ### Routine Controls
 
 - Use the light-bulb button at the bottom of a card to turn the LED on or off.
-- Move the “Brightness” slider, or choose a color or preset.
+- Use the brightness, hue, and saturation sliders. Brightness controls how bright the light is; hue chooses the color; saturation moves between white and color. Saturation at 0 gives white light. Hue and saturation changes are applied when you release the slider.
 - Use the animation button to open “LED Settings.” Select an animation under “Programmatic Animation,” then use its play or stop control.
 - Select the save icon at the bottom right of the card to save the current LED configuration.
 - Select “All Off” to turn off all LEDs and check the reported result. If some fail, check those devices.
@@ -618,7 +670,7 @@ A test temperature temporarily replaces the normal source and affects Curve or S
 Matrix cards provide icons for the available features. Open one, then switch between these groups in “LED Settings”:
 
 - “Programmatic Animation”: Select and run an animation.
-- “Image/QR Code”: Choose an image from the SD card or enter content for a QR code.
+- “Image/QR Code”: Choose image or QR code under “Type” in the card, then select an SD-card image or enter the QR content.
 - “Text Display”: Set text, font, alignment, scrolling, foreground, and background.
 - “Post-processing Filter”: Choose a filter and parameters, then apply or stop it.
 - “Color Correction”: Adjust the display and use the available reset, import, or export controls.
@@ -680,15 +732,19 @@ DHCP automatically assigns network addresses to connected devices. Select “Cli
 
 NAT forwards network traffic between the device's network interfaces. Enable or disable NAT, then select “Save” to retain the setting. Check the WiFi and Ethernet status afterward.
 
-#### Access the Upstream Network via LPMU
+#### Access the Upstream Network via the Application Computer
 
-This operation uses the configured LPMU host to set up network access. Before starting, confirm that LPMU is reachable and the network cables are connected. Obtain the sudo password for the SSH account on that host. This password authorizes system changes and may differ from the WebUI password.
+This operation uses the configured Application Computer to set up network access. On System, first switch USB to “Application Computer” and check the network cables. Its SSH host must use key authentication and have a verified host fingerprint. Ask a root user to check these settings using the Security Guide.
 
-1. Under “Upstream Network Access,” select “Access via LPMU.”
-2. Enter the LPMU sudo password and select the access button. The password is used only for this run and is not saved; enter it again for a later run.
+Obtain the sudo password for the SSH account on that host. This password authorizes system changes and may differ from the WebUI password.
+
+1. Under “Upstream Network Access,” select “Access via Application Computer.”
+2. Enter the Application Computer sudo password and select the access button. The password is used only for this run and is not saved; enter it again for a later run.
 3. Wait for the operation to finish. Do not start it again while processing.
 4. Access is confirmed only when the result reports both an internet connection and completed network configuration.
-5. If it fails or the result is unconfirmed, read the reason first. Expand “Execution Log” for more detail. Check the password for a password error, or the cabling and upstream network if no internet connection is found.
+5. After closing the result window, select “View Result” to open it again. If it fails or the result is unconfirmed, read the reason and failure stage. Expand “Execution Log” for more detail. Check the password for a password error, or the cabling and upstream network if no internet connection is found.
+
+If the host fingerprint is unconfirmed or has changed, ask a root user to verify the host's identity first. Do not keep retrying access or skip verification. Remote script output may remain in its original language; keep it for investigation if needed.
 
 A failed status request does not mean the script has stopped. Use the available “Refresh Status” control to check the current run before deciding whether to try again.
 
@@ -705,6 +761,8 @@ The SD Card is removable storage, and SPIFFS is internal device file storage. Se
 - Select the rename button, enter a new name, and confirm.
 - Select “New Folder,” enter a folder name, and create it.
 - Select the refresh button to reload the current directory and storage state.
+
+Uploading, deleting, renaming, creating folders, and mounting or unmounting the SD card require a valid login. Reading and downloading protected Automation files also has a root permission check. If access is denied to admin, ask a root user to use the configuration pages. Do not change the path or use another entry to bypass permission checks.
 
 ### Upload Files
 
@@ -754,7 +812,9 @@ The device reboots during an update, temporarily disconnecting the WebUI. Save a
 
 The first upgrade from an older storage layout, such as 0.6.2, needs a matched USB / serial package approved by the publisher. Uploading only the firmware or WebUI cannot complete this upgrade. Ask the device administrator or provider to follow the package instructions. Do not erase the whole flash or use an old partition table.
 
-Save important files and keep the original SD card installed. The first startup migrates existing configuration; keep power connected. Afterward, check login, networking, fans, lighting, SSH hosts, and Automation rules. Review rules before testing any task that controls power, restarts a device, or runs remote commands.
+Save important files before upgrading. The matched tool preserves keys and the SD card; it does not clear configuration on the card. The first startup may still read or migrate existing configuration. Customer delivery follows the “clear old configuration and configure again” procedure. The device administrator or provider must follow the delivery instructions. Do not erase the whole flash yourself or treat preserved files as completed configuration.
+
+Keep power connected during the upgrade and first startup. Afterward, check login, networking, fans, lighting, SSH hosts, and Automation rules. Review rules before testing any task that controls power, restarts a device, or runs remote commands.
 
 The matched package updates both application slots. Do not assume that the other slot still contains the old version. If the root password is lost, use only a recovery method confirmed by the provider to match the 0.6.3 layout. Do not flash an old password-reset image.
 
@@ -762,7 +822,7 @@ The web update methods below apply only to versions the publisher has approved f
 
 ### Check for Updates from an OTA Server
 
-1. Review the “Current Version.”
+1. Review the “Current Version.” Two 0.6.3 installations can be different revision builds. Check the full version, build time, and publisher's instructions rather than only the first three numbers.
 2. Enter the OTA server address supplied by an administrator or publisher.
 3. Select “Save,” then select “Check Update.”
 4. The page reports “Update Available,” “Already up to date,” an older server version, or an error.
@@ -807,6 +867,8 @@ A red field error tells you what to correct. Fix it, then save. A cleared error 
 Check which operation failed, then read the reason and next step. If the message gives no reason, do not guess.
 
 Select “Details” when available. Select “Hide” to hide the details. If a × button is shown, select it to dismiss the message. When asking for help, keep a record of the message and details for a root user to check.
+
+If a message or its details are long, scroll within that area to read the full content before deciding what to do next.
 
 If the result is unconfirmed, refresh and check the device, file, or task state. A timeout or lost connection does not mean the operation failed to run. Do not immediately repeat power, delete, task-start, or upgrade operations. Ask a root user to investigate if the result remains unclear.
 

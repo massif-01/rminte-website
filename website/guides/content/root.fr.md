@@ -1,8 +1,8 @@
 # TianshanOS
 
-Ce guide est basé sur TianshanOS 0.6.3. Pour les autres versions, consultez les instructions spécifiques à la version correspondante.
-
 Ce guide couvre les fonctions de routine dans la partie I et l'accès au terminal, les commandes à distance, l'automatisation et la sauvegarde de la configuration dans la partie II. Les opérations Root peuvent affecter le périphérique et les hôtes distants ; vérifiez les tâches cibles et actives avant de continuer. Consultez le Guide de sécurité séparé pour la gestion de la sécurité.
+
+Version couverte : 0.6.4. Révisé le 3 novembre 2026.
 
 Utilisez les commandes affichées sur votre appareil. Certains nécessitent un matériel ou une configuration spécifique. Sur un ordinateur, passez la souris sur un bouton icône pour voir son nom. Sur un téléphone, faites glisser votre doigt dans un large tableau pour afficher ses autres colonnes.
 
@@ -20,6 +20,8 @@ Utilisez les commandes affichées sur votre appareil. Certains nécessitent un m
 La connexion avec le mot de passe par défaut ouvre un « rappel de sécurité ». Saisissez le mot de passe actuel, puis saisissez le nouveau mot de passe deux fois et sélectionnez « Modifier maintenant ». Les deux entrées de nouveau mot de passe doivent correspondre. Sélectionnez « Plus tard » pour fermer le rappel.
 
 Lorsque vous avez terminé, sélectionnez « Déconnexion » dans le coin supérieur droit. Vous devrez vous reconnecter pour utiliser l'appareil.
+
+Si l’accès est refusé, vérifiez le compte. Si la session a expiré, reconnectez-vous, puis vérifiez le résultat de l’opération précédente. Se reconnecter ne relance pas la tâche. Ne répétez pas aussitôt un envoi de fichier, une suppression ou une mise à jour.
 
 #### Changer de langue
 
@@ -43,9 +45,10 @@ Sélectionnez « Système » dans la navigation supérieure.
 
 #### Afficher l'état des ressources et des services
 
-« Ressources de la puce de gestion » affiche l’utilisation du CPU, de la DRAM et de la PSRAM de cette puce. Ces valeurs ne concernent ni AGX ni LPMU.
+« Ressources de la puce de gestion » affiche l'utilisation du processeur, de la DRAM et de la PSRAM sur la puce de gestion. Ces lectures n'indiquent pas l'utilisation des ressources sur l'ordinateur d’inférence ou l'ordinateur d’applications.
 
 - Sélectionnez « Détails » pour afficher la mémoire totale, utilisée et libre ainsi que d'autres informations sur la mémoire.
+- Les valeurs marquées « estimées » dans les détails de la mémoire sont uniquement à titre de référence. Si un avertissement apparaît, conservez les informations de la page et suivez ses instructions.
 - « Services » affiche le nombre de services en cours d'exécution et le total. Sélectionnez-le pour afficher l’état et l’étape de démarrage de chaque service.
 - Si un service signale un problème, actualisez son état. Pour le redémarrer, suivez « Redémarrer un service » ci-dessous.
 
@@ -91,41 +94,52 @@ Sélectionnez « Paramètres d'arrêt » pour modifier :
 
 Enregistrez le formulaire pour appliquer les paramètres de protection mis à jour.
 
+<!-- operational-note -->
+Après avoir ouvert « Paramètres d'arrêt », attendez que les paramètres actuels se chargent. Si la page indique qu'elle affiche les paramètres par défaut, ne les traitez pas comme les paramètres actuels de l'appareil. Vérifiez les tensions et les temps d'attente avant de sauvegarder. Vous pouvez annuler pendant le chargement.
+
 ##### Changer la cible supérieure USB
 
 Le changement de cible USB peut déconnecter temporairement un périphérique connecté. Confirmez l'objectif et terminez le travail actif avant de continuer.
 
-Les appareils prenant en charge la commutation USB affichent un bouton « USB ». Chaque clic fait basculer le port USB supérieur vers la cible suivante : ESP, AGX, puis LPMU. Vérifiez la cible affichée sur le bouton et le message de la page pour confirmer le résultat.
+Les appareils prenant en charge la commutation USB affichent un bouton « USB ». Chaque clic fait basculer le port USB supérieur vers la cible suivante : ESP, ordinateur d’inférence, puis ordinateur d’applications. « Déconnecté » signifie qu'aucune cible n'est connectée. Vérifiez la cible affichée sur le bouton et le message de la page pour confirmer le résultat.
 
 ### 3. Panneau de périphérique
 
 Le « Panneau des périphériques » se trouve sur la page « Système ». Il contient des commandes d'alimentation de module, des actions rapides et des widgets de données.
 
-#### Contrôle AGX et LPMU
+#### Contrôler l'ordinateur d’inférence et l'ordinateur d’applications
+
+« Ordinateur d’inférence » remplace l’ancien libellé AGX ; « Ordinateur d’applications » remplace LPMU. Les identifiants et commandes peuvent toujours utiliser `agx` et `lpmu`. Ne renommez pas ces identifiants vous-même.
 
 Enregistrez le travail sur le module et terminez son processus d'arrêt normal avant de couper l'alimentation. Une mise hors tension forcée peut entraîner la perte de données non enregistrées.
 
-- « AGX Power » affiche l'état de contrôle de l'alimentation. Sélectionnez-le pour allumer ou éteindre l'appareil, puis attendez la confirmation.
-- « LPMU Power » affiche « En ligne », « Hors ligne » ou « Inconnu ». Ces états proviennent d'une vérification du réseau. En ligne signifie que le module est accessible ; hors ligne signifie que ce n'est pas le cas. Aucun des deux états ne confirme à lui seul si le module est allumé ou éteint.
-- La sélection du bouton LPMU déclenche la même action que l'appui sur son bouton d'alimentation physique. Attendez le contrôle et le résultat affiché. Si le résultat est inconnu, vérifiez le module et le réseau avant d'appuyer à nouveau sur le bouton.
+- « Alimentation de l’ordinateur d’inférence » indique l’état du contrôle d’alimentation. Sélectionnez ce bouton pour allumer ou éteindre l’ordinateur, puis attendez la confirmation.
+- Dans « Alimentation de l’ordinateur d’applications », « Accessible par le réseau » et « Inaccessible par le réseau » indiquent si une connexion réseau est possible. Si la vérification échoue, l’état de l’alimentation reste inconnu. Ces résultats ne suffisent pas à savoir si l’ordinateur est allumé ou éteint.
+- La sélection du bouton Ordinateur d’applications déclenche la même action que l’appui sur son bouton d’alimentation physique. Attendez le contrôle et le résultat affiché. Si le résultat est inconnu, vérifiez l'ordinateur et le réseau avant d'appuyer à nouveau sur le bouton.
 
 #### Utiliser des actions rapides
 
 Un utilisateur root configure les cartes d’actions rapides. Leur affichage et l’autorisation de lancer une tâche sont deux réglages distincts. Une carte visible ne permet pas toujours de lancer sa tâche.
 
 1. Lisez le nom et la description de la carte pour identifier la tâche.
-2. Sélectionnez la carte et lisez le résultat. Ne le redémarrez pas pendant le traitement.
-3. Un message exécuté ou mis en file d'attente nécessite toujours une vérification réelle des résultats sur le périphérique ou la tâche cible. Utilisez “Background runs” pour vérifier, afficher les journaux ou arrêter un service en arrière-plan (Chapitre 11).
+2. Sélectionnez « Démarrer » ou la carte et lisez le résultat. Ne le redémarrez pas pendant le traitement.
+3. Un message exécuté ou mis en file d'attente nécessite toujours une vérification réelle des résultats sur le périphérique ou la tâche cible. Si un état de service est affiché, distinguez « Processus en cours d'exécution » de « Prêt ». Une carte comportant plusieurs tâches peut afficher « Certaines tâches ne sont pas prêtes ».
+
+Les cartes avec des tâches en arrière-plan à distance proposent également « Afficher le journal » et « Arrêter ». Ouvrez les journaux pour examiner les tâches associées. Si plusieurs enregistrements apparaissent, choisissez par nom de tâche et hôte d'origine. Vérifiez la cible avant de l'arrêter, attendez le résultat, puis vérifiez qu'elle s'est arrêtée. La fermeture du journal ou l'arrêt des mises à jour du journal n'arrête pas la tâche.
+
+« Historique d’exécution » contient aussi des tâches lancées auparavant. Leur présence ne prouve pas qu’elles sont toujours actives. Sélectionnez « Vérifier l’état distant » si nécessaire. Ouvrez l’historique depuis la carte concernée, Système ou Automatisation (chapitre 11). Si une commande est indisponible ou si le résultat reste incertain, consultez l’historique et les journaux système.
 
 Si la tâche ne peut pas démarrer, suivez le motif affiché. N’appuyez pas plusieurs fois sur Démarrer :
 
 - Règle désactivée ou déclenchement manuel non autorisé : vérifiez les paramètres de la règle sur “Automation” (Chapitre 12). Une carte visible ne constitue pas une autorisation de l'exécuter.
 - Une tâche ou une opération en arrière-plan est en cours : Attendez son résultat. Ne le redémarrez pas.
-- Un enregistrement d'exécution en arrière-plan existe déjà pour la tâche : vérifiez la tâche d'origine dans “Background runs” et confirmez qu'elle est terminée avant de recommencer.
+- Un enregistrement d'exécution existe déjà pour la tâche : vérifiez l'état et les journaux de la tâche d'origine au lieu de la redémarrer. S'il doit se terminer, arrêtez-le et vérifiez-le. Cochez « Historique d’exécution » et les journaux système si vous ne parvenez pas à le résoudre.
 - Configuration non chargée, élément requis manquant ou automatisation en pause : vérifiez la configuration et son état d’activation sur “Automation” (chapitres 12 et 13).
 
+Si la page signale un démarrage automatique ou une nouvelle tentative d'attente, laissez-la continuer. Les échecs de démarrage temporaires sont réessayés toutes les 30 secondes pendant 6 minutes maximum. Un démarrage non confirmé est vérifié avant un autre lancement. Une exécution manuelle ayant échoué n’est pas automatiquement répétée. Une fois l'attente terminée, vérifiez l'appareil et le réseau comme indiqué avant de décider si vous souhaitez sélectionner « Démarrer ».
+
 <!-- operational-note -->
-Après avoir déclenché une action, attendez quelques secondes avant d’en lancer une autre. La fermeture de la page, la suppression d'une carte ou le redémarrage de TianshanOS n'arrête pas les services en arrière-plan sur les hôtes distants.
+Après avoir déclenché une action, attendez quelques secondes avant d’en lancer une autre. La fermeture de la page, la suppression d'une carte ou le redémarrage de TianshanOS n'arrêtent pas les services en arrière-plan sur les hôtes distants. Pour maintenir un service arrêté, désactivez toute règle automatique susceptible de le relancer sur Automation.
 
 Appuyez et maintenez une carte jusqu'à ce que l'indicateur de réorganisation apparaisse, puis faites-la glisser pour modifier l'ordre d'affichage.
 
@@ -146,6 +160,10 @@ Les widgets de données affichent et actualisent les données de l’appareil da
 4. Modifiez son étiquette, son style d'affichage et son unité selon vos besoins, puis enregistrez.
 
 Les widgets existants peuvent être modifiés, supprimés et réorganisés. Vous pouvez également sélectionner une carte de widget pour la modifier. Appuyez longuement sur un widget, puis faites-le glisser vers une nouvelle position.
+
+« Petit », « Moyen » et « Grand » utilisent une, deux et trois colonnes ; ils s'intègrent dans des écrans plus étroits. Lors de la modification d'une icône, saisissez son nom en utilisant l'exemple sur la page. Chaque valeur d'un widget à double valeur possède son propre paramètre de données. Vérifiez que les deux sources sont correctes et que les données sont mises à jour.
+
+« Échec du chargement des widgets de données » ne signifie pas qu'aucune configuration n'existe. Résolvez la cause et relisez-la. Si l'enregistrement échoue ou si son résultat n'est pas confirmé, conservez le contenu actuel et vérifiez le message. Voir vos modifications sur la page ne confirme pas qu’elles ont été enregistrées.
 
 ### 4. Gestion des ventilateurs
 
@@ -189,6 +207,11 @@ Sélectionnez « Courbe » dans l'en-tête de la section Contrôle du ventilateu
 
 Si l'enregistrement échoue, lisez le message et vérifiez l'état actuel avant de réessayer. Après avoir dissocié les variables de température, vérifiez également la température effective et l’état du ventilateur.
 
+<!-- operational-note -->
+Après avoir ouvert les paramètres ou choisi un autre ventilateur, attendez que ses paramètres actuels se chargent. Si la page indique qu'elle affiche les valeurs par défaut ou une version antérieure, ces valeurs ne confirment pas les paramètres actuels de l'appareil. Vérifiez-les avant de les enregistrer. Vérifiez également les résultats de lecture et d'enregistrement pour les liaisons de température.
+
+Si le message indique que les paramètres du ventilateur ont été appliqués mais pas entièrement enregistrés, le réglage actuel est peut-être déjà en vigueur. Un redémarrage peut restaurer les paramètres antérieurs. Vérifiez l'état réel du ventilateur, confirmez que le stockage de l'appareil est disponible, puis enregistrez à nouveau. Ne redémarrez pas l'appareil uniquement pour tester si la sauvegarde a fonctionné.
+
 #### Importer et exporter une courbe
 
 - Sélectionnez « Importer Config » et choisissez un fichier de courbe JSON. JSON est le format de fichier utilisé pour stocker les données de courbe. Passez en revue les nœuds, les limites et le numéro de ventilateur, puis sélectionnez « Enregistrer la courbe » pour les appliquer.
@@ -209,7 +232,7 @@ Une température de test remplace temporairement la source normale et affecte le
 #### Contrôles de routine
 
 - Utilisez le bouton ampoule situé en bas d'une carte pour allumer ou éteindre la LED.
-- Déplacez le curseur « Luminosité » ou choisissez une couleur ou un préréglage.
+- Utilisez les curseurs de luminosité, de teinte et de saturation. La luminosité contrôle la luminosité de la lumière ; la teinte choisit la couleur ; la saturation se déplace entre le blanc et la couleur. La saturation à 0 donne une lumière blanche. Les changements de teinte et de saturation sont appliqués lorsque vous relâchez le curseur.
 - Utilisez le bouton d'animation pour ouvrir les « Paramètres LED ». Sélectionnez une animation sous « Animation programmatique », puis utilisez son contrôle de lecture ou d'arrêt.
 - Sélectionnez l'icône de sauvegarde en bas à droite de la carte pour enregistrer la configuration actuelle des LED.
 - Sélectionnez « All Off » pour éteindre toutes les LED et vérifier le résultat rapporté. Si certains échouent, vérifiez ces appareils.
@@ -219,7 +242,7 @@ Une température de test remplace temporairement la source normale et affecte le
 Les cartes de la matrice proposent des icônes pour les fonctions disponibles. Ouvrez une fonction, puis changez de groupe dans « Paramètres LED » :
 
 - « Animation programmatique » : sélectionnez et exécutez une animation.
-- « Image/QR Code » : choisissez une image de la carte SD ou saisissez le contenu d'un code QR.
+- « Image/Code QR » : Choisissez une image ou un code QR sous « Type » dans la carte, puis sélectionnez une image de la carte SD ou saisissez le contenu QR.
 - « Affichage du texte » : définissez le texte, la police, l'alignement, le défilement, le premier plan et l'arrière-plan.
 - « Filtre de post-traitement » : Choisissez un filtre et des paramètres, puis appliquez-le ou arrêtez-le.
 - « Correction des couleurs » : ajustez l'affichage et utilisez les commandes de réinitialisation, d'importation ou d'exportation disponibles.
@@ -282,16 +305,19 @@ DHCP attribue automatiquement des adresses réseau aux appareils connectés. Sé
 
 NAT transmet le trafic réseau entre les interfaces réseau de l'appareil. Activez ou désactivez NAT, puis sélectionnez « Enregistrer » pour conserver le paramètre. Vérifiez ensuite l'état du WiFi et d'Ethernet.
 
-##### Accédez au réseau en amont via LPMU
+##### Accéder au réseau en amont via l'ordinateur d’applications
 
-<!-- operational-note -->
-Cette opération utilise l'hôte LPMU configuré pour configurer l'accès au réseau. Avant de commencer, vérifiez que LPMU est accessible et que les câbles réseau sont connectés. Obtenez le mot de passe sudo pour le compte SSH sur cet hôte. Ce mot de passe autorise les modifications du système et peut différer du mot de passe WebUI.
+Cette opération utilise l'ordinateur d’applications configuré pour configurer l'accès au réseau. Sur le système, basculez d’abord USB sur « Ordinateur d’applications » et vérifiez les câbles réseau. Son hôte SSH doit utiliser l'authentification par clé et disposer d'une empreinte d'hôte vérifiée. Vérifiez les paramètres d'hôte, de clé et d'empreinte à l'aide du Guide de sécurité.
 
-1. Sous « Accès au réseau en amont », sélectionnez « Accès via LPMU ».
-2. Entrez le mot de passe sudo LPMU et sélectionnez le bouton d'accès. Le mot de passe est utilisé uniquement pour cette exécution et n'est pas enregistré ; saisissez-le à nouveau pour une exécution ultérieure.
+Obtenez le mot de passe sudo du compte SSH sur cet hôte. Ce mot de passe autorise les modifications du système et peut différer du mot de passe WebUI.
+
+1. Sous « Accès au réseau en amont », sélectionnez « Accès via l'ordinateur d’applications ».
+2. Entrez le mot de passe sudo de l'ordinateur d’applications et sélectionnez le bouton d'accès. Le mot de passe est utilisé uniquement pour cette exécution et n'est pas enregistré ; saisissez-le à nouveau pour une exécution ultérieure.
 3. Attendez la fin de l'opération. Ne le redémarrez pas pendant le traitement.
 4. L'accès est confirmé uniquement lorsque le résultat indique à la fois une connexion Internet et une configuration réseau terminée.
-5. En cas d'échec ou si le résultat n'est pas confirmé, lisez d'abord la raison. Développez « Journal d'exécution » pour plus de détails. Vérifiez le mot de passe pour une erreur de mot de passe, ou le câblage et le réseau en amont si aucune connexion Internet n'est trouvée.
+5. Après avoir fermé la fenêtre de résultats, sélectionnez « Afficher le résultat » pour l'ouvrir à nouveau. En cas d'échec ou si le résultat n'est pas confirmé, lisez la raison et l'étape de l'échec. Développez « Journal d'exécution » pour plus de détails. Vérifiez le mot de passe pour une erreur de mot de passe, ou le câblage et le réseau en amont si aucune connexion Internet n'est trouvée.
+
+Si l'empreinte de l'hôte n'est pas confirmée ou a changé, vérifiez d'abord l'identité de l'hôte sur Sécurité. Ne réessayez pas d’accéder et n’ignorez pas la vérification. La sortie du script distant peut rester dans sa langue d'origine ; conservez-le pour enquête si nécessaire.
 
 Un échec de demande d'état ne signifie pas que le script s'est arrêté. Utilisez le contrôle « Actualiser l'état » disponible pour vérifier l'exécution en cours avant de décider de réessayer.
 
@@ -308,6 +334,8 @@ La carte SD est un stockage amovible et SPIFFS est un stockage de fichiers inter
 - Sélectionnez le bouton Renommer, saisissez un nouveau nom et confirmez.
 - Sélectionnez « Nouveau dossier », saisissez un nom de dossier et créez-le.
 - Sélectionnez le bouton d'actualisation pour recharger le répertoire actuel et l'état de stockage.
+
+L’envoi, la suppression, le renommage de fichiers, la création de dossiers et le montage ou démontage de la carte SD exigent une session valide. Lire et télécharger des fichiers protégés d’Automatisation exige aussi les droits root. Vérifiez que la session root est valide et utilisez les pages de configuration. Ne changez pas de chemin ou d’entrée pour contourner les permissions.
 
 #### Envoyer des fichiers
 
@@ -358,7 +386,9 @@ L'appareil redémarre lors d'une mise à jour, déconnectant temporairement l'in
 
 La première mise à niveau à partir d'une ancienne configuration de stockage, telle que la version 0.6.2, nécessite un package USB/série correspondant approuvé par le fournisseur. L’envoi du micrologiciel ou de WebUI seul ne suffit pas pour effectuer cette mise à niveau. Demandez à l'administrateur de l'appareil ou au fournisseur de suivre les instructions du package. N'effacez pas l'intégralité du flash et n'utilisez pas une ancienne table de partition.
 
-Enregistrez les fichiers importants et conservez la carte SD d'origine installée. Le premier démarrage migre la configuration existante ; garder l'alimentation connectée. Ensuite, vérifiez la connexion, la mise en réseau, les ventilateurs, l'éclairage, les hôtes SSH et les règles d'automatisation. Passez en revue les règles avant de tester une tâche qui contrôle l’alimentation, redémarre un appareil ou exécute des commandes à distance.
+Enregistrez les fichiers importants avant la mise à niveau. L'outil correspondant préserve les clés et la carte SD ; cela n'efface pas la configuration sur la carte. Le premier démarrage peut toujours lire ou migrer la configuration existante. La livraison au client suit la procédure « effacer l'ancienne configuration et configurer à nouveau ». L'administrateur de l'appareil ou le fournisseur doit suivre les instructions de livraison. N'effacez pas l'intégralité du flash vous-même et ne traitez pas les fichiers conservés comme une configuration terminée.
+
+Gardez l'alimentation connectée pendant la mise à niveau et le premier démarrage. Ensuite, vérifiez la connexion, la mise en réseau, les ventilateurs, l'éclairage, les hôtes SSH et les règles d'automatisation. Passez en revue les règles avant de tester une tâche qui contrôle l’alimentation, redémarre un appareil ou exécute des commandes à distance.
 
 Le package correspondant met à jour les deux emplacements d’application. Ne présumez pas que l’autre emplacement contient toujours l’ancienne version. Si le mot de passe root est perdu, utilisez uniquement une méthode de récupération confirmée par le fournisseur pour correspondre à la mise en page 0.6.3. Ne flashez pas une ancienne image de réinitialisation de mot de passe.
 
@@ -366,7 +396,7 @@ Les méthodes de mise à jour Web ci-dessous s'appliquent uniquement aux version
 
 #### Rechercher des mises à jour à partir d'un serveur OTA
 
-1. Revoir le “Current Version”.
+1. Consultez la « version actuelle ». Deux installations 0.6.3 peuvent être des versions de révision différentes. Vérifiez la version complète, la durée de construction et les instructions de l'éditeur plutôt que seulement les trois premiers chiffres.
 2. Saisissez l'adresse du serveur OTA fournie par un administrateur ou un éditeur.
 3. Sélectionnez “Save” puis sélectionnez “Check Update”.
 4. La page signale “Update Available” “Already up to date” une ancienne version du serveur ou une erreur.
@@ -412,6 +442,8 @@ Identifiez l’opération qui a échoué, puis lisez le motif et l’étape suiv
 
 Sélectionnez “Details” lorsque disponible. Sélectionnez “Hide” pour masquer les détails. Si un bouton × s'affiche, sélectionnez-le pour ignorer le message. Pour des vérifications plus approfondies, conservez une trace du message et des détails, puis ouvrez “System Logs” sur le terminal pour enquêter.
 
+Si un message ou ses détails sont longs, faites défiler cette zone pour lire l'intégralité du contenu avant de décider quoi faire ensuite.
+
 Si le résultat n’est pas confirmé, actualisez et vérifiez l’état de l’appareil, du fichier ou de la tâche. Un délai expiré ou une déconnexion ne signifie pas que l’opération n’a pas été exécutée. Ne répétez pas aussitôt une opération d’alimentation, de suppression, de lancement de tâche ou de mise à jour. Si le résultat reste inconnu, ouvrez « Journaux système » dans Terminal pour vérifier la cause.
 
 Vérifiez séparément les résultats de lots réussis, échoués et non confirmés. Confirmez les fichiers enregistrés dans la liste de téléchargement du navigateur.
@@ -431,6 +463,10 @@ Vérifiez séparément les résultats de lots réussis, échoués et non confirm
 
 Les commandes ne sont pas exécutées tant que la page affiche « Non connecté à l’appareil ». Après une coupure, attendez le message de reconnexion avant de renvoyer une commande pour éviter de l’exécuter deux fois.
 
+Si une autre session de terminal est en cours d'utilisation, fermez d'abord le terminal d'origine. Si les connexions sont pleines, attendez la reconnexion plutôt que d’ouvrir d’autres onglets. Après une connexion expirée, reconnectez-vous et attendez que le Terminal confirme la connexion.
+
+Pendant qu'une commande est active, attendez qu'elle soit terminée ou demandez un arrêt. Si la page indique qu'elle attend que la tâche se termine en toute sécurité, l'arrêt est toujours en cours. Attendez l'invite avant de saisir une autre commande. Si la sortie est incomplète, vérifiez le résultat de la tâche et les journaux système séparément. Une sortie manquante n’est pas une raison pour réexécuter la commande.
+
 Le terminal propose ces commandes au clavier :
 
 | Commande | Objectif |
@@ -444,7 +480,7 @@ Le terminal propose ces commandes au clavier :
 
 #### Ouvrir un shell SSH distant
 
-Un shell SSH envoie les entrées clavier ultérieures à un hôte distant. Confirmez l'adresse cible, l'utilisateur et la méthode d'authentification, et effectuez la préparation SSH décrite dans le Guide de sécurité avant de vous connecter.
+Un shell SSH envoie les entrées clavier ultérieures à un hôte distant. Confirmez l'adresse cible, l'utilisateur et la méthode d'authentification, puis effectuez la préparation SSH décrite dans le Guide de sécurité avant de vous connecter. Si le terminal Web nécessite une vérification de l'hôte, vérifiez et confirmez l'empreinte sur Sécurité avant de vous reconnecter. Ne répondez pas à une confirmation dans une console série ou sur le terminal d'une autre personne en son nom.
 
 1. Entrez `ssh --help` pour afficher les options de la commande SSH.
 2. Entrez `ssh --host <host> --user <user> --shell`, en remplaçant chaque espace réservé, y compris ses crochets angulaires, par la valeur réelle. Pour spécifier un port, ajoutez `--port <port>` avant --shell.
@@ -490,7 +526,11 @@ Vérifiez l’adresse et confirmez la cause du changement par un canal fiable. S
 2. Choisissez un hôte actuellement affiché sous « Sélectionner un hôte ».
 3. Consultez ses éléments enregistrés sous « Liste de commandes ».
 
-“Orphan Commands” référence des hôtes qui n’existent plus et ne peuvent pas s’exécuter. Vérifiez la configuration de l'hôte. Pour conserver la tâche, recréez la commande sous un hôte valide, mettez à jour les modèles et les règles qui l'utilisent et vérifiez le résultat avant de supprimer l'orphelin.
+Le texte de la commande est réduit par défaut. Sélectionnez « Afficher la commande » pour voir toutes ses lignes, ou « Masquer la commande » pour la réduire. Développer le texte ne l'exécute pas.
+
+Les « commandes orphelines » n'ont pas d'hôte utilisable et ne peuvent pas s'exécuter. Préparez un hôte valide, modifiez la commande, choisissez cet hôte et examinez le contenu. Activez-le et enregistrez-le uniquement lorsque l'exécution est autorisée. Vérifiez les modèles et les règles qui l'utilisent. Une nouvelle commande portant le même nom n'est pas nécessaire simplement pour la reconnecter à un hôte.
+
+Pour changer l’adresse, le port, le compte ou la clé d’un hôte, utilisez son bouton d’édition dans la liste SSH de Sécurité. Le Guide de sécurité donne la procédure. Les changements concernent les connexions futures ; les tâches déjà lancées conservent les données d’origine dans leur historique d’exécution. Avant de supprimer une clé, consultez les hôtes et l’historique associés. La suppression ne termine pas les tâches distantes, mais peut empêcher cet appareil de les vérifier ou de les arrêter.
 
 #### Créer ou modifier une commande
 
@@ -498,10 +538,10 @@ Vérifiez l’adresse et confirmez la cause du changement par un canal fiable. S
 Une commande enregistrée s'exécute sur un hôte distant. Vérifiez la commande et les autorisations requises sur cet hôte avant de l'enregistrer. Faites particulièrement attention aux commandes qui suppriment des données, arrêtent ou redémarrent un hôte ou écrasent des fichiers.
 
 1. Sélectionnez un hôte, puis sélectionnez « Nouvelle commande ». Utilisez le bouton Modifier sur une commande existante pour la modifier.
-2. Entrez un « ID de commande » unique. Il peut contenir des lettres, des chiffres, des traits de soulignement et des traits d'union, et ne peut ni commencer ni se terminer par un trait de soulignement ou un trait d'union.
+2. Saisissez un « ID de commande » unique, tel que `model.v1` . N'utilisez pas de sauts de ligne, de caractères de contrôle, de barres obliques ou uniquement `.` ou `..` . Il peut contenir jusqu'à 31 lettres ou chiffres anglais ; Le chinois et certains autres caractères utilisent plus d'espace. Suivez le message de longueur du champ.
 3. Saisissez « Nom de la commande » et « Commande ». Placez chaque commande sur une ligne distincte lorsque vous utilisez plusieurs lignes.
 4. Ajoutez une description et choisissez une icône ou une image sur la carte SD si nécessaire.
-5. Vérifiez le mode d'exécution et les options de correspondance de sortie, puis sélectionnez « Enregistrer ».
+5. Vérifiez l’hôte, l’état d’activation, le mode d’exécution et les options de correspondance de sortie, puis sélectionnez « Enregistrer ». Créer un identifiant déjà utilisé produit une erreur sans écraser la commande existante. Pour la modifier, utilisez son bouton d’édition.
 
 Le nom vous aide à reconnaître une commande ; L'automatisation utilise son identifiant pour le trouver. Vous ne pouvez pas modifier l'ID d'une commande existante. Pour utiliser un nouvel ID, créez une commande et mettez à jour les modèles et les sources qui l'utilisent.
 
@@ -514,6 +554,10 @@ Le nom vous aide à reconnaître une commande ; L'automatisation utilise son ide
 
 « Effacer » n’annule pas ce qui a déjà été exécuté sur l’hôte distant. Le classement en réussite ou en échec, le contenu extrait et l’état final dépendent des critères configurés pour la commande.
 
+La page vérifie le résultat de cette exécution sans réexécuter la commande. Si la vérification automatique des résultats s'interrompt, rouvrez les commandes dans le même onglet du navigateur pour continuer la vérification. La déconnexion, le redémarrage de l'appareil ou un résultat qui n'est plus conservé peuvent empêcher la récupération. Vérifiez l'état distant réel avant de décider de l'exécuter à nouveau.
+
+Distinguez le résultat de sortie de la commande, la correspondance des conditions et l'exhaustivité du journal. « Exécution terminée avec le code de sortie confirmé 0 » confirme une sortie normale. Une sortie collectée incomplète peut toujours laisser la correspondance et l’extraction non confirmées. Une sortie de journal manquante sur la page ne signifie pas que la commande à distance a échoué. Suivez le message pour vérifier la sortie d'origine et l'hôte cible.
+
 #### Configurer la correspondance des résultats
 
 La correspondance des résultats convertit la sortie distante en un état plus facile à utiliser.
@@ -521,11 +565,13 @@ La correspondance des résultats convertit la sortie distante en un état plus f
 - « Correspondance attendue » : marque le résultat comme réussi lorsque la sortie contient le texte configuré.
 - « Fail Match » : marque l'échec du résultat lorsque la sortie contient le texte configuré.
 - « Extraire l'expression régulière » : utilise un groupe de capture `(.*)` pour enregistrer la sortie sélectionnée.
-- « Stop on match » : termine une commande continue après une correspondance réussie.
+- « Arrêter en cas de correspondance » : demande la fin d'une commande continue après une correspondance de résultat configuré. Vérifiez également l'état final.
 - « Timeout (s) » : définit le temps d'attente pour une correspondance, en secondes. Cela s'applique uniquement lorsqu'un modèle de réussite ou d'échec est défini ou que « Arrêt en cas de correspondance » est activé.
 - « Nom de la variable » : enregistre l'état et la sortie extraite pour une utilisation sur la page Automatisation.
 
 Choisissez un texte de réussite et d'échec stable et spécifique. Un texte large peut produire des correspondances incorrectes. Exécutez la commande une fois et examinez les « Résultats de correspondance » avant d'utiliser ses variables dans une règle.
+
+Lorsque Automation fait référence à cette commande SSH ordinaire, elle utilise également les paramètres de correspondance, d'extraction et d'arrêt à la correspondance enregistrés. Une correspondance déjà trouvée pourra être retenue lorsque le délai d'exécution sera atteint. Une correspondance ou l'absence de délai d'attente ne prouve pas que le processus distant est terminé. Vérifiez également le code de sortie et l’état réel.
 
 #### Utiliser l'exécution en arrière-plan et le mode service
 
@@ -533,18 +579,20 @@ nohup signifie qu'une commande continue de s'exécuter en arrière-plan de l'hô
 
 Les exécutions en arrière-plan nécessitent une authentification par clé SSH. Déployez la clé publique sur “Security” puis sélectionnez l'hôte associé. N'enregistrez pas les mots de passe en texte brut dans les commandes en arrière-plan. La même clé doit rester disponible pour arrêter ou vérifier la tâche d'origine.
 
-Après avoir activé “Run in background (nohup)” et exécuté la commande, sélectionnez “Background runs” dans Commandes. Le contrôle root uniquement sur Système et le contrôle sur Automatisation ouvrent la même liste.
+Après avoir activé « Exécuter en arrière-plan (nohup) » et lancé la commande, ouvrez « Historique d’exécution » dans Commandes. Le bouton réservé à root dans Système et celui d’Automatisation ouvrent la même liste. Elle contient aussi des tâches antérieures : leur présence ne prouve pas qu’elles tournent encore. Le lancement d’une tâche vérifie aussi les enregistrements antérieurs associés.
 
 1. Recherchez la tâche d'origine par son nom, son utilisateur, son adresse hôte et son port.
 2. Sélectionnez “Verify remote state” pour vérifier cette exécution sur l'hôte d'origine.“Refresh” lit uniquement les enregistrements connus ; cela ne remplace pas la vérification.
 3. Sélectionnez “View Log” pour lire les 100 dernières lignes de l'hôte d'origine. Sélectionnez “Follow log” pour les mises à jour.“Stop following” arrête uniquement les mises à jour des pages.
 4. Pour terminer la tâche, sélectionnez “Stop” sur sa fiche et validez. Attendez le résultat, puis vérifiez qu'il s'est arrêté. Ne le redémarrez pas sans vérifier.
 
-Après le redémarrage de l’appareil, les anciens enregistrements affichent “Not checked”. “Remote state unconfirmed” signifie que l’état de la tâche, arrêtée ou en cours d’exécution, n’a pas été confirmé. “Last result” indique le dernier résultat confirmé et ne garantit pas l’état actuel.
+Après un redémarrage, les anciens enregistrements affichent « Non vérifié ». « État distant non confirmé » signifie que l’on ne sait pas encore si la tâche est arrêtée ou en cours. « Dernier résultat » indique le dernier état confirmé et ne garantit pas l’état actuel.
 
 Un échec de lecture ne signifie pas que le journal est vide ou que le processus est terminé. Vérifiez la connexion hôte d'origine, le chemin du journal et la clé SSH. Vérifiez à nouveau après avoir résolu le problème ; ne redémarrez pas une tâche simplement parce que sa vérification d'état a échoué.
 
-La suppression d'une commande, la modification de sa configuration d'hôte ou le changement de configuration d'automatisation ne met pas fin à un processus distant. Gérer la tâche d'origine à partir de “Background runs”. La recréation d'une commande avec le même nom ou ID ne reprend pas la tâche d'origine. Conservez toute clé encore nécessaire pour le contrôler.
+Si le journal ne se trouve plus sur l'hôte d'origine, l'hôte a peut-être redémarré ou les fichiers temporaires ont peut-être été effacés. Cela diffère d'un journal vide et ne prouve pas que la tâche n'a jamais été exécutée. Vérifiez l'état distant ou demandez à l'administrateur hôte de vérifier.
+
+La suppression d'une commande, la modification de sa configuration d'hôte ou le changement de configuration d'automatisation ne met pas fin à un processus distant. Gérez la tâche d'origine à partir de « Historique d’exécution ». La recréation d'une commande avec le même nom ou ID ne reprend pas la tâche d'origine. Conservez toute clé encore nécessaire pour le contrôler.
 
 « Mode service » surveille une tâche en arrière-plan jusqu’à sa disponibilité. Renseignez « Critère de disponibilité » et « Nom de variable ». Ajustez si nécessaire le critère d’échec et les délais :
 - « Ready match » : marque le service prêt lorsque le texte configuré apparaît. Utilisez `|` pour séparer plusieurs modèles.
@@ -569,7 +617,7 @@ Les nouvelles importations vérifient la source, la signature, l'autorisation de
 
 Après avoir sélectionné Supprimer, examinez les modèles et règles liés. Choisissez une commande de remplacement disponible ou dissociez la configuration concernée et désactivez ses règles. Voir le chapitre 12 pour les étapes. La suppression modifie uniquement la configuration utilisée ; il ne met pas à jour l'autre copie d'urgence.
 
-La suppression de la configuration et l'arrêt d'un service distant sont des opérations distinctes. La suppression n’arrête pas le service et n’annule pas les opérations terminées. Pour terminer une tâche distante, arrêtez-la depuis “Background runs” et confirmez le résultat.
+La suppression de la configuration et l'arrêt d'un service distant sont des opérations distinctes. La suppression n’arrête pas le service et n’annule pas les opérations terminées. Pour terminer une tâche à distance, arrêtez-la depuis « Historique d’exécution » et confirmez le résultat.
 
 ### 12. Gestion de l'automatisation
 
@@ -593,7 +641,7 @@ Le haut de la page affiche l'état du moteur, le nombre de règles, de variables
 | “Stop” | Tente d'arrêter les vérifications des règles, la lecture des données et la planification d'actions ultérieures, tout en conservant la configuration. Attendez la confirmation ; un timeout ne signifie pas que le moteur s'est arrêté. |
 | “Reload” | Lit à nouveau la configuration à partir de l'emplacement utilisé. Enregistrez les modifications et vérifiez le résultat. Une pause de configuration existante reste en place. |
 
-Vérifiez si le refroidissement, les alertes ou d'autres tâches en cours dépendent de l'automatisation. L'arrêt du moteur n'arrête pas un processus en arrière-plan distant. Arrêtez les tâches distantes de “Background runs” et confirmez le résultat.
+Vérifiez si le refroidissement, les alertes ou d'autres tâches en cours dépendent de l'automatisation. L'arrêt du moteur n'arrête pas un processus en arrière-plan distant. Arrêtez les tâches distantes depuis « Historique d’exécution » et confirmez le résultat.
 
 “Disable automation” sous “Configuration & backup” est distinct de la commande “Pause” du moteur. Si la configuration est en pause, vérifiez-la avant de sélectionner “Enable automation”. Le redémarrage de l'appareil, le rechargement ou l'arrêt et le démarrage du moteur n'effacent pas cette pause de configuration. Voir le chapitre 13.
 
@@ -623,7 +671,11 @@ Sélectionnez « Ajouter » sous « Sources de données » et choisissez un type
 4. Pour une variable de commande, sélectionnez l'hôte et une commande avec un nom de variable configuré, puis définissez l'intervalle d'interrogation.
 5. Vérifiez le commutateur d'activation dans le formulaire, enregistrez et utilisez “View Variables” sur sa ligne pour vérifier le résultat.
 
-Chaque ligne de source propose un interrupteur d’activation et des commandes pour voir les variables, exporter ou supprimer. Avant de désactiver ou de supprimer une source, vérifiez les règles qui l’utilisent pour ne pas interrompre leurs tâches.
+Les lignes source fournissent un commutateur d'activation, une visionneuse de variables, des contrôles de modification, d'exportation et de suppression. Vérifiez quelles règles utilisent une source avant de la désactiver ou de la supprimer, afin de ne pas perturber leurs tâches.
+
+Pour modifier une source existante, sélectionnez son bouton d'édition. Vérifiez l'adresse, l'authentification, l'intervalle de collecte et l'état d'activation, puis enregistrez. Les mappages de champs existants restent en place. Utilisez ensuite « Afficher les variables » pour vérifier la source, les valeurs et les heures de mise à jour. Les intervalles dans la fenêtre d'édition sont en secondes, avec jusqu'à trois décimales. La création d'un ID en double n'écrase pas la source existante.
+
+REST collecte les données avec la méthode GET ou POST enregistrée. WebSocket reçoit les données envoyées par le serveur ; Socket.IO utilise l’événement et l’adresse configurés. Après le test, vérifiez que les données continuent de se mettre à jour. Une source « Variable de commande » lit uniquement l’état existant et ne lance aucune commande. Exécutez la commande séparément pour obtenir un nouveau résultat.
 
 Importer et exporter des packages de configuration. Prévisualisez les ID, les types et les remplacements avant l’importation, et suivez le Guide de sécurité pour connaître les exigences en matière de source et de confiance.
 
@@ -634,6 +686,14 @@ Sélectionnez l'icône « Afficher les variables » en forme d'œil sur une li
 - Confirmez les noms et la source, et vérifiez que les valeurs et les types correspondent aux comparaisons de la règle.
 - Vérifiez si les heures de mise à jour correspondent à la fréquence de données attendue.
 - Si aucune donnée n'est disponible, vérifiez que la source est activée, puis testez la connexion et les champs. Pour les variables de commande, vérifiez également le résultat de l’exécution de la commande.
+
+#### Gérer les variables utilisateur
+
+Sélectionnez « Variables utilisateur » sur Automation pour afficher les variables et les valeurs initiales que vous avez enregistrées. Cette liste ne contient pas les données collectées en direct par l'appareil.
+
+1. Recherchez la variable et sélectionnez son icône de suppression.
+2. Passez en revue les sources, modèles et règles concernés. Suivez la page pour supprimer ou gérer leurs liens.
+3. Après confirmation, relisez la liste. Vérifiez l’état d’activation des configurations associées et leurs résultats d’exécution. Supprimer une définition initiale ne revient pas à effacer toutes les données en temps réel.
 
 #### Créer et tester des modèles d'action
 
@@ -663,15 +723,17 @@ Après l'édition, enregistrez et vérifiez les paramètres. Si l’enregistreme
 
 #### Supprimer la configuration et gérer ses liens
 
-La suppression d'une règle, d'un modèle, d'une commande SSH ou d'un hôte peut affecter d'autres configurations. Enregistrez d'abord une sauvegarde d'urgence si vous en avez besoin. La suppression ne peut pas être annulée à partir de la page.
+La suppression d'une règle, d'un modèle, d'une commande SSH, d'un hôte, d'une source ou d'une variable utilisateur peut affecter d'autres configurations. Enregistrez d'abord une sauvegarde d'urgence si vous en avez besoin. La suppression ne peut pas être annulée à partir de la page.
 
 1. Sélectionnez Supprimer dans la liste correspondante. Vérifiez le nom de la cible et les éléments concernés.
 2. Confirmez la suppression s'il n'y a aucun lien. Sinon, choisissez un remplacement disponible ou “Unlink and disable affected rules”.
 3. Actualisez ensuite la liste. Confirmez la suppression et vérifiez les modèles liés, les règles et les états d'activation.
 
-La dissociation d'un modèle supprimé supprime son action des règles concernées et désactive ces règles. La suppression d'une commande SSH laisse les modèles liés comme brouillons désactivés avec la référence de commande effacée ; les règles concernées sont dissociées et désactivées. Avant de choisir un remplaçant, vérifiez sa cible et son action, pas seulement un nom similaire.
+La dissociation d'un modèle supprimé supprime son action des règles concernées et désactive ces règles. La suppression d'une commande SSH laisse les modèles liés comme brouillons désactivés avec la référence de commande effacée ; les règles concernées sont dissociées et désactivées. Avant de choisir un remplaçant, vérifiez sa cible, son action et ses données, pas seulement un nom similaire. Si le remplaçant ne peut pas fournir les données requises, la configuration associée peut être désactivée et conservée pour modification.
 
-Lors de la suppression d'un hôte, examinez également les commandes et les sources concernées. Une commande sans hôte ne peut pas s'exécuter. Recréez les commandes nécessaires sous un hôte valide et mettez à jour leurs liens, puis vérifiez-les avant utilisation. La suppression de la configuration de l'hôte local est différente de la révocation d'une clé publique distante ; consultez le Guide de sécurité.
+Lors de la suppression d'un hôte, examinez également les commandes et les sources concernées. Une commande sans hôte ne peut pas s'exécuter. Modifiez-le pour choisir un hôte valide, puis vérifiez les modèles et les règles associés avant de l'activer. La suppression de la configuration de l'hôte local est différente de la révocation d'une clé publique distante ; consultez le Guide de sécurité.
+
+Après la suppression, la page signale les éléments supprimés, désactivés et réassociés séparément. Vérifiez la liste actuelle. La gestion des liens ne signifie pas que tous les éléments associés ont été supprimés ou sont prêts à être exécutés.
 
 #### Utiliser Forcer la suppression si nécessaire
 
@@ -692,6 +754,10 @@ Si la configuration change pendant la confirmation, sélectionnez “Review dele
 7. Vérifiez, enregistrez, puis activez la règle. Laissez « Activer immédiatement » désactivé lors de la configuration pour la première fois.
 
 L'enregistrement, l'activation ou la désactivation d'une règle met à jour la configuration actuelle sans redémarrage. Si l'automatisation est suspendue, l'enregistrement ne la reprend pas. Actualisez la liste et vérifiez le résultat. Mettez à jour la sauvegarde d'urgence après des modifications importantes, comme décrit au chapitre 13.
+
+Les échecs temporaires de démarrage automatique sont réessayés toutes les 30 secondes pendant une durée maximale de 360 secondes. Un résultat non confirmé est vérifié avant un autre lancement. Les tentatives de cette tentative continuent à partir de l'étape de démarrage en arrière-plan inachevée ; les étapes précédentes terminées ne sont pas répétées. Si la page indique qu'elle a arrêté d'essayer ou que l'attente est terminée, suivez le message avant de décider de démarrer manuellement. Les échecs manuels ne sont pas automatiquement réessayés.
+
+Modifier la configuration associée permet de réessayer après un échec. Après un succès, le délai normal entre déclenchements reste applicable. Ce délai limite les déclenchements automatiques, mais ce n’est pas le seul élément à vérifier après un échec.
 
 <!-- operational-note -->
 Vous pouvez enregistrer jusqu'à 64 règles. Cela ne garantit pas que 64 tâches puissent être exécutées simultanément. La longueur des commandes et le nombre de conditions et d'actions affectent également le stockage et la mémoire. Si la capacité est insuffisante, supprimez la configuration inutile ou réduisez son contenu avant de l'enregistrer.
@@ -720,7 +786,7 @@ La désactivation d'une règle empêche de nouveaux déclencheurs ; une course d
 3. Activez « Afficher sur le panneau » et « Autoriser le déclenchement manuel », puis enregistrez et activez la règle.
 4. Revenez au panneau des périphériques système. Vérifiez le nom et l'état de la carte, exécutez-la une fois et examinez le résultat.
 
-Des règles automatiques peuvent également apparaître sur le panneau. Montrer une carte ne rend pas sa règle uniquement manuelle. Une règle désactivée peut rester visible mais ne peut pas démarrer. Donnez des noms aux actions liées à admin qui expliquent leur effet et indiquez aux utilisateurs qui contacter pour vérifier ou arrêter les tâches en arrière-plan. Les utilisateurs de Root affichent les journaux, vérifient et arrêtent les services de “Background runs”.
+Les règles automatiques peuvent aussi figurer sur le panneau. Afficher une carte ne rend pas sa règle exclusivement manuelle. Une règle désactivée peut rester visible sans pouvoir démarrer. Choisissez un nom qui explique l’effet de l’action. Pour les tâches SSH en arrière-plan, admin peut consulter les journaux et arrêter la tâche depuis la carte ; les changements de configuration restent réservés à root. Root peut aussi consulter les journaux, vérifier l’état et arrêter les services depuis « Historique d’exécution ».
 
 #### Importer un package de configuration de règles
 
@@ -745,7 +811,7 @@ Les règles importées peuvent être modifiées, activées, désactivées et sup
 
 Un certificat destiné uniquement au HTTPS peut ne pas autoriser la signature de configuration. Une exportation locale réussie peut toujours être rejetée à l'importation. Demandez au fournisseur de résoudre le problème lié à l'objectif du certificat ; ne désactivez pas la vérification et ne répétez pas l’importation.
 
-Les importations et les modifications n'annulent pas les actions terminées et n'arrêtent pas les processus en arrière-plan distants. Terminez ces tâches séparément de “Background runs” et confirmez le résultat.
+Les imports et les modifications n’annulent pas les actions terminées et n’arrêtent pas les processus distants en arrière-plan. Arrêtez ces tâches séparément depuis « Historique d’exécution », puis confirmez le résultat.
 
 #### Si l'importation ne se termine pas
 
@@ -786,6 +852,8 @@ Une variable de condition sans échantillon ne signifie pas nécessairement une 
 <!-- operational-note -->
 Sélectionnez “Configuration & backup” sur Automatisation. Vérifiez “Currently using” avant d'enregistrer, de restaurer ou de choisir une configuration. Examinez d’abord tout effet sur le refroidissement, les alertes ou les tâches à distance.
 
+Lors de l'utilisation de la carte SD, recherchez « Enregistrer la configuration actuelle » et « Restaurer la configuration enregistrée » dans le groupe de sauvegarde d'urgence. Suivez les étapes ci-dessous pour sélectionner « Enregistrer la sauvegarde d'urgence » ou « Restaurer la sauvegarde d'urgence ». Le groupe « Carte SD et automatisation » contient les contrôles de carte et les contrôles d'activation de l'automatisation. L’enregistrement d’une copie ne change pas de configuration.
+
 #### Distinguer les trois types de contenu
 
 | Contenu | Comment il est enregistré |
@@ -817,7 +885,7 @@ Une restauration remplace la configuration actuelle de la carte SD par la copie 
 3. Confirmez et attendez la fin. Les listes sont mises à jour sans redémarrage de l'appareil.
 4. Vérifiez les règles, les hôtes, les variables, les états d'activation et les résultats des tâches. S'il est toujours en pause, examinez la configuration avant de sélectionner “Enable automation”.
 
-Une restauration ne modifie pas le réseau, les ventilateurs ou les clés. Cela ne met pas fin à l’exécution de services à distance. Gérez-les depuis “Background runs” si nécessaire.
+Une restauration ne modifie pas le réseau, les ventilateurs ou les clés. Cela ne met pas fin à l’exécution de services à distance. Gérez-les depuis « Historique d’exécution » si nécessaire.
 
 #### Lorsqu'aucune carte SD utilisable n'est disponible
 

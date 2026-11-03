@@ -484,9 +484,9 @@ function siteNavigationTemplate() {
 }
 
 function pageTemplate(config, rendered) {
-  const guideAssetVersion = 'guides-063-20261028';
-  const catalogVersion = 'tti-20261027';
-  const scFontVersion = config.accent === 'admin' || config.accent === 'root' ? '?v=guides-063-20261028' : '?v=cases-20261013';
+  const guideAssetVersion = config.accent === 'network' ? 'guides-063-20261028' : 'guides-064-20261103';
+  const catalogVersion = config.accent === 'network' ? 'guides-063-20261028' : 'guides-064-20261103';
+  const scFontVersion = config.accent === 'network' ? '?v=cases-20261013' : '?v=guides-064-20261103';
   const pageData = JSON.stringify({
     title: config.title,
     copy: { zh: '已复制', en: 'Copied' },
@@ -515,7 +515,7 @@ function pageTemplate(config, rendered) {
   <script>
     // ja/ko/es/fr carry their own catalog file; zh and en need none. Resolve the language the way i18n.js does and load only that file.
     (function (up) {
-      var ok = /^(zh|en|ja|ko|es|fr)$/, c = window.RM_CATALOG = { base: up + 'assets/translations/', v: 'guides-063-20261028' };
+      var ok = /^(zh|en|ja|ko|es|fr)$/, c = window.RM_CATALOG = { base: up + 'assets/translations/', v: '${catalogVersion}' };
       c.load = function () {
         var s; try { s = localStorage.getItem('rm-soft-lang'); } catch (e) {}
         var l = [new URLSearchParams(location.search).get('lang'), (location.hash.match(/^#(zh|en|ja|ko|es|fr)-/) || [])[1], s, window.RM_DEFAULT_LANG].filter(function (x) { return ok.test(x); })[0];

@@ -1,8 +1,8 @@
 # TianshanOS root 运维指南
 
-本指南依据 TianshanOS 0.6.3 编写。使用其他版本时，请结合对应版本的说明核对操作。
-
 本指南面向使用 root 账户的用户。第一部分包含日常功能，第二部分介绍终端、远程指令、自动化和配置备份。root 操作可能影响设备和远程主机；执行前确认目标和正在运行的任务。安全管理请参阅单独的安全指南。
+
+对应版本：0.6.4 · 修订日期：2026-11-03。
 
 按设备页面显示的功能操作。部分选项需要指定硬件或配置才会出现。电脑上将指针停在图标按钮上，可查看按钮名称。手机表格较宽时，在表格内左右滑动查看其他列。
 
@@ -20,6 +20,8 @@
 使用默认密码登录后，页面会显示“安全提醒”。输入当前密码，再输入两次新密码，点击“立即修改”。两次新密码必须一致。点击“稍后修改”可关闭提醒。
 
 使用完毕后，点击右上角的“退出登录”。再次操作设备时需要重新登录。
+
+页面提示没有权限时，先确认当前账户；登录失效时重新登录。随后检查刚才的操作结果。登录恢复不会重做之前的任务；不要直接重复上传、删除或升级。
 
 #### 切换语言
 
@@ -43,9 +45,10 @@ root 可使用以下入口：
 
 #### 查看资源与服务状态
 
-“带外管理芯片资源监控”显示管理芯片的 CPU、DRAM 和 PSRAM 使用情况。这些读数不代表 AGX 或 LPMU 的资源使用率。
+“带外管理芯片资源监控”显示管理芯片的 CPU、DRAM 和 PSRAM 使用情况。这些读数不代表推理计算机或应用计算机的资源使用率。
 
 - 点击“详情”，查看内存总量、已用和空闲空间等信息。
+- 内存详情中标为“估算”的数值只供参考。出现警示时，保留页面信息，按说明检查。
 - “服务”按钮显示运行中的服务数和服务总数。点击后可查看各项服务的状态和启动阶段。
 - 服务状态异常时，先刷新。需要重启的服务按下方“重启单项服务”操作。
 
@@ -91,40 +94,50 @@ root 可使用以下入口：
 
 保存后，页面会应用新的保护设置。
 
+打开“关机设置”后，等待当前设置读取完成。提示显示默认值时，不要把它当作设备当前设置；核对电压和等待时间后再保存。读取期间可以取消。
+
 ##### 切换顶部 USB 连接目标
 
 切换 USB 目标可能使当前连接的外设暂时断开。确认目标设备和正在进行的工作后再操作。
 
-设备提供 USB 切换功能时，页面会显示“USB”按钮。每点击一次，顶部 USB 接口按 ESP、AGX、LPMU 的顺序切换到下一个目标。查看按钮上的目标名称和页面提示，确认切换结果。
+设备提供 USB 切换功能时，页面会显示“USB”按钮。每点击一次，顶部 USB 接口按 ESP、推理计算机、应用计算机的顺序切换到下一个目标。显示“已断开”时，表示当前没有接通目标。查看按钮上的目标名称和页面提示，确认切换结果。
 
 ### 3. 设备面板
 
 “设备面板”位于“系统”页面，包含模组电源控制、快捷操作和数据组件。
 
-#### 控制 AGX 和 LPMU
+#### 控制推理计算机和应用计算机
+
+界面中的“推理计算机”对应原 AGX，“应用计算机”对应原 LPMU。设备标识或命令中的 `agx`、`lpmu` 仍可能保留原写法，不要自行改名。
 
 关闭模组前，先保存其中的工作并完成正常关机流程。强制断电可能造成未保存的数据丢失。
 
-- “AGX 电源”显示电源控制状态。点击按钮可上电或断电；操作后等待页面确认。
-- “LPMU 电源”显示“在线”“离线”或“未知”。在线表示网络能够连通，离线表示网络无法连通。这些状态不能单独证明模组已开机或关机。
-- 点击 LPMU 按钮会触发一次与物理电源按钮相同的操作。随后等待检测和页面提示；结果未知时，先检查模组和网络，不要连续点击。
+- “推理计算机电源”显示电源控制状态。点击按钮可上电或断电；操作后等待页面确认。
+- “应用计算机电源”的“网络可达”表示网络能够连通，“网络不可达”表示网络无法连通；检测失败时，电源状态仍未知。这些结果不能单独证明计算机已开机或关机。
+- 点击应用计算机按钮会触发一次与物理电源按钮相同的操作。随后等待检测和页面提示；结果未知时，先检查计算机和网络，不要连续点击。
 
 #### 使用快捷操作
 
 快捷操作卡片由 root 用户配置。显示卡片和允许手动运行是两项设置；看得到卡片，不代表可以启动任务。
 
 1. 查看卡片名称和说明，确认将要执行的任务。
-2. 点击卡片，阅读结果提示。处理中不要再次启动。
-3. 提示已执行或已排队后，还要确认目标设备或任务的实际结果。需要核验、查看日志或停止后台服务时，点击“后台运行”，步骤见第 11 章。
+2. 点击“启动”或卡片，阅读结果提示。处理中不要再次启动。
+3. 提示已执行或已排队后，还要确认目标设备或任务的实际结果。有服务状态时，区分“进程运行中”和“已就绪”；多项任务可能显示“部分任务未就绪”。
+
+包含远程后台任务的卡片还会提供“查看日志”和“停止”。点击日志按钮查看相关任务；有多条记录时，按任务名称和原主机选择。停止前确认目标，提交后等待结果，再检查是否已停止。关闭日志或停止实时查看，不会停止任务。
+
+“运行记录”可能包含以前启动的任务，不代表它们仍在运行。需要时点击“核验远端状态”。可从相关卡片、系统页或自动化页打开“运行记录”，方法见第 11 章。没有对应按钮或无法确认结果时，检查记录和系统日志。
 
 无法启动时，按提示处理，不要连续点击：
 
 - 规则已停用，或不允许手动触发：在“自动化”检查规则设置，方法见第 12 章。看得到卡片，不代表可以运行。
 - 任务或后台操作正在处理：等待结果，不要重复启动。
-- 同一任务已有后台运行记录：在“后台运行”核验原任务，确认结束后再启动。
+- 同一任务已有运行记录：先检查原任务的状态和日志，不要重复启动。需要结束原任务时，停止并核验；无法处理时，检查“运行记录”和系统日志。
 - 配置尚未加载、缺少关联项或自动化已暂停：在“自动化”检查配置和启停状态，方法见第 12、13 章。
 
-完成一次点击后，等待几秒再启动其他操作。关闭页面、删除卡片或重启 TianshanOS，都不会替你停止远程主机上的后台服务。
+显示正在自动启动或等待重试时，按页面提示等待。暂时无法启动时，每 30 秒再试，最多等待 6 分钟；上次结果未确认时先检查，不重复启动。手动执行失败不会自动重跑。等待结束后，按提示检查设备和网络，再决定是否点击“启动”。
+
+完成一次点击后，等待几秒再启动其他操作。关闭页面、删除卡片或重启 TianshanOS，都不会替你停止远程主机上的后台服务。要让服务保持停止，先在“自动化”停用可能再次启动它的自动规则。
 
 长按卡片，出现排序提示后拖动，可以调整显示顺序。
 
@@ -144,6 +157,10 @@ root 可使用以下入口：
 4. 根据需要编辑名称、显示方式和单位，然后保存。
 
 已有组件可以编辑、删除和调整顺序。也可以直接点击组件卡片进入编辑界面。长按组件后拖动，可以改变它在面板中的位置。
+
+宽度选项中的“小”“中”“大”分别占一、二、三列；窄屏会自动收窄。编辑图标时，按页面示例填写图标名称。双数值组件的两个数值分别取自各自的数据设置，核对两项来源是否正确、数据是否更新。
+
+“加载数据组件失败”不代表没有配置，处理原因后再读取。保存失败或保存结果未确认时，保留当前内容并检查提示；不要把页面仍显示着修改内容当作已经保存成功。
 
 ### 4. 风扇管理
 
@@ -186,6 +203,10 @@ root 可使用以下入口：
 
 保存失败时，先查看具体提示并检查当前状态，再决定是否重试。解除温度绑定后，也应检查有效温度和风扇状态。
 
+打开设置或切换风扇后，等待当前设置读取完成。页面提示显示默认值或此前草稿时，这些值不代表设备当前设置，核对后再保存。温度绑定也要确认读取和绑定结果。
+
+出现“风扇设置已应用，但配置未全部保存”时，当前调节可能已经生效，重启后却可能恢复旧设置。检查风扇实际状态，确认设备内部存储可用后再保存；不要靠重启判断是否保存成功。
+
 #### 导入和导出曲线
 
 - 点击“导入配置”，选择曲线 JSON 文件。JSON 是保存曲线数据的文件格式。检查载入的节点、限制和风扇编号，再点击“保存曲线”使其生效。
@@ -206,7 +227,7 @@ root 可使用以下入口：
 #### 常用控制
 
 - 使用卡片底部的灯泡按钮开启或关闭 LED。
-- 拖动“亮度”滑块调整亮度，或选择颜色和预设色。
+- 拖动亮度、色相和饱和度三条滑块。亮度控制明暗，色相选择颜色，饱和度在白色和彩色之间调整；饱和度为 0 时是白光。松开色相或饱和度滑块后才应用颜色。
 - 点击动画按钮进入“LED 设置”，在“程序动画”中选择动画并使用对应的播放或停止按钮。
 - 点击卡片右下角的保存图标，保存当前 LED 配置。
 - 点击“全部关闭”关闭所有 LED，并查看页面报告的结果。部分关闭失败时，检查对应设备。
@@ -216,7 +237,7 @@ root 可使用以下入口：
 矩阵设备的卡片提供相应功能图标，打开后可在“LED 设置”中切换分组：
 
 - “程序动画”：选择和运行动画。
-- “图像/QR码”：从 SD 卡选择图像，或输入内容生成 QR 码。
+- “图像/QR码”：在卡片的“类型”中选择图像或 QR 码，再从 SD 卡选择图像，或输入 QR 码内容。
 - “文本显示”：填写文字，并设置字体、对齐、滚动、前景色和背景。
 - “后处理滤镜”：选择滤镜及参数，再应用或停止。
 - “色彩校正”：调整显示效果，并按页面按钮重置、导入或导出设置。
@@ -278,15 +299,19 @@ DHCP 会自动为接入设备分配网络地址。点击“客户端”，选择
 
 NAT 用于在设备的网络接口之间转发网络流量。启用或停用 NAT 后，点击“保存”保留当前设置。操作完成后检查 WiFi 和 Ethernet 状态。
 
-##### 通过 LPMU 接入上层网络
+##### 通过应用计算机接入上层网络
 
-此操作通过已配置的 LPMU 主机接入网络。先确认能连接 LPMU、网络线缆已接好，再准备该主机 SSH 账号的 sudo 密码。这个密码用于允许账号修改系统设置，可能与 WebUI 登录密码不同。
+此操作通过已配置的应用计算机接入网络。先在系统页将 USB 切换到“应用计算机”，确认网络线缆已接好。该计算机的 SSH 主机需要启用密钥认证，并已核对主机指纹；按安全指南检查主机、密钥和指纹设置。
 
-1. 在“接入上层网络”区域点击“通过 LPMU 接入”。
-2. 在弹窗中输入“LPMU sudo 密码”，再点击接入按钮。密码仅用于本次操作，不保存；下次执行需要重新输入。
+准备该主机 SSH 账号的 sudo 密码。这个密码用于允许账号修改系统设置，可能与 WebUI 登录密码不同。
+
+1. 在“接入上层网络”区域点击“通过应用计算机接入”。
+2. 在弹窗中输入“应用计算机 sudo 密码”，再点击接入按钮。密码仅用于本次操作，不保存；下次执行需要重新输入。
 3. 等待处理结束，不要重复启动。
 4. 结果窗口显示互联网连接正常和网络配置已完成时，才表示接入成功。
-5. 失败或结果未确认时，先阅读具体原因；需要更多信息时展开“执行日志”。密码错误时核对密码，找不到互联网连接时检查网络接线与上层网络。
+5. 关闭结果窗口后，可点击“查看结果”再次打开。失败或结果未确认时，阅读原因和失败阶段；需要更多信息时展开“执行日志”。密码错误时核对密码，找不到互联网连接时检查网络接线与上层网络。
+
+提示主机指纹未确认或发生变化时，先到“安全”核对身份，不要反复接入或跳过校验。日志中的远程脚本输出可能保留原语言；可以保留输出供检查。
 
 状态获取失败不等于脚本已经停止。先点击页面提供的“刷新状态”确认当前执行情况，再决定是否重新接入。
 
@@ -303,6 +328,8 @@ SD 卡是可插拔存储，SPIFFS 是设备内部文件存储。点击“SD 卡�
 - 点击重命名按钮，输入新名称并确认。
 - 点击“新建文件夹”，输入文件夹名称并创建。
 - 点击刷新按钮重新加载当前目录和存储状态。
+
+上传、删除、重命名、新建文件夹及挂载、卸载 SD 卡需要有效登录。受保护的自动化配置文件还限制读取和下载；需要这些文件时，确认 root 登录有效，并从正式配置入口处理。不要改路径或换入口绕过权限。
 
 #### 上传文件
 
@@ -352,7 +379,9 @@ SD 卡未挂载时，页面会显示“挂载 SD”。点击该按钮，等待�
 
 首次从 0.6.2 等旧存储布局升级时，需要发行方确认的配套 USB／串口升级包。只上传主固件或 WebUI，不能完成这次升级。请设备管理员或提供方按包内说明操作，不要自行全片擦除或使用旧分区表。
 
-升级前保存重要文件，保留原 SD 卡。首次启动会迁移原配置，期间不要断电。完成后，检查登录、网络、风扇、灯光、SSH 主机和自动化规则。不要在尚未确认规则内容时测试带有断电、重启或远程命令的任务。
+升级前保存重要文件。配套工具保留密钥和 SD 卡，不会自动清空卡内配置；首次启动仍可能读取或迁移原配置。客户交付按“清空旧配置、重新配置”流程实施，由设备管理员或提供方按交付说明处理。不要自行全片擦除，也不要把保留文件当作已经完成重新配置。
+
+升级和首次启动期间不要断电。完成后，检查登录、网络、风扇、灯光、SSH 主机和自动化规则。不要在尚未确认规则内容时测试带有断电、重启或远程命令的任务。
 
 该配套包会更新两个应用槽，不能假定另一个槽仍保留旧版本。忘记 root 密码时，只使用提供方确认与 0.6.3 布局匹配的恢复方案，不要刷入旧版密码重置固件。
 
@@ -360,7 +389,7 @@ SD 卡未挂载时，页面会显示“挂载 SD”。点击该按钮，等待�
 
 #### 从 OTA 服务器检查更新
 
-1. 查看页面显示的“当前版本”。
+1. 查看页面显示的“当前版本”。同为 0.6.3 也可能是不同修订构建；同时核对完整版本、构建时间和发行方说明，不要只比较前三位数字。
 2. 在“OTA 服务器”中输入管理员或发行方提供的服务器地址。
 3. 点击“保存”，随后点击“检查更新”。
 4. 页面会显示“发现新版本”“已是最新版本”“服务器版本较旧”或错误信息。
@@ -406,6 +435,8 @@ SD 卡未挂载时，页面会显示“挂载 SD”。点击该按钮，等待�
 
 有“详情”时，点击查看。点击“收起”可隐藏详情。页面提供 × 时，可点击它关闭提示。需要进一步检查时，保留提示和详情，在“终端”打开“系统日志”检查。
 
+提示或详情较长时，在该区域内滚动查看完整内容，再决定下一步。
+
 出现“结果未确认”时，先刷新并检查设备、文件或任务状态。超时或断开连接不代表操作没有执行；不要立即重复断电、删除、启动任务或升级。仍无法确认时，在“终端”打开“系统日志”查看原因。
 
 批量操作后，分别核对成功、失败和未确认的项目。下载文件后，检查浏览器下载列表。
@@ -425,6 +456,10 @@ SD 卡未挂载时，页面会显示“挂载 SD”。点击该按钮，等待�
 
 页面显示“未连接到设备”时，输入不会执行。连接断开后页面会提示重新连接；恢复连接后再提交命令，避免重复执行。
 
+提示另一个终端会话正在使用时，先关闭原终端。连接已满时，等待页面重连，避免反复打开标签页。登录失效后重新登录，再等待终端连接确认。
+
+命令尚未结束时，等待完成或请求停止。显示正在等待任务安全退出时，停止尚未完成；等提示符返回后再输入新命令。提示输出不完整时，另查任务结果和系统日志，不要因少了输出就重跑命令。
+
 终端提供以下键盘操作：
 
 | 操作 | 作用 |
@@ -438,7 +473,7 @@ SD 卡未挂载时，页面会显示“挂载 SD”。点击该按钮，等待�
 
 #### 进入远程 SSH Shell
 
-SSH Shell 会把后续键盘输入发送到远程主机。连接前应确认目标地址、用户和认证方式，并完成安全指南中的 SSH 准备工作。
+SSH Shell 会把后续键盘输入发送到远程主机。连接前应确认目标地址、用户和认证方式，并完成安全指南中的 SSH 准备工作。网页终端提示主机身份需要核验时，先到“安全”核对并确认指纹，再重新连接；不要在串口或其他人的终端中代为输入确认。
 
 1. 输入 `ssh --help`，查看 SSH 命令说明。
 2. 按以下格式填写实际主机地址和用户名：`ssh --host <主机地址> --user <用户名> --shell`。尖括号及其中的文字都需要替换。需要指定端口时，在 --shell 前添加 `--port <端口>`。
@@ -484,17 +519,21 @@ SSH Shell 会把后续键盘输入发送到远程主机。连接前应确认目�
 2. 在“选择主机”中选择页面显示的主机。
 3. 在“命令列表”中查看该主机已有的指令。
 
-“孤儿命令”表示指令引用的主机已经不存在，不能执行。先核对主机配置。需要保留任务时，在有效主机下重建指令，更新使用它的模板和规则，检查结果后再清理孤儿命令。
+命令正文默认收起。点击“展开命令”查看完整多行内容，点击“收起命令”隐藏正文；展开不会执行命令。
+
+“孤儿命令”表示指令没有可用主机，不能执行。先准备有效主机，再编辑这条命令，选择主机并检查内容，确认允许执行后启用、保存。检查使用它的模板和规则，不必为了重新关联而另建同名命令。
+
+修改主机地址、端口、登录账户或密钥时，从“安全”的 SSH 主机列表进入编辑，完整步骤见安全指南。修改用于后续连接；已经启动的任务仍按运行记录中的原主机信息管理。删除密钥前查看相关主机和运行记录；删除密钥不会停止远端任务，却可能让本设备无法再核验或停止它们。
 
 #### 新建或编辑指令
 
 保存的指令会在远程主机上执行。创建前应先在目标主机上人工确认命令及权限，避免把删除、关机、重启或覆盖文件等操作配置成容易误触的指令。
 
 1. 选择主机后点击“新建指令”。编辑现有指令时，点击该指令的编辑按钮。
-2. 填写“指令 ID”。ID 必须唯一，只能使用字母、数字、下划线和连字符，且不能以下划线或连字符开头或结尾。
+2. 填写唯一的“指令 ID”，例如 `model.v1`。不能包含换行、控制字符或斜杠，也不能仅为 `.` 或 `..`。最多容纳 31 个英文字母或数字；中文等字符占用更多长度，以字段提示为准。
 3. 填写“指令名称”和“SSH 命令”。多行命令每行填写一条。
 4. 根据需要填写描述，并选择图标或 SD 卡中的图像。
-5. 检查运行方式和输出匹配选项，然后点击“保存”。
+5. 检查主机、“启用”、运行方式和输出匹配选项，然后点击“保存”。新建时编号重复会报错，不会替你覆盖旧命令；要修改旧命令，从它的编辑按钮进入。
 
 名称帮助你辨认指令，ID 用于让自动化找到它。编辑现有指令时，ID 不能修改。要使用新 ID，请新建指令，并更新使用它的动作模板和数据源。
 
@@ -507,6 +546,10 @@ SSH Shell 会把后续键盘输入发送到远程主机。连接前应确认目�
 
 “清除”不会撤销远程主机已经完成的操作。执行结果中的成功、失败、提取内容和最终状态取决于指令的匹配设置。
 
+页面会补查这次执行的结果，不会为了补查重新执行命令。自动补查暂停时，可在同一浏览器标签页重新打开“指令”继续查询。退出登录、设备重启或结果已不再保留时，可能无法补查；先检查远端实际状态，不要直接重跑。
+
+区分命令退出结果、条件匹配和日志完整性。“命令正常完成，已收到退出码 0。”说明正常退出；输出收集不完整时，匹配和提取仍可能无法确认。页面缺少部分日志也不等于远端执行失败。按提示检查原始输出和目标主机。
+
 #### 配置结果匹配
 
 结果匹配用于把远程输出转换为容易判断的状态。
@@ -514,11 +557,13 @@ SSH Shell 会把后续键盘输入发送到远程主机。连接前应确认目�
 - “期望匹配”：输出包含指定文本时标记成功。
 - “失败匹配”：输出包含指定文本时标记失败。
 - “提取正则”：使用一个 `(.*)` 捕获组保存输出中的目标内容。
-- “命中即停止”：匹配成功后终止仍在持续运行的命令。
+- “命中即停止”：匹配到设置的结果后，请求结束仍在持续运行的命令；还要核对最终状态。
 - “超时 (秒)”：等待匹配结果的时间，以秒为单位。该设置仅在配置成功或失败匹配模式，或启用“命中即停止”时生效。
 - “变量名”：保存状态和提取结果，供自动化页面选择。
 
 成功和失败文本应选择稳定、明确的输出。过于宽泛的文字可能造成误判。保存后先执行一次并检查“匹配结果”，再把变量用于规则。
+
+自动化引用这条普通 SSH 指令时，也使用保存的匹配、提取和命中停止设置。已经取得匹配结果后到达执行期限，可能仍保留匹配结果；不能只凭“未超时”或“匹配成功”推断远端进程已结束，退出码和实际状态仍需检查。
 
 #### 使用后台执行和服务模式
 
@@ -526,18 +571,20 @@ nohup 表示命令在远程主机后台继续运行，SSH 断开后仍可继续�
 
 后台运行需要 SSH 密钥认证。先在“安全”完成公钥部署，再选择关联主机。不要在后台命令中保存明文密码。需要停止或核验原任务时，对应的密钥也必须仍然可用。
 
-启用“后台运行 (nohup)”并执行后，从“指令”页点击“后台运行”。系统页的 root 入口和“自动化”页也可以打开同一列表。
+启用“后台运行 (nohup)”并执行后，从“指令”页点击“运行记录”。系统页的 root 入口和“自动化”页也可以打开同一列表。记录保留过去启动的任务，不代表它们此刻仍在运行；启动时会检查相关旧记录。
 
 1. 按任务名称、用户名、主机地址和端口找到原任务。
 2. 点击“核验远端状态”，连接原主机检查这次运行。列表“刷新”只读取已知记录，不代替核验。
 3. 点击“查看日志”读取原主机日志的最近 100 行。需要持续查看时，点击“实时查看”；“停止查看”只停止页面刷新。
 4. 需要结束任务时，点击该记录的“停止”并确认。等待结果，再核验是否已停止；不要直接重复启动。
 
-设备重启后，原记录会显示“待检查”。“无法确认远端状态”表示尚无法判断任务是已停止还是仍在运行。“上次结果”只说明上一次确认的结果，不保证此刻仍然相同。
+设备重启后，原记录会显示“待检查”。“无法确认远端状态”不是已停止，也不是正在运行。“上次结果”只说明上一次确认的结果，不保证此刻仍然相同。
 
 读取失败不等于日志没有内容，也不代表进程已经退出。先检查原主机连接、日志路径和 SSH 密钥，恢复后再核验；不要因为检查失败而重新启动任务。
 
-删除命令、更换主机配置或切换自动化配置，不会结束已运行的远端进程。原任务仍从“后台运行”管理；重建同名、同 ID 的命令，不会接管原任务。不要删除仍需用来控制原任务的密钥。
+提示原主机已没有这次日志时，可能是主机重启或临时文件被清理。它与“日志为空”不同，也不能证明任务没有执行过。通过远端状态核验或请主机管理员检查。
+
+删除命令、更换主机配置或切换自动化配置，不会结束已运行的远端进程。原任务仍从“运行记录”管理；重建同名、同 ID 的命令，不会接管原任务。不要删除仍需用来控制原任务的密钥。
 
 “服务模式”用于持续观察后台任务是否进入可用状态。启用后，必须填写“就绪匹配”和“变量名”；失败匹配和等待设置可按需要调整：
 
@@ -562,7 +609,7 @@ nohup 表示命令在远程主机后台继续运行，SSH 断开后仍可继续�
 
 点击删除后，先查看关联模板和规则。可以选择可用指令替换关联，或解除关联并停用相关规则；完整步骤见第 12 章。删除只修改当前使用的配置，另一份应急副本不会自动更新。
 
-删除配置与停止远端服务是分开的操作。删除按钮不会停止服务，也不会撤销已经完成的操作。需要结束远端任务时，另到“后台运行”停止并确认结果。
+删除配置与停止远端服务是分开的操作。删除按钮不会停止服务，也不会撤销已经完成的操作。需要结束远端任务时，另到“运行记录”停止并确认结果。
 
 ### 12. 自动化管理
 
@@ -586,7 +633,7 @@ nohup 表示命令在远程主机后台继续运行，SSH 断开后仍可继续�
 | “停止” | 尝试停止规则判断、数据读取和后续动作安排，保留配置。等待确认；超时不表示已停止。 |
 | “重载” | 重新读取当前使用位置的配置。先保存编辑内容，检查结果；已有的配置暂停设置不会因此解除。 |
 
-操作前检查是否影响散热、告警或其他持续任务。停止引擎不能代替停止远程后台进程；远程任务需要在“后台运行”中停止并确认。
+操作前检查是否影响散热、告警或其他持续任务。停止引擎不能代替停止远程后台进程；远程任务需要在“运行记录”中停止并确认。
 
 “配置与备份”中的“停用自动化”和引擎“暂停”不是同一项操作。页面显示“自动化已暂停”时，先检查配置，再点击“启用自动化”。仅重启设备、重载或停止再启动引擎，不会解除这项配置暂停。详见第 13 章。
 
@@ -616,7 +663,11 @@ nohup 表示命令在远程主机后台继续运行，SSH 断开后仍可继续�
 4. 对“指令变量”，选择主机及已经配置变量名的指令，再设置检测间隔。
 5. 在表单中检查启用开关，保存后用该行的“查看变量”检查结果。
 
-数据源行提供启用开关、查看变量、导出和删除。停用或删除前，检查哪些规则还在使用它，以免影响任务。
+数据源行提供启用开关、查看变量、编辑、导出和删除。停用或删除前，检查哪些规则还在使用它，以免影响任务。
+
+修改已有数据源时，点击该行的编辑按钮，核对地址、认证、采集间隔和启用状态，再保存。已有字段映射会保留；修改后用“查看变量”检查来源、数值和更新时间。编辑窗口中的间隔以秒为单位，最多保留三位小数。新建时编号重复不会覆盖旧数据源。
+
+REST 按保存的 GET 或 POST 方法采集；WebSocket 接收服务推送；Socket.IO 使用对应事件和地址。测试成功后仍要检查实际采集是否更新。“指令变量”只读取已有状态，不会启动命令；需要新结果时，另行执行对应指令。
 
 导入和导出使用配置包。导入前预览 ID、类型及覆盖内容，按安全指南检查来源和信任要求。
 
@@ -627,6 +678,14 @@ nohup 表示命令在远程主机后台继续运行，SSH 断开后仍可继续�
 - 确认名称和数据源正确，值与类型适合规则比较。
 - 检查更新时间是否符合预期。窗口中的时间用于判断数据是否仍在更新。
 - 没有数据时，检查数据源是否启用，再测试连接和字段选择；远程指令变量还需检查对应指令的执行结果。
+
+#### 管理用户变量
+
+在“自动化”页点击“用户变量”，查看自己保存的变量和初始值。这里不列出设备实时采集的数据。
+
+1. 找到要删除的变量，点击删除图标。
+2. 核对受影响的数据源、模板和规则，按页面选择删除或处理关联。
+3. 确认后重新读取列表，并检查相关配置的启用状态和运行结果。不要把清除初始定义当作清空全部实时数据。
 
 #### 创建和测试动作模板
 
@@ -656,15 +715,17 @@ nohup 表示命令在远程主机后台继续运行，SSH 断开后仍可继续�
 
 #### 删除和替换关联配置
 
-规则、动作模板、SSH 命令和主机的删除，会影响其他配置。删除前先保存所需应急副本；删除后不能从页面撤销。
+规则、动作模板、SSH 命令、主机、数据源和用户变量的删除，都可能影响其他配置。删除前先保存所需应急副本；删除后不能从页面撤销。
 
 1. 在对应列表点击删除图标，核对目标名称和受影响项。
 2. 没有关联时，确认删除。有其他配置使用它时，按页面选择可用替换项，或选择“解除关联并停用相关规则”。
 3. 确认后刷新列表。检查目标已移除，并核对关联模板、规则和启用状态。
 
-删除动作模板时，解除关联会从相关规则中移除该动作，并停用规则。删除 SSH 命令时，关联模板会保留为停用草稿并清空命令引用；相关规则解除关联并停用。使用替换项时，先核对替换后的目标和动作，不能只看名称相似。
+删除动作模板时，解除关联会从相关规则中移除该动作，并停用规则。删除 SSH 命令时，关联模板会保留为停用草稿并清空命令引用；相关规则解除关联并停用。使用替换项时，先核对替换后的目标、动作和数据，不能只看名称相似。替换项无法提供所需数据时，相关配置可能停用并保留，等待修改。
 
-删除主机时，也要检查受影响的指令和数据源。缺少主机的指令不能执行；在有效主机下重建需要的指令并更新关联，检查后再使用。不要把删除本地主机配置与撤销远端公钥当作同一操作，具体见安全指南。
+删除主机时，也要检查受影响的指令和数据源。缺少主机的指令不能执行；编辑命令并选择有效主机，检查相关模板和规则后再启用。不要把删除本地主机配置与撤销远端公钥当作同一操作，具体见安全指南。
+
+删除完成后，页面分别报告删除、停用和更新关联的项目。按实际清单检查，不要把“已处理关联”理解成所有相关项目都已删除或仍可运行。
 
 #### 需要最终强制删除时
 
@@ -685,6 +746,10 @@ nohup 表示命令在远程主机后台继续运行，SSH 断开后仍可继续�
 7. 检查后保存，再启用。初次配置可先关闭“立即启用”。
 
 保存、启用或停用成功后，当前配置会更新，不需要为此重启。若整套自动化已暂停，保存不会自动恢复运行。刷新列表并检查实际结果；重要调整完成后，按第 13 章更新应急副本。
+
+自动启动暂时失败时，每 30 秒重试，最多等待 360 秒；结果未确认时先核验，不重复启动。本轮重试从未完成的后台启动步骤继续，已完成的前置步骤不重复执行。页面提示停止尝试或等待结束后，按提示检查再决定是否手动启动；手动失败不会自动重试。
+
+修改相关配置后，失败轮次可重新尝试；成功轮次仍遵守正常冷却。冷却时间用于限制自动触发，不应当作故障后的唯一检查依据。
 
 最多保存 64 条规则。这不是同时运行任务的数量保证；命令长度、条件和动作数量也会影响空间和内存。容量不足时，先删除不需要的配置或减少内容，再保存。
 
@@ -711,7 +776,7 @@ nohup 表示命令在远程主机后台继续运行，SSH 断开后仍可继续�
 3. 开启“显示在面板”和“允许手动触发”，保存并启用规则。
 4. 返回“系统”的设备面板，确认卡片名称和状态，再执行一次并检查结果。
 
-自动规则也可显示在面板；显示卡片不会把它改成仅手动运行。停用规则仍可能显示卡片，但不能启动。面向 admin 提供操作时，名称应说明会发生什么，并告诉用户需要核验或停止后台任务时联系谁。root 从“后台运行”查看日志、核验和停止服务。
+自动规则也可显示在面板；显示卡片不会把它改成仅手动运行。停用规则仍可能显示卡片，但不能启动。名称应说明操作后果。包含后台 SSH 任务时，admin 可使用卡片上的日志和停止按钮；配置修改仍由 root 处理。root 也可从“运行记录”查看日志、核验和停止服务。
 
 #### 导入规则配置包
 
@@ -736,7 +801,7 @@ nohup 表示命令在远程主机后台继续运行，SSH 断开后仍可继续�
 
 仅用于 HTTPS 的证书不一定有配置包签发权限。即使本机导出成功，也可能无法导回；请配置提供方按提示处理证书用途，不要关闭验证或反复导入。
 
-导入和修改不会撤销已经执行的动作，也不会停止远端后台进程。需要结束任务时，在“后台运行”单独处理并确认。
+导入和修改不会撤销已经执行的动作，也不会停止远端后台进程。需要结束任务时，在“运行记录”单独处理并确认。
 
 #### 导入未完成时怎么办
 
@@ -776,6 +841,8 @@ nohup 表示命令在远程主机后台继续运行，SSH 断开后仍可继续�
 
 在“自动化”页点击“配置与备份”。先看“当前使用”，再决定保存、恢复或切换哪份配置。操作前检查是否影响散热、告警或远端任务。
 
+使用 SD 卡时，在“应急副本”分组查看“保存当前配置”和“恢复已保存的配置”。按下文步骤点击“保存应急副本”或“从应急副本恢复”。“SD 卡与自动化”分组提供检查 SD 卡和启停自动化操作。保存副本不会切换配置。
+
 #### 分清三类内容
 
 | 内容 | 保存方式 |
@@ -807,7 +874,7 @@ nohup 表示命令在远程主机后台继续运行，SSH 断开后仍可继续�
 3. 确认恢复，等待完成。列表会更新，不需要为恢复配置而重启。
 4. 检查规则、主机、变量和启用状态，确认任务结果。仍暂停时，先检查配置，再点击“启用自动化”。
 
-恢复不会改变网络、风扇或密钥。已启动的远端服务不会被恢复操作结束；需要时从“后台运行”处理。
+恢复不会改变网络、风扇或密钥。已启动的远端服务不会被恢复操作结束；需要时从“运行记录”处理。
 
 #### 没有可用 SD 卡时
 
@@ -846,9 +913,9 @@ nohup 表示命令在远程主机后台继续运行，SSH 断开后仍可继续�
 
 # TianshanOS Root Operations Guide
 
-This guide is based on TianshanOS 0.6.3. For other versions, check the corresponding version-specific instructions.
-
 This guide covers routine functions in Part I and terminal access, remote commands, Automation, and configuration backup in Part II. Root operations can affect the device and remote hosts; check the target and active tasks before proceeding. See the separate Security Guide for security management.
+
+Version covered: 0.6.4. Revised November 3, 2026.
 
 Use the controls shown on your device. Some need specific hardware or configuration. On a computer, hover over an icon button to see its name. On a phone, swipe within a wide table to view its other columns.
 
@@ -866,6 +933,8 @@ Use the controls shown on your device. Some need specific hardware or configurat
 Logging in with the default password opens a “Security Reminder.” Enter the current password, then enter the new password twice and select “Change Now.” Both new-password entries must match. Select “Later” to close the reminder.
 
 When you have finished, select “Logout” in the upper-right corner. You will need to sign in again to use the device.
+
+If permission is denied, check the account. If the login has expired, sign in again. Then check the result of the previous operation. Signing in does not repeat an earlier task. Do not immediately upload, delete, or upgrade again.
 
 #### Switch Languages
 
@@ -889,9 +958,10 @@ Select “System” in the top navigation.
 
 #### View Resource and Service Status
 
-“Management Chip Resources” shows CPU, DRAM, and PSRAM usage on the management chip. These readings do not show resource usage on AGX or LPMU.
+“Management Chip Resources” shows CPU, DRAM, and PSRAM usage on the management chip. These readings do not show resource usage on the Inference Computer or Application Computer.
 
 - Select “Details” to view total, used, and free memory and other memory information.
+- Values marked “estimated” in memory details are for reference only. If a warning appears, keep the page information and follow its guidance.
 - “Services” shows the number of running services and the total. Select it to view each service’s state and startup stage.
 - If a service reports a problem, refresh its status. To restart it, follow “Restart One Service” below.
 
@@ -937,40 +1007,50 @@ Select “Shutdown Settings” to change:
 
 Save the form to apply the updated protection settings.
 
+After opening “Shutdown Settings,” wait for the current settings to load. If the page says it is showing defaults, do not treat them as the device's current settings. Review the voltages and wait times before saving. You can cancel while loading.
+
 ##### Switch the Top USB Target
 
 Switching the USB target may temporarily disconnect an attached device. Confirm the target and finish active work before continuing.
 
-Devices that support USB switching show a “USB” button. Each click switches the top USB port to the next target: ESP, AGX, then LPMU. Check the target shown on the button and the page message to confirm the result.
+Devices that support USB switching show a “USB” button. Each click switches the top USB port to the next target: ESP, Inference Computer, then Application Computer. “Disconnected” means no target is connected. Check the target shown on the button and the page message to confirm the result.
 
 ### 3. Device Panel
 
 The “Device Panel” is on the “System” page. It contains module power controls, Quick Actions, and data widgets.
 
-#### Control AGX and LPMU
+#### Control the Inference Computer and Application Computer
+
+“Inference Computer” is the former AGX label; “Application Computer” is the former LPMU label. Device identifiers and commands may still use `agx` and `lpmu`. Do not rename those identifiers yourself.
 
 Save work on the module and complete its normal shutdown process before removing power. Forced power-off can cause loss of unsaved data.
 
-- “AGX Power” shows the power-control state. Select it to switch power on or off, then wait for confirmation.
-- “LPMU Power” shows “Online,” “Offline,” or “Unknown.” These states come from a network check. Online means the module is reachable; offline means it is not. Neither state alone confirms whether the module is powered on or off.
-- Selecting the LPMU button triggers the same action as pressing its physical power button. Wait for the check and the displayed result. If the result is unknown, check the module and network before pressing the button again.
+- “Inference Computer Power” shows the power-control state. Select it to switch power on or off, then wait for confirmation.
+- On “Application Computer Power,” “Network reachable” means the network can be reached; “Network unreachable” means it cannot. A failed check leaves the power state unknown. These results alone do not confirm whether the computer is powered on or off.
+- Selecting the Application Computer button triggers the same action as pressing its physical power button. Wait for the check and the displayed result. If the result is unknown, check the computer and network before pressing the button again.
 
 #### Use Quick Actions
 
 A root user configures Quick Action cards. Card visibility and manual execution are separate settings. Seeing a card does not mean you can start its task.
 
 1. Read the card name and description to identify the task.
-2. Select the card and read the result. Do not start it again while processing.
-3. An executed or queued message still needs an actual result check on the target device or task. Use “Background runs” to verify, view logs, or stop a background service (Chapter 11).
+2. Select “Start” or the card and read the result. Do not start it again while processing.
+3. An executed or queued message still needs an actual result check on the target device or task. If a service state is shown, distinguish “Process running” from “Ready.” A card with several tasks may show “Some tasks are not ready.”
+
+Cards with remote background tasks also offer “View Log” and “Stop.” Open the logs to review the related tasks. If several records appear, choose by task name and original host. Check the target before stopping it, wait for the result, then verify that it stopped. Closing the log or stopping log updates does not stop the task.
+
+“Run records” can include tasks started earlier; their presence does not mean they are still running. Select “Verify remote state” when needed. Open “Run records” from the relevant card, System, or Automation (Chapter 11). If a control is unavailable or the result remains unclear, check the records and System Logs.
 
 If starting is blocked, follow the reason shown. Do not keep selecting start:
 
 - Rule disabled or manual triggering not allowed: Check the rule settings on “Automation” (Chapter 12). A visible card is not permission to run it.
 - A task or background operation is in progress: Wait for its result. Do not start it again.
-- A background run record already exists for the task: Verify the original task in “Background runs” and confirm that it has ended before starting again.
+- A run record already exists for the task: Check the original task's state and logs instead of starting it again. If it needs to end, stop and verify it. Check “Run records” and System Logs if you cannot resolve it.
 - Configuration not loaded, a required item missing, or Automation paused: Check the configuration and enable state on “Automation” (Chapters 12 and 13).
 
-After triggering one action, wait a few seconds before starting another. Closing the page, deleting a card, or restarting TianshanOS does not stop background services on remote hosts.
+If the page reports automatic starting or a retry wait, let it continue. Temporary start failures are retried every 30 seconds for up to 6 minutes. An unconfirmed start is checked before another launch. A failed manual run is not automatically repeated. When the wait ends, check the device and network as directed before deciding whether to select “Start.”
+
+After triggering one action, wait a few seconds before starting another. Closing the page, deleting a card, or restarting TianshanOS does not stop background services on remote hosts. To keep a service stopped, disable any automatic rule that could start it again on Automation.
 
 Press and hold a card until the reorder indicator appears, then drag it to change the display order.
 
@@ -990,6 +1070,10 @@ Data widgets continuously display device data in the “Device Panel.”
 4. Edit its label, display style, and unit as needed, then save.
 
 Existing widgets can be edited, deleted, and reordered. You can also select a widget card to edit it. Press and hold a widget, then drag it to a new position.
+
+“Small,” “Medium,” and “Large” use one, two, and three columns; they fit within narrower screens. When editing an icon, enter its name using the example on the page. Each value in a dual-value widget has its own data setting. Check that both sources are correct and the data updates.
+
+“Failed to load data widgets” does not mean no configuration exists. Resolve the cause and read it again. If saving fails or its result is unconfirmed, keep the current content and check the message. Seeing your changes on the page does not confirm they were saved.
 
 ### 4. Fan Management
 
@@ -1032,6 +1116,10 @@ Select “Curve” in the Fan Control section header to open “Fan Curve Manage
 
 If saving fails, read the message and check the current state before retrying. After unbinding temperature variables, check the effective temperature and fan state as well.
 
+After opening settings or choosing another fan, wait for its current settings to load. If the page says it is showing defaults or an earlier draft, those values do not confirm the device's current settings. Review them before saving. Check the read and save results for temperature bindings too.
+
+If the message says the fan settings were applied but not fully saved, the current adjustment may already be in effect. A restart may restore earlier settings. Check the actual fan state, confirm that device storage is available, then save again. Do not restart the device just to test whether the save worked.
+
 #### Import and Export a Curve
 
 - Select “Import Config” and choose a curve JSON file. JSON is the file format used to store curve data. Review the nodes, limits, and fan number, then select “Save curve” to apply them.
@@ -1052,7 +1140,7 @@ A test temperature temporarily replaces the normal source and affects Curve or S
 #### Routine Controls
 
 - Use the light-bulb button at the bottom of a card to turn the LED on or off.
-- Move the “Brightness” slider, or choose a color or preset.
+- Use the brightness, hue, and saturation sliders. Brightness controls how bright the light is; hue chooses the color; saturation moves between white and color. Saturation at 0 gives white light. Hue and saturation changes are applied when you release the slider.
 - Use the animation button to open “LED Settings.” Select an animation under “Programmatic Animation,” then use its play or stop control.
 - Select the save icon at the bottom right of the card to save the current LED configuration.
 - Select “All Off” to turn off all LEDs and check the reported result. If some fail, check those devices.
@@ -1062,7 +1150,7 @@ A test temperature temporarily replaces the normal source and affects Curve or S
 Matrix cards provide icons for the available features. Open one, then switch between these groups in “LED Settings”:
 
 - “Programmatic Animation”: Select and run an animation.
-- “Image/QR Code”: Choose an image from the SD card or enter content for a QR code.
+- “Image/QR Code”: Choose image or QR code under “Type” in the card, then select an SD-card image or enter the QR content.
 - “Text Display”: Set text, font, alignment, scrolling, foreground, and background.
 - “Post-processing Filter”: Choose a filter and parameters, then apply or stop it.
 - “Color Correction”: Adjust the display and use the available reset, import, or export controls.
@@ -1124,15 +1212,19 @@ DHCP automatically assigns network addresses to connected devices. Select “Cli
 
 NAT forwards network traffic between the device's network interfaces. Enable or disable NAT, then select “Save” to retain the setting. Check the WiFi and Ethernet status afterward.
 
-##### Access the Upstream Network via LPMU
+##### Access the Upstream Network via the Application Computer
 
-This operation uses the configured LPMU host to set up network access. Before starting, confirm that LPMU is reachable and the network cables are connected. Obtain the sudo password for the SSH account on that host. This password authorizes system changes and may differ from the WebUI password.
+This operation uses the configured Application Computer to set up network access. On System, first switch USB to “Application Computer” and check the network cables. Its SSH host must use key authentication and have a verified host fingerprint. Check the host, key, and fingerprint settings using the Security Guide.
 
-1. Under “Upstream Network Access,” select “Access via LPMU.”
-2. Enter the LPMU sudo password and select the access button. The password is used only for this run and is not saved; enter it again for a later run.
+Obtain the sudo password for the SSH account on that host. This password authorizes system changes and may differ from the WebUI password.
+
+1. Under “Upstream Network Access,” select “Access via Application Computer.”
+2. Enter the Application Computer sudo password and select the access button. The password is used only for this run and is not saved; enter it again for a later run.
 3. Wait for the operation to finish. Do not start it again while processing.
 4. Access is confirmed only when the result reports both an internet connection and completed network configuration.
-5. If it fails or the result is unconfirmed, read the reason first. Expand “Execution Log” for more detail. Check the password for a password error, or the cabling and upstream network if no internet connection is found.
+5. After closing the result window, select “View Result” to open it again. If it fails or the result is unconfirmed, read the reason and failure stage. Expand “Execution Log” for more detail. Check the password for a password error, or the cabling and upstream network if no internet connection is found.
+
+If the host fingerprint is unconfirmed or has changed, verify the host's identity on Security first. Do not keep retrying access or skip verification. Remote script output may remain in its original language; keep it for investigation if needed.
 
 A failed status request does not mean the script has stopped. Use the available “Refresh Status” control to check the current run before deciding whether to try again.
 
@@ -1149,6 +1241,8 @@ The SD Card is removable storage, and SPIFFS is internal device file storage. Se
 - Select the rename button, enter a new name, and confirm.
 - Select “New Folder,” enter a folder name, and create it.
 - Select the refresh button to reload the current directory and storage state.
+
+Uploading, deleting, renaming, creating folders, and mounting or unmounting the SD card require a valid login. Reading and downloading protected Automation files also has a root permission check. To access these files, confirm a valid root login and use the configuration pages. Do not change the path or use another entry to bypass permission checks.
 
 #### Upload Files
 
@@ -1198,7 +1292,9 @@ The device reboots during an update, temporarily disconnecting the WebUI. Save a
 
 The first upgrade from an older storage layout, such as 0.6.2, needs a matched USB / serial package approved by the publisher. Uploading only the firmware or WebUI cannot complete this upgrade. Ask the device administrator or provider to follow the package instructions. Do not erase the whole flash or use an old partition table.
 
-Save important files and keep the original SD card installed. The first startup migrates existing configuration; keep power connected. Afterward, check login, networking, fans, lighting, SSH hosts, and Automation rules. Review rules before testing any task that controls power, restarts a device, or runs remote commands.
+Save important files before upgrading. The matched tool preserves keys and the SD card; it does not clear configuration on the card. The first startup may still read or migrate existing configuration. Customer delivery follows the “clear old configuration and configure again” procedure. The device administrator or provider must follow the delivery instructions. Do not erase the whole flash yourself or treat preserved files as completed configuration.
+
+Keep power connected during the upgrade and first startup. Afterward, check login, networking, fans, lighting, SSH hosts, and Automation rules. Review rules before testing any task that controls power, restarts a device, or runs remote commands.
 
 The matched package updates both application slots. Do not assume that the other slot still contains the old version. If the root password is lost, use only a recovery method confirmed by the provider to match the 0.6.3 layout. Do not flash an old password-reset image.
 
@@ -1206,7 +1302,7 @@ The web update methods below apply only to versions the publisher has approved f
 
 #### Check for Updates from an OTA Server
 
-1. Review the “Current Version.”
+1. Review the “Current Version.” Two 0.6.3 installations can be different revision builds. Check the full version, build time, and publisher's instructions rather than only the first three numbers.
 2. Enter the OTA server address supplied by an administrator or publisher.
 3. Select “Save,” then select “Check Update.”
 4. The page reports “Update Available,” “Already up to date,” an older server version, or an error.
@@ -1252,6 +1348,8 @@ Check which operation failed, then read the reason and next step. If the message
 
 Select “Details” when available. Select “Hide” to hide the details. If a × button is shown, select it to dismiss the message. For further checks, keep a record of the message and details, then open “System Logs” on Terminal to investigate.
 
+If a message or its details are long, scroll within that area to read the full content before deciding what to do next.
+
 If the result is unconfirmed, refresh and check the device, file, or task state. A timeout or lost connection does not mean the operation failed to run. Do not immediately repeat power, delete, task-start, or upgrade operations. If the result remains unclear, open “System Logs” on Terminal to investigate.
 
 Check successful, failed, and unconfirmed batch results separately. Confirm saved files in the browser’s download list.
@@ -1271,6 +1369,10 @@ Check successful, failed, and unconfirmed batch results separately. Confirm save
 
 Input is not executed while the page shows “Not connected to device.” After a disconnect, wait for the reconnection message before submitting a command again to avoid duplicate execution.
 
+If another terminal session is in use, close the original terminal first. If connections are full, wait for reconnection rather than opening more tabs. After an expired login, sign in again and wait for Terminal to confirm the connection.
+
+While a command is active, wait for completion or request a stop. If the page says it is waiting for the task to exit safely, stopping is still in progress. Wait for the prompt before entering another command. If output is incomplete, check the task result and System Logs separately. Missing output is not a reason to run the command again.
+
 Terminal supports these keyboard controls:
 
 | Control | Purpose |
@@ -1284,7 +1386,7 @@ Terminal supports these keyboard controls:
 
 #### Open a Remote SSH Shell
 
-An SSH Shell sends subsequent keyboard input to a remote host. Confirm the target address, user, and authentication method, and complete the SSH preparation described in the Security Guide before connecting.
+An SSH Shell sends subsequent keyboard input to a remote host. Confirm the target address, user, and authentication method, and complete the SSH preparation described in the Security Guide before connecting. If the web terminal requires host verification, check and confirm the fingerprint on Security before reconnecting. Do not answer a confirmation in a serial console or another person's terminal on its behalf.
 
 1. Enter `ssh --help` to view the SSH command options.
 2. Enter `ssh --host <host> --user <user> --shell`, replacing each placeholder, including its angle brackets, with the actual value. To specify a port, add `--port <port>` before --shell.
@@ -1330,17 +1432,21 @@ Check the address and confirm the reason through a trusted channel. Select “Ca
 2. Choose a host currently shown under “Select Host.”
 3. Review its saved items under “Command List.”
 
-“Orphan Commands” reference hosts that no longer exist and cannot run. Check the host configuration. To keep the task, recreate the command under a valid host, update the templates and rules that use it, and check the result before removing the orphan.
+Command text is collapsed by default. Select “Show command” to see all its lines, or “Hide command” to collapse it. Expanding the text does not execute it.
+
+“Orphan Commands” have no usable host and cannot run. Prepare a valid host, edit the command, choose that host, and review the content. Enable and save it only when execution is allowed. Check the templates and rules that use it. A new command with the same name is not needed just to reconnect it to a host.
+
+To change a host address, port, account, or key, use edit in the SSH host list on Security; see the Security Guide for the full steps. Changes apply to later connections. Existing tasks remain managed using the original host details in their run records. Before deleting a key, review the related hosts and run records. Deleting a key does not stop remote tasks, but may prevent this device from checking or stopping them.
 
 #### Create or Edit a Command
 
 A saved command runs on a remote host. Verify the command and required permissions on that host before saving it. Take extra care with commands that delete data, shut down or restart a host, or overwrite files.
 
 1. Select a host, then select “New Command.” Use the edit button on an existing command to change it.
-2. Enter a unique “Command ID.” It may contain letters, numbers, underscores, and hyphens, and cannot begin or end with an underscore or hyphen.
+2. Enter a unique “Command ID,” such as `model.v1`. Do not use line breaks, control characters, slashes, or only `.` or `..`. It can hold up to 31 English letters or digits; Chinese and some other characters use more space. Follow the field's length message.
 3. Enter “Command Name” and “Command.” Put each command on a separate line when using multiple lines.
 4. Add a description and choose an icon or an image from the SD Card if needed.
-5. Review the run mode and output-matching options, then select “Save.”
+5. Check the host, enable setting, run mode, and output-matching options, then select “Save.” Creating a duplicate ID reports an error instead of overwriting the existing command. Use the existing command's edit button to change it.
 
 The name helps you recognize a command; Automation uses its ID to find it. You cannot change an existing command's ID. To use a new ID, create a command and update the templates and sources that use it.
 
@@ -1353,6 +1459,10 @@ The name helps you recognize a command; Automation uses its ID to find it. You c
 
 “Clear” does not undo work already completed on the remote host. Success, failure, extracted content, and final status depend on the command's matching settings.
 
+The page checks this execution's result without running the command again. If automatic result checks pause, reopen Commands in the same browser tab to continue checking. Logging out, restarting the device, or a result no longer being retained may prevent recovery. Check the actual remote state before deciding whether to run it again.
+
+Distinguish the command's exit result, condition matching, and log completeness. “Execution completed with confirmed exit code 0” confirms a normal exit. Incomplete collected output can still leave matching and extraction unconfirmed. Missing log output on the page does not mean the remote command failed. Follow the message to check the original output and target host.
+
 #### Configure Result Matching
 
 Result matching converts remote output into a status that is easier to use.
@@ -1360,11 +1470,13 @@ Result matching converts remote output into a status that is easier to use.
 - “Expected match”: Marks the result successful when the output contains the configured text.
 - “Fail Match”: Marks the result failed when the output contains the configured text.
 - “Extract regex”: Uses one `(.*)` capture group to save selected output.
-- “Stop on match”: Ends a continuing command after a successful match.
+- “Stop on match”: Requests an end to a continuing command after a configured result matches. Check the final state as well.
 - “Timeout (s)”: Sets how long to wait for a match, in seconds. It applies only when a success or failure pattern is set, or “Stop on match” is enabled.
 - “Variable Name”: Saves status and extracted output for use on the Automation page.
 
 Choose stable, specific success and failure text. Broad text can produce incorrect matches. Execute the command once and review “Match Results” before using its variables in a rule.
+
+When Automation references this ordinary SSH command, it also uses the saved matching, extraction, and stop-on-match settings. A match already found may be retained when the execution deadline is reached. A match or the absence of a timeout does not prove the remote process ended. Check the exit code and actual state too.
 
 #### Use Background Execution and Service Mode
 
@@ -1372,18 +1484,20 @@ nohup means a command continues to run in the remote host's background after the
 
 Background runs require SSH key authentication. Deploy the public key on “Security,” then select the associated host. Do not save plaintext passwords in background commands. The same key must remain available to stop or verify the original task.
 
-After enabling “Run in background (nohup)” and executing the command, select “Background runs” on Commands. The root-only control on System and the control on Automation open the same list.
+After enabling “Run in background (nohup)” and executing the command, select “Run records” on Commands. The root-only control on System and the control on Automation open the same list. Records include tasks started earlier, not proof that they are still running. Starting a task also checks related earlier records.
 
 1. Find the original task by its name, user, host address, and port.
 2. Select “Verify remote state” to check this run on the original host. “Refresh” only reads known records; it does not replace verification.
 3. Select “View Log” to read the last 100 lines from the original host. Select “Follow log” for updates. “Stop following” stops only the page updates.
 4. To end the task, select “Stop” on its record and confirm. Wait for the result, then verify that it has stopped. Do not start it again without checking.
 
-After a device restart, old records show “Not checked.” “Remote state unconfirmed” means it is not known whether the task is stopped or running. “Last result” describes the last confirmed result, not a guarantee of the current state.
+After a device restart, old records show “Not checked.” “Remote state unconfirmed” means neither stopped nor running. “Last result” describes the last confirmed result, not a guarantee of the current state.
 
 A failed read does not mean the log is empty or the process has exited. Check the original host connection, log path, and SSH key. Verify again after resolving the issue; do not restart a task just because its status check failed.
 
-Deleting a command, changing its host configuration, or switching Automation configurations does not end a remote process. Manage the original task from “Background runs.” Recreating a command with the same name or ID does not take over the original task. Keep any key still needed to control it.
+If the log is no longer on the original host, the host may have restarted or temporary files may have been cleared. This differs from an empty log and does not prove the task never ran. Verify the remote state or ask the host administrator to check.
+
+Deleting a command, changing its host configuration, or switching Automation configurations does not end a remote process. Manage the original task from “Run records.” Recreating a command with the same name or ID does not take over the original task. Keep any key still needed to control it.
 
 “Service Mode” watches a background task until it becomes available. Provide “Ready match” and “Variable Name.” Adjust the optional failure pattern and timing settings as needed:
 - “Ready match”: Marks the service ready when the configured text appears. Use `|` to separate multiple patterns.
@@ -1407,7 +1521,7 @@ New imports check the source, signature, signing permission, and target device. 
 
 After selecting delete, review the linked templates and rules. Choose an available replacement command, or unlink the affected configuration and disable its rules. See Chapter 12 for the steps. Deletion changes only the configuration in use; it does not update the other emergency copy.
 
-Deleting configuration and stopping a remote service are separate operations. Deleting does not stop the service or undo completed operations. To end a remote task, stop it from “Background runs” and confirm the result.
+Deleting configuration and stopping a remote service are separate operations. Deleting does not stop the service or undo completed operations. To end a remote task, stop it from “Run records” and confirm the result.
 
 ### 12. Automation Management
 
@@ -1431,7 +1545,7 @@ The top of the page shows the engine state, rule, variable, and source counts, t
 | “Stop” | Attempts to stop rule checks, data reading, and scheduling later actions, while keeping configuration. Wait for confirmation; a timeout does not mean the engine has stopped. |
 | “Reload” | Reads configuration again from the location in use. Save edits and check the result. An existing configuration pause remains in place. |
 
-Check whether cooling, alerts, or other ongoing tasks depend on Automation. Stopping the engine does not stop a remote background process. Stop remote tasks from “Background runs” and confirm the result.
+Check whether cooling, alerts, or other ongoing tasks depend on Automation. Stopping the engine does not stop a remote background process. Stop remote tasks from “Run records” and confirm the result.
 
 “Disable automation” under “Configuration & backup” is separate from the engine's “Pause” control. If the configuration is paused, review it before selecting “Enable automation.” Restarting the device, reloading, or stopping and starting the engine does not clear this configuration pause. See Chapter 13.
 
@@ -1461,7 +1575,11 @@ Select “Add” under “Data Sources” and choose a type:
 4. For a Command Variable, select the host and a command with a configured variable name, then set the polling interval.
 5. Check the enable switch in the form, save, and use “View Variables” on its row to check the result.
 
-Source rows provide an enable switch, variable viewer, export, and delete controls. Check which rules use a source before disabling or deleting it, so you do not disrupt their tasks.
+Source rows provide an enable switch, variable viewer, edit, export, and delete controls. Check which rules use a source before disabling or deleting it, so you do not disrupt their tasks.
+
+To change an existing source, select its edit button. Review the address, authentication, collection interval, and enable state, then save. Existing field mappings remain in place. Use “View Variables” afterward to check the source, values, and update times. Intervals in the edit window are in seconds, with up to three decimal places. Creating a duplicate ID does not overwrite the existing source.
+
+REST collection uses the saved GET or POST method. WebSocket receives pushed data; Socket.IO uses the configured event and address. After a successful test, check that actual collection keeps updating. A Command Variable source only reads existing status; it does not start a command. Run the command separately when a new result is needed.
 
 Import and export use configuration packages. Preview IDs, types, and replacements before import, and follow the Security Guide for source and trust requirements.
 
@@ -1472,6 +1590,14 @@ Select the eye-shaped “View Variables” icon on a source row. The window show
 - Confirm the names and source, and check that values and types suit the rule’s comparisons.
 - Check whether update times match the expected data frequency.
 - If no data is available, check that the source is enabled, then test the connection and fields. For command variables, check the command’s execution result too.
+
+#### Manage User Variables
+
+Select “User variables” on Automation to view variables and initial values you saved. This list does not contain the device's live collected data.
+
+1. Find the variable and select its delete icon.
+2. Review the affected sources, templates, and rules. Follow the page to delete or handle their links.
+3. Read the list again after confirming. Check the related configuration's enable states and run results. Removing an initial definition is not the same as clearing all live data.
 
 #### Create and Test Action Templates
 
@@ -1501,15 +1627,17 @@ After editing, save and check the parameters. If saving fails, keep the draft an
 
 #### Delete Configuration and Handle Its Links
 
-Deleting a rule, template, SSH command, or host can affect other configuration. Save an emergency backup first if you will need it. Deletion cannot be undone from the page.
+Deleting a rule, template, SSH command, host, source, or user variable can affect other configuration. Save an emergency backup first if you will need it. Deletion cannot be undone from the page.
 
 1. Select delete in the relevant list. Review the target name and affected items.
 2. Confirm deletion if there are no links. Otherwise, choose an available replacement or “Unlink and disable affected rules.”
 3. Refresh the list afterward. Confirm removal and check the linked templates, rules, and enable states.
 
-Unlinking a deleted template removes its action from affected rules and disables those rules. Deleting an SSH command leaves linked templates as disabled drafts with the command reference cleared; affected rules are unlinked and disabled. Before choosing a replacement, check its target and action, not just a similar name.
+Unlinking a deleted template removes its action from affected rules and disables those rules. Deleting an SSH command leaves linked templates as disabled drafts with the command reference cleared; affected rules are unlinked and disabled. Before choosing a replacement, check its target, action, and data, not just a similar name. If the replacement cannot supply the required data, related configuration may be disabled and kept for editing.
 
-When deleting a host, also review affected commands and sources. A command without a host cannot run. Recreate needed commands under a valid host and update their links, then check them before use. Deleting local host configuration is separate from revoking a remote public key; see the Security Guide.
+When deleting a host, also review affected commands and sources. A command without a host cannot run. Edit it to choose a valid host, then check related templates and rules before enabling it. Deleting local host configuration is separate from revoking a remote public key; see the Security Guide.
+
+After deletion, the page reports deleted, disabled, and relinked items separately. Check the actual list. Handling links does not mean every related item was deleted or is ready to run.
 
 #### Use Force Delete When Needed
 
@@ -1530,6 +1658,10 @@ If configuration changes during confirmation, select “Review deletion impact,�
 7. Review, save, and then enable the rule. Leave “Enable immediately” off while configuring it for the first time.
 
 Saving, enabling, or disabling a rule updates the current configuration without a restart. If Automation is paused, saving does not resume it. Refresh the list and check the result. Update the emergency backup after important changes, as described in Chapter 13.
+
+Temporary automatic-start failures are retried every 30 seconds for up to 360 seconds. An unconfirmed result is verified before another launch. Retries in that attempt continue from the unfinished background-start step; completed earlier steps are not repeated. If the page says it has stopped trying or the wait has ended, follow the message before deciding whether to start manually. Manual failures are not automatically retried.
+
+Changing related configuration allows a failed attempt to try again. Successful attempts still follow the normal cooldown. Cooldown limits automatic triggers; it is not the only thing to check after a failure.
 
 You can save up to 64 rules. This is not a guarantee that 64 tasks can run at once. Command length and the number of conditions and actions also affect storage and memory. If capacity is insufficient, remove unneeded configuration or reduce its content before saving.
 
@@ -1556,7 +1688,7 @@ Disabling a rule prevents new triggers; a run already started may continue. To s
 3. Enable “Show on panel” and “Allow manual trigger,” then save and enable the rule.
 4. Return to the System Device Panel. Check the card’s name and state, run it once, and review the result.
 
-Automatic rules can also appear on the panel. Showing a card does not make its rule manual-only. A disabled rule may remain visible but cannot start. Give admin-facing actions names that explain their effect, and tell users whom to contact to verify or stop background tasks. Root users view logs, verify, and stop services from “Background runs.”
+Automatic rules can also appear on the panel. Showing a card does not make its rule manual-only. A disabled rule may remain visible but cannot start. Name actions to explain their effect. For background SSH tasks, admin can use the card's log and stop buttons; configuration changes remain root operations. Root can also view logs, verify, and stop services from “Run records.”
 
 #### Import a Rule Configuration Package
 
@@ -1581,7 +1713,7 @@ Imported rules can be edited, enabled, disabled, and deleted. Check the current 
 
 A certificate intended only for HTTPS may not authorize configuration signing. A successful local export may still be rejected on import. Ask the provider to resolve the certificate-purpose issue; do not disable verification or repeat the import.
 
-Imports and edits do not undo completed actions or stop remote background processes. End those tasks separately from “Background runs” and confirm the result.
+Imports and edits do not undo completed actions or stop remote background processes. End those tasks separately from “Run records” and confirm the result.
 
 #### If Import Does Not Complete
 
@@ -1621,6 +1753,8 @@ A condition variable without a sample is not necessarily missing configuration; 
 
 Select “Configuration & backup” on Automation. Check “Currently using” before saving, restoring, or choosing a configuration. First review any effect on cooling, alerts, or remote tasks.
 
+While using the SD card, find “Save current configuration” and “Restore saved configuration” in the emergency-backup group. Follow the steps below to select “Save emergency backup” or “Restore emergency backup.” The “SD card and automation” group contains card checks and Automation enable controls. Saving a copy does not switch configurations.
+
 #### Distinguish the Three Types of Content
 
 | Content | How it is saved |
@@ -1652,7 +1786,7 @@ A restore replaces the current SD-card configuration with the internal copy, whi
 3. Confirm and wait for completion. The lists update without a device restart.
 4. Check rules, hosts, variables, enable states, and task results. If still paused, review the configuration before selecting “Enable automation.”
 
-A restore does not change networking, fans, or keys. It does not end running remote services. Manage them from “Background runs” if needed.
+A restore does not change networking, fans, or keys. It does not end running remote services. Manage them from “Run records” if needed.
 
 #### When No Usable SD Card Is Available
 
