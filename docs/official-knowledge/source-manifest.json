@@ -1469,7 +1469,7 @@
         "https://ota.rminte.com/"
       ],
       "path": "zh/demonstrations-and-releases.md",
-      "sha256": "1be8beffdeaf928b70d94954c8d0fd57896f02630e3e5ab28c3a5745a3ba5fef",
+      "sha256": "a1bfab2411d07c8030144d769947ad6e30f71a9b2a586f3ec68eb181192b7a6a",
       "default_retrieval": true,
       "evidence_status": "source transcription; not independent operational verification"
     },
@@ -1492,7 +1492,7 @@
         "https://ota.rminte.com/"
       ],
       "path": "en/demonstrations-and-releases.md",
-      "sha256": "cda381e9a02ce20adbccb16c6aea38b0c425ff9dcd9d9cddefb46107ec80482f",
+      "sha256": "cb38d2bbb9acd431055515fce4d1487f221886e71ab6de6a77c934099846193b",
       "default_retrieval": true,
       "evidence_status": "source transcription; not independent operational verification"
     },

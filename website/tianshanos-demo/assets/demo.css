@@ -1,8 +1,8 @@
-/* Demo adaptations; the device's v0.6.2 appearance stays in upstream.css. */
+/* Demo adaptations; the device's v0.6.4 appearance stays in upstream.css. */
 #app{min-height:0}
 .header{position:relative;top:auto;left:auto;right:auto;margin:20px 24px 0}
 .main{margin-top:20px}
-.demo-note{margin:0 0 16px;color:var(--ink-2);font-size:12px;line-height:18px}
+.demo-note{margin:8px 24px 0;color:var(--ink-2);font-size:12px;line-height:18px}
 #fans-grid>.fan-card:only-child .fan-head .t-section{display:inline}
 #fans-grid>.fan-card:only-child .fan-head{margin-bottom:10px}
 .demo-recommended{margin:6px 0;font-size:11px;line-height:16px;color:var(--ink-2);font-weight:400}
