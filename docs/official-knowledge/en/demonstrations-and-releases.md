@@ -14,6 +14,6 @@ evidence_status: "source transcription; not independent operational verification
 
 # Website demonstrations and real devices
 
-The TianshanOS website demonstration is a static simulation based on 0.6.2, without a device backend. Charts, example files, terminal commands, rule execution and OTA progress are not real device results. The current Admin and Root guides are based on 0.6.3. Case demonstrations and downloads require per-case authorization; a public case description does not grant access.
+The TianshanOS website demonstration is a static simulation based on 0.6.4, without a device backend. Charts, example files, terminal commands, rule execution and OTA progress are not real device results. The current Admin and Root guides are based on 0.6.4. Case demonstrations and downloads require per-case authorization; a public case description does not grant access.
 
 Use the download center and current OTA release information for firmware and WebUI downloads. A documentation version does not establish a released firmware version.

@@ -1,14 +1,37 @@
 {
-  "version": "0.6.2",
+  "version": "0.6.4",
   "default_language": "en",
   "fan_id": 0,
   "recommended_mode": "auto",
   "demo_viewport_width": 1440,
-  "commit": "88dd98079ce14d2180afef8efc41d742735568da",
-  "source": "https://github.com/RMinte/TianshanOS/tree/v0.6.2/components/ts_webui/web",
+  "commit": "120f0c79b494ce683342471c2c11ed5458eb003a",
+  "source": "https://github.com/RMinte-AI/TianshanOS/tree/v0.6.4/components/ts_webui/web",
   "adaptations": [
     "One fan, ID 0; Smart (TTI) selected and recommended",
     "Static Chinese and English page snapshots with local demo interactions",
-    "No device scripts, API client, WebSocket, real credentials, or firmware"
+    "No device scripts, API client, WebSocket, real credentials, or firmware",
+    "Release-native hue/saturation LED controls, configuration backup, user variables and run records; sample data only",
+    "Device Panel uses observed runtime geometry and two independent local model simulations; disclosure is below the interface."
+  ],
+  "observed_runtime": {
+    "version": "0.6.4+9d5b0a00dd.11050027",
+    "observed_on": "2026-11-05",
+    "matched_sections": [
+      "Device Panel layout, model service controls, GPU ring, temperature and unbound gauge",
+      "Widget manager and run-record layouts"
+    ],
+    "note": "Sanitized static presentation; no device connection or credentials are shipped."
+  },
+  "models": [
+    {
+      "name": "Qwen3.8-27B-NVFP4",
+      "origin": "Observed device card",
+      "initial_demo_state": "ready"
+    },
+    {
+      "name": "Qwen3.8-Flash-Next-NVFP4",
+      "origin": "Additional card requested by the owner",
+      "initial_demo_state": "stopped"
+    }
   ]
 }
