@@ -12,6 +12,7 @@
 .demo-info-body{white-space:pre-wrap;overflow-wrap:anywhere}
 .net-grid>div,.net-grid .svc>div{min-width:0}
 .net-grid .nat-row{flex-wrap:wrap}
+.net-lpmu{flex-wrap:wrap;gap:12px}
 #demo-dialogs .xbtn{background:transparent;border:0;box-shadow:none}
 #demo-dialogs .xbtn:hover{background:var(--fill)}
 #demo-terminal-output{min-height:260px;max-height:440px;overflow:auto;margin:0;color:#e4e7ef;font:13px/22px var(--mono);white-space:pre-wrap;overflow-wrap:anywhere}
