@@ -183,7 +183,8 @@
     const root=state.path.startsWith('/spiffs')?'/spiffs':state.path==='/'?'/':'/sdcard';
     byId('breadcrumb').innerHTML=`<button class="field" data-demo-click="navigateToPath('${root}')">${root}</button><span class="t-note">${escape(state.path.slice(root.length)||'/')}</span>`;
     byId('storage-controls').querySelectorAll('[data-demo-click^="navigateToPath"]').forEach(button=>button.classList.toggle('on',button.dataset.demoClick.includes("'"+root+"'")));
-    byId('file-list').replaceChildren(fileListTemplate.querySelector('.th').cloneNode(true));
+    const table=byId('file-list').querySelector('.data-table');
+    table.replaceChildren(fileListTemplate.querySelector('.th').cloneNode(true));
     for(const [name,type] of entries){
       const row=fileListTemplate.querySelector(`[data-type="${type}"]`).cloneNode(true);
       row.dataset.name=name;row.dataset.path=(state.path==='/'?'':state.path)+'/'+name;
@@ -191,7 +192,7 @@
       file.querySelector('.fn').lastChild.textContent=name;
       const checkbox=row.querySelector('input');checkbox.setAttribute('aria-label',name);checkbox.dataset.path=row.dataset.path;
       row.querySelectorAll('.btn-rename,.btn-delete,.btn-download').forEach(button=>button.dataset.demoClick='previewOnly()');
-      byId('file-list').append(row);
+      table.append(row);
     }
   }
   function updateAutomation(){
@@ -310,7 +311,7 @@
       state.hits[first]++;
       const message=text('模拟执行完成：状态检查通过。','Simulated run complete: status check passed.');
       const row=element.closest('.tr');
-      if(row){updateAutomation();let record=row.nextElementSibling;if(!record?.classList.contains('demo-rule-record')){record=document.createElement('p');record.className='demo-rule-record';row.after(record);}record.textContent=message;}
+      if(row){updateAutomation();const record=row.querySelector('[data-rule-start-status]');record.hidden=false;record.textContent=message;}
       feedback(message);return;
     }
     if(handler==='editRule'||handler==='showSourceVariables'||handler==='editAction'||handler==='editSource'){

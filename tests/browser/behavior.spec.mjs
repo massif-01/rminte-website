@@ -227,3 +227,69 @@ for(const descriptor of run.scope.pages)for(const language of operationLanguages
     });
   });
 }
+
+// The standalone demo owns its rendered snapshots and does not use the main site's table styles.
+if(run.scope.infrastructure||run.scope.files.some(file=>file.startsWith('website/tianshanos-demo/'))) {
+  for(const language of ['zh','en'])for(const width of [1440,768,390,320]) {
+    test(`demo table layout survives navigation and rule execution ${language} ${width}px`,async({page})=>{
+      await page.setViewportSize({width,height:1000});
+      const audit=await setup(page,language);
+      const columnsAlign=async selector=>{
+        const failures=await page.locator(selector).evaluateAll(tables=>tables.flatMap(table=>{
+          const rows=[...table.querySelectorAll('.tr')].filter(row=>row.closest('.data-table')===table&&row.getClientRects().length);
+          const header=rows.find(row=>row.classList.contains('th'));
+          if(!header)return [];
+          const x=[...header.children].map(cell=>cell.getBoundingClientRect().left);
+          return rows.filter(row=>row!==header).flatMap(row=>[...row.children].flatMap((cell,index)=>{
+            const box=cell.getBoundingClientRect();
+            return Math.abs(box.left-x[index])>2?[`${row.textContent.trim().slice(0,30)}: column ${index+1} misaligned`]:[];
+          }));
+        }));
+        expect(failures).toEqual([]);
+      };
+      for(const route of ['system','network','files','terminal','automation','commands','security','ota']) {
+        await page.goto(`${afterURL}/tianshanos-demo/${route}.html?lang=${language}`);
+        await expect(page.locator('#page-content>.page')).toBeVisible();
+        const expected=await page.evaluate(({route,language})=>{
+          const baseline=document.createElement('div');baseline.innerHTML=window.TS_DEMO_PAGES.pages[language][route];
+          baseline.querySelectorAll('.modal').forEach(node=>node.remove());return baseline.querySelectorAll('.data-table').length;
+        },{route,language});
+        await expect(page.locator('#page-content .data-table')).toHaveCount(expected);
+        await columnsAlign('#page-content .data-table');
+      }
+      await page.goto(`${afterURL}/tianshanos-demo/files.html?lang=${language}`);
+      const fileRows=page.locator('#file-list .file-row');
+      const checkFiles=async names=>{
+        await expect(fileRows.locator('.fn')).toHaveText(names);
+        await expect(page.locator('#file-list>.data-table')).toHaveCount(1);
+        await columnsAlign('#file-list .data-table');
+        const centers=await fileRows.evaluateAll(rows=>rows.map(row=>[...row.children].map(cell=>{const r=cell.getBoundingClientRect();return r.top+r.height/2;})));
+        expect(centers.every(row=>Math.max(...row)-Math.min(...row)<2)).toBe(true);
+      };
+      await checkFiles(['config','logs','system.json','README.txt']);
+      await fileRows.locator('[data-demo-click="demoFile(\'config\',\'dir\')"]').click();
+      await checkFiles(['cooling.json']);
+      await page.locator('#breadcrumb button').click();
+      await checkFiles(['config','logs','system.json','README.txt']);
+      await fileRows.locator('[data-demo-click="demoFile(\'logs\',\'dir\')"]').click();
+      await checkFiles(['system.log']);
+      await page.locator('[data-demo-click="navigateToPath(\'/spiffs\')"]').click();
+      await checkFiles(['index.html']);
+      await page.locator('[data-demo-click="navigateToPath(\'/sdcard\')"]').click();
+      await checkFiles(['config','logs','system.json','README.txt']);
+      await page.locator('#lang-switch button').click();
+      await checkFiles(['config','logs','system.json','README.txt']);
+      await page.goto(`${afterURL}/tianshanos-demo/automation.html?lang=${language}`);
+      const rule=page.locator('#rules-list .tr').nth(1),count=await page.locator('#rules-list .tr').count();
+      const before=Number(await rule.locator(':scope>div').nth(5).innerText());
+      for(let index=1;index<=2;index++) {
+        await rule.locator('[data-demo-click^="triggerRule("]').click();
+        await expect(rule).toContainText(language==='zh'?'模拟执行完成':'Simulated run complete');
+        await expect(rule.locator(':scope>div').nth(5)).toHaveText(String(before+index));
+        await expect(page.locator('#rules-list .tr')).toHaveCount(count);
+        await columnsAlign('#rules-list .data-table');
+      }
+      await layout(page);expect(audit.problems).toEqual([]);
+    });
+  }
+}
