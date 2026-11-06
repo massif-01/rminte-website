@@ -10,8 +10,8 @@ test('All 90 reviewed entries accounted for; unverified OCR absent from runtime,
  assert.equal(c.documents.length,90);assert.equal(c.documents.filter(d=>d.status==='excluded').length,2);assert(c.documents.filter(d=>d.status==='excluded').every(d=>d.id==='company-brochure-ocr'));assert.equal(c.documents.filter(d=>d.status==='history-only').length,2);assert(!c.sections.some(s=>s.doc_id==='company-brochure-ocr'));
 });
 test('Deterministic build, IDs unique, content/context hashes accurate, bounded replies',async()=>{
- assert.deepEqual(await buildCorpus(),c);assert.equal(new Set(c.sections.map(s=>s.section_id)).size,c.sections.length);
- for(const s of c.sections){assert.equal(hash(s.body),s.content_hash);assert.equal(hash(s.context),s.context_hash);assert(bytes(s.body)<=7000);assert(bytes(JSON.stringify(kb.read(s.section_id,c.revision)))<=29000);assert(s.source_urls.length);for(const id of s.related_sections)assert(c.sections.some(t=>t.section_id===id));}
+ assert.deepEqual(await buildCorpus(),c);const all=[...c.sections,...c.api.sections];assert.equal(new Set(all.map(s=>s.section_id)).size,all.length);
+ for(const s of all){assert.equal(hash(s.body),s.content_hash);assert.equal(hash(s.context),s.context_hash);assert(bytes(s.body)<=7000);assert(bytes(JSON.stringify(kb.read(s.section_id,c.revision)))<=29000);assert(s.source_urls.length);for(const id of s.related_sections)assert(all.some(t=>t.section_id===id));}
 });
 test('Every nonblank original source line is preserved in body or original heading path',async()=>{
  for(const {doc:d,lines,offset} of sources){if(!d.default_retrieval)continue;const body=lines.slice(offset).join('\n');assert(body,d.path);const built=c.sections.filter(s=>s.doc_id===d.id&&s.language===d.language);const original=built.map(s=>s.body+'\n'+s.heading_path.join('\n')).join('\n');for(const line of body.split('\n')){const normalized=line.replace(/^#{1,6}\s+/, '').trim();if(normalized)assert(original.includes(normalized),`${d.path}: ${normalized}`);}}

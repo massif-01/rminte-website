@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, mkdir, readFile, writeFile, rm } from 'node:fs/promises';
+import { mkdtemp, mkdir, readFile, writeFile, rm, cp } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { execFileSync } from 'node:child_process';
@@ -14,6 +14,7 @@ test('Guide source changes reach the corpus without a knowledge copy; versions, 
  try{
   await mkdir(join(root,'docs/official-knowledge'),{recursive:true});await writeFile(join(root,'docs/official-knowledge/source-manifest.json'),' {"documents":[]}');
   for(const path of guideFiles){await mkdir(dirname(join(root,path)),{recursive:true});await writeFile(join(root,path),await readFile(join(repository,path)));}
+  await cp(join(repository,'website/guides/content/api'),join(root,'website/guides/content/api'),{recursive:true});
   git('init','-q');git('config','user.name','Source test');git('config','user.email','test@example.invalid');git('add','.');git('commit','-qm','original');
   const before=await buildCorpus(root);const path=join(root,guideFiles[0]);let body=await readFile(path,'utf8');
   const current=guideMetadata(body,'zh');const parts=current.version.split('.');parts[2]=String(Number(parts[2])+1);const version=parts.join('.');

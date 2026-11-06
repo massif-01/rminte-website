@@ -89,7 +89,7 @@ export function classify(changes,{all=false,staticRoutes=[],workerRoutes=[]}={})
   for(const file of files) {
     for(const page of catalog)if(page.dependencies?.some(input=>input.endsWith('/')?file.startsWith(input):file===input)){ids.add(page.id);scope.fonts=true;}
     if(file===workerPageManifest) {workerRoutes.forEach(route=>ids.add(catalog.find(page=>page.path===route.path).id));scope.fonts=true;scope.navigationAll=true;continue;}
-    if(file.startsWith('services/official-knowledge-mcp/')||file.startsWith('docs/official-knowledge/')||/^website\/guides\/content\/(?:admin|root|network|security\.(?:zh|en))\.md$/.test(file)) scope.knowledgeMcp=true;
+    if(file.startsWith('services/official-knowledge-mcp/')||file.startsWith('docs/official-knowledge/')||/^website\/guides\/content\/api\/(?:zh|en)\//.test(file)||/^website\/guides\/content\/(?:admin|root|network|security\.(?:zh|en))\.md$/.test(file)) scope.knowledgeMcp=true;
     if(file.startsWith('services/official-knowledge-mcp/')) {
       if(destinations.has(file)&&configuredFiles.has(file))scope.configurationFiles.push(file);
       continue;

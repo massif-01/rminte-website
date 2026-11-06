@@ -27,16 +27,17 @@ npm run verify
 ## 文件与数据
 
 - `scripts/sources.ts`：读取来源清单中的 82 份快照，以及 `website/guides/content/` 中四类指南的 8 份中英文原文。指南版本、日期来自原文，两种语言必须一致；网络指南保持无软件版本。指南来源提交取构建时的 Git HEAD，章节行号对应原始官网 Markdown。
+- `scripts/api-sources.ts`：直接读取 `website/guides/content/api/{zh,en}/` 下的 Markdown，按目录自动发现新增章节。API 版本来自两种语言的 README，必须一致；不再维护知识副本。完整接口目录表 `reference/README.md` 不重复索引，保留 `reference/pdf-index.md` 的调用说明及各模块接口正文。
 - `scripts/build.ts`：构建上述已批准的中英原文；检查快照哈希，计算指南哈希。OCR 不进入运行包；历史宣传册仅在明确的历史搜索中出现。
 - `src/text.ts`：中英文规范化、少量术语同义词及中文分词后的二元组。Node 构建和 Worker 查询使用同一代码；本轮协议测试也检查了两种运行环境对固定问题的结果。
-- `src/knowledge.ts`：BM25 搜索、语言优先、版本过滤、精确章节去重和只读章节返回。所有正文连同上下文分别附带哈希。
+- `src/knowledge.ts`：普通知识和 API 分开计算 BM25 索引，API 内容不改变普通知识的词频与排序。API 名称或 HTTP 路径精确匹配优先；语言优先、版本过滤、精确章节去重和只读章节返回。所有正文连同上下文分别附带哈希。
 - `src/server.ts`：通过官方 SDK 注册两个工具及只读声明，校验参数和返回量。
 - `src/worker.ts`：独立 MCP 路由、请求体上限、最小健康检查和非公开目录的 404。仅允许已登记的正式域名和本机 Host/Origin。
 - `tests/questions.json`：检索实现前冻结的 44 道中英文配对问题；文件哈希写入每轮证据。
 - `tests/corpus.test.ts`：来源漏行、表格/代码块边界、版本与历史过滤、上下文、哈希、确定性和大小等检查。
 - `.generated/`：可重建、未跟踪的运行数据和构建报告。语料、索引、来源元数据共同决定 `corpus_revision`，不单独热换正文。
 
-公开答案依据来自 `../../docs/official-knowledge/` 中的快照及 `../../website/guides/content/` 中的四类中英文指南。方案和验证记录不会作为企业事实索引。按完整章节的内容哈希去重搜索结果，保留原始重复正文以便审计；没有为了减少重复而删除原文行。
+公开答案依据来自 `../../docs/official-knowledge/` 中的快照及 `../../website/guides/content/` 中的四类中英文指南，以及官网 API 中英文原文。方案和验证记录不会作为企业事实索引。按完整章节的内容哈希去重搜索结果，保留原始重复正文以便审计；收录的正文保持原文；仅不重复索引已被逐接口参考覆盖的 API 总目录表。
 
 ## 接口
 
@@ -44,7 +45,9 @@ npm run verify
 - `GET /health`：服务版本与语料版本。
 - 其他路径 404；`/connect` 尚未开发，官网入口在指南页面，以复制指令弹窗提供接入地址。
 
-搜索输入支持 `query`、`language`（auto/zh/en）、可选 `version`、`include_history` 和最多 8 个结果。搜索给出的 `section_id` 与 `corpus_revision` 用于读取。读取返回正文、继承上下文、原始 URL、来源页/行、适用范围、采集日期、已知原文日期及内容哈希。链接到中文权威合同的英文说明附有可读取的相关章节 ID。
+搜索输入支持 `scope`（`general` / `api`，默认 `general`）、`query`、`language`（auto/zh/en）、可选 `version`、`include_history` 和最多 8 个结果。搜索给出的 `section_id` 与 `corpus_revision` 用于读取。读取返回正文、继承上下文、原始 URL、来源页/行、适用范围、采集日期、已知原文日期及内容哈希。链接到中文权威合同的英文说明附有可读取的相关章节 ID。
+
+开发问题使用 `scope: "api"`。接口参考按完整接口返回，参数、请求示例、结果判断与使用要点不拆散；继承上下文包含同语言通用调用规则，`related_sections` 关联原文链接的调用规则、故障处理及数据模型。接口名称、HTTP 路径、适用版本和原文 Git 链接随结果返回。其他 API 章节按完整二级主题组织，代码块与表格仍保持边界。两个范围共用 `corpus_revision`，任一原文更新都要求旧读取重新搜索。
 
 未知或排除 ID 返回工具错误；语料版本变化要求重新搜索。没有任意 URL 读取、路径读取、执行命令或业务写入工具。没有生成答案的步骤；最终 Agent 能否正确引用、翻译及理解原文，需要在具体客户端和模型中另行验证。
 
@@ -60,8 +63,24 @@ npm run verify
 
 在服务目录运行 `npm ci --ignore-scripts`，再运行 `npx --no-install wrangler deploy`。构建钩子从已登记快照和官网指南原文重建语料，部署需要包含 Git 信息的完整仓库检出。正式接口为 `https://mcp.rminte.com/mcp`，健康检查为 `/health`。发布后应核对健康接口的语料版本与本地构建一致。
 
-### 指南自动更新
+### 指南与 API 自动更新
 
 四类中英文指南只维护 `website/guides/content/{admin,root,network}.md` 与 `security.{zh,en}.md`。修改这些文件时，PR 同时运行 MCP 原文、构建及离线检索检查；其他翻译语言不作为 MCP 输入。版本和日期须保留现有标注格式，且中英文一致。
 
-知识 Worker 的 Cloudflare Git 构建应连接 `RMinte/rminte-website:main`，根目录为 `services/official-knowledge-mcp`，部署前运行构建、类型检查、原文检查及离线检索。监视上述 5 个文件、`services/official-knowledge-mcp/*` 与 `docs/official-knowledge/*`，关闭分支预览。合并后自动构建完整语料并发布；失败不更新正在服务的版本。正式核对以 Cloudflare 构建结果和 `/health` 的语料版本为准。
+API 仅维护 `website/guides/content/api/zh/` 与 `website/guides/content/api/en/` 原文，自动发现子目录内的 Markdown；新增章节不需要再登记知识清单。CI 同时监视这两个目录中的新增、修改和删除，其他语言不触发 MCP 检查。
+
+知识 Worker 的 Cloudflare Git 构建连接 `RMinte/rminte-website:main`，根目录为 `services/official-knowledge-mcp`，部署前运行构建、类型检查、原文检查及离线检索。监视以下仓库相对路径（`*` 包含子目录），关闭分支预览：
+
+```text
+services/official-knowledge-mcp/*
+docs/official-knowledge/*
+website/guides/content/admin.md
+website/guides/content/root.md
+website/guides/content/security.zh.md
+website/guides/content/security.en.md
+website/guides/content/network.md
+website/guides/content/api/zh/*
+website/guides/content/api/en/*
+```
+
+构建根目录为 `services/official-knowledge-mcp`，Node 22；构建命令为 `npm run build && npm run check && npm test && node --experimental-strip-types scripts/evaluate.ts`，发布命令为 `npx --no-install wrangler deploy`。合并后自动构建完整语料并发布；失败不更新正在服务的版本。正式核对以 Cloudflare 构建结果和 `/health` 的语料版本为准。
