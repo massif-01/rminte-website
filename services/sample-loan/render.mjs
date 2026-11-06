@@ -3,6 +3,7 @@ import {
   escapeHtml,
 } from "../../website/sample-loan/contract.mjs";
 import { assert, fail } from "./domain.mjs";
+import { contractLanguage } from "../../website/sample-loan/contract-language.mjs";
 // Used by the Cloudflare consumer and the isolated real-Chromium verification harness.
 export async function compressImage(page, bytes, mime) {
   const base64 = Buffer.from(bytes).toString("base64");
@@ -85,13 +86,14 @@ export async function renderPdf(
     glyphPreflight(photo.name, cmap, "photos." + index + ".name"),
   );
   const markup = renderContract(snapshot, terms, photos);
+  const language = contractLanguage(snapshot.agreementLanguage || "zh");
   glyphPreflight(
     markup.replace(/<[^>]*>/g, "").replace(/&[a-z0-9#]+;/gi, ""),
     cmap,
   );
-  const html = `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><style>${fontCss}
+  const html = `<!doctype html><html lang="${language === "zh" ? "zh-CN" : "en"}"><head><meta charset="utf-8"><style>${fontCss}
  @page{size:A4;margin:32mm 16mm 18mm}*{box-sizing:border-box}body{font-family:LoanSC,LoanExt,sans-serif;color:#20252b;font-size:10pt;line-height:1.8;margin:0;overflow-wrap:anywhere}h1{font-size:18pt;text-align:center;margin:0 0 24px}h2{font-size:12pt;margin:24px 0 12px;break-after:avoid}p,li{orphans:3;widows:3}table{border-collapse:collapse;width:100%}td,th{border:1px solid #d7dadd;padding:8px;text-align:left}figure{margin:20px 0;break-inside:avoid}figure img{display:block;max-width:100%;max-height:220mm;object-fit:contain;margin:auto}.document-meta{font-size:8.5pt;border-bottom:1px solid #d7dadd;padding-bottom:12px;display:grid;grid-template-columns:1fr 1fr;gap:6px}blockquote{border-left:2px solid #858c95;margin:16px 0;padding:12px}.watermark{position:fixed;left:50%;top:50%;width:145mm;transform:translate(-50%,-50%) rotate(-30deg);opacity:.045;pointer-events:none}.watermark img{width:100%}
- </style></head><body><div class="watermark"><img src="${escapeHtml(logo)}" alt=""></div>${markup}<p>文件版本：R${snapshot.agreementRevision}</p></body></html>`;
+ </style></head><body><div class="watermark"><img src="${escapeHtml(logo)}" alt=""></div>${markup}<p>${language === "en" ? "Document revision: " : "文件版本："}R${snapshot.agreementRevision}</p></body></html>`;
   await page.setContent(html, { waitUntil: "load", timeout: 60000 });
   await page.evaluate(async () => {
     await Promise.all([...document.fonts].map((font) => font.load()));

@@ -101,6 +101,7 @@ export async function versionStatements(
     approvedBy: user.username,
     termsVersion: consent.termsVersion,
     agreementRevision: rev,
+    agreementLanguage: consent.agreementLanguage || "zh",
     fileIds,
   };
   if (rev > 1) {

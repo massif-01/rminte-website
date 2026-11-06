@@ -17,6 +17,8 @@ import { handleSampleApi } from "../api.mjs";
 import { runJob } from "../jobs.mjs";
 import { glyphPreflight } from "../render.mjs";
 import { application, draft } from "./fixtures.mjs";
+const language = process.env.SAMPLE_PDF_LANGUAGE || "zh";
+const agreementLanguage = language === "zh" ? "zh" : "en";
 const root = mkdtempSync(join(tmpdir(), "sample-pdf-")),
   origin = "http://127.0.0.1:8999";
 process.env.XDG_CONFIG_HOME = join(root, "config");
@@ -118,6 +120,7 @@ try {
         termsVersion: terms.version,
         noticeVersion: terms.noticeVersion,
         noStockShown: false,
+        language,
       },
     }),
     asset = await api("/api/sample-admin/assets", {
@@ -184,7 +187,24 @@ try {
     )
       .bind(submitted.id)
       .first();
-  const result = await runJob(env, job.id, { launch: () => chromium.launch() });
+  assert.equal(approved.request.agreement.agreementLanguage, agreementLanguage);
+  const preview = await api(`/api/sample-admin/requests/${submitted.id}/versions/1/preview`);
+  assert.equal(preview.snapshot.agreementLanguage, agreementLanguage);
+  const result = await runJob(env, job.id, { launch: async () => {
+    const browser = await chromium.launch();
+    const newPage = browser.newPage.bind(browser);
+    browser.newPage = async () => {
+      const page = await newPage();
+      const pdf = page.pdf.bind(page);
+      page.pdf = async (options) => {
+        assert.equal(await page.locator('html').getAttribute('lang'), agreementLanguage === 'zh' ? 'zh-CN' : 'en');
+        assert.equal(await page.locator('h1').innerText(), agreementLanguage === 'zh' ? 'RMinte RM-01 产品借用协议' : 'RMinte RM-01 Equipment Loan Agreement');
+        return pdf(options);
+      };
+      return page;
+    };
+    return browser;
+  } });
   assert(result.published, JSON.stringify(result));
   const document = await env.CASE_DB.prepare(
       "SELECT * FROM sample_document_objects WHERE document_id=?",
@@ -231,6 +251,7 @@ try {
       "approvedBy",
       "termsVersion",
       "agreementRevision",
+      "agreementLanguage",
       "fileIds",
       "quoteId",
     ])
@@ -252,6 +273,7 @@ try {
     },
   );
   assert.equal(r2.request.currentAgreementRevision, 2);
+  assert.equal(r2.request.agreement.agreementLanguage, agreementLanguage);
   const r1again = await env.SAMPLE_FILES.get(document.object_key);
   assert.equal(
     createHash("sha256")
@@ -544,7 +566,7 @@ try {
   assert.equal(s.progress.returnedAt, null);
   const output = fileURLToPath(
     new URL(
-      "../../../output/ci/sample-loan/real-pipeline.pdf",
+      `../../../output/ci/sample-loan/real-pipeline-${agreementLanguage}.pdf`,
       import.meta.url,
     ),
   );

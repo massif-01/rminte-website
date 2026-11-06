@@ -147,6 +147,7 @@ async function submit(request, env, data) {
       sha256: await digest(canonical({ language, ...presented })),
     };
   const consent = {
+    agreementLanguage: language === "zh" ? "zh" : "en",
     presentedNotice,
     termsVersion: t.version,
     noticeVersion: t.noticeVersion,
@@ -426,9 +427,9 @@ export async function handleSampleApi(request, env, ctx) {
         "请求来源不正确",
         403,
       );
-    assert(env.CASE_DB, "SERVICE_UNAVAILABLE", "样机服务尚未配置", 503);
     if (path === "/api/sample-loans/terms" && method === "GET")
       return json({ terms: await canonicalTerms() });
+    assert(env.CASE_DB, "SERVICE_UNAVAILABLE", "样机服务尚未配置", 503);
     if (path === "/api/sample-loans/availability" && method === "GET") {
       const key = url.searchParams.get("modelKey");
       assert(Object.hasOwn(MODELS, key), "INVALID_MODEL", "型号不存在", 422);

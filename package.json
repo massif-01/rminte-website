@@ -12,7 +12,7 @@
     "preview:ci": "node scripts/ci/serve.mjs",
     "build:footer": "node website/scripts/build-guides.mjs && node website/scripts/build-footer.mjs",
     "check:footer": "node website/scripts/build-footer.mjs --check",
-    "test:sample-loan": "node --test services/sample-loan/tests/integration.test.mjs",
+    "test:sample-loan": "node --test services/sample-loan/tests/*.test.mjs",
     "test:sample-loan-pdf": "node services/sample-loan/tests/pdf.integration.mjs",
     "preview:sample-loan": "node services/sample-loan/dev.mjs"
   },

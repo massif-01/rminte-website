@@ -72,6 +72,12 @@ python3 website/scripts/build-fonts.py --check
 
 ## PDF 与文件
 
+协议正文按申请时的界面语言选择：中文使用中文，其余语言统一使用英文。申请前预览采用同一规则；申请确认记录与每次批复快照保存 `agreementLanguage`，后台预览和 PDF 均读取快照，不受管理员界面语言影响。`RM01-LOAN-20261106-r7` 新增完整英文条款，中文正文不变；条款及译文一并归档并计入摘要。没有该语言记录的历史申请继续使用原中文版，已有 PDF 不重写。
+
+发布此项变更时，先更新 PDF 任务 Worker，再更新官网 Pages。旧 Worker 会忽略新申请的 `agreementLanguage` 并生成中文版，因此不能只发布主站；新版 Worker 对无语言字段的旧快照仍按中文处理。两者发布后，分别核对提交版本，并以非中文申请的实际预览及存档下载验收。
+
+英文使用 equipment loan、security deposit、liquidated damages 和 declared-value coverage，保留原有中国法律适用及管辖约定。姓名、法律主体名称、地址、设备账户和管理员填写的交付事实原样保留，不自动翻译。`SAMPLE_PDF_LANGUAGE=ja npm run test:sample-loan-pdf` 可验证非中文申请经实际审批生成英文 PDF；默认命令验证中文版。
+
 PDF 使用独立固定来源的 Noto Sans SC，以及只补缺字的 Noto Sans JP 回退；字体许可和每个文件摘要保存在 `document-assets/`。不会改用本机字体，原网页小子集仍只服务界面。重建文档资源：
 
 ```sh

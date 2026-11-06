@@ -1,3 +1,4 @@
+import { contractEnglish, contractLanguage } from "./contract-language.mjs";
 import { flat, MODELS, inputUtc } from "./fields.mjs";
 export const escapeHtml = (value) =>
   String(value ?? "").replace(
@@ -113,7 +114,18 @@ export function markdown(blocks) {
   closeList();
   return html;
 }
-export function renderContract(snapshot, terms, photos = []) {
+export function renderContract(
+  snapshot,
+  terms,
+  photos = [],
+  language = snapshot?.agreementLanguage || "zh",
+) {
+  const lang = contractLanguage(language);
+  const en = lang === "en";
+  const t = (value) => (en ? contractEnglish[value] : value);
+  const localized = en ? terms.locales?.en : terms;
+  if (!localized)
+    throw new Error("English agreement terms are unavailable for this version");
   const request = snapshot
     ? {
         id: snapshot.publicNo,
@@ -131,9 +143,9 @@ export function renderContract(snapshot, terms, photos = []) {
   const documentText = (input) => escapeHtml(input).replaceAll("\n", "<br>");
   const data = snapshot ? flat(snapshot) : {};
   const value = (key) =>
-    data[key] ? String(data[key]) : approved ? "未填写" : "【待填写】";
+    data[key] ? String(data[key]) : approved ? t("未填写") : t("【待填写】");
   const lenderValue = (key, fallback) => (request ? value(key) : fallback);
-  const period = request ? request.days : data.days || "【申请天数】";
+  const period = request ? request.days : data.days || t("【申请天数】");
   const pairs = {
     "[乙方选择的型号]": request ? request.original.model : value("model"),
     "[与申请型号对应的机器配置]": value("model"),
@@ -147,24 +159,24 @@ export function renderContract(snapshot, terms, photos = []) {
     "[甲方指定收件人、电话和完整地址]": `${value("returnName")} / ${value("returnPhone")} / ${value("returnAddress")}`,
     "[存储卡品牌、型号、容量、接口及性能等级]": value("cardSpecs"),
     "[存储卡序列号]": value("cardSerial"),
-    "[与整机价值一致的保价金额、币种及凭证编号]": `${value("insuredValue")} / ${data.insuranceProof || "发货前核对实际保价凭证"}`,
+    "[与整机价值一致的保价金额、币种及凭证编号]": `${value("insuredValue")} / ${data.insuranceProof || t("发货前核对实际保价凭证")}`,
     "[天数]": String(period),
     "[依批复起止时间计算]": snapshot?.schedule
-      ? `${termDays(snapshot.schedule.startsAt, snapshot.schedule.dueAt)} 个自然日`
-      : "【管理员批复】",
+      ? `${termDays(snapshot.schedule.startsAt, snapshot.schedule.dueAt)}${t(" 个自然日")}`
+      : t("【管理员批复】"),
   };
-  let clauses = request?.acceptance?.clauses || terms.clauses;
+  let clauses = localized.clauses;
   // Time placeholders appear twice each in the source: start and return deadline.
   const startIso = inputUtc(data.start),
     endIso = inputUtc(data.end);
   clauses = clauses
     .replace(
-      "**甲方批复借用起始时间：** [北京时间，UTC+08:00] / [对应 UTC 时间]",
-      `**甲方批复借用起始时间：** ${startIso ? timePair(startIso) : "【管理员批复】"}`,
+      (en ? "**Start time approved by the Lender:**" : "**甲方批复借用起始时间：**") + " [北京时间，UTC+08:00] / [对应 UTC 时间]",
+      `**${en ? "Start time approved by the Lender:" : "甲方批复借用起始时间："}** ${startIso ? timePair(startIso) : t("【管理员批复】")}`,
     )
     .replace(
-      "**甲方批复归还截止时间：** [北京时间，UTC+08:00] / [对应 UTC 时间]",
-      `**甲方批复归还截止时间：** ${endIso ? timePair(endIso) : "【管理员批复】"}`,
+      (en ? "**Return deadline approved by the Lender:**" : "**甲方批复归还截止时间：**") + " [北京时间，UTC+08:00] / [对应 UTC 时间]",
+      `**${en ? "Return deadline approved by the Lender:" : "甲方批复归还截止时间："}** ${endIso ? timePair(endIso) : t("【管理员批复】")}`,
     );
   const clausesHtml = markdown(clauses).replace(
     /\[[^\]\n]+\]/g,
@@ -173,20 +185,20 @@ export function renderContract(snapshot, terms, photos = []) {
         ? documentText(pairs[placeholder])
         : placeholder,
   );
-  const metadata = `<div class="document-meta"><span>申请 / 协议编号：<b class="document-value">${documentText(request?.id || "提交申请后生成")}</b></span><span>协议日期：${documentText(data.agreementDate || "审批时填写")}</span><span>条款版本：${documentText(request?.acceptance?.version || terms.version)}</span><span>审批状态：${request ? (approved ? "已批复" : "待批复") : "申请前查看"}</span></div>`;
+  const metadata = `<div class="document-meta"><span>${t("申请 / 协议编号：")}<b class="document-value">${documentText(request?.id || t("提交申请后生成"))}</b></span><span>${t("协议日期：")}${documentText(data.agreementDate || t("审批时填写"))}</span><span>${t("条款版本：")}${documentText(request?.acceptance?.version || terms.version)}</span><span>${t("审批状态：")}${request ? (approved ? t("已批复") : t("待批复")) : t("申请前查看")}</span></div>`;
   const companyFields =
     (data.entity || "公司") === "公司"
-      ? `<br>统一社会信用代码（选填）：${documentText(data.credit || "未填写")}<br>注册地址：${documentText(value("registeredAddress"))}`
+      ? `<br>${t("统一社会信用代码（选填）：")}${documentText(data.credit || t("未填写"))}<br>${t("注册地址：")}${documentText(value("registeredAddress"))}`
       : "";
-  const parties = `<h2>一、协议双方</h2><p><strong>甲方（出借方）：</strong>${documentText(lenderValue("lender", "泛灵（成都）人工智能科技有限公司"))}<br>地址：${documentText(lenderValue("lenderAddress", "中国（四川）自由贸易试验区成都高新区天府五街200号2栋A区5楼501-502室"))}<br>法定代表人：${documentText(lenderValue("lenderRepresentative", "朱杰"))}<br>联系电话：${documentText(lenderValue("lenderPhone", "15882008185"))}<br>电子邮箱：${documentText(lenderValue("lenderEmail", "support@rminte.com"))}</p><p><strong>乙方（借用方）：</strong>${documentText(value("company"))}<br>主体类型：${documentText(value("entity"))}${companyFields}<br>联系人：${documentText(value("contact"))}<br>联系电话：${documentText(value("phone"))}<br>电子邮箱：${documentText(value("email"))}<br>联系地址：${documentText(value("companyAddress"))}<br>收件人及电话：${documentText(value("receiver"))} / ${documentText(value("receiverPhone"))}<br>收货地址：${documentText(value("shippingAddress"))}</p>${markdown(request?.acceptance?.partyRules || terms.partyRules)}`;
+  const parties = `<h2>${t("一、协议双方")}</h2><p><strong>${t("甲方（出借方）：")}</strong>${documentText(lenderValue("lender", en ? "RMinte (Chengdu) Artificial Intelligence Technology Co., Ltd. (泛灵（成都）人工智能科技有限公司)" : "泛灵（成都）人工智能科技有限公司"))}<br>${t("地址：")}${documentText(lenderValue("lenderAddress", en ? "Rooms 501-502, Floor 5, Zone A, Building 2, No. 200 Tianfu Fifth Street, Chengdu High-tech Zone, China (Sichuan) Pilot Free Trade Zone, China" : "中国（四川）自由贸易试验区成都高新区天府五街200号2栋A区5楼501-502室"))}<br>${t("法定代表人：")}${documentText(lenderValue("lenderRepresentative", en ? "Zhu Jie (朱杰)" : "朱杰"))}<br>${t("联系电话：")}${documentText(lenderValue("lenderPhone", "15882008185"))}<br>${t("电子邮箱：")}${documentText(lenderValue("lenderEmail", "support@rminte.com"))}</p><p><strong>${t("乙方（借用方）：")}</strong>${documentText(value("company"))}<br>${t("主体类型：")}${documentText(data.entity ? t(data.entity) : value("entity"))}${companyFields}<br>${t("联系人：")}${documentText(value("contact"))}<br>${t("联系电话：")}${documentText(value("phone"))}<br>${t("电子邮箱：")}${documentText(value("email"))}<br>${t("联系地址：")}${documentText(value("companyAddress"))}<br>${t("收件人及电话：")}${documentText(value("receiver"))} / ${documentText(value("receiverPhone"))}<br>${t("收货地址：")}${documentText(value("shippingAddress"))}</p>${markdown(localized.partyRules)}`;
   const deposit = request
-    ? `<h2>附表：主体核验及押金报价</h2><p>主体与授权核验：${documentText(data.identityVerified === "yes" ? "已核对" : "待核对")}<br>核验记录：${documentText(value("identityNotes"))}<br>拟付款主体：${documentText(value("payer"))}<br>代付说明：${documentText(data.payerNotes || "无")}<br>应汇押金：${documentText(value("depositAmount"))} ${documentText(data.depositCurrency || "CNY")}<br>汇率来源：${data.depositCurrency === "USD" ? "中国银行美元现汇买入价（每100美元折合人民币）" : "人民币支付，不折算"}<br>采用牌价：${documentText(data.depositCurrency === "USD" ? value("fxRate") : "不适用")}<br>牌价发布时间：${documentText(data.depositCurrency === "USD" && inputUtc(data.fxAt) ? timePair(inputUtc(data.fxAt)) : "不适用")}<br>报价须在确认邮件发出前核对最近一期，24小时从邮件实际送达起算；本附表不证明邮件送达或押金到账。</p>`
+    ? `<h2>${t("附表：主体核验及押金报价")}</h2><p>${t("主体与授权核验：")}${documentText(data.identityVerified === "yes" ? t("已核对") : t("待核对"))}<br>${t("核验记录：")}${documentText(value("identityNotes"))}<br>${t("拟付款主体：")}${documentText(value("payer"))}<br>${t("代付说明：")}${documentText(data.payerNotes || t("无"))}<br>${t("应汇押金：")}${documentText(value("depositAmount"))} ${documentText(data.depositCurrency || "CNY")}<br>${t("汇率来源：")}${data.depositCurrency === "USD" ? t("中国银行美元现汇买入价（每100美元折合人民币）") : t("人民币支付，不折算")}<br>${t("采用牌价：")}${documentText(data.depositCurrency === "USD" ? value("fxRate") : t("不适用"))}<br>${t("牌价发布时间：")}${documentText(data.depositCurrency === "USD" && inputUtc(data.fxAt) ? timePair(inputUtc(data.fxAt)) : t("不适用"))}<br>${t("报价须在确认邮件发出前核对最近一期，24小时从邮件实际送达起算；本附表不证明邮件送达或押金到账。")}</p>`
     : "";
   const approval = request
-    ? `<h2>附表：本次申请与批复记录</h2><p>申请提交时间：${documentText(timePair(request.submittedAt))}<br>批复人员：${documentText(request.approvedBy || "尚未完成")}<br>审批完成时间：${documentText(request.approvedAt ? timePair(request.approvedAt) : "尚未完成")}<br>交付检查时间：${documentText(data.inspectionTime ? timePair(inputUtc(data.inspectionTime)) : "待填写")}<br>批复备注：${documentText(data.approvalNote || "无")}<br>附件说明：${documentText(data.attachmentNotes || "无")}</p>`
+    ? `<h2>${t("附表：本次申请与批复记录")}</h2><p>${t("申请提交时间：")}${documentText(timePair(request.submittedAt))}<br>${t("批复人员：")}${documentText(request.approvedBy || t("尚未完成"))}<br>${t("审批完成时间：")}${documentText(request.approvedAt ? timePair(request.approvedAt) : t("尚未完成"))}<br>${t("交付检查时间：")}${documentText(data.inspectionTime ? timePair(inputUtc(data.inspectionTime)) : t("待填写"))}<br>${t("批复备注：")}${documentText(data.approvalNote || t("无"))}<br>${t("附件说明：")}${documentText(data.attachmentNotes || t("无"))}</p>`
     : "";
   const photoMarkup = photos.length
-    ? `<h2>附件照片</h2>${photos.map((photo, index) => `<figure><img class="document-photo" src="${escapeHtml(photo.url)}" alt="${escapeHtml(photo.name)}"><figcaption>图 ${index + 1} · ${escapeHtml(photo.name)}</figcaption></figure>`).join("")}`
+    ? `<h2>${t("附件照片")}</h2>${photos.map((photo, index) => `<figure><img class="document-photo" src="${escapeHtml(photo.url)}" alt="${escapeHtml(photo.name)}"><figcaption>${en ? "Figure" : "图"} ${index + 1} · ${escapeHtml(photo.name)}</figcaption></figure>`).join("")}`
     : "";
-  return `<h1>RMinte RM-01 产品借用协议</h1>${metadata}${parties}${clausesHtml}${deposit}${approval}${photoMarkup}`;
+  return `<h1>${t("RMinte RM-01 产品借用协议")}</h1>${metadata}${parties}${clausesHtml}${deposit}${approval}${photoMarkup}`;
 }

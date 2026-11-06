@@ -302,6 +302,7 @@ export async function reviseCommand(request, env, user, r, kind, d) {
     "approvedBy",
     "termsVersion",
     "agreementRevision",
+    "agreementLanguage",
     "fileIds",
     "quoteId",
   ])

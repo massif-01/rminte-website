@@ -74,7 +74,9 @@ async function mount() {
         originalAttrs.push([el, attr, el.getAttribute(attr)]);
   function paintLanguage() {
     const candidate = document.documentElement.lang.split("-")[0];
-    language = languages.includes(candidate) ? candidate : "zh";
+    language = candidate === "zh"
+      ? "zh"
+      : languages.includes(candidate) ? candidate : "en";
     for (const [node, value] of originalNodes)
       node.nodeValue = value.replace(value.trim(), t(value.trim()));
     for (const [el, key, value] of originalAttrs)
@@ -170,6 +172,7 @@ async function mount() {
     const list = $("#application-key-terms");
     list.innerHTML =
       language === "zh" ? terms.noticeHtml : terms.noticeLocales[language].html;
+    list.hidden = false;
     return terms;
   }
   form.addEventListener("submit", async (event) => {
@@ -260,7 +263,9 @@ async function mount() {
       event.preventDefault();
       try {
         if (!terms) await loadTerms();
-        $("#agreement-document").innerHTML = renderContract(null, terms);
+        const agreement = $("#agreement-document");
+        agreement.lang = language === "zh" ? "zh-CN" : "en";
+        agreement.innerHTML = renderContract(null, terms, [], language);
         $("#agreement-mode").textContent = t("申请前查看");
         $("#agreement-footer-note").textContent = t(
           "固定条款在申请时展示，实际交付信息由管理员批复填入。",
@@ -280,6 +285,8 @@ async function mount() {
       opener = from || document.activeElement;
       $("#application-content").hidden = false;
       $("#application-success").hidden = true;
+      terms = null;
+      $("#application-key-terms").hidden = true;
       showDialog(dialog);
       await loadTerms().catch(error);
       stock();
