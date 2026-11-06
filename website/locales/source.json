@@ -1,27 +1,243 @@
 [
   {
+    "zh": "交通服务",
+    "en": "Transport",
+    "sources": [
+      "assets/case-catalog.mjs.groups.0"
+    ]
+  },
+  {
+    "zh": "企业运营",
+    "en": "Enterprise operations",
+    "sources": [
+      "assets/case-catalog.mjs.groups.1"
+    ]
+  },
+  {
+    "zh": "公共事务",
+    "en": "Public affairs",
+    "sources": [
+      "assets/case-catalog.mjs.groups.2"
+    ]
+  },
+  {
+    "zh": "文档与知识",
+    "en": "Documents and knowledge",
+    "sources": [
+      "assets/case-catalog.mjs.groups.3"
+    ]
+  },
+  {
+    "zh": "工业研发",
+    "en": "Industrial R&D",
+    "sources": [
+      "assets/case-catalog.mjs.groups.4"
+    ]
+  },
+  {
+    "zh": "科技有限公司",
+    "en": "Technology Co., Ltd.",
+    "sources": [
+      "assets/case-catalog.mjs.cases.0.supplier.suffix",
+      "assets/case-catalog.mjs.cases.8.supplier.suffix",
+      "assets/case-catalog.mjs.cases.11.supplier.suffix"
+    ]
+  },
+  {
+    "zh": "AI 数字收费员",
+    "en": "AI Digital Toll Operator",
+    "sources": [
+      "assets/case-catalog.mjs.cases.0.name"
+    ]
+  },
+  {
+    "zh": "面向收费业务的 AI 应用，探索数字收费员参与业务服务的方式。",
+    "en": "An AI application for toll operations, exploring how a digital operator can take part in the service.",
+    "sources": [
+      "assets/case-catalog.mjs.cases.0.desc"
+    ]
+  },
+  {
+    "zh": "AI 信息资产审计",
+    "en": "AI Information Asset Audit",
+    "sources": [
+      "assets/case-catalog.mjs.cases.1.name"
+    ]
+  },
+  {
+    "zh": "围绕信息资产开展 AI 审计，辅助审阅与整理相关材料。",
+    "en": "AI-assisted audit of information assets, helping review and organise the related materials.",
+    "sources": [
+      "assets/case-catalog.mjs.cases.1.desc"
+    ]
+  },
+  {
+    "zh": "基层事务 AI 助理",
+    "en": "Community Affairs AI Assistant",
+    "sources": [
+      "assets/case-catalog.mjs.cases.2.name"
+    ]
+  },
+  {
+    "zh": "面向基层日常事务，探索 AI 辅助处理与信息整理。",
+    "en": "Exploring AI support for everyday community affairs, from handling to organising information.",
+    "sources": [
+      "assets/case-catalog.mjs.cases.2.desc"
+    ]
+  },
+  {
+    "zh": "AI 节能调度专家",
+    "en": "AI Energy Dispatch Expert",
+    "sources": [
+      "assets/case-catalog.mjs.cases.3.name"
+    ]
+  },
+  {
+    "zh": "将 AI 应用于节能与调度场景，辅助分析业务中的能源使用与调度问题。",
+    "en": "AI for energy saving and dispatch, helping analyse energy use and scheduling in the business.",
+    "sources": [
+      "assets/case-catalog.mjs.cases.3.desc"
+    ]
+  },
+  {
+    "zh": "AI 文档识别与翻译知识库",
+    "en": "AI Document Recognition, Translation and Knowledge Base",
+    "sources": [
+      "assets/case-catalog.mjs.cases.4.name"
+    ]
+  },
+  {
+    "zh": "结合 OCR、翻译与知识库，衔接文档识别、语言转换和知识查询。",
+    "en": "Combines OCR, translation and a knowledge base, linking document recognition, language conversion and lookup.",
+    "sources": [
+      "assets/case-catalog.mjs.cases.4.desc"
+    ]
+  },
+  {
+    "zh": "AI 公文写作助手",
+    "en": "AI Official Writing Assistant",
+    "sources": [
+      "assets/case-catalog.mjs.cases.5.name"
+    ]
+  },
+  {
+    "zh": "面向公文写作场景，提供 AI 辅助写作的应用入口。",
+    "en": "An entry point for AI-assisted writing of official documents.",
+    "sources": [
+      "assets/case-catalog.mjs.cases.5.desc"
+    ]
+  },
+  {
+    "zh": "AI 企业档案管理",
+    "en": "AI Enterprise Archive Management",
+    "sources": [
+      "assets/case-catalog.mjs.cases.6.name"
+    ]
+  },
+  {
+    "zh": "结合 OCR 与知识库，让企业档案进入可识别、可查询的工作流程。",
+    "en": "Uses OCR and a knowledge base to bring enterprise archives into a searchable workflow.",
+    "sources": [
+      "assets/case-catalog.mjs.cases.6.desc"
+    ]
+  },
+  {
+    "zh": "无人机机场 AI 分析师",
+    "en": "Drone Airport AI Analyst",
+    "sources": [
+      "assets/case-catalog.mjs.cases.7.name"
+    ]
+  },
+  {
+    "zh": "面向森林防火误报与户外活动人员探测，开展无人机影像分析。",
+    "en": "Drone imagery analysis for false fire alarms in forests and detection of people in outdoor activity.",
+    "sources": [
+      "assets/case-catalog.mjs.cases.7.desc"
+    ]
+  },
+  {
+    "zh": "AI 汽车研发与工业建模",
+    "en": "AI Automotive R&D and Industrial Modelling",
+    "sources": [
+      "assets/case-catalog.mjs.cases.8.name"
+    ]
+  },
+  {
+    "zh": "覆盖零件平面图转 3D、装配建模、工业焊接机器人编程与汽车安全检测。",
+    "en": "Covers part drawings to 3D, assembly modelling, industrial welding-robot programming and automotive safety inspection.",
+    "sources": [
+      "assets/case-catalog.mjs.cases.8.desc"
+    ]
+  },
+  {
+    "zh": "刑事律师材料与线索 AI 整理师",
+    "en": "AI Organiser for Criminal Defence Materials and Leads",
+    "sources": [
+      "assets/case-catalog.mjs.cases.9.name"
+    ]
+  },
+  {
+    "zh": "面向刑事律师工作中的材料与线索整理，辅助组织已有信息。",
+    "en": "Helps criminal defence lawyers organise case materials and leads from existing information.",
+    "sources": [
+      "assets/case-catalog.mjs.cases.9.desc"
+    ]
+  },
+  {
+    "zh": "AI 汽车功能安全检测",
+    "en": "AI Automotive Functional Safety Inspection",
+    "sources": [
+      "assets/case-catalog.mjs.cases.10.name"
+    ]
+  },
+  {
+    "zh": "聚焦汽车功能安全检测场景，展示 AI 在专业检测工作中的应用。",
+    "en": "Focused on functional safety inspection of vehicles, showing AI in professional inspection work.",
+    "sources": [
+      "assets/case-catalog.mjs.cases.10.desc"
+    ]
+  },
+  {
+    "zh": "高速公路现场智能协同",
+    "en": "Intelligent Highway Field Coordination",
+    "sources": [
+      "assets/case-catalog.mjs.cases.11.name"
+    ]
+  },
+  {
+    "zh": "面向收费站、隧道、桥梁与光伏场景，展示现场感知、智能研判和协同处置。",
+    "en": "Shows field sensing, intelligent assessment and coordinated response across toll stations, tunnels, bridges and solar sites.",
+    "sources": [
+      "assets/case-catalog.mjs.cases.11.desc"
+    ]
+  },
+  {
     "zh": "图册",
     "en": "Gallery",
     "sources": [
       "assets/site-data.js.nav.0.1",
-      "models/index.html:29",
-      "models/index.html:211",
-      "gallery/index.html:40",
-      "gallery/index.html:63",
-      "downloads/index.html:41",
-      "downloads/index.html:64",
-      "guides/index.html:40",
-      "guides/index.html:63",
-      "guides/admin.html:41",
-      "guides/admin.html:64",
-      "guides/root.html:41",
-      "guides/root.html:64",
-      "guides/network.html:41",
-      "guides/network.html:64",
-      "guides/security.html:41",
-      "guides/security.html:64",
-      "scripts/build-guides.mjs:444",
-      "scripts/build-guides.mjs:467"
+      "models/index.html:37",
+      "models/index.html:262",
+      "gallery/index.html:71",
+      "gallery/index.html:94",
+      "downloads/index.html:74",
+      "downloads/index.html:97",
+      "guides/index.html:71",
+      "guides/index.html:94",
+      "guides/admin.html:69",
+      "guides/admin.html:92",
+      "guides/root.html:69",
+      "guides/root.html:92",
+      "guides/network.html:69",
+      "guides/network.html:92",
+      "guides/security.html:69",
+      "guides/security.html:92",
+      "guides/api.html:70",
+      "guides/api.html:93",
+      "cases/index.html:60",
+      "cases/index.html:84",
+      "scripts/build-guides.mjs:453",
+      "scripts/build-guides.mjs:476"
     ]
   },
   {
@@ -29,24 +245,28 @@
     "en": "Models",
     "sources": [
       "assets/site-data.js.nav.1.1",
-      "models/index.html:30",
-      "models/index.html:211",
-      "gallery/index.html:41",
-      "gallery/index.html:64",
-      "downloads/index.html:42",
-      "downloads/index.html:65",
-      "guides/index.html:41",
-      "guides/index.html:64",
-      "guides/admin.html:42",
-      "guides/admin.html:65",
-      "guides/root.html:42",
-      "guides/root.html:65",
-      "guides/network.html:42",
-      "guides/network.html:65",
-      "guides/security.html:42",
-      "guides/security.html:65",
-      "scripts/build-guides.mjs:445",
-      "scripts/build-guides.mjs:468"
+      "models/index.html:38",
+      "models/index.html:262",
+      "gallery/index.html:72",
+      "gallery/index.html:95",
+      "downloads/index.html:75",
+      "downloads/index.html:98",
+      "guides/index.html:72",
+      "guides/index.html:95",
+      "guides/admin.html:70",
+      "guides/admin.html:93",
+      "guides/root.html:70",
+      "guides/root.html:93",
+      "guides/network.html:70",
+      "guides/network.html:93",
+      "guides/security.html:70",
+      "guides/security.html:93",
+      "guides/api.html:71",
+      "guides/api.html:94",
+      "cases/index.html:61",
+      "cases/index.html:85",
+      "scripts/build-guides.mjs:454",
+      "scripts/build-guides.mjs:477"
     ]
   },
   {
@@ -54,49 +274,62 @@
     "en": "Product",
     "sources": [
       "assets/site-data.js.nav.2.1",
-      "models/index.html:31",
-      "models/index.html:211",
-      "gallery/index.html:42",
-      "gallery/index.html:65",
-      "downloads/index.html:43",
-      "downloads/index.html:66",
-      "guides/index.html:42",
-      "guides/index.html:65",
-      "guides/admin.html:43",
-      "guides/admin.html:66",
-      "guides/root.html:43",
-      "guides/root.html:66",
-      "guides/network.html:43",
-      "guides/network.html:66",
-      "guides/security.html:43",
-      "guides/security.html:66",
-      "scripts/build-guides.mjs:446",
-      "scripts/build-guides.mjs:469"
+      "models/index.html:39",
+      "models/index.html:262",
+      "gallery/index.html:73",
+      "gallery/index.html:96",
+      "downloads/index.html:76",
+      "downloads/index.html:99",
+      "guides/index.html:73",
+      "guides/index.html:96",
+      "guides/admin.html:71",
+      "guides/admin.html:94",
+      "guides/root.html:71",
+      "guides/root.html:94",
+      "guides/network.html:71",
+      "guides/network.html:94",
+      "guides/security.html:71",
+      "guides/security.html:94",
+      "guides/api.html:72",
+      "guides/api.html:95",
+      "cases/index.html:62",
+      "cases/index.html:86",
+      "scripts/build-guides.mjs:455",
+      "scripts/build-guides.mjs:478"
     ]
   },
   {
-    "zh": "架构",
-    "en": "Architecture",
+    "zh": "案例",
+    "en": "Application cases",
     "sources": [
       "assets/site-data.js.nav.3.1",
-      "models/index.html:32",
-      "models/index.html:211",
-      "gallery/index.html:43",
-      "gallery/index.html:66",
-      "downloads/index.html:44",
-      "downloads/index.html:67",
-      "guides/index.html:43",
-      "guides/index.html:66",
-      "guides/admin.html:44",
-      "guides/admin.html:67",
-      "guides/root.html:44",
-      "guides/root.html:67",
-      "guides/network.html:44",
-      "guides/network.html:67",
-      "guides/security.html:44",
-      "guides/security.html:67",
-      "scripts/build-guides.mjs:447",
-      "scripts/build-guides.mjs:470"
+      "models/index.html:40",
+      "models/index.html:262",
+      "gallery/index.html:74",
+      "gallery/index.html:97",
+      "downloads/index.html:77",
+      "downloads/index.html:100",
+      "guides/index.html:74",
+      "guides/index.html:97",
+      "guides/admin.html:72",
+      "guides/admin.html:95",
+      "guides/root.html:72",
+      "guides/root.html:95",
+      "guides/network.html:72",
+      "guides/network.html:95",
+      "guides/security.html:72",
+      "guides/security.html:95",
+      "guides/api.html:73",
+      "guides/api.html:96",
+      "cases/index.html:64",
+      "cases/index.html:88",
+      "cases/index.html:98",
+      "cases/index.html:180",
+      "scripts/build-guides.mjs:456",
+      "scripts/build-guides.mjs:479"
+    ],
+    "zhVariants": [
+      "应用案例"
     ]
   },
   {
@@ -104,24 +337,28 @@
     "en": "Guides",
     "sources": [
       "assets/site-data.js.nav.4.1",
-      "models/index.html:33",
-      "models/index.html:211",
-      "gallery/index.html:44",
-      "gallery/index.html:67",
-      "downloads/index.html:45",
-      "downloads/index.html:68",
-      "guides/index.html:44",
-      "guides/index.html:67",
-      "guides/admin.html:45",
-      "guides/admin.html:68",
-      "guides/root.html:45",
-      "guides/root.html:68",
-      "guides/network.html:45",
-      "guides/network.html:68",
-      "guides/security.html:45",
-      "guides/security.html:68",
-      "scripts/build-guides.mjs:448",
-      "scripts/build-guides.mjs:471"
+      "models/index.html:41",
+      "models/index.html:262",
+      "gallery/index.html:75",
+      "gallery/index.html:98",
+      "downloads/index.html:78",
+      "downloads/index.html:101",
+      "guides/index.html:75",
+      "guides/index.html:98",
+      "guides/admin.html:73",
+      "guides/admin.html:96",
+      "guides/root.html:73",
+      "guides/root.html:96",
+      "guides/network.html:73",
+      "guides/network.html:96",
+      "guides/security.html:73",
+      "guides/security.html:96",
+      "guides/api.html:74",
+      "guides/api.html:97",
+      "cases/index.html:65",
+      "cases/index.html:89",
+      "scripts/build-guides.mjs:457",
+      "scripts/build-guides.mjs:480"
     ]
   },
   {
@@ -129,24 +366,28 @@
     "en": "Downloads",
     "sources": [
       "assets/site-data.js.nav.5.1",
-      "models/index.html:34",
-      "models/index.html:211",
-      "gallery/index.html:45",
-      "gallery/index.html:68",
-      "downloads/index.html:46",
-      "downloads/index.html:69",
-      "guides/index.html:45",
-      "guides/index.html:68",
-      "guides/admin.html:46",
-      "guides/admin.html:69",
-      "guides/root.html:46",
-      "guides/root.html:69",
-      "guides/network.html:46",
-      "guides/network.html:69",
-      "guides/security.html:46",
-      "guides/security.html:69",
-      "scripts/build-guides.mjs:449",
-      "scripts/build-guides.mjs:472"
+      "models/index.html:42",
+      "models/index.html:262",
+      "gallery/index.html:76",
+      "gallery/index.html:99",
+      "downloads/index.html:79",
+      "downloads/index.html:102",
+      "guides/index.html:76",
+      "guides/index.html:99",
+      "guides/admin.html:74",
+      "guides/admin.html:97",
+      "guides/root.html:74",
+      "guides/root.html:97",
+      "guides/network.html:74",
+      "guides/network.html:97",
+      "guides/security.html:74",
+      "guides/security.html:97",
+      "guides/api.html:75",
+      "guides/api.html:98",
+      "cases/index.html:66",
+      "cases/index.html:90",
+      "scripts/build-guides.mjs:458",
+      "scripts/build-guides.mjs:481"
     ]
   },
   {
@@ -455,25 +696,33 @@
     "en": "Close",
     "sources": [
       "assets/site-data.js.ui.closeMenu",
-      "index.html:337",
-      "models/index.html:187",
-      "models/index.html:211",
-      "gallery/index.html:60",
-      "gallery/index.html:142",
-      "downloads/index.html:61",
-      "downloads/index.html:474",
-      "guides/index.html:60",
-      "guides/index.html:183",
-      "guides/admin.html:61",
-      "guides/admin.html:1509",
-      "guides/root.html:61",
-      "guides/root.html:2362",
-      "guides/network.html:61",
-      "guides/network.html:1090",
-      "guides/security.html:61",
-      "guides/security.html:1306",
-      "scripts/build-guides.mjs:464",
-      "scripts/build-guides.mjs:594",
+      "index.html:107",
+      "index.html:427",
+      "models/index.html:229",
+      "models/index.html:262",
+      "gallery/index.html:91",
+      "gallery/index.html:180",
+      "downloads/index.html:94",
+      "downloads/index.html:535",
+      "downloads/index.html:573",
+      "guides/index.html:91",
+      "guides/index.html:242",
+      "guides/index.html:275",
+      "guides/admin.html:89",
+      "guides/admin.html:1826",
+      "guides/root.html:89",
+      "guides/root.html:2504",
+      "guides/network.html:89",
+      "guides/network.html:1132",
+      "guides/security.html:89",
+      "guides/security.html:1676",
+      "guides/api.html:90",
+      "guides/api.html:24610",
+      "cases/index.html:81",
+      "cases/index.html:147",
+      "cases/index.html:180",
+      "cases/index.html:182",
+      "scripts/build-guides.mjs:473",
       "assets/i18n-ui.json"
     ]
   },
@@ -513,10 +762,24 @@
     ]
   },
   {
+    "zh": "TianshanOS 界面演示",
+    "en": "TianshanOS interface demo",
+    "sources": [
+      "assets/site-data.js.ui.systemDemoTitle"
+    ]
+  },
+  {
     "zh": "一台设备的运行，离不开内部各个部分的配合。TianshanOS 管理 RM-01 的内部设备与系统行为，让推理、应用与存储共同工作。无需专门建设供电、网络与机房环境，RM-01 就能走进业务现场。",
     "en": "A system depends on its parts working in concert. TianshanOS manages the devices and system behavior inside RM-01, coordinating inference, applications, and storage. Bring RM-01 to your business site without building dedicated power, network, or server-room infrastructure.",
     "sources": [
       "assets/site-data.js.ui.productLead"
+    ]
+  },
+  {
+    "zh": "查看界面演示",
+    "en": "View interface demo",
+    "sources": [
+      "assets/site-data.js.ui.systemDemoAction"
     ]
   },
   {
@@ -597,10 +860,192 @@
     ]
   },
   {
+    "zh": "示意图",
+    "en": "Illustrative",
+    "sources": [
+      "assets/site-data.js.ui.egTag",
+      "models/index.html:104",
+      "models/index.html:116"
+    ],
+    "zhVariants": [
+      "示意"
+    ]
+  },
+  {
+    "zh": "模型与接口",
+    "en": "Models and API",
+    "sources": [
+      "assets/site-data.js.ui.egL0P3T"
+    ]
+  },
+  {
+    "zh": "Hugging Face · OpenAI 兼容",
+    "en": "Hugging Face · OpenAI-compatible",
+    "sources": [
+      "assets/site-data.js.ui.egL0P3S"
+    ]
+  },
+  {
+    "zh": "RMinte 推理层",
+    "en": "RMinte inference layer",
+    "sources": [
+      "assets/site-data.js.ui.egL0P2T"
+    ]
+  },
+  {
+    "zh": "定制 vLLM · C++ 引擎",
+    "en": "Custom vLLM · C++ engine",
+    "sources": [
+      "assets/site-data.js.ui.egL0P2S"
+    ]
+  },
+  {
+    "zh": "NVIDIA CUDA",
+    "en": "NVIDIA CUDA",
+    "sources": [
+      "assets/site-data.js.ui.egL0P1T"
+    ]
+  },
+  {
+    "zh": "计算平台",
+    "en": "Compute platform",
+    "sources": [
+      "assets/site-data.js.ui.egL0P1S"
+    ]
+  },
+  {
+    "zh": "并发请求",
+    "en": "Concurrent requests",
+    "sources": [
+      "assets/site-data.js.ui.egL1P3T",
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "连续批处理",
+    "en": "Continuous batching",
+    "sources": [
+      "assets/site-data.js.ui.egL1P3S"
+    ]
+  },
+  {
+    "zh": "分页 KV 缓存",
+    "en": "Paged KV Cache",
+    "sources": [
+      "assets/site-data.js.ui.egL1P2T",
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "前缀复用 · 递归状态",
+    "en": "Prefix reuse · Recurrent state",
+    "sources": [
+      "assets/site-data.js.ui.egL1P2S"
+    ]
+  },
+  {
+    "zh": "显存 / 内存",
+    "en": "VRAM / Memory",
+    "sources": [
+      "assets/site-data.js.ui.egL1P1T"
+    ]
+  },
+  {
+    "zh": "上下文容量",
+    "en": "Context capacity",
+    "sources": [
+      "assets/site-data.js.ui.egL1P1S"
+    ]
+  },
+  {
+    "zh": "SSD",
+    "en": "SSD",
+    "sources": [
+      "assets/site-data.js.ui.egL1P0T"
+    ]
+  },
+  {
+    "zh": "分层扩展上下文",
+    "en": "Tiered context extension",
+    "sources": [
+      "assets/site-data.js.ui.egL1P0S"
+    ]
+  },
+  {
+    "zh": "模型",
+    "en": "Model",
+    "sources": [
+      "assets/site-data.js.ui.egL2P3T"
+    ]
+  },
+  {
+    "zh": "投影合并 · 算子融合",
+    "en": "Merged projections · Kernel fusion",
+    "sources": [
+      "assets/site-data.js.ui.egL2P3S"
+    ]
+  },
+  {
+    "zh": "融合算子",
+    "en": "Fused kernel",
+    "sources": [
+      "assets/site-data.js.ui.egL2P2T"
+    ]
+  },
+  {
+    "zh": "减少数据搬运",
+    "en": "Less data movement",
+    "sources": [
+      "assets/site-data.js.ui.egL2P2S"
+    ]
+  },
+  {
+    "zh": "GPU 算力",
+    "en": "GPU compute",
+    "sources": [
+      "assets/site-data.js.ui.egL2P1T"
+    ]
+  },
+  {
+    "zh": "带宽与缓存",
+    "en": "Bandwidth and cache",
+    "sources": [
+      "assets/site-data.js.ui.egL2P1S"
+    ]
+  },
+  {
+    "zh": "推理软件与 CUDA 的分层示意：同一套接口，两条推理路线",
+    "en": "Layered view of inference software and CUDA: one interface, two inference paths",
+    "sources": [
+      "assets/site-data.js.ui.egAria0"
+    ]
+  },
+  {
+    "zh": "分页 KV 缓存与 SSD 分层存储示意：多路并发共享缓存",
+    "en": "Paged KV cache and tiered SSD storage: concurrent requests share the cache",
+    "sources": [
+      "assets/site-data.js.ui.egAria1"
+    ]
+  },
+  {
+    "zh": "算子融合示意：三次读写合并为一次",
+    "en": "Kernel fusion: three reads and writes merged into one",
+    "sources": [
+      "assets/site-data.js.ui.egAria2"
+    ]
+  },
+  {
     "zh": "EricLake\n封闭式热管理系统",
     "en": "EricLake\nclosed thermal system",
     "sources": [
       "assets/site-data.js.ui.thermalTitle"
+    ]
+  },
+  {
+    "zh": "EricLake 以特制叶片、定制电机与 Z 型独立风道共同导出热量，支撑高并发任务。风道经多轮计算流体力学仿真优化，封闭式结构有效减少灰尘进入核心器件区域，照顾高负载下的运行，也照顾日复一日的使用。",
+    "en": "EricLake carries the heat out with purpose-made blades, a custom motor and a dedicated Z-shaped air duct, supporting high-concurrency workloads. The duct is refined through multiple rounds of computational fluid dynamics simulation, and the closed structure keeps dust out of the core component area, caring for demanding loads and for everyday use alike.",
+    "sources": [
+      "assets/site-data.js.ui.thermalLead"
     ]
   },
   {
@@ -730,6 +1175,97 @@
     ]
   },
   {
+    "zh": "智能热控",
+    "en": "Smart thermal control",
+    "sources": [
+      "assets/site-data.js.ui.ttiChapter"
+    ]
+  },
+  {
+    "zh": "热将起，\n风先知",
+    "en": "Ahead of\nthe heat",
+    "sources": [
+      "assets/site-data.js.ui.ttiTitle"
+    ]
+  },
+  {
+    "zh": "推理持续，散热也持续。TTI 通过 TTO 实时观测热状态，由神经网络模型预测未来 90 秒的功率变化，推演 15、45、90 秒后的温度。它不只看此刻的温度，也记得热是怎样积蓄起来的。热未起，风量已就位；热渐稳，转速自然回落。起伏更少，不同的环境与负载，都能从容应对。",
+    "en": "Inference keeps running, and so does cooling. Through TTO, TTI observes the thermal state in real time. A neural network model predicts power for the next 90 seconds, then projects the temperature at 15, 45 and 90 seconds. It looks beyond the temperature right now, and remembers how the heat built up. Before heat rises, airflow is already in place; as it settles, fan speed eases back on its own. Fewer swings, and it handles different environments and workloads with ease.",
+    "sources": [
+      "assets/site-data.js.ui.ttiText1"
+    ]
+  },
+  {
+    "zh": "该模型基于真实设备运行数据训练。突发任务无法预知，基础曲线、配置上限与独立保护策略始终托底。",
+    "en": "The model is trained on real device operating data. Sudden workloads can't be foreseen, so the base curve, configured limits and an independent protection policy always stand behind it.",
+    "sources": [
+      "assets/site-data.js.ui.ttiText2"
+    ]
+  },
+  {
+    "zh": "现在",
+    "en": "Now",
+    "sources": [
+      "assets/site-data.js.ui.ttiNow"
+    ]
+  },
+  {
+    "zh": "提前",
+    "en": "Lead",
+    "sources": [
+      "assets/site-data.js.ui.ttiLead"
+    ]
+  },
+  {
+    "zh": "温度",
+    "en": "Temp",
+    "sources": [
+      "assets/site-data.js.ui.ttiTemp"
+    ]
+  },
+  {
+    "zh": "风量",
+    "en": "Airflow",
+    "sources": [
+      "assets/site-data.js.ui.ttiAirflow"
+    ]
+  },
+  {
+    "zh": "神经网络",
+    "en": "Neural network",
+    "sources": [
+      "assets/site-data.js.ui.ttiNetwork"
+    ]
+  },
+  {
+    "zh": "观测",
+    "en": "Observe",
+    "sources": [
+      "assets/site-data.js.ui.ttiObserve"
+    ]
+  },
+  {
+    "zh": "预测",
+    "en": "Predict",
+    "sources": [
+      "assets/site-data.js.ui.ttiPredict"
+    ]
+  },
+  {
+    "zh": "调节",
+    "en": "Regulate",
+    "sources": [
+      "assets/site-data.js.ui.ttiRegulate"
+    ]
+  },
+  {
+    "zh": "散热",
+    "en": "Cool",
+    "sources": [
+      "assets/site-data.js.ui.ttiCool"
+    ]
+  },
+  {
     "zh": "铝合金机身",
     "en": "Aluminium chassis",
     "sources": [
@@ -842,8 +1378,7 @@
     "zh": "泛灵（成都）人工智能科技有限公司",
     "en": "RMinte AI",
     "sources": [
-      "assets/site-data.js.ui.footer",
-      "models/index.html:177"
+      "assets/site-data.js.ui.footer"
     ]
   },
   {
@@ -900,6 +1435,34 @@
     "en": "Product & technical discussions",
     "sources": [
       "assets/site-data.js.ui.communityContact"
+    ]
+  },
+  {
+    "zh": "样机借用",
+    "en": "Demo unit loan",
+    "sources": [
+      "assets/site-data.js.ui.sampleLoan"
+    ]
+  },
+  {
+    "zh": "点此申请",
+    "en": "Apply here",
+    "sources": [
+      "assets/site-data.js.ui.sampleApply"
+    ]
+  },
+  {
+    "zh": "申请表暂时无法加载，请重试或刷新页面",
+    "en": "The application could not load. Try again or refresh the page.",
+    "sources": [
+      "assets/site-data.js.ui.sampleLoadError"
+    ]
+  },
+  {
+    "zh": "刷新页面",
+    "en": "Refresh page",
+    "sources": [
+      "assets/site-data.js.ui.sampleReload"
     ]
   },
   {
@@ -1831,7 +2394,7 @@
     "en": "Daily administration",
     "sources": [
       "scripts/build-guides.mjs.guideConfig.admin.label",
-      "guides/admin.html:77"
+      "guides/admin.html:111"
     ]
   },
   {
@@ -1839,9 +2402,7 @@
     "en": "TianshanOS Admin User Guide",
     "sources": [
       "scripts/build-guides.mjs.guideConfig.admin.title",
-      "guides/admin.html:12",
-      "guides/admin.html:16",
-      "guides/admin.html:78"
+      "guides/admin.html:112"
     ]
   },
   {
@@ -1849,9 +2410,7 @@
     "en": "For users managing TianshanOS with the admin account, covering system status, devices, networking, files, and OTA updates.",
     "sources": [
       "scripts/build-guides.mjs.guideConfig.admin.description",
-      "guides/admin.html:11",
-      "guides/admin.html:13",
-      "guides/admin.html:79"
+      "guides/admin.html:113"
     ]
   },
   {
@@ -1859,8 +2418,8 @@
     "en": "9 chapters",
     "sources": [
       "scripts/build-guides.mjs.guideConfig.admin.chapterCount",
-      "guides/index.html:108",
-      "guides/admin.html:81"
+      "guides/index.html:152",
+      "guides/admin.html:115"
     ]
   },
   {
@@ -1868,7 +2427,7 @@
     "en": "Continue to the root guide",
     "sources": [
       "scripts/build-guides.mjs.guideConfig.admin.next",
-      "guides/admin.html:1468"
+      "guides/admin.html:1779"
     ]
   },
   {
@@ -1876,7 +2435,7 @@
     "en": "System operations",
     "sources": [
       "scripts/build-guides.mjs.guideConfig.root.label",
-      "guides/root.html:77"
+      "guides/root.html:111"
     ]
   },
   {
@@ -1884,9 +2443,7 @@
     "en": "TianshanOS root Operations Guide",
     "sources": [
       "scripts/build-guides.mjs.guideConfig.root.title",
-      "guides/root.html:12",
-      "guides/root.html:16",
-      "guides/root.html:78"
+      "guides/root.html:112"
     ]
   },
   {
@@ -1894,17 +2451,15 @@
     "en": "For operators managing TianshanOS with the root account, including shared daily tasks, terminal, commands, and automation.",
     "sources": [
       "scripts/build-guides.mjs.guideConfig.root.description",
-      "guides/root.html:11",
-      "guides/root.html:13",
-      "guides/root.html:79"
+      "guides/root.html:113"
     ]
   },
   {
-    "zh": "12 个章节",
-    "en": "12 chapters",
+    "zh": "13 个章节",
+    "en": "13 chapters",
     "sources": [
       "scripts/build-guides.mjs.guideConfig.root.chapterCount",
-      "guides/root.html:81"
+      "guides/root.html:115"
     ]
   },
   {
@@ -1912,7 +2467,16 @@
     "en": "Continue to the Security guide",
     "sources": [
       "scripts/build-guides.mjs.guideConfig.root.next",
-      "guides/root.html:2321"
+      "guides/root.html:2457"
+    ]
+  },
+  {
+    "zh": "安全指南",
+    "en": "Security guide",
+    "sources": [
+      "scripts/build-guides.mjs.guideConfig.security.crumb",
+      "guides/index.html:171",
+      "guides/security.html:107"
     ]
   },
   {
@@ -1920,7 +2484,7 @@
     "en": "Security operations",
     "sources": [
       "scripts/build-guides.mjs.guideConfig.security.label",
-      "guides/security.html:77"
+      "guides/security.html:111"
     ]
   },
   {
@@ -1928,9 +2492,7 @@
     "en": "TianshanOS Security Page Guide",
     "sources": [
       "scripts/build-guides.mjs.guideConfig.security.title",
-      "guides/security.html:12",
-      "guides/security.html:16",
-      "guides/security.html:78"
+      "guides/security.html:112"
     ]
   },
   {
@@ -1938,9 +2500,7 @@
     "en": "For individual users, security administrators, and device operators. Learn what the Security page can and cannot do, and how to verify every critical action.",
     "sources": [
       "scripts/build-guides.mjs.guideConfig.security.description",
-      "guides/security.html:11",
-      "guides/security.html:13",
-      "guides/security.html:79"
+      "guides/security.html:113"
     ]
   },
   {
@@ -1948,7 +2508,7 @@
     "en": "8 chapters",
     "sources": [
       "scripts/build-guides.mjs.guideConfig.security.chapterCount",
-      "guides/security.html:81"
+      "guides/security.html:115"
     ]
   },
   {
@@ -1957,8 +2517,17 @@
     "sources": [
       "scripts/build-guides.mjs.guideConfig.security.next",
       "scripts/build-guides.mjs.guideConfig.network.next",
-      "guides/network.html:1049",
-      "guides/security.html:1265"
+      "guides/network.html:1085",
+      "guides/security.html:1629"
+    ]
+  },
+  {
+    "zh": "网络配置",
+    "en": "Network configuration",
+    "sources": [
+      "scripts/build-guides.mjs.guideConfig.network.crumb",
+      "guides/index.html:189",
+      "guides/network.html:107"
     ]
   },
   {
@@ -1966,7 +2535,7 @@
     "en": "Network connectivity",
     "sources": [
       "scripts/build-guides.mjs.guideConfig.network.label",
-      "guides/network.html:77"
+      "guides/network.html:111"
     ]
   },
   {
@@ -1974,9 +2543,7 @@
     "en": "RM-01 Network Configuration Guide",
     "sources": [
       "scripts/build-guides.mjs.guideConfig.network.title",
-      "guides/network.html:12",
-      "guides/network.html:16",
-      "guides/network.html:78"
+      "guides/network.html:112"
     ]
   },
   {
@@ -1984,9 +2551,7 @@
     "en": "Explains the C1 and C3 network paths, device access, AI-assisted internet sharing, and how to connect the complete RM-01 system to an upstream network.",
     "sources": [
       "scripts/build-guides.mjs.guideConfig.network.description",
-      "guides/network.html:11",
-      "guides/network.html:13",
-      "guides/network.html:79"
+      "guides/network.html:113"
     ]
   },
   {
@@ -1994,7 +2559,7 @@
     "en": "7 chapters",
     "sources": [
       "scripts/build-guides.mjs.guideConfig.network.chapterCount",
-      "guides/network.html:81"
+      "guides/network.html:115"
     ]
   },
   {
@@ -2005,42 +2570,479 @@
     ]
   },
   {
-    "zh": "RM-01 便携 AI 超算，面向本地部署、低功耗推理和生产级 AI 应用交付。",
-    "en": "RM-01 Portable AI Supercomputer for local deployment, low-power inference, and production AI applications.",
+    "zh": "正在检查访问权限…",
+    "en": "Checking access…",
     "sources": [
-      "index.html:11",
-      "index.html:13"
+      "cases/cases.js.COPY.checking"
     ]
   },
   {
-    "zh": "RM-01 便携 AI 超算 · RMinte",
-    "en": "RM-01 Portable AI Supercomputer · RMinte",
+    "zh": "正在加载演示…",
+    "en": "Loading demo…",
     "sources": [
-      "index.html:12",
-      "index.html:15"
+      "cases/cases.js.COPY.loading"
+    ]
+  },
+  {
+    "zh": "登录已失效，请重新登录。",
+    "en": "Your session has expired. Please sign in again.",
+    "sources": [
+      "cases/cases.js.COPY.expired"
+    ]
+  },
+  {
+    "zh": "暂未完成加载，请重试或关闭。",
+    "en": "Loading has not finished. Please retry or close.",
+    "sources": [
+      "cases/cases.js.COPY.unfinished"
+    ]
+  },
+  {
+    "zh": "重试",
+    "en": "Retry",
+    "sources": [
+      "cases/cases.js.COPY.retry"
+    ]
+  },
+  {
+    "zh": "需登录后演示",
+    "en": "Sign in to view demo",
+    "sources": [
+      "cases/cases.js.COPY.signToDemo"
+    ]
+  },
+  {
+    "zh": "演示已授权",
+    "en": "Demo authorised",
+    "sources": [
+      "cases/cases.js.COPY.demoOn"
+    ]
+  },
+  {
+    "zh": "演示未授权",
+    "en": "Demo not authorised",
+    "sources": [
+      "cases/cases.js.COPY.demoOff"
+    ]
+  },
+  {
+    "zh": "演示",
+    "en": "Demo",
+    "sources": [
+      "cases/cases.js.COPY.demo"
+    ]
+  },
+  {
+    "zh": "资料与联系",
+    "en": "Materials and contact",
+    "sources": [
+      "cases/cases.js.COPY.more"
+    ]
+  },
+  {
+    "zh": "下载相关资料",
+    "en": "Related materials",
+    "sources": [
+      "cases/cases.js.COPY.materials"
+    ]
+  },
+  {
+    "zh": "登录后下载",
+    "en": "Sign in to download",
+    "sources": [
+      "cases/cases.js.COPY.signToDownload",
+      "assets/dealer-downloads.js.COPY.login.title",
+      "downloads/index.html:585"
+    ],
+    "zhVariants": [
+      "下载前请先登录"
+    ]
+  },
+  {
+    "zh": "资料待接入",
+    "en": "Document not yet connected",
+    "sources": [
+      "cases/cases.js.COPY.docPending"
+    ]
+  },
+  {
+    "zh": "联系供应商",
+    "en": "Contact the supplier",
+    "sources": [
+      "cases/cases.js.COPY.contact"
+    ]
+  },
+  {
+    "zh": "电子邮箱：",
+    "en": "Email:",
+    "sources": [
+      "cases/cases.js.COPY.contactEmail"
+    ]
+  },
+  {
+    "zh": "供应商信息待公布",
+    "en": "Supplier details to be announced",
+    "sources": [
+      "cases/cases.js.COPY.contactPending"
+    ]
+  },
+  {
+    "zh": "1 个场景",
+    "en": "1 scenario",
+    "sources": [
+      "cases/cases.js.COPY.one"
+    ]
+  },
+  {
+    "zh": "{n} 个场景",
+    "en": "{n} scenarios",
+    "sources": [
+      "cases/cases.js.COPY.many"
+    ]
+  },
+  {
+    "zh": "授权登录",
+    "en": "Sign in",
+    "sources": [
+      "cases/cases.js.COPY.signIn",
+      "cases/cases.js.COPY.signInSubmit",
+      "assets/case-auth.js.PANEL.signIn"
+    ],
+    "zhVariants": [
+      "登录"
+    ]
+  },
+  {
+    "zh": "使用官方分发的账号登录。登录后，可直接进入获准的演示或下载资料。",
+    "en": "Sign in with the account we issued. Afterwards you can open the demos and materials you are authorised to use.",
+    "sources": [
+      "cases/cases.js.COPY.loginLead"
+    ]
+  },
+  {
+    "zh": "用户名",
+    "en": "Username",
+    "sources": [
+      "cases/cases.js.COPY.username"
+    ]
+  },
+  {
+    "zh": "密码",
+    "en": "Password",
+    "sources": [
+      "cases/cases.js.COPY.password"
+    ]
+  },
+  {
+    "zh": "未能登录",
+    "en": "COULD NOT SIGN IN",
+    "sources": [
+      "cases/cases.js.COPY.loginFailed"
+    ]
+  },
+  {
+    "zh": "用户名或密码不正确",
+    "en": "The username or password is incorrect",
+    "sources": [
+      "cases/cases.js.COPY.badLogin"
+    ]
+  },
+  {
+    "zh": "成为软件合作伙伴",
+    "en": "Become a software partner",
+    "sources": [
+      "cases/cases.js.COPY.partner",
+      "cases/index.html:107"
+    ]
+  },
+  {
+    "zh": "介绍你的应用，以及它与 RM-01 结合的构想。我们将在审核后通过邮箱联系你。",
+    "en": "Tell us about your application and how you would combine it with RM-01. We will contact you by email after review.",
+    "sources": [
+      "cases/cases.js.COPY.partnerLead"
+    ]
+  },
+  {
+    "zh": "姓名",
+    "en": "Name",
+    "sources": [
+      "cases/cases.js.COPY.name"
+    ]
+  },
+  {
+    "zh": "公司／机构",
+    "en": "Company / organisation",
+    "sources": [
+      "cases/cases.js.COPY.company"
+    ]
+  },
+  {
+    "zh": "工作邮箱",
+    "en": "Work email",
+    "sources": [
+      "cases/cases.js.COPY.email"
+    ]
+  },
+  {
+    "zh": "你的应用解决什么问题？如何与 RM-01 结合？",
+    "en": "What problem does your application solve, and how would it combine with RM-01?",
+    "sources": [
+      "cases/cases.js.COPY.reason"
+    ]
+  },
+  {
+    "zh": "你如何理解 RM-01？团队有哪些模型与应用开发经验？",
+    "en": "How do you understand RM-01? What model and application development experience does your team have?",
+    "sources": [
+      "cases/cases.js.COPY.ability"
+    ]
+  },
+  {
+    "zh": "提交申请",
+    "en": "Submit",
+    "sources": [
+      "cases/cases.js.COPY.submit"
+    ]
+  },
+  {
+    "zh": "提交后由团队审核，并通过你填写的邮箱联系。合作申请不自动获得演示与下载权限。",
+    "en": "The team reviews every application and replies by email. An application does not grant access to demos or downloads.",
+    "sources": [
+      "cases/cases.js.COPY.review"
+    ]
+  },
+  {
+    "zh": "申请已收到。团队将通过邮箱与你联系。",
+    "en": "Application received. The team will contact you by email.",
+    "sources": [
+      "cases/cases.js.COPY.received"
+    ]
+  },
+  {
+    "zh": "此账号尚未获得查看演示权限，请联系账号发放人。",
+    "en": "This account is not yet authorised to view demos. Please contact whoever issued it.",
+    "sources": [
+      "cases/cases.js.COPY.noDemo"
+    ]
+  },
+  {
+    "zh": "此账号尚未获得下载资料权限，请联系账号发放人。",
+    "en": "This account is not yet authorised to download materials. Please contact whoever issued it.",
+    "sources": [
+      "cases/cases.js.COPY.noDownload"
+    ]
+  },
+  {
+    "zh": "该案例的演示或资料尚未接入。",
+    "en": "The demo or materials for this case are not connected yet.",
+    "sources": [
+      "cases/cases.js.COPY.notConnected"
+    ]
+  },
+  {
+    "zh": "尚未接入",
+    "en": "NOT YET CONNECTED",
+    "sources": [
+      "cases/cases.js.COPY.notConnectedLabel"
+    ]
+  },
+  {
+    "zh": "此账号没有访问权限。",
+    "en": "This account has no access.",
+    "sources": [
+      "cases/cases.js.COPY.noAccess"
+    ]
+  },
+  {
+    "zh": "暂时无法打开，请稍后重试。",
+    "en": "Cannot be opened right now. Please try again later.",
+    "sources": [
+      "cases/cases.js.COPY.tryLater"
+    ]
+  },
+  {
+    "zh": "账号服务暂时不可用",
+    "en": "The account service is temporarily unavailable",
+    "sources": [
+      "cases/cases.js.COPY.serviceDown",
+      "assets/case-auth.js.PANEL.unavailable"
+    ]
+  },
+  {
+    "zh": "未登录，需要登录后才能下载。",
+    "en": "You are not signed in. Please sign in before downloading.",
+    "sources": [
+      "assets/dealer-downloads.js.COPY.login.message",
+      "downloads/index.html:586"
+    ]
+  },
+  {
+    "zh": "请前往案例页面，使用已有账号登录。",
+    "en": "Go to the cases page and sign in with your existing account.",
+    "sources": [
+      "assets/dealer-downloads.js.COPY.login.help",
+      "downloads/index.html:592"
+    ]
+  },
+  {
+    "zh": "没有权限",
+    "en": "Access denied",
+    "sources": [
+      "assets/dealer-downloads.js.COPY.forbidden.title"
+    ]
+  },
+  {
+    "zh": "此账号尚未获得经销商资料下载权限，请联系账号发放人。",
+    "en": "This account is not authorised to download dealer resources. Please contact the person who issued your account.",
+    "sources": [
+      "assets/dealer-downloads.js.COPY.forbidden.message"
+    ]
+  },
+  {
+    "zh": "权限开通后，可直接重新下载，无需再次登录。",
+    "en": "Once access is granted, try downloading again. You do not need to sign in again.",
+    "sources": [
+      "assets/dealer-downloads.js.COPY.forbidden.help"
+    ]
+  },
+  {
+    "zh": "暂时无法下载",
+    "en": "Download unavailable",
+    "sources": [
+      "assets/dealer-downloads.js.COPY.unavailable.title"
+    ]
+  },
+  {
+    "zh": "资料暂时不可用，请稍后重试。",
+    "en": "This document is temporarily unavailable. Please try again later.",
+    "sources": [
+      "assets/dealer-downloads.js.COPY.unavailable.message"
+    ]
+  },
+  {
+    "zh": "如需帮助，请联系账号发放人。",
+    "en": "For help, contact the person who issued your account.",
+    "sources": [
+      "assets/dealer-downloads.js.COPY.unavailable.help",
+      "assets/dealer-downloads.js.COPY.password.help"
+    ]
+  },
+  {
+    "zh": "请先修改初始密码",
+    "en": "Change your initial password first",
+    "sources": [
+      "assets/dealer-downloads.js.COPY.password.title"
+    ]
+  },
+  {
+    "zh": "请前往管理后台修改初始密码，然后重新登录下载。",
+    "en": "Change your initial password in the admin console, then sign in again to download.",
+    "sources": [
+      "assets/dealer-downloads.js.COPY.password.message"
+    ]
+  },
+  {
+    "zh": "授权访问",
+    "en": "AUTHORISED ACCESS",
+    "sources": [
+      "assets/case-auth.js.PANEL.label"
+    ]
+  },
+  {
+    "zh": "已有官方分发的账号？登录后可进入获准的演示与下载资料。",
+    "en": "Have an account issued by us? Sign in to open the demos and materials you are authorised to use.",
+    "sources": [
+      "assets/case-auth.js.PANEL.hint"
+    ]
+  },
+  {
+    "zh": "案例访问",
+    "en": "Case access",
+    "sources": [
+      "assets/case-auth.js.PANEL.cases"
+    ]
+  },
+  {
+    "zh": "全部案例",
+    "en": "All cases",
+    "sources": [
+      "assets/case-auth.js.PANEL.all"
+    ]
+  },
+  {
+    "zh": "已授权 {n} 个案例",
+    "en": "{n} cases authorised",
+    "sources": [
+      "assets/case-auth.js.PANEL.count"
+    ]
+  },
+  {
+    "zh": "请先到管理后台修改初始密码",
+    "en": "Change your initial password in the admin console first",
+    "sources": [
+      "assets/case-auth.js.PANEL.changePassword"
+    ]
+  },
+  {
+    "zh": "管理后台",
+    "en": "Admin console",
+    "sources": [
+      "assets/case-auth.js.PANEL.admin"
+    ]
+  },
+  {
+    "zh": "样机管理",
+    "en": "Demo unit management",
+    "sources": [
+      "assets/case-auth.js.PANEL.sample"
+    ]
+  },
+  {
+    "zh": "退出登录",
+    "en": "Sign out",
+    "sources": [
+      "assets/case-auth.js.PANEL.signOut"
+    ]
+  },
+  {
+    "zh": "RM-01 便携 AI 超算 | 本地大模型推理与 AI Agent 部署 | RMinte",
+    "en": "RM-01 Portable AI Supercomputer | Local LLM Inference & AI Agents | RMinte",
+    "sources": [
+      "index.html:75",
+      "index.html:78"
+    ]
+  },
+  {
+    "zh": "RM-01 是一款面向本地大模型推理与 AI Agent 部署的便携 AI 计算系统，集成专用推理计算、应用运行环境及整机管理能力。",
+    "en": "RM-01 is a portable AI computing system for local LLM inference and AI agent deployment, bringing dedicated inference, applications, and system management together.",
+    "sources": [
+      "index.html:76",
+      "index.html:79"
     ]
   },
   {
     "zh": "跳至主要内容",
     "en": "Skip to main content",
     "sources": [
-      "index.html:45"
+      "index.html:87"
     ]
   },
   {
     "zh": "主导航",
     "en": "Main navigation",
     "sources": [
-      "index.html:47",
-      "models/index.html:26",
-      "gallery/index.html:35",
-      "downloads/index.html:36",
-      "guides/index.html:35",
-      "guides/admin.html:36",
-      "guides/root.html:36",
-      "guides/network.html:36",
-      "guides/security.html:36",
-      "scripts/build-guides.mjs:439",
+      "index.html:89",
+      "models/index.html:34",
+      "gallery/index.html:66",
+      "downloads/index.html:69",
+      "guides/index.html:66",
+      "guides/admin.html:64",
+      "guides/root.html:64",
+      "guides/network.html:64",
+      "guides/security.html:64",
+      "guides/api.html:65",
+      "cases/index.html:55",
+      "scripts/build-guides.mjs:448",
       "assets/i18n-ui.json"
     ]
   },
@@ -2048,16 +3050,18 @@
     "zh": "页面导航",
     "en": "Page navigation",
     "sources": [
-      "index.html:51",
-      "models/index.html:28",
-      "gallery/index.html:39",
-      "downloads/index.html:40",
-      "guides/index.html:39",
-      "guides/admin.html:40",
-      "guides/root.html:40",
-      "guides/network.html:40",
-      "guides/security.html:40",
-      "scripts/build-guides.mjs:443",
+      "index.html:93",
+      "models/index.html:36",
+      "gallery/index.html:70",
+      "downloads/index.html:73",
+      "guides/index.html:70",
+      "guides/admin.html:68",
+      "guides/root.html:68",
+      "guides/network.html:68",
+      "guides/security.html:68",
+      "guides/api.html:69",
+      "cases/index.html:59",
+      "scripts/build-guides.mjs:452",
       "assets/i18n-ui.json"
     ]
   },
@@ -2065,16 +3069,18 @@
     "zh": "打开菜单",
     "en": "Open menu",
     "sources": [
-      "index.html:54",
-      "models/index.html:38",
-      "gallery/index.html:49",
-      "downloads/index.html:50",
-      "guides/index.html:49",
-      "guides/admin.html:50",
-      "guides/root.html:50",
-      "guides/network.html:50",
-      "guides/security.html:50",
-      "scripts/build-guides.mjs:453",
+      "index.html:96",
+      "models/index.html:46",
+      "gallery/index.html:80",
+      "downloads/index.html:83",
+      "guides/index.html:80",
+      "guides/admin.html:78",
+      "guides/root.html:78",
+      "guides/network.html:78",
+      "guides/security.html:78",
+      "guides/api.html:79",
+      "cases/index.html:70",
+      "scripts/build-guides.mjs:462",
       "assets/i18n-ui.json"
     ]
   },
@@ -2082,16 +3088,18 @@
     "zh": "移动导航",
     "en": "Mobile navigation",
     "sources": [
-      "index.html:67",
-      "models/index.html:211",
-      "gallery/index.html:62",
-      "downloads/index.html:63",
-      "guides/index.html:62",
-      "guides/admin.html:63",
-      "guides/root.html:63",
-      "guides/network.html:63",
-      "guides/security.html:63",
-      "scripts/build-guides.mjs:466",
+      "index.html:109",
+      "models/index.html:262",
+      "gallery/index.html:93",
+      "downloads/index.html:96",
+      "guides/index.html:93",
+      "guides/admin.html:91",
+      "guides/root.html:91",
+      "guides/network.html:91",
+      "guides/security.html:91",
+      "guides/api.html:92",
+      "cases/index.html:83",
+      "scripts/build-guides.mjs:475",
       "assets/i18n-ui.json"
     ]
   },
@@ -2099,155 +3107,184 @@
     "zh": "RM-01 核心指标",
     "en": "RM-01 key specifications",
     "sources": [
-      "index.html:88"
-    ]
-  },
-  {
-    "zh": "推理软件与 CUDA 计算平台的分层示意",
-    "en": "Layered view of inference software and the CUDA computing platform",
-    "sources": [
-      "index.html:105"
+      "index.html:132"
     ]
   },
   {
     "zh": "两台计算机分别经以太网控制器和 PHY 接入板载交换机，ESP32 经 W5500 接入并拥有配置存储；两台计算机各有独立存储。",
     "en": "Both computers connect to the onboard switch through Ethernet controllers and PHYs. ESP32 connects through W5500 and has configuration storage. Each computer has its own storage.",
     "sources": [
-      "index.html:124"
+      "index.html:175"
     ]
   },
   {
     "zh": "RM-01 硬件结构滚动帧动画",
     "en": "Scroll-driven animation of the RM-01 hardware structure",
     "sources": [
-      "index.html:150"
+      "index.html:201"
     ]
   },
   {
     "zh": "RM-01 硬件结构动态分解",
     "en": "Animated exploded view of the RM-01 hardware structure",
     "sources": [
-      "index.html:160"
+      "index.html:211"
+    ]
+  },
+  {
+    "zh": "TTI 工作示意：TTO 观测，神经网络预测，TTI 调节，EricLake 散热",
+    "en": "How TTI works: TTO observes, the neural network predicts, TTI regulates, EricLake cools",
+    "sources": [
+      "index.html:227"
     ]
   },
   {
     "zh": "EricLake 定制风扇叶片微距特写",
     "en": "Macro photograph of an EricLake custom fan blade",
     "sources": [
-      "index.html:180"
+      "index.html:247"
     ]
   },
   {
     "zh": "RM-01 中央绒光肤感玻璃面板特写",
     "en": "Close-up of the central soft-touch glass panel on RM-01",
     "sources": [
-      "index.html:202"
+      "index.html:269"
     ]
   },
   {
     "zh": "RM-01 机身侧后方的数据连接与电源输入接口",
     "en": "Data connections and power input on the rear side of RM-01",
     "sources": [
-      "index.html:215"
+      "index.html:283"
     ]
   },
   {
     "zh": "铝合金机身工艺细节",
     "en": "Aluminium chassis craftsmanship detail",
     "sources": [
-      "index.html:263"
+      "index.html:331"
     ]
   },
   {
     "zh": "精细喷砂工艺细节",
     "en": "Fine bead-blasted finish detail",
     "sources": [
-      "index.html:273"
+      "index.html:341"
     ]
   },
   {
     "zh": "玻璃圆角与铝合金机身装配细节",
     "en": "Detail of the rounded glass corners and aluminium chassis assembly",
     "sources": [
-      "index.html:283"
+      "index.html:351"
     ]
   },
   {
     "zh": "工艺公差工艺细节",
     "en": "Manufacturing tolerance detail",
     "sources": [
-      "index.html:293"
+      "index.html:361"
     ]
   },
   {
-    "zh": "RMQ3x 与 RMQ4，RMinte 专业模型系列。针对性训练、专用推理引擎与架构优化。",
-    "en": "RMQ3x and RMQ4: RMinte’s specialist models with targeted training, dedicated inference engines, and architecture optimization.",
+    "zh": "关闭演示",
+    "en": "Close demo",
     "sources": [
-      "models/index.html:13"
+      "index.html:406"
     ]
   },
   {
-    "zh": "模型 · RMinte",
-    "en": "Models · RMinte",
+    "zh": "以下为 TianshanOS 界面演示，数据仅供展示，不代表真实设备状态。",
+    "en": "This is a TianshanOS interface demo. All data is illustrative and does not represent a real device.",
     "sources": [
-      "models/index.html:14",
-      "assets/i18n-ui.json"
+      "index.html:409"
+    ]
+  },
+  {
+    "zh": "天山OS 界面预览",
+    "en": "TianshanOS interface preview",
+    "sources": [
+      "index.html:411"
+    ]
+  },
+  {
+    "zh": "请用电脑查看完整演示。",
+    "en": "Please use a computer to view the full demo.",
+    "sources": [
+      "index.html:413"
+    ]
+  },
+  {
+    "zh": "RMQ3x 与 RMQ4 专业 AI 模型 | 推理引擎与 Agent 能力 | RMinte",
+    "en": "RMQ3x & RMQ4 Models | Specialized Reasoning & Inference | RMinte",
+    "sources": [
+      "models/index.html:21",
+      "models/index.html:24"
+    ]
+  },
+  {
+    "zh": "了解 RMinte 的 RMQ3x Dense 与 RMQ4 MoE 专业模型，以及自研 C++ 推理引擎、定制 vLLM、CUDA 优化与 Agent 工具执行能力。",
+    "en": "Explore the RMQ3x Dense and RMQ4 MoE specialist models, the RMinte C++ inference runtime, customized vLLM and CUDA optimizations for agent workflows.",
+    "sources": [
+      "models/index.html:22",
+      "models/index.html:25"
     ]
   },
   {
     "zh": "跳至主要内容",
     "en": "Skip to content",
     "sources": [
-      "models/index.html:25"
+      "models/index.html:33"
     ]
   },
   {
     "zh": "RMQ 系列模型",
     "en": "RMQ MODELS",
     "sources": [
-      "models/index.html:45"
+      "models/index.html:53"
     ]
   },
   {
     "zh": "专业分析，更深入。",
     "en": "Deeper analysis.",
     "sources": [
-      "models/index.html:46"
+      "models/index.html:54"
     ]
   },
   {
     "zh": "模型推理，更高效。",
     "en": "More efficient inference.",
     "sources": [
-      "models/index.html:46"
+      "models/index.html:54"
     ]
   },
   {
     "zh": "RMQ3x 与 RMQ4，RMinte 专业模型系列。为法律、调查、安全治理、科研与社会研究打造，连接领域知识、深度推理与工具执行，让 Agent 从理解问题、形成判断走向持续行动，交付文书、代码与研究成果。",
     "en": "RMQ3x and RMQ4 are RMinte’s specialist models for law, investigations, security and governance, and scientific and social research. They combine domain knowledge, deep reasoning, and tool use so agents can understand problems, form judgments, and act on them to produce documents, code, and research findings.",
     "sources": [
-      "models/index.html:47"
+      "models/index.html:55"
     ]
   },
   {
     "zh": "探索模型",
     "en": "Explore models",
     "sources": [
-      "models/index.html:49"
+      "models/index.html:57"
     ]
   },
   {
     "zh": "查看评测",
     "en": "Benchmarks",
     "sources": [
-      "models/index.html:50"
+      "models/index.html:58"
     ]
   },
   {
     "zh": "Dense 与 MoE 架构概念示意",
     "en": "Conceptual view of dense and MoE architectures",
     "sources": [
-      "models/index.html:54",
+      "models/index.html:62",
       "assets/i18n-ui.json"
     ]
   },
@@ -2255,21 +3292,21 @@
     "zh": "RMQ3x Dense：展开或收起结构",
     "en": "RMQ3x Dense: expand or collapse the structure",
     "sources": [
-      "models/index.html:55"
+      "models/index.html:63"
     ]
   },
   {
     "zh": "RMQ4 MoE：展开或收起结构",
     "en": "RMQ4 MoE: expand or collapse the structure",
     "sources": [
-      "models/index.html:69"
+      "models/index.html:80"
     ]
   },
   {
     "zh": "模型介绍",
     "en": "Model overview",
     "sources": [
-      "models/index.html:86",
+      "models/index.html:100",
       "assets/i18n-ui.json"
     ]
   },
@@ -2277,71 +3314,71 @@
     "zh": "专业推理，",
     "en": "Expert reasoning.",
     "sources": [
-      "models/index.html:90"
+      "models/index.html:105"
     ]
   },
   {
     "zh": "驱动实际行动。",
     "en": "Driving action.",
     "sources": [
-      "models/index.html:90"
+      "models/index.html:105"
     ]
   },
   {
     "zh": "针对法律、调查、安全治理、科研与社会研究打造的专业模型。连接方案设计、代码生成、工具调用与结果验证，让 Agent 将专业判断转化为行动，交付文书、代码与研究成果。",
     "en": "A specialist model for law, investigations, security and governance, and scientific and social research. It combines planning, code generation, tool use, and verification so agents can turn professional judgment into action and produce documents, code, and research findings.",
     "sources": [
-      "models/index.html:91"
+      "models/index.html:106"
     ]
   },
   {
     "zh": "理解专业问题",
     "en": "Understand domain problems",
     "sources": [
-      "models/index.html:93"
+      "models/index.html:108"
     ]
   },
   {
     "zh": "联系事实、证据与领域知识，推演因果、检验假设，形成有依据的判断与方案。",
     "en": "Connect facts, evidence, and domain knowledge to examine cause and effect, test hypotheses, and develop sound judgments and plans.",
     "sources": [
-      "models/index.html:93"
+      "models/index.html:108"
     ]
   },
   {
     "zh": "完成实际工作",
     "en": "Execute tasks",
     "sources": [
-      "models/index.html:94"
+      "models/index.html:109"
     ]
   },
   {
     "zh": "制定检索策略，生成数据查询与验证代码，调用专业工具执行任务、检验结果。",
     "en": "Develop search strategies, generate data queries and validation code, and use specialist tools to execute tasks and verify results.",
     "sources": [
-      "models/index.html:94"
+      "models/index.html:109"
     ]
   },
   {
     "zh": "延续任务进程",
     "en": "Carry tasks forward",
     "sources": [
-      "models/index.html:95"
+      "models/index.html:110"
     ]
   },
   {
     "zh": "承接前序发现与执行反馈，修订方案、推进验证，完成调查、研究与业务工作。",
     "en": "Use prior findings and execution feedback to revise plans, verify results, and complete investigations, research, and business tasks.",
     "sources": [
-      "models/index.html:95"
+      "models/index.html:110"
     ]
   },
   {
     "zh": "模型主页即将公布",
     "en": "Model page coming soon",
     "sources": [
-      "models/index.html:97",
-      "models/index.html:108",
+      "models/index.html:112",
+      "models/index.html:124",
       "assets/i18n-ui.json"
     ]
   },
@@ -2349,126 +3386,147 @@
     "zh": "深入复杂问题，",
     "en": "Explore complex problems.",
     "sources": [
-      "models/index.html:101"
+      "models/index.html:117"
     ]
   },
   {
     "zh": "驾驭长程任务。",
     "en": "Manage long-horizon tasks.",
     "sources": [
-      "models/index.html:101"
+      "models/index.html:117"
     ]
   },
   {
     "zh": "为跨领域、多阶段、需要反复验证的专业工作打造，覆盖法律、调查、安全治理、科研与社会研究。衔接任务规划、代码计算、工具使用与研究迭代，保持目标、约束和阶段成果的连续性，让 Agent 推进复杂调查与研究项目，完成从问题到成果的交付。",
     "en": "Built for complex work in law, investigations, security and governance, and scientific and social research. It connects planning, code execution, tool use, and iterative research across disciplines and stages, retaining goals, constraints, and findings through repeated verification. Agents can carry investigations and research projects from the initial question to the final deliverable.",
     "sources": [
-      "models/index.html:102"
+      "models/index.html:118"
     ]
   },
   {
     "zh": "建立完整论证",
     "en": "Build a complete argument",
     "sources": [
-      "models/index.html:104"
+      "models/index.html:120"
     ]
   },
   {
     "zh": "联结不同领域的知识与证据，解释问题机制，检验竞争性假设，形成逻辑严密的专业判断。",
     "en": "Connect knowledge and evidence across disciplines, explain underlying mechanisms, and test competing hypotheses to reach sound professional judgments.",
     "sources": [
-      "models/index.html:104"
+      "models/index.html:120"
     ]
   },
   {
     "zh": "贯通复杂任务",
     "en": "Coordinate complex tasks",
     "sources": [
-      "models/index.html:105"
+      "models/index.html:121"
     ]
   },
   {
     "zh": "统筹调查规划、信息检索、代码计算与结果复核，将阶段性发现转化为后续行动。",
     "en": "Coordinate investigation planning, information retrieval, code execution, and result verification. Use findings at each stage to guide the next action.",
     "sources": [
-      "models/index.html:105"
+      "models/index.html:121"
     ]
   },
   {
     "zh": "推进研究迭代",
     "en": "Refine the research",
     "sources": [
-      "models/index.html:106"
+      "models/index.html:122"
     ]
   },
   {
     "zh": "吸收新增证据、计算结果与实验反馈，修订假设、完善方案，产出可检验的研究成果。",
     "en": "Incorporate new evidence, computational results, and experimental feedback to revise hypotheses, refine plans, and produce testable research findings.",
     "sources": [
-      "models/index.html:106"
+      "models/index.html:122"
     ]
   },
   {
     "zh": "模型评测",
     "en": "Model benchmarks",
     "sources": [
-      "models/index.html:114"
+      "models/index.html:130"
     ]
   },
   {
     "zh": "测评结果即将推出",
     "en": "Benchmark results coming soon",
     "sources": [
-      "models/index.html:117"
+      "models/index.html:133"
     ]
   },
   {
     "zh": "驱动专业 Agent，完成复杂任务。",
     "en": "Power specialist agents. Complete complex tasks.",
     "sources": [
-      "models/index.html:122"
+      "models/index.html:138"
     ]
   },
   {
     "zh": "以 RMQ 构建专业 Agent。连接行业知识、业务系统与专业工具，将专业目标转化为连续行动。",
     "en": "Build specialist agents with RMQ. Connect domain knowledge, business systems, and specialist tools to turn professional goals into sustained action.",
     "sources": [
-      "models/index.html:123"
+      "models/index.html:139"
     ]
   },
   {
     "zh": "推理引擎",
     "en": "INFERENCE ENGINES",
     "sources": [
-      "models/index.html:128"
+      "models/index.html:144"
     ]
   },
   {
     "zh": "专用引擎，释放模型性能。",
     "en": "Dedicated engines. Unlock model performance.",
     "sources": [
-      "models/index.html:129"
+      "models/index.html:145"
     ]
   },
   {
     "zh": "RMQ3x 与 RMQ4 已运行于 RMinte 自研 C++ 推理引擎和深度定制的 vLLM。围绕模型结构与 RM-01 的硬件平台，我们深入优化算子、执行路径与运行时，让模型能力建立在高效的推理实现之上。",
     "en": "RMQ3x and RMQ4 run on RMinte’s C++ inference engine and a custom vLLM implementation. We tailor kernels, execution paths, and runtimes to the model architectures and RM-01 hardware to turn model capability into efficient inference.",
     "sources": [
-      "models/index.html:130"
+      "models/index.html:146"
     ]
   },
   {
     "zh": "自研 C++ 推理实现示意",
     "en": "Diagram of the dedicated C++ inference engine",
     "sources": [
-      "models/index.html:133"
+      "models/index.html:149"
+    ]
+  },
+  {
+    "zh": "FlashInfer · 融合 MoE",
+    "en": "FlashInfer · Fused MoE",
+    "sources": [
+      "models/index.html:153"
+    ]
+  },
+  {
+    "zh": "Runner 常驻内存",
+    "en": "Runner resident memory",
+    "sources": [
+      "models/index.html:155"
+    ]
+  },
+  {
+    "zh": "不含权重、KV 缓存与上下文",
+    "en": "Excludes weights, KV cache and context",
+    "sources": [
+      "models/index.html:155"
     ]
   },
   {
     "zh": "推理实现",
     "en": "Inference engines",
     "sources": [
-      "models/index.html:140",
+      "models/index.html:157",
       "assets/i18n-ui.json"
     ]
   },
@@ -2476,241 +3534,236 @@
     "zh": "自研 C++",
     "en": "Our C++ engine",
     "sources": [
-      "models/index.html:141"
+      "models/index.html:158"
     ]
   },
   {
     "zh": "vLLM 定制",
     "en": "Custom vLLM",
     "sources": [
-      "models/index.html:142"
+      "models/index.html:159"
     ]
   },
   {
     "zh": "自研 C++ 推理引擎",
     "en": "Our C++ inference engine",
     "sources": [
-      "models/index.html:147"
+      "models/index.html:164"
     ]
   },
   {
     "zh": "更低的运行开销，更高的执行效率。",
     "en": "Lower runtime overhead. More efficient execution.",
     "sources": [
-      "models/index.html:148"
+      "models/index.html:165"
     ]
   },
   {
     "zh": "RMinte 自研 C++ 引擎的 Runner 自身内存开销约为 2 MB，不含模型权重、KV Cache 与上下文等占用。在相同模型、精度与量化配置下，prefill 与 decode 性能均优于我们已优化的 vLLM 实现，兼顾输入处理与逐 token 生成的效率。",
     "en": "The runner in RMinte’s C++ engine uses about 2 MB of memory, excluding model weights, KV cache, context, and other model allocations. With identical model, precision, and quantization settings, it outperforms our optimized vLLM implementation in both input processing (prefill) and token-by-token generation (decode).",
     "sources": [
-      "models/index.html:149"
+      "models/index.html:166"
     ]
   },
   {
     "zh": "匹配硬件，减少数据搬运。",
     "en": "Match the hardware. Move less data.",
     "sources": [
-      "models/index.html:150"
+      "models/index.html:167"
     ]
   },
   {
     "zh": "针对 RM-01 的 GPU、统一内存与缓存结构，我们设计 CUDA 算子，合并投影与相邻运算，并按矩阵规模选择计算路径。权重加载、量化存储与运行时布局共同减少内存分配和中间结果搬运，将资源留给模型计算。",
     "en": "We design CUDA kernels for RM-01’s GPU, unified memory, and caches, merge projections and adjacent operations, and select computation paths by matrix size. Weight loading, quantized storage, and runtime layouts reduce memory allocations and movement of intermediate results, leaving more resources for model computation.",
     "sources": [
-      "models/index.html:151"
+      "models/index.html:168"
     ]
   },
   {
     "zh": "持续 prefill，按需 decode。",
     "en": "Continuous prefill. Decode on demand.",
     "sources": [
-      "models/index.html:152"
+      "models/index.html:169"
     ]
   },
   {
     "zh": "引擎支持连续追加输入，将输入处理与回答生成分开调度。前缀缓存与递归状态管理复用已有计算，内存与 SSD 分层存储承接上下文。模型随新消息、文档与任务反馈推进处理，在需要输出时启动 decode。",
     "en": "The engine accepts incremental input and schedules input processing separately from response generation. Prefix caching and recurrent-state management reuse prior computation, while memory and SSD tiers hold context. Models process new messages, documents, and task feedback, then decode when output is needed.",
     "sources": [
-      "models/index.html:153"
+      "models/index.html:170"
     ]
   },
   {
     "zh": "这种执行方式让 Agent 能够持续接收上下文，无须每次输入都触发回答。从会议中的持续聆听，到案件材料的增量分析，模型随信息更新推进处理，在需要时参与判断与行动。",
     "en": "Agents can keep receiving context without responding to every input. Whether listening throughout a meeting or analyzing new case material, models process information as it arrives and contribute to decisions and actions when needed.",
     "sources": [
-      "models/index.html:154"
+      "models/index.html:171"
     ]
   },
   {
     "zh": "深度定制 vLLM",
     "en": "vLLM, customized from the kernel up",
     "sources": [
-      "models/index.html:157"
+      "models/index.html:174"
     ]
   },
   {
     "zh": "从算子到工具链，深入优化推理实现。",
     "en": "Inference optimization, from kernels to toolchains.",
     "sources": [
-      "models/index.html:158"
+      "models/index.html:175"
     ]
   },
   {
     "zh": "RMinte 围绕模型执行与硬件特性，完成 GPU 算子的移植与重写，处理 PTX 与编译工具链的兼容问题，并推进 FlashInfer 推理内核库、Transformers 5 模型库的适配与集成。",
     "en": "RMinte has ported and rewritten GPU kernels to match model execution and hardware requirements, and resolved compatibility issues with PTX and the compiler toolchain. We adapt and integrate the FlashInfer inference kernel library and the Transformers 5 model library.",
     "sources": [
-      "models/index.html:159"
+      "models/index.html:176"
     ]
   },
   {
     "zh": "在 Fused MoE 内核调优中，我们解决了相关流程中的 Triton 兼容问题，使内核参数能够针对模型配置与硬件特性进行调优。同时，对推测解码等执行流程进行定制优化，提升模型推理效率。",
     "en": "We resolved Triton compatibility issues in the Fused MoE tuning workflow so kernel parameters can be tuned for each model configuration and hardware platform. We also optimize execution paths, including speculative decoding, to improve inference efficiency.",
     "sources": [
-      "models/index.html:160"
+      "models/index.html:177"
     ]
   },
   {
     "zh": "支撑 RMQ，保留开放的模型选择。",
     "en": "Built for RMQ. Open to more models.",
     "sources": [
-      "models/index.html:161"
+      "models/index.html:178"
     ]
   },
   {
     "zh": "定制 vLLM 已支持 RMQ3x 与 RMQ4，也为 RM-01 运行其他适配的开源模型提供推理基础。用户可以围绕任务选择模型，在同一台设备上构建不同的专业应用与 Agent 工作流。",
     "en": "Our custom vLLM supports RMQ3x and RMQ4, as well as other compatible open-source models on RM-01. Choose models to suit each task and build specialist applications and agent workflows on the same device.",
     "sources": [
-      "models/index.html:162"
+      "models/index.html:179"
     ]
   },
   {
     "zh": "从架构到训练，",
     "en": "From architecture to training. ",
     "sources": [
-      "models/index.html:170"
+      "models/index.html:187"
     ]
   },
   {
     "zh": "构建专业能力。",
     "en": "Built for professional work.",
     "sources": [
-      "models/index.html:170"
+      "models/index.html:187"
     ]
   },
   {
     "zh": "从硬件到推理，",
     "en": "From hardware to inference. ",
     "sources": [
-      "models/index.html:170"
+      "models/index.html:187"
     ]
   },
   {
     "zh": "释放模型性能。",
     "en": "Unlock model performance.",
     "sources": [
-      "models/index.html:170"
+      "models/index.html:187"
     ]
   },
   {
     "zh": "RMQ3x 与 RMQ4 结合递归记忆、注意力检索与针对性训练，构建专业分析和工具执行能力。自研推理引擎围绕模型结构与硬件特性，优化计算路径、数据访问和任务调度，让这些能力服务于长文档、多轮交互与持续运行的 Agent。",
     "en": "RMQ3x and RMQ4 combine recurrent memory, attention-based retrieval, and targeted training for professional analysis and tool use. Our inference engine tailors computation paths, data access, and task scheduling to the model architectures and hardware, supporting long documents, multi-turn interaction, and agents that keep working.",
     "sources": [
-      "models/index.html:171"
-    ]
-  },
-  {
-    "zh": "© 2026 RMinte (Chengdu) Artificial Intelligence Technology Co., Ltd. · RM-01 Portable AI Supercomputer",
-    "en": "© 2026 RMinte (Chengdu) Artificial Intelligence Technology Co., Ltd. · RM-01 Portable AI Supercomputer",
-    "sources": [
-      "models/index.html:177"
+      "models/index.html:188"
     ]
   },
   {
     "zh": "导航菜单",
     "en": "Navigation menu",
     "sources": [
-      "models/index.html:211",
+      "models/index.html:262",
       "assets/i18n-ui.json"
     ]
   },
   {
-    "zh": "通过实拍图片查看 RM-01 的外观、材料与工艺细节。",
-    "en": "Explore RM-01 through product photographs of its design, materials, and craftsmanship.",
+    "zh": "RM-01 产品图册 | 实拍影像、结构与工业设计 | RMinte",
+    "en": "RM-01 Gallery | Product Photography & Industrial Design | RMinte",
     "sources": [
-      "gallery/index.html:11",
-      "gallery/index.html:13"
+      "gallery/index.html:52",
+      "gallery/index.html:55"
     ]
   },
   {
-    "zh": "RM-01 图册 · RMinte",
-    "en": "RM-01 Gallery · RMinte",
+    "zh": "浏览 RM-01 便携 AI 超算的产品实拍影像，查看机身外观、硬件结构与工业设计细节。图册支持 HDR 浏览。",
+    "en": "Explore RM-01 product photography, chassis details, hardware structure and industrial design in the existing HDR-capable gallery.",
     "sources": [
-      "gallery/index.html:12",
-      "gallery/index.html:16"
+      "gallery/index.html:53",
+      "gallery/index.html:56"
     ]
   },
   {
     "zh": "跳至图册内容",
     "en": "Skip to gallery",
     "sources": [
-      "gallery/index.html:33"
+      "gallery/index.html:64"
     ]
   },
   {
     "zh": "RMinte 首页",
     "en": "RMinte home",
     "sources": [
-      "gallery/index.html:36",
-      "downloads/index.html:37",
-      "guides/index.html:36",
-      "guides/admin.html:37",
-      "guides/root.html:37",
-      "guides/network.html:37",
-      "guides/security.html:37",
-      "scripts/build-guides.mjs:440"
+      "gallery/index.html:67",
+      "downloads/index.html:70",
+      "guides/index.html:67",
+      "guides/admin.html:65",
+      "guides/root.html:65",
+      "guides/network.html:65",
+      "guides/security.html:65",
+      "guides/api.html:66",
+      "cases/index.html:56",
+      "scripts/build-guides.mjs:449"
     ]
   },
   {
     "zh": "产品图册",
     "en": "Product gallery",
     "sources": [
-      "gallery/index.html:76"
+      "gallery/index.html:107"
     ]
   },
   {
     "zh": "11 张实拍影像，呈现 RM-01 的外观、结构与工艺细节。",
     "en": "11 product images present RM-01's exterior, structure, and material details.",
     "sources": [
-      "gallery/index.html:77"
+      "gallery/index.html:108"
     ]
   },
   {
     "zh": "本图册支持 HDR 浏览，兼容设备可呈现更丰富的明暗细节。",
     "en": "HDR images. Enjoy richer highlight and shadow detail on compatible displays and browsers.",
     "sources": [
-      "gallery/index.html:81"
+      "gallery/index.html:112"
     ]
   },
   {
     "zh": "图册浏览状态",
     "en": "Gallery status",
     "sources": [
-      "gallery/index.html:99"
+      "gallery/index.html:131"
     ]
   },
   {
     "zh": "照片切换",
     "en": "Photo navigation",
     "sources": [
-      "gallery/index.html:105"
+      "gallery/index.html:137"
     ]
   },
   {
     "zh": "上一张照片",
     "en": "Previous photo",
     "sources": [
-      "gallery/index.html:106",
+      "gallery/index.html:138",
       "assets/i18n-ui.json"
     ]
   },
@@ -2718,45 +3771,46 @@
     "zh": "下一张照片",
     "en": "Next photo",
     "sources": [
-      "gallery/index.html:107",
+      "gallery/index.html:139",
       "assets/i18n-ui.json"
     ]
   },
   {
-    "zh": "RM-01 下载中心，提供产品手册、技术资料、固件与软件发布包。",
-    "en": "Download RM-01 product manuals, technical materials, firmware, and software releases.",
+    "zh": "RM-01 下载中心 | TianshanOS 固件、文档与软件 | RMinte",
+    "en": "RM-01 Downloads | TianshanOS Firmware, Guides & Software | RMinte",
     "sources": [
-      "downloads/index.html:11",
-      "downloads/index.html:13"
+      "downloads/index.html:55",
+      "downloads/index.html:58"
     ]
   },
   {
-    "zh": "RM-01 下载中心 · RMinte",
-    "en": "RM-01 Downloads · RMinte",
+    "zh": "获取 RM-01 产品资料、TianshanOS 固件、设备使用指南及配套软件，查看当前公开的下载资源与工具。",
+    "en": "Download available RM-01 product documents, TianshanOS firmware, user guides, product materials and related software tools.",
     "sources": [
-      "downloads/index.html:12",
-      "downloads/index.html:16"
+      "downloads/index.html:56",
+      "downloads/index.html:59"
     ]
   },
   {
     "zh": "跳至下载内容",
     "en": "Skip to downloads",
     "sources": [
-      "downloads/index.html:34"
+      "downloads/index.html:67"
     ]
   },
   {
     "zh": "下载中心",
     "en": "Download center",
     "sources": [
-      "downloads/index.html:76"
+      "downloads/index.html:109",
+      "downloads/index.html:571"
     ]
   },
   {
     "zh": "获取 RM-01 产品文档、技术资料、固件与软件发布包，并直接使用在线工具。",
     "en": "Get RM-01 product documentation, technical materials, firmware and software releases, plus browser-based online tools.",
     "sources": [
-      "downloads/index.html:77",
+      "downloads/index.html:110",
       "assets/i18n-ui.json"
     ]
   },
@@ -2764,461 +3818,550 @@
     "zh": "下载资源分类",
     "en": "Download categories",
     "sources": [
-      "downloads/index.html:80"
+      "downloads/index.html:114"
     ]
   },
   {
     "zh": "产品文档",
     "en": "Product documents",
     "sources": [
-      "downloads/index.html:83",
-      "downloads/index.html:103"
+      "downloads/index.html:117",
+      "downloads/index.html:139"
     ]
   },
   {
     "zh": "产品资料",
     "en": "Product materials",
     "sources": [
-      "downloads/index.html:87",
-      "downloads/index.html:180"
+      "downloads/index.html:121",
+      "downloads/index.html:219"
     ]
   },
   {
     "zh": "固件与软件",
     "en": "Firmware & software",
     "sources": [
-      "downloads/index.html:91",
-      "downloads/index.html:312"
+      "downloads/index.html:125",
+      "downloads/index.html:351"
     ]
   },
   {
     "zh": "在线工具",
     "en": "Online tools",
     "sources": [
-      "downloads/index.html:95",
-      "downloads/index.html:415"
+      "downloads/index.html:129",
+      "downloads/index.html:454"
+    ]
+  },
+  {
+    "zh": "经销商资料",
+    "en": "Dealer resources",
+    "sources": [
+      "downloads/index.html:131",
+      "downloads/index.html:484"
     ]
   },
   {
     "zh": "RM-01 硬件安全说明（中文）",
     "en": "RM-01 Hardware Security (Chinese)",
     "sources": [
-      "downloads/index.html:110"
+      "downloads/index.html:146"
     ]
   },
   {
     "zh": "硬件安全与配套管理能力 · 中文 · 11 页 · PDF · 350 KB · 2026-09-11",
     "en": "Hardware security and supporting management functions · Chinese · 11 pages · PDF · 350 KB · 2026-09-11",
     "sources": [
-      "downloads/index.html:111"
+      "downloads/index.html:147"
     ]
   },
   {
     "zh": "下载",
     "en": "Download",
     "sources": [
-      "downloads/index.html:114",
-      "downloads/index.html:125",
-      "downloads/index.html:136",
-      "downloads/index.html:147",
-      "downloads/index.html:158",
-      "downloads/index.html:169",
-      "downloads/index.html:191",
-      "downloads/index.html:202",
-      "downloads/index.html:213",
-      "downloads/index.html:224",
-      "downloads/index.html:235",
-      "downloads/index.html:246",
-      "downloads/index.html:257",
-      "downloads/index.html:268",
-      "downloads/index.html:279",
-      "downloads/index.html:290",
-      "downloads/index.html:301",
-      "downloads/index.html:334",
-      "downloads/index.html:345",
-      "downloads/index.html:367",
-      "downloads/index.html:378",
-      "downloads/index.html:389",
-      "downloads/index.html:400"
+      "downloads/index.html:150",
+      "downloads/index.html:161",
+      "downloads/index.html:172",
+      "downloads/index.html:183",
+      "downloads/index.html:194",
+      "downloads/index.html:205",
+      "downloads/index.html:209",
+      "downloads/index.html:210",
+      "downloads/index.html:211",
+      "downloads/index.html:230",
+      "downloads/index.html:241",
+      "downloads/index.html:252",
+      "downloads/index.html:263",
+      "downloads/index.html:274",
+      "downloads/index.html:285",
+      "downloads/index.html:296",
+      "downloads/index.html:307",
+      "downloads/index.html:318",
+      "downloads/index.html:329",
+      "downloads/index.html:340",
+      "downloads/index.html:373",
+      "downloads/index.html:384",
+      "downloads/index.html:406",
+      "downloads/index.html:417",
+      "downloads/index.html:428",
+      "downloads/index.html:439"
     ]
   },
   {
     "zh": "RM-01 硬件安全说明（英文）",
     "en": "RM-01 Hardware Security (English)",
     "sources": [
-      "downloads/index.html:121"
+      "downloads/index.html:157"
     ]
   },
   {
     "zh": "硬件安全与配套管理能力 · 英文 · 13 页 · PDF · 93 KB · 2026-09-11",
     "en": "Hardware security and supporting management functions · English · 13 pages · PDF · 93 KB · 2026-09-11",
     "sources": [
-      "downloads/index.html:122"
+      "downloads/index.html:158"
     ]
   },
   {
     "zh": "TianshanOS Admin 日常使用指南（中英双语）",
     "en": "TianshanOS Admin User Guide (Bilingual)",
     "sources": [
-      "downloads/index.html:132"
+      "downloads/index.html:168"
     ]
   },
   {
-    "zh": "Admin 用户日常操作指南 · 中英双语 · 23 页 · PDF · 568 KB · 2026-09-07",
-    "en": "Daily operations guide for Admin users · Chinese and English · 23 pages · PDF · 568 KB · 2026-09-07",
+    "zh": "Admin 用户日常操作指南 · 中英双语 · 31 页 · PDF · 616 KB · 2026-11-03",
+    "en": "Daily operations guide for Admin users · Chinese and English · 31 pages · PDF · 616 KB · 2026-11-03",
     "sources": [
-      "downloads/index.html:133"
+      "downloads/index.html:169"
     ]
   },
   {
     "zh": "TianshanOS root 运维指南（中英双语）",
     "en": "TianshanOS root Operations Guide (Bilingual)",
     "sources": [
-      "downloads/index.html:143"
+      "downloads/index.html:179"
     ]
   },
   {
-    "zh": "root 用户运维操作指南 · 中英双语 · 42 页 · PDF · 665 KB · 2026-09-07",
-    "en": "Operations guide for root users · Chinese and English · 42 pages · PDF · 665 KB · 2026-09-07",
+    "zh": "root 用户运维操作指南 · 中英双语 · 67 页 · PDF · 812 KB · 2026-11-03",
+    "en": "Operations guide for root users · Chinese and English · 67 pages · PDF · 812 KB · 2026-11-03",
     "sources": [
-      "downloads/index.html:144"
+      "downloads/index.html:180"
     ]
   },
   {
     "zh": "TianShanOS 安全页面完整操作指南（中文）",
     "en": "TianShanOS Complete Security Page Guide (Chinese)",
     "sources": [
-      "downloads/index.html:154"
+      "downloads/index.html:190"
     ]
   },
   {
-    "zh": "安全页面操作、验证与恢复指南 · 中文 · 12 页 · PDF · 403 KB · 2026-09-07",
-    "en": "Security Page operations, verification, and recovery · Chinese · 12 pages · PDF · 403 KB · 2026-09-07",
+    "zh": "安全页面操作、验证与恢复指南 · 中文 · 16 页 · PDF · 520 KB · 2026-11-03",
+    "en": "Security Page operations, verification, and recovery · Chinese · 16 pages · PDF · 520 KB · 2026-11-03",
     "sources": [
-      "downloads/index.html:155"
+      "downloads/index.html:191"
     ]
   },
   {
     "zh": "TianShanOS 安全页面完整操作指南（英文）",
     "en": "TianShanOS Complete Security Page Guide (English)",
     "sources": [
-      "downloads/index.html:165"
+      "downloads/index.html:201"
     ]
   },
   {
-    "zh": "安全页面操作、验证与恢复指南 · 英文 · 14 页 · PDF · 132 KB · 2026-09-07",
-    "en": "Security Page operations, verification, and recovery · English · 14 pages · PDF · 132 KB · 2026-09-07",
+    "zh": "安全页面操作、验证与恢复指南 · 英文 · 19 页 · PDF · 242 KB · 2026-11-03",
+    "en": "Security Page operations, verification, and recovery · English · 19 pages · PDF · 242 KB · 2026-11-03",
     "sources": [
-      "downloads/index.html:166"
+      "downloads/index.html:202"
+    ]
+  },
+  {
+    "zh": "TianshanOS API 使用手册（中文）",
+    "en": "TianshanOS API User Guide (Chinese)",
+    "sources": [
+      "downloads/index.html:209"
+    ]
+  },
+  {
+    "zh": "API 接入、任务示例与完整接口参考 · 中文 · 321 页 · PDF · 1772 KB · 2026-11-07",
+    "en": "API integration, task examples, and complete reference · Chinese · 321 pages · PDF · 1772 KB · 2026-11-07",
+    "sources": [
+      "downloads/index.html:209"
+    ]
+  },
+  {
+    "zh": "TianshanOS API 使用手册（英文）",
+    "en": "TianshanOS API User Guide (English)",
+    "sources": [
+      "downloads/index.html:210"
+    ]
+  },
+  {
+    "zh": "API 接入、任务示例与完整接口参考 · 英文 · 311 页 · PDF · 1242 KB · 2026-11-07",
+    "en": "API integration, task examples, and complete reference · English · 311 pages · PDF · 1242 KB · 2026-11-07",
+    "sources": [
+      "downloads/index.html:210"
+    ]
+  },
+  {
+    "zh": "TianshanOS API 源稿与示例包（中英文）",
+    "en": "TianshanOS API Sources and Examples (Chinese and English)",
+    "sources": [
+      "downloads/index.html:211"
+    ]
+  },
+  {
+    "zh": "中英文 PDF、Markdown、接口清单与代码示例 · ZIP · 2280 KB · 2026-11-07",
+    "en": "Chinese and English PDFs, Markdown, API inventory, and code examples · ZIP · 2280 KB · 2026-11-07",
+    "sources": [
+      "downloads/index.html:211"
     ]
   },
   {
     "zh": "泛灵人工智能-中文介绍-2026",
     "en": "RMinte AI Introduction 2026 — Chinese",
     "sources": [
-      "downloads/index.html:187"
+      "downloads/index.html:226"
     ]
   },
   {
     "zh": "2026 产品介绍 · 中文 · 24 页 · PDF · 23.3 MB",
     "en": "2026 product introduction · Chinese · 24 pages · PDF · 23.3 MB",
     "sources": [
-      "downloads/index.html:188"
+      "downloads/index.html:227"
     ]
   },
   {
     "zh": "泛灵人工智能-英文介绍-2026",
     "en": "RMinte AI Introduction 2026 — English",
     "sources": [
-      "downloads/index.html:198"
+      "downloads/index.html:237"
     ]
   },
   {
     "zh": "2026 产品介绍 · 英文 · 24 页 · PDF · 23.2 MB",
     "en": "2026 product introduction · English · 24 pages · PDF · 23.2 MB",
     "sources": [
-      "downloads/index.html:199"
+      "downloads/index.html:238"
     ]
   },
   {
     "zh": "泛灵人工智能-日文介绍-2026",
     "en": "RMinte AI Introduction 2026 — Japanese",
     "sources": [
-      "downloads/index.html:209"
+      "downloads/index.html:248"
     ]
   },
   {
     "zh": "2026 产品介绍 · 日文 · 24 页 · PDF · 23.3 MB",
     "en": "2026 product introduction · Japanese · 24 pages · PDF · 23.3 MB",
     "sources": [
-      "downloads/index.html:210"
+      "downloads/index.html:249"
     ]
   },
   {
     "zh": "泛灵人工智能-韩文介绍-2026",
     "en": "RMinte AI Introduction 2026 — Korean",
     "sources": [
-      "downloads/index.html:220"
+      "downloads/index.html:259"
     ]
   },
   {
     "zh": "2026 产品介绍 · 韩文 · 24 页 · PDF · 23.2 MB",
     "en": "2026 product introduction · Korean · 24 pages · PDF · 23.2 MB",
     "sources": [
-      "downloads/index.html:221"
+      "downloads/index.html:260"
     ]
   },
   {
     "zh": "泛灵人工智能-西班牙文介绍-2026",
     "en": "RMinte AI Introduction 2026 — Spanish",
     "sources": [
-      "downloads/index.html:231"
+      "downloads/index.html:270"
     ]
   },
   {
     "zh": "2026 产品介绍 · 西班牙文 · 24 页 · PDF · 23.2 MB",
     "en": "2026 product introduction · Spanish · 24 pages · PDF · 23.2 MB",
     "sources": [
-      "downloads/index.html:232"
+      "downloads/index.html:271"
     ]
   },
   {
     "zh": "RMinte Logo 与字标",
     "en": "RMinte logo & wordmark",
     "sources": [
-      "downloads/index.html:242"
+      "downloads/index.html:281"
     ]
   },
   {
     "zh": "经销商印刷用 · Illustrator 可编辑文件 · 75 KB",
     "en": "For dealer printing · Editable Illustrator file · 75 KB",
     "sources": [
-      "downloads/index.html:243"
+      "downloads/index.html:282"
     ]
   },
   {
     "zh": "RM-01 产品结构爆炸图",
     "en": "RM-01 product exploded view",
     "sources": [
-      "downloads/index.html:253"
+      "downloads/index.html:292"
     ]
   },
   {
     "zh": "新一代生产级 AI 交付基座 · 4724 × 4606 · JPG · 21.7 MB",
     "en": "Next-generation production AI delivery platform · 4724 × 4606 · JPG · 21.7 MB",
     "sources": [
-      "downloads/index.html:254"
+      "downloads/index.html:293"
     ]
   },
   {
     "zh": "RM-01 场景示例片",
     "en": "RM-01 scenario demo film",
     "sources": [
-      "downloads/index.html:264"
+      "downloads/index.html:303"
     ]
   },
   {
     "zh": "产品宣传视频 · QuickTime MOV · 40.8 MB",
     "en": "Product campaign film · QuickTime MOV · 40.8 MB",
     "sources": [
-      "downloads/index.html:265"
+      "downloads/index.html:304"
     ]
   },
   {
     "zh": "RM-01 宣传片",
     "en": "RM-01 promotional film",
     "sources": [
-      "downloads/index.html:275"
+      "downloads/index.html:314"
     ]
   },
   {
     "zh": "视频平台高清版本 · QuickTime MOV · 48.9 MB",
     "en": "HD edition for video platforms · QuickTime MOV · 48.9 MB",
     "sources": [
-      "downloads/index.html:276"
+      "downloads/index.html:315"
     ]
   },
   {
     "zh": "RM-01 拆解片版本 A",
     "en": "RM-01 teardown film · Version A",
     "sources": [
-      "downloads/index.html:286"
+      "downloads/index.html:325"
     ]
   },
   {
     "zh": "产品主题视频 · MP4 · 260.3 MB",
     "en": "Product feature film · MP4 · 260.3 MB",
     "sources": [
-      "downloads/index.html:287"
+      "downloads/index.html:326"
     ]
   },
   {
     "zh": "RM-01 拆解片版本 B",
     "en": "RM-01 teardown film · Version B",
     "sources": [
-      "downloads/index.html:297"
+      "downloads/index.html:336"
     ]
   },
   {
     "zh": "云栖大会现场宣传视频 · MP4 · 63.3 MB",
     "en": "Yunqi Conference campaign film · MP4 · 63.3 MB",
     "sources": [
-      "downloads/index.html:298"
+      "downloads/index.html:337"
     ]
   },
   {
     "zh": "TianshanOS 固件",
     "en": "TianshanOS firmware",
     "sources": [
-      "downloads/index.html:319"
+      "downloads/index.html:358"
     ]
   },
   {
     "zh": "刷写固件时必须同时准备 TianShanOS.bin 和 www.bin。",
     "en": "Both TianShanOS.bin and www.bin are required when flashing the firmware.",
     "sources": [
-      "downloads/index.html:320"
+      "downloads/index.html:359"
     ]
   },
   {
     "zh": "查看发布说明",
     "en": "Release notes",
     "sources": [
-      "downloads/index.html:323",
-      "downloads/index.html:356"
+      "downloads/index.html:362",
+      "downloads/index.html:395"
     ]
   },
   {
     "zh": "TianshanOS 主固件镜像 · 刷机必需",
     "en": "TianshanOS main firmware image · Required for flashing",
     "sources": [
-      "downloads/index.html:331"
+      "downloads/index.html:370"
     ]
   },
   {
     "zh": "TianshanOS WebUI 文件系统镜像 · 刷机必需",
     "en": "TianshanOS WebUI filesystem image · Required for flashing",
     "sources": [
-      "downloads/index.html:342"
+      "downloads/index.html:381"
     ]
   },
   {
     "zh": "RM-01 联网工具 · v1.1.5 · 选择与你的操作系统和使用方式匹配的版本。",
     "en": "RM-01 network connectivity tool · v1.1.5 · Choose the build that matches your operating system and workflow.",
     "sources": [
-      "downloads/index.html:353"
+      "downloads/index.html:392"
     ]
   },
   {
     "zh": "Linux x86_64 · AppImage · v1.1.5 · 47.1 MB",
     "en": "Linux x86_64 · AppImage · v1.1.5 · 47.1 MB",
     "sources": [
-      "downloads/index.html:364"
+      "downloads/index.html:403"
     ]
   },
   {
     "zh": "macOS 应用包 · ZIP 压缩包 · v1.1.5 · 3.9 MB",
     "en": "macOS app bundle · ZIP archive · v1.1.5 · 3.9 MB",
     "sources": [
-      "downloads/index.html:375"
+      "downloads/index.html:414"
     ]
   },
   {
     "zh": "macOS Apple 芯片命令行工具 · arm64 · v1.1.5 · 7.3 MB",
     "en": "macOS command-line tool for Apple silicon · arm64 · v1.1.5 · 7.3 MB",
     "sources": [
-      "downloads/index.html:386"
+      "downloads/index.html:425"
     ]
   },
   {
     "zh": "Windows 压缩包 · ZIP · v1.1.5 · 69.7 MB",
     "en": "Windows package · ZIP archive · v1.1.5 · 69.7 MB",
     "sources": [
-      "downloads/index.html:397"
+      "downloads/index.html:436"
     ]
   },
   {
     "zh": "发布原则",
     "en": "RELEASE POLICY",
     "sources": [
-      "downloads/index.html:406"
+      "downloads/index.html:445"
     ]
   },
   {
     "zh": "固件与软件只会在完成签名、适配性验证和完整性校验后开放下载，请根据发布说明选择与设备匹配的版本。",
     "en": "Firmware and software downloads open only after signing, compatibility validation, and integrity checks. Select the release that matches your device according to its release notes.",
     "sources": [
-      "downloads/index.html:407"
+      "downloads/index.html:446"
     ]
   },
   {
     "zh": "RM-01 灯板图形转换工具",
     "en": "RM-01 LED matrix graphics converter",
     "sources": [
-      "downloads/index.html:422"
+      "downloads/index.html:461"
     ]
   },
   {
     "zh": "Emoji2Pixel · 将 Emoji 或图片转换为适配 RM-01 灯板的像素图与动画。",
     "en": "Emoji2Pixel · Convert emojis or images into pixel art and animations for the RM-01 LED matrix.",
     "sources": [
-      "downloads/index.html:423"
+      "downloads/index.html:462"
     ]
   },
   {
     "zh": "打开工具",
     "en": "Open tool",
     "sources": [
-      "downloads/index.html:426"
+      "downloads/index.html:465"
     ]
   },
   {
     "zh": "TianShanOS OTA 更新服务",
     "en": "TianShanOS OTA update service",
     "sources": [
-      "downloads/index.html:433"
+      "downloads/index.html:472"
     ]
   },
   {
     "zh": "为 RM-01 本机 OTA 页面提供 TianShanOS 正式固件与 WebUI 更新文件。",
     "en": "Provides official TianShanOS firmware and WebUI updates to the OTA page hosted on your RM-01.",
     "sources": [
-      "downloads/index.html:434"
+      "downloads/index.html:473"
     ]
   },
   {
     "zh": "打开服务",
     "en": "Open service",
     "sources": [
-      "downloads/index.html:437"
+      "downloads/index.html:476"
     ]
   },
   {
-    "zh": "查阅 RM-01 网络配置与 TianshanOS 日常管理、系统运维和安全操作指南。",
-    "en": "Read guides to RM-01 networking and TianshanOS administration, system operations, and security.",
+    "zh": "需在案例页登录后下载",
+    "en": "Sign in on the cases page to download",
     "sources": [
-      "guides/index.html:11",
-      "guides/index.html:13"
+      "downloads/index.html:490"
     ]
   },
   {
-    "zh": "RM-01 使用指南 · RMinte",
-    "en": "RM-01 Guides · RMinte",
+    "zh": "面向经销商的产品与技术资料。",
+    "en": "Product and technical materials for dealers.",
     "sources": [
-      "guides/index.html:12",
-      "guides/index.html:16"
+      "downloads/index.html:493"
+    ]
+  },
+  {
+    "zh": "下载资料",
+    "en": "Requested file",
+    "sources": [
+      "downloads/index.html:588"
+    ]
+  },
+  {
+    "zh": "暂不下载",
+    "en": "Cancel",
+    "sources": [
+      "downloads/index.html:594"
+    ]
+  },
+  {
+    "zh": "前往案例登录",
+    "en": "Go to sign in",
+    "sources": [
+      "downloads/index.html:596"
+    ]
+  },
+  {
+    "zh": "RM-01 使用指南 | TianshanOS 管理、运维与网络配置 | RMinte",
+    "en": "RM-01 Guides | TianshanOS Setup, Security & Operations | RMinte",
+    "sources": [
+      "guides/index.html:52",
+      "guides/index.html:55"
+    ]
+  },
+  {
+    "zh": "浏览 RM-01 与 TianshanOS 使用指南，按 admin、root、安全或网络配置查找设备管理、OTA、SSH、HTTPS 与自动化操作说明。",
+    "en": "Browse RM-01 and TianshanOS guides for admin and root operations, security, networking, OTA updates, SSH, HTTPS and automation.",
+    "sources": [
+      "guides/index.html:53",
+      "guides/index.html:56"
     ]
   },
   {
     "zh": "跳至指南内容",
     "en": "Skip to guide content",
     "sources": [
-      "guides/index.html:33",
-      "guides/admin.html:34",
-      "guides/root.html:34",
-      "guides/network.html:34",
-      "guides/security.html:34",
-      "scripts/build-guides.mjs:517"
+      "guides/index.html:64",
+      "guides/admin.html:62",
+      "guides/root.html:62",
+      "guides/network.html:62",
+      "guides/security.html:62",
+      "guides/api.html:63",
+      "scripts/build-guides.mjs:547"
     ],
     "zhVariants": [
       "跳至指南正文"
@@ -3228,82 +4371,115 @@
     "zh": "选择你的使用角色",
     "en": "Choose your operating role",
     "sources": [
-      "guides/index.html:75"
+      "guides/index.html:106"
     ]
   },
   {
     "zh": "日常管理、系统运维与安全配置，各有对应的操作指南。选择你的角色，从手头要做的事开始。",
     "en": "Find guidance for daily management, system operations, and security configuration. Choose your role and start with the task at hand.",
     "sources": [
-      "guides/index.html:76"
+      "guides/index.html:107"
     ]
   },
   {
     "zh": "搜索指南",
     "en": "Search guides",
     "sources": [
-      "guides/index.html:82",
-      "guides/admin.html:90",
-      "guides/root.html:90",
-      "guides/network.html:90",
-      "guides/security.html:90",
-      "scripts/build-guides.mjs:421"
+      "guides/index.html:114",
+      "guides/admin.html:125",
+      "guides/root.html:125",
+      "guides/network.html:125",
+      "guides/security.html:125",
+      "guides/api.html:126",
+      "scripts/build-guides.mjs:429"
     ]
   },
   {
     "zh": "输入功能，例如：OTA、SSH 密钥、风扇",
     "en": "Search a feature, for example: OTA, SSH key, fan",
     "sources": [
-      "guides/index.html:83",
-      "guides/admin.html:91",
-      "guides/root.html:91",
-      "guides/network.html:91",
-      "guides/security.html:91",
-      "scripts/build-guides.mjs:422"
+      "guides/index.html:115",
+      "guides/admin.html:126",
+      "guides/root.html:126",
+      "guides/network.html:126",
+      "guides/security.html:126",
+      "guides/api.html:127",
+      "scripts/build-guides.mjs:430"
     ]
   },
   {
     "zh": "搜索",
     "en": "Search",
     "sources": [
-      "guides/index.html:85",
-      "guides/admin.html:93",
-      "guides/root.html:93",
-      "guides/network.html:93",
-      "guides/security.html:93",
-      "scripts/build-guides.mjs:424"
+      "guides/index.html:118",
+      "guides/admin.html:129",
+      "guides/root.html:129",
+      "guides/network.html:129",
+      "guides/security.html:129",
+      "guides/api.html:130",
+      "scripts/build-guides.mjs:433"
     ]
   },
   {
     "zh": "试试：OTA 更新、远程主机、HTTPS 证书、自动化规则",
     "en": "Try: OTA update, remote host, HTTPS certificate, automation rule",
     "sources": [
-      "guides/index.html:87",
-      "guides/admin.html:95",
-      "guides/root.html:95",
-      "guides/network.html:95",
-      "guides/security.html:95",
-      "scripts/build-guides.mjs:426"
+      "guides/index.html:120",
+      "guides/admin.html:131",
+      "guides/root.html:131",
+      "guides/network.html:131",
+      "guides/security.html:131",
+      "guides/api.html:132",
+      "scripts/build-guides.mjs:435"
     ]
   },
   {
     "zh": "清除",
     "en": "Clear",
     "sources": [
-      "guides/index.html:91",
-      "guides/admin.html:99",
-      "guides/root.html:99",
-      "guides/network.html:99",
-      "guides/security.html:99",
-      "scripts/build-guides.mjs:430"
+      "guides/index.html:124",
+      "guides/admin.html:135",
+      "guides/root.html:135",
+      "guides/network.html:135",
+      "guides/security.html:135",
+      "guides/api.html:136",
+      "scripts/build-guides.mjs:439"
+    ]
+  },
+  {
+    "zh": "让你的 Agent 帮你用好",
+    "en": "Get more from",
+    "sources": [
+      "guides/index.html:132"
+    ]
+  },
+  {
+    "zh": "",
+    "en": " with your agent",
+    "sources": [
+      "guides/index.html:132"
+    ]
+  },
+  {
+    "zh": "从了解产品、申请样机到配置系统、排查问题，让你的 Agent 根据官方资料提供帮助。",
+    "en": "From exploring the product and requesting a demo unit to system setup and troubleshooting, let your agent help with guidance from official sources.",
+    "sources": [
+      "guides/index.html:133"
+    ]
+  },
+  {
+    "zh": "查看接入说明",
+    "en": "View setup instructions",
+    "sources": [
+      "guides/index.html:135"
     ]
   },
   {
     "zh": "角色指南",
     "en": "Role guides",
     "sources": [
-      "guides/index.html:98",
-      "guides/index.html:102"
+      "guides/index.html:141",
+      "guides/index.html:145"
     ],
     "zhVariants": [
       "角色指南列表"
@@ -3313,174 +4489,347 @@
     "zh": "面向设备管理员。覆盖系统状态、设备面板、风扇、LED、网络、文件与 OTA 更新。",
     "en": "For device administrators. Covers system status, device panels, fans, LEDs, networking, files, and OTA updates.",
     "sources": [
-      "guides/index.html:106"
+      "guides/index.html:150"
     ]
   },
   {
     "zh": "六种语言",
     "en": "Six languages",
     "sources": [
-      "guides/index.html:108",
-      "guides/admin.html:82",
-      "guides/root.html:82",
-      "guides/network.html:82",
-      "guides/security.html:82",
-      "scripts/build-guides.mjs:528"
+      "guides/index.html:152",
+      "guides/admin.html:116",
+      "guides/root.html:116",
+      "guides/network.html:116",
+      "guides/security.html:116",
+      "guides/api.html:117",
+      "scripts/build-guides.mjs:564"
     ]
   },
   {
     "zh": "面向系统运维人员。在日常能力之外，增加终端、远程指令与自动化管理。",
     "en": "For system operators. Adds terminal, remote command, and automation management to the shared daily capabilities.",
     "sources": [
-      "guides/index.html:116"
+      "guides/index.html:161"
     ]
   },
   {
-    "zh": "12 个章节 · 高权限操作",
-    "en": "12 chapters · Privileged operations",
+    "zh": "13 个章节 · 高权限操作",
+    "en": "13 chapters · Privileged operations",
     "sources": [
-      "guides/index.html:118"
-    ]
-  },
-  {
-    "zh": "安全指南",
-    "en": "Security guide",
-    "sources": [
-      "guides/index.html:125"
+      "guides/index.html:163"
     ]
   },
   {
     "zh": "面向个人用户与安全管理员。覆盖账号安全、SSH 密钥、主机指纹、HTTPS、mTLS 与 Config Pack。",
     "en": "For individual users and security administrators. Covers account security, SSH keys, host fingerprints, HTTPS, mTLS, and Config Pack.",
     "sources": [
-      "guides/index.html:126"
+      "guides/index.html:172"
     ]
   },
   {
     "zh": "8 个章节 · 安全操作",
     "en": "8 chapters · Security operations",
     "sources": [
-      "guides/index.html:128"
+      "guides/index.html:174"
     ]
   },
   {
     "zh": "专题指南",
-    "en": "Topic guide",
-    "sources": [
-      "guides/index.html:135"
-    ]
-  },
-  {
-    "zh": "专题指南列表",
     "en": "Topic guides",
     "sources": [
-      "guides/index.html:139"
-    ]
-  },
-  {
-    "zh": "网络配置",
-    "en": "Network configuration",
-    "sources": [
-      "guides/index.html:142"
+      "guides/index.html:181",
+      "guides/index.html:185"
+    ],
+    "zhVariants": [
+      "专题指南列表"
     ]
   },
   {
     "zh": "说明 C1 与 C3 两条网络路径，以及用户设备联网、AI 辅助网络共享和整机接入上层网络的方法。",
     "en": "Covers the C1 and C3 network paths, device connectivity, AI-assisted internet sharing, and upstream access for the complete system.",
     "sources": [
-      "guides/index.html:143"
+      "guides/index.html:190"
     ]
   },
   {
     "zh": "7 个章节 · 网络操作",
     "en": "7 chapters · Network operations",
     "sources": [
-      "guides/index.html:145"
+      "guides/index.html:192"
+    ]
+  },
+  {
+    "zh": "API 接入",
+    "en": "API integration",
+    "sources": [
+      "guides/index.html:198",
+      "guides/api.html:108",
+      "guides/api.html:112"
+    ]
+  },
+  {
+    "zh": "用脚本或自己的系统读取设备状态、控制设备并接收实时消息。提供快速接入、任务示例与接口参考。",
+    "en": "Connect your scripts and applications to read device status, control devices, and receive real-time updates. Start with a quickstart, task examples, or the API reference.",
+    "sources": [
+      "guides/index.html:199"
+    ]
+  },
+  {
+    "zh": "快速接入 · 任务示例 · 接口参考",
+    "en": "Quickstart · Task examples · API reference",
+    "sources": [
+      "guides/index.html:200"
     ]
   },
   {
     "zh": "root 权限可能改变设备、远程主机和自动化流程。请根据实际职责选择指南。",
     "en": "root privileges can change devices, remote hosts, and automation workflows. Choose the guide that matches your responsibilities.",
     "sources": [
-      "guides/index.html:151"
+      "guides/index.html:204"
+    ]
+  },
+  {
+    "zh": "复制给你的 Agent",
+    "en": "Copy this to your agent",
+    "sources": [
+      "guides/index.html:276"
+    ]
+  },
+  {
+    "zh": "复制以下指令，发送给你的 Agent，让它帮你完成接入。",
+    "en": "Copy the instructions below and send them to your agent to set up the connection.",
+    "sources": [
+      "guides/index.html:277"
+    ]
+  },
+  {
+    "zh": "接入指令",
+    "en": "Setup instructions",
+    "sources": [
+      "guides/index.html:278"
+    ]
+  },
+  {
+    "zh": "复制指令",
+    "en": "Copy instructions",
+    "sources": [
+      "guides/index.html:330"
+    ]
+  },
+  {
+    "zh": "连接后即可查询 RM-01 官方资料。",
+    "en": "Connect to search the official RM-01 sources.",
+    "sources": [
+      "guides/index.html:332"
+    ]
+  },
+  {
+    "zh": "TianshanOS Admin 使用指南 | RM-01 日常设备管理 | RMinte",
+    "en": "TianshanOS Admin Guide | Daily RM-01 Device Management | RMinte",
+    "sources": [
+      "guides/admin.html:12",
+      "guides/admin.html:15"
+    ]
+  },
+  {
+    "zh": "了解 TianshanOS admin 日常管理操作，包括系统状态、设备面板、风扇、LED、网络、文件和 OTA 更新。",
+    "en": "Find TianshanOS admin instructions for device status, control panels, fans, LEDs, network settings, files and OTA updates.",
+    "sources": [
+      "guides/admin.html:13",
+      "guides/admin.html:16"
     ]
   },
   {
     "zh": "全部指南",
     "en": "All guides",
     "sources": [
-      "guides/admin.html:76",
-      "guides/root.html:76",
-      "guides/network.html:76",
-      "guides/security.html:76",
-      "scripts/build-guides.mjs:522"
+      "guides/admin.html:105",
+      "guides/root.html:105",
+      "guides/network.html:105",
+      "guides/security.html:105",
+      "guides/api.html:106",
+      "guides/api.html:24563",
+      "scripts/build-guides.mjs:553"
     ]
   },
   {
     "zh": "展开本页目录",
     "en": "Open page contents",
     "sources": [
-      "guides/admin.html:106",
-      "guides/root.html:106",
-      "guides/network.html:106",
-      "guides/security.html:106",
-      "scripts/build-guides.mjs:535"
+      "guides/admin.html:142",
+      "guides/root.html:142",
+      "guides/network.html:142",
+      "guides/security.html:142",
+      "guides/api.html:143",
+      "scripts/build-guides.mjs:571"
     ]
   },
   {
     "zh": "本页目录",
     "en": "On this page",
     "sources": [
-      "guides/admin.html:368",
-      "guides/admin.html:369",
-      "guides/root.html:506",
-      "guides/root.html:507",
-      "guides/network.html:266",
-      "guides/network.html:267",
-      "guides/security.html:338",
-      "guides/security.html:339",
-      "scripts/build-guides.mjs:542",
-      "scripts/build-guides.mjs:543"
+      "guides/admin.html:416",
+      "guides/admin.html:417",
+      "guides/root.html:248",
+      "guides/root.html:249",
+      "guides/network.html:302",
+      "guides/network.html:303",
+      "guides/security.html:410",
+      "guides/security.html:411",
+      "guides/api.html:165",
+      "guides/api.html:166",
+      "scripts/build-guides.mjs:578",
+      "scripts/build-guides.mjs:579"
     ]
   },
   {
     "zh": "下一步",
     "en": "Next",
     "sources": [
-      "guides/admin.html:1467",
-      "guides/root.html:2320",
-      "guides/network.html:1048",
-      "guides/security.html:1264",
-      "scripts/build-guides.mjs:552"
+      "guides/admin.html:1778",
+      "guides/root.html:2456",
+      "guides/network.html:1084",
+      "guides/security.html:1628",
+      "guides/api.html:24562",
+      "scripts/build-guides.mjs:588"
     ]
   },
   {
     "zh": "阅读提示",
     "en": "Reading note",
     "sources": [
-      "guides/admin.html:1474",
-      "guides/root.html:2327",
-      "guides/network.html:1055",
-      "guides/security.html:1271",
-      "scripts/build-guides.mjs:559"
+      "guides/admin.html:1785",
+      "guides/root.html:2463",
+      "guides/network.html:1091",
+      "guides/security.html:1635",
+      "guides/api.html:24569",
+      "scripts/build-guides.mjs:595"
     ]
   },
   {
     "zh": "设备型号、硬件配置和当前状态会影响页面显示。以设备实际界面为准。",
     "en": "Device model, hardware configuration, and current state affect what the interface displays.",
     "sources": [
-      "guides/admin.html:1475",
-      "guides/root.html:2328",
-      "guides/network.html:1056",
-      "guides/security.html:1272",
-      "scripts/build-guides.mjs:560"
+      "guides/admin.html:1786",
+      "guides/root.html:2464",
+      "guides/network.html:1092",
+      "guides/security.html:1636",
+      "guides/api.html:24570",
+      "scripts/build-guides.mjs:596"
     ]
   },
   {
-    "zh": "并发请求",
-    "en": "Concurrent requests",
+    "zh": "TianshanOS Root 运维指南 | 终端、远程指令与自动化 | RMinte",
+    "en": "TianshanOS Root Guide | Terminal, Remote Commands & Automation | RMinte",
     "sources": [
-      "assets/i18n-ui.json"
+      "guides/root.html:12",
+      "guides/root.html:15"
+    ]
+  },
+  {
+    "zh": "查看 TianshanOS root 运维操作，了解终端、远程指令、自动化和高权限设备管理的操作说明。",
+    "en": "Read the TianshanOS root operations guide covering terminal access, remote commands, automation and privileged device management.",
+    "sources": [
+      "guides/root.html:13",
+      "guides/root.html:16"
+    ]
+  },
+  {
+    "zh": "RM-01 网络配置指南 | C1、C3 与设备联网 | RMinte",
+    "en": "RM-01 Network Guide | C1, C3 & Connectivity Setup | RMinte",
+    "sources": [
+      "guides/network.html:12",
+      "guides/network.html:15"
+    ]
+  },
+  {
+    "zh": "了解 RM-01 的 C1 与 C3 网络路径、设备联网、AI 辅助网络共享，以及整机接入上层网络的方法。",
+    "en": "Learn RM-01 network configuration, C1 and C3 network paths, device connectivity, AI-assisted internet sharing and upstream network access.",
+    "sources": [
+      "guides/network.html:13",
+      "guides/network.html:16"
+    ]
+  },
+  {
+    "zh": "TianshanOS 安全指南 | SSH 密钥、HTTPS 与 mTLS | RMinte",
+    "en": "TianshanOS Security Guide | SSH Keys, HTTPS & mTLS | RMinte",
+    "sources": [
+      "guides/security.html:12",
+      "guides/security.html:15"
+    ]
+  },
+  {
+    "zh": "了解 TianshanOS 安全设置，包括账号管理、SSH 密钥、主机指纹、HTTPS、mTLS 与 Config Pack 的操作说明。",
+    "en": "Explore TianshanOS security instructions for account access, SSH keys, host fingerprints, HTTPS, mTLS and Config Pack workflows.",
+    "sources": [
+      "guides/security.html:13",
+      "guides/security.html:16"
+    ]
+  },
+  {
+    "zh": "TianshanOS API 使用手册 | RMinte",
+    "en": "TianshanOS API User Guide | RMinte",
+    "sources": [
+      "guides/api.html:12",
+      "guides/api.html:15"
+    ]
+  },
+  {
+    "zh": "TianshanOS 0.6.4 API 使用手册：快速接入、任务示例与完整接口参考。",
+    "en": "TianshanOS 0.6.4 API guide: quickstart, task examples, and complete API reference.",
+    "sources": [
+      "guides/api.html:13",
+      "guides/api.html:16",
+      "guides/api.html:114"
+    ]
+  },
+  {
+    "zh": "TianshanOS API 使用手册",
+    "en": "TianshanOS API User Guide",
+    "sources": [
+      "guides/api.html:113"
+    ]
+  },
+  {
+    "zh": "TianshanOS 0.6.4",
+    "en": "TianshanOS 0.6.4",
+    "sources": [
+      "guides/api.html:116"
+    ]
+  },
+  {
+    "zh": "让 AI 走进",
+    "en": "Bringing AI into",
+    "sources": [
+      "cases/index.html:99"
+    ]
+  },
+  {
+    "zh": "具体的工作。",
+    "en": "real work.",
+    "sources": [
+      "cases/index.html:99"
+    ]
+  },
+  {
+    "zh": "从日常事务到工业研发，探索 AI 在真实业务中的应用。找到与你相关的场景，进一步了解资料与演示。",
+    "en": "From everyday tasks to industrial R&D, explore how AI is used in real business. Find the scenarios relevant to you and learn more about materials and demos.",
+    "sources": [
+      "cases/index.html:100"
+    ]
+  },
+  {
+    "zh": "让你的应用，被更多人看见。",
+    "en": "Let more people see your application.",
+    "sources": [
+      "cases/index.html:105"
+    ]
+  },
+  {
+    "zh": "与我们共同探索基于 RM-01 的软件应用与交付。",
+    "en": "Explore software applications and delivery built on RM-01 with us.",
+    "sources": [
+      "cases/index.html:106"
     ]
   },
   {
@@ -3570,6 +4919,13 @@
   {
     "zh": "收起工作流程",
     "en": "Close workflow",
+    "sources": [
+      "assets/i18n-ui.json"
+    ]
+  },
+  {
+    "zh": "模型 · RMinte",
+    "en": "Models · RMinte",
     "sources": [
       "assets/i18n-ui.json"
     ]
@@ -3736,1262 +5092,10 @@
     ]
   },
   {
-    "zh": "分页 KV 缓存",
-    "en": "Paged KV Cache",
-    "sources": [
-      "assets/i18n-ui.json"
-    ]
-  },
-  {
     "zh": "RMinte C++ 运行时",
     "en": "RMinte C++ Runtime",
     "sources": [
       "assets/i18n-ui.json"
-    ]
-  },
-  {
-    "zh": "示意",
-    "en": "Illustrative",
-    "sources": [
-      "models/index.html:91",
-      "models/index.html:103"
-    ]
-  },
-  {
-    "zh": "FlashInfer · 融合 MoE",
-    "en": "FlashInfer · Fused MoE",
-    "sources": [
-      "models/index.html:137"
-    ]
-  },
-  {
-    "zh": "Runner 常驻内存",
-    "en": "Runner resident memory",
-    "sources": [
-      "models/index.html:139"
-    ]
-  },
-  {
-    "zh": "不含权重、KV 缓存与上下文",
-    "en": "Excludes weights, KV cache and context",
-    "sources": [
-      "models/index.html:139"
-    ]
-  },
-  {
-    "zh": "模型与接口",
-    "en": "Models and API",
-    "sources": [
-      "assets/site-data.js:193"
-    ]
-  },
-  {
-    "zh": "Hugging Face · OpenAI 兼容",
-    "en": "Hugging Face · OpenAI-compatible",
-    "sources": [
-      "assets/site-data.js:194"
-    ]
-  },
-  {
-    "zh": "RMinte 推理层",
-    "en": "RMinte inference layer",
-    "sources": [
-      "assets/site-data.js:195"
-    ]
-  },
-  {
-    "zh": "定制 vLLM · C++ 引擎",
-    "en": "Custom vLLM · C++ engine",
-    "sources": [
-      "assets/site-data.js:196"
-    ]
-  },
-  {
-    "zh": "NVIDIA CUDA",
-    "en": "NVIDIA CUDA",
-    "sources": [
-      "assets/site-data.js:94"
-    ]
-  },
-  {
-    "zh": "计算平台",
-    "en": "Compute platform",
-    "sources": [
-      "assets/site-data.js:198"
-    ]
-  },
-  {
-    "zh": "连续批处理",
-    "en": "Continuous batching",
-    "sources": [
-      "assets/site-data.js:200"
-    ]
-  },
-  {
-    "zh": "前缀复用 · 递归状态",
-    "en": "Prefix reuse · Recurrent state",
-    "sources": [
-      "assets/site-data.js:202"
-    ]
-  },
-  {
-    "zh": "显存 / 内存",
-    "en": "VRAM / Memory",
-    "sources": [
-      "assets/site-data.js:203"
-    ]
-  },
-  {
-    "zh": "上下文容量",
-    "en": "Context capacity",
-    "sources": [
-      "assets/site-data.js:204"
-    ]
-  },
-  {
-    "zh": "SSD",
-    "en": "SSD",
-    "sources": [
-      "assets/site-data.js:102"
-    ]
-  },
-  {
-    "zh": "分层扩展上下文",
-    "en": "Tiered context extension",
-    "sources": [
-      "assets/site-data.js:206"
-    ]
-  },
-  {
-    "zh": "模型",
-    "en": "Model",
-    "sources": [
-      "assets/site-data.js:207"
-    ]
-  },
-  {
-    "zh": "投影合并 · 算子融合",
-    "en": "Merged projections · Kernel fusion",
-    "sources": [
-      "assets/site-data.js:208"
-    ]
-  },
-  {
-    "zh": "融合算子",
-    "en": "Fused kernel",
-    "sources": [
-      "assets/site-data.js:209"
-    ]
-  },
-  {
-    "zh": "减少数据搬运",
-    "en": "Less data movement",
-    "sources": [
-      "assets/site-data.js:210"
-    ]
-  },
-  {
-    "zh": "GPU 算力",
-    "en": "GPU compute",
-    "sources": [
-      "assets/site-data.js:211"
-    ]
-  },
-  {
-    "zh": "带宽与缓存",
-    "en": "Bandwidth and cache",
-    "sources": [
-      "assets/site-data.js:212"
-    ]
-  },
-  {
-    "zh": "推理软件与 CUDA 的分层示意：同一套接口，两条推理路线",
-    "en": "Layered view of inference software and CUDA: one interface, two inference paths",
-    "sources": [
-      "assets/site-data.js:213"
-    ]
-  },
-  {
-    "zh": "分页 KV 缓存与 SSD 分层存储示意：多路并发共享缓存",
-    "en": "Paged KV cache and tiered SSD storage: concurrent requests share the cache",
-    "sources": [
-      "assets/site-data.js:214"
-    ]
-  },
-  {
-    "zh": "算子融合示意：三次读写合并为一次",
-    "en": "Kernel fusion: three reads and writes merged into one",
-    "sources": [
-      "assets/site-data.js:215"
-    ]
-  },
-  {
-    "zh": "Admin 用户日常操作指南 · 中英双语 · 25 页 · PDF · 656 KB · 2026-10-10",
-    "en": "Daily operations guide for Admin users · Chinese and English · 25 pages · PDF · 656 KB · 2026-10-10",
-    "sources": [
-      "downloads/index.html"
-    ]
-  },
-  {
-    "zh": "root 用户运维操作指南 · 中英双语 · 52 页 · PDF · 810 KB · 2026-10-10",
-    "en": "Operations guide for root users · Chinese and English · 52 pages · PDF · 810 KB · 2026-10-10",
-    "sources": [
-      "downloads/index.html"
-    ]
-  },
-  {
-    "zh": "安全页面操作、验证与恢复指南 · 中文 · 13 页 · PDF · 411 KB · 2026-10-09",
-    "en": "Security Page operations, verification, and recovery · Chinese · 13 pages · PDF · 411 KB · 2026-10-09",
-    "sources": [
-      "downloads/index.html"
-    ]
-  },
-  {
-    "zh": "安全页面操作、验证与恢复指南 · 英文 · 16 页 · PDF · 142 KB · 2026-10-09",
-    "en": "Security Page operations, verification, and recovery · English · 16 pages · PDF · 142 KB · 2026-10-09",
-    "sources": [
-      "downloads/index.html"
-    ]
-  },
-  {
-    "zh": "RM-01 便携 AI 超算 | 本地大模型推理与 AI Agent 部署 | RMinte",
-    "en": "RM-01 Portable AI Supercomputer | Local LLM Inference & AI Agents | RMinte"
-  },
-  {
-    "zh": "RM-01 是一款面向本地大模型推理与 AI Agent 部署的便携 AI 计算系统，集成专用推理计算、应用运行环境及整机管理能力。",
-    "en": "RM-01 is a portable AI computing system for local LLM inference and AI agent deployment, bringing dedicated inference, applications, and system management together."
-  },
-  {
-    "zh": "RMQ3x 与 RMQ4 专业 AI 模型 | 推理引擎与 Agent 能力 | RMinte",
-    "en": "RMQ3x & RMQ4 Models | Specialized Reasoning & Inference | RMinte"
-  },
-  {
-    "zh": "了解 RMinte 的 RMQ3x Dense 与 RMQ4 MoE 专业模型，以及自研 C++ 推理引擎、定制 vLLM、CUDA 优化与 Agent 工具执行能力。",
-    "en": "Explore the RMQ3x Dense and RMQ4 MoE specialist models, the RMinte C++ inference runtime, customized vLLM and CUDA optimizations for agent workflows."
-  },
-  {
-    "zh": "RM-01 产品图册 | 实拍影像、结构与工业设计 | RMinte",
-    "en": "RM-01 Gallery | Product Photography & Industrial Design | RMinte"
-  },
-  {
-    "zh": "浏览 RM-01 便携 AI 超算的产品实拍影像，查看机身外观、硬件结构与工业设计细节。图册支持 HDR 浏览。",
-    "en": "Explore RM-01 product photography, chassis details, hardware structure and industrial design in the existing HDR-capable gallery."
-  },
-  {
-    "zh": "RM-01 使用指南 | TianshanOS 管理、运维与网络配置 | RMinte",
-    "en": "RM-01 Guides | TianshanOS Setup, Security & Operations | RMinte"
-  },
-  {
-    "zh": "浏览 RM-01 与 TianshanOS 使用指南，按 admin、root、安全或网络配置查找设备管理、OTA、SSH、HTTPS 与自动化操作说明。",
-    "en": "Browse RM-01 and TianshanOS guides for admin and root operations, security, networking, OTA updates, SSH, HTTPS and automation."
-  },
-  {
-    "zh": "TianshanOS Admin 使用指南 | RM-01 日常设备管理 | RMinte",
-    "en": "TianshanOS Admin Guide | Daily RM-01 Device Management | RMinte"
-  },
-  {
-    "zh": "了解 TianshanOS admin 日常管理操作，包括系统状态、设备面板、风扇、LED、网络、文件和 OTA 更新。",
-    "en": "Find TianshanOS admin instructions for device status, control panels, fans, LEDs, network settings, files and OTA updates."
-  },
-  {
-    "zh": "TianshanOS Root 运维指南 | 终端、远程指令与自动化 | RMinte",
-    "en": "TianshanOS Root Guide | Terminal, Remote Commands & Automation | RMinte"
-  },
-  {
-    "zh": "查看 TianshanOS root 运维操作，了解终端、远程指令、自动化和高权限设备管理的操作说明。",
-    "en": "Read the TianshanOS root operations guide covering terminal access, remote commands, automation and privileged device management."
-  },
-  {
-    "zh": "TianshanOS 安全指南 | SSH 密钥、HTTPS 与 mTLS | RMinte",
-    "en": "TianshanOS Security Guide | SSH Keys, HTTPS & mTLS | RMinte"
-  },
-  {
-    "zh": "了解 TianshanOS 安全设置，包括账号管理、SSH 密钥、主机指纹、HTTPS、mTLS 与 Config Pack 的操作说明。",
-    "en": "Explore TianshanOS security instructions for account access, SSH keys, host fingerprints, HTTPS, mTLS and Config Pack workflows."
-  },
-  {
-    "zh": "RM-01 网络配置指南 | C1、C3 与设备联网 | RMinte",
-    "en": "RM-01 Network Guide | C1, C3 & Connectivity Setup | RMinte"
-  },
-  {
-    "zh": "了解 RM-01 的 C1 与 C3 网络路径、设备联网、AI 辅助网络共享，以及整机接入上层网络的方法。",
-    "en": "Learn RM-01 network configuration, C1 and C3 network paths, device connectivity, AI-assisted internet sharing and upstream network access."
-  },
-  {
-    "zh": "RM-01 下载中心 | TianshanOS 固件、文档与软件 | RMinte",
-    "en": "RM-01 Downloads | TianshanOS Firmware, Guides & Software | RMinte"
-  },
-  {
-    "zh": "获取 RM-01 产品资料、TianshanOS 固件、设备使用指南及配套软件，查看当前公开的下载资源与工具。",
-    "en": "Download available RM-01 product documents, TianshanOS firmware, user guides, product materials and related software tools."
-  },
-  {
-    "zh": "Admin 用户日常操作指南 · 中英双语 · 27 页 · PDF · 664 KB · 2026-10-13",
-    "en": "Daily operations guide for Admin users · Chinese and English · 27 pages · PDF · 664 KB · 2026-10-13",
-    "sources": [
-      "downloads/index.html"
-    ]
-  },
-  {
-    "zh": "root 用户运维操作指南 · 中英双语 · 54 页 · PDF · 821 KB · 2026-10-13",
-    "en": "Operations guide for root users · Chinese and English · 54 pages · PDF · 821 KB · 2026-10-13",
-    "sources": [
-      "downloads/index.html"
-    ]
-  },
-  {
-    "zh": "Admin 用户日常操作指南 · 中英双语 · 27 页 · PDF · 580 KB · 2026-10-13",
-    "en": "Daily operations guide for Admin users · Chinese and English · 27 pages · PDF · 580 KB · 2026-10-13",
-    "sources": [
-      "downloads/index.html"
-    ]
-  },
-  {
-    "zh": "root 用户运维操作指南 · 中英双语 · 54 页 · PDF · 737 KB · 2026-10-13",
-    "en": "Operations guide for root users · Chinese and English · 54 pages · PDF · 737 KB · 2026-10-13",
-    "sources": [
-      "downloads/index.html"
-    ]
-  },
-  {
-    "zh": "案例",
-    "en": "Application cases",
-    "sources": [
-      "assets/site-data.js.nav.3.1",
-      "models/index.html:39",
-      "models/index.html:227",
-      "gallery/index.html:72",
-      "gallery/index.html:95",
-      "downloads/index.html:71",
-      "downloads/index.html:94",
-      "guides/index.html:70",
-      "guides/index.html:93",
-      "guides/admin.html:70",
-      "guides/admin.html:93",
-      "guides/root.html:70",
-      "guides/root.html:93",
-      "guides/network.html:70",
-      "guides/network.html:93",
-      "guides/security.html:70",
-      "guides/security.html:93",
-      "cases/index.html:59",
-      "cases/index.html:83",
-      "cases/index.html:93",
-      "cases/index.html:160",
-      "scripts/build-guides.mjs:454",
-      "scripts/build-guides.mjs:477"
-    ],
-    "zhVariants": [
-      "应用案例"
-    ]
-  },
-  {
-    "zh": "交通服务",
-    "en": "Transport",
-    "sources": [
-      "assets/case-catalog.mjs.groups.0"
-    ]
-  },
-  {
-    "zh": "企业运营",
-    "en": "Enterprise operations",
-    "sources": [
-      "assets/case-catalog.mjs.groups.1"
-    ]
-  },
-  {
-    "zh": "公共事务",
-    "en": "Public affairs",
-    "sources": [
-      "assets/case-catalog.mjs.groups.2"
-    ]
-  },
-  {
-    "zh": "文档与知识",
-    "en": "Documents and knowledge",
-    "sources": [
-      "assets/case-catalog.mjs.groups.3"
-    ]
-  },
-  {
-    "zh": "工业研发",
-    "en": "Industrial R&D",
-    "sources": [
-      "assets/case-catalog.mjs.groups.4"
-    ]
-  },
-  {
-    "zh": "AI 数字收费员",
-    "en": "AI Digital Toll Operator",
-    "sources": [
-      "assets/case-catalog.mjs.cases.0.name"
-    ]
-  },
-  {
-    "zh": "面向收费业务的 AI 应用，探索数字收费员参与业务服务的方式。",
-    "en": "An AI application for toll operations, exploring how a digital operator can take part in the service.",
-    "sources": [
-      "assets/case-catalog.mjs.cases.0.desc"
-    ]
-  },
-  {
-    "zh": "AI 信息资产审计",
-    "en": "AI Information Asset Audit",
-    "sources": [
-      "assets/case-catalog.mjs.cases.1.name"
-    ]
-  },
-  {
-    "zh": "围绕信息资产开展 AI 审计，辅助审阅与整理相关材料。",
-    "en": "AI-assisted audit of information assets, helping review and organise the related materials.",
-    "sources": [
-      "assets/case-catalog.mjs.cases.1.desc"
-    ]
-  },
-  {
-    "zh": "基层事务 AI 助理",
-    "en": "Community Affairs AI Assistant",
-    "sources": [
-      "assets/case-catalog.mjs.cases.2.name"
-    ]
-  },
-  {
-    "zh": "面向基层日常事务，探索 AI 辅助处理与信息整理。",
-    "en": "Exploring AI support for everyday community affairs, from handling to organising information.",
-    "sources": [
-      "assets/case-catalog.mjs.cases.2.desc"
-    ]
-  },
-  {
-    "zh": "AI 节能调度专家",
-    "en": "AI Energy Dispatch Expert",
-    "sources": [
-      "assets/case-catalog.mjs.cases.3.name"
-    ]
-  },
-  {
-    "zh": "将 AI 应用于节能与调度场景，辅助分析业务中的能源使用与调度问题。",
-    "en": "AI for energy saving and dispatch, helping analyse energy use and scheduling in the business.",
-    "sources": [
-      "assets/case-catalog.mjs.cases.3.desc"
-    ]
-  },
-  {
-    "zh": "AI 文档识别与翻译知识库",
-    "en": "AI Document Recognition, Translation and Knowledge Base",
-    "sources": [
-      "assets/case-catalog.mjs.cases.4.name"
-    ]
-  },
-  {
-    "zh": "结合 OCR、翻译与知识库，衔接文档识别、语言转换和知识查询。",
-    "en": "Combines OCR, translation and a knowledge base, linking document recognition, language conversion and lookup.",
-    "sources": [
-      "assets/case-catalog.mjs.cases.4.desc"
-    ]
-  },
-  {
-    "zh": "AI 公文写作助手",
-    "en": "AI Official Writing Assistant",
-    "sources": [
-      "assets/case-catalog.mjs.cases.5.name"
-    ]
-  },
-  {
-    "zh": "面向公文写作场景，提供 AI 辅助写作的应用入口。",
-    "en": "An entry point for AI-assisted writing of official documents.",
-    "sources": [
-      "assets/case-catalog.mjs.cases.5.desc"
-    ]
-  },
-  {
-    "zh": "AI 企业档案管理",
-    "en": "AI Enterprise Archive Management",
-    "sources": [
-      "assets/case-catalog.mjs.cases.6.name"
-    ]
-  },
-  {
-    "zh": "结合 OCR 与知识库，让企业档案进入可识别、可查询的工作流程。",
-    "en": "Uses OCR and a knowledge base to bring enterprise archives into a searchable workflow.",
-    "sources": [
-      "assets/case-catalog.mjs.cases.6.desc"
-    ]
-  },
-  {
-    "zh": "无人机机场 AI 分析师",
-    "en": "Drone Airport AI Analyst",
-    "sources": [
-      "assets/case-catalog.mjs.cases.7.name"
-    ]
-  },
-  {
-    "zh": "面向森林防火误报与户外活动人员探测，开展无人机影像分析。",
-    "en": "Drone imagery analysis for false fire alarms in forests and detection of people in outdoor activity.",
-    "sources": [
-      "assets/case-catalog.mjs.cases.7.desc"
-    ]
-  },
-  {
-    "zh": "AI 汽车研发与工业建模",
-    "en": "AI Automotive R&D and Industrial Modelling",
-    "sources": [
-      "assets/case-catalog.mjs.cases.8.name"
-    ]
-  },
-  {
-    "zh": "覆盖零件平面图转 3D、装配建模、工业焊接机器人编程与汽车安全检测。",
-    "en": "Covers part drawings to 3D, assembly modelling, industrial welding-robot programming and automotive safety inspection.",
-    "sources": [
-      "assets/case-catalog.mjs.cases.8.desc"
-    ]
-  },
-  {
-    "zh": "刑事律师材料与线索 AI 整理师",
-    "en": "AI Organiser for Criminal Defence Materials and Leads",
-    "sources": [
-      "assets/case-catalog.mjs.cases.9.name"
-    ]
-  },
-  {
-    "zh": "面向刑事律师工作中的材料与线索整理，辅助组织已有信息。",
-    "en": "Helps criminal defence lawyers organise case materials and leads from existing information.",
-    "sources": [
-      "assets/case-catalog.mjs.cases.9.desc"
-    ]
-  },
-  {
-    "zh": "AI 汽车功能安全检测",
-    "en": "AI Automotive Functional Safety Inspection",
-    "sources": [
-      "assets/case-catalog.mjs.cases.10.name"
-    ]
-  },
-  {
-    "zh": "聚焦汽车功能安全检测场景，展示 AI 在专业检测工作中的应用。",
-    "en": "Focused on functional safety inspection of vehicles, showing AI in professional inspection work.",
-    "sources": [
-      "assets/case-catalog.mjs.cases.10.desc"
-    ]
-  },
-  {
-    "zh": "需登录后演示",
-    "en": "Sign in to view demo",
-    "sources": [
-      "cases/cases.js.COPY.signToDemo"
-    ]
-  },
-  {
-    "zh": "演示已授权",
-    "en": "Demo authorised",
-    "sources": [
-      "cases/cases.js.COPY.demoOn"
-    ]
-  },
-  {
-    "zh": "演示未授权",
-    "en": "Demo not authorised",
-    "sources": [
-      "cases/cases.js.COPY.demoOff"
-    ]
-  },
-  {
-    "zh": "演示",
-    "en": "Demo",
-    "sources": [
-      "cases/cases.js.COPY.demo"
-    ]
-  },
-  {
-    "zh": "资料与联系",
-    "en": "Materials and contact",
-    "sources": [
-      "cases/cases.js.COPY.more"
-    ]
-  },
-  {
-    "zh": "下载相关资料",
-    "en": "Related materials",
-    "sources": [
-      "cases/cases.js.COPY.materials"
-    ]
-  },
-  {
-    "zh": "登录后下载",
-    "en": "Sign in to download",
-    "sources": [
-      "cases/cases.js.COPY.signToDownload"
-    ]
-  },
-  {
-    "zh": "资料待接入",
-    "en": "Document not yet connected",
-    "sources": [
-      "cases/cases.js.COPY.docPending"
-    ]
-  },
-  {
-    "zh": "联系供应商",
-    "en": "Contact the supplier",
-    "sources": [
-      "cases/cases.js.COPY.contact"
-    ]
-  },
-  {
-    "zh": "供应商信息待公布",
-    "en": "Supplier details to be announced",
-    "sources": [
-      "cases/cases.js.COPY.contactPending"
-    ]
-  },
-  {
-    "zh": "1 个场景",
-    "en": "1 scenario",
-    "sources": [
-      "cases/cases.js.COPY.one"
-    ]
-  },
-  {
-    "zh": "{n} 个场景",
-    "en": "{n} scenarios",
-    "sources": [
-      "cases/cases.js.COPY.many"
-    ]
-  },
-  {
-    "zh": "授权登录",
-    "en": "Sign in",
-    "sources": [
-      "cases/cases.js.COPY.signIn",
-      "cases/cases.js.COPY.signInSubmit",
-      "assets/case-auth.js.PANEL.signIn"
-    ],
-    "zhVariants": [
-      "登录"
-    ]
-  },
-  {
-    "zh": "使用官方分发的账号登录。登录后，可直接进入获准的演示或下载资料。",
-    "en": "Sign in with the account we issued. Afterwards you can open the demos and materials you are authorised to use.",
-    "sources": [
-      "cases/cases.js.COPY.loginLead"
-    ]
-  },
-  {
-    "zh": "用户名",
-    "en": "Username",
-    "sources": [
-      "cases/cases.js.COPY.username"
-    ]
-  },
-  {
-    "zh": "密码",
-    "en": "Password",
-    "sources": [
-      "cases/cases.js.COPY.password"
-    ]
-  },
-  {
-    "zh": "未能登录",
-    "en": "COULD NOT SIGN IN",
-    "sources": [
-      "cases/cases.js.COPY.loginFailed"
-    ]
-  },
-  {
-    "zh": "用户名或密码不正确",
-    "en": "The username or password is incorrect",
-    "sources": [
-      "cases/cases.js.COPY.badLogin"
-    ]
-  },
-  {
-    "zh": "成为软件合作伙伴",
-    "en": "Become a software partner",
-    "sources": [
-      "cases/cases.js.COPY.partner",
-      "cases/index.html:102"
-    ]
-  },
-  {
-    "zh": "介绍你的应用，以及它与 RM-01 结合的构想。我们将在审核后通过邮箱联系你。",
-    "en": "Tell us about your application and how you would combine it with RM-01. We will contact you by email after review.",
-    "sources": [
-      "cases/cases.js.COPY.partnerLead"
-    ]
-  },
-  {
-    "zh": "姓名",
-    "en": "Name",
-    "sources": [
-      "cases/cases.js.COPY.name"
-    ]
-  },
-  {
-    "zh": "公司／机构",
-    "en": "Company / organisation",
-    "sources": [
-      "cases/cases.js.COPY.company"
-    ]
-  },
-  {
-    "zh": "工作邮箱",
-    "en": "Work email",
-    "sources": [
-      "cases/cases.js.COPY.email"
-    ]
-  },
-  {
-    "zh": "你的应用解决什么问题？如何与 RM-01 结合？",
-    "en": "What problem does your application solve, and how would it combine with RM-01?",
-    "sources": [
-      "cases/cases.js.COPY.reason"
-    ]
-  },
-  {
-    "zh": "你如何理解 RM-01？团队有哪些模型与应用开发经验？",
-    "en": "How do you understand RM-01? What model and application development experience does your team have?",
-    "sources": [
-      "cases/cases.js.COPY.ability"
-    ]
-  },
-  {
-    "zh": "提交申请",
-    "en": "Submit",
-    "sources": [
-      "cases/cases.js.COPY.submit"
-    ]
-  },
-  {
-    "zh": "提交后由团队审核，并通过你填写的邮箱联系。合作申请不自动获得演示与下载权限。",
-    "en": "The team reviews every application and replies by email. An application does not grant access to demos or downloads.",
-    "sources": [
-      "cases/cases.js.COPY.review"
-    ]
-  },
-  {
-    "zh": "申请已收到。团队将通过邮箱与你联系。",
-    "en": "Application received. The team will contact you by email.",
-    "sources": [
-      "cases/cases.js.COPY.received"
-    ]
-  },
-  {
-    "zh": "此账号尚未获得查看演示权限，请联系账号发放人。",
-    "en": "This account is not yet authorised to view demos. Please contact whoever issued it.",
-    "sources": [
-      "cases/cases.js.COPY.noDemo"
-    ]
-  },
-  {
-    "zh": "此账号尚未获得下载资料权限，请联系账号发放人。",
-    "en": "This account is not yet authorised to download materials. Please contact whoever issued it.",
-    "sources": [
-      "cases/cases.js.COPY.noDownload"
-    ]
-  },
-  {
-    "zh": "该案例的演示或资料尚未接入。",
-    "en": "The demo or materials for this case are not connected yet.",
-    "sources": [
-      "cases/cases.js.COPY.notConnected"
-    ]
-  },
-  {
-    "zh": "尚未接入",
-    "en": "NOT YET CONNECTED",
-    "sources": [
-      "cases/cases.js.COPY.notConnectedLabel"
-    ]
-  },
-  {
-    "zh": "此账号没有访问权限。",
-    "en": "This account has no access.",
-    "sources": [
-      "cases/cases.js.COPY.noAccess"
-    ]
-  },
-  {
-    "zh": "暂时无法打开，请稍后重试。",
-    "en": "Cannot be opened right now. Please try again later.",
-    "sources": [
-      "cases/cases.js.COPY.tryLater"
-    ]
-  },
-  {
-    "zh": "账号服务暂时不可用",
-    "en": "The account service is temporarily unavailable",
-    "sources": [
-      "cases/cases.js.COPY.serviceDown",
-      "assets/case-auth.js.PANEL.unavailable"
-    ]
-  },
-  {
-    "zh": "授权访问",
-    "en": "AUTHORISED ACCESS",
-    "sources": [
-      "assets/case-auth.js.PANEL.label"
-    ]
-  },
-  {
-    "zh": "已有官方分发的账号？登录后可进入获准的演示与下载资料。",
-    "en": "Have an account issued by us? Sign in to open the demos and materials you are authorised to use.",
-    "sources": [
-      "assets/case-auth.js.PANEL.hint"
-    ]
-  },
-  {
-    "zh": "查看演示",
-    "en": "View demos",
-    "sources": [
-      "assets/case-auth.js.PANEL.demos"
-    ]
-  },
-  {
-    "zh": "下载相关资料",
-    "en": "Download materials",
-    "sources": [
-      "assets/case-auth.js.PANEL.downloads"
-    ]
-  },
-  {
-    "zh": "已授权",
-    "en": "Authorised",
-    "sources": [
-      "assets/case-auth.js.PANEL.on"
-    ]
-  },
-  {
-    "zh": "未授权",
-    "en": "Not authorised",
-    "sources": [
-      "assets/case-auth.js.PANEL.off"
-    ]
-  },
-  {
-    "zh": "管理后台",
-    "en": "Admin console",
-    "sources": [
-      "assets/case-auth.js.PANEL.admin"
-    ]
-  },
-  {
-    "zh": "退出登录",
-    "en": "Sign out",
-    "sources": [
-      "assets/case-auth.js.PANEL.signOut"
-    ]
-  },
-  {
-    "zh": "让 AI 走进",
-    "en": "Bringing AI into",
-    "sources": [
-      "cases/index.html:94"
-    ]
-  },
-  {
-    "zh": "具体的工作。",
-    "en": "real work.",
-    "sources": [
-      "cases/index.html:94"
-    ]
-  },
-  {
-    "zh": "从日常事务到工业研发，探索 AI 在真实业务中的应用。找到与你相关的场景，进一步了解资料与演示。",
-    "en": "From everyday tasks to industrial R&D, explore how AI is used in real business. Find the scenarios relevant to you and learn more about materials and demos.",
-    "sources": [
-      "cases/index.html:95"
-    ]
-  },
-  {
-    "zh": "让你的应用，被更多人看见。",
-    "en": "Let more people see your application.",
-    "sources": [
-      "cases/index.html:100"
-    ]
-  },
-  {
-    "zh": "与我们共同探索基于 RM-01 的软件应用与交付。",
-    "en": "Explore software applications and delivery built on RM-01 with us.",
-    "sources": [
-      "cases/index.html:101"
-    ]
-  },
-  {
-    "zh": "正在检查访问权限…",
-    "en": "Checking access…",
-    "sources": [
-      "cases/cases.js"
-    ]
-  },
-  {
-    "zh": "正在加载演示…",
-    "en": "Loading demo…",
-    "sources": [
-      "cases/cases.js"
-    ]
-  },
-  {
-    "zh": "登录已失效，请重新登录。",
-    "en": "Your session has expired. Please sign in again.",
-    "sources": [
-      "cases/cases.js"
-    ]
-  },
-  {
-    "zh": "暂未完成加载，请重试或关闭。",
-    "en": "Loading has not finished. Please retry or close.",
-    "sources": [
-      "cases/cases.js"
-    ]
-  },
-  {
-    "zh": "重试",
-    "en": "Retry",
-    "sources": [
-      "cases/cases.js"
-    ]
-  },
-  {
-    "zh": "高速公路现场智能协同",
-    "en": "Intelligent Highway Field Coordination",
-    "sources": [
-      "cases/cases.js"
-    ]
-  },
-  {
-    "zh": "面向收费站、隧道、桥梁与光伏场景，展示现场感知、智能研判和协同处置。",
-    "en": "Shows field sensing, intelligent assessment and coordinated response across toll stations, tunnels, bridges and solar sites.",
-    "sources": [
-      "cases/cases.js"
-    ]
-  },
-  {
-    "zh": "电子邮箱：",
-    "en": "Email:",
-    "sources": [
-      "cases/cases.js.COPY.contactEmail"
-    ]
-  },
-  {
-    "zh": "科技有限公司",
-    "en": "Technology Co., Ltd.",
-    "sources": [
-      "assets/case-catalog.mjs.cases.0.supplier.suffix",
-      "assets/case-catalog.mjs.cases.8.supplier.suffix",
-      "assets/case-catalog.mjs.cases.11.supplier.suffix"
-    ]
-  },
-  {
-    "zh": "案例访问",
-    "en": "Case access",
-    "sources": [
-      "assets/case-auth.js.PANEL.cases"
-    ]
-  },
-  {
-    "zh": "全部案例",
-    "en": "All cases",
-    "sources": [
-      "assets/case-auth.js.PANEL.all"
-    ]
-  },
-  {
-    "zh": "已授权 {n} 个案例",
-    "en": "{n} cases authorised",
-    "sources": [
-      "assets/case-auth.js.PANEL.count"
-    ]
-  },
-  {
-    "zh": "请先到管理后台修改初始密码",
-    "en": "Change your initial password in the admin console first",
-    "sources": [
-      "assets/case-auth.js.PANEL.changePassword"
-    ]
-  },
-  {
-    "zh": "未登录，需要登录后才能下载。",
-    "en": "You are not signed in. Please sign in before downloading.",
-    "sources": [
-      "assets/dealer-downloads.js.COPY.login.message",
-      "downloads/index.html:579"
-    ]
-  },
-  {
-    "zh": "请前往案例页面，使用已有账号登录。",
-    "en": "Go to the cases page and sign in with your existing account.",
-    "sources": [
-      "assets/dealer-downloads.js.COPY.login.help",
-      "downloads/index.html:585"
-    ]
-  },
-  {
-    "zh": "暂时无法下载",
-    "en": "Download unavailable",
-    "sources": [
-      "assets/dealer-downloads.js.COPY.unavailable.title"
-    ]
-  },
-  {
-    "zh": "资料暂时不可用，请稍后重试。",
-    "en": "This document is temporarily unavailable. Please try again later.",
-    "sources": [
-      "assets/dealer-downloads.js.COPY.unavailable.message"
-    ]
-  },
-  {
-    "zh": "如需帮助，请联系账号发放人。",
-    "en": "For help, contact the person who issued your account.",
-    "sources": [
-      "assets/dealer-downloads.js.COPY.unavailable.help",
-      "assets/dealer-downloads.js.COPY.password.help"
-    ]
-  },
-  {
-    "zh": "请先修改初始密码",
-    "en": "Change your initial password first",
-    "sources": [
-      "assets/dealer-downloads.js.COPY.password.title"
-    ]
-  },
-  {
-    "zh": "请前往管理后台修改初始密码，然后重新登录下载。",
-    "en": "Change your initial password in the admin console, then sign in again to download.",
-    "sources": [
-      "assets/dealer-downloads.js.COPY.password.message"
-    ]
-  },
-  {
-    "zh": "经销商资料",
-    "en": "Dealer resources",
-    "sources": [
-      "downloads/index.html:128",
-      "downloads/index.html:478"
-    ]
-  },
-  {
-    "zh": "需在案例页登录后下载",
-    "en": "Sign in on the cases page to download",
-    "sources": [
-      "downloads/index.html:484"
-    ]
-  },
-  {
-    "zh": "面向经销商的产品与技术资料。",
-    "en": "Product and technical materials for dealers.",
-    "sources": [
-      "downloads/index.html:487"
-    ]
-  },
-  {
-    "zh": "下载资料",
-    "en": "Requested file",
-    "sources": [
-      "downloads/index.html:581"
-    ]
-  },
-  {
-    "zh": "暂不下载",
-    "en": "Cancel",
-    "sources": [
-      "downloads/index.html:587"
-    ]
-  },
-  {
-    "zh": "前往案例登录",
-    "en": "Go to sign in",
-    "sources": [
-      "downloads/index.html:589"
-    ]
-  },
-  {
-    "zh": "没有权限",
-    "en": "Access denied",
-    "sources": [
-      "assets/dealer-downloads.js.COPY.forbidden.title"
-    ]
-  },
-  {
-    "zh": "此账号尚未获得经销商资料下载权限，请联系账号发放人。",
-    "en": "This account is not authorised to download dealer resources. Please contact the person who issued your account.",
-    "sources": [
-      "assets/dealer-downloads.js.COPY.forbidden.message"
-    ]
-  },
-  {
-    "zh": "权限开通后，可直接重新下载，无需再次登录。",
-    "en": "Once access is granted, try downloading again. You do not need to sign in again.",
-    "sources": [
-      "assets/dealer-downloads.js.COPY.forbidden.help"
-    ]
-  },
-  {
-    "zh": "智能热控",
-    "en": "Smart thermal control",
-    "sources": [
-      "assets/site-data.js.ui.ttiChapter"
-    ]
-  },
-  {
-    "zh": "热将起，\n风先知",
-    "en": "Ahead of\nthe heat",
-    "sources": [
-      "assets/site-data.js.ui.ttiTitle"
-    ]
-  },
-  {
-    "zh": "推理持续，散热也持续。TTI 通过 TTO 实时观测热状态，由神经网络模型预测未来 90 秒的功率变化，推演 15、45、90 秒后的温度。它不只看此刻的温度，也记得热是怎样积蓄起来的。热未起，风量已就位；热渐稳，转速自然回落。起伏更少，不同的环境与负载，都能从容应对。",
-    "en": "Inference keeps running, and so does cooling. Through TTO, TTI observes the thermal state in real time. A neural network model predicts power for the next 90 seconds, then projects the temperature at 15, 45 and 90 seconds. It looks beyond the temperature right now, and remembers how the heat built up. Before heat rises, airflow is already in place; as it settles, fan speed eases back on its own. Fewer swings, and it handles different environments and workloads with ease.",
-    "sources": [
-      "assets/site-data.js.ui.ttiText1"
-    ]
-  },
-  {
-    "zh": "该模型基于真实设备运行数据训练。突发任务无法预知，基础曲线、配置上限与独立保护策略始终托底。",
-    "en": "The model is trained on real device operating data. Sudden workloads can't be foreseen, so the base curve, configured limits and an independent protection policy always stand behind it.",
-    "sources": [
-      "assets/site-data.js.ui.ttiText2"
-    ]
-  },
-  {
-    "zh": "现在",
-    "en": "Now",
-    "sources": [
-      "assets/site-data.js.ui.ttiNow"
-    ]
-  },
-  {
-    "zh": "提前",
-    "en": "Lead",
-    "sources": [
-      "assets/site-data.js.ui.ttiLead"
-    ]
-  },
-  {
-    "zh": "温度",
-    "en": "Temp",
-    "sources": [
-      "assets/site-data.js.ui.ttiTemp"
-    ]
-  },
-  {
-    "zh": "风量",
-    "en": "Airflow",
-    "sources": [
-      "assets/site-data.js.ui.ttiAirflow"
-    ]
-  },
-  {
-    "zh": "神经网络",
-    "en": "Neural network",
-    "sources": [
-      "assets/site-data.js.ui.ttiNetwork"
-    ]
-  },
-  {
-    "zh": "观测",
-    "en": "Observe",
-    "sources": [
-      "assets/site-data.js.ui.ttiObserve"
-    ]
-  },
-  {
-    "zh": "预测",
-    "en": "Predict",
-    "sources": [
-      "assets/site-data.js.ui.ttiPredict"
-    ]
-  },
-  {
-    "zh": "调节",
-    "en": "Regulate",
-    "sources": [
-      "assets/site-data.js.ui.ttiRegulate"
-    ]
-  },
-  {
-    "zh": "散热",
-    "en": "Cool",
-    "sources": [
-      "assets/site-data.js.ui.ttiCool"
-    ]
-  },
-  {
-    "zh": "EricLake 以特制叶片、定制电机与 Z 型独立风道共同导出热量，支撑高并发任务。风道经多轮计算流体力学仿真优化，封闭式结构有效减少灰尘进入核心器件区域，照顾高负载下的运行，也照顾日复一日的使用。",
-    "en": "EricLake carries the heat out with purpose-made blades, a custom motor and a dedicated Z-shaped air duct, supporting high-concurrency workloads. The duct is refined through multiple rounds of computational fluid dynamics simulation, and the closed structure keeps dust out of the core component area, caring for demanding loads and for everyday use alike.",
-    "sources": [
-      "assets/site-data.js.ui.thermalLead"
-    ]
-  },
-  {
-    "zh": "TTI 工作示意：TTO 观测，神经网络预测，TTI 调节，EricLake 散热",
-    "en": "How TTI works: TTO observes, the neural network predicts, TTI regulates, EricLake cools",
-    "sources": [
-      "index.html:tti"
-    ]
-  },
-  {
-    "zh": "让你的 Agent 帮你用好",
-    "en": "Get more from",
-    "sources": [
-      "guides/index.html:132"
-    ]
-  },
-  {
-    "zh": "",
-    "en": " with your agent",
-    "sources": [
-      "guides/index.html:132"
-    ]
-  },
-  {
-    "zh": "从了解产品、申请样机到配置系统、排查问题，让你的 Agent 根据官方资料提供帮助。",
-    "en": "From exploring the product and requesting a demo unit to system setup and troubleshooting, let your agent help with guidance from official sources.",
-    "sources": [
-      "guides/index.html:133"
-    ]
-  },
-  {
-    "zh": "查看接入说明",
-    "en": "View setup instructions",
-    "sources": [
-      "guides/index.html:135"
-    ]
-  },
-  {
-    "zh": "复制给你的 Agent",
-    "en": "Copy this to your agent",
-    "sources": [
-      "guides/index.html:270"
-    ]
-  },
-  {
-    "zh": "复制以下指令，发送给你的 Agent，让它帮你完成接入。",
-    "en": "Copy the instructions below and send them to your agent to set up the connection.",
-    "sources": [
-      "guides/index.html:271"
-    ]
-  },
-  {
-    "zh": "接入指令",
-    "en": "Setup instructions",
-    "sources": [
-      "guides/index.html:272"
-    ]
-  },
-  {
-    "zh": "复制指令",
-    "en": "Copy instructions",
-    "sources": [
-      "guides/index.html:306"
-    ]
-  },
-  {
-    "zh": "连接后即可查询 RM-01 官方资料。",
-    "en": "Connect to search the official RM-01 sources.",
-    "sources": [
-      "guides/index.html:308"
     ]
   },
   {
@@ -5006,34 +5110,6 @@
     "en": "Copy failed. Select the instructions and copy them manually.",
     "sources": [
       "assets/i18n-ui.json"
-    ]
-  },
-  {
-    "zh": "Admin 用户日常操作指南 · 中英双语 · 31 页 · PDF · 616 KB · 2026-11-03",
-    "en": "Daily operations guide for Admin users · Chinese and English · 31 pages · PDF · 616 KB · 2026-11-03",
-    "sources": [
-      "downloads/index.html"
-    ]
-  },
-  {
-    "zh": "root 用户运维操作指南 · 中英双语 · 67 页 · PDF · 812 KB · 2026-11-03",
-    "en": "Operations guide for root users · Chinese and English · 67 pages · PDF · 812 KB · 2026-11-03",
-    "sources": [
-      "downloads/index.html"
-    ]
-  },
-  {
-    "zh": "安全页面操作、验证与恢复指南 · 中文 · 16 页 · PDF · 520 KB · 2026-11-03",
-    "en": "Security Page operations, verification, and recovery · Chinese · 16 pages · PDF · 520 KB · 2026-11-03",
-    "sources": [
-      "downloads/index.html"
-    ]
-  },
-  {
-    "zh": "安全页面操作、验证与恢复指南 · 英文 · 19 页 · PDF · 242 KB · 2026-11-03",
-    "en": "Security Page operations, verification, and recovery · English · 19 pages · PDF · 242 KB · 2026-11-03",
-    "sources": [
-      "downloads/index.html"
     ]
   }
 ]

@@ -17,9 +17,10 @@ function markedText(key) {
 export const footerPages = [
   'index.html', 'gallery/index.html', 'models/index.html', 'cases/index.html',
   'downloads/index.html', 'guides/index.html',
-  'guides/admin.html', 'guides/root.html', 'guides/security.html', 'guides/network.html'
+  'guides/admin.html', 'guides/root.html', 'guides/security.html', 'guides/network.html',
+  'guides/api.html'
 ];
-export const guidePages = footerPages.filter(page => /^guides\/(admin|root|security|network)\.html$/.test(page));
+export const guidePages = footerPages.filter(page => /^guides\/(admin|root|security|network|api)\.html$/.test(page));
 
 export function renderFooter(assetPrefix) {
   return `<!-- shared-footer:start -->

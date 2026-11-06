@@ -50,7 +50,7 @@ await check('shared footer consistency and coverage',true,()=>command(process.ex
 await check('font subset',run.scope.fonts,()=>command('python3',['website/scripts/build-fonts.py','--check'],'fonts'),'No Chinese copy or font dependency changed.');
 await check('service brand',run.scope.brand,()=>command(process.execPath,['scripts/build-service-brand.mjs','--check'],'brand'),'No shared brand dependency changed.');
 await check('gallery EXIF',run.scope.exif,()=>command(process.execPath,['website/scripts/extract-gallery-exif.mjs','--check'],'exif'),'No gallery data or photo changed.');
-await check('generated guides',run.scope.guides,()=>generatedCheck(root,'website/scripts/build-guides.mjs',['website/guides/admin.html','website/guides/root.html','website/guides/security.html','website/guides/network.html','website/guides/search-index.json']),'No guide source or template changed.');
+await check('generated guides',run.scope.guides,()=>generatedCheck(root,'website/scripts/build-guides.mjs',['website/guides/admin.html','website/guides/root.html','website/guides/security.html','website/guides/network.html','website/guides/api.html','website/guides/search-index.json']),'No guide source or template changed.');
 await check('generated translations',run.scope.translations,()=>generatedCheck(root,'website/scripts/build-translations.mjs',['website/assets/translations/ja.js','website/assets/translations/ko.js','website/assets/translations/es.js','website/assets/translations/fr.js']),'No translation input or generator changed.');
 const unit=run.scope.infrastructure?['scripts/ci/policy.test.mjs']:[];
 if(run.scope.seo)unit.push('scripts/check-seo.test.mjs');

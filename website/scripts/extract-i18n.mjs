@@ -42,7 +42,7 @@ for(const [file,start,end,names] of [
  walk(data,file);
 }
 function decode(text){return text.replace(/&(?:amp|quot|lt|gt|apos|#39|#x27);/g,x=>({'&amp;':'&','&quot;':'"','&lt;':'<','&gt;':'>','&apos;':"'",'&#39;':"'",'&#x27;':"'"}[x]));}
-const pages=['index.html','models/index.html','gallery/index.html','downloads/index.html','guides/index.html',...['admin','root','network','security'].map(x=>`guides/${x}.html`),'cases/index.html'];
+const pages=['index.html','models/index.html','gallery/index.html','downloads/index.html','guides/index.html',...['admin','root','network','security','api'].map(x=>`guides/${x}.html`),'cases/index.html'];
 for(const file of [...pages, 'scripts/build-guides.mjs']) {
  const html=readFileSync(join(site,file),'utf8');
  for(const tag of html.matchAll(/<[a-zA-Z][^>]*>/g)) {

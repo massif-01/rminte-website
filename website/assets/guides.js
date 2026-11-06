@@ -12,6 +12,7 @@
     const matches = [];
     root.querySelectorAll('*').forEach((element) => {
       if (element.closest('.rm-mark, script, style, noscript, textarea')) return;
+      if (document.documentElement.classList.contains('api-guide') && element.closest('code, pre')) return;
       element.childNodes.forEach((node) => {
         if (node.nodeType === 3 && /RM-01|TianshanOS/i.test(node.nodeValue)) matches.push(node);
       });
@@ -82,6 +83,7 @@
     }
     const current = $('[data-guide-toc-current]');
     if (current) current.textContent = active.textContent.replace(/^\s*\d+\.\s*/, '').trim();
+    window.RM_API_GUIDE?.updateToc(active, chapter, headings);
   }
 
   const TITLE_PHRASES = {
@@ -172,7 +174,7 @@
   function setupToc() {
     $$('[data-toc-target]').forEach((link) => {
       link.addEventListener('click', () => {
-        const details = link.closest('details');
+        const details = link.closest('.guide-mobile-toc');
         if (details) details.open = false;
       });
     });
@@ -284,7 +286,7 @@
     let query = '';
     let firstResultHref = null;
 
-    const indexPromise = fetch('search-index.json?v=guides-064-20261103')
+    const indexPromise = fetch('search-index.json?v=api-readable-20261107')
       .then((response) => {
         if (!response.ok) throw new Error(`Search index returned ${response.status}`);
         return response.json();

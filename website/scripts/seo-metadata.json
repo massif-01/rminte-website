@@ -106,5 +106,17 @@
       "zh": "获取 RM-01 产品资料、TianshanOS 固件、设备使用指南及配套软件，查看当前公开的下载资源与工具。",
       "en": "Download available RM-01 product documents, TianshanOS firmware, user guides, product materials and related software tools."
     }
+  },
+  "api": {
+    "file": "guides/api.html",
+    "path": "/guides/api",
+    "title": {
+      "zh": "TianshanOS API 使用手册 | RMinte",
+      "en": "TianshanOS API User Guide | RMinte"
+    },
+    "description": {
+      "zh": "TianshanOS 0.6.4 API 使用手册：快速接入、任务示例与完整接口参考。",
+      "en": "TianshanOS 0.6.4 API guide: quickstart, task examples, and complete API reference."
+    }
   }
 }

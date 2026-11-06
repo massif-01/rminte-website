@@ -15,11 +15,11 @@
   <script src="../assets/input-mode.js?v=input-2" defer></script>
   <link rel="stylesheet" href="../assets/brand.css?v=v2-core-2">
   <link rel="stylesheet" href="../assets/styles.css?v=sample-2">
-  <link rel="stylesheet" href="../assets/guides.css?v=focus-20261030">
+  <link rel="stylesheet" href="../assets/guides.css?v=api-20261107">
   <script>
     // ja/ko/es/fr carry their own catalog file; zh and en need none. Resolve the language the way i18n.js does and load only that file.
     (function (up) {
-      var ok = /^(zh|en|ja|ko|es|fr)$/, c = window.RM_CATALOG = { base: up + 'assets/translations/', v: 'knowledge-live-20261030' };
+      var ok = /^(zh|en|ja|ko|es|fr)$/, c = window.RM_CATALOG = { base: up + 'assets/translations/', v: 'api-20261107' };
       c.load = function () {
         var s; try { s = localStorage.getItem('rm-soft-lang'); } catch (e) {}
         var l = [new URLSearchParams(location.search).get('lang'), (location.hash.match(/^#(zh|en|ja|ko|es|fr)-/) || [])[1], s, window.RM_DEFAULT_LANG].filter(function (x) { return ok.test(x); })[0];
@@ -30,7 +30,7 @@
       // Each CJK face is requested only when its language is shown: every page used to ask for Noto Sans SC, JP and KR (about 0.9 MB of fonts and
       // 210 KB of stylesheet that English, Spanish and French visitors never use). While the head is parsing, document.write keeps the link
       // render-blocking like a static one; i18n.js calls this again (late) when the visitor switches language.
-      var cjk = { zh: 'assets/fonts/noto-sans-sc.css?v=sample-20261026', ja: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap', ko: 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap' };
+      var cjk = { zh: 'assets/fonts/noto-sans-sc.css?v=api-20261107', ja: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap', ko: 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap' };
       c.fonts = function (l, late) {
         if (!cjk[l] || document.querySelector('link[data-cjk="' + l + '"]')) return;
         var h = /^https:/.test(cjk[l]) ? cjk[l] : up + cjk[l];
@@ -41,7 +41,7 @@
     })('../');
   </script>
   <script src="../assets/i18n.js?v=catalogs-20261004" defer></script>
-  <script src="../assets/guides.js?v=guides-064-20261103" defer></script>
+  <script src="../assets/guides.js?v=api-readable-20261107" defer></script>
   <script src="../assets/knowledge-entry.js?v=knowledge-review-20261030" defer></script>
   <script src="../assets/site-data.js?v=sample-2" defer></script>
   <script src="../assets/footer.js?v=sample-3" defer></script>
@@ -178,7 +178,7 @@
     </section>
 
     <div class="guide-list-label guide-topic-label" aria-hidden="true">
-      <span data-guide-text data-zh="专题指南" data-en="Topic guide">专题指南</span>
+      <span data-guide-text data-zh="专题指南" data-en="Topic guides">专题指南</span>
 
     </div>
 
@@ -193,6 +193,12 @@
           <span class="guide-card-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></span>
         </div>
       </a>
+    <a class="guide-card guide-card-api" data-bevel href="api.html" id="apiGuideLink" aria-labelledby="apiGuideTitle">
+  <svg class="guide-card-icon" viewBox="0 0 11 11" aria-hidden="true" focusable="false"><path class="dim" d="M0.5 0.5h0M0.5 1.5h0M0.5 2.5h0M0.5 3.5h0M0.5 4.5h0M0.5 5.5h0M0.5 6.5h0M0.5 7.5h0M0.5 8.5h0M0.5 9.5h0M0.5 10.5h0M1.5 0.5h0M1.5 1.5h0M1.5 9.5h0M1.5 10.5h0M2.5 0.5h0M2.5 1.5h0M2.5 3.5h0M2.5 4.5h0M2.5 5.5h0M2.5 6.5h0M2.5 7.5h0M2.5 9.5h0M2.5 10.5h0M3.5 0.5h0M3.5 1.5h0M3.5 3.5h0M3.5 4.5h0M3.5 5.5h0M3.5 6.5h0M3.5 7.5h0M3.5 9.5h0M3.5 10.5h0M4.5 0.5h0M4.5 1.5h0M4.5 2.5h0M4.5 3.5h0M4.5 4.5h0M4.5 5.5h0M4.5 6.5h0M4.5 7.5h0M4.5 8.5h0M4.5 9.5h0M4.5 10.5h0M5.5 0.5h0M5.5 1.5h0M5.5 2.5h0M5.5 3.5h0M5.5 4.5h0M5.5 5.5h0M5.5 6.5h0M5.5 7.5h0M5.5 8.5h0M5.5 9.5h0M5.5 10.5h0M6.5 0.5h0M6.5 1.5h0M6.5 2.5h0M6.5 3.5h0M6.5 4.5h0M6.5 5.5h0M6.5 6.5h0M6.5 7.5h0M6.5 8.5h0M6.5 9.5h0M6.5 10.5h0M7.5 0.5h0M7.5 1.5h0M7.5 3.5h0M7.5 4.5h0M7.5 5.5h0M7.5 6.5h0M7.5 7.5h0M7.5 9.5h0M7.5 10.5h0M8.5 0.5h0M8.5 1.5h0M8.5 3.5h0M8.5 4.5h0M8.5 5.5h0M8.5 6.5h0M8.5 7.5h0M8.5 9.5h0M8.5 10.5h0M9.5 0.5h0M9.5 1.5h0M9.5 9.5h0M9.5 10.5h0M10.5 0.5h0M10.5 1.5h0M10.5 2.5h0M10.5 3.5h0M10.5 4.5h0M10.5 5.5h0M10.5 6.5h0M10.5 7.5h0M10.5 8.5h0M10.5 9.5h0M10.5 10.5h0"/><path class="lit" d="M1.5 2.5h0M1.5 3.5h0M1.5 4.5h0M1.5 5.5h0M1.5 6.5h0M1.5 7.5h0M1.5 8.5h0M2.5 2.5h0M2.5 8.5h0M3.5 2.5h0M3.5 8.5h0M7.5 2.5h0M7.5 8.5h0M8.5 2.5h0M8.5 8.5h0M9.5 2.5h0M9.5 3.5h0M9.5 4.5h0M9.5 5.5h0M9.5 6.5h0M9.5 7.5h0M9.5 8.5h0"/></svg>
+  <h2 id="apiGuideTitle" data-guide-text data-zh="API 接入" data-en="API integration">API 接入</h2>
+  <p class="guide-card-copy" data-guide-text data-zh="用脚本或自己的系统读取设备状态、控制设备并接收实时消息。提供快速接入、任务示例与接口参考。" data-en="Connect your scripts and applications to read device status, control devices, and receive real-time updates. Start with a quickstart, task examples, or the API reference.">用脚本或自己的系统读取设备状态、控制设备并接收实时消息。提供快速接入、任务示例与接口参考。</p>
+  <div class="guide-card-bottom"><span class="guide-card-meta" data-guide-text data-zh="快速接入 · 任务示例 · 接口参考" data-en="Quickstart · Task examples · API reference">快速接入 · 任务示例 · 接口参考</span><span class="guide-card-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></span></div>
+</a>
     </section>
 
     <p class="guide-home-note" data-guide-text data-zh="root 权限可能改变设备、远程主机和自动化流程。请根据实际职责选择指南。" data-en="root privileges can change devices, remote hosts, and automation workflows. Choose the guide that matches your responsibilities.">root 权限可能改变设备、远程主机和自动化流程。请根据实际职责选择指南。</p>

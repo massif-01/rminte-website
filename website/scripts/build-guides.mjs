@@ -3,6 +3,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { seoHead } from './seo.mjs';
 import { renderFooter, renderContactPanel } from './footer-template.mjs';
+import { buildApiGuides } from './build-api-guides.mjs';
 
 const scriptDir = dirname(fileURLToPath(import.meta.url));
 const siteDir = join(scriptDir, '..');
@@ -484,9 +485,9 @@ function siteNavigationTemplate() {
 }
 
 function pageTemplate(config, rendered) {
-  const guideAssetVersion = config.accent === 'network' ? 'guides-063-20261028' : 'guides-064-20261103';
-  const catalogVersion = config.accent === 'network' ? 'guides-063-20261028' : 'guides-064-20261103';
-  const scFontVersion = config.accent === 'network' ? '?v=cases-20261013' : '?v=guides-064-20261103';
+  const guideAssetVersion = 'api-readable-20261107';
+  const catalogVersion = config.accent === 'network' ? 'guides-063-20261028' : 'api-20261107';
+  const scFontVersion = config.accent === 'network' ? '?v=cases-20261013' : '?v=api-20261107';
   const pageData = JSON.stringify({
     title: config.title,
     copy: { zh: '已复制', en: 'Copied' },
@@ -510,7 +511,7 @@ function pageTemplate(config, rendered) {
   <script src="../assets/input-mode.js?v=input-2" defer></script>
   <link rel="stylesheet" href="../assets/brand.css?v=v2-core-2">
   <link rel="stylesheet" href="../assets/styles.css?v=sample-2">
-  <link rel="stylesheet" href="../assets/guides.css?v=focus-20261030">
+  <link rel="stylesheet" href="../assets/guides.css?v=api-readable-20261107">
   <script id="guidePageData" type="application/json">${pageData}</script>
   <script>
     // ja/ko/es/fr carry their own catalog file; zh and en need none. Resolve the language the way i18n.js does and load only that file.
@@ -569,7 +570,7 @@ ${searchTemplate()}
     <details class="guide-mobile-toc">
       <summary><span data-guide-text data-zh="展开本页目录" data-en="Open page contents">展开本页目录</span><span class="guide-mobile-toc-current" data-guide-toc-current></span></summary>
 ${languages.map(lang => `<nav class="lang-pane" data-lang-pane="${lang}" aria-label="${escapeHtml(translated({zh:'本页目录',en:'On this page'},lang))}"${lang !== 'zh' ? ' hidden' : ''}>
-${tocItems(rendered[lang].headings, lang)}
+${rendered[lang].toc || tocItems(rendered[lang].headings, lang)}
       </nav>`).join('\n')}
     </details>
 
@@ -577,7 +578,7 @@ ${tocItems(rendered[lang].headings, lang)}
       <aside class="guide-toc" aria-label="本页目录" data-i18n-aria-label-zh="本页目录" data-i18n-aria-label-en="On this page">
         <p data-guide-text data-zh="本页目录" data-en="On this page">本页目录</p>
 ${languages.map(lang => `<nav class="lang-pane" data-lang-pane="${lang}"${lang !== 'zh' ? ' hidden' : ''}>
-${tocItems(rendered[lang].headings, lang)}
+${rendered[lang].toc || tocItems(rendered[lang].headings, lang)}
         </nav>`).join('\n')}
       </aside>
 
@@ -633,5 +634,6 @@ for (const [slug, config] of Object.entries(guideConfig)) {
   console.log(`Built ${config.output} (${rendered.zh.headings.length} headings per language)`);
 }
 
+searchEntries.push(...buildApiGuides({guidesDir, languages, renderMarkdown, pageTemplate, buildSearchEntries, extendPairs}));
 writeFileSync(join(guidesDir, 'search-index.json'), `${JSON.stringify({ version: 2, languages, entries: searchEntries }, null, 2)}\n`);
 console.log(`Built search index (${searchEntries.length} sections)`);
