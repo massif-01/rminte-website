@@ -703,8 +703,8 @@
       "gallery/index.html:91",
       "gallery/index.html:180",
       "downloads/index.html:94",
-      "downloads/index.html:535",
-      "downloads/index.html:573",
+      "downloads/index.html:534",
+      "downloads/index.html:572",
       "guides/index.html:91",
       "guides/index.html:242",
       "guides/index.html:275",
@@ -2652,7 +2652,7 @@
     "sources": [
       "cases/cases.js.COPY.signToDownload",
       "assets/dealer-downloads.js.COPY.login.title",
-      "downloads/index.html:585"
+      "downloads/index.html:584"
     ],
     "zhVariants": [
       "下载前请先登录"
@@ -2873,7 +2873,7 @@
     "en": "You are not signed in. Please sign in before downloading.",
     "sources": [
       "assets/dealer-downloads.js.COPY.login.message",
-      "downloads/index.html:586"
+      "downloads/index.html:585"
     ]
   },
   {
@@ -2881,7 +2881,7 @@
     "en": "Go to the cases page and sign in with your existing account.",
     "sources": [
       "assets/dealer-downloads.js.COPY.login.help",
-      "downloads/index.html:592"
+      "downloads/index.html:591"
     ]
   },
   {
@@ -3803,7 +3803,7 @@
     "en": "Download center",
     "sources": [
       "downloads/index.html:109",
-      "downloads/index.html:571"
+      "downloads/index.html:570"
     ]
   },
   {
@@ -3834,7 +3834,7 @@
     "en": "Product materials",
     "sources": [
       "downloads/index.html:121",
-      "downloads/index.html:219"
+      "downloads/index.html:218"
     ]
   },
   {
@@ -3842,7 +3842,7 @@
     "en": "Firmware & software",
     "sources": [
       "downloads/index.html:125",
-      "downloads/index.html:351"
+      "downloads/index.html:350"
     ]
   },
   {
@@ -3850,7 +3850,7 @@
     "en": "Online tools",
     "sources": [
       "downloads/index.html:129",
-      "downloads/index.html:454"
+      "downloads/index.html:453"
     ]
   },
   {
@@ -3858,7 +3858,7 @@
     "en": "Dealer resources",
     "sources": [
       "downloads/index.html:131",
-      "downloads/index.html:484"
+      "downloads/index.html:483"
     ]
   },
   {
@@ -3887,24 +3887,23 @@
       "downloads/index.html:205",
       "downloads/index.html:209",
       "downloads/index.html:210",
-      "downloads/index.html:211",
-      "downloads/index.html:230",
-      "downloads/index.html:241",
-      "downloads/index.html:252",
-      "downloads/index.html:263",
-      "downloads/index.html:274",
-      "downloads/index.html:285",
-      "downloads/index.html:296",
-      "downloads/index.html:307",
-      "downloads/index.html:318",
-      "downloads/index.html:329",
-      "downloads/index.html:340",
-      "downloads/index.html:373",
-      "downloads/index.html:384",
-      "downloads/index.html:406",
-      "downloads/index.html:417",
-      "downloads/index.html:428",
-      "downloads/index.html:439"
+      "downloads/index.html:229",
+      "downloads/index.html:240",
+      "downloads/index.html:251",
+      "downloads/index.html:262",
+      "downloads/index.html:273",
+      "downloads/index.html:284",
+      "downloads/index.html:295",
+      "downloads/index.html:306",
+      "downloads/index.html:317",
+      "downloads/index.html:328",
+      "downloads/index.html:339",
+      "downloads/index.html:372",
+      "downloads/index.html:383",
+      "downloads/index.html:405",
+      "downloads/index.html:416",
+      "downloads/index.html:427",
+      "downloads/index.html:438"
     ]
   },
   {
@@ -4006,333 +4005,319 @@
     ]
   },
   {
-    "zh": "TianshanOS API 源稿与示例包（中英文）",
-    "en": "TianshanOS API Sources and Examples (Chinese and English)",
-    "sources": [
-      "downloads/index.html:211"
-    ]
-  },
-  {
-    "zh": "中英文 PDF、Markdown、接口清单与代码示例 · ZIP · 2280 KB · 2026-11-07",
-    "en": "Chinese and English PDFs, Markdown, API inventory, and code examples · ZIP · 2280 KB · 2026-11-07",
-    "sources": [
-      "downloads/index.html:211"
-    ]
-  },
-  {
     "zh": "泛灵人工智能-中文介绍-2026",
     "en": "RMinte AI Introduction 2026 — Chinese",
     "sources": [
-      "downloads/index.html:226"
+      "downloads/index.html:225"
     ]
   },
   {
     "zh": "2026 产品介绍 · 中文 · 24 页 · PDF · 23.3 MB",
     "en": "2026 product introduction · Chinese · 24 pages · PDF · 23.3 MB",
     "sources": [
-      "downloads/index.html:227"
+      "downloads/index.html:226"
     ]
   },
   {
     "zh": "泛灵人工智能-英文介绍-2026",
     "en": "RMinte AI Introduction 2026 — English",
     "sources": [
-      "downloads/index.html:237"
+      "downloads/index.html:236"
     ]
   },
   {
     "zh": "2026 产品介绍 · 英文 · 24 页 · PDF · 23.2 MB",
     "en": "2026 product introduction · English · 24 pages · PDF · 23.2 MB",
     "sources": [
-      "downloads/index.html:238"
+      "downloads/index.html:237"
     ]
   },
   {
     "zh": "泛灵人工智能-日文介绍-2026",
     "en": "RMinte AI Introduction 2026 — Japanese",
     "sources": [
-      "downloads/index.html:248"
+      "downloads/index.html:247"
     ]
   },
   {
     "zh": "2026 产品介绍 · 日文 · 24 页 · PDF · 23.3 MB",
     "en": "2026 product introduction · Japanese · 24 pages · PDF · 23.3 MB",
     "sources": [
-      "downloads/index.html:249"
+      "downloads/index.html:248"
     ]
   },
   {
     "zh": "泛灵人工智能-韩文介绍-2026",
     "en": "RMinte AI Introduction 2026 — Korean",
     "sources": [
-      "downloads/index.html:259"
+      "downloads/index.html:258"
     ]
   },
   {
     "zh": "2026 产品介绍 · 韩文 · 24 页 · PDF · 23.2 MB",
     "en": "2026 product introduction · Korean · 24 pages · PDF · 23.2 MB",
     "sources": [
-      "downloads/index.html:260"
+      "downloads/index.html:259"
     ]
   },
   {
     "zh": "泛灵人工智能-西班牙文介绍-2026",
     "en": "RMinte AI Introduction 2026 — Spanish",
     "sources": [
-      "downloads/index.html:270"
+      "downloads/index.html:269"
     ]
   },
   {
     "zh": "2026 产品介绍 · 西班牙文 · 24 页 · PDF · 23.2 MB",
     "en": "2026 product introduction · Spanish · 24 pages · PDF · 23.2 MB",
     "sources": [
-      "downloads/index.html:271"
+      "downloads/index.html:270"
     ]
   },
   {
     "zh": "RMinte Logo 与字标",
     "en": "RMinte logo & wordmark",
     "sources": [
-      "downloads/index.html:281"
+      "downloads/index.html:280"
     ]
   },
   {
     "zh": "经销商印刷用 · Illustrator 可编辑文件 · 75 KB",
     "en": "For dealer printing · Editable Illustrator file · 75 KB",
     "sources": [
-      "downloads/index.html:282"
+      "downloads/index.html:281"
     ]
   },
   {
     "zh": "RM-01 产品结构爆炸图",
     "en": "RM-01 product exploded view",
     "sources": [
-      "downloads/index.html:292"
+      "downloads/index.html:291"
     ]
   },
   {
     "zh": "新一代生产级 AI 交付基座 · 4724 × 4606 · JPG · 21.7 MB",
     "en": "Next-generation production AI delivery platform · 4724 × 4606 · JPG · 21.7 MB",
     "sources": [
-      "downloads/index.html:293"
+      "downloads/index.html:292"
     ]
   },
   {
     "zh": "RM-01 场景示例片",
     "en": "RM-01 scenario demo film",
     "sources": [
-      "downloads/index.html:303"
+      "downloads/index.html:302"
     ]
   },
   {
     "zh": "产品宣传视频 · QuickTime MOV · 40.8 MB",
     "en": "Product campaign film · QuickTime MOV · 40.8 MB",
     "sources": [
-      "downloads/index.html:304"
+      "downloads/index.html:303"
     ]
   },
   {
     "zh": "RM-01 宣传片",
     "en": "RM-01 promotional film",
     "sources": [
-      "downloads/index.html:314"
+      "downloads/index.html:313"
     ]
   },
   {
     "zh": "视频平台高清版本 · QuickTime MOV · 48.9 MB",
     "en": "HD edition for video platforms · QuickTime MOV · 48.9 MB",
     "sources": [
-      "downloads/index.html:315"
+      "downloads/index.html:314"
     ]
   },
   {
     "zh": "RM-01 拆解片版本 A",
     "en": "RM-01 teardown film · Version A",
     "sources": [
-      "downloads/index.html:325"
+      "downloads/index.html:324"
     ]
   },
   {
     "zh": "产品主题视频 · MP4 · 260.3 MB",
     "en": "Product feature film · MP4 · 260.3 MB",
     "sources": [
-      "downloads/index.html:326"
+      "downloads/index.html:325"
     ]
   },
   {
     "zh": "RM-01 拆解片版本 B",
     "en": "RM-01 teardown film · Version B",
     "sources": [
-      "downloads/index.html:336"
+      "downloads/index.html:335"
     ]
   },
   {
     "zh": "云栖大会现场宣传视频 · MP4 · 63.3 MB",
     "en": "Yunqi Conference campaign film · MP4 · 63.3 MB",
     "sources": [
-      "downloads/index.html:337"
+      "downloads/index.html:336"
     ]
   },
   {
     "zh": "TianshanOS 固件",
     "en": "TianshanOS firmware",
     "sources": [
-      "downloads/index.html:358"
+      "downloads/index.html:357"
     ]
   },
   {
     "zh": "刷写固件时必须同时准备 TianShanOS.bin 和 www.bin。",
     "en": "Both TianShanOS.bin and www.bin are required when flashing the firmware.",
     "sources": [
-      "downloads/index.html:359"
+      "downloads/index.html:358"
     ]
   },
   {
     "zh": "查看发布说明",
     "en": "Release notes",
     "sources": [
-      "downloads/index.html:362",
-      "downloads/index.html:395"
+      "downloads/index.html:361",
+      "downloads/index.html:394"
     ]
   },
   {
     "zh": "TianshanOS 主固件镜像 · 刷机必需",
     "en": "TianshanOS main firmware image · Required for flashing",
     "sources": [
-      "downloads/index.html:370"
+      "downloads/index.html:369"
     ]
   },
   {
     "zh": "TianshanOS WebUI 文件系统镜像 · 刷机必需",
     "en": "TianshanOS WebUI filesystem image · Required for flashing",
     "sources": [
-      "downloads/index.html:381"
+      "downloads/index.html:380"
     ]
   },
   {
     "zh": "RM-01 联网工具 · v1.1.5 · 选择与你的操作系统和使用方式匹配的版本。",
     "en": "RM-01 network connectivity tool · v1.1.5 · Choose the build that matches your operating system and workflow.",
     "sources": [
-      "downloads/index.html:392"
+      "downloads/index.html:391"
     ]
   },
   {
     "zh": "Linux x86_64 · AppImage · v1.1.5 · 47.1 MB",
     "en": "Linux x86_64 · AppImage · v1.1.5 · 47.1 MB",
     "sources": [
-      "downloads/index.html:403"
+      "downloads/index.html:402"
     ]
   },
   {
     "zh": "macOS 应用包 · ZIP 压缩包 · v1.1.5 · 3.9 MB",
     "en": "macOS app bundle · ZIP archive · v1.1.5 · 3.9 MB",
     "sources": [
-      "downloads/index.html:414"
+      "downloads/index.html:413"
     ]
   },
   {
     "zh": "macOS Apple 芯片命令行工具 · arm64 · v1.1.5 · 7.3 MB",
     "en": "macOS command-line tool for Apple silicon · arm64 · v1.1.5 · 7.3 MB",
     "sources": [
-      "downloads/index.html:425"
+      "downloads/index.html:424"
     ]
   },
   {
     "zh": "Windows 压缩包 · ZIP · v1.1.5 · 69.7 MB",
     "en": "Windows package · ZIP archive · v1.1.5 · 69.7 MB",
     "sources": [
-      "downloads/index.html:436"
+      "downloads/index.html:435"
     ]
   },
   {
     "zh": "发布原则",
     "en": "RELEASE POLICY",
     "sources": [
-      "downloads/index.html:445"
+      "downloads/index.html:444"
     ]
   },
   {
     "zh": "固件与软件只会在完成签名、适配性验证和完整性校验后开放下载，请根据发布说明选择与设备匹配的版本。",
     "en": "Firmware and software downloads open only after signing, compatibility validation, and integrity checks. Select the release that matches your device according to its release notes.",
     "sources": [
-      "downloads/index.html:446"
+      "downloads/index.html:445"
     ]
   },
   {
     "zh": "RM-01 灯板图形转换工具",
     "en": "RM-01 LED matrix graphics converter",
     "sources": [
-      "downloads/index.html:461"
+      "downloads/index.html:460"
     ]
   },
   {
     "zh": "Emoji2Pixel · 将 Emoji 或图片转换为适配 RM-01 灯板的像素图与动画。",
     "en": "Emoji2Pixel · Convert emojis or images into pixel art and animations for the RM-01 LED matrix.",
     "sources": [
-      "downloads/index.html:462"
+      "downloads/index.html:461"
     ]
   },
   {
     "zh": "打开工具",
     "en": "Open tool",
     "sources": [
-      "downloads/index.html:465"
+      "downloads/index.html:464"
     ]
   },
   {
     "zh": "TianShanOS OTA 更新服务",
     "en": "TianShanOS OTA update service",
     "sources": [
-      "downloads/index.html:472"
+      "downloads/index.html:471"
     ]
   },
   {
     "zh": "为 RM-01 本机 OTA 页面提供 TianShanOS 正式固件与 WebUI 更新文件。",
     "en": "Provides official TianShanOS firmware and WebUI updates to the OTA page hosted on your RM-01.",
     "sources": [
-      "downloads/index.html:473"
+      "downloads/index.html:472"
     ]
   },
   {
     "zh": "打开服务",
     "en": "Open service",
     "sources": [
-      "downloads/index.html:476"
+      "downloads/index.html:475"
     ]
   },
   {
     "zh": "需在案例页登录后下载",
     "en": "Sign in on the cases page to download",
     "sources": [
-      "downloads/index.html:490"
+      "downloads/index.html:489"
     ]
   },
   {
     "zh": "面向经销商的产品与技术资料。",
     "en": "Product and technical materials for dealers.",
     "sources": [
-      "downloads/index.html:493"
+      "downloads/index.html:492"
     ]
   },
   {
     "zh": "下载资料",
     "en": "Requested file",
     "sources": [
-      "downloads/index.html:588"
+      "downloads/index.html:587"
     ]
   },
   {
     "zh": "暂不下载",
     "en": "Cancel",
     "sources": [
-      "downloads/index.html:594"
+      "downloads/index.html:593"
     ]
   },
   {
     "zh": "前往案例登录",
     "en": "Go to sign in",
     "sources": [
-      "downloads/index.html:596"
+      "downloads/index.html:595"
     ]
   },
   {

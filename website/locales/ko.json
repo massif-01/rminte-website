@@ -698,7 +698,5 @@
   "Close demo": "데모 닫기",
   "This is a TianshanOS interface demo. All data is illustrative and does not represent a real device.": "TianshanOS 인터페이스 데모입니다. 모든 데이터는 예시이며 실제 장치의 상태를 나타내지 않습니다.",
   "TianshanOS interface preview": "TianshanOS 인터페이스 미리보기",
-  "Please use a computer to view the full demo.": "전체 데모는 컴퓨터에서 확인해 주세요.",
-  "TianshanOS API Sources and Examples (Chinese and English)": "TianshanOS API 원문 및 예제 패키지(중국어·영어)",
-  "Chinese and English PDFs, Markdown, API inventory, and code examples · ZIP · 2280 KB · 2026-11-07": "중국어·영어 PDF, Markdown, API 목록 및 코드 예제 · ZIP · 2280 KB · 2026-11-07"
+  "Please use a computer to view the full demo.": "전체 데모는 컴퓨터에서 확인해 주세요."
 }

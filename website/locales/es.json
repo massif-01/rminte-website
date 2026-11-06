@@ -698,7 +698,5 @@
   "Close demo": "Cerrar demostración",
   "This is a TianshanOS interface demo. All data is illustrative and does not represent a real device.": "Esta es una demostración de la interfaz de TianshanOS. Todos los datos son ilustrativos y no representan un dispositivo real.",
   "TianshanOS interface preview": "Vista previa de la interfaz de TianshanOS",
-  "Please use a computer to view the full demo.": "Usa un ordenador para ver la demostración completa.",
-  "TianshanOS API Sources and Examples (Chinese and English)": "Fuentes y ejemplos de la API de TianshanOS (chino e inglés)",
-  "Chinese and English PDFs, Markdown, API inventory, and code examples · ZIP · 2280 KB · 2026-11-07": "PDF, Markdown, listado de API y ejemplos de código en chino e inglés · ZIP · 2280 KB · 2026-11-07"
+  "Please use a computer to view the full demo.": "Usa un ordenador para ver la demostración completa."
 }

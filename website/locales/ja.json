@@ -698,7 +698,5 @@
   "Close demo": "デモを閉じる",
   "This is a TianshanOS interface demo. All data is illustrative and does not represent a real device.": "TianshanOS のインターフェースデモです。すべてのデータは説明用であり、実際の機器の状態を示すものではありません。",
   "TianshanOS interface preview": "TianshanOS インターフェースプレビュー",
-  "Please use a computer to view the full demo.": "デモ全体を見るには、パソコンをご利用ください。",
-  "TianshanOS API Sources and Examples (Chinese and English)": "TianshanOS API ソース・サンプル一式（中国語・英語）",
-  "Chinese and English PDFs, Markdown, API inventory, and code examples · ZIP · 2280 KB · 2026-11-07": "中国語・英語の PDF、Markdown、API 一覧、コードサンプル · ZIP · 2280 KB · 2026-11-07"
+  "Please use a computer to view the full demo.": "デモ全体を見るには、パソコンをご利用ください。"
 }
