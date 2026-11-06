@@ -172,6 +172,7 @@ async function mount() {
     const list = $("#application-key-terms");
     list.innerHTML =
       language === "zh" ? terms.noticeHtml : terms.noticeLocales[language].html;
+    list.hidden = false;
     return terms;
   }
   form.addEventListener("submit", async (event) => {
@@ -284,6 +285,8 @@ async function mount() {
       opener = from || document.activeElement;
       $("#application-content").hidden = false;
       $("#application-success").hidden = true;
+      terms = null;
+      $("#application-key-terms").hidden = true;
       showDialog(dialog);
       await loadTerms().catch(error);
       stock();

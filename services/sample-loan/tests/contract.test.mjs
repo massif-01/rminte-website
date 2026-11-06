@@ -2,9 +2,28 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { renderContract } from '../../../website/sample-loan/contract.mjs';
 import { canonicalTerms } from '../agreements.mjs';
+import { handleSampleApi } from '../api.mjs';
 import { draft } from './fixtures.mjs';
 
 const terms = await canonicalTerms();
+test('public terms and translated notices are readable without business database bindings', async () => {
+  const origin = 'https://preview.example';
+  const response = await handleSampleApi(new Request(origin + '/api/sample-loans/terms'), {});
+  assert.equal(response.status, 200);
+  const {terms: published} = await response.json();
+  assert.equal(published.sha256, terms.sha256);
+  assert.equal(published.locales.en.clauses, terms.locales.en.clauses);
+  for (const language of ['en', 'ja', 'ko', 'es', 'fr'])
+    assert.equal(published.noticeLocales[language].html, terms.noticeLocales[language].html);
+  const unavailable = await handleSampleApi(new Request(origin + '/api/sample-loans/availability?modelKey=rm01-t5000-128g'), {});
+  assert.equal(unavailable.status, 503);
+  assert.equal((await unavailable.json()).code, 'SERVICE_UNAVAILABLE');
+  const submission = await handleSampleApi(new Request(origin + '/api/sample-loans/applications', {
+    method: 'POST', headers: {Origin: origin, 'Content-Type': 'application/json'}, body: '{}',
+  }), {});
+  assert.equal(submission.status, 503);
+  assert.equal((await submission.json()).code, 'SERVICE_UNAVAILABLE');
+});
 test('each translated section retains the Chinese clause numbers', () => {
   const numbering = (text) => text.match(/^\d+\./gm);
   assert.deepEqual(numbering(terms.locales.en.clauses), numbering(terms.clauses));
