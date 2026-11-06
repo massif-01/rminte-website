@@ -13,7 +13,7 @@ const corpus=JSON.parse(await readFile(new URL('../.generated/corpus.json',impor
 const kb=createKnowledge(corpus);
 const sources=await loadApiSources();
 
-test('Every API source line is retained; 277 complete endpoints per language are readable and discoverable by name or HTTP path',()=>{
+test('Every API source line and endpoint are retained, readable and discoverable by name or HTTP path',()=>{
  for(const source of sources){
   const sections=corpus.api.sections.filter(s=>s.doc_id===source.doc.id&&s.language===source.doc.language);
   const text=sections.map(s=>s.heading_path.join('\n')+'\n'+s.body).join('\n');
@@ -21,7 +21,8 @@ test('Every API source line is retained; 277 complete endpoints per language are
  }
  for(const language of ['zh','en']as const){
   const endpoints=corpus.api.sections.filter(s=>s.language===language&&/^\w+\.[\w.]+$/.test(s.heading_path.at(-1)!)&&s.doc_id.startsWith('api-reference-'));
-  assert.equal(endpoints.length,277);
+  const expected=sources.filter(s=>s.doc.language===language&&s.doc.path.includes('/reference/')&&!s.doc.path.endsWith('/pdf-index.md')).flatMap(s=>s.lines.filter(line=>/^## \w+\.[\w.]+$/.test(line)).map(line=>line.slice(3)));
+  assert(expected.length>0);assert.deepEqual(endpoints.map(s=>s.heading_path.at(-1)).sort(),expected.sort());
   for(const endpoint of endpoints){
    const name=endpoint.heading_path.at(-1)!;
    const read=kb.read(endpoint.section_id,corpus.revision);
@@ -75,10 +76,13 @@ test('Changing or adding only website API Markdown changes the served corpus; mi
   git('init','-q');git('config','user.name','API source test');git('config','user.email','test@example.invalid');git('add','.');git('commit','-qm','original');
   const before=await buildCorpus(root);
   await writeFile(join(root,apiDirectory,'en','new-topic.md'),'# New developer topic\n\n## New task\nUniqueApiContentProof\n');
+  await writeFile(join(root,apiDirectory,'en/reference/new-module.md'),'# New API module\n\n## example.new\n\n**Path**: `/api/v1/example/new`\n\n### Request\n\nUniqueNewEndpointProof\n');
   git('add','.');git('commit','-qm','website original update');
   const after=await buildCorpus(root);assert.notEqual(before.revision,after.revision);
   const changed=createKnowledge(after);const hit=changed.search({scope:'api',query:'UniqueApiContentProof'}).results[0];assert(hit);
   const result=changed.read(hit.section_id,after.revision);assert(result.body.includes('UniqueApiContentProof'));assert.equal(result.source_commit,git('rev-parse','HEAD'));assert.deepEqual(result.source_lines,[3,5]);
+  const endpoint=changed.search({scope:'api',query:'/api/v1/example/new',language:'en'}).results[0];assert.equal(endpoint.api_name,'example.new');
+  assert(changed.read(endpoint.section_id,after.revision).body.includes('UniqueNewEndpointProof'));
   assert.throws(()=>changed.read(hit.section_id,before.revision),/Corpus changed/);
   const path=join(root,apiDirectory,'en','README.md');const readme=await readFile(path,'utf8');
   await writeFile(path,readme.replace(/\*\*TianshanOS \d+\.\d+\.\d+\*\*/,'**TianshanOS 0.0.0**'));
