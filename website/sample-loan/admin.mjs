@@ -1282,6 +1282,8 @@ async function showAgreement(
   const result = await api(
     `/api/sample-admin/requests/${r.id}/versions/${revision}/preview`,
   );
+  $("#agreement-document").lang =
+    result.snapshot.agreementLanguage === "en" ? "en" : "zh-CN";
   $("#agreement-document").innerHTML = renderContract(
     result.snapshot,
     result.terms,
@@ -1847,6 +1849,7 @@ $("#special-form").addEventListener("submit", async (event) => {
           "approvedBy",
           "termsVersion",
           "agreementRevision",
+          "agreementLanguage",
           "fileIds",
           "quoteId",
         ])

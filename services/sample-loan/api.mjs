@@ -147,6 +147,7 @@ async function submit(request, env, data) {
       sha256: await digest(canonical({ language, ...presented })),
     };
   const consent = {
+    agreementLanguage: language === "zh" ? "zh" : "en",
     presentedNotice,
     termsVersion: t.version,
     noticeVersion: t.noticeVersion,
