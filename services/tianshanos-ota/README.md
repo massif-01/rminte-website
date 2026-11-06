@@ -1,6 +1,6 @@
 # TianShanOS release synchronization
 
-GitHub `RMinte-AI/TianshanOS` latest stable Release is the approved OTA source. Drafts and prereleases are excluded. A release requires both uploaded `TianShanOS.bin` and `www.bin`, with GitHub SHA-256 digests. The firmware's embedded project/version must match the release. A lower version cannot replace the current version.
+GitHub `RMinte/TianshanOS` latest stable Release is the approved OTA source. Drafts and prereleases are excluded. A release requires both uploaded `TianShanOS.bin` and `www.bin`, with GitHub SHA-256 digests. The firmware's embedded project/version must match the release. A lower version cannot replace the current version.
 
 Cloudflare runs synchronization every Monday at 00:00 UTC (08:00 Asia/Shanghai), once every seven days. New releases can therefore take up to seven days to reach OTA and the download center. No device flashing is initiated by this service.
 

@@ -1,6 +1,6 @@
 # RMinte 网站
 
-[正式官网](https://rminte.com) · [组织上游](https://github.com/RMinte-AI/rminte-website) · [贡献指南](CONTRIBUTING.md)
+[正式官网](https://rminte.com) · [组织上游](https://github.com/RMinte/rminte-website) · [贡献指南](CONTRIBUTING.md)
 
 RMinte RM-01 官网源码。页面使用原生 HTML、CSS 和 JavaScript，正式站点目录为 `website/`，由 Cloudflare Pages 托管。`website/_worker.js` 提供访客语言与案例账号 API，账号数据保存在 Cloudflare D1；OTA 使用独立 Worker 和 R2。
 
@@ -68,14 +68,14 @@ Linux 缺少浏览器系统依赖时使用 `npx playwright install --with-deps c
 
 新增或修改中文页面文案后运行 `python3 website/scripts/build-fonts.py --check`；需要重建字体时按 AGENTS.md 操作，额外依赖 `fonttools` 和 `brotli`。
 
-PR 目标为 `RMinte-AI/rminte-website:main`。普通贡献者需要必要 CI 和 Owner `massif-01` 批准；Owner 本人保留审批、AI 审查、材料例外与原生绕过权限，自行决定合并。Codex 自动审查要求位于 AGENTS.md 的 `Code Review Rules`。
+PR 目标为 `RMinte/rminte-website:main`。普通贡献者需要必要 CI 和 Owner `massif-01` 批准；Owner 本人保留审批、AI 审查、材料例外与原生绕过权限，自行决定合并。Codex 自动审查要求位于 AGENTS.md 的 `Code Review Rules`。
 
 ## 部署
 
 | 配置 | 当前值 |
 | --- | --- |
 | Pages 项目 | `rminte-website` |
-| Git 仓库与生产分支 | `RMinte-AI/rminte-website` 的 `main` |
+| Git 仓库与生产分支 | `RMinte/rminte-website` 的 `main` |
 | 构建根目录 | 仓库根目录 |
 | 构建命令 | `exit 0` |
 | 输出目录 | `website` |

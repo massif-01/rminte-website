@@ -1,6 +1,6 @@
 # TianshanOS 0.6.4 界面演示
 
-官网使用的纯静态模拟展示，无后端。页面结构与样式取自正式 [v0.6.4](https://github.com/RMinte-AI/TianshanOS/tree/v0.6.4/components/ts_webui/web)，提交为 `120f0c79b494ce683342471c2c11ed5458eb003a`，来源记录在 `source.json`。不复制固件的 API 客户端、WebSocket 或认证脚本。
+官网使用的纯静态模拟展示，无后端。页面结构与样式取自正式 [v0.6.4](https://github.com/RMinte/TianshanOS/tree/v0.6.4/components/ts_webui/web)，提交为 `120f0c79b494ce683342471c2c11ed5458eb003a`，来源记录在 `source.json`。不复制固件的 API 客户端、WebSocket 或认证脚本。
 
 设备面板以 2026-11-05 实际运行的 `0.6.4+9d5b0a00dd.11050027` 页面核对：保留原生服务卡片及状态灯、启动／停止／日志、GPU 显存环、温度和未绑定仪表，以及对应组件管理和运行记录布局。设备上观察到的是 `Qwen3.8-27B-NVFP4`；第二张 `Qwen3.8-Flash-Next-NVFP4` 为用户指定的演示卡片，默认停止。两张卡片独立模拟启停和日志，不代表硬件实际运行了两个模型。展示数据和标识已处理为本地示例，模拟说明位于界面下方。
 

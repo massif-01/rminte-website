@@ -184,7 +184,7 @@ MP4
 
 刷写固件时必须同时准备 TianShanOS.bin 和 www.bin。
 
-[查看发布说明](https://github.com/RMinte-AI/TianshanOS/releases/latest)
+[查看发布说明](https://github.com/RMinte/TianshanOS/releases/latest)
 
 BIN
 
@@ -206,7 +206,7 @@ TianshanOS WebUI 文件系统镜像 · 刷机必需
 
 RM-01 联网工具 · v1.1.5 · 选择与你的操作系统和使用方式匹配的版本。
 
-[查看发布说明](https://github.com/RMinte-AI/RM-01-Internet-Connector/releases/tag/v1.1.5)
+[查看发布说明](https://github.com/RMinte/RM-01-Internet-Connector/releases/tag/v1.1.5)
 
 APP
 

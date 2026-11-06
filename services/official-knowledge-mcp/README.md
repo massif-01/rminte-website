@@ -64,4 +64,4 @@ npm run verify
 
 四类中英文指南只维护 `website/guides/content/{admin,root,network}.md` 与 `security.{zh,en}.md`。修改这些文件时，PR 同时运行 MCP 原文、构建及离线检索检查；其他翻译语言不作为 MCP 输入。版本和日期须保留现有标注格式，且中英文一致。
 
-知识 Worker 的 Cloudflare Git 构建应连接 `RMinte-AI/rminte-website:main`，根目录为 `services/official-knowledge-mcp`，部署前运行构建、类型检查、原文检查及离线检索。监视上述 5 个文件、`services/official-knowledge-mcp/*` 与 `docs/official-knowledge/*`，关闭分支预览。合并后自动构建完整语料并发布；失败不更新正在服务的版本。正式核对以 Cloudflare 构建结果和 `/health` 的语料版本为准。
+知识 Worker 的 Cloudflare Git 构建应连接 `RMinte/rminte-website:main`，根目录为 `services/official-knowledge-mcp`，部署前运行构建、类型检查、原文检查及离线检索。监视上述 5 个文件、`services/official-knowledge-mcp/*` 与 `docs/official-knowledge/*`，关闭分支预览。合并后自动构建完整语料并发布；失败不更新正在服务的版本。正式核对以 Cloudflare 构建结果和 `/health` 的语料版本为准。

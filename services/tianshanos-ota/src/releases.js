@@ -1,7 +1,7 @@
 // One R2 pointer owns the page, version API and both downloads.
 export const CURRENT_KEY = 'firmware/tianshanos/current.json';
 export const snapshotKey = id => `firmware/tianshanos/releases/${id}/release.json`;
-const GITHUB = 'https://api.github.com/repos/RMinte-AI/TianshanOS/releases/latest';
+const GITHUB = 'https://api.github.com/repos/RMinte/TianshanOS/releases/latest';
 
 export async function readRelease(bucket, snapshot) {
   if (snapshot && !/^\d+-[a-f0-9]{12}-[a-f0-9]{12}$/.test(snapshot)) return null;

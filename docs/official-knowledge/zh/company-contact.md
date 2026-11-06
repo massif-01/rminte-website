@@ -31,6 +31,6 @@ evidence_status: "source transcription; not independent operational verification
 [售前与售后服务
 **support@rminte.com**](mailto:support@rminte.com)
 [产品与技术交流
-**GitHub Discussions**](https://github.com/orgs/RMinte-AI/discussions)
+**GitHub Discussions**](https://github.com/orgs/RMinte/discussions)
 [样机借用
 **点此申请**](https://rminte.com/sample-loan/#apply)

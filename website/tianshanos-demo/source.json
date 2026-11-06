@@ -5,7 +5,7 @@
   "recommended_mode": "auto",
   "demo_viewport_width": 1440,
   "commit": "120f0c79b494ce683342471c2c11ed5458eb003a",
-  "source": "https://github.com/RMinte-AI/TianshanOS/tree/v0.6.4/components/ts_webui/web",
+  "source": "https://github.com/RMinte/TianshanOS/tree/v0.6.4/components/ts_webui/web",
   "adaptations": [
     "One fan, ID 0; Smart (TTI) selected and recommended",
     "Static Chinese and English page snapshots with local demo interactions",

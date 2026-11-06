@@ -31,6 +31,6 @@ Contact
 [Pre-sales & after-sales service
 **support@rminte.com**](mailto:support@rminte.com)
 [Product & technical discussions
-**GitHub Discussions**](https://github.com/orgs/RMinte-AI/discussions)
+**GitHub Discussions**](https://github.com/orgs/RMinte/discussions)
 [Demo unit loan
 **Apply here**](https://rminte.com/sample-loan/#apply)

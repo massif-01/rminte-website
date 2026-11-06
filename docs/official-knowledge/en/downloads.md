@@ -184,7 +184,7 @@ Yunqi Conference campaign film · MP4 · 63.3 MB
 
 Both TianShanOS.bin and www.bin are required when flashing the firmware.
 
-[Release notes](https://github.com/RMinte-AI/TianshanOS/releases/tag/v0.6.3)
+[Release notes](https://github.com/RMinte/TianshanOS/releases/tag/v0.6.3)
 
 BIN
 
@@ -206,7 +206,7 @@ TianshanOS WebUI filesystem image · Required for flashing · v0.6.3 · 3.0 MB
 
 RM-01 network connectivity tool · v1.1.5 · Choose the build that matches your operating system and workflow.
 
-[Release notes](https://github.com/RMinte-AI/RM-01-Internet-Connector/releases/tag/v1.1.5)
+[Release notes](https://github.com/RMinte/RM-01-Internet-Connector/releases/tag/v1.1.5)
 
 APP
 
