@@ -328,7 +328,7 @@
         "https://rminte.com/"
       ],
       "path": "zh/company-contact.md",
-      "sha256": "8a381ae319976bd1d8acf1efcacdf26acfce56324e1f2056770bc3af6904ee45",
+      "sha256": "6070b2b74ea9382488bc76db538cdabe326d30497f0c3cf69eebb113cf4adf09",
       "default_retrieval": true,
       "evidence_status": "source transcription; not independent operational verification"
     },
@@ -408,7 +408,7 @@
         "https://rminte.com/downloads/"
       ],
       "path": "zh/downloads.md",
-      "sha256": "282cdc38136682051511723a6016903122ec9304826f7ef73394b3b859ba8805",
+      "sha256": "ea15951bbdd0e1f3d2e12b472202ecadf43904a2815263837402505610902148",
       "default_retrieval": true,
       "evidence_status": "published source text; qualification retained"
     },
@@ -719,7 +719,7 @@
         "https://rminte.com/"
       ],
       "path": "en/company-contact.md",
-      "sha256": "e55e45c70937af4e4d863f045023cca49bfabf204ff7e1bb56e0c2149c9bcff3",
+      "sha256": "97d8f9dbe9ea72854518f14b33f725faa2090a1839e824985f46a54872e9ff9f",
       "default_retrieval": true,
       "evidence_status": "source transcription; not independent operational verification"
     },
@@ -799,7 +799,7 @@
         "https://rminte.com/downloads/"
       ],
       "path": "en/downloads.md",
-      "sha256": "729e3aac3e6dfe990d0d6f52b76f8fda53f725bc73cca3b7d1a8edb32ca8cb75",
+      "sha256": "44d54a24783b57f0e7a80ee084c4488f7368a9ebf33ef443db7b83395e8d3ca9",
       "default_retrieval": true,
       "evidence_status": "published source text; qualification retained"
     },
@@ -1614,12 +1614,12 @@
         "docs/official-knowledge/zh/tianshanos-ai-workflow.md"
       ],
       "source_urls": [
-        "https://github.com/RMinte-AI/rminte-website/blob/main/docs/official-knowledge/zh/tianshanos-ai-workflow.md"
+        "https://github.com/RMinte/rminte-website/blob/main/docs/official-knowledge/zh/tianshanos-ai-workflow.md"
       ],
       "path": "zh/tianshanos-ai-workflow.md",
       "default_retrieval": true,
       "evidence_status": "Owner-provided Chinese/English originals; editorial product description, not independent operational verification. Original supplied outside Git; source_commit is not applicable.",
-      "sha256": "9bb90aeea62f2b5560da7ded58dff39f2eaa72fefef5bd28b8b83171940e275a"
+      "sha256": "d768cbbcf15290fc5089e7703d9901ba9acab8e8b151b55c62a06014a971916e"
     },
     {
       "id": "tianshanos-ai-workflow",
@@ -1633,12 +1633,12 @@
         "docs/official-knowledge/en/tianshanos-ai-workflow.md"
       ],
       "source_urls": [
-        "https://github.com/RMinte-AI/rminte-website/blob/main/docs/official-knowledge/en/tianshanos-ai-workflow.md"
+        "https://github.com/RMinte/rminte-website/blob/main/docs/official-knowledge/en/tianshanos-ai-workflow.md"
       ],
       "path": "en/tianshanos-ai-workflow.md",
       "default_retrieval": true,
       "evidence_status": "Owner-provided Chinese/English originals; editorial product description, not independent operational verification. Original supplied outside Git; source_commit is not applicable.",
-      "sha256": "3b9759556486a676b0cf56273f450e6590dd37d2101559f275a6766418fb1ded"
+      "sha256": "688a454bd80c3f6ae2b9785cecc98915ada3b636ee5a2002ba2ce6d66ce9d56b"
     }
   ],
   "source_files": [

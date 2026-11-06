@@ -26,7 +26,7 @@ case-demos/
 
 ## 生产自动部署
 
-组织上游 `RMinte-AI/rminte-website:main` 同时驱动两个 Cloudflare Git 集成项目：
+组织上游 `RMinte/rminte-website:main` 同时驱动两个 Cloudflare Git 集成项目：
 
 | 项目 | 发布内容 | 配置 |
 | --- | --- | --- |

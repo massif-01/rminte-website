@@ -10,7 +10,7 @@ async function fixture() {
   const www = new Uint8Array([1,2,3]);
   const data = [firmware, www];
   const assets = await Promise.all(['TianShanOS.bin','www.bin'].map(async (name, i) => ({name, state:'uploaded', size:data[i].length, browser_download_url:`https://files/${i}`, digest:'sha256:'+Buffer.from(await crypto.subtle.digest('SHA-256',data[i])).toString('hex')})));
-  const release = {id:1, tag_name:'v0.6.0', draft:false, prerelease:false, assets, html_url:'https://github.com/RMinte-AI/TianshanOS/releases/tag/v0.6.0', published_at:'2026-10-02T21:30:05Z'};
+  const release = {id:1, tag_name:'v0.6.0', draft:false, prerelease:false, assets, html_url:'https://github.com/RMinte/TianshanOS/releases/tag/v0.6.0', published_at:'2026-10-02T21:30:05Z'};
   const objects = new Map(), writes = [];
   const bucket = {
     async get(key, options) {

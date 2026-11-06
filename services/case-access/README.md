@@ -90,7 +90,7 @@ npx wrangler dev --config services/case-access/wrangler.jsonc --port 8788 --ip 1
 
 ## 验收边界
 
-本地 workerd + D1 HTTP 集成与浏览器测试验证隔离的测试环境。2026-10-19 已完成官网及演示 Worker 的生产部署、绑定与工业建模演示联调，证据见 [PR #21](https://github.com/RMinte-AI/rminte-website/pull/21)。
+本地 workerd + D1 HTTP 集成与浏览器测试验证隔离的测试环境。2026-10-19 已完成官网及演示 Worker 的生产部署、绑定与工业建模演示联调，证据见 [PR #21](https://github.com/RMinte/rminte-website/pull/21)。
 
 - 已验证的生产范围：使用已有管理员会话从官网打开演示，完成尺寸选择、模型展示与版本回看、关闭和重开；匿名访问演示 HTML、脚本和样式被拒绝，Worker 的独立公开地址不可用；主线提交自动触发两个项目并部署成功。
 - 本次未覆盖的生产验收：普通用户授权及撤权、退出与删除后的会话失效、D1 数据持久化专项检查、真实 IP／地区定位、CPU 配额，以及真实下载资源交付。本地测试和管理员演示成功不能替代这些验收，也不能证明未来新增案例已验证。

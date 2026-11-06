@@ -85,7 +85,7 @@ const guideConfig = {
     },
     chapterCount: { zh: '7 个章节', en: '7 chapters' },
     sourceLink: {
-      href: 'https://github.com/RMinte-AI/lpmu-agx-network-setup',
+      href: 'https://github.com/RMinte/lpmu-agx-network-setup',
       zh: '在 GitHub 查看网络自动化项目',
       en: 'View the network automation project on GitHub'
     },

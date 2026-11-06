@@ -1,6 +1,6 @@
 # 网站代码共建
 
-PR 的目标仓库是组织上游 [`RMinte-AI/rminte-website`](https://github.com/RMinte-AI/rminte-website)，目标分支是 `main`。从最新主线开分支，一个 PR 解决一个明确问题。修改前阅读 [AGENTS.md](AGENTS.md)；界面改动遵循 [DESIGN.md](DESIGN.md)。
+PR 的目标仓库是组织上游 [`RMinte/rminte-website`](https://github.com/RMinte/rminte-website)，目标分支是 `main`。从最新主线开分支，一个 PR 解决一个明确问题。修改前阅读 [AGENTS.md](AGENTS.md)；界面改动遵循 [DESIGN.md](DESIGN.md)。
 
 普通贡献者的 PR 需要 CI 通过和 Owner `massif-01` 批准。Owner 自己的 PR 不增加他人审批、AI 审查或强制审查材料，由 Owner 自行决定合并并保留原生绕过权限。Owner 合并到 `main` 即授权自动上线，不再分别批准部署和上线。
 
@@ -24,7 +24,7 @@ npm run verify
 默认与 `origin/main` 比较，并包含本地未提交的改动。若从个人 fork 检出，以组织上游为基线：
 
 ```sh
-git remote add upstream https://github.com/RMinte-AI/rminte-website.git
+git remote add upstream https://github.com/RMinte/rminte-website.git
 git fetch upstream main
 npm run verify -- --base=upstream/main
 ```

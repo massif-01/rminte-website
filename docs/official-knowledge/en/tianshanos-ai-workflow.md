@@ -7,7 +7,7 @@ prepared_on: "2026-10-30"
 content_kind: "official-product-copy"
 applicability: "Owner-provided architecture and workflow introduction (2026-10-30). Examples require application deployment and configuration; use versioned operating guides for procedures and permissions."
 source_files: ["docs/official-knowledge/en/tianshanos-ai-workflow.md"]
-source_urls: ["https://github.com/RMinte-AI/rminte-website/blob/main/docs/official-knowledge/en/tianshanos-ai-workflow.md"]
+source_urls: ["https://github.com/RMinte/rminte-website/blob/main/docs/official-knowledge/en/tianshanos-ai-workflow.md"]
 default_retrieval: true
 evidence_status: "Owner-provided Chinese/English originals; editorial product description, not independent operational verification. Original supplied outside Git; source_commit is not applicable."
 ---
