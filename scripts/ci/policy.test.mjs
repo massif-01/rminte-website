@@ -140,9 +140,21 @@ test('evidence for another Head, missing screenshots and altered image bytes fai
     writeFileSync(join(directory,'manifest.json'),JSON.stringify(context));assert.throws(()=>validateEvidence(root,context),/Required screenshot missing/);
     const bytes=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aK1cAAAAASUVORK5CYII=','base64');
     writeFileSync(join(directory,'image.png'),bytes);
-    const records=['before','after'].map(phase=>({kind:'page',status:200,phase,page:'gallery',language:'en',width:390,region:'main',file:'image.png',sha256:createHash('sha256').update(bytes).digest('hex')}));
+    const records=['before','after'].map(phase=>({kind:'page',status:200,phase,page:'gallery',language:'en',width:390,region:'main',canvas:{width:1,height:1},images:[{file:'image.png',y:0,sha256:createHash('sha256').update(bytes).digest('hex')}]}));
     writeFileSync(join(root,'output/ci/browser-results.json'),JSON.stringify({stats:{skipped:0,unexpected:0,flaky:0},suites:[{title:'operations gallery en 390px',specs:[{tests:[{expectedStatus:'passed',results:[{status:'passed'}]}]}]}]}));
     writeFileSync(join(directory,'records/gallery.json'),JSON.stringify(records));assert.equal(validateEvidence(root,context).screenshots,2);
+    // Every band is checked, including gaps/overlap and a missing or changed final image.
+    writeFileSync(join(directory,'last.png'),bytes);
+    for(const record of records){record.canvas.height=2;record.images.push({...record.images[0],file:'last.png',y:1});}
+    const save=()=>writeFileSync(join(directory,'records/gallery.json'),JSON.stringify(records));save();
+    assert.equal(validateEvidence(root,context).screenshots,2);
+    records[1].images[1].y=2;save();assert.throws(()=>validateEvidence(root,context),/gap or overlap/);
+    records[1].images[1].y=0;save();assert.throws(()=>validateEvidence(root,context),/gap or overlap/);
+    records[1].images[1].y=1;records[1].images.pop();save();assert.throws(()=>validateEvidence(root,context),/Incomplete screenshot/);
+    records[1].images.push({...records[0].images[1]});save();
+    rmSync(join(directory,'last.png'));assert.throws(()=>validateEvidence(root,context),/Missing screenshot/);
+    writeFileSync(join(directory,'last.png'),Buffer.concat([bytes,Buffer.from('altered')]));assert.throws(()=>validateEvidence(root,context),/checksum/);
+    writeFileSync(join(directory,'last.png'),bytes);
     context.scope.pages[0].sourceExists={before:true,after:false};context.scope.pages[0].expected={before:true,after:true};
     assert.equal(validateEvidence(root,context).screenshots,2); // HTTP 200 still needs real PNGs after its source file moves.
     context.scope.pages[0].expected.after=false;assert.throws(()=>validateEvidence(root,context),/Undeclared HTML page/);

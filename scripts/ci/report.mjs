@@ -20,11 +20,20 @@ export function validateEvidence(root,context) {
     if(route.kind!=='page') {
       seen.set(key,record);continue;
     }
-    const file=resolve(directory,record.file);
-    if(!file.startsWith(directory+'/')||!existsSync(file))throw new Error(`Missing screenshot: ${key}`);
-    const bytes=readFileSync(file);
-    if(bytes.length<8||!bytes.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])))throw new Error(`Invalid PNG screenshot: ${key}`);
-    if(createHash('sha256').update(bytes).digest('hex')!==record.sha256)throw new Error(`Screenshot checksum mismatch: ${key}`);
+    const {canvas,images}=record;
+    if(!canvas||!Number.isInteger(canvas.width)||canvas.width<=0||!Number.isInteger(canvas.height)||canvas.height<=0||!Array.isArray(images)||!images.length)throw new Error(`Missing screenshot coverage: ${key}`);
+    let covered=0;
+    for(const image of images) {
+      const file=resolve(directory,image.file);
+      if(!file.startsWith(directory+'/')||!existsSync(file))throw new Error(`Missing screenshot: ${key}`);
+      const bytes=readFileSync(file);
+      if(bytes.length<24||!bytes.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])))throw new Error(`Invalid PNG screenshot: ${key}`);
+      if(createHash('sha256').update(bytes).digest('hex')!==image.sha256)throw new Error(`Screenshot checksum mismatch: ${key}`);
+      const width=bytes.readUInt32BE(16),height=bytes.readUInt32BE(20);
+      if(width!==canvas.width||height===0||image.y!==covered)throw new Error(`Screenshot coverage gap or overlap: ${key}`);
+      covered+=height;
+    }
+    if(covered!==canvas.height)throw new Error(`Incomplete screenshot coverage: ${key}`);
     seen.set(key,record);
   }
   for(const page of context.scope.pages)for(const language of context.scope.languages.filter(lang=>!page.languages||page.languages.includes(lang)))for(const width of context.scope.widths)for(const region of page.regions)for(const phase of ['before','after']) {
