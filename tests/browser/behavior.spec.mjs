@@ -116,7 +116,7 @@ for(const descriptor of run.scope.pages)for(const language of operationLanguages
       if(descriptor.id==='guides') {
         const input=page.locator('[data-guide-search-input]').first();await input.fill('OTA');
         const result=page.locator('[data-guide-search-result-list] a').first();await expect(result).toBeVisible();await result.click();
-        await expect(page).toHaveURL(/\/guides\/(?:admin|root|network|security).*#/);
+        await expect(page).toHaveURL(/\/guides\/(?:admin|root|network|security|api).*#/);
         await expect(page.locator(page.url().slice(page.url().indexOf('#')))).toBeVisible();
       }
       if(descriptor.id.startsWith('guide-')) {

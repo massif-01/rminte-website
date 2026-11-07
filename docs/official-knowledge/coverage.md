@@ -4,6 +4,7 @@
 
 | 范围 | 资料文件（zh/en 同名） | 原始来源及核对方式 |
 | --- | --- | --- |
+| API 开发文档 | 官网 `website/guides/content/api/{zh,en}/` | 直接读取中英文 Markdown；完整接口与任务、鉴权、数据模型、WebSocket、维护及故障处理；排除重复全量目录表，保留接口原文和调用说明；独立 `api` 检索范围，版本与官网原文一致 |
 | 整机 AI 工作流程 | tianshanos-ai-workflow | Owner 提供的中英文独立原稿；AGX、LPMU、ESP32/TianshanOS 分工，保留原稿加粗分节；来源指向仓库文章，示例保留部署与配置前提 |
 | 首页 12 个板块 | product-overview、inference-engine、system-overview、hardware-modules、structure、thermal-tti、thermal-design、sapphire、glass-surface、connections、storage-card、manufacturing | 官网首页 HTML、site-data.js、运行后 DOM；保留全量双语数据补充 homepage-source-copy |
 | 模型与引擎 | models | 模型页和 models.js；RMQ3x、RMQ4、C++、定制 vLLM、全部技术详情及 9 个工作流程；基准结果仍为待公布，不补造结果 |

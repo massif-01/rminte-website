@@ -112,7 +112,7 @@ try {
     // API and browser suites share one synthetic IP; reset only the disposable fixture quota between suites.
     after.command(['d1','execute','CASE_DB','--local','--config',join(after.runtime,'services/case-access/wrangler.jsonc'),'--command','DELETE FROM rate_limits;']);
     mkdirSync(join(output,'evidence'),{recursive:true});
-    writeFileSync(join(output,'evidence/manifest.json'),JSON.stringify({schema:1,baseSha:run.baseSha,headSha:run.headSha,testSha:run.testSha,scope:run.scope,data:'Local D1 fixtures and synthetic OTA release. Admin currently supports Chinese only.'},null,2));
+    writeFileSync(join(output,'evidence/manifest.json'),JSON.stringify({schema:2,baseSha:run.baseSha,headSha:run.headSha,testSha:run.testSha,scope:run.scope,data:'Local D1 fixtures and synthetic OTA release. Admin currently supports Chinese only.'},null,2));
     const env={...process.env,RMINTE_AFTER_URL:after.url,RMINTE_BEFORE_URL:before.url,RMINTE_AFTER_FIXTURE:after.runtime,RMINTE_BEFORE_FIXTURE:before.runtime};
     await command(process.execPath,['node_modules/@playwright/test/cli.js','test'],'browser',root,env);
     return validateEvidence(root,run);

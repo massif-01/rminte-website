@@ -17,9 +17,11 @@ if(run.scope.homeMotion)for(const language of ['zh','en'])for(const width of [14
       const frames=[],images=[];
       for(const fraction of [0,.5,1,0]) {
         await section.evaluate((el,f)=>scrollTo({top:scrollY+el.getBoundingClientRect().top+(el.offsetHeight-innerHeight)*f,behavior:'instant'}),fraction);
-        if(fraction===.5)await expect.poll(async()=>Math.abs(Number(await canvas.getAttribute('data-current-frame'))-60.5),{timeout:20000}).toBeLessThan(1);
-        else await expect.poll(()=>canvas.getAttribute('data-current-frame'),{timeout:20000}).toBe(fraction===0?'1':'120');
-        frames.push(Number(await canvas.getAttribute('data-current-frame')));
+        let observedFrame;
+        const readFrame=async()=>observedFrame=Number(await canvas.getAttribute('data-current-frame'));
+        if(fraction===.5)await expect.poll(async()=>Math.abs(await readFrame()-60.5),{timeout:20000}).toBeLessThan(1);
+        else await expect.poll(readFrame,{timeout:20000}).toBe(fraction===0?1:120);
+        frames.push(observedFrame);
         const image=await page.screenshot();images.push(createHash('sha256').update(image).digest('hex'));
         await testInfo.attach('teardown '+fraction,{body:image,contentType:'image/png'});
       }
