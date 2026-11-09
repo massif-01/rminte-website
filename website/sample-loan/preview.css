@@ -317,6 +317,7 @@ body:has(dialog[open]) {
 .dialog-top {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 20px;
   padding: 20px 28px;
   border-bottom: 1px solid var(--line-2);
@@ -333,6 +334,7 @@ body:has(dialog[open]) {
 .dialog-top h2 {
   font-size: 18px;
   font-weight: 500;
+  outline: none;
 }
 .dialog-top .contact-close {
   margin-left: 4px;

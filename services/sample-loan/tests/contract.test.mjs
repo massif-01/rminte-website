@@ -1,11 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { renderContract } from '../../../website/sample-loan/contract.mjs';
-import { canonicalTerms } from '../agreements.mjs';
+import { canonicalTerms, confirmationMail } from '../agreements.mjs';
 import { handleSampleApi } from '../api.mjs';
 import { draft } from './fixtures.mjs';
 import { applicant } from '../domain.mjs';
-import { latestRejectionReason, rejectionEmail } from '../../../website/sample-loan/email.mjs';
+import { emailLanguage, latestRejectionReason, rejectionEmail } from '../../../website/sample-loan/email.mjs';
 
 const terms = await canonicalTerms();
 test('public terms and translated notices are readable without business database bindings', async () => {
@@ -130,4 +130,51 @@ test('reopened applications use the latest saved rejection without changing hist
   assert.equal(latestRejectionReason(events), events[2].details.reason);
   assert.deepEqual(events, original);
   assert.equal(latestRejectionReason([]), '');
+});
+
+
+test('email language follows the applicant locale and bilingual rejection preserves the exact reason', () => {
+  for (const locale of ['zh', 'zh-CN', 'zh-Hans']) assert.equal(emailLanguage(locale), 'zh');
+  for (const locale of ['en', 'en-US', 'ja', 'ko', 'es', 'fr']) assert.equal(emailLanguage(locale), 'en');
+  assert.equal(emailLanguage(), 'zh');
+  const request = {publicNo: 'RBA-MAIL-EN', original: {company: '申请人原名', email: 'mail@example.test', model: 'RM-01 32G'}, reason: '原因保留原文。\nOriginal second line.'};
+  const english = rejectionEmail(request, 'en');
+  assert.match(english.subject, /not approved/);
+  assert.match(english.body, /Reason:/);
+  for (const value of [request.original.company, request.original.model, request.reason]) assert.ok(english.body.includes(value));
+  assert.equal(english.recipient, request.original.email);
+  assert.match(rejectionEmail(request, 'zh').body, /未通过原因：/);
+});
+
+test('approval emails provide both languages and preserve amounts, dates, bank data and document identity', () => {
+  const snapshot = draft();
+  Object.assign(snapshot, {agreementLanguage: 'en', publicNo: 'RBA-MAIL-APPROVED', agreementRevision: 2, assetSnapshot: {modelKey: snapshot.modelKey, no: 'NO-MAIL', sn: 'SN-MAIL'}});
+  snapshot.quote.deposit.amountMinor = '3000000';
+  const settings = {bankAccounts: {CNY: '账户原文 / account 012345'}, templateRevision: 'mail-test'};
+  const document = {fileName: 'RBA-MAIL-APPROVED-R2.pdf', sha256: 'a'.repeat(64)};
+  const email = confirmationMail(snapshot, settings, document);
+  assert.equal(email.language, 'en');
+  assert.match(email.subject, /loan approval/);
+  assert.match(email.body, /within 24 hours/);
+  assert.match(email.body, /within 48 hours/);
+  assert.match(email.translations.zh.subject, /样机借用批复/);
+  for (const language of ['zh', 'en']) for (const value of [snapshot.applicant.name, snapshot.assetSnapshot.no, snapshot.assetSnapshot.sn, '30000.00 CNY', '50000.00 CNY', snapshot.schedule.startsAt, snapshot.schedule.dueAt, settings.bankAccounts.CNY, document.fileName, document.sha256]) assert.ok(email.translations[language].body.includes(value), language + ': ' + value);
+  assert.equal(confirmationMail(snapshot, settings, document, 'zh').language, 'zh');
+  delete snapshot.agreementLanguage;
+  assert.equal(confirmationMail(snapshot, settings, document).language, 'zh');
+  assert.equal(confirmationMail(snapshot, settings, document, 'ja').language, 'en');
+});
+
+
+test('English USD approval mail preserves the frozen quote and raw account details', () => {
+  const snapshot = draft();
+  Object.assign(snapshot, {agreementLanguage: 'en', publicNo: 'RBA-MAIL-USD', agreementRevision: 1, assetSnapshot: {modelKey: snapshot.modelKey, no: 'NO-USD', sn: 'SN-USD'}});
+  snapshot.quote = {deposit: {currency: 'USD', amountMinor: '420000'}, fx: {source: '中国银行美元现汇买入价', rateUnits: '7142857', publishedAt: '2026-11-09T01:00:00.000Z'}};
+  const settings = {bankAccounts: {USD: '美元收款账户 / USD 001'}, templateRevision: 'mail-test'};
+  const email = confirmationMail(snapshot, settings, {fileName: 'USD-R1.pdf', sha256: 'b'.repeat(64)});
+  assert.match(email.body, /4200\.00 USD/);
+  assert.match(email.body, /Bank of China USD foreign-exchange buying rate/);
+  assert.match(email.body, /714\.2857/);
+  assert.ok(email.body.includes(snapshot.quote.fx.publishedAt));
+  assert.ok(email.body.includes(settings.bankAccounts.USD));
 });
