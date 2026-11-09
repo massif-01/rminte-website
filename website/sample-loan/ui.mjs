@@ -284,7 +284,9 @@ export function createUI(
     });
     dialog.toggleAttribute("data-nested", !!root.querySelector("dialog[open]"));
     if (!dialog.open) dialog.showModal();
-    dialog.querySelector("[data-close]")?.focus({ preventScroll: true });
+    const initial =
+      dialog.querySelector("[autofocus]") || dialog.querySelector("[data-close]");
+    initial?.focus({ preventScroll: true });
   }
   function wireDialogs() {
     $$("dialog:not([data-wired])").forEach((dialog) => {

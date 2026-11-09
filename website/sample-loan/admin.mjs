@@ -1,5 +1,6 @@
 import { createUI } from "./ui.mjs";
-import { latestRejectionReason, rejectionEmail } from "./email.mjs";
+import { emailLanguage, latestRejectionReason, rejectionEmail } from "./email.mjs";
+import { copyEmailText } from "./clipboard.mjs";
 import { api, retryableCommand } from "./client.mjs";
 import {
   MODELS as MODEL_MAP,
@@ -1360,20 +1361,47 @@ $("#history-list").addEventListener("click", (e) => {
     );
 });
 let emailKind = "confirmation";
+let emailDraft;
+function applyEmailLanguage() {
+  const language = $("#email-language").value;
+  const content = emailDraft.translations[language];
+  $("#email-subject").value = content.subject;
+  $("#email-body").value = content.body;
+  $("#email-subject").lang = language;
+  $("#email-body").lang = language;
+  $("#clipboard-status").textContent = "";
+}
+$("#email-language").addEventListener("change", applyEmailLanguage);
 function showEmail(email, kind = "confirmation") {
   emailKind = kind;
+  emailDraft = email;
   $("#email-title").textContent =
     kind === "rejection" ? "未通过通知邮件" : "确认邮件正文";
   $("#email-confirmation-help").hidden = kind !== "confirmation";
   $("#email-rejection-help").hidden = kind !== "rejection";
   $("#email-recipient").value = email.recipient;
-  $("#email-subject").value = email.subject;
-  $("#email-body").value = email.body;
-  $("#clipboard-status").textContent = "";
+  const request = state.current._raw;
+  $("#email-language").value = emailLanguage(
+    request.consent?.presentedNotice?.language ||
+      request.consent?.agreementLanguage ||
+      request.agreement?.agreementLanguage ||
+      "zh",
+  );
+  applyEmailLanguage();
+  refreshSelects($("#email-dialog"));
   showDialog($("#email-dialog"));
 }
 function showRejectionEmail() {
-  showEmail(rejectionEmail(state.current), "rejection");
+  showEmail(
+    {
+      recipient: state.current.original.email,
+      translations: {
+        zh: rejectionEmail(state.current, "zh"),
+        en: rejectionEmail(state.current, "en"),
+      },
+    },
+    "rejection",
+  );
 }
 $("#copy-rejection-email").addEventListener("click", showRejectionEmail);
 $("#copy-email").addEventListener("click", () =>
@@ -1389,25 +1417,26 @@ $("#copy-email").addEventListener("click", () =>
     const fresh = await api(
       `/api/sample-admin/requests/${r.id}/versions/${delivery.agreementRevision}/delivery?documentId=${delivery.documentId}`,
     );
+    if (state.current?.id !== r.id) return;
     delivery = fresh.delivery;
     showEmail(delivery);
   }),
 );
 for (const [button, input] of [
+  ["copy-email-recipient", "email-recipient"],
   ["copy-email-subject", "email-subject"],
   ["copy-email-body", "email-body"],
 ])
   $("#" + button).addEventListener("click", async () => {
     try {
-      await navigator.clipboard.writeText($("#" + input).value);
+      await copyEmailText($("#" + input).value, $("#email-dialog"));
       $("#clipboard-status").textContent =
         emailKind === "rejection"
           ? "已复制，请核对收件人后人工发送"
           : "已复制，请核对附件版本后人工发送";
     } catch {
-      $("#" + input).focus();
-      $("#" + input).select();
-      $("#clipboard-status").textContent = "请按 ⌘C / Ctrl+C 复制已选文本";
+      $("#clipboard-status").textContent =
+        "复制失败，请检查浏览器剪贴板权限后重试";
     }
   });
 $("#logout").addEventListener("click", () =>

@@ -347,6 +347,9 @@ try {
       winner.documentId,
   );
   assert(delivery.delivery.body.includes("R2"));
+  assert.equal(delivery.delivery.language, agreementLanguage);
+  assert.match(delivery.delivery.translations.en.subject, /loan approval/);
+  assert.match(delivery.delivery.translations.zh.subject, /样机借用批复/);
   assert.equal(delivery.delivery.sha256, winner.hash);
   current = (await api("/api/sample-admin/requests/" + submitted.id)).request;
   const receipt = await api(

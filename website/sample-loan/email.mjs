@@ -5,7 +5,31 @@ export function latestRejectionReason(events) {
   );
 }
 
-export function rejectionEmail({ publicNo, original, reason }) {
+export function emailLanguage(language = "zh") {
+  return language.toLowerCase().split("-")[0] === "zh" ? "zh" : "en";
+}
+
+export function rejectionEmail({ publicNo, original, reason }, language = "zh") {
+  if (emailLanguage(language) === "en")
+    return {
+      recipient: original.email,
+      subject: `[RMinte] Demo unit application not approved — ${publicNo}`,
+      body: [
+        `Dear ${original.company},`,
+        "",
+        "Your demo unit loan application has not been approved following review. The details are below:",
+        "",
+        `Application number: ${publicNo}`,
+        `Requested model: ${original.model}`,
+        "",
+        "Reason:",
+        reason,
+        "",
+        "For questions, please contact support@rminte.com.",
+        "",
+        "RMinte",
+      ].join("\n"),
+    };
   return {
     recipient: original.email,
     subject: `【RMinte 样机申请未通过】${publicNo}`,

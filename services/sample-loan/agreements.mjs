@@ -8,6 +8,7 @@ import {
   MODELS,
 } from "./domain.mjs";
 import { seal } from "./vault.mjs";
+import { emailLanguage } from "../../website/sample-loan/email.mjs";
 import { rows, first, eventStatement } from "./store.mjs";
 import { digest } from "../case-access/crypto.mjs";
 import terms from "./terms.json" with { type: "json" };
@@ -177,7 +178,7 @@ export async function versionStatements(
     ]);
   return { d, rev, snapshot, statements };
 }
-export function confirmationMail(snapshot, settings, document) {
+function confirmationMailZh(snapshot, settings, document) {
   const d = snapshot,
     lines = [
       `${d.applicant.name}，您好：`,
@@ -222,6 +223,63 @@ export function confirmationMail(snapshot, settings, document) {
     body: lines.join("\n"),
     templateRevision: settings.templateRevision,
   };
+}
+function confirmationMailEn(d, settings, document) {
+  const lines = [
+    `Dear ${d.applicant.name},`,
+    "",
+    `Your demo unit loan application has been approved. Please find the RM-01 Equipment Loan Agreement attached (${d.publicNo}, R${d.agreementRevision}).`,
+    "",
+    `Application number: ${d.publicNo}`,
+    `Equipment model: ${MODELS[d.assetSnapshot.modelKey]}`,
+    `NO: ${d.assetSnapshot.no}`,
+    `SN: ${d.assetSnapshot.sn}`,
+    `Equipment value: ${moneyDisplay(d.billingBasis.value)}`,
+    `Loan start: ${timePair(d.schedule.startsAt)}`,
+    `Return deadline: ${timePair(d.schedule.dueAt)}`,
+    `Security deposit: ${moneyDisplay(d.quote.deposit)}`,
+  ];
+  if (d.quote.fx)
+    lines.push(
+      `Exchange-rate source: Bank of China USD foreign-exchange buying rate; CNY per USD 100: ${(Number(d.quote.fx.rateUnits) / 10000).toFixed(4)}; published: ${timePair(d.quote.fx.publishedAt)}`,
+    );
+  lines.push(
+    "",
+    "Please remit the security deposit within 24 hours after delivery of this confirmation email. Shipment requires receipt of the full deposit and verification of the borrower's identity and authority.",
+    `Bank details:\n${settings.bankAccounts[d.quote.deposit.currency]}`,
+    `Payment reference: ${d.applicant.name} + demo unit security deposit + ${d.publicNo}`,
+    "",
+    "Outbound freight is payable on delivery and the equipment is shipped with full declared-value coverage. You pay return freight and declared-value coverage based on the equipment value in the agreement. The loan period includes transport in both directions; the equipment must arrive at the manufacturer before the deadline.",
+    `Outbound carrier / tracking: ${d.outbound.carrier || "To be added before shipment"} / ${d.outbound.trackingNumber || "To be added before shipment"}`,
+    `Return recipient / telephone: ${d.returnTo.recipientName} / ${d.returnTo.phone}`,
+    `Return address: ${d.returnTo.address}`,
+    "",
+    "Please acknowledge receipt by replying from the application email address within 48 hours after delivery of the agreement email. If you change the default equipment account or password, restore the initial delivery settings before returning it. The attached agreement governs the full responsibilities and charges.",
+    `Attachment: ${document.fileName}`,
+    `SHA-256: ${document.sha256}`,
+    "",
+    d.lender.name,
+    d.lender.phone,
+    d.lender.email,
+  );
+  return {
+    subject: `[RMinte] Demo unit loan approval — ${d.publicNo} · Agreement R${d.agreementRevision}`,
+    body: lines.join("\n"),
+  };
+}
+export function confirmationMail(
+  snapshot,
+  settings,
+  document,
+  language = snapshot.agreementLanguage || "zh",
+) {
+  const chinese = confirmationMailZh(snapshot, settings, document);
+  const translations = {
+    zh: { subject: chinese.subject, body: chinese.body },
+    en: confirmationMailEn(snapshot, settings, document),
+  };
+  language = emailLanguage(language);
+  return { ...chinese, ...translations[language], language, translations };
 }
 export function timePair(v) {
   return (

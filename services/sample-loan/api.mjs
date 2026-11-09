@@ -392,10 +392,19 @@ async function versionGet(request, env, r, revision, kind, url) {
       "该币种收款信息尚未配置",
       409,
     );
+    const consent = JSON.parse(r.consent_json);
     return json({
       delivery: {
         ...doc,
-        ...confirmationMail(snapshot, data, doc),
+        ...confirmationMail(
+          snapshot,
+          data,
+          doc,
+          consent.presentedNotice?.language ||
+            consent.agreementLanguage ||
+            snapshot.agreementLanguage ||
+            "zh",
+        ),
         bankAccountRevision: setting.id,
       },
     });

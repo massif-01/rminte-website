@@ -1241,7 +1241,7 @@
       aria-labelledby="email-title"
     >
       <div class="dialog-top">
-        <h2 id="email-title">确认邮件正文</h2>
+        <h2 id="email-title" tabindex="-1" autofocus>确认邮件正文</h2>
         <button
           type="button"
           class="contact-close"
@@ -1259,6 +1259,11 @@
           请核对收件人和未通过原因后人工发送；复制不代表已发送或已送达。
         </p>
         <label class="field"
+          ><span>邮件语言</span><select id="email-language">
+            <option value="zh">中文</option>
+            <option value="en">English</option>
+          </select></label
+        ><label class="field"
           ><span>收件人</span><input id="email-recipient" readonly /></label
         ><label class="field"
           ><span>主题</span><input id="email-subject" readonly /></label
@@ -1269,7 +1274,9 @@
         <p id="clipboard-status" class="fine" role="status"></p>
       </div>
       <div class="agreement-footer">
-        <button type="button" class="pill ghost" id="copy-email-subject">
+        <button type="button" class="pill ghost" id="copy-email-recipient">
+          复制收件人</button
+        ><button type="button" class="pill ghost" id="copy-email-subject">
           复制主题</button
         ><button type="button" class="pill primary" id="copy-email-body">
           复制正文
