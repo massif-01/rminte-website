@@ -908,6 +908,10 @@ export async function handleSampleApi(request, env, ctx) {
     if (tail === "draft") {
       exact(d, ["expectedRowVersion", "draft", "assetId", "fileIds"]);
       partialDraft(d.draft, fieldMap);
+      const type =
+        d.draft.applicant?.type ?? JSON.parse(r.original_json).applicant.type;
+      if (type === "company")
+        text(d.draft.applicant?.creditCode, "applicant.creditCode", 64);
       const sealed = await seal(env.SAMPLE_SECRET, id + ":draft", d);
       assert(r.status === "pending", "DRAFT_LOCKED", "仅待批复可保存草稿");
       result = await mutation(env, request, user, {

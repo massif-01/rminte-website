@@ -146,7 +146,12 @@ export function applicant(d) {
     fail(422, "VALIDATION_FAILED", "邮箱格式不正确", {
       "applicant.email": "请填写有效的邮箱地址",
     });
-  result.creditCode = text(d.creditCode, "applicant.creditCode", 64, true);
+  result.creditCode = text(
+    d.creditCode,
+    "applicant.creditCode",
+    64,
+    d.type === "person",
+  );
   result.registeredAddress = text(
     d.registeredAddress,
     "applicant.registeredAddress",

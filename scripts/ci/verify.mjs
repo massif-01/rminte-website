@@ -30,7 +30,7 @@ async function check(name,required,fn,note) {
 }
 async function command(program,args,name,cwd=root,env=process.env) {
   let result;
-  try {result=await promisify(execFile)(program,args,{cwd,env,encoding:'utf8',timeout:20*60_000,maxBuffer:20_000_000});}
+  try {result=await promisify(execFile)(program,args,{cwd,env,encoding:'utf8',timeout:(name==='browser'?32:20)*60_000,maxBuffer:20_000_000});}
   catch(error) {
     const log=(error.stdout||'')+(error.stderr||'');writeFileSync(join(output,name+'.log'),log);
     throw new Error(`${name}: exit ${error.code||error.signal}; see output/ci/${name}.log\n${log.slice(-3500)}`);

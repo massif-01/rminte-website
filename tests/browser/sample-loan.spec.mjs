@@ -24,9 +24,10 @@ if (run.scope.sampleLoan)
     await page.evaluate(() => document.fonts.ready);
 
     await app.locator("#application-form button[type=submit]").click();
-    await expect(app.locator("[aria-invalid=true]")).toHaveCount(11);
+    await expect(app.locator("[aria-invalid=true]")).toHaveCount(12);
     for (const [key, value] of Object.entries({
       company: "集成浏览器验证公司",
+      credit: "91510100MA00000000",
       contact: "测试联系人",
       phone: "+86 13800000000",
       email: "dealer@example.com",
@@ -49,6 +50,13 @@ if (run.scope.sampleLoan)
         exact: true,
       })
       .click();
+    for (const empty of ["", "   "]) {
+      await app.locator("[name=credit]").fill(empty);
+      await app.locator("#application-form button[type=submit]").click();
+      await expect(app.locator("#confirmation-dialog")).not.toBeVisible();
+      await expect(app.locator("[name=credit]")).toHaveAttribute("aria-invalid", "true");
+    }
+    await app.locator("[name=credit]").fill("91510100MA00000000");
     await app.locator("[name=days]").fill("31");
     await app.locator("#application-form button[type=submit]").click();
     await expect(app.locator("#confirmation-dialog")).not.toBeVisible();
@@ -204,6 +212,16 @@ if (run.scope.sampleLoan)
       returnName: "样机收件处",
     }))
       await af.locator("[name=" + key + "]").fill(value);
+    // Drafts remain partial, but a company cannot save an empty credit code.
+    await af.locator("[name=credit]").fill("   ");
+    await page.locator("#save-draft").click();
+    await expect(af.locator("[name=credit]")).toHaveAttribute("aria-invalid", "true");
+    await af.locator("[name=credit]").fill("91510100MA00000000");
+    const savedDraft = page.waitForResponse((response) => response.url().endsWith("/draft") && response.request().method() === "POST");
+    await page.locator("#save-draft").click();
+    expect((await savedDraft).status()).toBe(200);
+    await expect(page.locator("#save-draft")).toBeEnabled();
+    await expect(af.locator("[name=credit]")).toHaveValue("91510100MA00000000");
     await af.locator("[name=identityVerified]").check();
     await page.locator("#photo-upload").setInputFiles({
       name: "isolated-photo.png",

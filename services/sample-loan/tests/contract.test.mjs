@@ -4,6 +4,7 @@ import { renderContract } from '../../../website/sample-loan/contract.mjs';
 import { canonicalTerms } from '../agreements.mjs';
 import { handleSampleApi } from '../api.mjs';
 import { draft } from './fixtures.mjs';
+import { applicant } from '../domain.mjs';
 
 const terms = await canonicalTerms();
 test('public terms and translated notices are readable without business database bindings', async () => {
@@ -97,4 +98,9 @@ test('individual borrowers and USD quotes keep their English labels and exact am
   assert.ok(html.includes(d.schedule.startsAt));
   assert.ok(html.includes(d.schedule.dueAt));
   assert.doesNotMatch(html, /undefined|\[北京时间|\[对应 UTC/);
+});
+
+test('individual applicant remains valid without enterprise fields', () => {
+  const data = { ...draft().applicant, type: 'person', creditCode: null, registeredAddress: null };
+  assert.deepEqual(applicant(data), data);
 });

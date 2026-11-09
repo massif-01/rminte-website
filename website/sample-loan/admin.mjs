@@ -338,7 +338,7 @@ function openRequest(request) {
     : "尚未完成";
   $("#original-record").textContent = "";
   const original = document.createElement("p");
-  original.textContent = `借用主体：${request.original.company}\n主体类型：${request.original.entity || "公司"}\n联系人：${request.original.contact || "未填写"}\n统一社会信用代码（选填）：${request.original.credit || "未填写"}\n注册地址：${request.original.registeredAddress || "不适用或未填写"}\n联系地址：${request.original.companyAddress || "未填写"}\n联系电话：${request.original.phone}\n邮箱：${request.original.email}\n收件人：${request.original.receiver || "未填写"}\n收件电话：${request.original.receiverPhone || "未填写"}\n收货地址：${request.original.shippingAddress || "未填写"}\n申请型号：${request.original.model}\n申请天数：${request.days} 天\n浏览器：${request.browser || "未提供"}\nIP：${request._raw.consent?.ip || "未提供"}`;
+  original.textContent = `借用主体：${request.original.company}\n主体类型：${request.original.entity || "公司"}\n联系人：${request.original.contact || "未填写"}\n统一社会信用代码：${request.original.credit || "未填写"}\n注册地址：${request.original.registeredAddress || "不适用或未填写"}\n联系地址：${request.original.companyAddress || "未填写"}\n联系电话：${request.original.phone}\n邮箱：${request.original.email}\n收件人：${request.original.receiver || "未填写"}\n收件电话：${request.original.receiverPhone || "未填写"}\n收货地址：${request.original.shippingAddress || "未填写"}\n申请型号：${request.original.model}\n申请天数：${request.days} 天\n浏览器：${request.browser || "未提供"}\nIP：${request._raw.consent?.ip || "未提供"}`;
   $("#original-record").append(original);
   if (request.acceptance) {
     const notice = document.createElement("p");
@@ -889,6 +889,7 @@ $("#load-more").addEventListener("click", () =>
   checked(() => loadList(true), $("#load-more")),
 );
 $("#save-draft").addEventListener("click", () => {
+  if (!validateForm(form, [form.elements.credit])) return;
   captureDraft();
   command(
     "draft",

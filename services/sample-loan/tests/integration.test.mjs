@@ -84,13 +84,14 @@ test("persistent API: authorization, atomic allocation, immutable revisions, rea
   };
   const api = async (
     path,
-    { method = "GET", data, cookie = "owner", key = crypto.randomUUID() } = {},
+    { method = "GET", data, cookie = "owner", key = crypto.randomUUID(), ip } = {},
   ) => {
     const response = await handleSampleApi(
       new Request(origin + path, {
         method,
         headers: {
           Origin: origin,
+          ...(ip ? { "CF-Connecting-IP": ip } : {}),
           ...(cookie
             ? { Cookie: "rminte_local_session=" + cookie.padEnd(48, "x") }
             : {}),
@@ -434,6 +435,16 @@ test("persistent API: authorization, atomic allocation, immutable revisions, rea
         noStockShown: false,
       },
     };
+    const beforeInvalid = await env.CASE_DB.prepare("SELECT COUNT(*) AS n FROM sample_requests").first();
+    for (const creditCode of [undefined, null, "", "   "]) {
+      const invalid = await api("/api/sample-loans/applications", {
+        method: "POST", cookie: null,
+        data: { ...payload, applicant: { ...payload.applicant, creditCode } },
+      });
+      assert.equal(invalid.status, 422);
+      assert.ok(invalid.fieldErrors["applicant.creditCode"], JSON.stringify(invalid));
+    }
+    assert.deepEqual(await env.CASE_DB.prepare("SELECT COUNT(*) AS n FROM sample_requests").first(), beforeInvalid);
     for (const requestedDays of [0, 31, 1.5, Number.MAX_SAFE_INTEGER]) {
       const invalid = await api("/api/sample-loans/applications", {
         method: "POST",
@@ -561,6 +572,22 @@ test("persistent API: authorization, atomic allocation, immutable revisions, rea
     });
     assert.equal(two.status, 201);
     assert.notEqual(one.publicNo, two.publicNo);
+    const personal = await api("/api/sample-loans/applications", {
+      method: "POST", cookie: null, ip: "192.0.2.17",
+      data: { ...payload, applicant: { ...application.applicant, type: "person", creditCode: null, registeredAddress: null } },
+    });
+    assert.equal(personal.status, 201);
+    const personalDraft = await api(`/api/sample-admin/requests/${personal.id}/draft`, {
+      method: "POST",
+      data: { expectedRowVersion: 1, draft: { applicant: { type: "person", creditCode: null } } },
+    });
+    assert.equal(personalDraft.status, 200);
+    const switched = await api(`/api/sample-admin/requests/${personal.id}/draft`, {
+      method: "POST",
+      data: { expectedRowVersion: personalDraft.request.rowVersion, draft: { applicant: { type: "company", creditCode: null } } },
+    });
+    assert.equal(switched.status, 422);
+    assert.ok(switched.fieldErrors["applicant.creditCode"]);
     const d = draft();
     delete d.requestedDays;
     d.schedule.dueAt = new Date(
@@ -593,6 +620,26 @@ test("persistent API: authorization, atomic allocation, immutable revisions, rea
         422,
       );
     }
+    for (const creditCode of [undefined, null, "", "   "]) {
+      for (const action of ["draft", "approve"]) {
+        const invalid = await api(`/api/sample-admin/requests/${one.id}/${action}`, {
+          method: "POST",
+          data: { ...(action === "draft" ? { expectedRowVersion: 1 } : command), draft: { ...d, applicant: { ...d.applicant, creditCode } } },
+        });
+        assert.equal(invalid.status, 422);
+        assert.ok(invalid.fieldErrors["applicant.creditCode"], JSON.stringify(invalid));
+      }
+    }
+    const unchanged = await api(`/api/sample-admin/requests/${one.id}`);
+    assert.equal(unchanged.request.rowVersion, 1);
+    assert.equal(unchanged.request.original.applicant.creditCode, application.applicant.creditCode);
+    const saved = await api(`/api/sample-admin/requests/${one.id}/draft`, {
+      method: "POST",
+      data: { expectedRowVersion: 1, draft: { applicant: { type: "company", creditCode: application.applicant.creditCode } } },
+    });
+    assert.equal(saved.status, 200);
+    assert.equal(saved.request.draft.draft.applicant.creditCode, application.applicant.creditCode);
+    command.expectedRowVersion = saved.request.rowVersion;
     const race = await Promise.all([
       api(`/api/sample-admin/requests/${one.id}/approve`, {
         method: "POST",
@@ -600,7 +647,7 @@ test("persistent API: authorization, atomic allocation, immutable revisions, rea
       }),
       api(`/api/sample-admin/requests/${two.id}/approve`, {
         method: "POST",
-        data: command,
+        data: { ...command, expectedRowVersion: 1 },
       }),
     ]);
     assert.deepEqual(
