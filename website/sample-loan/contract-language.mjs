@@ -14,7 +14,7 @@ export const contractEnglish = {
   "联系地址：": "Contact address: ",
   "收件人及电话：": "Delivery recipient and telephone: ",
   "收货地址：": "Delivery address: ",
-  "统一社会信用代码（选填）：": "Unified Social Credit Code (optional): ",
+  "统一社会信用代码：": "Unified Social Credit Code: ",
   "注册地址：": "Registered address: ",
   "申请 / 协议编号：": "Application / Agreement number: ",
   "协议日期：": "Agreement date: ",

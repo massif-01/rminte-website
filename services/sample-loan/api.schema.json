@@ -165,6 +165,12 @@
                 "type": "string",
                 "maxLength": 1000,
                 "minLength": 1
+              },
+              "creditCode": {
+                "type": "string",
+                "maxLength": 64,
+                "minLength": 1,
+                "pattern": "\\S"
               }
             }
           }
@@ -658,7 +664,34 @@
               "maxLength": 1000
             }
           },
-          "required": []
+          "required": [],
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "type": {
+                    "const": "company"
+                  }
+                },
+                "required": [
+                  "type"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "creditCode": {
+                    "type": "string",
+                    "maxLength": 64,
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  }
+                },
+                "required": [
+                  "creditCode"
+                ]
+              }
+            }
+          ]
         },
         "shipping": {
           "type": "object",

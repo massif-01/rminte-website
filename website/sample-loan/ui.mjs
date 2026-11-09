@@ -55,14 +55,14 @@ export function createUI(
       note.remove();
     }
   }
-  function validateForm(form) {
-    [...form.elements].forEach(clearFieldError);
-    const bad = [...form.elements].filter(
+  function validateForm(form, elements = [...form.elements]) {
+    elements.forEach(clearFieldError);
+    const bad = elements.filter(
       (el) =>
         el.willValidate &&
         (!el.validity.valid || (el.required && !el.value.trim())),
     );
-    bad.forEach((el, index) => {
+    bad.forEach((el) => {
       if (el.tagName === "SELECT") {
         el.checkValidity();
         return;
@@ -72,7 +72,7 @@ export function createUI(
       note.className = "field-error";
       note.dataset.auto = "";
       note.setAttribute("role", "alert");
-      note.id = `${form.id || "form"}-error-${index}`;
+      note.id = `${form.id || "form"}-error-${[...form.elements].indexOf(el)}`;
       note.textContent = fieldProblem(el);
       host.append(note);
       el.setAttribute("aria-invalid", "true");

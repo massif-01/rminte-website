@@ -5,7 +5,7 @@ export const application = {
     contactName: "龚睿",
     phone: "+86 13800000000",
     email: "loan@example.com",
-    creditCode: null,
+    creditCode: "91510100MA00000000",
     registeredAddress: "成都高新区测试注册地址",
     contactAddress: "成都测试联系地址",
   },
