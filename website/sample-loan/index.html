@@ -216,8 +216,11 @@
             <div>
               <strong>申请未通过</strong>
               <p id="rejected-reason"></p>
-              <p>请由工作人员将原因通知申请人。</p>
+              <p>可复制通知邮件，由工作人员发送给申请人。</p>
             </div>
+            <button type="button" class="pill ghost" id="copy-rejection-email">
+              复制未通过通知邮件
+            </button>
           </div>
           <div id="completion-result" class="completion-note" hidden>
             <strong>已完成 · 已归还</strong>
@@ -1249,10 +1252,15 @@
         </button>
       </div>
       <div class="email-content">
-        <p class="fine">
+        <p id="email-confirmation-help" class="fine">
           请先下载当前版本协议并作为附件添加。收款账户未配置时须补充后再发送；复制不代表已发送或已送达。
         </p>
+        <p id="email-rejection-help" class="fine" hidden>
+          请核对收件人和未通过原因后人工发送；复制不代表已发送或已送达。
+        </p>
         <label class="field"
+          ><span>收件人</span><input id="email-recipient" readonly /></label
+        ><label class="field"
           ><span>主题</span><input id="email-subject" readonly /></label
         ><label class="field"
           ><span>正文</span
