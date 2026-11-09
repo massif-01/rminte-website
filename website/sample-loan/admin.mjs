@@ -1,4 +1,5 @@
 import { createUI } from "./ui.mjs";
+import { latestRejectionReason, rejectionEmail } from "./email.mjs";
 import { api, retryableCommand } from "./client.mjs";
 import {
   MODELS as MODEL_MAP,
@@ -185,9 +186,7 @@ function adapt(raw) {
         }
       : null,
     browser: raw.consent?.userAgent,
-    reason:
-      raw.events?.find((event) => event.action === "progress.reject")?.details
-        .reason || "",
+    reason: latestRejectionReason(raw.events || []),
     cancelReason:
       raw.events?.find((event) => event.action === "progress.cancel")?.details
         .reason || "",
@@ -933,13 +932,20 @@ $("#reject-request").addEventListener("click", () => {
 $("#reject-form").addEventListener("submit", async (event) => {
   event.preventDefault();
   if (!validateForm(event.currentTarget)) return;
+  const requestId = state.current.id;
   const result = await command(
     "reject",
     { reason: $("#reject-reason").value },
     event.submitter,
     event.currentTarget,
   );
-  if (result) $("#reject-dialog").close();
+  if (result) {
+    $("#reject-dialog").close();
+    if (state.current?.id === requestId && state.current.status === "rejected") {
+      $("#copy-rejection-email").focus({ preventScroll: true });
+      showRejectionEmail();
+    }
+  }
 });
 $("#inventory-search").addEventListener("input", renderInventory);
 $("#new-machine").addEventListener("click", () => openMachine());
@@ -1353,6 +1359,23 @@ $("#history-list").addEventListener("click", (e) => {
       () => $("#history-dialog").close(),
     );
 });
+let emailKind = "confirmation";
+function showEmail(email, kind = "confirmation") {
+  emailKind = kind;
+  $("#email-title").textContent =
+    kind === "rejection" ? "未通过通知邮件" : "确认邮件正文";
+  $("#email-confirmation-help").hidden = kind !== "confirmation";
+  $("#email-rejection-help").hidden = kind !== "rejection";
+  $("#email-recipient").value = email.recipient;
+  $("#email-subject").value = email.subject;
+  $("#email-body").value = email.body;
+  $("#clipboard-status").textContent = "";
+  showDialog($("#email-dialog"));
+}
+function showRejectionEmail() {
+  showEmail(rejectionEmail(state.current), "rejection");
+}
+$("#copy-rejection-email").addEventListener("click", showRejectionEmail);
 $("#copy-email").addEventListener("click", () =>
   checked(async () => {
     const r = state.current;
@@ -1367,9 +1390,7 @@ $("#copy-email").addEventListener("click", () =>
       `/api/sample-admin/requests/${r.id}/versions/${delivery.agreementRevision}/delivery?documentId=${delivery.documentId}`,
     );
     delivery = fresh.delivery;
-    $("#email-subject").value = delivery.subject;
-    $("#email-body").value = delivery.body;
-    showDialog($("#email-dialog"));
+    showEmail(delivery);
   }),
 );
 for (const [button, input] of [
@@ -1379,7 +1400,10 @@ for (const [button, input] of [
   $("#" + button).addEventListener("click", async () => {
     try {
       await navigator.clipboard.writeText($("#" + input).value);
-      $("#clipboard-status").textContent = "已复制，请核对附件版本后人工发送";
+      $("#clipboard-status").textContent =
+        emailKind === "rejection"
+          ? "已复制，请核对收件人后人工发送"
+          : "已复制，请核对附件版本后人工发送";
     } catch {
       $("#" + input).focus();
       $("#" + input).select();

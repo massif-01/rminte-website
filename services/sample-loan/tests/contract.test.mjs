@@ -5,6 +5,7 @@ import { canonicalTerms } from '../agreements.mjs';
 import { handleSampleApi } from '../api.mjs';
 import { draft } from './fixtures.mjs';
 import { applicant } from '../domain.mjs';
+import { latestRejectionReason, rejectionEmail } from '../../../website/sample-loan/email.mjs';
 
 const terms = await canonicalTerms();
 test('public terms and translated notices are readable without business database bindings', async () => {
@@ -103,4 +104,30 @@ test('individual borrowers and USD quotes keep their English labels and exact am
 test('individual applicant remains valid without enterprise fields', () => {
   const data = { ...draft().applicant, type: 'person', creditCode: null, registeredAddress: null };
   assert.deepEqual(applicant(data), data);
+});
+
+test('rejection email preserves the applicant, requested model and saved multiline reason', () => {
+  const original = {company: '测试申请人 <甲>', email: 'borrower@example.test', model: 'RM-01 32G T234 ( 275 TOPS )'};
+  const reason = '用途信息需要补充。\n请说明“测试目标”与使用计划。';
+  const email = rejectionEmail({publicNo: 'RBA-TEST-REJECT', original, reason});
+  assert.equal(email.recipient, original.email);
+  assert.ok(email.subject.includes('RBA-TEST-REJECT'));
+  assert.ok(email.body.includes(original.company));
+  assert.ok(email.body.includes(original.model));
+  assert.ok(email.body.includes(reason));
+  assert.ok(email.body.includes('RBA-TEST-REJECT'));
+  assert.doesNotMatch(email.body, /已批复|汇出押金|随信附件|undefined/);
+});
+
+test('reopened applications use the latest saved rejection without changing history', () => {
+  const events = [
+    {action: 'progress.reject', details: {reason: '原拒绝原因'}},
+    {action: 'admin.reopened', details: {reason: '恢复待审'}},
+    {action: 'progress.reject', details: {reason: '重新审核后的原因\n请补充信息'}},
+    {action: 'finance.receipt', details: {reason: '无关记录'}},
+  ];
+  const original = structuredClone(events);
+  assert.equal(latestRejectionReason(events), events[2].details.reason);
+  assert.deepEqual(events, original);
+  assert.equal(latestRejectionReason([]), '');
 });
