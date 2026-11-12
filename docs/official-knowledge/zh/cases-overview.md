@@ -116,9 +116,9 @@ evidence_status: "published source text; qualification retained"
 
 需登录后演示
 
-### AI 公文写作助手
+### AI录音卡片会议总结
 
-面向公文写作场景，提供 AI 辅助写作的应用入口。
+将任何品类的数十个 AI 录音卡片接入 RM01，形成录音自动转写和总结的软硬件一体服务
 
 资料与联系 演示
 

@@ -35,7 +35,10 @@ window.CASE_DEMO = (() => {
     if(!valid(op))return;
     const frame=document.createElement('iframe');frame.id='case-demo-frame';frame.title=label;
     frame.referrerPolicy='no-referrer';frame.setAttribute('sandbox','allow-scripts allow-same-origin allow-forms');
-    if(descriptor.kind==='private'){frame.tabIndex=-1;frame.inert=true;}
+    if(descriptor.kind==='private'){
+      frame.tabIndex=-1;frame.inert=true;
+      if(descriptor.allowDownloads===true)frame.sandbox.add('allow-downloads');
+    }
     op.frame=frame;op.origin=new URL(descriptor.src,location.href).origin;op.phase='loading';
     modal.dataset.state='loading';message.textContent=waiting;action.hidden=true;
     // Private apps report initialized UI; external websites render directly and own their loading UI.

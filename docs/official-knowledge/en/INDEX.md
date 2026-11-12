@@ -30,7 +30,7 @@
 - [Community Affairs AI Assistant](case-community-assistant.md)
 - [AI Energy Dispatch Expert](case-energy-dispatch.md)
 - [AI Document Recognition, Translation and Knowledge Base](case-document-knowledge.md)
-- [AI Official Writing Assistant](case-official-writing.md)
+- [AI Recording Card Meeting Summaries](case-voxdock.md)
 - [AI Enterprise Archive Management](case-archive-management.md)
 - [Drone Airport AI Analyst](case-drone-analysis.md)
 - [AI Automotive R&D and Industrial Modelling](case-industrial-modeling.md)
