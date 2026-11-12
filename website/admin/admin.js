@@ -79,8 +79,8 @@ $('#password-form').onsubmit=async event=>{
  button.disabled=true;
  try{
   await CASE_AUTH.changePassword({current_password:form.elements.current_password.value,new_password:form.elements.new_password.value});
-  $('#password-dialog').close();showLogin();await CASE_AUTH.refresh();
-  say($('#login-message'),'密码已修改，所有旧登录已退出。请使用新密码登录。');$('#admin-login').elements.password.focus();
+  $('#password-dialog').close();showLogin();
+  say($('#login-message'),'密码已修改，所有旧登录已退出。请使用新密码登录。');$('#admin-login').elements.username.focus();
  }catch(error){say($('#password-message'),error.message,'未能保存');if(error.status===401)showLogin();}
  finally{button.disabled=false;}
 };
