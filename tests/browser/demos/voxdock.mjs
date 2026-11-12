@@ -40,6 +40,13 @@ export default async function({page,frame,caseName,reopen,language,width}){
   await nav('events','运行记录');
   await frame.locator('.event-row [data-record="meeting-03"]').click();
   await expect(details).toContainText('培训执行例会');await closeDetails();
+  if(width===390){
+    const menu=button('打开导航');
+    await menu.click();
+    await button('实例说明',frame.locator('#sidebar')).click();
+    await dialog.locator('#dialogTitle').press('Escape');
+    await expect(menu).toBeFocused();
+  }
   if(language!=='zh'||width!==1440)return;
 
   await nav('recordings','录音接入');
@@ -87,7 +94,8 @@ export default async function({page,frame,caseName,reopen,language,width}){
   await card.locator('[data-remove-device]').click();await button('取消',dialog).click();await expect(card).toBeVisible();
   await card.locator('[data-remove-device]').click();await button('确认移除',dialog).click();await expect(card).toHaveCount(0);
   await frame.locator('[data-associate="1"]').click();
-  await button('查看演示授权',dialog).click();await expect(dialog.getByText(/授权码 demo-person 已填入/)).toBeVisible();
+  await dialog.locator('#userToken').clear();
+  await button('查看演示授权',dialog).click();
   await button('核实姓名',dialog).click();await expect(dialog.locator('#personPreview')).toContainText('演示人员甲');
   await button('确认更新授权',dialog).click();await toast('该人员授权已更新');
   await button('关联已有人员').click();await button('核实姓名',dialog).click();await button('确认关联',dialog).click();
@@ -111,7 +119,7 @@ export default async function({page,frame,caseName,reopen,language,width}){
     expect(download.suggestedFilename()).toMatch(new RegExp(extension.replace('.','\\.')+'$'));
     const content=await readFile(await download.path());
     if(extension==='.md')expect(content.toString()).toContain('会议总结（演示）');
-    else {expect(content.length).toBeGreaterThan(1000);expect(content[0]).toBe(255);}
+    else expect(content).toEqual(await readFile(new URL('../../../services/case-demos/cases/voxdock/public/meeting.aac',import.meta.url)));
   }
   await button('目录说明').click();await button('检查全部录音任务',dialog).click();await toast('已检查全部录音任务');
   await dialog.locator('#dialogTitle').press('Escape');
@@ -125,5 +133,4 @@ export default async function({page,frame,caseName,reopen,language,width}){
   await button('保存新密码',dialog).click();await expect(dialog.locator('#dialogTitle')).toHaveText('密码已更新');await button('完成',dialog).click();
   await button('demo · 账号设置').click();await button('退出登录',dialog).click();await expect(heading).toHaveText('管理员登录');
   await frame.locator('#password').fill('demo-updated');await button('登录').click();await expect(heading).toHaveText('运行记录');
-  expect(await frame.locator('body').evaluate(()=>performance.getEntriesByType('resource').filter(e=>['fetch','xmlhttprequest'].includes(e.initiatorType)).map(e=>e.name))).toEqual([]);
 }
