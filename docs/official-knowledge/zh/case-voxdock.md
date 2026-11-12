@@ -16,6 +16,10 @@ evidence_status: "source transcription; not independent operational verification
 
 文档与知识
 
-将任何品类的数十个 AI 录音卡片接入 RM01，形成录音自动转写和总结的软硬件一体服务
+将任何品类的数十个 AI 录音卡片接入 RM-01，形成录音自动转写和总结的软硬件一体服务
+
+公开供应商: 捷思共创（成都）科技有限公司
+
+304008097@qq.com
 
 案例为官网公开介绍；演示与资料需按官网登录和授权流程访问。未获取受限演示、客户数据或私有附件。

@@ -40,9 +40,9 @@ html { scroll-padding-top: 120px; }
 .cs-demo:active { transform: scale(.98); transition-duration: var(--dur-press); }
 .cs-demo svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 
-.cs-panel { display: grid; grid-template-rows: 0fr; margin: 0 -12px; transition: grid-template-rows var(--dur-panel) var(--ease-settle); }
-.cs-card[data-open] .cs-panel { grid-template-rows: 1fr; }
-.cs-panel > div { min-height: 0; overflow: hidden; padding-top: 4px; }
+.cs-panel { display: grid; grid-template-rows: 0px; margin: 0 -12px; padding-top: 4px; transition: grid-template-rows var(--dur-panel) var(--ease-settle); }
+.cs-card[data-open] .cs-panel { grid-template-rows: var(--case-panel-height, 0px); }
+.cs-panel > div { min-height: 0; overflow: hidden; }
 .cs-panel[inert] { visibility: hidden; transition: grid-template-rows var(--dur-panel) var(--ease-settle), visibility 0s var(--dur-panel); }
 .cs-row { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2px 16px; width: 100%; margin: 0; padding: 12px; border: 0; border-radius: 6px; background: none; color: inherit; font: inherit; text-align: left; text-decoration: none; cursor: pointer; transition: background var(--dur-hover) var(--ease-settle); }
 .cs-row:hover { background: var(--line-1); }

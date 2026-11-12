@@ -1,5 +1,5 @@
 import {enhancePasswords,refreshPasswordButtons} from '../assets/password-field.mjs';
-import {groups,cases,caseIds} from '../assets/case-catalog.mjs?v=voxdock-case-1';
+import {groups,cases,caseIds} from '../assets/case-catalog.mjs?v=case-details-1';
 // Cases page, design system v2 (D10). The cards, the dialogs and the authorised-access panel are drawn here. Every visible string is a zh/en pair that is
 // painted in the visitor's language (RM_I18N.text: zh and en from the pair, ja/ko/es/fr from the catalogs by the English text) and painted again on a
 // language switch, so a dialog that is open keeps what was typed into it.
@@ -313,17 +313,20 @@ import {groups,cases,caseIds} from '../assets/case-catalog.mjs?v=voxdock-case-1'
   }
 
   build();
-  // Keep every collapsed card equal without clipping translated copy. Observe the
-  // content, not the equalized wrapper, so the height can shrink as well as grow.
+  // Measure the content so both summary and panel heights follow translated text
+  // and can shrink as well as grow without observing their animated wrappers.
   function alignCardHeights() {
     const height = Math.max(...Array.from(list.querySelectorAll('.cs-summary'), (summary) =>
       summary.querySelector('.cs-copy').getBoundingClientRect().height
       + parseFloat(getComputedStyle(summary.querySelector('.cs-copy')).marginBottom)
       + summary.querySelector('.cs-bar').getBoundingClientRect().height));
+    const panelHeight = Math.max(...Array.from(list.querySelectorAll('.cs-panel > div'), (panel) =>
+      Array.from(panel.children).reduce((sum, row) => sum + row.getBoundingClientRect().height, 0)));
     list.style.setProperty('--case-summary-height', `${Math.ceil(height)}px`);
+    list.style.setProperty('--case-panel-height', `${Math.ceil(panelHeight)}px`);
   }
   const cardSizeObserver = new ResizeObserver(alignCardHeights);
-  list.querySelectorAll('.cs-copy, .cs-bar').forEach((content) => cardSizeObserver.observe(content));
+  list.querySelectorAll('.cs-copy, .cs-bar, .cs-row').forEach((content) => cardSizeObserver.observe(content));
   alignCardHeights();
   window.addEventListener('case-auth-render',()=>{
     updateCards();const op=currentOperation;

@@ -39,6 +39,7 @@
     "en": "Technology Co., Ltd.",
     "sources": [
       "assets/case-catalog.mjs.cases.0.supplier.suffix",
+      "assets/case-catalog.mjs.cases.5.supplier.suffix",
       "assets/case-catalog.mjs.cases.8.supplier.suffix",
       "assets/case-catalog.mjs.cases.11.supplier.suffix"
     ]
@@ -121,8 +122,8 @@
     ]
   },
   {
-    "zh": "将任何品类的数十个 AI 录音卡片接入 RM01，形成录音自动转写和总结的软硬件一体服务",
-    "en": "Connect dozens of AI recording cards across any category to RM01 for an integrated hardware and software service that automatically transcribes and summarizes recordings.",
+    "zh": "将任何品类的数十个 AI 录音卡片接入 RM-01，形成录音自动转写和总结的软硬件一体服务",
+    "en": "Connect dozens of AI recording cards across any category to RM-01 for an integrated hardware and software service that automatically transcribes and summarizes recordings.",
     "sources": [
       "assets/case-catalog.mjs.cases.5.desc"
     ]

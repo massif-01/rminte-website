@@ -1,6 +1,6 @@
 import { setupDealerLibrary } from './dealer-admin.mjs?v=library-2';
 import {enhancePasswords} from '../assets/password-field.mjs';
-import {groups,caseCatalog} from '../assets/case-catalog.mjs?v=voxdock-case-1';
+import {groups,caseCatalog} from '../assets/case-catalog.mjs?v=case-details-1';
 const $=s=>document.querySelector(s),api=CASE_AUTH.api;
 enhancePasswords(document);
 const escapeHtml=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

@@ -118,11 +118,11 @@ Sign in to view demo
 
 ### AI Recording Card Meeting Summaries
 
-Connect dozens of AI recording cards across any category to RM01 for an integrated hardware and software service that automatically transcribes and summarizes recordings.
+Connect dozens of AI recording cards across any category to RM-01 for an integrated hardware and software service that automatically transcribes and summarizes recordings.
 
 Materials and contact Demo
 
-Related materials **Sign in to download** Contact the supplier **Supplier details to be announced**
+Related materials **Sign in to download** [Contact the supplier **Jiesi Gongchuang (Chengdu) Technology Co., Ltd.** Email: 304008097@qq.com](mailto:304008097@qq.com)
 
 Sign in to view demo
 
