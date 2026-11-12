@@ -48,6 +48,24 @@ function fixture(){
  const request=(path,{method='GET',cookie,body,headers={}}={})=>handleApi(new Request(origin+path,{method,headers:{Origin:origin,...(cookie?{Cookie:cookie}:{}),...headers},body}),env);
  return {db,env,objects,calls,cookie,request,ids};
 }
+test('a retired case grant does not transfer to VoxDock or prevent saving active grants',async()=>{
+ const f=fixture();try{
+  f.env.CASE_DEMOS={fetch:async()=>new Response('VoxDock demo')};
+  const admin=await f.cookie('admin'),reader=await f.cookie('reader');
+  for(const id of ['official-writing','digital-toll'])f.db.prepare('INSERT INTO case_grants VALUES(?,?)').run(f.ids.reader,id);
+  const path='/api/admin/users/'+f.ids.reader+'/cases',preview='/api/resources/voxdock/preview';
+  const previous=await (await f.request(path,{cookie:admin})).json();
+  assert.deepEqual(previous.case_ids,['digital-toll']);
+  assert.deepEqual((await (await f.request('/api/session',{cookie:reader})).json()).user.case_ids,['digital-toll']);
+  assert.equal((await f.request(preview,{cookie:reader})).status,403);
+  assert.equal((await f.request('/api/resources/voxdock/demo/meeting.aac',{cookie:reader})).status,403);
+  const saved=await f.request(path,{method:'PUT',cookie:admin,headers:{'Content-Type':'application/json'},body:JSON.stringify({...previous,case_ids:[...previous.case_ids,'voxdock']})});
+  assert.equal(saved.status,200);
+  assert.deepEqual(await (await f.request(preview,{cookie:reader})).json(),{kind:'private',src:'/api/resources/voxdock/demo/index.html?embed=1',allowDownloads:true});
+  assert.equal((await f.request('/api/resources/voxdock/demo/meeting.aac',{cookie:reader})).status,200);
+ }finally{f.db.close();}
+});
+
 const item={id:'rm01-product-comparison'},download='/api/dealer-materials/'+item.id+'/download',upload='/api/admin/dealer-materials/'+item.id;
 async function uploadPdf(f,cookie,body,headers={}) {
  const version=f.db.prepare('SELECT row_version FROM dealer_materials WHERE id=?').get(item.id).row_version;

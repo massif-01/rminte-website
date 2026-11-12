@@ -369,7 +369,7 @@
         "https://rminte.com/cases/"
       ],
       "path": "zh/cases-overview.md",
-      "sha256": "0d350e278f6c7973e5568cffdbdad8a8f853ab9743f9ed2029454e0d94221f8a",
+      "sha256": "20ce675b52c98dc724cb2a7159dc7997a208335605a6f1f0e072670528322620",
       "default_retrieval": true,
       "evidence_status": "published source text; qualification retained"
     },
@@ -760,7 +760,7 @@
         "https://rminte.com/cases/"
       ],
       "path": "en/cases-overview.md",
-      "sha256": "b3e5baf5bf590ddd48fd19f44119ca121cb6aa2387c638097ce260d7e7efb49c",
+      "sha256": "8753ca7cfeb3db840ed1e4e69067da38fcbd24ea1dee8f67fde4fe3cf0f64f72",
       "default_retrieval": true,
       "evidence_status": "published source text; qualification retained"
     },
@@ -958,11 +958,11 @@
       "evidence_status": "source transcription; not independent operational verification"
     },
     {
-      "id": "case-official-writing",
+      "id": "case-voxdock",
       "language": "zh",
-      "title": "AI 公文写作助手",
-      "source_commit": "c9b0897aa87a7e22a0ab264f9007a131f43a1135",
-      "prepared_on": "2026-10-30",
+      "title": "AI录音卡片会议总结",
+      "source_commit": "not-applicable-owner-original",
+      "prepared_on": "2026-11-12",
       "content_kind": "public-case-description",
       "applicability": "Do not infer customer identity, deployment status or results beyond this public description.",
       "source_files": [
@@ -971,8 +971,8 @@
       "source_urls": [
         "https://rminte.com/cases/"
       ],
-      "path": "zh/case-official-writing.md",
-      "sha256": "cf3a1ad1d689a76ec8cc3f83f465ef70bcc1d7651a08c3c00abf40bfcf1442e5",
+      "path": "zh/case-voxdock.md",
+      "sha256": "f968667e3ddf9e6fcc169556c4d63f94dd7483fee101781160be8a194255a817",
       "default_retrieval": true,
       "evidence_status": "source transcription; not independent operational verification"
     },
@@ -1186,11 +1186,11 @@
       "evidence_status": "source transcription; not independent operational verification"
     },
     {
-      "id": "case-official-writing",
+      "id": "case-voxdock",
       "language": "en",
-      "title": "AI Official Writing Assistant",
-      "source_commit": "c9b0897aa87a7e22a0ab264f9007a131f43a1135",
-      "prepared_on": "2026-10-30",
+      "title": "AI Recording Card Meeting Summaries",
+      "source_commit": "not-applicable-owner-original",
+      "prepared_on": "2026-11-12",
       "content_kind": "public-case-description",
       "applicability": "Do not infer customer identity, deployment status or results beyond this public description.",
       "source_files": [
@@ -1199,8 +1199,8 @@
       "source_urls": [
         "https://rminte.com/cases/"
       ],
-      "path": "en/case-official-writing.md",
-      "sha256": "f3be33b83cf00d06d45dcd8544cea3d5ae3475ac9e824e257d5a55ed1d0e2cf7",
+      "path": "en/case-voxdock.md",
+      "sha256": "677cbabb809908ae06a345c09e1a65d4197eaacba1068b857df67e73e6338922",
       "default_retrieval": true,
       "evidence_status": "source transcription; not independent operational verification"
     },

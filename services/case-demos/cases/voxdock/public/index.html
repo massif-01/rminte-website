@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN" data-type="software" data-radius="soft" data-buttons="solid">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src data:; img-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="page-type" content="software">
+  <meta name="site-kind" content="software">
+  <meta property="og:title" content="voxdock · 录音接入工作台">
+  <meta property="og:description" content="本地录音接入、处理状态与文件归档的工作台。">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#161c1a">
+  <meta name="description" content="voxdock 本地录音接入工作台，查看设备、上传、转写及文件归档状态。">
+  <title>voxdock — 录音接入工作台</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%239fc7b8'/%3E%3Cpath d='M9 14v5m7-11v15m7-9v5M8 26h16' stroke='%23161c1a' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<!-- Design: tasteskill green-black-bone / Host Grotesk. Functional app preview; example data, browser-only persistence. -->
+<a class="skip-link" href="#main">跳到主要内容</a>
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"><defs>
+<symbol id="i-wave" viewBox="0 0 24 24"><path d="M4 10v4m4-7v10m4-13v16m4-13v10m4-7v4"/></symbol>
+<symbol id="i-dock" viewBox="0 0 32 36"><path d="M7 13v7m9-13v19m9-13v7M5 30h22"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+<symbol id="i-device" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 6h4m-3 12h2"/><circle cx="12" cy="12" r="2"/></symbol>
+<symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h5l2 3h7a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/><path d="M3 9h18"/></symbol>
+<symbol id="i-connect" viewBox="0 0 24 24"><rect x="3" y="4" width="7" height="7" rx="2"/><rect x="14" y="13" width="7" height="7" rx="2"/><path d="M17 13V7h-7M7 11v6h7"/></symbol>
+<symbol id="i-history" viewBox="0 0 24 24"><path d="M3 11a9 9 0 1 1 2.6 7M3 4v7h7m2-4v5l3 2"/></symbol>
+<symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01m9-11h2m-2 11h2"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+<symbol id="i-right" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="i-circle-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></symbol>
+<symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.3 3.8 2.6 17a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 3.8a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4m0 3h.01"/></symbol>
+<symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 15v5h16v-5"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H5v20h14V7l-5-5Zm0 0v6h5M8 12h8m-8 4h6"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v13m-5-5 5 5 5-5M4 17v4h16v-4"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7a9 9 0 0 0-15-2L2 8m0-6v6h6M4 17a9 9 0 0 0 15 2l3-3m0 6v-6h-6"/></symbol>
+<symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+<symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+<symbol id="i-external" viewBox="0 0 24 24"><path d="M14 3h7v7m0-7L10 14m-3-9H3v16h16v-4"/></symbol>
+<symbol id="i-sliders" viewBox="0 0 24 24"><path d="M3 6h7m4 0h7M3 18h11m4 0h3"/><circle cx="12" cy="6" r="2"/><circle cx="16" cy="18" r="2"/></symbol>
+</defs></svg>
+<div class="app">
+  <button class="mobile-overlay" id="mobileOverlay" aria-label="关闭导航"></button>
+  <aside class="sidebar" id="sidebar" tabindex="-1" aria-label="主导航">
+    <a class="brand" data-page="recordings" href="?view=recordings" aria-label="voxdock 录音接入"><span class="brand-mark"><svg><use href="#i-dock"/></svg></span><span class="brand-name">voxdock</span></a>
+    <p class="brand-subtitle">本地录音工作台</p>
+    <div class="instance"><svg><use href="#i-server"/></svg><div><div class="instance-title">本地实例</div><div class="instance-sub">演示实例</div></div><svg style="margin-left:auto;width:14px" aria-hidden="true"><use href="#i-right"/></svg></div>
+    <div class="nav-label">工作空间</div>
+    <nav id="navigation">
+      <a class="nav-item active" href="?view=recordings" data-page="recordings"><svg><use href="#i-wave"/></svg>录音接入<span class="nav-count" id="navFailed" hidden></span></a>
+      <a class="nav-item" href="?view=devices" data-page="devices"><svg><use href="#i-device"/></svg>录音设备</a>
+      <a class="nav-item" href="?view=archive" data-page="archive"><svg><use href="#i-folder"/></svg>归档文件</a>
+      <div class="nav-label nav-secondary">实例管理</div>
+      <a class="nav-item" href="?view=connections" data-page="connections"><svg><use href="#i-connect"/></svg>服务连接</a>
+      <a class="nav-item" href="?view=events" data-page="events"><svg><use href="#i-history"/></svg>运行记录</a>
+    </nav>
+    <div class="sidebar-foot"><div class="storage-line"><span>原件归档</span><span class="num" id="storageCount">尚未连接</span></div><div class="storage-track" aria-label="磁盘容量未读取"></div><div class="storage-copy num" id="storageCopy">容量信息尚未读取</div><div class="admin"><span class="avatar">管</span><div class="admin-name"><span id="adminIdentity">本地管理员</span><div class="muted" id="adminState">尚未连接</div></div><button class="icon-btn" style="margin-left:auto" data-action="about" aria-label="实例说明"><svg><use href="#i-info"/></svg></button></div></div>
+  </aside>
+  <header class="topbar"><button class="icon-btn menu-button" id="menuButton" aria-controls="sidebar" aria-expanded="false" aria-label="打开导航"><svg><use href="#i-menu"/></svg></button><div class="breadcrumb"><span class="parent">工作空间</span><svg class="chevron"><use href="#i-right"/></svg><strong id="breadcrumbCurrent">录音接入</strong></div><div class="topbar-right"><span class="top-date" id="currentDate"></span><span class="demo-indicator" id="connectionStatus" role="status"><span></span>演示数据</span><button class="icon-btn desktop-only" data-action="about" aria-label="实例说明"><svg><use href="#i-info"/></svg></button></div></header>
+  <main class="main" id="main" tabindex="-1"></main>
+</div>
+<dialog id="dialog" aria-labelledby="dialogTitle"><div class="dialog-head"><h2 id="dialogTitle" tabindex="-1" autofocus>设备绑定</h2><button class="icon-btn" data-close="dialog" aria-label="关闭对话框"><svg><use href="#i-close"/></svg></button></div><div class="dialog-body"><p id="dialogError" class="field-error" role="alert"></p><div id="dialogBody"></div></div></dialog>
+<dialog class="drawer" id="recordDialog" aria-labelledby="recordDialogTitle"><div class="dialog-head"><h2 id="recordDialogTitle" tabindex="-1" autofocus>录音处理详情</h2><button class="icon-btn" data-close="recordDialog" aria-label="关闭录音详情"><svg><use href="#i-close"/></svg></button></div><div class="drawer-body" id="recordDetails"></div><div class="drawer-footer" id="recordActions"></div></dialog>
+<div id="toast" class="toast" role="status" aria-live="polite"><svg aria-hidden="true"><use href="#i-circle-check"/></svg><span></span></div>
+<p id="connectionError" class="connection-error" role="alert" hidden></p><noscript><p class="noscript">请启用 JavaScript 以操作演示。</p></noscript>
+
+<script type="module" src="./app.mjs"></script></body></html>

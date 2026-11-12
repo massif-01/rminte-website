@@ -114,15 +114,15 @@
     ]
   },
   {
-    "zh": "AI 公文写作助手",
-    "en": "AI Official Writing Assistant",
+    "zh": "AI录音卡片会议总结",
+    "en": "AI Recording Card Meeting Summaries",
     "sources": [
       "assets/case-catalog.mjs.cases.5.name"
     ]
   },
   {
-    "zh": "面向公文写作场景，提供 AI 辅助写作的应用入口。",
-    "en": "An entry point for AI-assisted writing of official documents.",
+    "zh": "将任何品类的数十个 AI 录音卡片接入 RM01，形成录音自动转写和总结的软硬件一体服务",
+    "en": "Connect dozens of AI recording cards across any category to RM01 for an integrated hardware and software service that automatically transcribes and summarizes recordings.",
     "sources": [
       "assets/case-catalog.mjs.cases.5.desc"
     ]

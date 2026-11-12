@@ -698,22 +698,22 @@
       "evidence_regex": "AI Document Recognition, Translation and Knowledge Base"
     },
     {
-      "id": "case-official-writing-zh",
-      "query": "介绍一下AI 公文写作助手案例及其公开内容。",
+      "id": "case-voxdock-zh",
+      "query": "介绍一下AI录音卡片会议总结案例及其公开内容。",
       "language": "zh",
       "expected_docs": [
-        "case-official-writing"
+        "case-voxdock"
       ],
-      "evidence_regex": "AI 公文写作助手"
+      "evidence_regex": "AI录音卡片会议总结"
     },
     {
-      "id": "case-official-writing-en",
-      "query": "Describe the published AI Official Writing Assistant application case.",
+      "id": "case-voxdock-en",
+      "query": "Describe the published AI Recording Card Meeting Summaries application case.",
       "language": "en",
       "expected_docs": [
-        "case-official-writing"
+        "case-voxdock"
       ],
-      "evidence_regex": "AI Official Writing Assistant"
+      "evidence_regex": "AI Recording Card Meeting Summaries"
     },
     {
       "id": "case-archive-management-zh",

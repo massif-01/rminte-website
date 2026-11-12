@@ -1,5 +1,5 @@
 import {enhancePasswords,refreshPasswordButtons} from '../assets/password-field.mjs';
-import {groups,cases,caseIds} from '../assets/case-catalog.mjs';
+import {groups,cases,caseIds} from '../assets/case-catalog.mjs?v=voxdock-case-1';
 // Cases page, design system v2 (D10). The cards, the dialogs and the authorised-access panel are drawn here. Every visible string is a zh/en pair that is
 // painted in the visitor's language (RM_I18N.text: zh and en from the pair, ja/ko/es/fr from the catalogs by the English text) and painted again on a
 // language switch, so a dialog that is open keeps what was typed into it.

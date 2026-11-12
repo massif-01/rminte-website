@@ -30,7 +30,7 @@
 - [基层事务 AI 助理](case-community-assistant.md)
 - [AI 节能调度专家](case-energy-dispatch.md)
 - [AI 文档识别与翻译知识库](case-document-knowledge.md)
-- [AI 公文写作助手](case-official-writing.md)
+- [AI录音卡片会议总结](case-voxdock.md)
 - [AI 企业档案管理](case-archive-management.md)
 - [无人机机场 AI 分析师](case-drone-analysis.md)
 - [AI 汽车研发与工业建模](case-industrial-modeling.md)

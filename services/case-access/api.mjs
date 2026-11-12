@@ -27,10 +27,11 @@ export async function session(request,env){
  if(!raw||!/^[A-Za-z0-9]{48}$/.test(raw))return null;
  return env.CASE_DB.prepare('SELECT s.token_hash AS session_hash,u.id,u.username,u.role,u.is_owner,u.disabled_at,u.must_change_password,u.can_download_dealer FROM sessions s JOIN users u ON u.id=s.user_id WHERE s.token_hash=? AND s.expires_at>? AND u.disabled_at IS NULL').bind(await digest(raw),now()).first();
 }
+const activeGrants=rows=>rows.map(g=>g.case_id).filter(id=>caseIds.includes(id));
 async function publicUser(u,env){
  if(!u)return null;
  const grants=u.role==='user'?await env.CASE_DB.prepare('SELECT case_id FROM case_grants WHERE user_id=? ORDER BY case_id').bind(u.id).all():{results:[]};
- return {sampleAccess:await sampleAccess(u,env),id:u.id,username:u.username,role:u.role,is_owner:!!u.is_owner,must_change_password:!!u.must_change_password,case_ids:grants.results.map(g=>g.case_id),all_cases:u.role==='admin'&&!u.must_change_password,resources:Object.fromEntries(caseIds.map(id=>[id,{demo:!!(resources[id]?.demoUrl||(resources[id]?.demoPath&&env.CASE_DEMOS)),download:!!(resources[id]?.fileKey&&env.CASE_FILES)}]))};
+ return {sampleAccess:await sampleAccess(u,env),id:u.id,username:u.username,role:u.role,is_owner:!!u.is_owner,must_change_password:!!u.must_change_password,case_ids:activeGrants(grants.results),all_cases:u.role==='admin'&&!u.must_change_password,resources:Object.fromEntries(caseIds.map(id=>[id,{demo:!!(resources[id]?.demoUrl||(resources[id]?.demoPath&&env.CASE_DEMOS)),download:!!(resources[id]?.fileKey&&env.CASE_FILES)}]))};
 }
 async function limit(env,key,max,seconds){
  const t=now();const row=await env.CASE_DB.prepare('INSERT INTO rate_limits(key,hits,expires_at) VALUES(?,1,?) ON CONFLICT(key) DO UPDATE SET hits=CASE WHEN expires_at<=? THEN 1 ELSE hits+1 END,expires_at=CASE WHEN expires_at<=? THEN excluded.expires_at ELSE expires_at END RETURNING hits').bind(key,t+seconds,t,t).first();
@@ -102,7 +103,7 @@ export async function handleApi(request,env){
    const base=new URL(`/api/resources/${id}/demo/`,url.origin);
    let target;try{target=new URL(r.demoEntry,base);}catch{fail(503,'演示配置不可用');}
    if(typeof r.demoEntry!=='string'||!r.demoEntry||/^(?:[a-z][a-z0-9+.-]*:|\/)/i.test(r.demoEntry)||target.origin!==base.origin||!target.pathname.startsWith(base.pathname)||/[\\]/.test(r.demoEntry))fail(503,'演示配置不可用');
-   return json({kind:'private',src:target.pathname+target.search+target.hash});
+   return json({kind:'private',src:target.pathname+target.search+target.hash,...(r.allowDownloads===true?{allowDownloads:true}:{})});
   }
   if(kind==='demo'){
    if(!r.demoPath||!env.CASE_DEMOS)fail(503,'该案例的演示尚未接入');
@@ -172,7 +173,7 @@ export async function handleApi(request,env){
   const {results}=await env.CASE_DB.prepare(`SELECT u.id,u.username,u.role,u.permissions_version,u.can_download_dealer AS dealer_download,u.created_at,e.occurred_at,e.ip,e.country,e.region,e.city FROM users u LEFT JOIN login_events e ON e.id=(SELECT id FROM login_events WHERE user_id=u.id ORDER BY occurred_at DESC,id DESC LIMIT 1) WHERE u.role='user' ORDER BY u.created_at DESC,u.id LIMIT 51 OFFSET ?`).bind(offset).all();
   const page=results.slice(0,50);
   const grants=page.length?await env.CASE_DB.prepare(`SELECT user_id,case_id FROM case_grants WHERE user_id IN (${page.map(()=>'?').join(',')}) ORDER BY case_id`).bind(...page.map(u=>u.id)).all():{results:[]};
-  return json({users:page.map(u=>({...u,dealer_download:!!u.dealer_download,case_ids:grants.results.filter(g=>g.user_id===u.id).map(g=>g.case_id)})),more:results.length>50});
+  return json({users:page.map(u=>({...u,dealer_download:!!u.dealer_download,case_ids:activeGrants(grants.results.filter(g=>g.user_id===u.id))})),more:results.length>50});
  }
  if(path==='/api/admin/users'&&method==='POST'){
   exact(await payload(request),[]);
@@ -190,7 +191,7 @@ export async function handleApi(request,env){
   }
   if(method==='GET'&&sub==='cases'){
    const {results}=await env.CASE_DB.prepare('SELECT case_id FROM case_grants WHERE user_id=? ORDER BY case_id').bind(id).all();
-   return json({case_ids:results.map(g=>g.case_id),dealer_download:!!u.can_download_dealer,version:u.permissions_version});
+   return json({case_ids:activeGrants(results),dealer_download:!!u.can_download_dealer,version:u.permissions_version});
   }
   if(method==='PUT'&&sub==='cases'){
    const data=await payload(request);exact(data,['case_ids','dealer_download','version']);

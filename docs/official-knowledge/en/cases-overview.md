@@ -116,9 +116,9 @@ Related materials **Sign in to download** Contact the supplier **Supplier detail
 
 Sign in to view demo
 
-### AI Official Writing Assistant
+### AI Recording Card Meeting Summaries
 
-An entry point for AI-assisted writing of official documents.
+Connect dozens of AI recording cards across any category to RM01 for an integrated hardware and software service that automatically transcribes and summarizes recordings.
 
 Materials and contact Demo
 
