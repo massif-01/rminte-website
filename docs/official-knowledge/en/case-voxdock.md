@@ -16,6 +16,10 @@ evidence_status: "source transcription; not independent operational verification
 
 Documents and knowledge
 
-Connect dozens of AI recording cards across any category to RM01 for an integrated hardware and software service that automatically transcribes and summarizes recordings.
+Connect dozens of AI recording cards across any category to RM-01 for an integrated hardware and software service that automatically transcribes and summarizes recordings.
+
+Published supplier: Jiesi Gongchuang (Chengdu) Technology Co., Ltd.
+
+304008097@qq.com
 
 This is the published case description. Demonstrations and related files require the site login and authorization process. Protected demonstrations, customer data and private attachments were not collected.

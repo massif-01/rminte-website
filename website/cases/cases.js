@@ -1,5 +1,5 @@
 import {enhancePasswords,refreshPasswordButtons} from '../assets/password-field.mjs';
-import {groups,cases,caseIds} from '../assets/case-catalog.mjs?v=voxdock-case-1';
+import {groups,cases,caseIds} from '../assets/case-catalog.mjs?v=case-details-1';
 // Cases page, design system v2 (D10). The cards, the dialogs and the authorised-access panel are drawn here. Every visible string is a zh/en pair that is
 // painted in the visitor's language (RM_I18N.text: zh and en from the pair, ja/ko/es/fr from the catalogs by the English text) and painted again on a
 // language switch, so a dialog that is open keeps what was typed into it.
@@ -100,7 +100,7 @@ import {groups,cases,caseIds} from '../assets/case-catalog.mjs?v=voxdock-case-1'
   function card(item, index) {
     const contact = item.supplier
       ? `<a class="cs-row" href="mailto:${esc(item.supplier.email)}">${t(COPY.contact, 'small')}<strong data-supplier="${index}">${esc(item.supplier.name.zh)}</strong><small>${t(COPY.contactEmail)} ${esc(item.supplier.email)}</small>${icons.arrow}</a>`
-      : `<button class="cs-row" type="button" data-state="off" aria-disabled="true">${t(COPY.contact, 'small')}${t(COPY.contactPending, 'strong')}${icons.arrow}</button>`;
+      : `<button class="cs-row cs-supplier-pending" type="button" data-state="off" aria-disabled="true">${t(COPY.contact, 'small')}${t(COPY.contactPending, 'strong')}${icons.arrow}</button>`;
     return `<article class="cs-card" data-bevel><div class="cs-summary"><div class="cs-copy">${t(COPY.signToDemo, 'p', ' class="cs-status"')}${t(item.name, 'h3')}${t(item.desc, 'p', ' class="desc"')}</div>`
       + `<div class="cs-bar"><button class="cs-more" type="button" aria-expanded="false" aria-controls="p${index}">${t(COPY.more)}${icons.chevron}</button>`
       + `<button class="cs-demo" type="button" data-action="demo" data-selected="${index}">${icons.play}${t(COPY.demo)}</button></div></div>`

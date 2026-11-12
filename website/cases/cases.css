@@ -23,7 +23,7 @@ html { scroll-padding-top: 120px; }
 .cs-summary { display: flex; flex-direction: column; min-height: var(--case-summary-height, 0px); }
 .cs-copy { display: flow-root; margin-bottom: 24px; }
 .cs-card:hover, .cs-card:focus-within, .cs-card[data-open] { --ba: .5; border-color: var(--line-2); }
-.cs-card[data-open] { background: var(--n-3); }
+.cs-card[data-open] { align-self: stretch; background: var(--n-3); }
 .cs-status { display: flex; align-items: center; gap: 8px; margin: 0; font: 400 var(--fs-label)/1 var(--font-mono); letter-spacing: .02em; color: var(--text-3); }
 .cs-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--n-6); flex: none; }
 .cs-status[data-state="ok"]::before { background: var(--sapphire-300); }
@@ -48,6 +48,7 @@ html { scroll-padding-top: 120px; }
 .cs-row:hover { background: var(--line-1); }
 .cs-row:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: -2px; }
 .cs-row small { grid-column: 1; font-size: var(--fs-note); color: var(--text-3); }
+.cs-supplier-pending::after { content: ""; grid-column: 1; font-size: var(--fs-note); min-block-size: 1lh; }
 .cs-row strong { grid-column: 1; font-size: var(--fs-small); font-weight: 450; color: var(--text-1); }
 .cs-row svg { grid-column: 2; grid-row: 1 / span 2; width: 18px; height: 18px; fill: none; stroke: var(--text-3); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: transform var(--dur-hover) var(--ease-settle), stroke var(--dur-hover) var(--ease-settle); }
 .cs-row:hover svg { transform: translate(2px, -2px); stroke: var(--text-1); }

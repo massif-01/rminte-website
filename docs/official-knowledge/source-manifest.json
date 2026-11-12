@@ -369,7 +369,7 @@
         "https://rminte.com/cases/"
       ],
       "path": "zh/cases-overview.md",
-      "sha256": "20ce675b52c98dc724cb2a7159dc7997a208335605a6f1f0e072670528322620",
+      "sha256": "fc180b6abcaa59afb117b1d90fec3a1d81ebf9ab9a698f9609bca64bbbac965a",
       "default_retrieval": true,
       "evidence_status": "published source text; qualification retained"
     },
@@ -760,7 +760,7 @@
         "https://rminte.com/cases/"
       ],
       "path": "en/cases-overview.md",
-      "sha256": "8753ca7cfeb3db840ed1e4e69067da38fcbd24ea1dee8f67fde4fe3cf0f64f72",
+      "sha256": "d08b2d42117cea93f6180302ba9c54aefb89d92232a9f078b56e69a9f7277749",
       "default_retrieval": true,
       "evidence_status": "published source text; qualification retained"
     },
@@ -972,7 +972,7 @@
         "https://rminte.com/cases/"
       ],
       "path": "zh/case-voxdock.md",
-      "sha256": "f968667e3ddf9e6fcc169556c4d63f94dd7483fee101781160be8a194255a817",
+      "sha256": "69c96a4c99fb0e3434b536d972be2a596aacf89a5dd91abf3ad9875bb35c84ec",
       "default_retrieval": true,
       "evidence_status": "source transcription; not independent operational verification"
     },
@@ -1200,7 +1200,7 @@
         "https://rminte.com/cases/"
       ],
       "path": "en/case-voxdock.md",
-      "sha256": "677cbabb809908ae06a345c09e1a65d4197eaacba1068b857df67e73e6338922",
+      "sha256": "93e8fcfa38151cd59e2d09072682ddfdd1337c1582dc9242255c47f31c621be1",
       "default_retrieval": true,
       "evidence_status": "source transcription; not independent operational verification"
     },

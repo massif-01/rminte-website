@@ -16,11 +16,11 @@
   <link rel="stylesheet" href="../assets/brand.css?v=d10-1">
   <link rel="stylesheet" href="../assets/styles.css?v=sample-2">
   <link rel="stylesheet" href="../assets/case-ui.css?v=password-visibility-1">
-  <link rel="stylesheet" href="cases.css?v=nav-silver-20261024">
+  <link rel="stylesheet" href="cases.css?v=case-details-1">
   <script>
     // ja/ko/es/fr carry their own catalog file; zh and en need none. Resolve the language the way i18n.js does and load only that file.
     (function (up) {
-      var ok = /^(zh|en|ja|ko|es|fr)$/, c = window.RM_CATALOG = { base: up + 'assets/translations/', v: 'voxdock-case-1' };
+      var ok = /^(zh|en|ja|ko|es|fr)$/, c = window.RM_CATALOG = { base: up + 'assets/translations/', v: 'case-details-1' };
       c.load = function () {
         var s; try { s = localStorage.getItem('rm-soft-lang'); } catch (e) {}
         var l = [new URLSearchParams(location.search).get('lang'), (location.hash.match(/^#(zh|en|ja|ko|es|fr)-/) || [])[1], s, window.RM_DEFAULT_LANG].filter(function (x) { return ok.test(x); })[0];
@@ -48,7 +48,7 @@
   <script src="../assets/nav-glide.js?v=glide-1" defer></script>
   <script src="case-demo.js?v=voxdock-case-1" defer></script>
   <link rel="stylesheet" href="case-demo.css?v=preview-review-20261019-merged22">
-  <script type="module" src="cases.js?v=voxdock-case-1" defer></script>
+  <script type="module" src="cases.js?v=case-details-1" defer></script>
   <script type="module" src="wave.js?v=cases-wave-20261013"></script>
 </head>
 <body class="brand-page cases-body">
