@@ -100,7 +100,7 @@ import {groups,cases,caseIds} from '../assets/case-catalog.mjs?v=case-details-1'
   function card(item, index) {
     const contact = item.supplier
       ? `<a class="cs-row" href="mailto:${esc(item.supplier.email)}">${t(COPY.contact, 'small')}<strong data-supplier="${index}">${esc(item.supplier.name.zh)}</strong><small>${t(COPY.contactEmail)} ${esc(item.supplier.email)}</small>${icons.arrow}</a>`
-      : `<button class="cs-row cs-supplier-pending" type="button" data-state="off" aria-disabled="true">${t(COPY.contact, 'small')}${t(COPY.contactPending, 'strong')}${icons.arrow}</button>`;
+      : `<button class="cs-row" type="button" data-state="off" aria-disabled="true">${t(COPY.contact, 'small')}${t(COPY.contactPending, 'strong')}${icons.arrow}</button>`;
     return `<article class="cs-card" data-bevel><div class="cs-summary"><div class="cs-copy">${t(COPY.signToDemo, 'p', ' class="cs-status"')}${t(item.name, 'h3')}${t(item.desc, 'p', ' class="desc"')}</div>`
       + `<div class="cs-bar"><button class="cs-more" type="button" aria-expanded="false" aria-controls="p${index}">${t(COPY.more)}${icons.chevron}</button>`
       + `<button class="cs-demo" type="button" data-action="demo" data-selected="${index}">${icons.play}${t(COPY.demo)}</button></div></div>`
@@ -313,17 +313,20 @@ import {groups,cases,caseIds} from '../assets/case-catalog.mjs?v=case-details-1'
   }
 
   build();
-  // Keep every collapsed card equal without clipping translated copy. Observe the
-  // content, not the equalized wrapper, so the height can shrink as well as grow.
+  // Measure the content so both summary and panel heights follow translated text
+  // and can shrink as well as grow without observing their animated wrappers.
   function alignCardHeights() {
     const height = Math.max(...Array.from(list.querySelectorAll('.cs-summary'), (summary) =>
       summary.querySelector('.cs-copy').getBoundingClientRect().height
       + parseFloat(getComputedStyle(summary.querySelector('.cs-copy')).marginBottom)
       + summary.querySelector('.cs-bar').getBoundingClientRect().height));
+    const panelHeight = Math.max(...Array.from(list.querySelectorAll('.cs-panel > div'), (panel) =>
+      Array.from(panel.children).reduce((sum, row) => sum + row.getBoundingClientRect().height, 0)));
     list.style.setProperty('--case-summary-height', `${Math.ceil(height)}px`);
+    list.style.setProperty('--case-panel-height', `${Math.ceil(panelHeight)}px`);
   }
   const cardSizeObserver = new ResizeObserver(alignCardHeights);
-  list.querySelectorAll('.cs-copy, .cs-bar').forEach((content) => cardSizeObserver.observe(content));
+  list.querySelectorAll('.cs-copy, .cs-bar, .cs-row').forEach((content) => cardSizeObserver.observe(content));
   alignCardHeights();
   window.addEventListener('case-auth-render',()=>{
     updateCards();const op=currentOperation;
