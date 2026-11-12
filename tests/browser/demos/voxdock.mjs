@@ -66,16 +66,19 @@ export default async function({page,frame,caseName,reopen,language,width}){
   await expect(details.locator('#recordFeedback')).toContainText('可查看归档');await closeDetails();
 
   await nav('devices','录音设备');
-  await page.context().grantPermissions(['clipboard-read','clipboard-write']);
   await button('复制地址').click();await toast('地址已复制');
+  await page.context().grantPermissions(['clipboard-read']);
   expect(await page.evaluate(()=>navigator.clipboard.readText())).toBe('http://voxdock.example:8766');
+  await page.context().clearPermissions();
   await frame.locator('.page-head [data-action="add-device"]').click();
   await dialog.getByLabel('设备名称').fill('演示新卡');
   await dialog.locator('#deviceUser').selectOption('2');
   await dialog.locator('#folder').selectOption('1');
   await dialog.getByLabel('待跟进').check();
   await button('登记设备并生成凭证',dialog).click();
-  await expect(dialog.locator('#deviceCredential')).toHaveValue('00000001');await button('完成',dialog).click();
+  await expect(dialog.locator('#deviceCredential')).toHaveValue('00000001');
+  await button('复制地址',dialog).click();await expect(dialog.locator('#copyFeedback')).toContainText('地址已复制');
+  await button('完成',dialog).click();
   const card=frame.locator('.device-card').filter({hasText:'演示新卡'});
   await card.locator('[data-edit-device]').click();await dialog.getByLabel('设备名称').fill('演示新卡（已编辑）');
   await button('保存设备设置',dialog).click();await expect(card).toContainText('已编辑');
@@ -112,7 +115,7 @@ export default async function({page,frame,caseName,reopen,language,width}){
   }
   await button('目录说明').click();await button('检查全部录音任务',dialog).click();await toast('已检查全部录音任务');
   await dialog.locator('#dialogTitle').press('Escape');
-  await nav('events','运行记录');await expect(frame.locator('.event-row').first()).toContainText('已检查当前演示录音');
+  await nav('events','运行记录');await expect(frame.locator('.event-row').first()).toContainText('录音任务已检查');
 
   await frame.locator('.topbar [data-action="about"]').click();await button('刷新状态',dialog).click();
   await expect(dialog.locator('#refreshFeedback')).toContainText('已刷新演示状态');
