@@ -1,12 +1,17 @@
 // One R2 pointer owns the page, version API and both downloads.
 export const CURRENT_KEY = 'firmware/tianshanos/current.json';
 export const snapshotKey = id => `firmware/tianshanos/releases/${id}/release.json`;
+const FIRMWARE_FILENAME = 'TianshanOS.bin';
 const GITHUB = 'https://api.github.com/repos/RMinte/TianshanOS/releases/latest';
 
 export async function readRelease(bucket, snapshot) {
   if (snapshot && !/^\d+-[a-f0-9]{12}-[a-f0-9]{12}$/.test(snapshot)) return null;
   const object = await bucket.get(snapshot ? snapshotKey(snapshot) : CURRENT_KEY);
-  return object ? object.json() : null;
+  if (!object) return null;
+  const release = await object.json();
+  // Existing snapshots retain their R2 keys but use the public filename.
+  release.firmware.name = FIRMWARE_FILENAME;
+  return release;
 }
 
 export function firmwareInfo(bytes) {
@@ -28,10 +33,11 @@ export async function syncRelease(bucket, fetcher = fetch) {
   if (!response.ok) throw new Error(`GitHub release lookup: ${response.status}`);
   const release = await response.json();
   if (release.draft || release.prerelease || !/^v\d+\.\d+\.\d+$/.test(release.tag_name)) throw new Error('Expected a stable TianShanOS release');
-  const assets = ['TianShanOS.bin', 'www.bin'].map(name => {
-    const asset = release.assets.find(item => item.name === name && item.state === 'uploaded');
-    if (!asset || !/^sha256:[a-f0-9]{64}$/.test(asset.digest)) throw new Error(`Release asset not ready: ${name}`);
-    return asset;
+  const assets = [FIRMWARE_FILENAME, 'www.bin'].map(name => {
+    const matches = release.assets.filter(item => item.name.toLowerCase() === name.toLowerCase() && item.state === 'uploaded');
+    const [asset] = matches;
+    if (matches.length !== 1 || !/^sha256:[a-f0-9]{64}$/.test(asset.digest)) throw new Error(`Expected one uploaded release asset with a digest: ${name}`);
+    return { ...asset, name };
   });
   const snapshot = `${release.id}-${assets[0].digest.slice(7, 19)}-${assets[1].digest.slice(7, 19)}`;
   const current = await readRelease(bucket);

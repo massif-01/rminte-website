@@ -110,7 +110,7 @@ export default {
     }
     if (path === "/version" || path === "/info") return json(versionPayload(RELEASE));
     if (path === "/health") return json({ status: "ok", service: "TianShanOS OTA Server", version: RELEASE.version, firmware_available: true, www_available: true });
-    if (["/firmware", "/firmware.bin", "/TianShanOS.bin"].includes(path)) return serveObject(request, env, RELEASE.firmware, url.searchParams.has("release"));
+    if (["/firmware", "/firmware.bin", "/TianshanOS.bin", "/TianShanOS.bin"].includes(path)) return serveObject(request, env, RELEASE.firmware, url.searchParams.has("release"));
     if (["/www", "/www.bin"].includes(path)) return serveObject(request, env, RELEASE.www, url.searchParams.has("release"));
     return json({ error: "Not Found" }, 404);
   }

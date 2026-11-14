@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { syncRelease, readRelease, CURRENT_KEY } from '../src/releases.js';
+import { syncRelease, readRelease, CURRENT_KEY, snapshotKey } from '../src/releases.js';
 import worker from '../src/index.js';
 
 async function fixture() {
@@ -35,7 +35,7 @@ test('publish the matched pair before current; API/page/download read the same s
   const env={DOWNLOADS:f.bucket};
   const info=await (await worker.fetch(new Request('https://ota/version'),env)).json();
   assert.equal(info.version,release.version); assert.equal(info.sha256,release.firmware.sha256); assert.equal(info.www_sha256,release.www.sha256);
-  const html=await (await worker.fetch(new Request('https://ota/'),env)).text(); assert.match(html,/0.6.0/);
+  const html=await (await worker.fetch(new Request('https://ota/'),env)).text(); assert.match(html,/0.6.0/); assert.match(html,/>TianshanOS\.bin</);
   const response=await worker.fetch(new Request(`https://ota/firmware?release=${release.snapshot}`),env);
   assert.equal(response.headers.get('cache-control'),'public, max-age=31536000, immutable');
   assert.equal(Buffer.from(await response.arrayBuffer()).length,288);
@@ -43,11 +43,12 @@ test('publish the matched pair before current; API/page/download read the same s
   assert.equal((await syncRelease(f.bucket,f.fetcher)).changed,false); assert.equal(f.writes.length,4);
 });
 
-for(const problem of ['prerelease','draft','missing-www','bad-hash','wrong-tag','wrong-size','downgrade','upload-failure']) {
+for(const problem of ['prerelease','draft','missing-www','ambiguous-firmware','bad-hash','wrong-tag','wrong-size','downgrade','upload-failure']) {
  test(`leave current unchanged on ${problem}`,async()=>{
   const f=await fixture(); await syncRelease(f.bucket,f.fetcher); const before=f.objects.get(CURRENT_KEY); f.release.id=2;
   if(problem==='prerelease'||problem==='draft') f.release[problem]=true;
   if(problem==='missing-www')f.release.assets.pop();
+  if(problem==='ambiguous-firmware')f.release.assets.push({...f.release.assets[0],name:'TianshanOS.bin'});
   if(problem==='bad-hash')f.release.assets[1].digest='sha256:'+'0'.repeat(64);
   if(problem==='wrong-size')f.release.assets[1].size=10;
   if(problem==='wrong-tag')f.release.tag_name='v0.7.0';
@@ -56,9 +57,17 @@ for(const problem of ['prerelease','draft','missing-www','bad-hash','wrong-tag',
   await assert.rejects(syncRelease(f.bucket,f.fetcher)); assert.equal(f.objects.get(CURRENT_KEY),before);
  });
 }
-test('a pinned old pair remains downloadable after promotion; invalid snapshot rejected',async()=>{
- const f=await fixture();await syncRelease(f.bucket,f.fetcher);const old=await readRelease(f.bucket);f.release.id=2;await syncRelease(f.bucket,f.fetcher);
- assert.notEqual((await readRelease(f.bucket)).snapshot,old.snapshot);assert.equal((await readRelease(f.bucket,old.snapshot)).snapshot,old.snapshot);
+test('a new asset on the same GitHub release replaces current and preserves the pinned pair',async()=>{
+ const f=await fixture();await syncRelease(f.bucket,f.fetcher);const old=await readRelease(f.bucket);
+ f.release.assets[0].name='TianshanOS.bin';
+ const bytes = new Uint8Array(await (await f.fetcher('https://files/0')).arrayBuffer());
+ bytes[287]=1;
+ f.release.assets[0].digest='sha256:'+Buffer.from(await crypto.subtle.digest('SHA-256',bytes)).toString('hex');
+ await syncRelease(f.bucket,async url=>url==='https://files/0'?new Response(bytes):f.fetcher(url));
+ const current=await readRelease(f.bucket);
+ assert.equal(current.tag,old.tag);assert.notEqual(current.snapshot,old.snapshot);
+ assert.equal(current.firmware.name,'TianshanOS.bin');
+ assert.equal((await readRelease(f.bucket,old.snapshot)).firmware.sha256,old.firmware.sha256);
  assert.equal(await readRelease(f.bucket,'../current'),null);
 });
 
@@ -66,9 +75,29 @@ test('device aliases, HEAD, range and scheduled handler retain their contracts',
  const f=await fixture();const original=globalThis.fetch;let task;
  try{globalThis.fetch=f.fetcher;await worker.scheduled({}, {DOWNLOADS:f.bucket},{waitUntil(p){task=p;}});await task;}finally{globalThis.fetch=original;}
  for(const path of ['/info','/version'])assert.equal((await(await worker.fetch(new Request('https://ota'+path),{DOWNLOADS:f.bucket})).json()).version,'0.6.0+build');
- for(const path of ['/firmware','/firmware.bin','/TianShanOS.bin','/www','/www.bin']){
+ for(const path of ['/firmware','/firmware.bin','/TianshanOS.bin','/TianShanOS.bin','/www','/www.bin']){
   const response=await worker.fetch(new Request('https://ota'+path,{method:'HEAD'}),{DOWNLOADS:f.bucket});assert.equal(response.status,200);assert.ok(Number(response.headers.get('content-length'))>0);assert.equal(await response.text(),'');
  }
  const range=await worker.fetch(new Request('https://ota/firmware',{headers:{Range:'bytes=0-15'}}),{DOWNLOADS:f.bucket});assert.equal(range.status,206);assert.equal(range.headers.get('content-range'),'bytes 0-15/288');assert.equal((await range.arrayBuffer()).byteLength,16);
  const missing=await worker.fetch(new Request('https://ota/version'),{DOWNLOADS:{get:async()=>null}});assert.equal(missing.status,503);
+});
+
+test('existing snapshots keep their stored firmware key and use the public download filename', async () => {
+  const f = await fixture();
+  const { snapshot } = await syncRelease(f.bucket, f.fetcher);
+  const current = await readRelease(f.bucket);
+  const canonicalKey = current.firmware.key;
+  current.firmware.key = canonicalKey.replace('TianshanOS.bin', 'TianShanOS.bin');
+  current.firmware.name = 'TianShanOS.bin';
+  f.objects.set(current.firmware.key, f.objects.get(canonicalKey));
+  f.objects.delete(canonicalKey);
+  f.objects.set(CURRENT_KEY, JSON.stringify(current));
+  f.objects.set(snapshotKey(snapshot), JSON.stringify(current));
+
+  for (const suffix of ['', `?release=${snapshot}`]) {
+    const result = await worker.fetch(new Request(`https://ota/firmware${suffix}`), { DOWNLOADS: f.bucket });
+    assert.equal(result.status, 200);
+    assert.equal(result.headers.get('content-disposition'), 'attachment; filename="TianshanOS.bin"');
+    assert.deepEqual(await result.arrayBuffer(), f.objects.get(current.firmware.key));
+  }
 });
