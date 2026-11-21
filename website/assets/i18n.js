@@ -5,6 +5,9 @@
   const valid = value => Object.hasOwn(names, value);
   const missing = new Set();
   const controls = [];
+  const pageLanguage = document.documentElement.dataset.searchLanguage;
+  const englishPaths = new Map(JSON.parse(document.documentElement.dataset.searchPaths || '[]'));
+  const originalPaths = new Map([...englishPaths].map(([original, english]) => [english, original]));
   // zh and en ship with each page; ja/ko/es/fr are separate files. The page head loads the one it opens in
   // (see the snippet before this script); switching language later loads the new one on demand.
   const hasCatalog = lang => lang === 'zh' || lang === 'en' || Boolean(window.RM_TRANSLATIONS?.[lang]);
@@ -28,7 +31,7 @@
     const explicit = new URL(location.href).searchParams.get('lang');
     let stored;
     try { stored = localStorage.getItem('rm-soft-lang'); } catch { /* Storage may be disabled. */ }
-    return [explicit, fromHash(), stored, window.RM_DEFAULT_LANG, 'en'].find(valid);
+    return [explicit, fromHash(), pageLanguage, stored, window.RM_DEFAULT_LANG, 'en'].find(valid);
   }
   let current = initial();
   function text(pair, lang = current) {
@@ -134,9 +137,17 @@
       const raw = previous && href === previous.generated ? previous.raw : href;
       if (!raw || raw.startsWith('#')) return;
       const url = new URL(raw, location.href);
-      if (url.origin !== location.origin || !/^\/(?:index\.html)?$|^\/(?:models|gallery|downloads|guides)(?:\/|$)/.test(url.pathname)) return;
-      if (valid(url.searchParams.get('lang')) || fromHash(url.hash)) return;
-      url.searchParams.set('lang', current);
+      if (url.origin !== location.origin || valid(url.searchParams.get('lang')) || fromHash(url.hash)) return;
+      if (url.pathname === '/guides/index.html') url.pathname = '/guides/';
+      const original = originalPaths.get(url.pathname) || url.pathname.replace(/index\.html$/, '');
+      const english = englishPaths.get(original);
+      if (english) {
+        url.pathname = current === 'en' ? english : original;
+        if (current !== 'en') url.searchParams.set('lang', current);
+      } else {
+        if (!/^\/(?:index\.html)?$|^\/(?:models|gallery|downloads|guides)(?:\/|$)/.test(url.pathname)) return;
+        url.searchParams.set('lang', current);
+      }
       propagatedLinks.set(link, {raw, generated: url.href});
       if (href !== url.href) link.setAttribute('href', url.href);
     });

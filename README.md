@@ -84,3 +84,11 @@ PR 目标为 `RMinte/rminte-website:main`。普通贡献者需要必要 CI 和 O
 Pages 从完整仓库构建并编译 `website/_worker.js`，其账号 API 依赖 `services/case-access/` 中的模块。生产 D1、密钥和私有资源绑定由 Cloudflare 管理，不将本地凭据或数据库复制到生产。新增静态案例复用现有演示服务及绑定；生产自动部署、首次绑定与恢复方式统一见 [案例演示服务说明](services/case-demos/README.md#生产自动部署)；账号服务的初始化、后续更新和发布验收见 [账号服务说明](services/case-access/README.md#部署方式)。
 
 合并到组织 `main` 即触发主站 Pages 和已接入的案例演示 Worker 自动部署，不增加单独的部署或上线审批；两项构建分别确认成功。独立 OTA 仍按明确授权单独发布，不随主站合并自动部署。
+
+### 搜索入口与爬虫
+
+首页、模型和指南入口分别对应英文的 `/en`、`/models/en`、`/guides/en`。英文页复用现有内容和交互，原始 HTML 直接提供英文正文和独立 canonical。主站 sitemap 登记中英文对应关系。文档子域继续使用自己的 [sitemap](https://docs.rminte.com/sitemap.xml)。
+
+修改上述页面、首页文案数据或 SEO 元数据后，运行 `node website/scripts/build-search-locales.mjs` 更新英文页、sitemap 和 robots.txt。需要更新现有中文页的 SEO 元数据时，先运行 `node website/scripts/seo.mjs`。CI 使用 `--check` 检查生成文件。
+
+源站 robots.txt 明确允许 KimiBot 和 Baiduspider。Cloudflare 托管 robots 和实际边缘拦截由域名设置控制。发布时在 AI Crawl Control 中分别确认这两个爬虫为 Allow，并检查线上 robots.txt 是否还含对应的托管 Disallow。通过 Cloudflare 安全事件或已验证的爬虫请求确认边缘放行。Google-Extended 沿用原有策略。详见 [Cloudflare 爬虫配置](https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/)和 [托管 robots.txt](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/)。

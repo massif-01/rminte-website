@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+User-agent: KimiBot
+User-agent: Baiduspider
+Allow: /
+
 Sitemap: https://rminte.com/sitemap.xml

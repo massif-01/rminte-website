@@ -2,6 +2,7 @@
   "home": {
     "file": "index.html",
     "path": "/",
+    "englishPath": "/en",
     "title": {
       "zh": "RM-01 便携 AI 超算 | 本地大模型推理与 AI Agent 部署 | RMinte",
       "en": "RM-01 Portable AI Supercomputer | Local LLM Inference & AI Agents | RMinte"
@@ -14,6 +15,7 @@
   "models": {
     "file": "models/index.html",
     "path": "/models/",
+    "englishPath": "/models/en",
     "title": {
       "zh": "RMQ3x 与 RMQ4 专业 AI 模型 | 推理引擎与 Agent 能力 | RMinte",
       "en": "RMQ3x & RMQ4 Models | Specialized Reasoning & Inference | RMinte"
@@ -38,6 +40,7 @@
   "guides": {
     "file": "guides/index.html",
     "path": "/guides/",
+    "englishPath": "/guides/en",
     "title": {
       "zh": "RM-01 使用指南 | TianshanOS 管理、运维与网络配置 | RMinte",
       "en": "RM-01 Guides | TianshanOS Setup, Security & Operations | RMinte"

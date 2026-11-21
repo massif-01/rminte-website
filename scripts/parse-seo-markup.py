@@ -8,13 +8,18 @@ from xml.etree import ElementTree
 class Head(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
-        self.result = {"titles": [], "metas": [], "links": [], "schemas": []}
+        self.result = {"titles": [], "metas": [], "links": [], "schemas": [], "lang": "", "h1": ""}
         self.in_head = False
         self.title = None
         self.schema = None
+        self.in_h1 = False
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
+        if tag == "html":
+            self.result["lang"] = attrs.get("lang", "")
+        if tag == "h1" and not self.result["h1"]:
+            self.in_h1 = True
         if tag == "head":
             self.in_head = True
         if not self.in_head:
@@ -28,6 +33,8 @@ class Head(HTMLParser):
             self.schema = ""
 
     def handle_endtag(self, tag):
+        if tag == "h1":
+            self.in_h1 = False
         if tag == "head":
             self.in_head = False
         elif tag == "title":
@@ -37,6 +44,8 @@ class Head(HTMLParser):
             self.schema = None
 
     def handle_data(self, data):
+        if self.in_h1:
+            self.result["h1"] += data
         if self.title is not None:
             self.title["text"] += data
         if self.schema is not None:
@@ -57,6 +66,11 @@ else:
     assert all(len(url.findall(ns + "loc")) == 1 for url in urls), "Each URL needs one loc"
     result = {
         "urls": [url.findtext(ns + "loc", "") for url in urls],
+        "alternates": {
+            url.findtext(ns + "loc", ""): [
+                link.attrib for link in url.findall("{http://www.w3.org/1999/xhtml}link")
+            ] for url in urls
+        },
         "images": [node.text or "" for node in root.iter("{http://www.google.com/schemas/sitemap-image/1.1}loc")],
         "hasLastmod": next(root.iter(ns + "lastmod"), None) is not None,
     }

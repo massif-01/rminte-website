@@ -40,7 +40,7 @@ const guideConfig = {
       en: 'For users managing TianshanOS with the admin account, covering system status, devices, networking, files, and OTA updates.'
     },
     chapterCount: { zh: '9 个章节', en: '9 chapters' },
-    next: { href: 'root.html', zh: '继续阅读 root 指南', en: 'Continue to the root guide' }
+    next: { href: 'root', zh: '继续阅读 root 指南', en: 'Continue to the root guide' }
   },
   root: {
     source: join(guidesDir, 'content', 'root.md'),
@@ -54,7 +54,7 @@ const guideConfig = {
       en: 'For operators managing TianshanOS with the root account, including shared daily tasks, terminal, commands, and automation.'
     },
     chapterCount: { zh: '13 个章节', en: '13 chapters' },
-    next: { href: 'security.html', zh: '继续阅读安全指南', en: 'Continue to the Security guide' }
+    next: { href: 'security', zh: '继续阅读安全指南', en: 'Continue to the Security guide' }
   },
   security: {
     source: {
@@ -71,7 +71,7 @@ const guideConfig = {
       en: 'For individual users, security administrators, and device operators. Learn what the Security page can and cannot do, and how to verify every critical action.'
     },
     chapterCount: { zh: '8 个章节', en: '8 chapters' },
-    next: { href: 'admin.html', zh: '继续阅读 Admin 指南', en: 'Continue to the Admin guide' }
+    next: { href: 'admin', zh: '继续阅读 Admin 指南', en: 'Continue to the Admin guide' }
   },
   network: {
     source: join(guidesDir, 'content', 'network.md'),
@@ -90,7 +90,7 @@ const guideConfig = {
       zh: '在 GitHub 查看网络自动化项目',
       en: 'View the network automation project on GitHub'
     },
-    next: { href: 'admin.html', zh: '继续阅读 Admin 指南', en: 'Continue to the Admin guide' }
+    next: { href: 'admin', zh: '继续阅读 Admin 指南', en: 'Continue to the Admin guide' }
   }
 };
 
@@ -377,7 +377,7 @@ function buildSearchEntries(source, lang, slug, config) {
         guideLabel: config.label[lang],
         title: plainSearchText(headingMatch[2]),
         level: headingMatch[1].length,
-        href: `${slug}.html#${lang}-section-${headingIndex}`,
+        href: `${slug}#${lang}-section-${headingIndex}`,
         parts: []
       };
       return;
@@ -454,7 +454,7 @@ function siteNavigationTemplate() {
       <a href="../models/index.html" data-guide-text data-zh="模型" data-en="Models">模型</a>
       <a href="../index.html#engine" data-guide-text data-zh="产品" data-en="Product">产品</a>
       <a href="../cases/index.html" data-guide-text data-zh="案例" data-en="Application cases">案例</a>
-      <a class="active" href="index.html" aria-current="page" data-guide-text data-zh="指南" data-en="Guides">指南</a>
+      <a class="active" href="./" aria-current="page" data-guide-text data-zh="指南" data-en="Guides">指南</a>
       <a href="../downloads/index.html" data-guide-text data-zh="下载" data-en="Downloads">下载</a>
     </nav>
     <div class="nav-actions">
@@ -477,7 +477,7 @@ function siteNavigationTemplate() {
         <a href="../models/index.html" data-guide-text data-zh="模型" data-en="Models">模型</a>
         <a href="../index.html#engine" data-guide-text data-zh="产品" data-en="Product">产品</a>
         <a href="../cases/index.html" data-guide-text data-zh="案例" data-en="Application cases">案例</a>
-        <a class="active" href="index.html" aria-current="page" data-guide-text data-zh="指南" data-en="Guides">指南</a>
+        <a class="active" href="./" aria-current="page" data-guide-text data-zh="指南" data-en="Guides">指南</a>
         <a href="../downloads/index.html" data-guide-text data-zh="下载" data-en="Downloads">下载</a>
       </nav>
     </div>
@@ -538,7 +538,7 @@ function pageTemplate(config, rendered) {
     })('../');
   </script>
   <script src="../assets/i18n.js?v=catalogs-20261004" defer></script>
-  <script src="../assets/guides.js?v=${guideAssetVersion}" defer></script>
+  <script src="../assets/guides.js?v=canonical-20261121" defer></script>
   <script src="../assets/site-data.js?v=sample-2" defer></script>
   <script src="../assets/footer.js?v=sample-3" defer></script>
   <script src="../assets/nav-glide.js?v=glide-1" defer></script>
@@ -550,7 +550,7 @@ ${siteNavigationTemplate()}
   <main id="guideContent" class="guide-doc-main">
     <section class="guide-doc-hero">
       <div class="guide-breadcrumb">
-        <a href="index.html" data-guide-text data-zh="全部指南" data-en="All guides">全部指南</a>
+        <a href="./" data-guide-text data-zh="全部指南" data-en="All guides">全部指南</a>
         <span class="guide-breadcrumb-sep" aria-hidden="true">/</span>
         ${typeof config.crumb === 'string' ? `<span>${escapeHtml(config.crumb)}</span>` : `<span data-guide-text data-zh="${escapeHtml(config.crumb.zh)}" data-en="${escapeHtml(config.crumb.en)}">${escapeHtml(config.crumb.zh)}</span>`}
         <span class="guide-breadcrumb-sep" aria-hidden="true" data-guide-crumb-sep hidden>/</span>

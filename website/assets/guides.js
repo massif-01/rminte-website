@@ -286,7 +286,7 @@
     let query = '';
     let firstResultHref = null;
 
-    const indexPromise = fetch('search-index.json?v=api-readable-20261107')
+    const indexPromise = fetch('search-index.json?v=canonical-20261121')
       .then((response) => {
         if (!response.ok) throw new Error(`Search index returned ${response.status}`);
         return response.json();

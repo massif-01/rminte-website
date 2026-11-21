@@ -91,7 +91,7 @@ export function buildApiGuides({guidesDir,languages,renderMarkdown,pageTemplate,
  }
  const config={accent:'api',crumb:{zh:'API 接入',en:'API integration'},label:{zh:'API 接入',en:'API integration'},title:titles,
   description:{zh:'TianshanOS 0.6.4 API 使用手册：快速接入、任务示例与完整接口参考。',en:'TianshanOS 0.6.4 API guide: quickstart, task examples, and complete API reference.'},
-  chapterCount:{zh:'TianshanOS 0.6.4',en:'TianshanOS 0.6.4'},next:{href:'index.html',zh:'全部指南',en:'All guides'}};
+  chapterCount:{zh:'TianshanOS 0.6.4',en:'TianshanOS 0.6.4'},next:{href:'./',zh:'全部指南',en:'All guides'}};
  extendPairs(config);
  writeFileSync(join(guidesDir,'api.html'),pageTemplate(config,rendered).replace('class="support-theme"','class="support-theme api-guide"').replace('</head>','<script src="../assets/api-guide.js?v=api-readable-20261107" defer></script>\n</head>'));
  const entries=languages.flatMap(lang=>buildSearchEntries(combined[lang],lang,'api',config));
