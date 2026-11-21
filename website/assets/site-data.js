@@ -11,7 +11,7 @@ window.RM_SOFT = {
     { value: '140W', label: { zh: '整机功耗', en: 'total power' } },
     { value: '64', label: { zh: '路峰值并发', en: 'peak sessions' } },
     { value: '7x24', label: { zh: '工业级运行', en: 'industrial runtime' } },
-    { value: '30B-200B', label: { zh: '模型参数规模', en: 'model scale' } }
+    { value: '27-284B', label: { zh: '模型参数规模', en: 'model scale' } }
   ],
   pillars: [
     {
