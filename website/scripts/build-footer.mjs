@@ -3,9 +3,12 @@ import {dirname,join,relative,sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {parse} from 'parse5';
 import {footerPages,guidePages,renderFooter,renderContactPanel} from './footer-template.mjs';
+import {buildEnglishPages} from './build-search-locales.mjs';
+import {englishPages} from './seo.mjs';
 
 const site=join(dirname(fileURLToPath(import.meta.url)),'..');
 const check=process.argv.includes('--check');
+const localizedPages=new Set(Object.values(englishPages).map(page=>page.file));
 
 function replaceRegion(source,name,html,page) {
   const start=`<!-- shared-${name}:start -->`,end=`<!-- shared-${name}:end -->`;
@@ -25,7 +28,7 @@ function hasStandardFooter(node) {
 for(const file of readdirSync(site,{recursive:true}).filter(file=>file.endsWith('.html'))) {
   const page=file.split(sep).join('/'),source=readFileSync(join(site,file),'utf8');
   const hasFooter=hasStandardFooter(parse(source));
-  if(hasFooter&&!footerPages.includes(page)) {
+  if(hasFooter&&!footerPages.includes(page)&&!localizedPages.has(page)) {
     throw new Error(`${page}: standard footer is not registered in footerPages.`);
   }
 }
@@ -41,4 +44,6 @@ for(const page of footerPages) {
     if(output!==source)throw new Error(`${page}: stale shared footer; run npm run build:footer.`);
   } else if(output!==source)writeFileSync(file,output);
 }
-console.log(`${check?'Checked':'Generated'} shared footer: ${footerPages.length} pages.`);
+// The derived pages carry localized copies of the same checked footer and contact regions.
+buildEnglishPages(check);
+console.log(`${check?'Checked':'Generated'} shared footer: ${footerPages.length + localizedPages.size} pages.`);

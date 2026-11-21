@@ -4,7 +4,9 @@ import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { pages, origin } from '../website/scripts/seo.mjs';
+import { englishPages, pages, origin } from '../website/scripts/seo.mjs';
+
+const searchPages = [...Object.values(pages), ...Object.values(englishPages)];
 
 function parseMarkup(kind, body) {
   return JSON.parse(execFileSync('python3', [fileURLToPath(new URL('./parse-seo-markup.py', import.meta.url)), kind], {
@@ -32,21 +34,26 @@ export function checkPage(page, body, response, environment) {
     assert.ok(pair[lang].trim(), `${page.path}: metadata configuration must not be empty`);
   }
   const head = parseMarkup('html', body);
+  const language = page.language || 'zh';
+  assert.equal(head.lang, language === 'en' ? 'en' : 'zh-CN', `${page.path}: HTML language`);
+  if (language === 'en') {
+    assert.ok(/[A-Za-z]/.test(head.h1) && !/\p{Script=Han}/u.test(head.h1), `${page.path}: English H1 in the initial HTML`);
+  }
   const one = (items, label) => { assert.equal(items.length, 1, `${page.path}: one ${label} required`); return items[0]; };
   const title = one(head.titles, 'Title');
-  assert.equal(title.text, page.title.zh, `${page.path}: Title value`);
+  assert.equal(title.text, page.title[language], `${page.path}: Title value`);
   assert.equal(title.attrs['data-zh'], page.title.zh, `${page.path}: Chinese Title value`);
   assert.equal(title.attrs['data-en'], page.title.en, `${page.path}: English Title value`);
   const meta = (name, key = 'name') => one(head.metas.filter(tag => tag[key]?.toLowerCase() === name), name);
   const description = meta('description');
-  assert.equal(description.content, page.description.zh, `${page.path}: Description value`);
+  assert.equal(description.content, page.description[language], `${page.path}: Description value`);
   for (const lang of ['zh', 'en']) assert.equal(description[`data-${lang}`], page.description[lang], `${page.path}: ${lang} Description value`);
   const canonical = one(head.links.filter(tag => tag.rel?.toLowerCase().split(/\s+/).includes('canonical')), 'Canonical');
   assert.equal(canonical.href, origin + page.path, `${page.path}: Canonical value`);
   assert.ok(!head.links.some(tag => tag.hreflang), `${page.path}: no invented hreflang`);
   for (const [field, pair] of [['og:title', page.title], ['og:description', page.description]]) {
     const tag = meta(field, 'property');
-    assert.equal(tag.content, pair.zh, `${page.path}: ${field} value`);
+    assert.equal(tag.content, pair[language], `${page.path}: ${field} value`);
     for (const lang of ['zh', 'en']) assert.equal(tag[`data-${lang}`], pair[lang], `${page.path}: ${lang} ${field} value`);
   }
   const image = origin + (page.path === '/gallery/' ? '/assets/gallery/DSC00043.jpg' : '/assets/images/img4.png');
@@ -60,7 +67,7 @@ export function checkPage(page, body, response, environment) {
   assert.equal(schema['@context'], 'https://schema.org');
   assert.equal(schema['@graph'][0].url, origin + page.path);
   assert.ok(!/"(?:offers|aggregateRating|review)"/.test(JSON.stringify(schema)));
-  if (page.path === '/') {
+  if (page.path === '/' || page.path === englishPages.home.path) {
     const organization = one(schema['@graph'].filter(node => node['@type'] === 'Organization'), 'Organization');
     assert.equal(organization.logo, `${origin}/assets/images/favicon.png`, 'Organization visible-on-white logo');
   }
@@ -68,11 +75,21 @@ export function checkPage(page, body, response, environment) {
 }
 export function checkSitemap(body) {
   const sitemap = parseMarkup('xml', body);
-  const expected = Object.values(pages).map(page => origin + page.path).sort();
+  const expected = searchPages.map(page => origin + page.path).sort();
   assert.equal(new Set(sitemap.urls).size, sitemap.urls.length, 'Sitemap duplicate page URLs');
   assert.deepEqual(sitemap.urls.sort(), expected, 'Sitemap canonical page URL set');
   assert.ok(!sitemap.hasLastmod, 'No invented lastmod');
   assert.equal(sitemap.images.length, 11);
+  for (const page of Object.values(pages)) {
+    const chinese = origin + page.path;
+    const english = page.englishPath && origin + page.englishPath;
+    const alternates = english ? [
+      { rel: 'alternate', hreflang: 'zh-CN', href: chinese },
+      { rel: 'alternate', hreflang: 'en', href: english }
+    ] : [];
+    assert.deepEqual(sitemap.alternates[chinese], alternates, `${page.path}: correct language alternates`);
+    if (english) assert.deepEqual(sitemap.alternates[english], alternates, `${page.englishPath}: reciprocal language alternates`);
+  }
   return sitemap.images;
 }
 function crawlAllowed(groups, path, crawler) {
@@ -100,7 +117,7 @@ export function checkRobots(body) {
     }
   }
   assert.ok(sitemaps.includes(origin + '/sitemap.xml'), 'robots.txt canonical Sitemap directive');
-  for (const page of Object.values(pages)) for (const crawler of ['*', 'googlebot', 'bingbot']) {
+  for (const page of searchPages) for (const crawler of ['*', 'googlebot', 'bingbot', 'kimibot', 'baiduspider']) {
     assert.ok(crawlAllowed(groups, page.path, crawler), `${page.path}: robots.txt blocks ${crawler}`);
   }
 }
@@ -119,9 +136,9 @@ async function main() {
     results.push({ path, status: response.status, finalUrl: response.url, mime: response.headers.get('content-type'), xRobotsTag: response.headers.get('x-robots-tag') });
     return { response, body };
   }
-  for (const page of Object.values(pages)) {
+  for (const page of searchPages) {
     for (const suffix of ['', '?lang=en', '?lang=zh&utm_source=seo-check']) {
-      const { response, body } = await get(page.path + suffix);
+      const { response, body } = await get(page.path + suffix, { redirect: 'manual' });
       assert.equal(response.status, 200);
       assert.match(response.headers.get('content-type'), /^text\/html/);
       Object.assign(results.at(-1), checkPage(page, body, response, environment));

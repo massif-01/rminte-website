@@ -3,7 +3,7 @@ import { spawnSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import { checkPage, checkRobots, checkSitemap, environmentFor } from './check-seo.mjs';
-import { pages } from '../website/scripts/seo.mjs';
+import { englishPages, pages } from '../website/scripts/seo.mjs';
 
 // Fixtures come from the real generated artifacts. Mutations exist only in test memory.
 const html = page => readFileSync(new URL('../website/' + page.file, import.meta.url), 'utf8');
@@ -12,7 +12,7 @@ const robots = readFileSync(new URL('../website/robots.txt', import.meta.url), '
 const response = value => new Response('', { headers: value ? { 'X-Robots-Tag': value } : {} });
 
 test('real generated pages, sitemap and robots satisfy the production contract', () => {
-  for (const page of Object.values(pages)) checkPage(page, html(page), response(), 'production');
+  for (const page of [...Object.values(pages), ...Object.values(englishPages)]) checkPage(page, html(page), response(), 'production');
   checkSitemap(sitemap);
   checkRobots(robots);
 });
@@ -44,12 +44,18 @@ test('sitemap rejects a wrong address even with the same URL count, and duplicat
   assert.throws(() => checkSitemap(sitemap.replace('<loc>https://rminte.com/models/</loc>', '<loc>https://rminte.com/nonexistent/</loc>')), /canonical page URL set/);
   assert.throws(() => checkSitemap(sitemap.replace('<loc>https://rminte.com/models/</loc>', '<loc>https://rminte.com/</loc>')), /duplicate page URLs/);
   assert.throws(() => checkSitemap(sitemap.replace('</url>', '<lastmod>2026-10-11</lastmod></url>')), /No invented lastmod/);
+  assert.throws(() => checkSitemap(sitemap.replace('hreflang="en" href="https://rminte.com/en"', 'hreflang="en" href="https://rminte.com/"')), /correct language alternates/);
 });
 
 test('robots rejects core-page crawl bans, including crawler-specific groups', () => {
   assert.throws(() => checkRobots(robots.replace('Allow: /', 'Disallow: /')), /robots.txt blocks/);
   assert.throws(() => checkRobots(robots + '\nUser-agent: Googlebot\nDisallow: /guides/\n'), /robots.txt blocks googlebot/);
   assert.throws(() => checkRobots(robots + '\nUser-agent: Bingbot\nDisallow: /models/\n'), /robots.txt blocks bingbot/);
+  for (const agent of ['KimiBot', 'Baiduspider']) {
+    const managed = `User-agent: ${agent}\nDisallow: /\n\n`;
+    checkRobots(managed + robots);
+    assert.throws(() => checkRobots(managed + robots.replace(`User-agent: ${agent}\n`, '')), new RegExp(`robots.txt blocks ${agent.toLowerCase()}`));
+  }
   // Longest-path and Allow-on-tie precedence must not produce a false crawl-ban report.
   checkRobots(robots + '\nUser-agent: *\nDisallow: /guides\nAllow: /guides/\n');
   checkRobots(robots + '\nUser-agent: *\nDisallow: /guides/\nAllow: /guides/\n');
