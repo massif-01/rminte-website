@@ -190,7 +190,7 @@
       const item = document.createElement('div');
       item.className = 'metric';
       item.style.setProperty('--i', index);
-      // "140W" shows its unit set apart; values such as 7x24 and 30B-200B stay whole.
+      // A single number such as 140W gets a separate unit. Ranges and multipliers stay whole.
       // Every character gets its own span (.ch) and a running index, so the row can light up left to right.
       let [, number, unit] = /^(\d+)([A-Za-z]+)$/.exec(metric.value) || [];
       let label = t(metric.label);

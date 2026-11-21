@@ -5,7 +5,7 @@ title: "Complete homepage source copy"
 source_commit: "c9b0897aa87a7e22a0ab264f9007a131f43a1135"
 prepared_on: "2026-10-30"
 content_kind: "official-source-text"
-applicability: "Includes dynamic states and text not simultaneously visible. UI keys identify original source fields."
+applicability: "Includes dynamic states and text not simultaneously visible. UI keys identify original source fields. The RM-01 model scale was updated with the website source on 2026-11-21."
 source_files: ["website/assets/site-data.js"]
 source_urls: ["https://rminte.com/"]
 default_retrieval: true
@@ -38,13 +38,9 @@ peak sessions
 
 industrial runtime
 
-### value
+### model scale
 
-30B-200B
-
-### label
-
-model scale
+27-284B
 
 ## pillars
 

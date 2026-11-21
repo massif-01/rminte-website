@@ -47,7 +47,7 @@
       "source_commit": "c9b0897aa87a7e22a0ab264f9007a131f43a1135",
       "prepared_on": "2026-10-30",
       "content_kind": "official-product-copy",
-      "applicability": "Preserve marketing claims as attributed site statements; diagrams/animations are illustrative, not measurements.",
+      "applicability": "Preserve marketing claims as attributed site statements; diagrams/animations are illustrative, not measurements. The RM-01 model scale was updated with the website source on 2026-11-21.",
       "source_files": [
         "website/index.html",
         "website/assets/site-data.js",
@@ -57,7 +57,7 @@
         "https://rminte.com/#hero"
       ],
       "path": "zh/product-overview.md",
-      "sha256": "27035e11c8d314b7f090a539f4fb2e26d391c2070f072529e8f1219fd44fac23",
+      "sha256": "36174c57d63591f9b5525d2bad1539219cecc087e43363aca61ea3ed219030db",
       "default_retrieval": true,
       "evidence_status": "published claim; not independently tested"
     },
@@ -300,7 +300,7 @@
       "source_commit": "c9b0897aa87a7e22a0ab264f9007a131f43a1135",
       "prepared_on": "2026-10-30",
       "content_kind": "official-source-text",
-      "applicability": "Includes dynamic states and text not simultaneously visible. UI keys identify original source fields.",
+      "applicability": "Includes dynamic states and text not simultaneously visible. UI keys identify original source fields. The RM-01 model scale was updated with the website source on 2026-11-21.",
       "source_files": [
         "website/assets/site-data.js"
       ],
@@ -308,7 +308,7 @@
         "https://rminte.com/"
       ],
       "path": "zh/homepage-source-copy.md",
-      "sha256": "696714f80fff22d35c142b3cc2198a00e009de39e62d3d50fb3453acd9e214f8",
+      "sha256": "8fe46097cb7b37036556634dd5fbcfe9c93eb2b8ea7468ea9ef1a1971b9c13aa",
       "default_retrieval": true,
       "evidence_status": "source transcription; not independent operational verification"
     },
@@ -438,7 +438,7 @@
       "source_commit": "c9b0897aa87a7e22a0ab264f9007a131f43a1135",
       "prepared_on": "2026-10-30",
       "content_kind": "official-product-copy",
-      "applicability": "Preserve marketing claims as attributed site statements; diagrams/animations are illustrative, not measurements.",
+      "applicability": "Preserve marketing claims as attributed site statements; diagrams/animations are illustrative, not measurements. The RM-01 model scale was updated with the website source on 2026-11-21.",
       "source_files": [
         "website/index.html",
         "website/assets/site-data.js",
@@ -448,7 +448,7 @@
         "https://rminte.com/#hero"
       ],
       "path": "en/product-overview.md",
-      "sha256": "4df3b35b3167a34eaf58c43c983e6eb2b788c5511122e7f48bd880256ab84abc",
+      "sha256": "1e043f8c3ba6bac577eb70ff2a8d2e230e89926b4a56a505693b4b31e6ca580f",
       "default_retrieval": true,
       "evidence_status": "published claim; not independently tested"
     },
@@ -691,7 +691,7 @@
       "source_commit": "c9b0897aa87a7e22a0ab264f9007a131f43a1135",
       "prepared_on": "2026-10-30",
       "content_kind": "official-source-text",
-      "applicability": "Includes dynamic states and text not simultaneously visible. UI keys identify original source fields.",
+      "applicability": "Includes dynamic states and text not simultaneously visible. UI keys identify original source fields. The RM-01 model scale was updated with the website source on 2026-11-21.",
       "source_files": [
         "website/assets/site-data.js"
       ],
@@ -699,7 +699,7 @@
         "https://rminte.com/"
       ],
       "path": "en/homepage-source-copy.md",
-      "sha256": "0195eefe136eceb7cda5b4677eae8a86219af5c993ae512b7fbc7f66eae6ae3f",
+      "sha256": "381aa9a143a700987ac33da1da897843fa466a139e37f813529a9db064567f26",
       "default_retrieval": true,
       "evidence_status": "source transcription; not independent operational verification"
     },
