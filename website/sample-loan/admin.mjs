@@ -630,7 +630,6 @@ function renderMachinePicker() {
     note = machines.length
       ? "选择样机可带入 SN 和 NO，也可以直接手动填写。"
       : "该型号暂无空闲样机。请手动填写出借样机的 SN 和 NO。";
-    note += "新样机会在批复或修订成功后自动登记。";
   }
   $("#machine-selection-note").textContent = note;
 }
@@ -1229,7 +1228,7 @@ async function saveRevision() {
   await checked(async () => {
     const payload = {
       draft: approvalDTO(state.current.draft),
-      ...approvalAsset(),
+      ...(state.current.shippedAt ? {} : approvalAsset()),
       accessoriesFromAsset: state.current.draft.accessoriesFromAsset === true,
       fileIds: requestPhotos(state.current).map((p) => p.id),
       reason: $("#revision-reason").value,
@@ -1997,7 +1996,7 @@ $("#special-form").addEventListener("submit", async (event) => {
         };
       } else if (specialAction === "correction") {
         payload.eventId = values.eventId;
-        payload.expectedAssetVersion = r._raw.asset.assetVersion;
+        payload.expectedAssetVersion = r._raw.asset?.assetVersion;
         payload.confirmedNotShipped = f.elements.confirmedNotShipped.checked;
       } else if (specialAction === "reversal") {
         const entry = r._raw.entries.find((e) => e.id === values.entryId);

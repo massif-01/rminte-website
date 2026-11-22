@@ -383,19 +383,17 @@ if (run.scope.sampleLoan)
     const result = await approve;
     expect(result.status()).toBe(200);
     const { request } = await result.json();
-    expect(request.agreement.assetSnapshot).toMatchObject(identifiers);
-    expect(request.asset).toMatchObject(identifiers);
+    expect(request.agreement.assetSnapshot).toMatchObject({ ...identifiers, id: null });
+    expect(request.asset).toBeNull();
     await expect(page.locator("#approval-result")).toBeVisible();
     await page.locator("#preview-agreement").click();
     await expect(page.locator("#agreement-document")).toContainText("$operation");
     await page.keyboard.press("Escape");
     await expect(page.locator("#agreement-dialog")).not.toBeVisible();
     await page.locator("[data-admin-tab=machines]").click();
-    const inventoryRow = page.locator("#inventory-rows .inventory-row").filter({
-      has: page.locator(`a[href="#admin/${id}"]`),
-    });
-    await expect(inventoryRow.locator("dd")).toHaveText([identifiers.no, identifiers.sn]);
-    await expect(inventoryRow).toContainText("已借出");
+    await expect(page.locator("#inventory-view")).toBeVisible();
+    await page.locator("#inventory-search").fill(identifiers.sn);
+    await expect(page.locator("#inventory-empty")).toBeVisible();
   });
 
 if (run.scope.sampleLoan)
