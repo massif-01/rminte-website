@@ -204,39 +204,35 @@ export async function assetCommand(request, env, user, id, d) {
     result: { id: next },
   });
 }
-async function resolveLoanAsset(env, r, d, fallbackId) {
+function agreementAsset(r, snapshot) {
+  return {
+    id: r.asset_id,
+    no: snapshot.no,
+    sn: snapshot.sn,
+    model_key: snapshot.modelKey,
+  };
+}
+
+async function resolveLoanAsset(env, r, d, snapshot) {
   if (d.manualAsset === undefined) {
+    const id = d.assetId || r.asset_id;
+    if (!id && snapshot) return agreementAsset(r, snapshot);
     const asset = await first(env, "SELECT * FROM sample_assets WHERE id=?", [
-      d.assetId || fallbackId || null,
+      id,
     ]);
     assert(asset, "ASSET_REQUIRED", "请选择样机或填写 SN 和 NO", 422);
-    return { asset, version: d.expectedAssetVersion };
+    return asset;
   }
   assert(
     d.assetId === undefined && d.expectedAssetVersion === undefined,
     "INVALID_FIELDS", "请选择样机或手动填写其中一种方式", 422,
   );
   exact(d.manualAsset, ["sn", "no"]);
-  const sn = code(d.manualAsset.sn, "sn");
-  const no = code(d.manualAsset.no, "no");
-  const asset = await first(env, "SELECT * FROM sample_assets WHERE sn_key=?", [sn.key]);
-  if (asset) {
-    if (asset.model_key !== r.model_key) {
-      const message = "该 SN 已登记在其他型号下，请核对 SN";
-      fail(409, "ASSET_MISMATCH", message, { sn: message });
-    }
-    if (asset.no_key !== no.key) {
-      const message = "产品编号与该 SN 的样机库记录不一致";
-      fail(409, "ASSET_MISMATCH", message, { no: message });
-    }
-    return { asset, version: asset.row_version };
-  }
   return {
-    asset: {
-      id: crypto.randomUUID(), model_key: r.model_key, no: no.display, sn: sn.display,
-      no_key: no.key, sn_key: sn.key, notes: "", lifecycle: "active",
-    },
-    create: true,
+    id: null,
+    model_key: r.model_key,
+    no: code(d.manualAsset.no, "no").display,
+    sn: code(d.manualAsset.sn, "sn").display,
   };
 }
 const availableAsset =
@@ -252,7 +248,7 @@ export async function approveCommand(request, env, user, r, d) {
     "draft",
   ]);
   assert(r.status === "pending", "DECISION_EXISTS", "申请已处理");
-  const { asset, create, version } = await resolveLoanAsset(env, r, d);
+  const asset = await resolveLoanAsset(env, r, d);
   const v = await versionStatements(env, user, r, d.draft, {
       asset,
       fileIds: d.fileIds || [],
@@ -265,14 +261,6 @@ export async function approveCommand(request, env, user, r, d) {
       [r.id, "approve", user.id, v.d.approval.note || "", now, operationId],
     ],
     [
-      "INSERT INTO sample_allocations(asset_id,request_id,allocated_at,operation_id) SELECT ?,?,?,? WHERE $gate",
-      [asset.id, r.id, now, operationId],
-    ],
-    [
-      "UPDATE sample_assets SET row_version=row_version+1,updated_at=? WHERE id=? AND $gate",
-      [now, asset.id],
-    ],
-    [
       "UPDATE sample_requests SET status='approved',asset_id=?,initial_term_days=? WHERE id=? AND $gate",
       [asset.id, termDays(v.d.schedule.startsAt, v.d.schedule.dueAt), r.id],
     ],
@@ -281,20 +269,31 @@ export async function approveCommand(request, env, user, r, d) {
       [r.id, now],
     ],
   );
+  if (asset.id)
+    v.statements.push(
+      [
+        "INSERT INTO sample_allocations(asset_id,request_id,allocated_at,operation_id) SELECT ?,?,?,? WHERE $gate",
+        [asset.id, r.id, now, operationId],
+      ],
+      [
+        "UPDATE sample_assets SET row_version=row_version+1,updated_at=? WHERE id=? AND $gate",
+        [now, asset.id],
+      ],
+    );
   return mutation(env, request, user, {
     scope: "approve",
     requestId: r.id,
     version: d.expectedRowVersion,
     data: d,
-    condition: (create ? "" : availableAsset + " AND ") +
+    condition: (asset.id ? availableAsset + " AND " : "") +
       "NOT EXISTS (SELECT 1 FROM sample_decisions WHERE request_id=?)",
     conditionValues: [
-      ...(create
-        ? []
-        : [asset.id, integer(version, "expectedAssetVersion"), r.model_key, asset.id]),
+      ...(asset.id
+        ? [asset.id, integer(d.expectedAssetVersion, "expectedAssetVersion"), r.model_key, asset.id]
+        : []),
       r.id,
     ],
-    statements: create ? [insertAsset(asset, user, now), ...v.statements] : v.statements,
+    statements: v.statements,
     result: { id: r.id, agreementRevision: v.rev },
   });
 }
@@ -340,7 +339,7 @@ export async function reviseCommand(request, env, user, r, kind, d) {
     "quoteId",
   ])
     delete draft[k];
-  const { asset, create, version } = await resolveLoanAsset(env, r, d, r.asset_id),
+  const asset = await resolveLoanAsset(env, r, d, old.assetSnapshot),
     assetId = asset.id,
     now = iso(),
     extra = [];
@@ -488,12 +487,7 @@ export async function reviseCommand(request, env, user, r, kind, d) {
     "实际寄出后不可直接换机",
   );
   const frozenAsset = current.progress.shippedAt
-    ? {
-        id: r.asset_id,
-        no: old.assetSnapshot.no,
-        sn: old.assetSnapshot.sn,
-        model_key: old.assetSnapshot.modelKey,
-      }
+    ? agreementAsset(r, old.assetSnapshot)
     : asset;
   const v = await versionStatements(env, user, r, draft, {
     kind,
@@ -514,24 +508,20 @@ export async function reviseCommand(request, env, user, r, kind, d) {
   if (assetId !== r.asset_id) {
     assert(
       r.status === "approved" &&
-        asset.lifecycle === "active" &&
+        (!assetId || asset.lifecycle === "active") &&
         asset.model_key === r.model_key,
       "ASSET_MISMATCH",
       "请选择同型号空闲样机",
       422,
     );
-    if (!create) {
+    if (assetId) {
       condition = availableAsset;
-      conditionValues = [assetId, integer(version, "expectedAssetVersion"), r.model_key, assetId];
+      conditionValues = [assetId, integer(d.expectedAssetVersion, "expectedAssetVersion"), r.model_key, assetId];
     }
     extra.push(
       [
         "DELETE FROM sample_allocations WHERE request_id=? AND asset_id=? AND $gate",
         [r.id, r.asset_id],
-      ],
-      [
-        "INSERT INTO sample_allocations(asset_id,request_id,allocated_at,operation_id) SELECT ?,?,?,? WHERE $gate",
-        [assetId, r.id, now, operationId],
       ],
       [
         "UPDATE sample_requests SET asset_id=? WHERE id=? AND $gate",
@@ -542,6 +532,11 @@ export async function reviseCommand(request, env, user, r, kind, d) {
         [now, r.asset_id, assetId],
       ],
     );
+    if (assetId)
+      extra.push([
+        "INSERT INTO sample_allocations(asset_id,request_id,allocated_at,operation_id) SELECT ?,?,?,? WHERE $gate",
+        [assetId, r.id, now, operationId],
+      ]);
   }
   return mutation(env, request, user, {
     scope: kind,
@@ -550,7 +545,7 @@ export async function reviseCommand(request, env, user, r, kind, d) {
     data: d,
     condition,
     conditionValues,
-    statements: [...(create ? [insertAsset(asset, user, now)] : []), ...v.statements, ...extra],
+    statements: [...v.statements, ...extra],
     result: { id: r.id, agreementRevision: v.rev },
   });
 }
@@ -791,27 +786,31 @@ export async function progressCommand(request, env, user, r, kind, d) {
         "CORRECTION_DEPENDENCY",
         "已有后续财务事实，请先核对",
       );
-      assert(
-        !(await first(
-          env,
-          "SELECT request_id FROM sample_allocations WHERE asset_id=?",
-          [r.asset_id],
-        )),
-        "ASSET_REALLOCATED",
-        "该样机已被新单占用，不能撤销原归还",
-      );
-      condition =
-        "EXISTS (SELECT 1 FROM sample_assets WHERE id=? AND row_version=? AND lifecycle='active') AND NOT EXISTS (SELECT 1 FROM sample_allocations WHERE asset_id=?)";
-      conditionValues = [
-        r.asset_id,
-        integer(d.expectedAssetVersion, "expectedAssetVersion"),
-        r.asset_id,
-      ];
+      if (r.asset_id) {
+        assert(
+          !(await first(env, "SELECT request_id FROM sample_allocations WHERE asset_id=?", [r.asset_id])),
+          "ASSET_REALLOCATED",
+          "该样机已被新单占用，不能撤销原归还",
+        );
+        condition =
+          "EXISTS (SELECT 1 FROM sample_assets WHERE id=? AND row_version=? AND lifecycle='active') AND NOT EXISTS (SELECT 1 FROM sample_allocations WHERE asset_id=?)";
+        conditionValues = [
+          r.asset_id,
+          integer(d.expectedAssetVersion, "expectedAssetVersion"),
+          r.asset_id,
+        ];
+        statements.push(
+          [
+            "INSERT INTO sample_allocations(asset_id,request_id,allocated_at,operation_id) SELECT ?,?,?,? WHERE $gate",
+            [r.asset_id, r.id, now, operationId],
+          ],
+          [
+            "UPDATE sample_assets SET row_version=row_version+1,updated_at=? WHERE id=? AND $gate",
+            [now, r.asset_id],
+          ],
+        );
+      }
       statements.push(
-        [
-          "INSERT INTO sample_allocations(asset_id,request_id,allocated_at,operation_id) SELECT ?,?,?,? WHERE $gate",
-          [r.asset_id, r.id, now, operationId],
-        ],
         [
           "UPDATE sample_progress SET returned_at=NULL,updated_at=? WHERE request_id=? AND $gate",
           [now, r.id],
@@ -819,10 +818,6 @@ export async function progressCommand(request, env, user, r, kind, d) {
         [
           "UPDATE sample_requests SET status='approved',closed_at=NULL,financial_closed_at=NULL,row_version=row_version+1 WHERE id=? AND $gate",
           [r.id],
-        ],
-        [
-          "UPDATE sample_assets SET row_version=row_version+1,updated_at=? WHERE id=? AND $gate",
-          [now, r.asset_id],
         ],
       );
     } else if (e.action === "progress.ship") {

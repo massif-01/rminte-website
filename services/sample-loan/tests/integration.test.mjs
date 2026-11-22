@@ -130,6 +130,14 @@ test("persistent API: authorization, atomic allocation, immutable revisions, rea
           "SELECT * FROM sample_assets ORDER BY id",
         ).all();
       }
+      const isLossMigration = name === "0008_sample_loan_loss_without_asset.sql";
+      let existingLoss;
+      if (isLossMigration) {
+        await env.CASE_DB.prepare(
+          "INSERT INTO sample_losses(request_id,asset_id,verified_at,reason,evidence) VALUES('migration-request','migration-asset','2026-01-01','missing','checked')",
+        ).run();
+        existingLoss = await env.CASE_DB.prepare("SELECT * FROM sample_losses").first();
+      }
       await env.CASE_DB.exec(sql);
       if (name === "0007_sample_no_repeat.sql") {
         assert.deepEqual(
@@ -141,8 +149,12 @@ test("persistent API: authorization, atomic allocation, immutable revisions, rea
         assert.equal((await env.CASE_DB.prepare("SELECT asset_id FROM sample_requests WHERE id='migration-request'").first()).asset_id, 'migration-asset');
         assert.equal((await env.CASE_DB.prepare("SELECT asset_id FROM sample_legacy_loans WHERE id='migration-legacy'").first()).asset_id, 'migration-legacy-asset');
         assert.equal((await env.CASE_DB.prepare("SELECT asset_id FROM sample_events WHERE id='migration-event'").first()).asset_id, 'migration-asset');
+      }
+      if (isLossMigration) {
+        assert.deepEqual(await env.CASE_DB.prepare("SELECT * FROM sample_losses").first(), existingLoss);
+        assert.deepEqual((await env.CASE_DB.prepare("PRAGMA foreign_key_check").all()).results, []);
         await env.CASE_DB.exec(
-          "DELETE FROM sample_events WHERE id='migration-event'; DELETE FROM sample_allocations; DELETE FROM sample_legacy_loans WHERE id='migration-legacy'; DELETE FROM sample_requests WHERE id='migration-request'; DELETE FROM sample_assets; DELETE FROM users WHERE id='migration-user';",
+          "DELETE FROM sample_losses WHERE request_id='migration-request'; DELETE FROM sample_events WHERE id='migration-event'; DELETE FROM sample_allocations; DELETE FROM sample_legacy_loans WHERE id='migration-legacy'; DELETE FROM sample_requests WHERE id='migration-request'; DELETE FROM sample_assets; DELETE FROM users WHERE id='migration-user';",
         );
       }
       if (name === "0005_sample_legacy_loans.sql") {
@@ -621,30 +633,55 @@ test("persistent API: authorization, atomic allocation, immutable revisions, rea
     const approvedManual = await api(manualPath, { method: "POST", data: manualApproval, key: manualKey });
     assert.equal(approvedManual.status, 200, JSON.stringify(approvedManual));
     const manualSnapshot = approvedManual.request.agreement.assetSnapshot;
-    assert.equal(manualSnapshot.sn, manualIdentifiers.sn);
-    assert.equal(manualSnapshot.no, manualIdentifiers.no);
-    assert.equal(approvedManual.request.asset.id, manualSnapshot.id);
+    assert.deepEqual(manualSnapshot, { id: null, ...manualIdentifiers, modelKey: d.modelKey });
+    assert.equal(approvedManual.request.asset, null);
+    assert.equal(await env.CASE_DB.prepare("SELECT id FROM sample_assets WHERE sn=?").bind(manualIdentifiers.sn).first(), null);
     const retriedManual = await api(manualPath, { method: "POST", data: manualApproval, key: manualKey });
-    assert.equal(retriedManual.request.asset.id, manualSnapshot.id);
-    const occupiedManual = await api(`/api/sample-admin/requests/${one.id}/approve`, {
-      method: "POST",
-      data: { expectedRowVersion: 1, draft: d, fileIds: [], manualAsset: { ...manualIdentifiers, sn: manualIdentifiers.sn.toLowerCase() } },
-    });
-    assert.equal(occupiedManual.status, 409);
-    const replacement = { sn: "MANUAL-1002", no: manualIdentifiers.no };
-    const revisedManual = await api(`/api/sample-admin/requests/${personal.id}/revisions`, {
+    assert.deepEqual(retriedManual.request.agreement.assetSnapshot, manualSnapshot);
+    const inventoryBefore = (await api("/api/sample-admin/assets")).assets;
+    const replacement = { sn: "SN-a", no: manualIdentifiers.no };
+    const manualRequestPath = `/api/sample-admin/requests/${personal.id}`;
+    const revisedManual = await api(manualRequestPath + "/revisions", {
       method: "POST",
       data: { ...manualApproval, expectedRowVersion: approvedManual.request.rowVersion, manualAsset: replacement, reason: "寄出前更换设备" },
     });
     assert.equal(revisedManual.status, 200, JSON.stringify(revisedManual));
-    assert.equal(revisedManual.request.agreement.assetSnapshot.sn, replacement.sn);
-    assert.equal(await env.CASE_DB.prepare("SELECT request_id FROM sample_allocations WHERE asset_id=?").bind(manualSnapshot.id).first(), null);
-    const releasedManual = (await api("/api/sample-admin/assets")).assets.find((a) => a.id === manualSnapshot.id);
-    const retiredManual = await api(`/api/sample-admin/assets/${releasedManual.id}`, {
-      method: "PATCH",
-      data: { ...manualIdentifiers, modelKey: d.modelKey, lifecycle: "retired", expectedAssetVersion: releasedManual.assetVersion },
+    const revisedSnapshot = revisedManual.request.agreement.assetSnapshot;
+    assert.deepEqual(revisedSnapshot, { id: null, ...replacement, modelKey: d.modelKey });
+    assert.equal(revisedManual.request.asset, null);
+    assert.deepEqual((await api("/api/sample-admin/assets")).assets, inventoryBefore);
+
+    // Start at the recorded dispatch to exercise return, correction and loss without an inventory link.
+    await env.CASE_DB.prepare("UPDATE sample_progress SET shipped_at=? WHERE request_id=?")
+      .bind(new Date().toISOString(), personal.id).run();
+    const { manualAsset: _manualAsset, ...manualFields } = manualApproval;
+    const shippedRevision = await api(manualRequestPath + "/revisions", {
+      method: "POST",
+      data: { ...manualFields, expectedRowVersion: revisedManual.request.rowVersion, reason: "补充发货说明" },
     });
-    assert.equal(retiredManual.status, 200);
+    assert.equal(shippedRevision.status, 200, JSON.stringify(shippedRevision));
+    assert.deepEqual(shippedRevision.request.agreement.assetSnapshot, revisedSnapshot);
+    const returnedManual = await api(manualRequestPath + "/progress/return", {
+      method: "POST",
+      data: { expectedRowVersion: shippedRevision.request.rowVersion },
+    });
+    assert.equal(returnedManual.request.status, "completed");
+    const correctedManual = await api(manualRequestPath + "/correction", {
+      method: "POST",
+      data: {
+        expectedRowVersion: returnedManual.request.rowVersion,
+        eventId: returnedManual.request.events.find((event) => event.action === "progress.return").id,
+        reason: "误登记归还",
+      },
+    });
+    assert.equal(correctedManual.request.status, "approved");
+    const lostManual = await api(manualRequestPath + "/progress/loss", {
+      method: "POST",
+      data: { expectedRowVersion: correctedManual.request.rowVersion, note: "已确认丢失", evidence: "物流核实记录" },
+    });
+    assert.equal(lostManual.request.status, "loss_pending");
+    assert.equal(lostManual.request.loss.asset_id, null);
+    assert.deepEqual((await api("/api/sample-admin/assets")).assets, inventoryBefore);
     for (const modelKey of ["constructor", "__proto__"]) {
       assert.equal(
         (
