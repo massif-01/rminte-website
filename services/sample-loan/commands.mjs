@@ -214,7 +214,7 @@ function agreementAsset(r, snapshot) {
   };
 }
 
-async function resolveLoanAsset(env, r, d, snapshot) {
+async function resolveLoanAsset(env, r, d, modelKey, snapshot) {
   if (d.manualAsset === undefined) {
     const id = d.assetId || r.asset_id;
     if (!id && snapshot) return agreementAsset(r, snapshot);
@@ -231,7 +231,7 @@ async function resolveLoanAsset(env, r, d, snapshot) {
   exact(d.manualAsset, ["sn", "no"]);
   return {
     id: null,
-    model_key: r.model_key,
+    model_key: modelKey,
     no: code(d.manualAsset.no, "no").display,
     sn: code(d.manualAsset.sn, "sn").display,
   };
@@ -249,7 +249,7 @@ export async function approveCommand(request, env, user, r, d) {
     "draft",
   ]);
   assert(r.status === "pending", "DECISION_EXISTS", "申请已处理");
-  const asset = await resolveLoanAsset(env, r, d);
+  const asset = await resolveLoanAsset(env, r, d, d.draft?.modelKey);
   const v = await versionStatements(env, user, r, d.draft, {
       asset,
       fileIds: d.fileIds || [],
@@ -290,7 +290,7 @@ export async function approveCommand(request, env, user, r, d) {
       "NOT EXISTS (SELECT 1 FROM sample_decisions WHERE request_id=?)",
     conditionValues: [
       ...(asset.id
-        ? [asset.id, integer(d.expectedAssetVersion, "expectedAssetVersion"), r.model_key, asset.id]
+        ? [asset.id, integer(d.expectedAssetVersion, "expectedAssetVersion"), v.d.modelKey, asset.id]
         : []),
       r.id,
     ],
@@ -327,6 +327,7 @@ export async function reviseCommand(request, env, user, r, kind, d) {
   // Read-only snapshot metadata never enters the writable DTO.
   for (const k of [
     "assetSnapshot",
+    "requestedModelKey",
     "insuredValue",
     "publicNo",
     "requestedDays",
@@ -340,7 +341,7 @@ export async function reviseCommand(request, env, user, r, kind, d) {
     "quoteId",
   ])
     delete draft[k];
-  const asset = await resolveLoanAsset(env, r, d, old.assetSnapshot),
+  const asset = await resolveLoanAsset(env, r, d, draft.modelKey, old.assetSnapshot),
     assetId = asset.id,
     now = iso(),
     extra = [];
@@ -353,6 +354,10 @@ export async function reviseCommand(request, env, user, r, kind, d) {
     "ASSET_SHIPPED", "仅实际寄出前的协议修订可手动填写样机", 422,
   );
   Object.assign(draft, approval(draft));
+  assert(
+    kind === "revisions" || draft.modelKey === old.modelKey,
+    "LOCKED_FIELDS", "更换出借型号请使用修改协议", 422,
+  );
   const comparison = (keys) =>
     keys.every((k) => canonical(draft[k]) === canonical(old[k]));
   if (kind === "revisions") {
@@ -483,7 +488,7 @@ export async function reviseCommand(request, env, user, r, kind, d) {
     draft.schedule = { ...old.schedule, dueAt: due };
   }
   assert(
-    unshipped || assetId === r.asset_id,
+    unshipped || (assetId === r.asset_id && draft.modelKey === old.modelKey),
     "ASSET_SHIPPED",
     "实际寄出后不可直接换机",
   );
@@ -509,15 +514,14 @@ export async function reviseCommand(request, env, user, r, kind, d) {
   if (assetId !== r.asset_id) {
     assert(
       r.status === "approved" &&
-        (!assetId || asset.lifecycle === "active") &&
-        asset.model_key === r.model_key,
+        (!assetId || asset.lifecycle === "active"),
       "ASSET_MISMATCH",
-      "请选择同型号空闲样机",
+      "请选择空闲样机",
       422,
     );
     if (assetId) {
       condition = availableAsset;
-      conditionValues = [assetId, integer(d.expectedAssetVersion, "expectedAssetVersion"), r.model_key, assetId];
+      conditionValues = [assetId, integer(d.expectedAssetVersion, "expectedAssetVersion"), v.d.modelKey, assetId];
     }
     extra.push(
       [

@@ -55,15 +55,9 @@ export async function versionStatements(
     422,
   );
   assert(
-    d.modelKey === r.model_key,
-    "MODEL_MISMATCH",
-    "出借型号必须与原申请一致",
-    422,
-  );
-  assert(
-    asset && asset.model_key === r.model_key,
+    asset && asset.model_key === d.modelKey,
     "ASSET_MISMATCH",
-    "请从台账选择型号一致的样机",
+    "请选择与出借型号一致的样机",
     422,
   );
   assert(
@@ -95,6 +89,7 @@ export async function versionStatements(
     quoteId = crypto.randomUUID();
   const snapshot = {
     ...d,
+    requestedModelKey: r.model_key,
     assetSnapshot: {
       id: asset.id,
       no: asset.no,

@@ -130,7 +130,7 @@ export function renderContract(
     ? {
         id: snapshot.publicNo,
         days: snapshot.requestedDays,
-        original: { model: MODELS[snapshot.modelKey] },
+        original: { model: MODELS[snapshot.requestedModelKey ?? snapshot.modelKey] },
         submittedAt: snapshot.submittedAt,
         approvedAt: snapshot.approvedAt,
         approvedBy: snapshot.approvedBy,
@@ -185,6 +185,9 @@ export function renderContract(
         ? documentText(pairs[placeholder])
         : placeholder,
   );
+  const modelNote = snapshot?.requestedModelKey && snapshot.requestedModelKey !== snapshot.modelKey
+    ? `<p>${en ? "This loan uses the actual model and configuration listed in the equipment table." : "本单以设备表中列出的实际出借型号及配置为准。"}</p>`
+    : "";
   const metadata = `<div class="document-meta"><span>${t("申请 / 协议编号：")}<b class="document-value">${documentText(request?.id || t("提交申请后生成"))}</b></span><span>${t("协议日期：")}${documentText(data.agreementDate || t("审批时填写"))}</span><span>${t("条款版本：")}${documentText(request?.acceptance?.version || terms.version)}</span><span>${t("审批状态：")}${request ? (approved ? t("已批复") : t("待批复")) : t("申请前查看")}</span></div>`;
   const companyFields =
     (data.entity || "公司") === "公司"
@@ -200,5 +203,5 @@ export function renderContract(
   const photoMarkup = photos.length
     ? `<h2>${t("附件照片")}</h2>${photos.map((photo, index) => `<figure><img class="document-photo" src="${escapeHtml(photo.url)}" alt="${escapeHtml(photo.name)}"><figcaption>${en ? "Figure" : "图"} ${index + 1} · ${escapeHtml(photo.name)}</figcaption></figure>`).join("")}`
     : "";
-  return `<h1>${t("RMinte RM-01 产品借用协议")}</h1>${metadata}${parties}${clausesHtml}${deposit}${approval}${photoMarkup}`;
+  return `<h1>${t("RMinte RM-01 产品借用协议")}</h1>${metadata}${parties}${modelNote}${clausesHtml}${deposit}${approval}${photoMarkup}`;
 }

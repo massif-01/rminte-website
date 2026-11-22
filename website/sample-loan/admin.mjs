@@ -371,6 +371,7 @@ function openRequest(request) {
           ? "未通过原因已记录，本页不发送通知。"
           : "填写完成后，一次批复并生成协议。";
   syncEntityFields(form, "data-admin-company", values.entity === "公司");
+  form.elements.model.disabled = locked || !!request.shippedAt;
   refreshSelects(form);
   updateDeposit();
   updateSchedule();
@@ -1944,6 +1945,7 @@ $("#special-form").addEventListener("submit", async (event) => {
         const d = structuredClone(r._raw.agreement);
         for (const key of [
           "assetSnapshot",
+          "requestedModelKey",
           "insuredValue",
           "publicNo",
           "requestedDays",
