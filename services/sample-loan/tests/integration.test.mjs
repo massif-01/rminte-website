@@ -639,7 +639,7 @@ test("persistent API: authorization, atomic allocation, immutable revisions, rea
     const retriedManual = await api(manualPath, { method: "POST", data: manualApproval, key: manualKey });
     assert.deepEqual(retriedManual.request.agreement.assetSnapshot, manualSnapshot);
     const inventoryBefore = (await api("/api/sample-admin/assets")).assets;
-    const replacement = { sn: "SN-a", no: manualIdentifiers.no };
+    const replacement = { sn: "other", no: manualIdentifiers.no };
     const manualRequestPath = `/api/sample-admin/requests/${personal.id}`;
     const revisedManual = await api(manualRequestPath + "/revisions", {
       method: "POST",
@@ -1404,6 +1404,87 @@ test("persistent API: authorization, atomic allocation, immutable revisions, rea
       old.snapshot.equipment.defaultAccountInfo,
       d.equipment.defaultAccountInfo,
     );
+
+    const sharedSN = "RACE-CAFÉ", manualSN = "race-cafe\u0301";
+    const registered = await api("/api/sample-admin/assets", {
+      method: "POST",
+      data: { modelKey: d.modelKey, sn: sharedSN, no: "RACE-NO" },
+    });
+    assert.equal(registered.status, 201);
+    const createSNTest = () => api("/api/sample-loans/applications", {
+      method: "POST", data: payload, cookie: null, ip: "192.0.2.81",
+    });
+    const selectedCandidate = await createSNTest();
+    const manualCandidate = await createSNTest();
+    assert.equal(selectedCandidate.status, 201);
+    assert.equal(manualCandidate.status, 201);
+    const snCommand = { expectedRowVersion: 1, draft: d, fileIds: [] };
+    const result = await Promise.all([
+      api(`/api/sample-admin/requests/${selectedCandidate.id}/approve`, {
+        method: "POST", data: { ...snCommand, assetId: registered.id, expectedAssetVersion: 1 },
+      }),
+      api(`/api/sample-admin/requests/${manualCandidate.id}/approve`, {
+        method: "POST", data: { ...snCommand, manualAsset: { sn: manualSN, no: "OTHER-NO" } },
+      }),
+    ]);
+    assert.deepEqual(result.map((res) => res.status).sort(), [200, 409]);
+    const accepted = result.find((res) => res.status === 200).request;
+    const refusedSN = result.find((res) => res.status === 409);
+    assert.equal(refusedSN.code, "SN_ALREADY_ON_LOAN");
+    assert.match(refusedSN.fieldErrors["assetSnapshot.sn"], /尚未归还/);
+
+    const remaining = accepted.id === selectedCandidate.id ? manualCandidate : selectedCandidate;
+    const remainingPath = `/api/sample-admin/requests/${remaining.id}`;
+    const independent = await api(remainingPath + "/approve", {
+      method: "POST", data: { ...snCommand, manualAsset: { sn: "FREE-SN", no: "OTHER-NO" } },
+    });
+    assert.equal(independent.status, 200);
+    const replaceSN = {
+      ...snCommand,
+      expectedRowVersion: independent.request.rowVersion,
+      reason: "换机",
+      manualAsset: { sn: manualSN, no: "OTHER-NO" },
+    };
+    const blockedRevision = await api(remainingPath + "/revisions", { method: "POST", data: replaceSN });
+    assert.equal(blockedRevision.status, 409);
+    assert.equal(blockedRevision.code, "SN_ALREADY_ON_LOAN");
+    const unchangedLoan = (await api(remainingPath)).request;
+    assert.equal(unchangedLoan.rowVersion, independent.request.rowVersion);
+    assert.equal(unchangedLoan.agreement.assetSnapshot.sn, "FREE-SN");
+
+    await env.CASE_DB.prepare("UPDATE sample_progress SET shipped_at=? WHERE request_id=?")
+      .bind(new Date().toISOString(), accepted.id).run();
+    const acceptedPath = `/api/sample-admin/requests/${accepted.id}`;
+    const returnedSN = await api(acceptedPath + "/progress/return", {
+      method: "POST", data: { expectedRowVersion: accepted.rowVersion },
+    });
+    assert.equal(returnedSN.request.status, "completed");
+    const availableSN = await api(remainingPath + "/revisions", { method: "POST", data: replaceSN });
+    assert.equal(availableSN.status, 200);
+    assert.equal(availableSN.request.asset, null);
+    const stock = (await api("/api/sample-admin/assets")).assets;
+    const registeredStock = stock.filter((a) => a.sn === sharedSN);
+    assert.equal(registeredStock.length, 1);
+    assert.equal(registeredStock[0].id, registered.id);
+    assert.equal(registeredStock[0].allocation, null);
+    assert.equal(stock.some((a) => a.sn === manualSN || a.sn === "FREE-SN"), false);
+    const selectAgain = await createSNTest();
+    assert.equal(selectAgain.status, 201);
+    const blockedSelection = await api(`/api/sample-admin/requests/${selectAgain.id}/approve`, {
+      method: "POST",
+      data: { ...snCommand, assetId: registered.id, expectedAssetVersion: registeredStock[0].assetVersion },
+    });
+    assert.equal(blockedSelection.code, "SN_ALREADY_ON_LOAN");
+    const repeatReturn = await api(acceptedPath + "/correction", {
+      method: "POST",
+      data: {
+        expectedRowVersion: returnedSN.request.rowVersion,
+        expectedAssetVersion: returnedSN.request.asset?.assetVersion,
+        eventId: returnedSN.request.events.find((event) => event.action === "progress.return").id,
+        reason: "更正归还",
+      },
+    });
+    assert.equal(repeatReturn.code, "SN_ALREADY_ON_LOAN");
   } finally {
     await platform.dispose();
     rmSync(root, { recursive: true, force: true });
