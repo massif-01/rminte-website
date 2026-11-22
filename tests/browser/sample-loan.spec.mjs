@@ -2,6 +2,12 @@ import { test, expect } from "@playwright/test";
 import { run, afterURL, setup, loginFixture } from "./helpers.mjs";
 import { readFileSync } from "node:fs";
 import { application, draft } from "../../services/sample-loan/tests/fixtures.mjs";
+import { MODELS } from "../../website/sample-loan/fields.mjs";
+
+async function chooseModel(form, key) {
+  await form.locator("[name=model]").locator("..").locator(".select-trigger").click();
+  await form.getByRole("option", { name: MODELS[key], exact: true }).click();
+}
 
 async function fillApproval(form) {
   const today = new Date().toISOString().slice(0, 10);
@@ -159,25 +165,20 @@ if (run.scope.sampleLoan)
     await mf.locator("[name=no]").fill(machineNo);
     await mf.locator("[name=sn]").fill(machineSn);
     await mf.locator("[name=notes]").fill("存储卡、电源与包装齐全");
-    await mf
-      .locator("[name=model]")
-      .locator("..")
-      .locator(".select-trigger")
-      .click();
-    await mf
-      .getByRole("option", {
-        name: "RM-01 128G T5000 ( 2070 TFLOPS )",
-        exact: true,
-      })
-      .click();
+    const actualModel = "rm01-t234-64g";
+    const replacementModel = "rm01-t4000-64g";
+    const replacementNo = "SN-CONFLICT-" + crypto.randomUUID();
+    const replacementNotes = "主机、电源及收纳箱";
+    await chooseModel(mf, actualModel);
     const registered = await page.request.post(
       server.url + "/api/sample-admin/assets",
       {
         headers: { Origin: server.url, "Idempotency-Key": crypto.randomUUID() },
         data: {
-          modelKey: application.modelKey,
-          no: "SN-CONFLICT-" + crypto.randomUUID(),
+          modelKey: replacementModel,
+          no: replacementNo,
           sn: machineSn,
+          notes: replacementNotes,
         },
       },
     );
@@ -208,9 +209,11 @@ if (run.scope.sampleLoan)
     await detailRequest;
     await expect(page.locator("#admin-detail")).toBeHidden();
     releaseDetail();
+    const af = page.locator("#approval-form");
+    await expect(af.locator("[name=model]")).toHaveValue(MODELS[application.modelKey]);
+    await chooseModel(af, actualModel);
     await page.locator("#machine-options button").first().waitFor();
     const choice = page.locator("#machine-options button").filter({ hasText: machineNo });
-    const af = page.locator("#approval-form");
     const sn = af.locator("[name=sn]");
     const accessories = af.locator("[name=accessories]");
     const assetNotes = "存储卡、电源与包装齐全";
@@ -271,12 +274,29 @@ if (run.scope.sampleLoan)
     await expect(page.locator("#photo-upload")).toBeEnabled();
     await page.locator("#complete-approval").click();
     await page.locator("#approval-result").waitFor({ state: "visible" });
+    await page.locator("#preview-agreement").click();
+    const document = page.locator("#agreement-document");
+    await expect(document.getByRole("row").filter({ hasText: "申请型号" })).toContainText(MODELS[application.modelKey]);
+    await expect(document.getByRole("row").filter({ hasText: "实际出借型号及配置" })).toContainText(MODELS[actualModel]);
+    await page.keyboard.press("Escape");
 
     await page.locator("#edit-approved").click();
     await choice.click();
     await expect(accessories).toHaveValue("");
     await page.locator("#cancel-revision").click();
     await expect(accessories).toHaveValue(assetNotes);
+    await page.locator("#edit-approved").click();
+    await chooseModel(af, replacementModel);
+    await page.locator("#machine-options button").filter({ hasText: replacementNo }).click();
+    await expect(accessories).toHaveValue(replacementNotes);
+    await page.locator("#revision-reason").fill("更换实际出借型号");
+    const revision = page.waitForResponse((response) => response.url().endsWith("/revisions"));
+    await page.locator("#save-revision-bottom").click();
+    const revised = await revision;
+    expect(revised.status()).toBe(200);
+    const { request: revisedRequest } = await revised.json();
+    expect(revisedRequest.original.modelKey).toBe(application.modelKey);
+    expect(revisedRequest.agreement.assetSnapshot).toMatchObject({ modelKey: replacementModel, no: replacementNo, sn: machineSn });
 
     await page.locator("#detail-progress [data-progress=deposit]").click();
     await page.locator("#finance-amount").fill("30000.00");
@@ -338,7 +358,7 @@ if (run.scope.sampleLoan)
       headers: { Origin: afterURL, "Idempotency-Key": crypto.randomUUID() },
       data: {
         ...application,
-        modelKey: "rm01-t234-32g",
+        modelKey: application.modelKey,
         consent: { termsVersion: terms.version, noticeVersion: terms.noticeVersion, accepted: true, noStockShown: true },
       },
     });
@@ -372,6 +392,7 @@ if (run.scope.sampleLoan)
     const no = form.locator("[name=no]");
     const identifiers = { sn: "$operation", no: "$operation" };
     await expect(section.locator(".picker-heading")).toContainText("选填");
+    await chooseModel(form, "rm01-t234-32g");
     await expect(section.locator("[data-choose-machine]")).toHaveCount(0);
     await fillApproval(form);
     await no.fill(identifiers.no);
@@ -410,7 +431,8 @@ if (run.scope.sampleLoan)
     const result = await approve;
     expect(result.status()).toBe(200);
     const { request } = await result.json();
-    expect(request.agreement.assetSnapshot).toMatchObject({ ...identifiers, id: null });
+    expect(request.original.modelKey).toBe(application.modelKey);
+    expect(request.agreement.assetSnapshot).toMatchObject({ ...identifiers, id: null, modelKey: "rm01-t234-32g" });
     expect(request.asset).toBeNull();
     await expect(page.locator("#approval-result")).toBeVisible();
     await page.locator("#preview-agreement").click();

@@ -619,13 +619,14 @@ test("persistent API: authorization, atomic allocation, immutable revisions, rea
       fileIds: [],
       draft: {
         ...d,
+        modelKey: "rm01-t234-32g",
         applicant: { ...d.applicant, type: "person", creditCode: null, registeredAddress: null },
       },
     };
     const manualPath = `/api/sample-admin/requests/${personal.id}/approve`;
     const invalidManual = await api(manualPath, {
       method: "POST",
-      data: { ...manualApproval, draft: { ...manualApproval.draft, modelKey: "rm01-t234-32g" } },
+      data: { ...manualApproval, draft: { ...manualApproval.draft, modelKey: "unknown" } },
     });
     assert.equal(invalidManual.status, 422);
     assert.equal(await env.CASE_DB.prepare("SELECT id FROM sample_assets WHERE sn=?").bind(manualIdentifiers.sn).first(), null);
@@ -633,21 +634,27 @@ test("persistent API: authorization, atomic allocation, immutable revisions, rea
     const approvedManual = await api(manualPath, { method: "POST", data: manualApproval, key: manualKey });
     assert.equal(approvedManual.status, 200, JSON.stringify(approvedManual));
     const manualSnapshot = approvedManual.request.agreement.assetSnapshot;
-    assert.deepEqual(manualSnapshot, { id: null, ...manualIdentifiers, modelKey: d.modelKey });
+    assert.deepEqual(manualSnapshot, { id: null, ...manualIdentifiers, modelKey: manualApproval.draft.modelKey });
+    assert.equal(approvedManual.request.original.modelKey, application.modelKey);
+    assert.equal(approvedManual.request.agreement.requestedModelKey, application.modelKey);
+    assert.equal(approvedManual.request.agreement.modelKey, manualApproval.draft.modelKey);
     assert.equal(approvedManual.request.asset, null);
     assert.equal(await env.CASE_DB.prepare("SELECT id FROM sample_assets WHERE sn=?").bind(manualIdentifiers.sn).first(), null);
     const retriedManual = await api(manualPath, { method: "POST", data: manualApproval, key: manualKey });
     assert.deepEqual(retriedManual.request.agreement.assetSnapshot, manualSnapshot);
     const inventoryBefore = (await api("/api/sample-admin/assets")).assets;
     const replacement = { sn: "other", no: manualIdentifiers.no };
+    const replacementDraft = { ...manualApproval.draft, modelKey: "rm01-t234-64g" };
     const manualRequestPath = `/api/sample-admin/requests/${personal.id}`;
     const revisedManual = await api(manualRequestPath + "/revisions", {
       method: "POST",
-      data: { ...manualApproval, expectedRowVersion: approvedManual.request.rowVersion, manualAsset: replacement, reason: "寄出前更换设备" },
+      data: { ...manualApproval, draft: replacementDraft, expectedRowVersion: approvedManual.request.rowVersion, manualAsset: replacement, reason: "寄出前更换设备" },
     });
     assert.equal(revisedManual.status, 200, JSON.stringify(revisedManual));
     const revisedSnapshot = revisedManual.request.agreement.assetSnapshot;
-    assert.deepEqual(revisedSnapshot, { id: null, ...replacement, modelKey: d.modelKey });
+    assert.deepEqual(revisedSnapshot, { id: null, ...replacement, modelKey: replacementDraft.modelKey });
+    assert.equal(revisedManual.request.agreement.requestedModelKey, application.modelKey);
+    assert.equal(revisedManual.request.agreement.modelKey, replacementDraft.modelKey);
     assert.equal(revisedManual.request.asset, null);
     assert.deepEqual((await api("/api/sample-admin/assets")).assets, inventoryBefore);
 
@@ -655,9 +662,14 @@ test("persistent API: authorization, atomic allocation, immutable revisions, rea
     await env.CASE_DB.prepare("UPDATE sample_progress SET shipped_at=? WHERE request_id=?")
       .bind(new Date().toISOString(), personal.id).run();
     const { manualAsset: _manualAsset, ...manualFields } = manualApproval;
+    const blockedModelChange = await api(manualRequestPath + "/revisions", {
+      method: "POST",
+      data: { ...manualFields, expectedRowVersion: revisedManual.request.rowVersion, reason: "寄出后更换型号" },
+    });
+    assert.equal(blockedModelChange.code, "ASSET_SHIPPED");
     const shippedRevision = await api(manualRequestPath + "/revisions", {
       method: "POST",
-      data: { ...manualFields, expectedRowVersion: revisedManual.request.rowVersion, reason: "补充发货说明" },
+      data: { ...manualFields, draft: replacementDraft, expectedRowVersion: revisedManual.request.rowVersion, reason: "补充发货说明" },
     });
     assert.equal(shippedRevision.status, 200, JSON.stringify(shippedRevision));
     assert.deepEqual(shippedRevision.request.agreement.assetSnapshot, revisedSnapshot);

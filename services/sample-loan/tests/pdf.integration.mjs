@@ -12,6 +12,7 @@ import { createHash } from "node:crypto";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { chromium } from "@playwright/test";
+import { MODELS } from "../../../website/sample-loan/fields.mjs";
 import { digest } from "../../case-access/crypto.mjs";
 import { handleSampleApi } from "../api.mjs";
 import { runJob } from "../jobs.mjs";
@@ -19,6 +20,7 @@ import { glyphPreflight } from "../render.mjs";
 import { application, draft } from "./fixtures.mjs";
 const language = process.env.SAMPLE_PDF_LANGUAGE || "zh";
 const agreementLanguage = language === "zh" ? "zh" : "en";
+const actualModel = "rm01-t234-64g";
 const root = mkdtempSync(join(tmpdir(), "sample-pdf-")),
   origin = "http://127.0.0.1:8999";
 process.env.XDG_CONFIG_HOME = join(root, "config");
@@ -124,12 +126,13 @@ try {
       },
     }),
     asset = await api("/api/sample-admin/assets", {
-      modelKey: application.modelKey,
+      modelKey: actualModel,
       no: "PDF-NO-001",
       sn: "PDF-SN-001",
       notes: "PDF隔离验证",
     }),
     d = draft();
+  d.modelKey = actualModel;
   d.applicant.contactName = "龚睿𠮷";
   delete d.requestedDays;
   const browser = await chromium.launch(),
@@ -199,6 +202,13 @@ try {
       page.pdf = async (options) => {
         assert.equal(await page.locator('html').getAttribute('lang'), agreementLanguage === 'zh' ? 'zh-CN' : 'en');
         assert.equal(await page.locator('h1').innerText(), agreementLanguage === 'zh' ? 'RMinte RM-01 产品借用协议' : 'RMinte RM-01 Equipment Loan Agreement');
+        const [requestedLabel, actualLabel] = agreementLanguage === 'zh'
+          ? ['申请型号', '实际出借型号及配置']
+          : ['Requested model', 'Actual model and configuration on loan'];
+        for (const [label, key] of [[requestedLabel, application.modelKey], [actualLabel, actualModel]]) {
+          const modelCell = page.getByRole('row').filter({ hasText: label }).getByRole('cell').nth(1);
+          assert.equal(await modelCell.innerText(), MODELS[key]);
+        }
         return pdf(options);
       };
       return page;
@@ -243,6 +253,7 @@ try {
     const d = structuredClone(s);
     for (const key of [
       "assetSnapshot",
+      "requestedModelKey",
       "insuredValue",
       "publicNo",
       "requestedDays",
@@ -384,7 +395,7 @@ try {
   assert.equal(
     (
       await api(
-        "/api/sample-loans/availability?modelKey=" + application.modelKey,
+        "/api/sample-loans/availability?modelKey=" + actualModel,
       )
     ).availability,
     "available",
@@ -525,7 +536,7 @@ try {
   assert.equal(
     (
       await api(
-        "/api/sample-loans/availability?modelKey=" + application.modelKey,
+        "/api/sample-loans/availability?modelKey=" + actualModel,
       )
     ).availability,
     "unavailable",
