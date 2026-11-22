@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="preview.css?v=sample-4" />
     <link rel="stylesheet" href="operations.css?v=sample-4" />
 
-    <script type="module" src="admin.mjs?v=sample-6"></script>
+    <script type="module" src="admin.mjs?v=sample-8"></script>
   </head>
   <body>
     <svg class="svg-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -591,24 +591,25 @@
                     >
                     <div class="machine-picker span-2">
                       <div class="picker-heading">
-                        <span>从台账选择实际出借样机 <em>必选</em></span
+                        <span>从样机库选择出借样机 <em>选填</em></span
                         ><a href="#admin-machines">管理样机 →</a>
                       </div>
                       <div id="machine-options" class="machine-options"></div>
-                      <p id="machine-selection-note" class="fine"></p>
+                      <p id="machine-selection-note" class="fine" role="status"></p>
                     </div>
                     <label class="field"
                       ><span>机器序列号 SN <em>必填</em></span
                       ><input
                         name="sn"
-                        readonly
+                        aria-describedby="machine-selection-note"
+                        maxlength="200"
                         required
                         placeholder="填写该台机器的 SN" /></label
                     ><label class="field"
                       ><span>产品编号 NO <em>必填</em></span
                       ><input
                         name="no"
-                        readonly
+                        maxlength="200"
                         required
                         placeholder="填写内部产品编号"
                     /></label>

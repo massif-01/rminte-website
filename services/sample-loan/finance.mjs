@@ -1,5 +1,5 @@
 import { assert, convert, money, at, text, iso, exact } from "./domain.mjs";
-import { rows, mutation, eventStatement, detail } from "./store.mjs";
+import { rows, mutation, eventStatement, detail, operationId } from "./store.mjs";
 // Rebuildable projection; cash movements and their applications are separate facts.
 export function project(entries, assessments, quotes, currentQuote) {
   const reversed = new Set(
@@ -183,7 +183,7 @@ export async function financeCommand(request, env, user, r, action, d) {
       completed: +d.complete,
       created_at: iso(),
       actor_id: user.id,
-      operation_id: "$operation",
+      operation_id: operationId,
     };
     statements.push([
       "INSERT INTO sample_assessments(id,request_id,currency,amount_minor,basis_revision,reason,completed,created_at,actor_id,operation_id) SELECT ?,?,?,?,?,?,?,?,?,? WHERE $gate",
@@ -313,7 +313,7 @@ export async function financeCommand(request, env, user, r, action, d) {
         note,
       }),
       reverses_entry_id: null,
-      operation_id: "$operation",
+      operation_id: operationId,
     };
     projection = project(
       [...state.entries, entry],
@@ -503,7 +503,7 @@ export async function financeCommand(request, env, user, r, action, d) {
       assessment_id: assessmentId,
       details_json: JSON.stringify(details),
       reverses_entry_id: d.reversesEntryId || null,
-      operation_id: "$operation",
+      operation_id: operationId,
     };
     projection = project(
       [...state.entries, entry],

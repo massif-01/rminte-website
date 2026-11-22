@@ -2,6 +2,7 @@ import { digest } from "../case-access/crypto.mjs";
 import { assert, fail, canonical, iso, integer } from "./domain.mjs";
 import { liveAccessSQL } from "./access.mjs";
 import { open } from "./vault.mjs";
+export const operationId = Symbol("sample operation ID");
 export const stmt = (env, sql, values = []) =>
   env.CASE_DB.prepare(sql).bind(...values);
 export const first = (env, sql, values = []) => stmt(env, sql, values).first();
@@ -33,7 +34,7 @@ export function eventStatement(
       occurredAt,
       iso(),
       corrects,
-      "$operation",
+      operationId,
     ],
   ];
 }
@@ -125,7 +126,7 @@ export async function mutation(
       stmt(
         env,
         q.replaceAll("$gate", gate),
-        v.map((x) => (x === "$operation" ? op : x)),
+        v.map((x) => (x === operationId ? op : x)),
       ),
     );
   }
@@ -253,7 +254,8 @@ export async function detail(env, id) {
       v.snapshot_cipher,
     );
   }
-  const draft = await open(env.SAMPLE_SECRET, id + ":draft", r.draft_cipher);
+  const saved = await open(env.SAMPLE_SECRET, id + ":draft", r.draft_cipher);
+  const { accessoriesFromAsset, ...draft } = saved || {};
   const finance = financial ? JSON.parse(financial.projection_json) : null,
     unshipped = !progress?.shipped_at,
     noCash = !entries.some((e) => ["receipt", "refund"].includes(e.kind)),
@@ -336,7 +338,8 @@ export async function detail(env, id) {
     financialClosedAt: r.financial_closed_at,
     original,
     consent,
-    draft,
+    draft: saved ? draft : null,
+    accessoriesFromAsset: accessoriesFromAsset === true,
     agreement,
     allowedActions,
     currentAgreementRevision: r.current_agreement_revision,

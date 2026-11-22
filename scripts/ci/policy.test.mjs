@@ -12,11 +12,14 @@ import {workerPageManifest,workerPages} from './pages.mjs';
 import {observeRoute,routeEvidence,checkNavigation} from './routes.mjs';
 import {createServer} from 'node:http';
 import {footerPages} from '../../website/scripts/footer-template.mjs';
+import {englishPages} from '../../website/scripts/seo.mjs';
 
 test('footer CLI checks parsed class tokens rather than HTML quote style or text lookalikes',()=>{
   const root=mkdtempSync(join(tmpdir(),'rminte-footer-'));
   try {
-    for(const file of [...footerPages,'scripts/build-footer.mjs','scripts/footer-template.mjs','assets/site-data.js']) {
+    const localizedPages=Object.values(englishPages).map(page=>page.file);
+    const scripts=['build-footer.mjs','footer-template.mjs','build-search-locales.mjs','seo.mjs','seo-metadata.json'];
+    for(const file of [...footerPages,...localizedPages,...scripts.map(file=>'scripts/'+file),'assets/site-data.js']) {
       const target=join(root,'website',file);mkdirSync(dirname(target),{recursive:true});cpSync(join('website',file),target);
     }
     symlinkSync(resolve('node_modules'),join(root,'node_modules'),'dir');
