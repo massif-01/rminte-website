@@ -9,7 +9,7 @@ import {
 } from "./domain.mjs";
 import { seal } from "./vault.mjs";
 import { emailLanguage } from "../../website/sample-loan/email.mjs";
-import { rows, first, eventStatement } from "./store.mjs";
+import { rows, first, eventStatement, operationId } from "./store.mjs";
 import { digest } from "../case-access/crypto.mjs";
 import terms from "./terms.json" with { type: "json" };
 export const NOTICE_VERSION = "RM01-LOAN-NOTICE-r5";
@@ -44,9 +44,16 @@ export async function versionStatements(
     asset,
     fileIds = [],
     audit = {},
+    accessoriesFromAsset = false,
   } = {},
 ) {
   const d = approval(raw);
+  assert(
+    typeof accessoriesFromAsset === "boolean",
+    "INVALID_FIELDS",
+    "配件备注来源格式不符",
+    422,
+  );
   assert(
     d.modelKey === r.model_key,
     "MODEL_MISMATCH",
@@ -140,7 +147,7 @@ export async function versionStatements(
     [
       "UPDATE sample_requests SET row_version=row_version+1,draft_cipher=?,current_agreement_revision=?,effective_start_at=?,effective_due_at=?,search_text=?,display_name=? WHERE id=? AND $gate",
       [
-        await seal(env.SAMPLE_SECRET, r.id + ":draft", d),
+        await seal(env.SAMPLE_SECRET, r.id + ":draft", { ...d, accessoriesFromAsset }),
         rev,
         d.schedule.startsAt,
         d.schedule.dueAt,
@@ -168,7 +175,7 @@ export async function versionStatements(
         prevQuotes.length + 1,
         JSON.stringify(d.quote),
         now,
-        "$operation",
+        operationId,
       ],
     ]);
   for (const [i, id] of fileIds.entries())

@@ -600,6 +600,51 @@ test("persistent API: authorization, atomic allocation, immutable revisions, rea
       fileIds: [],
       draft: d,
     };
+    const manualIdentifiers = { sn: "MANUAL-1001", no: "NO-MANUAL" };
+    const manualApproval = {
+      expectedRowVersion: personalDraft.request.rowVersion,
+      manualAsset: manualIdentifiers,
+      fileIds: [],
+      draft: {
+        ...d,
+        applicant: { ...d.applicant, type: "person", creditCode: null, registeredAddress: null },
+      },
+    };
+    const manualPath = `/api/sample-admin/requests/${personal.id}/approve`;
+    const invalidManual = await api(manualPath, {
+      method: "POST",
+      data: { ...manualApproval, draft: { ...manualApproval.draft, modelKey: "rm01-t234-32g" } },
+    });
+    assert.equal(invalidManual.status, 422);
+    assert.equal(await env.CASE_DB.prepare("SELECT id FROM sample_assets WHERE sn=?").bind(manualIdentifiers.sn).first(), null);
+    const manualKey = crypto.randomUUID();
+    const approvedManual = await api(manualPath, { method: "POST", data: manualApproval, key: manualKey });
+    assert.equal(approvedManual.status, 200, JSON.stringify(approvedManual));
+    const manualSnapshot = approvedManual.request.agreement.assetSnapshot;
+    assert.equal(manualSnapshot.sn, manualIdentifiers.sn);
+    assert.equal(manualSnapshot.no, manualIdentifiers.no);
+    assert.equal(approvedManual.request.asset.id, manualSnapshot.id);
+    const retriedManual = await api(manualPath, { method: "POST", data: manualApproval, key: manualKey });
+    assert.equal(retriedManual.request.asset.id, manualSnapshot.id);
+    const occupiedManual = await api(`/api/sample-admin/requests/${one.id}/approve`, {
+      method: "POST",
+      data: { expectedRowVersion: 1, draft: d, fileIds: [], manualAsset: { ...manualIdentifiers, sn: manualIdentifiers.sn.toLowerCase() } },
+    });
+    assert.equal(occupiedManual.status, 409);
+    const replacement = { sn: "MANUAL-1002", no: manualIdentifiers.no };
+    const revisedManual = await api(`/api/sample-admin/requests/${personal.id}/revisions`, {
+      method: "POST",
+      data: { ...manualApproval, expectedRowVersion: approvedManual.request.rowVersion, manualAsset: replacement, reason: "寄出前更换设备" },
+    });
+    assert.equal(revisedManual.status, 200, JSON.stringify(revisedManual));
+    assert.equal(revisedManual.request.agreement.assetSnapshot.sn, replacement.sn);
+    assert.equal(await env.CASE_DB.prepare("SELECT request_id FROM sample_allocations WHERE asset_id=?").bind(manualSnapshot.id).first(), null);
+    const releasedManual = (await api("/api/sample-admin/assets")).assets.find((a) => a.id === manualSnapshot.id);
+    const retiredManual = await api(`/api/sample-admin/assets/${releasedManual.id}`, {
+      method: "PATCH",
+      data: { ...manualIdentifiers, modelKey: d.modelKey, lifecycle: "retired", expectedAssetVersion: releasedManual.assetVersion },
+    });
+    assert.equal(retiredManual.status, 200);
     for (const modelKey of ["constructor", "__proto__"]) {
       assert.equal(
         (

@@ -9,6 +9,7 @@ import {
   iso,
   exact,
   text,
+  code,
   application,
   canonical,
   beijingDay,
@@ -516,7 +517,7 @@ export async function handleSampleApi(request, env, ctx) {
     if (path === "/api/sample-admin/assets" && method === "GET") {
       const assets = await rows(
         env,
-        "SELECT a.*,x.request_id,x.legacy_loan_id,r.public_no,r.effective_due_at,r.original_json,l.borrower,l.contact,l.lent_at,l.due_at,l.notes AS loan_notes FROM sample_assets a LEFT JOIN sample_allocations x ON x.asset_id=a.id LEFT JOIN sample_requests r ON r.id=x.request_id LEFT JOIN sample_legacy_loans l ON l.id=x.legacy_loan_id ORDER BY a.created_at,a.id",
+        "SELECT a.*,x.request_id,x.legacy_loan_id,r.public_no,r.effective_due_at,r.display_name,l.borrower,l.contact,l.lent_at,l.due_at,l.notes AS loan_notes FROM sample_assets a LEFT JOIN sample_allocations x ON x.asset_id=a.id LEFT JOIN sample_requests r ON r.id=x.request_id LEFT JOIN sample_legacy_loans l ON l.id=x.legacy_loan_id ORDER BY a.created_at,a.id",
       );
       return json({
         assets: assets.map((a) => ({
@@ -543,7 +544,7 @@ export async function handleSampleApi(request, env, ctx) {
                   requestId: a.request_id,
                   publicNo: a.public_no,
                   dueAt: a.effective_due_at,
-                  name: JSON.parse(a.original_json).applicant.name,
+                  name: a.display_name,
                 }
               : null,
         })),
@@ -915,8 +916,21 @@ export async function handleSampleApi(request, env, ctx) {
     );
     let result;
     if (tail === "draft") {
-      exact(d, ["expectedRowVersion", "draft", "assetId", "fileIds"]);
+      exact(d, [
+        "expectedRowVersion", "draft", "assetId", "manualAsset", "fileIds", "accessoriesFromAsset",
+      ]);
       partialDraft(d.draft, fieldMap);
+      assert(
+        d.accessoriesFromAsset === undefined || typeof d.accessoriesFromAsset === "boolean",
+        "INVALID_FIELDS", "配件备注来源格式不符", 422,
+      );
+      if (d.manualAsset !== undefined) {
+        assert(!d.assetId, "INVALID_FIELDS", "请选择样机或手动填写其中一种方式", 422);
+        exact(d.manualAsset, ["sn", "no"]);
+        for (const key of ["sn", "no"])
+          if (d.manualAsset[key] !== undefined && d.manualAsset[key] !== "")
+            code(d.manualAsset[key], key);
+      }
       const type =
         d.draft.applicant?.type ?? JSON.parse(r.original_json).applicant.type;
       if (type === "company")

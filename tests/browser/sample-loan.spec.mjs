@@ -3,6 +3,27 @@ import { run, afterURL, setup, loginFixture } from "./helpers.mjs";
 import { readFileSync } from "node:fs";
 import { application } from "../../services/sample-loan/tests/fixtures.mjs";
 
+async function fillApproval(form) {
+  const today = new Date().toISOString().slice(0, 10);
+  const due = new Date(Date.now() + 15 * 86400000).toISOString().slice(0, 10);
+  for (const [key, value] of Object.entries({
+    identityNotes: "隔离浏览器核验记录",
+    start: today + "T12:00",
+    end: due,
+    value: "50000.00",
+    cardSpecs: "测试卡 1TB PCIe",
+    cardSerial: "CARD-BROWSER-001",
+    defaultAccountInfo: "用户 test\n密码 a | $& <xx> ",
+    accessories: "主机、电源、存储卡及包装",
+    inspection: "外观无损、功能正常、配件齐全",
+    carrier: "顺丰",
+    tracking: "BROWSER-TRACK",
+    insuranceProof: "BROWSER-INSURED",
+    returnName: "样机收件处",
+  }))
+    await form.locator(`[name=${key}]`).fill(value);
+}
+
 if (run.scope.sampleLoan)
   test("sample loan: public application, approval and machine allocation", async ({
     page,
@@ -188,30 +209,41 @@ if (run.scope.sampleLoan)
     await expect(page.locator("#admin-detail")).toBeHidden();
     releaseDetail();
     await page.locator("#machine-options button").first().waitFor();
-    await page
-      .locator("#machine-options button")
-      .filter({ hasText: machineNo })
-      .click();
-    await expect(page.locator("#approval-form [name=no]")).toHaveValue(machineNo);
-    const af = page.locator("#approval-form"),
-      today = new Date().toISOString().slice(0, 10),
-      due = new Date(Date.now() + 15 * 86400000).toISOString().slice(0, 10);
-    for (const [key, value] of Object.entries({
-      identityNotes: "隔离浏览器核验记录",
-      start: today + "T12:00",
-      end: due,
-      value: "50000.00",
-      cardSpecs: "测试卡 1TB PCIe",
-      cardSerial: "CARD-BROWSER-001",
-      defaultAccountInfo: "用户 test\n密码 a | $& <xx> ",
-      accessories: "主机、电源、存储卡及包装",
-      inspection: "外观无损、功能正常、配件齐全",
-      carrier: "顺丰",
-      tracking: "BROWSER-TRACK",
-      insuranceProof: "BROWSER-INSURED",
-      returnName: "样机收件处",
-    }))
-      await af.locator("[name=" + key + "]").fill(value);
+    const choice = page.locator("#machine-options button").filter({ hasText: machineNo });
+    const af = page.locator("#approval-form");
+    const sn = af.locator("[name=sn]");
+    const accessories = af.locator("[name=accessories]");
+    const assetNotes = "存储卡、电源与包装齐全";
+    await choice.press("Enter");
+    await expect(choice).toBeFocused();
+    await expect(sn).toHaveValue(machineSn + "-CORRECTED");
+    await expect(sn).not.toBeEditable();
+    await expect(accessories).toHaveValue(assetNotes);
+    const initialDraft = page.waitForResponse((response) => response.url().endsWith("/draft"));
+    await page.locator("#save-draft").click();
+    expect((await initialDraft).status()).toBe(200);
+    await page.reload();
+    await expect(choice).toHaveAttribute("aria-pressed", "true");
+    await expect(accessories).toHaveValue(assetNotes);
+    await choice.press("Space");
+    await expect(choice).toBeFocused();
+    await expect(sn).toBeEditable();
+    await expect(sn).toHaveValue("");
+    await expect(accessories).toHaveValue("");
+    await choice.click();
+    await expect(accessories).toHaveValue(assetNotes);
+    await accessories.fill("人工填写的随箱配件");
+    await choice.click();
+    await expect(accessories).toHaveValue("人工填写的随箱配件");
+    await accessories.fill(assetNotes);
+    await choice.click();
+    await choice.click();
+    await expect(accessories).toHaveValue(assetNotes);
+    await accessories.fill("");
+    await choice.click();
+    await expect(af.locator("[name=no]")).toHaveValue(machineNo);
+    await expect(sn).toHaveValue(machineSn + "-CORRECTED");
+    await fillApproval(af);
     // Drafts remain partial, but a company cannot save an empty credit code.
     await af.locator("[name=credit]").fill("   ");
     await page.locator("#save-draft").click();
@@ -222,6 +254,10 @@ if (run.scope.sampleLoan)
     expect((await savedDraft).status()).toBe(200);
     await expect(page.locator("#save-draft")).toBeEnabled();
     await expect(af.locator("[name=credit]")).toHaveValue("91510100MA00000000");
+    await accessories.fill("");
+    await choice.click();
+    await choice.click();
+    await expect(accessories).toHaveValue(assetNotes);
     await af.locator("[name=identityVerified]").check();
     await page.locator("#photo-upload").setInputFiles({
       name: "isolated-photo.png",
@@ -235,6 +271,12 @@ if (run.scope.sampleLoan)
     await expect(page.locator("#photo-upload")).toBeEnabled();
     await page.locator("#complete-approval").click();
     await page.locator("#approval-result").waitFor({ state: "visible" });
+
+    await page.locator("#edit-approved").click();
+    await choice.click();
+    await expect(accessories).toHaveValue("");
+    await page.locator("#cancel-revision").click();
+    await expect(accessories).toHaveValue(assetNotes);
 
     await page.locator("#detail-progress [data-progress=deposit]").click();
     await page.locator("#finance-amount").fill("30000.00");
@@ -285,6 +327,75 @@ if (run.scope.sampleLoan)
     await expect(page.locator("#admin-view")).not.toBeVisible();
     await expect(page.locator("#admin-denied")).toBeVisible();
     if (errors.length) throw new Error(errors.join("\n"));
+  });
+
+if (run.scope.sampleLoan)
+  test("sample loan: draft and approval with a machine outside inventory", async ({ page }, testInfo) => {
+    await setup(page, "zh");
+    await loginFixture(page, afterURL, "after");
+    const { terms } = await (await page.request.get(afterURL + "/api/sample-loans/terms")).json();
+    const created = await page.request.post(afterURL + "/api/sample-loans/applications", {
+      headers: { Origin: afterURL, "Idempotency-Key": crypto.randomUUID() },
+      data: {
+        ...application,
+        modelKey: "rm01-t234-32g",
+        consent: { termsVersion: terms.version, noticeVersion: terms.noticeVersion, accepted: true, noStockShown: true },
+      },
+    });
+    expect(created.status()).toBe(201);
+    const { id } = await created.json();
+    await page.goto(afterURL + "/sample-loan/#admin/" + id);
+    const section = page.locator("#section-machine");
+    const form = page.locator("#approval-form");
+    const sn = form.locator("[name=sn]");
+    const no = form.locator("[name=no]");
+    const identifiers = { sn: "$operation", no: "$operation" };
+    await expect(section.locator(".picker-heading")).toContainText("选填");
+    await expect(section.locator("[data-choose-machine]")).toHaveCount(0);
+    await fillApproval(form);
+    await no.fill(identifiers.no);
+    await form.locator("[name=identityVerified]").check();
+    await page.locator("#complete-approval").click();
+    await expect(sn).toBeFocused();
+    await expect(sn).toHaveAttribute("aria-invalid", "true");
+    await sn.fill(identifiers.sn);
+
+    const save = page.waitForResponse((response) => response.url().endsWith("/draft"));
+    await page.locator("#save-draft").click();
+    expect((await save).status()).toBe(200);
+    await page.reload();
+    await expect(sn).toHaveValue(identifiers.sn);
+    await expect(no).toHaveValue(identifiers.no);
+    await expect(sn).toBeEditable();
+    await expect(section.locator("[data-choose-machine]")).toHaveCount(0);
+    for (const width of [1440, 768, 390, 320]) {
+      await page.setViewportSize({ width, height: 900 });
+      expect(await section.evaluate((el) => el.scrollWidth <= el.clientWidth)).toBe(true);
+      const path = testInfo.outputPath(`manual-machine-${width}.png`);
+      await section.screenshot({ path });
+      await testInfo.attach(`manual machine entry ${width}px`, {
+        path,
+        contentType: "image/png",
+      });
+    }
+    const approve = page.waitForResponse((response) => response.url().endsWith("/approve"));
+    await page.locator("#complete-approval").click();
+    const result = await approve;
+    expect(result.status()).toBe(200);
+    const { request } = await result.json();
+    expect(request.agreement.assetSnapshot).toMatchObject(identifiers);
+    expect(request.asset).toMatchObject(identifiers);
+    await expect(page.locator("#approval-result")).toBeVisible();
+    await page.locator("#preview-agreement").click();
+    await expect(page.locator("#agreement-document")).toContainText("$operation");
+    await page.keyboard.press("Escape");
+    await expect(page.locator("#agreement-dialog")).not.toBeVisible();
+    await page.locator("[data-admin-tab=machines]").click();
+    const inventoryRow = page.locator("#inventory-rows .inventory-row").filter({
+      has: page.locator(`a[href="#admin/${id}"]`),
+    });
+    await expect(inventoryRow.locator("dd")).toHaveText([identifiers.no, identifiers.sn]);
+    await expect(inventoryRow).toContainText("已借出");
   });
 
 if (run.scope.sampleLoan)

@@ -14,7 +14,7 @@ import {
   MODELS,
   approval,
 } from "./domain.mjs";
-import { mutation, first, eventStatement, detail } from "./store.mjs";
+import { mutation, first, eventStatement, detail, operationId } from "./store.mjs";
 import { versionStatements } from "./agreements.mjs";
 import { refundDeadline } from "./maintenance.mjs";
 import { financialState } from "./finance.mjs";
@@ -22,6 +22,13 @@ import { legacyData } from "./legacy.mjs";
 const touch = (r, closed = null) => [
   "UPDATE sample_requests SET row_version=row_version+1,closed_at=? WHERE id=? AND $gate",
   [closed, r.id],
+];
+const insertAsset = (asset, user, now) => [
+  "INSERT INTO sample_assets(id,model_key,no,sn,no_key,sn_key,notes,lifecycle,created_by,created_at,updated_at) SELECT ?,?,?,?,?,?,?,?,?,?,? WHERE $gate",
+  [
+    asset.id, asset.model_key, asset.no, asset.sn, asset.no_key, asset.sn_key,
+    asset.notes, asset.lifecycle, user.id, now, now,
+  ],
 ];
 export async function assetCommand(request, env, user, id, d) {
   exact(d, [
@@ -109,22 +116,10 @@ export async function assetCommand(request, env, user, id, d) {
         ],
       ]
     : [
-        [
-          "INSERT INTO sample_assets(id,model_key,no,sn,no_key,sn_key,notes,lifecycle,created_by,created_at,updated_at) SELECT ?,?,?,?,?,?,?,?,?,?,? WHERE $gate",
-          [
-            next,
-            d.modelKey,
-            no.display,
-            sn.display,
-            no.key,
-            sn.key,
-            notes,
-            life,
-            user.id,
-            now,
-            now,
-          ],
-        ],
+        insertAsset({
+          id: next, model_key: d.modelKey, no: no.display, sn: sn.display,
+          no_key: no.key, sn_key: sn.key, notes, lifecycle: life,
+        }, user, now),
       ];
   if (legacy) {
     const legacyId = busy?.legacy_loan_id || crypto.randomUUID();
@@ -160,7 +155,7 @@ export async function assetCommand(request, env, user, id, d) {
         ],
         [
           "INSERT INTO sample_allocations(asset_id,legacy_loan_id,allocated_at,operation_id) SELECT ?,?,?,? WHERE $gate",
-          [next, legacyId, now, "$operation"],
+          [next, legacyId, now, operationId],
         ],
       );
     statements.push(
@@ -209,32 +204,69 @@ export async function assetCommand(request, env, user, id, d) {
     result: { id: next },
   });
 }
+async function resolveLoanAsset(env, r, d, fallbackId) {
+  if (d.manualAsset === undefined) {
+    const asset = await first(env, "SELECT * FROM sample_assets WHERE id=?", [
+      d.assetId || fallbackId || null,
+    ]);
+    assert(asset, "ASSET_REQUIRED", "请选择样机或填写 SN 和 NO", 422);
+    return { asset, version: d.expectedAssetVersion };
+  }
+  assert(
+    d.assetId === undefined && d.expectedAssetVersion === undefined,
+    "INVALID_FIELDS", "请选择样机或手动填写其中一种方式", 422,
+  );
+  exact(d.manualAsset, ["sn", "no"]);
+  const sn = code(d.manualAsset.sn, "sn");
+  const no = code(d.manualAsset.no, "no");
+  const asset = await first(env, "SELECT * FROM sample_assets WHERE sn_key=?", [sn.key]);
+  if (asset) {
+    if (asset.model_key !== r.model_key) {
+      const message = "该 SN 已登记在其他型号下，请核对 SN";
+      fail(409, "ASSET_MISMATCH", message, { sn: message });
+    }
+    if (asset.no_key !== no.key) {
+      const message = "产品编号与该 SN 的样机库记录不一致";
+      fail(409, "ASSET_MISMATCH", message, { no: message });
+    }
+    return { asset, version: asset.row_version };
+  }
+  return {
+    asset: {
+      id: crypto.randomUUID(), model_key: r.model_key, no: no.display, sn: sn.display,
+      no_key: no.key, sn_key: sn.key, notes: "", lifecycle: "active",
+    },
+    create: true,
+  };
+}
+const availableAsset =
+  "EXISTS (SELECT 1 FROM sample_assets WHERE id=? AND row_version=? AND model_key=? AND lifecycle='active') AND NOT EXISTS (SELECT 1 FROM sample_allocations WHERE asset_id=?)";
 export async function approveCommand(request, env, user, r, d) {
   exact(d, [
     "expectedRowVersion",
     "expectedAssetVersion",
     "assetId",
+    "manualAsset",
+    "accessoriesFromAsset",
     "fileIds",
     "draft",
   ]);
   assert(r.status === "pending", "DECISION_EXISTS", "申请已处理");
-  const asset = await first(env, "SELECT * FROM sample_assets WHERE id=?", [
-    d.assetId,
-  ]);
-  assert(asset, "ASSET_REQUIRED", "请选择实际出借样机", 422);
+  const { asset, create, version } = await resolveLoanAsset(env, r, d);
   const v = await versionStatements(env, user, r, d.draft, {
       asset,
       fileIds: d.fileIds || [],
+      accessoriesFromAsset: d.accessoriesFromAsset,
     }),
     now = iso();
   v.statements.push(
     [
       "INSERT INTO sample_decisions(request_id,kind,actor_id,reason,recorded_at,operation_id) SELECT ?,?,?,?,?,? WHERE $gate",
-      [r.id, "approve", user.id, v.d.approval.note || "", now, "$operation"],
+      [r.id, "approve", user.id, v.d.approval.note || "", now, operationId],
     ],
     [
       "INSERT INTO sample_allocations(asset_id,request_id,allocated_at,operation_id) SELECT ?,?,?,? WHERE $gate",
-      [asset.id, r.id, now, "$operation"],
+      [asset.id, r.id, now, operationId],
     ],
     [
       "UPDATE sample_assets SET row_version=row_version+1,updated_at=? WHERE id=? AND $gate",
@@ -254,16 +286,15 @@ export async function approveCommand(request, env, user, r, d) {
     requestId: r.id,
     version: d.expectedRowVersion,
     data: d,
-    condition:
-      "EXISTS (SELECT 1 FROM sample_assets WHERE id=? AND row_version=? AND model_key=? AND lifecycle='active') AND NOT EXISTS (SELECT 1 FROM sample_allocations WHERE asset_id=?) AND NOT EXISTS (SELECT 1 FROM sample_decisions WHERE request_id=?)",
+    condition: (create ? "" : availableAsset + " AND ") +
+      "NOT EXISTS (SELECT 1 FROM sample_decisions WHERE request_id=?)",
     conditionValues: [
-      asset.id,
-      integer(d.expectedAssetVersion, "expectedAssetVersion"),
-      r.model_key,
-      asset.id,
+      ...(create
+        ? []
+        : [asset.id, integer(version, "expectedAssetVersion"), r.model_key, asset.id]),
       r.id,
     ],
-    statements: v.statements,
+    statements: create ? [insertAsset(asset, user, now), ...v.statements] : v.statements,
     result: { id: r.id, agreementRevision: v.rev },
   });
 }
@@ -272,6 +303,8 @@ export async function reviseCommand(request, env, user, r, kind, d) {
     "expectedRowVersion",
     "expectedAssetVersion",
     "assetId",
+    "manualAsset",
+    "accessoriesFromAsset",
     "fileIds",
     "draft",
     "reason",
@@ -307,17 +340,18 @@ export async function reviseCommand(request, env, user, r, kind, d) {
     "quoteId",
   ])
     delete draft[k];
-  const assetId = d.assetId || r.asset_id,
-    asset = await first(env, "SELECT * FROM sample_assets WHERE id=?", [
-      assetId,
-    ]),
+  const { asset, create, version } = await resolveLoanAsset(env, r, d, r.asset_id),
+    assetId = asset.id,
     now = iso(),
     extra = [];
-  assert(asset, "ASSET_REQUIRED", "样机不存在", 422);
   const noCash = !funds.entries.some((e) =>
       ["receipt", "refund"].includes(e.kind),
     ),
     unshipped = !current.progress.shippedAt;
+  assert(
+    d.manualAsset === undefined || (kind === "revisions" && unshipped),
+    "ASSET_SHIPPED", "仅实际寄出前的协议修订可手动填写样机", 422,
+  );
   Object.assign(draft, approval(draft));
   const comparison = (keys) =>
     keys.every((k) => canonical(draft[k]) === canonical(old[k]));
@@ -417,7 +451,7 @@ export async function reviseCommand(request, env, user, r, kind, d) {
         old.schedule.dueAt,
         now,
         user.id,
-        "$operation",
+        operationId,
       ],
     ]);
     if (d.decision === "reject")
@@ -466,6 +500,10 @@ export async function reviseCommand(request, env, user, r, kind, d) {
     reason,
     asset: frozenAsset,
     fileIds: d.fileIds || old.fileIds,
+    accessoriesFromAsset: d.accessoriesFromAsset === undefined
+      ? current.accessoriesFromAsset && assetId === r.asset_id &&
+        draft.equipment.accessories === old.equipment.accessories
+      : d.accessoriesFromAsset,
     audit:
       kind === "revisions"
         ? { sameLegalEntityConfirmed: d.sameLegalEntityConfirmed === true }
@@ -482,13 +520,10 @@ export async function reviseCommand(request, env, user, r, kind, d) {
       "请选择同型号空闲样机",
       422,
     );
-    condition =
-      "EXISTS (SELECT 1 FROM sample_assets WHERE id=? AND row_version=? AND lifecycle='active') AND NOT EXISTS (SELECT 1 FROM sample_allocations WHERE asset_id=?)";
-    conditionValues = [
-      assetId,
-      integer(d.expectedAssetVersion, "expectedAssetVersion"),
-      assetId,
-    ];
+    if (!create) {
+      condition = availableAsset;
+      conditionValues = [assetId, integer(version, "expectedAssetVersion"), r.model_key, assetId];
+    }
     extra.push(
       [
         "DELETE FROM sample_allocations WHERE request_id=? AND asset_id=? AND $gate",
@@ -496,7 +531,7 @@ export async function reviseCommand(request, env, user, r, kind, d) {
       ],
       [
         "INSERT INTO sample_allocations(asset_id,request_id,allocated_at,operation_id) SELECT ?,?,?,? WHERE $gate",
-        [assetId, r.id, now, "$operation"],
+        [assetId, r.id, now, operationId],
       ],
       [
         "UPDATE sample_requests SET asset_id=? WHERE id=? AND $gate",
@@ -515,7 +550,7 @@ export async function reviseCommand(request, env, user, r, kind, d) {
     data: d,
     condition,
     conditionValues,
-    statements: [...v.statements, ...extra],
+    statements: [...(create ? [insertAsset(asset, user, now)] : []), ...v.statements, ...extra],
     result: { id: r.id, agreementRevision: v.rev },
   });
 }
@@ -549,7 +584,7 @@ export async function progressCommand(request, env, user, r, kind, d) {
     statements.push(
       [
         "INSERT INTO sample_decisions(request_id,kind,actor_id,reason,recorded_at,operation_id) SELECT ?,?,?,?,?,? WHERE $gate",
-        [r.id, "reject", user.id, reason, now, "$operation"],
+        [r.id, "reject", user.id, reason, now, operationId],
       ],
       [
         "UPDATE sample_requests SET status='rejected',row_version=row_version+1,closed_at=? WHERE id=? AND $gate",
@@ -775,7 +810,7 @@ export async function progressCommand(request, env, user, r, kind, d) {
       statements.push(
         [
           "INSERT INTO sample_allocations(asset_id,request_id,allocated_at,operation_id) SELECT ?,?,?,? WHERE $gate",
-          [r.asset_id, r.id, now, "$operation"],
+          [r.asset_id, r.id, now, operationId],
         ],
         [
           "UPDATE sample_progress SET returned_at=NULL,updated_at=? WHERE request_id=? AND $gate",

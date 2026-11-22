@@ -1171,6 +1171,14 @@
         "consent"
       ]
     },
+    "ManualAsset": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sn": { "type": "string", "maxLength": 200 },
+        "no": { "type": "string", "maxLength": 200 }
+      }
+    },
     "ApproveCommand": {
       "type": "object",
       "additionalProperties": false,
@@ -1189,6 +1197,8 @@
           "type": "string",
           "format": "uuid"
         },
+        "manualAsset": { "$ref": "#/$defs/ManualAsset" },
+        "accessoriesFromAsset": { "type": "boolean" },
         "fileIds": {
           "type": "array",
           "uniqueItems": true,
@@ -1203,10 +1213,27 @@
       },
       "required": [
         "expectedRowVersion",
-        "expectedAssetVersion",
-        "assetId",
         "fileIds",
         "draft"
+      ],
+      "oneOf": [
+        {
+          "required": ["assetId", "expectedAssetVersion"],
+          "not": { "required": ["manualAsset"] }
+        },
+        {
+          "required": ["manualAsset"],
+          "not": { "anyOf": [{ "required": ["assetId"] }, { "required": ["expectedAssetVersion"] }] },
+          "properties": {
+            "manualAsset": {
+              "required": ["sn", "no"],
+              "properties": {
+                "sn": { "minLength": 1 },
+                "no": { "minLength": 1 }
+              }
+            }
+          }
+        }
       ]
     },
     "DraftCommand": {
@@ -1224,6 +1251,8 @@
             "null"
           ]
         },
+        "manualAsset": { "$ref": "#/$defs/ManualAsset" },
+        "accessoriesFromAsset": { "type": "boolean" },
         "fileIds": {
           "type": "array",
           "uniqueItems": true,

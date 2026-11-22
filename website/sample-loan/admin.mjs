@@ -94,7 +94,7 @@ function busyLoan(id) {
         snapshot: { end: x.dueAt ? localInput(x.dueAt).slice(0, 10) : "" },
       }
     : x
-      ? state.requests.find((r) => r.id === x.requestId) || {
+      ? {
           id: x.requestId,
           company: x.name,
           snapshot: { end: localInput(x.dueAt).slice(0, 10) },
@@ -103,8 +103,9 @@ function busyLoan(id) {
 }
 function adapt(raw) {
   const original = { ...flat(raw.original), days: raw.original.requestedDays };
+  const accessoriesFromAsset = raw.accessoriesFromAsset === true;
   const snapshot = raw.agreement
-    ? flat(raw.agreement)
+    ? { ...flat(raw.agreement), accessoriesFromAsset }
     : raw.dueAt
       ? { end: localInput(raw.dueAt).slice(0, 10) }
       : null;
@@ -155,7 +156,9 @@ function adapt(raw) {
     status: raw.status,
     submittedAt: raw.submittedAt,
     original,
-    draft: saved ? flat(saved) : defaults(original),
+    draft: saved
+      ? { ...flat(saved), ...raw.draft?.manualAsset, accessoriesFromAsset }
+      : defaults(original),
     snapshot,
     machineId: raw.asset?.id || raw.draft?.assetId || null,
     photos:
@@ -562,15 +565,48 @@ function renderInventory() {
   $("#inventory-empty").hidden = machines.length > 0;
   refreshLegacyCountdowns();
 }
+const selectedMachineId = (request) =>
+  operations.edit?.id === request.id
+    ? operations.edit.machineId
+    : request.machineId;
+function setSelectedMachineId(request, id) {
+  if (operations.edit?.id === request.id) operations.edit.machineId = id;
+  else request.machineId = id;
+  if (request.draft.accessoriesFromAsset) {
+    form.elements.accessories.value = "";
+    request.draft.accessoriesFromAsset = false;
+  }
+}
+const manualAsset = (draft) => ({ sn: draft.sn.trim(), no: draft.no.trim() });
+function approvalAsset() {
+  const selected = selectedMachineId(state.current);
+  const asset = operations.machines.find((m) => m.id === selected);
+  return asset
+    ? { assetId: asset.id, expectedAssetVersion: asset.assetVersion }
+    : { manualAsset: manualAsset(state.current.draft) };
+}
 function renderMachinePicker() {
   const request = state.current;
   if (!request) return;
-  const editing = canEditRequest(request);
-  const selected =
-    operations.edit?.id === request.id
-      ? operations.edit.machineId
-      : request.machineId;
+  const editing = canEditRequest(request) && !request.shippedAt;
   const model = form.elements.model.value;
+  let selected = selectedMachineId(request);
+  if (editing && selected) {
+    const asset = operations.machines.find((m) => m.id === selected);
+    if (
+      asset?.model === model && asset.lifecycle === "active" &&
+      (!asset.allocation || asset.allocation.requestId === request.id)
+    ) {
+      form.elements.sn.value = asset.sn;
+      form.elements.no.value = asset.no;
+    } else {
+      setSelectedMachineId(request, null);
+      selected = null;
+      form.elements.sn.value = "";
+      form.elements.no.value = "";
+    }
+  }
+  form.elements.sn.readOnly = form.elements.no.readOnly = !editing || !!selected;
   const machines = operations.machines.filter(
     (m) =>
       m.model === model &&
@@ -585,13 +621,18 @@ function renderMachinePicker() {
         `<button type="button" class="machine-option" data-choose-machine="${machine.id}" aria-pressed="${machine.id === selected}" ${editing ? "" : "disabled"}><span>${escapeHtml(machine.no)}<small>SN ${escapeHtml(machine.sn)}</small></span>${machine.id === selected ? icon("check") : icon("plus")}</button>`,
     )
     .join("");
-  $("#machine-selection-note").textContent = !machines.length
-    ? "该型号暂无空闲机器，请先登记样机或等待归还，不能完成批复"
-    : selected
-      ? request.shippedAt
-        ? "机器已实际寄出，NO、SN 保持交付记录；可补充物流、照片及说明"
-        : "NO、SN 来自所选台账；批复完成时检查并占用样机"
-      : "选择一台空闲样机后自动带入 NO、SN，备注可作为配件填写参考";
+  let note = "";
+  if (request.shippedAt) {
+    note = "机器已寄出，SN 和 NO 以交付记录为准。";
+  } else if (editing && selected) {
+    note = "已带入 SN 和 NO。再次点击所选样机可取消选择，改为手动填写。";
+  } else if (editing) {
+    note = machines.length
+      ? "选择样机可带入 SN 和 NO，也可以直接手动填写。"
+      : "该型号暂无空闲样机。请手动填写出借样机的 SN 和 NO。";
+    note += "新样机会在批复或修订成功后自动登记。";
+  }
+  $("#machine-selection-note").textContent = note;
 }
 function renderOperations(request) {
   const visible =
@@ -791,6 +832,7 @@ async function command(tail, data, button, formNode = form) {
         } else await loadDetail(id);
       }
       await loadAssets();
+      if (state.current?.id === id) renderMachinePicker();
       if (!$("#admin-list").hidden) await loadList();
       return result;
     },
@@ -844,6 +886,10 @@ async function route() {
 window.addEventListener("hashchange", route);
 form.addEventListener("input", changedApproval);
 form.addEventListener("change", changedApproval);
+form.elements.accessories.addEventListener("input", () => {
+  if (canEditRequest(state.current))
+    state.current.draft.accessoriesFromAsset = false;
+});
 form.elements.entity.addEventListener("change", () =>
   syncEntityFields(
     form,
@@ -896,6 +942,10 @@ $("#save-draft").addEventListener("click", () => {
     {
       draft: draftDTO(state.current.draft),
       assetId: state.current.machineId,
+      accessoriesFromAsset: state.current.draft.accessoriesFromAsset === true,
+      ...(state.current.machineId
+        ? {}
+        : { manualAsset: manualAsset(state.current.draft) }),
       fileIds: requestPhotos(state.current).map((p) => p.id),
     },
     $("#save-draft"),
@@ -909,17 +959,10 @@ form.addEventListener("submit", async (event) => {
   }
   if (!validateForm(form)) return;
   captureDraft();
-  const asset = operations.machines.find(
-    (a) => a.id === state.current.machineId,
-  );
-  if (!asset) {
-    toast("请从台账选择实际出借样机");
-    return;
-  }
   checked(async () => {
     const data = {
-      expectedAssetVersion: asset.assetVersion,
-      assetId: asset.id,
+      ...approvalAsset(),
+      accessoriesFromAsset: state.current.draft.accessoriesFromAsset === true,
       fileIds: requestPhotos(state.current).map((p) => p.id),
       draft: approvalDTO(state.current.draft),
     };
@@ -1142,16 +1185,24 @@ $("#machine-form").addEventListener("submit", async (event) => {
 });
 $("#machine-options").addEventListener("click", (e) => {
   const b = e.target.closest("[data-choose-machine]");
-  if (!b || !canEditRequest(state.current)) return;
+  const request = state.current;
+  if (!b || !canEditRequest(request) || request.shippedAt) return;
   const a = operations.machines.find((m) => m.id === b.dataset.chooseMachine);
-  if (operations.edit) operations.edit.machineId = a.id;
-  else state.current.machineId = a.id;
-  form.elements.no.value = a.no;
-  form.elements.sn.value = a.sn;
-  if (!form.elements.accessories.value)
+  const deselect = selectedMachineId(request) === a.id;
+  setSelectedMachineId(request, deselect ? null : a.id);
+  if (deselect) {
+    form.elements.sn.value = "";
+    form.elements.no.value = "";
+  } else if (!form.elements.accessories.value && a.notes) {
     form.elements.accessories.value = a.notes;
-  captureDraft();
+    request.draft.accessoriesFromAsset = true;
+  }
   renderMachinePicker();
+  for (const input of [form.elements.sn, form.elements.no])
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+  $("#machine-options")
+    .querySelector(`[data-choose-machine="${a.id}"]`)
+    ?.focus({ preventScroll: true });
 });
 function startRevision() {
   const r = state.current;
@@ -1175,12 +1226,11 @@ async function saveRevision() {
     return;
   }
   captureDraft();
-  const a = operations.machines.find((m) => m.id === operations.edit.machineId);
   await checked(async () => {
     const payload = {
       draft: approvalDTO(state.current.draft),
-      assetId: a.id,
-      expectedAssetVersion: a.assetVersion,
+      ...approvalAsset(),
+      accessoriesFromAsset: state.current.draft.accessoriesFromAsset === true,
       fileIds: requestPhotos(state.current).map((p) => p.id),
       reason: $("#revision-reason").value,
       sameLegalEntityConfirmed: $("#sameLegalEntityConfirmed").checked,
