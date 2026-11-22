@@ -19,6 +19,7 @@ import { versionStatements } from "./agreements.mjs";
 import { refundDeadline } from "./maintenance.mjs";
 import { financialState } from "./finance.mjs";
 import { legacyData } from "./legacy.mjs";
+import { loanMutation } from "./loan-serial.mjs";
 const touch = (r, closed = null) => [
   "UPDATE sample_requests SET row_version=row_version+1,closed_at=? WHERE id=? AND $gate",
   [closed, r.id],
@@ -280,7 +281,7 @@ export async function approveCommand(request, env, user, r, d) {
         [now, asset.id],
       ],
     );
-  return mutation(env, request, user, {
+  return loanMutation(env, request, user, {
     scope: "approve",
     requestId: r.id,
     version: d.expectedRowVersion,
@@ -295,7 +296,7 @@ export async function approveCommand(request, env, user, r, d) {
     ],
     statements: v.statements,
     result: { id: r.id, agreementRevision: v.rev },
-  });
+  }, asset.sn);
 }
 export async function reviseCommand(request, env, user, r, kind, d) {
   exact(d, [
@@ -538,7 +539,7 @@ export async function reviseCommand(request, env, user, r, kind, d) {
         [assetId, r.id, now, operationId],
       ]);
   }
-  return mutation(env, request, user, {
+  return loanMutation(env, request, user, {
     scope: kind,
     requestId: r.id,
     version: d.expectedRowVersion,
@@ -547,7 +548,9 @@ export async function reviseCommand(request, env, user, r, kind, d) {
     conditionValues,
     statements: [...v.statements, ...extra],
     result: { id: r.id, agreementRevision: v.rev },
-  });
+  }, r.status === "approved" && (kind === "revisions" || assetId !== r.asset_id)
+    ? frozenAsset.sn
+    : undefined);
 }
 export async function progressCommand(request, env, user, r, kind, d) {
   exact(d, [
@@ -573,6 +576,7 @@ export async function progressCommand(request, env, user, r, kind, d) {
     statements = [];
   let condition = "1",
     conditionValues = [],
+    restoredSerial,
     corrects = null;
   if (kind === "reject") {
     assert(r.status === "pending", "DECISION_EXISTS", "申请已经处理");
@@ -820,6 +824,7 @@ export async function progressCommand(request, env, user, r, kind, d) {
           [r.id],
         ],
       );
+      restoredSerial = current.agreement.assetSnapshot.sn;
     } else if (e.action === "progress.ship") {
       assert(
         r.status === "approved" &&
@@ -872,7 +877,7 @@ export async function progressCommand(request, env, user, r, kind, d) {
       corrects,
     ),
   );
-  return mutation(env, request, user, {
+  return loanMutation(env, request, user, {
     scope: "progress." + kind,
     requestId: r.id,
     version: d.expectedRowVersion,
@@ -881,5 +886,5 @@ export async function progressCommand(request, env, user, r, kind, d) {
     conditionValues,
     statements,
     result: { id: r.id },
-  });
+  }, restoredSerial);
 }

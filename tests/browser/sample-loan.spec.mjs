@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { run, afterURL, setup, loginFixture } from "./helpers.mjs";
 import { readFileSync } from "node:fs";
-import { application } from "../../services/sample-loan/tests/fixtures.mjs";
+import { application, draft } from "../../services/sample-loan/tests/fixtures.mjs";
 
 async function fillApproval(form) {
   const today = new Date().toISOString().slice(0, 10);
@@ -344,6 +344,27 @@ if (run.scope.sampleLoan)
     });
     expect(created.status()).toBe(201);
     const { id } = await created.json();
+    const blocker = await page.request.post(afterURL + "/api/sample-loans/applications", {
+      headers: { Origin: afterURL, "Idempotency-Key": crypto.randomUUID(), "CF-Connecting-IP": "192.0.2.219" },
+      data: {
+        ...application,
+        modelKey: "rm01-t234-32g",
+        consent: { termsVersion: terms.version, noticeVersion: terms.noticeVersion, accepted: true, noStockShown: true },
+      },
+    });
+    expect(blocker.status()).toBe(201);
+    const { id: otherLoan } = await blocker.json();
+    const occupiedSN = "BROWSER-OCCUPIED-SN";
+    const approvedOther = await page.request.post(afterURL + `/api/sample-admin/requests/${otherLoan}/approve`, {
+      headers: { Origin: afterURL, "Idempotency-Key": crypto.randomUUID() },
+      data: {
+        expectedRowVersion: 1,
+        draft: { ...draft(), modelKey: "rm01-t234-32g" },
+        fileIds: [],
+        manualAsset: { sn: occupiedSN, no: "BROWSER-OCCUPIED-NO" },
+      },
+    });
+    expect(approvedOther.status()).toBe(200);
     await page.goto(afterURL + "/sample-loan/#admin/" + id);
     const section = page.locator("#section-machine");
     const form = page.locator("#approval-form");
@@ -358,6 +379,12 @@ if (run.scope.sampleLoan)
     await page.locator("#complete-approval").click();
     await expect(sn).toBeFocused();
     await expect(sn).toHaveAttribute("aria-invalid", "true");
+    await sn.fill(occupiedSN.toLowerCase());
+    const blocked = page.waitForResponse((response) => response.url().endsWith("/approve"));
+    await page.locator("#complete-approval").click();
+    expect((await blocked).status()).toBe(409);
+    await expect(sn).toBeFocused();
+    await expect(sn.locator("..").getByRole("alert")).toContainText("尚未归还");
     await sn.fill(identifiers.sn);
 
     const save = page.waitForResponse((response) => response.url().endsWith("/draft"));
@@ -390,10 +417,31 @@ if (run.scope.sampleLoan)
     await expect(page.locator("#agreement-document")).toContainText("$operation");
     await page.keyboard.press("Escape");
     await expect(page.locator("#agreement-dialog")).not.toBeVisible();
+
+    await page.locator("#edit-approved").click();
+    await page.locator("#revision-reason").fill("核对出借设备");
+    await sn.fill(occupiedSN);
+    const revisionBlocked = page.waitForResponse((response) => response.url().endsWith("/revisions"));
+    await page.locator("#save-revision-bottom").click();
+    expect((await revisionBlocked).status()).toBe(409);
+    await expect(sn).toBeFocused();
+    await expect(sn.locator("..").getByRole("alert")).toContainText("尚未归还");
+    const revisedSN = "BROWSER-REVISED-SN";
+    await sn.fill(revisedSN);
+    const revisionSaved = page.waitForResponse((response) => response.url().endsWith("/revisions"));
+    await page.locator("#save-revision-bottom").click();
+    const savedRevision = await revisionSaved;
+    expect(savedRevision.status()).toBe(200);
+    const { request: revised } = await savedRevision.json();
+    expect(revised.agreement.assetSnapshot).toMatchObject({ id: null, sn: revisedSN, no: identifiers.no });
+    expect(revised.asset).toBeNull();
+
     await page.locator("[data-admin-tab=machines]").click();
     await expect(page.locator("#inventory-view")).toBeVisible();
-    await page.locator("#inventory-search").fill(identifiers.sn);
-    await expect(page.locator("#inventory-empty")).toBeVisible();
+    for (const serial of [identifiers.sn, revisedSN]) {
+      await page.locator("#inventory-search").fill(serial);
+      await expect(page.locator("#inventory-empty")).toBeVisible();
+    }
   });
 
 if (run.scope.sampleLoan)
