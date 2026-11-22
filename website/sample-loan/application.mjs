@@ -108,6 +108,9 @@ async function mount() {
     for (const name of Object.values(MODELS))
       select.add(new Option(name, name));
   installSelects();
+  const modelHelp = $("#application-model-help"),
+    modelTrigger = modelHelp.closest(".field").querySelector(".select-trigger"),
+    modelErrorId = modelTrigger.getAttribute("aria-describedby");
   wireDialogs();
   const error = (e) => {
     if (
@@ -280,6 +283,11 @@ async function mount() {
     async open(from, onClose) {
       afterClose = onClose;
       paintLanguage();
+      modelHelp.hidden = language !== "zh" && language !== "en";
+      modelTrigger.setAttribute(
+        "aria-describedby",
+        modelHelp.hidden ? modelErrorId : `${modelHelp.id} ${modelErrorId}`,
+      );
       entity();
       refreshSelects(form);
       opener = from || document.activeElement;
