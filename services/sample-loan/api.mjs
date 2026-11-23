@@ -34,7 +34,7 @@ import {
   reviseCommand,
   progressCommand,
 } from "./commands.mjs";
-import { financeCommand } from "./finance.mjs";
+import { financeCommand, financialProjections } from "./finance.mjs";
 import { validateCalendar } from "./maintenance.mjs";
 import { enqueuePending } from "./dispatcher.mjs";
 import { uploadCommand } from "./files.mjs";
@@ -277,7 +277,14 @@ async function listing(env, url) {
     `SELECT r.id,r.public_no,r.status,r.original_json,r.display_name,r.model_key,r.requested_days,r.submitted_at,r.row_version,r.current_agreement_revision,r.effective_due_at,r.closed_at,r.financial_closed_at,p.shipped_at,p.returned_at,p.inspected_at,f.projection_json,l.conversion_at,l.compensation_due_at,(SELECT quote_json FROM sample_quotes q WHERE q.request_id=r.id ORDER BY quote_revision DESC LIMIT 1) AS quote_json FROM sample_requests r LEFT JOIN sample_progress p ON p.request_id=r.id LEFT JOIN sample_financial_projections f ON f.request_id=r.id LEFT JOIN sample_losses l ON l.request_id=r.id ${clauses.length ? "WHERE " + clauses.join(" AND ") : ""} ORDER BY submitted_at ${order},id ${order} LIMIT 51`,
     values,
   );
-  const result = page.slice(0, 50).map((r) => ({
+  const visible = page.slice(0, 50);
+  const shippingFinance = await financialProjections(
+    env,
+    visible
+      .filter((r) => r.status === "approved" && !r.shipped_at && r.projection_json)
+      .map((r) => r.id),
+  );
+  const result = visible.map((r) => ({
     id: r.id,
     publicNo: r.public_no,
     status: r.status,
@@ -302,7 +309,12 @@ async function listing(env, url) {
       returnedAt: r.returned_at,
       inspectedAt: r.inspected_at,
     },
-    finance: r.projection_json ? JSON.parse(r.projection_json) : null,
+    finance:
+      r.status === "approved" && !r.shipped_at
+        ? shippingFinance.get(r.id) || null
+        : r.projection_json
+          ? JSON.parse(r.projection_json)
+          : null,
   }));
   const last = page[49],
     counts = await rows(
@@ -340,6 +352,31 @@ async function versionGet(request, env, r, revision, kind, url) {
       ),
       terms: JSON.parse(r.consent_json).terms,
     });
+  if (kind === "approval-email") {
+    assert(
+      revision === r.current_agreement_revision && r.status !== "cancelled",
+      "DELIVERY_SUPERSEDED",
+      "单据或协议已更新，请刷新后再复制邮件",
+    );
+    const [snapshot, setting] = await Promise.all([
+      open(env.SAMPLE_SECRET, r.id + ":" + revision, v.snapshot_cipher),
+      first(
+        env,
+        "SELECT data_json FROM sample_settings_versions WHERE kind='delivery' AND active=1",
+      ),
+    ]);
+    const consent = JSON.parse(r.consent_json);
+    return json({
+      email: confirmationMail(
+        snapshot,
+        setting ? JSON.parse(setting.data_json) : null,
+        null,
+        consent.presentedNotice?.language ||
+          consent.agreementLanguage ||
+          snapshot.agreementLanguage,
+      ),
+    });
+  }
   const object = await first(
     env,
     "SELECT * FROM sample_document_objects WHERE document_id=?",
@@ -778,7 +815,7 @@ export async function handleSampleApi(request, env, ctx) {
     if (!tail && method === "GET")
       return json({ request: await detail(env, id) });
     const version = tail.match(
-      /^versions\/(\d+)\/(preview|download|delivery|retry|status)$/,
+      /^versions\/(\d+)\/(preview|download|delivery|approval-email|retry|status)$/,
     );
     if (version && method === "GET" && version[2] === "status") {
       const job = await first(

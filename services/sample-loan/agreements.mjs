@@ -182,10 +182,14 @@ export async function versionStatements(
 }
 function confirmationMailZh(snapshot, settings, document) {
   const d = snapshot,
+    agreement = `《RM-01 产品借用协议》（${d.publicNo}，R${d.agreementRevision}）`,
+    bankAccount = settings?.bankAccounts?.[d.quote.deposit.currency],
     lines = [
       `${d.applicant.name}，您好：`,
       "",
-      `您的样机借用申请已批复，请查收随信附件《RM-01 产品借用协议》（${d.publicNo}，R${d.agreementRevision}）。`,
+      document
+        ? `您的样机借用申请已批复，请查收随信附件${agreement}。`
+        : `您的样机借用申请已批复。本次借用以${agreement}为准。`,
       "",
       `申请编号：${d.publicNo}`,
       `机器型号：${MODELS[d.assetSnapshot.modelKey]}`,
@@ -203,7 +207,7 @@ function confirmationMailZh(snapshot, settings, document) {
   lines.push(
     "",
     "请在本确认邮件送达后24小时内汇出押金，实际足额到账且完成主体授权核验后发货。",
-    `收款信息：\n${settings.bankAccounts[d.quote.deposit.currency]}`,
+    bankAccount ? `收款信息：\n${bankAccount}` : "请与我们联系确认押金收款信息。",
     `汇款备注：${d.applicant.name}＋样机借用押金＋${d.publicNo}`,
     "",
     "厂家发出运费到付并足额保价；寄回须自行支付运费及保价费，并按协议整机价值足额保价。借期包含往返运输，到期前必须实际送达厂家。",
@@ -211,9 +215,8 @@ function confirmationMailZh(snapshot, settings, document) {
     `归还收件：${d.returnTo.recipientName} / ${d.returnTo.phone}`,
     `归还地址：${d.returnTo.address}`,
     "",
-    "请在协议邮件送达后48小时内从申请邮箱回邮知悉。修改过默认账户信息或密码的，归还前须恢复交付初始状态。完整责任和费用以附件协议为准。",
-    `附件：${document.fileName}`,
-    `SHA-256：${document.sha256}`,
+    "请在协议邮件送达后48小时内从申请邮箱回邮知悉。修改过默认账户信息或密码的，归还前须恢复交付初始状态。完整责任和费用以借用协议为准。",
+    ...(document ? [`附件：${document.fileName}`, `SHA-256：${document.sha256}`] : []),
     "",
     d.lender.name,
     d.lender.phone,
@@ -223,14 +226,18 @@ function confirmationMailZh(snapshot, settings, document) {
     recipient: d.applicant.email,
     subject: `【RMinte 样机借用批复】${d.publicNo} · 协议 R${d.agreementRevision}`,
     body: lines.join("\n"),
-    templateRevision: settings.templateRevision,
+    templateRevision: settings?.templateRevision,
   };
 }
 function confirmationMailEn(d, settings, document) {
+  const agreement = `the RM-01 Equipment Loan Agreement (${d.publicNo}, R${d.agreementRevision})`;
+  const bankAccount = settings?.bankAccounts?.[d.quote.deposit.currency];
   const lines = [
     `Dear ${d.applicant.name},`,
     "",
-    `Your demo unit loan application has been approved. Please find the RM-01 Equipment Loan Agreement attached (${d.publicNo}, R${d.agreementRevision}).`,
+    document
+      ? `Your demo unit loan application has been approved. Please find the RM-01 Equipment Loan Agreement attached (${d.publicNo}, R${d.agreementRevision}).`
+      : `Your demo unit loan application has been approved. Please refer to ${agreement}.`,
     "",
     `Application number: ${d.publicNo}`,
     `Equipment model: ${MODELS[d.assetSnapshot.modelKey]}`,
@@ -248,7 +255,7 @@ function confirmationMailEn(d, settings, document) {
   lines.push(
     "",
     "Please remit the security deposit within 24 hours after delivery of this confirmation email. Shipment requires receipt of the full deposit and verification of the borrower's identity and authority.",
-    `Bank details:\n${settings.bankAccounts[d.quote.deposit.currency]}`,
+    bankAccount ? `Bank details:\n${bankAccount}` : "Please contact us for the deposit payment details.",
     `Payment reference: ${d.applicant.name} + demo unit security deposit + ${d.publicNo}`,
     "",
     "Outbound freight is payable on delivery and the equipment is shipped with full declared-value coverage. You pay return freight and declared-value coverage based on the equipment value in the agreement. The loan period includes transport in both directions; the equipment must arrive at the manufacturer before the deadline.",
@@ -256,9 +263,8 @@ function confirmationMailEn(d, settings, document) {
     `Return recipient / telephone: ${d.returnTo.recipientName} / ${d.returnTo.phone}`,
     `Return address: ${d.returnTo.address}`,
     "",
-    "Please acknowledge receipt by replying from the application email address within 48 hours after delivery of the agreement email. If you change the default equipment account or password, restore the initial delivery settings before returning it. The attached agreement governs the full responsibilities and charges.",
-    `Attachment: ${document.fileName}`,
-    `SHA-256: ${document.sha256}`,
+    "Please acknowledge receipt by replying from the application email address within 48 hours after delivery of the agreement email. If you change the default equipment account or password, restore the initial delivery settings before returning it. The loan agreement governs the full responsibilities and charges.",
+    ...(document ? [`Attachment: ${document.fileName}`, `SHA-256: ${document.sha256}`] : []),
     "",
     d.lender.name,
     d.lender.phone,

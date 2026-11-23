@@ -82,6 +82,16 @@ export function minor(value, path = "money") {
   const [a, b = ""] = String(value).split(".");
   return (BigInt(a) * 100n + BigInt(b.padEnd(2, "0"))).toString();
 }
+export function depositOutstandingMinor(deposit, finance) {
+  if (!deposit) return 0n;
+  const due = BigInt(deposit.amountMinor);
+  if (!finance) return due;
+  const account = finance.byCurrency[deposit.currency];
+  const matched = BigInt(finance.depositMatchedMinor);
+  const available = BigInt(account.balanceMinor) - BigInt(account.unallocatedMinor);
+  const held = matched < available ? matched : available;
+  return held <= 0n ? due : held >= due ? 0n : due - held;
+}
 export function major(v) {
   const raw = BigInt(v),
     n = raw < 0n ? -raw : raw;

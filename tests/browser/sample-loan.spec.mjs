@@ -261,7 +261,9 @@ if (run.scope.sampleLoan)
     await choice.click();
     await choice.click();
     await expect(accessories).toHaveValue(assetNotes);
-    await af.locator("[name=identityVerified]").check();
+    for (const name of ["identityNotes", "carrier", "tracking", "insuranceProof"])
+      await af.locator(`[name=${name}]`).fill("");
+    await expect(af.locator("[name=identityVerified]")).not.toBeChecked();
     await page.locator("#photo-upload").setInputFiles({
       name: "isolated-photo.png",
       mimeType: "image/png",
@@ -274,6 +276,40 @@ if (run.scope.sampleLoan)
     await expect(page.locator("#photo-upload")).toBeEnabled();
     await page.locator("#complete-approval").click();
     await page.locator("#approval-result").waitFor({ state: "visible" });
+    await expect(page.locator("#detail-status")).toHaveText("已批复 · 待收押金");
+    await expect(page.locator("#detail-deadline")).not.toContainText("待批复日期");
+    await expect(page.locator("#download-agreement")).toBeDisabled();
+    await expect(page.locator("#loan-history")).not.toHaveAttribute("open", "");
+    await expect(page.locator("#edit-approved")).not.toBeVisible();
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 900 });
+      await expect(page.locator("#detail-progress button")).toHaveCount(1);
+      expect(await page.locator("#admin-detail").evaluate(
+        (detail) => detail.scrollWidth <= detail.clientWidth,
+      )).toBe(true);
+      if (width !== 320) {
+        await page.locator("#detail-status").scrollIntoViewIfNeeded();
+        const path = testInfo.outputPath(`approved-workflow-${width}.png`);
+        await page.screenshot({ path });
+        await testInfo.attach(`approved workflow ${width}px`, { path, contentType: "image/png" });
+      }
+    }
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.getByRole("button", { name: "复制审核通过邮件" }).click();
+    const mail = page.getByRole("dialog", { name: "审核通过邮件" });
+    await expect(mail).toBeVisible();
+    await expect(mail.locator("#email-subject")).toHaveValue(new RegExp(requestNo));
+    await expect(mail.locator("#email-body")).toHaveValue(new RegExp(MODELS[actualModel].split(" (")[0]));
+    await expect(mail.locator("#email-body")).toHaveValue(/24小时内汇出押金/);
+    await expect(mail.locator("#email-body")).toHaveValue(/归还地址/);
+    await expect(mail.locator("#email-body")).not.toHaveValue(/随信附件|SHA-256/);
+    await mail.getByRole("button", { name: "复制正文", exact: true }).click();
+    await expect(mail.getByRole("status")).toHaveText("已复制，可粘贴到邮件发送");
+    await mail.locator("#email-language").locator("..").locator(".select-trigger").click();
+    await mail.getByRole("option", { name: "English", exact: true }).click();
+    await expect(mail.locator("#email-body")).toHaveValue(/has been approved/);
+    await page.keyboard.press("Escape");
+    await page.locator("#loan-history > summary").click();
     await page.locator("#preview-agreement").click();
     const document = page.locator("#agreement-document");
     await expect(document.getByRole("row").filter({ hasText: "申请型号" })).toContainText(MODELS[application.modelKey]);
@@ -297,14 +333,76 @@ if (run.scope.sampleLoan)
     const { request: revisedRequest } = await revised.json();
     expect(revisedRequest.original.modelKey).toBe(application.modelKey);
     expect(revisedRequest.agreement.assetSnapshot).toMatchObject({ modelKey: replacementModel, no: replacementNo, sn: machineSn });
+    await page.locator("#loan-history > summary").click();
 
-    await page.locator("#detail-progress [data-progress=deposit]").click();
-    await page.locator("#finance-amount").fill("30000.00");
+    const requestUrl = server.url + "/api/sample-admin/requests/" + revisedRequest.id;
+    const headers = () => ({ Origin: server.url, "Idempotency-Key": crypto.randomUUID() });
+    const prematureShip = await page.request.post(requestUrl + "/progress/ship", {
+      headers: headers(),
+      data: { expectedRowVersion: revisedRequest.rowVersion },
+    });
+    expect((await prematureShip.json()).code).toBe("DEPOSIT_INSUFFICIENT");
     const reference = "BROWSER-RECEIPT-" + crypto.randomUUID();
-    await page.locator("#finance-reference").fill(reference);
+    const unmatched = await page.request.post(requestUrl + "/finances/receipts", {
+      headers: headers(),
+      data: {
+        expectedRowVersion: revisedRequest.rowVersion,
+        money: { currency: "CNY", amountMinor: "200" },
+        occurredAt: new Date().toISOString(),
+        reference,
+        purpose: "unmatched",
+      },
+    });
+    expect(unmatched.status()).toBe(200);
+    const unmatchedRequest = (await unmatched.json()).request;
+    const flagged = await page.request.post(requestUrl + "/finances/receipts", {
+      headers: headers(),
+      data: {
+        expectedRowVersion: unmatchedRequest.rowVersion,
+        money: { currency: "CNY", amountMinor: "3000000" },
+        occurredAt: new Date().toISOString(),
+        purpose: "deposit",
+        quoteId: unmatchedRequest.agreement.quoteId,
+        exceptional: true,
+        note: "待核对的旧押金记录",
+      },
+    });
+    expect(flagged.status()).toBe(200);
+    const flaggedRequest = (await flagged.json()).request;
+    expect(flaggedRequest.allowedActions.canShip).toBe(false);
+    const flaggedShip = await page.request.post(requestUrl + "/progress/ship", {
+      headers: headers(),
+      data: { expectedRowVersion: flaggedRequest.rowVersion },
+    });
+    expect((await flaggedShip.json()).code).toBe("DEPOSIT_INSUFFICIENT");
+    await expect(page.locator("#detail-progress [data-progress=ship]")).toHaveCount(0);
+    await page.locator("#detail-progress [data-progress=deposit]").click();
+    await expect(page.locator("#finance-amount")).toHaveValue("30000.00");
+    await expect(page.locator("#finance-reference")).not.toBeVisible();
+    await expect(page.locator("#finance-purpose-field")).not.toBeVisible();
+    await expect(page.locator("#finance-quote")).not.toBeVisible();
+    await page.locator("#finance-amount").fill("1.00");
+    let assetRefreshes = 0;
+    const assets = "**/api/sample-admin/assets";
+    await page.route(assets, (route) => {
+      assetRefreshes++;
+      return route.fulfill({ status: 503, json: { error: "隔离验证：样机库刷新失败" } });
+    });
     await page.locator("#progress-form button[type=submit]").click();
     await expect(page.locator("#progress-dialog")).not.toBeVisible();
-    await page.locator("[data-finance=deposit]").click();
+    await expect(page.locator("#deposit-summary")).toContainText("还差 29999.00");
+    expect(assetRefreshes).toBe(0);
+    await page.unroute(assets);
+    await expect(page.locator("#detail-progress [data-progress=ship]")).toHaveCount(0);
+    await page.locator("#detail-progress [data-progress=deposit]").click();
+    await expect(page.locator("#finance-amount")).toHaveValue("29999.00");
+    await page.locator("#progress-form button[type=submit]").click();
+    await expect(page.locator("#progress-dialog")).not.toBeVisible();
+    await expect(page.locator("#detail-status")).toHaveText("已批复 · 待发货");
+    await expect(page.locator("#deposit-summary")).toContainText("已足额到账");
+    await page.getByText("历史与更正", { exact: true }).click();
+    await expect(page.locator("#finance-summary")).toContainText("有待核对的款项");
+    await page.locator("[data-finance=receipt]").click();
     await page.locator("#finance-amount").fill("1.00");
     await page.locator("#finance-reference").fill(reference);
     await page.locator("#progress-form button[type=submit]").click();
@@ -316,13 +414,17 @@ if (run.scope.sampleLoan)
       .locator("#progress-dialog")
       .getByRole("button", { name: "取消", exact: true })
       .click();
+    await page.locator("#detail-progress [data-progress=ship]").click();
+    await page.locator("#progress-form button[type=submit]").click();
+    await expect(page.locator("#progress-dialog")).not.toBeVisible();
+    await expect(page.locator("#detail-status")).toHaveText("已批复 · 已发货");
+    await expect(page.locator("#progress-facts")).toContainText("实际发货");
     await page.locator("#back-to-list").click();
     await page.locator("[data-filter=approved]").click();
     const requestRow = page
       .locator(".request-row")
       .filter({ hasText: requestNo });
-    await expect(requestRow).toContainText("押金已到账");
-    await expect(requestRow).not.toContainText("押金待到账");
+    await expect(requestRow).toContainText("已发货");
 
     for (const width of [1440, 768, 390, 320]) {
       await page.setViewportSize({ width, height: 900 });
@@ -435,6 +537,7 @@ if (run.scope.sampleLoan)
     expect(request.agreement.assetSnapshot).toMatchObject({ ...identifiers, id: null, modelKey: "rm01-t234-32g" });
     expect(request.asset).toBeNull();
     await expect(page.locator("#approval-result")).toBeVisible();
+    await page.locator("#loan-history > summary").click();
     await page.locator("#preview-agreement").click();
     await expect(page.locator("#agreement-document")).toContainText("$operation");
     await page.keyboard.press("Escape");

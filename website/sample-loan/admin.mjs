@@ -14,6 +14,7 @@ import {
   minor,
   fxUnits,
   localInput,
+  depositOutstandingMinor,
 } from "./fields.mjs";
 import { renderContract, escapeHtml } from "./contract.mjs";
 import { openApplication } from "./application.mjs?v=sample-3";
@@ -115,17 +116,8 @@ function adapt(raw) {
   const finance = raw.finance,
     bank = finance?.byCurrency;
   const deposit = raw.agreement?.quote.deposit || raw.depositDue;
-  let depositStatus = finance?.reconciliation ? "reconciliation" : "unpaid";
-  if (
-    deposit &&
-    bank &&
-    !finance.reconciliation &&
-    BigInt(finance.depositMatchedMinor) >= BigInt(deposit.amountMinor) &&
-    BigInt(bank[deposit.currency].balanceMinor) -
-      BigInt(bank[deposit.currency].unallocatedMinor) >=
-      BigInt(deposit.amountMinor)
-  )
-    depositStatus = "held";
+  const depositOutstanding = depositOutstandingMinor(deposit, finance);
+  let depositStatus = deposit && depositOutstanding === 0n ? "held" : "unpaid";
   if (
     [
       "cancelled",
@@ -202,6 +194,7 @@ function adapt(raw) {
     shippedAt: progress.shippedAt,
     inspectedAt: progress.inspectedAt,
     depositStatus,
+    depositOutstanding,
     _raw: raw,
   };
 }
@@ -274,18 +267,19 @@ function renderList() {
   $("#list-total").textContent =
     `${Object.values(state.counts).reduce((a, b) => a + b, 0)} 份申请`;
   $("#pending-count").textContent = state.counts.pending || 0;
-  $("#list-action-label").textContent =
-    state.filter === "approved" ? "归还" : "详情";
-  $("#completion-hint").hidden = state.filter !== "approved";
+  $("#completion-hint").hidden =
+    state.filter !== "approved" || !requests.some((r) => r.shippedAt);
   $("#request-rows").innerHTML = requests
     .map((request) => {
       const model = request.model.replace(/^RM-01 /, "");
       const [configuration, performance] = model.split(" (");
       const action =
-        request.status === "approved" && state.filter === "approved"
+        request.status === "approved" &&
+        request.shippedAt &&
+        state.filter === "approved"
           ? `<button type="button" class="complete-request" data-complete="${escapeHtml(request.id)}" title="标记已归还，终结单据" aria-label="标记 ${escapeHtml(request.company)} 已归还">${icon("check")}</button>`
           : `<a class="row-arrow" href="#admin/${encodeURIComponent(request.id)}" aria-label="查看 ${escapeHtml(request.company)} 的详情">${icon("arrow")}</a>`;
-      return `<div class="request-row"><button type="button" class="request-open" data-request="${escapeHtml(request.id)}" aria-label="查看 ${escapeHtml(request.company)} 的申请"><span><strong>${escapeHtml(request.company)}</strong><span class="sub mono">${escapeHtml(request.publicNo)}</span></span><span class="request-model"><span>RM-01 ${escapeHtml(configuration)}</span><span class="sub">${escapeHtml(performance.replace(")", ""))}</span><span class="sub">申请 ${request.days} 天</span></span><span class="request-deadline">${deadlineMarkup(request)}</span><span class="request-time"><span class="mono">${localTime(request.submittedAt).slice(5, 16)}</span><span class="sub">北京时间</span></span><span class="status" data-status="${request.status}">${STATUS[request.status]}</span></button>${action}<div class="request-tags progress-tags">${progressMarkup(request)}</div></div>`;
+      return `<div class="request-row"><button type="button" class="request-open" data-request="${escapeHtml(request.id)}" aria-label="查看 ${escapeHtml(request.company)} 的申请"><span><strong>${escapeHtml(request.company)}</strong><span class="sub mono">${escapeHtml(request.publicNo)}</span></span><span class="request-model"><span>RM-01 ${escapeHtml(configuration)}</span><span class="sub">${escapeHtml(performance.replace(")", ""))}</span><span class="sub">申请 ${request.days} 天</span></span><span class="request-deadline">${deadlineMarkup(request)}</span><span class="request-time"><span class="mono">${localTime(request.submittedAt).slice(5, 16)}</span><span class="sub">北京时间</span></span><span class="status" data-status="${request.status}">${STATUS[request.status]}</span></button>${action}<div class="request-tags progress-tags">${progressMarkup(request, true)}</div></div>`;
     })
     .join("");
   $("#list-empty").hidden = requests.length > 0;
@@ -303,6 +297,7 @@ function captureDraft() {
   }
 }
 function openRequest(request) {
+  if (state.current?.id !== request.id) $("#loan-history").open = false;
   state.current = request;
   const approved = isApproved(request);
   const locked = !canEditRequest(request);
@@ -318,7 +313,10 @@ function openRequest(request) {
     });
   $("#detail-id").textContent = request.publicNo;
   $("#detail-title").textContent = request.company;
-  $("#detail-status").textContent = STATUS[request.status];
+  $("#detail-status").textContent =
+    request.status === "approved"
+      ? `已批复 · ${approvedProgressLabel(request)}`
+      : STATUS[request.status];
   $("#detail-status").dataset.status = request.status;
   $("#detail-summary").textContent =
     `申请 ${request.days} 天 · ${request.model}`;
@@ -503,28 +501,27 @@ function refreshCountdowns() {
     );
   });
 }
-function progressMarkup(request) {
+function approvedProgressLabel(request) {
+  if (request.shippedAt) return "已发货";
+  return request.depositStatus === "held" ? "待发货" : "待收押金";
+}
+function progressMarkup(request, inList = false) {
   const tags = [];
-  const tag = (action, text, done = false) =>
-    `<button type="button" class="progress-tag" data-progress="${action}" data-loan="${escapeHtml(request.id)}" ${done ? "disabled" : `title="点击确认：${text}"`}>${done ? icon("check") : '<span class="tag-dot" aria-hidden="true"></span>'}${text}</button>`;
-  if (request.depositStatus === "reconciliation")
-    tags.push(tag("reconcile", "资金待核对"));
-  if (request.depositStatus === "unpaid" && request.status === "approved")
-    tags.push(tag("deposit", "押金待到账"));
-  if (request.depositStatus === "held")
-    tags.push(tag("none", "押金已到账", true));
-  if (request.status === "approved")
-    tags.push(
-      tag("ship", request.shippedAt ? "已发货" : "待发货", !!request.shippedAt),
-      tag("return", "待归还"),
-    );
+  const label = (text) => `<span class="fine">${text}</span>`;
+  const tag = (action, text) =>
+    `<button type="button" class="progress-tag" data-progress="${action}" data-loan="${escapeHtml(request.id)}">${text}</button>`;
+  if (request.status === "approved") {
+    if (inList) return label(approvedProgressLabel(request));
+    if (request.shippedAt)
+      tags.push(tag("return", "确认已归还"));
+    else if (request.depositStatus === "held")
+      tags.push(tag("ship", "标记已发货"));
+    else
+      tags.push(tag("deposit", "确认押金到账"));
+  }
   if (request.status === "completed")
     tags.push(
-      tag(
-        "inspect",
-        request.inspectedAt ? "已验收" : "待验收",
-        !!request.inspectedAt,
-      ),
+      request.inspectedAt ? label("已验收") : tag("inspect", "待验收"),
     );
   if (request.depositStatus === "refundPending")
     tags.push(tag("refund", "押金待退"));
@@ -533,20 +530,10 @@ function progressMarkup(request) {
     request.depositStatus === "settled"
   )
     tags.push(
-      tag(
-        "none",
-        request.depositStatus === "settled" ? "已结清" : "押金已退",
-        true,
-      ),
+      label(request.depositStatus === "settled" ? "已结清" : "押金已退"),
     );
   if (request.status === "completed" && request.depositStatus === "none")
-    tags.push(tag("none", "无押金待退", true));
-  if (
-    request._raw.finance?.balanced &&
-    request._raw.finance.assessmentComplete &&
-    !request._raw.financialClosedAt
-  )
-    tags.push(tag("close", "费用待结清"));
+    tags.push(label("无押金待退"));
   return tags.join("");
 }
 function renderInventory() {
@@ -673,6 +660,8 @@ function renderOperations(request) {
     ? `取消原因：${request.cancelReason}`
     : "";
   $("#copy-email").hidden = !request.snapshot || request.status === "cancelled";
+  $("#preview-agreement").hidden = !request.snapshot;
+  $("#agreement-history").hidden = !request.snapshot;
   refreshCountdowns();
 }
 
@@ -804,13 +793,16 @@ async function loadList(append = false) {
 async function loadDetail(id, generation = ++detailGeneration) {
   const result = await api("/api/sample-admin/requests/" + encodeURIComponent(id));
   if (generation !== detailGeneration || state.role === "user") return false;
-  const request = adapt(result.request);
-  const at = state.requests.findIndex((r) => r.id === id);
+  renderRequestDetail(result.request);
+  return true;
+}
+function renderRequestDetail(raw) {
+  const request = adapt(raw);
+  const at = state.requests.findIndex((r) => r.id === request.id);
   if (at >= 0) state.requests[at] = request;
   else state.requests.push(request);
   openRequest(request);
   renderFinance(request);
-  return true;
 }
 async function command(tail, data, button, formNode = form) {
   const r = state.current,
@@ -824,12 +816,16 @@ async function command(tail, data, button, formNode = form) {
         data: body,
         key: keyFn(body),
       });
+      const finance = tail.startsWith("finances/");
+      if (finance) formNode.closest("dialog")?.close();
       if (operations.edit?.id === id) operations.edit = null;
       if (state.current?.id === id) {
-        if (result.request) {
-          openRequest(adapt(result.request));
-          renderFinance(state.current);
-        } else await loadDetail(id);
+        if (result.request) renderRequestDetail(result.request);
+        else await loadDetail(id);
+      }
+      if (finance) {
+        if (!$("#admin-list").hidden) renderList();
+        return result;
       }
       await loadAssets();
       if (state.current?.id === id) renderMachinePicker();
@@ -1363,7 +1359,6 @@ $("#preview-agreement").addEventListener("click", () =>
       : Promise.resolve(toast("完成批复后可预览正式协议")),
   ),
 );
-let delivery = null;
 async function downloadCurrent() {
   const r = state.current,
     rev = r._raw.currentAgreementRevision;
@@ -1373,7 +1368,7 @@ async function downloadCurrent() {
   if (bundle.currentAgreementRevision !== rev)
     throw new Error("协议已更新，请刷新后下载当前版本");
   if (!bundle.document) throw new Error("当前PDF尚未生成");
-  delivery = bundle.document;
+  const delivery = bundle.document;
   const response = await fetch(delivery.downloadUrl, {
     credentials: "same-origin",
   });
@@ -1426,7 +1421,7 @@ function showEmail(email, kind = "confirmation") {
   emailKind = kind;
   emailDraft = email;
   $("#email-title").textContent =
-    kind === "rejection" ? "未通过通知邮件" : "确认邮件正文";
+    kind === "rejection" ? "未通过通知邮件" : "审核通过邮件";
   $("#email-confirmation-help").hidden = kind !== "confirmation";
   $("#email-rejection-help").hidden = kind !== "rejection";
   $("#email-recipient").value = email.recipient;
@@ -1457,20 +1452,16 @@ $("#copy-rejection-email").addEventListener("click", showRejectionEmail);
 $("#copy-email").addEventListener("click", () =>
   checked(async () => {
     const r = state.current;
-    if (
-      !delivery ||
-      delivery.agreementRevision !== r._raw.currentAgreementRevision
-    ) {
-      toast("请先下载当前版本协议，再复制对应邮件");
-      return;
-    }
-    const fresh = await api(
-      `/api/sample-admin/requests/${r.id}/versions/${delivery.agreementRevision}/delivery?documentId=${delivery.documentId}`,
+    const revision = r._raw.currentAgreementRevision;
+    const { email } = await api(
+      `/api/sample-admin/requests/${r.id}/versions/${revision}/approval-email`,
     );
-    if (state.current?.id !== r.id) return;
-    delivery = fresh.delivery;
-    showEmail(delivery);
-  }),
+    if (
+      state.current?.id !== r.id ||
+      state.current._raw.currentAgreementRevision !== revision
+    ) return;
+    showEmail(email);
+  }, $("#copy-email")),
 );
 for (const [button, input] of [
   ["copy-email-recipient", "email-recipient"],
@@ -1483,7 +1474,7 @@ for (const [button, input] of [
       $("#clipboard-status").textContent =
         emailKind === "rejection"
           ? "已复制，请核对收件人后人工发送"
-          : "已复制，请核对附件版本后人工发送";
+          : "已复制，可粘贴到邮件发送";
     } catch {
       $("#clipboard-status").textContent =
         "复制失败，请检查浏览器剪贴板权限后重试";
@@ -1507,6 +1498,19 @@ function renderFinance(r) {
   for (const [id, key] of Object.entries(visibility))
     $("#" + id).hidden = !a[key] || !!operations.edit;
   $("#download-agreement").disabled = !a.canDownload;
+  const deposit = raw.agreement?.quote.deposit;
+  const showDeposit = r.status === "approved" && deposit;
+  const depositSummary = $("#deposit-summary");
+  depositSummary.hidden = !showDeposit;
+  if (showDeposit) {
+    const unit = deposit.currency === "CNY" ? "元" : "美元";
+    const due = BigInt(deposit.amountMinor);
+    depositSummary.textContent = `应收押金 ${major(due)} ${unit}`;
+    if (r.depositOutstanding === 0n)
+      depositSummary.textContent += "，已足额到账";
+    else if (r.depositOutstanding < due)
+      depositSummary.textContent += `，还差 ${major(r.depositOutstanding)} ${unit}`;
+  }
   const special = {
     reschedules: "canReschedule",
     quotes: "canUpdateQuote",
@@ -1526,7 +1530,7 @@ function renderFinance(r) {
           return `${c}：实收 ${major(b.receivedMinor)}，已退 ${major(b.refundedMinor)}，已抵扣 ${major(b.appliedMinor)}，余额 ${major(b.balanceMinor)}，未结应收 ${major(b.outstandingMinor)}`;
         })
         .join("\n") +
-      (finance.reconciliation ? "\n有待核对或异常资金，不能发货或结清" : "")
+      (finance.reconciliation ? "\n有待核对的款项，请在结清前处理" : "")
     : "尚无资金记录";
   if (
     raw.progress?.returnedAt &&
@@ -1572,7 +1576,7 @@ function openProgress(r, action) {
   if (permissions[action] && !r._raw.allowedActions?.[permissions[action]]) {
     toast(
       action === "ship"
-        ? "请先核对押金足额到账、主体授权、物流保价和当前协议PDF"
+        ? "请先确认押金足额到账"
         : action === "return"
           ? "请先核对实际发货记录"
           : "请先登记实际归还",
@@ -1586,6 +1590,7 @@ function openProgress(r, action) {
   $("#progress-error").hidden = true;
   const finance = [
     "deposit",
+    "receipt",
     "refund",
     "apply",
     "assessment",
@@ -1596,35 +1601,52 @@ function openProgress(r, action) {
     e.querySelectorAll("input,select").forEach((i) => (i.disabled = !finance));
   });
   $("#progress-title").textContent = {
-    deposit: "登记实际收款",
+    deposit: "确认押金到账",
+    receipt: "登记实际收款",
     refund: "登记实际退款",
     apply: "押金抵扣",
     assessment: "核定应收项目",
     close: "确认费用结清",
-    ship: "发货登记",
+    ship: "标记已发货",
     return: "确认已归还",
     inspect: "归还验收",
   }[action];
+  $("#progress-form button[type=submit]").textContent =
+    ["deposit", "ship"].includes(action)
+      ? $("#progress-title").textContent
+      : "确认完成";
+  $("#progress-note").placeholder =
+    action === "ship" ? "快递公司和单号（选填）" : "";
+  const currency = r._raw.agreement?.quote.deposit.currency || "CNY";
+  const descriptions = {
+    deposit: `请按银行实收填写本次到账的押金（${currency}）。`,
+    ship: "机器寄出后，登记实际发货时间。",
+    return: "机器实际送达厂家后，确认归还。之后可登记验收和退押金。",
+    inspect: "请核对 SN、NO、外观、存储卡、配件及默认账户和密码恢复情况。",
+  };
   $("#progress-description").textContent =
-    action === "return"
-      ? "是否确认机器已实际送达厂家？确认后恢复空闲；验收及押金继续单独跟进"
-      : action === "inspect"
-        ? "请核对SN、NO、外观、存储卡、配件及默认账户和密码恢复情况"
-        : "请根据实际事实核对；登记收款、退款不代表系统执行银行转账";
+    descriptions[action] || "请登记实际发生的金额和时间。";
   const moneyNeeded = finance && action !== "close";
   $("#finance-money-field").hidden = !moneyNeeded;
   $("#finance-amount").disabled = !moneyNeeded;
   $("#finance-amount").required = moneyNeeded;
   $("#finance-amount").min = action === "assessment" ? "0" : "0.01";
-  $("#finance-currency").value =
-    r._raw.agreement?.quote.deposit.currency || "CNY";
-  $("#finance-reference").required = ["deposit", "refund"].includes(action);
-  $("#finance-reference-field").hidden = !["deposit", "refund"].includes(
-    action,
-  );
-  $("#finance-reference").disabled = !["deposit", "refund"].includes(action);
-  $("#finance-purpose-field").hidden = action !== "deposit";
-  $("#finance-purpose").disabled = action !== "deposit";
+  $("#finance-amount-label").textContent =
+    action === "deposit" ? "本次到账金额" : "实际金额";
+  if (action === "deposit") {
+    $("#finance-amount").value = major(r.depositOutstanding);
+    $("#finance-currency").closest(".field").hidden = true;
+    $("#finance-currency").disabled = true;
+  }
+  $("#finance-currency").value = currency;
+  const useReference = ["receipt", "refund"].includes(action);
+  $("#finance-reference").required = useReference;
+  $("#finance-reference-field").hidden = !useReference;
+  $("#finance-reference").disabled = !useReference;
+  $("#finance-purpose-field").hidden = action !== "receipt";
+  $("#finance-purpose").disabled = action !== "receipt";
+  $("#finance-quote").closest(".field").hidden = !finance || action === "deposit";
+  $("#finance-quote").disabled = !finance || action === "deposit";
   $("#finance-quote").innerHTML =
     '<option value="">待核对 / 未归属</option>' +
     (r._raw.quotes || [])
@@ -1642,10 +1664,10 @@ function openProgress(r, action) {
           `<option value="${a.id}">${escapeHtml(a.reason)} · ${a.currency} ${major(String(a.amount_minor))}</option>`,
       )
       .join("");
+  $("#finance-assessment").closest(".field").hidden = !finance || action === "deposit";
+  $("#finance-assessment").disabled = !finance || action === "deposit";
   $("#finance-complete-field").hidden = action !== "assessment";
-  $("#finance-exception-field").hidden = !["deposit", "refund"].includes(
-    action,
-  );
+  $("#finance-exception-field").hidden = !useReference;
   $("#progress-note").required = [
     "inspect",
     "assessment",
@@ -1658,15 +1680,14 @@ function openProgress(r, action) {
 }
 document.addEventListener("click", async (event) => {
   const b = event.target.closest("[data-progress]");
-  if (b && b.dataset.progress !== "none") {
+  if (b) {
     const id = b.dataset.loan;
     if (operations.edit) {
       toast("请先保存或取消资料修改");
       return;
     }
     if (!(await loadDetail(id))) return;
-    if (b.dataset.progress === "reconcile") openSpecial("reconcile");
-    else openProgress(state.current, b.dataset.progress);
+    openProgress(state.current, b.dataset.progress);
   }
   const f = event.target.closest("[data-finance]");
   if (f) {
@@ -1687,11 +1708,24 @@ $("#progress-form").addEventListener("submit", async (event) => {
     note = $("#progress-note").value,
     occurredAt = inputUtc($("#progress-time").value);
   let tail, payload;
-  if (["deposit", "refund", "apply", "assessment", "close"].includes(action)) {
+  if (action === "deposit") {
+    const { quote, quoteId } = state.current._raw.agreement;
+    tail = "finances/receipts";
+    payload = {
+      money: {
+        currency: quote.deposit.currency,
+        amountMinor: minor($("#finance-amount").value),
+      },
+      occurredAt,
+      note,
+      quoteId,
+      purpose: "deposit",
+    };
+  } else if (["receipt", "refund", "apply", "assessment", "close"].includes(action)) {
     tail =
       "finances/" +
       {
-        deposit: "receipts",
+        receipt: "receipts",
         refund: "refunds",
         apply: "settlements",
         assessment: "assessments",
@@ -1718,7 +1752,7 @@ $("#progress-form").addEventListener("submit", async (event) => {
         reference: $("#finance-reference").value || null,
         quoteId: $("#finance-quote").value || null,
         assessmentId: $("#finance-assessment").value || null,
-        purpose: action === "deposit" ? $("#finance-purpose").value : null,
+        purpose: action === "receipt" ? $("#finance-purpose").value : null,
         exceptional: $("#finance-exception").checked,
       };
   } else {

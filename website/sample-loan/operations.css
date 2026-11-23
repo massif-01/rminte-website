@@ -48,38 +48,18 @@
 .progress-tag {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
   padding: 0 12px;
   min-height: 36px;
   border: 1px solid var(--line-2);
   border-radius: 999px;
   background: none;
   font-size: 12px;
-  color: var(--text-2);
+  color: var(--text-1);
   white-space: nowrap;
 }
-.progress-tag:not(:disabled):hover {
+.progress-tag:hover {
   border-color: var(--text-3);
   background: var(--n-4);
-}
-.progress-tag:not(:disabled) {
-  color: var(--text-1);
-}
-.progress-tag:disabled {
-  opacity: 1;
-  color: var(--text-3);
-  border-color: transparent;
-  padding-inline: 4px;
-}
-.progress-tag svg {
-  width: 13px;
-  height: 13px;
-}
-.tag-dot {
-  width: 4px;
-  height: 4px;
-  background: var(--text-1);
-  border-radius: 50%;
 }
 .deadline-date {
   display: block;
