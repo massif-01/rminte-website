@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="preview.css?v=sample-4" />
     <link rel="stylesheet" href="operations.css?v=sample-4" />
 
-    <script type="module" src="admin.mjs?v=sample-10"></script>
+    <script type="module" src="admin.mjs?v=sample-11"></script>
   </head>
   <body>
     <svg class="svg-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -163,7 +163,7 @@
               ><button type="button" class="sort-time" data-sort-time>
                 <span>提交时间</span
                 ><span data-sort-direction aria-hidden="true">↓</span></button
-              ><span>状态</span><span id="list-action-label">详情</span>
+              ><span>状态</span><span>操作</span>
             </div>
             <div id="request-rows"></div>
             <p class="empty" id="list-empty" hidden>没有符合条件的申请。</p>
@@ -172,7 +172,7 @@
             加载更多
           </button>
           <p class="fine">
-            申请天数与批复借期分别记录。审批完成后下载 PDF，由工作人员人工发送。
+            批复后可复制邮件，押金到账后可登记发货。
           </p>
           <p class="fine" id="completion-hint" hidden>
             右侧打勾表示已归还，单据将移入“已完成”。
@@ -195,28 +195,24 @@
               <h1 id="detail-title"></h1>
               <p class="muted" id="detail-summary"></p>
             </div>
-            <button type="button" class="pill ghost" id="preview-agreement">
-              <svg><use href="#i-diagonal" /></svg>预览协议
-            </button>
           </div>
           <div id="approval-result" class="result-strip" hidden>
             <div>
-              <strong>批复已完成</strong>
-              <p>
-                请下载协议，人工发送至
-                <span id="approved-email"></span
-                >。系统不会自动发送邮件。邮件须载明报价及编号；实际足额到账、主体及授权核验完成后再发货。
-              </p>
+              <p>收件人 <span id="approved-email"></span></p>
             </div>
-            <button type="button" class="pill primary" id="download-agreement">
-              <svg><use href="#i-download" /></svg>下载 PDF
-            </button>
+            <div class="operations-actions">
+              <button type="button" class="pill primary" id="copy-email">
+                复制审核通过邮件
+              </button>
+              <button type="button" class="pill ghost" id="download-agreement">
+                <svg><use href="#i-download" /></svg>下载 PDF
+              </button>
+            </div>
           </div>
           <div id="rejected-result" class="result-strip" hidden>
             <div>
               <strong>申请未通过</strong>
               <p id="rejected-reason"></p>
-              <p>可复制通知邮件，由工作人员发送给申请人。</p>
             </div>
             <button type="button" class="pill ghost" id="copy-rejection-email">
               复制未通过通知邮件
@@ -235,103 +231,111 @@
                   <span id="clock-status">正在校准服务器时间</span>
                 </p>
               </div>
-              <div class="operations-actions">
-                <button type="button" class="pill ghost" id="edit-approved">
-                  修改资料</button
-                ><button type="button" class="pill ghost" id="extend-loan">
-                  延期处理</button
-                ><button type="button" class="text-button" id="cancel-loan">
-                  取消单据
-                </button>
-              </div>
             </div>
             <div id="detail-progress" class="progress-tags"></div>
+            <p id="deposit-summary" class="fine" hidden></p>
             <p id="progress-facts" class="fine"></p>
-            <section class="finance-panel">
-              <h3>押金与费用</h3>
-              <p id="finance-summary" class="fine"></p>
+            <details id="loan-history" class="original-details">
+              <summary>历史与更正</summary>
               <div class="document-actions">
+                <button type="button" class="text-button" id="edit-approved">
+                  修改资料</button
+                ><button type="button" class="text-button" id="extend-loan">
+                  延期处理</button
+                ><button type="button" class="text-button" id="cancel-loan">
+                  取消单据</button
+                ><button type="button" class="text-button" id="preview-agreement">
+                  预览协议</button
+                ><button type="button" class="text-button" id="agreement-history">
+                  协议历史版本</button
+                ><span id="current-revision" class="fine"></span>
+              </div>
+              <section class="finance-panel">
+                <h3>押金与费用</h3>
+                <p id="finance-summary" class="fine"></p>
+                <div class="document-actions">
+                  <button
+                    type="button"
+                    class="text-button"
+                    data-finance="receipt"
+                  >
+                    登记收款</button
+                  ><button
+                    type="button"
+                    class="text-button"
+                    data-finance="assessment"
+                  >
+                    核定损坏 / 费用</button
+                  ><button type="button" class="text-button" data-finance="apply">
+                    押金抵扣</button
+                  ><button
+                    type="button"
+                    class="text-button"
+                    data-finance="refund"
+                  >
+                    登记退款</button
+                  ><button type="button" class="text-button" data-finance="close">
+                    确认结清
+                  </button>
+                </div>
+                <div id="financial-events"></div>
+              </section>
+              <div class="document-actions" id="special-actions">
                 <button
                   type="button"
                   class="text-button"
-                  data-finance="deposit"
+                  data-special="reschedules"
                 >
-                  登记收款</button
+                  更正发货前排期</button
+                ><button type="button" class="text-button" data-special="quotes">
+                  更新报价</button
                 ><button
                   type="button"
                   class="text-button"
-                  data-finance="assessment"
+                  data-special="billing-basis-corrections"
                 >
-                  核定损坏 / 费用</button
-                ><button type="button" class="text-button" data-finance="apply">
-                  押金抵扣</button
+                  更正整机价值</button
+                ><button type="button" class="text-button" data-special="loss">
+                  核实丢失</button
                 ><button
                   type="button"
                   class="text-button"
-                  data-finance="refund"
+                  data-special="loss-notice"
                 >
-                  登记退款</button
-                ><button type="button" class="text-button" data-finance="close">
-                  确认结清
+                  转赔偿通知</button
+                ><button
+                  type="button"
+                  class="text-button"
+                  data-special="loss-close"
+                >
+                  赔偿结案</button
+                ><button
+                  type="button"
+                  class="text-button"
+                  data-special="correction"
+                >
+                  更正操作记录</button
+                ><button
+                  type="button"
+                  class="text-button"
+                  data-special="reversal"
+                >
+                  更正资金录入</button
+                ><button
+                  type="button"
+                  class="text-button"
+                  data-special="reconcile"
+                >
+                  核对待认领款项</button
+                ><button
+                  type="button"
+                  class="text-button"
+                  data-special="preservation"
+                >
+                  资料保留 / 解除保留
                 </button>
               </div>
-              <div id="financial-events"></div>
-            </section>
-            <div class="document-actions" id="special-actions">
-              <button
-                type="button"
-                class="text-button"
-                data-special="reschedules"
-              >
-                更正发货前排期</button
-              ><button type="button" class="text-button" data-special="quotes">
-                更新报价</button
-              ><button
-                type="button"
-                class="text-button"
-                data-special="billing-basis-corrections"
-              >
-                更正整机价值</button
-              ><button type="button" class="text-button" data-special="loss">
-                核实丢失</button
-              ><button
-                type="button"
-                class="text-button"
-                data-special="loss-notice"
-              >
-                转赔偿通知</button
-              ><button
-                type="button"
-                class="text-button"
-                data-special="loss-close"
-              >
-                赔偿结案</button
-              ><button
-                type="button"
-                class="text-button"
-                data-special="correction"
-              >
-                更正操作记录</button
-              ><button
-                type="button"
-                class="text-button"
-                data-special="reversal"
-              >
-                更正资金录入</button
-              ><button
-                type="button"
-                class="text-button"
-                data-special="reconcile"
-              >
-                核对待认领款项</button
-              ><button
-                type="button"
-                class="text-button"
-                data-special="preservation"
-              >
-                资料保留 / 解除保留
-              </button>
-            </div>
+            </details>
             <div id="edit-note" class="edit-note" hidden>
               <p class="fine">
                 借期、报价及整机价值通过专门更正操作处理；本次只修改交付资料。
@@ -353,13 +357,6 @@
                   保存修改并生成新版本
                 </button>
               </div>
-            </div>
-            <div class="document-actions">
-              <button type="button" class="text-button" id="agreement-history">
-                协议历史版本</button
-              ><button type="button" class="text-button" id="copy-email">
-                复制确认邮件正文</button
-              ><span id="current-revision" class="fine"></span>
             </div>
             <p id="cancelled-summary" class="fine" hidden></p>
           </section>
@@ -444,10 +441,9 @@
                       ></textarea>
                     </label>
                     <label class="field span-2"
-                      ><span>主体及授权核验记录 <em>必填</em></span
+                      ><span>主体及授权核验备注 <em>选填</em></span
                       ><textarea
                         name="identityNotes"
-                        required
                         rows="2"
                         placeholder="记录核验方式、授权材料及结论；记录实际核验结果"
                       ></textarea>
@@ -457,7 +453,6 @@
                         type="checkbox"
                         name="identityVerified"
                         value="yes"
-                        required
                       /><span
                         >已核对借用主体、申请人员身份及授权关系</span
                       ></label
@@ -1069,7 +1064,7 @@
             ><span>备注</span
             ><textarea id="progress-note" rows="2"></textarea></label
           ><label class="field" data-finance-field id="finance-money-field"
-            ><span>实际金额</span
+            ><span id="finance-amount-label">实际金额</span
             ><input
               id="finance-amount"
               inputmode="decimal"
@@ -1242,7 +1237,7 @@
       aria-labelledby="email-title"
     >
       <div class="dialog-top">
-        <h2 id="email-title" tabindex="-1" autofocus>确认邮件正文</h2>
+        <h2 id="email-title" tabindex="-1" autofocus>审核通过邮件</h2>
         <button
           type="button"
           class="contact-close"
@@ -1254,7 +1249,7 @@
       </div>
       <div class="email-content">
         <p id="email-confirmation-help" class="fine">
-          请先下载当前版本协议并作为附件添加。收款账户未配置时须补充后再发送；复制不代表已发送或已送达。
+          可先复制正文。发送借用协议时，请附上当前版本 PDF。
         </p>
         <p id="email-rejection-help" class="fine" hidden>
           请核对收件人和未通过原因后人工发送；复制不代表已发送或已送达。

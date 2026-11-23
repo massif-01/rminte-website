@@ -20,6 +20,7 @@ import { refundDeadline } from "./maintenance.mjs";
 import { financialState } from "./finance.mjs";
 import { legacyData } from "./legacy.mjs";
 import { loanMutation } from "./loan-serial.mjs";
+import { depositOutstandingMinor } from "../../website/sample-loan/fields.mjs";
 const touch = (r, closed = null) => [
   "UPDATE sample_requests SET row_version=row_version+1,closed_at=? WHERE id=? AND $gate",
   [closed, r.id],
@@ -618,34 +619,11 @@ export async function progressCommand(request, env, user, r, kind, d) {
       "单据不可重复发货",
     );
     const a = current.agreement,
-      fs = await financialState(env, r.id),
-      q = fs.currentQuote;
+      fs = await financialState(env, r.id);
     assert(
-      !fs.projection.reconciliation &&
-        BigInt(fs.projection.depositMatchedMinor) >=
-          BigInt(a.quote.deposit.amountMinor) &&
-        BigInt(
-          fs.projection.byCurrency[a.quote.deposit.currency].balanceMinor,
-        ) -
-          BigInt(
-            fs.projection.byCurrency[a.quote.deposit.currency].unallocatedMinor,
-          ) >=
-          BigInt(a.quote.deposit.amountMinor),
+      depositOutstandingMinor(a.quote.deposit, fs.projection) === 0n,
       "DEPOSIT_INSUFFICIENT",
-      "请核对押金足额到账",
-    );
-    assert(
-      a.identity.verified &&
-        a.outbound.carrier &&
-        a.outbound.trackingNumber &&
-        a.outbound.insuranceReference,
-      "DELIVERY_INCOMPLETE",
-      "请补齐主体核验、物流及保价凭证",
-    );
-    assert(
-      current.versions.at(-1)?.status === "ready",
-      "DOCUMENT_NOT_READY",
-      "当前协议PDF尚未生成",
+      "请先确认押金足额到账",
     );
     assert(time >= a.submittedAt, "INVALID_TIME", "发货不能早于申请", 422);
     statements.push(

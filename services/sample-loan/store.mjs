@@ -2,6 +2,8 @@ import { digest } from "../case-access/crypto.mjs";
 import { assert, fail, canonical, iso, integer } from "./domain.mjs";
 import { liveAccessSQL } from "./access.mjs";
 import { open } from "./vault.mjs";
+import { project } from "./finance-projection.mjs";
+import { depositOutstandingMinor } from "../../website/sample-loan/fields.mjs";
 export const operationId = Symbol("sample operation ID");
 export const stmt = (env, sql, values = []) =>
   env.CASE_DB.prepare(sql).bind(...values);
@@ -211,7 +213,7 @@ export async function detail(env, id) {
     first(env, "SELECT * FROM sample_progress WHERE request_id=?", [id]),
     first(
       env,
-      "SELECT projection_json FROM sample_financial_projections WHERE request_id=?",
+      "SELECT 1 FROM sample_financial_projections WHERE request_id=?",
       [id],
     ),
     first(
@@ -256,21 +258,14 @@ export async function detail(env, id) {
   }
   const saved = await open(env.SAMPLE_SECRET, id + ":draft", r.draft_cipher);
   const { accessoriesFromAsset, ...draft } = saved || {};
-  const finance = financial ? JSON.parse(financial.projection_json) : null,
+  const finance = financial
+      ? project(entries, assessments, quotes, quotes.at(-1))
+      : null,
     unshipped = !progress?.shipped_at,
     noCash = !entries.some((e) => ["receipt", "refund"].includes(e.kind)),
     cleanup = !!r.purge_after_at,
     latest = versions.find((v) => v.revision === r.current_agreement_revision),
     canWrite = !cleanup;
-  const deposit = agreement?.quote.deposit,
-    held =
-      deposit &&
-      finance &&
-      !finance.reconciliation &&
-      BigInt(finance.depositMatchedMinor) >= BigInt(deposit.amountMinor) &&
-      BigInt(finance.byCurrency[deposit.currency].balanceMinor) -
-        BigInt(finance.byCurrency[deposit.currency].unallocatedMinor) >=
-        BigInt(deposit.amountMinor);
   const allowedActions = {
     canApprove: canWrite && r.status === "pending",
     canReject: canWrite && r.status === "pending",
@@ -296,12 +291,8 @@ export async function detail(env, id) {
       canWrite &&
       r.status === "approved" &&
       unshipped &&
-      held &&
-      agreement.identity.verified &&
-      agreement.outbound.carrier &&
-      agreement.outbound.trackingNumber &&
-      agreement.outbound.insuranceReference &&
-      latest?.status === "ready"
+      agreement &&
+      depositOutstandingMinor(agreement.quote.deposit, finance) === 0n
     ),
     canReturn: canWrite && r.status === "approved" && !unshipped,
     canInspect: canWrite && r.status === "completed",
@@ -368,7 +359,7 @@ export async function detail(env, id) {
           billingBasisRevision: progress.billing_basis_revision,
         }
       : null,
-    finance: financial ? JSON.parse(financial.projection_json) : null,
+    finance,
     versions,
     events: events.map((e) => ({
       ...e,

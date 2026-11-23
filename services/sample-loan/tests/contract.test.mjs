@@ -177,4 +177,10 @@ test('English USD approval mail preserves the frozen quote and raw account detai
   assert.match(email.body, /714\.2857/);
   assert.ok(email.body.includes(snapshot.quote.fx.publishedAt));
   assert.ok(email.body.includes(settings.bankAccounts.USD));
+  const earlyEmail = confirmationMail(snapshot, settings, null);
+  assert.match(earlyEmail.body, /within 24 hours/);
+  assert.match(earlyEmail.body, /714\.2857/);
+  assert.ok(earlyEmail.body.includes(snapshot.returnTo.address));
+  assert.ok(earlyEmail.body.includes(settings.bankAccounts.USD));
+  assert.doesNotMatch(earlyEmail.body, /attached|SHA-256/);
 });

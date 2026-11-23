@@ -296,10 +296,14 @@ export function approval(d) {
   );
   exact(d.identity, ["notes", "verified"]);
   result.identity = {
-    notes: text(d.identity.notes, "identity.notes", 4000),
+    notes: text(d.identity.notes, "identity.notes", 4000, true),
     verified: d.identity.verified,
   };
-  requireField(d.identity.verified === true, "identity.verified", "请勾选此项");
+  requireField(
+    typeof d.identity.verified === "boolean",
+    "identity.verified",
+    "核验状态格式不符",
+  );
   exact(d.schedule, ["startsAt", "dueAt"]);
   at(d.schedule.startsAt, "schedule.startsAt");
   at(d.schedule.dueAt, "schedule.dueAt");
