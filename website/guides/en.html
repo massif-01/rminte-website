@@ -18,7 +18,7 @@
   <script>
     // ja/ko/es/fr carry their own catalog file; zh and en need none. Resolve the language the way i18n.js does and load only that file.
     (function (up) {
-      var ok = /^(zh|en|ja|ko|es|fr)$/, c = window.RM_CATALOG = { base: up + 'assets/translations/', v: 'api-20261107' };
+      var ok = /^(zh|en|ja|ko|es|fr)$/, c = window.RM_CATALOG = { base: up + 'assets/translations/', v: 'copy-20261125' };
       c.load = function () {
         var s; try { s = localStorage.getItem('rm-soft-lang'); } catch (e) {}
         var l = [new URLSearchParams(location.search).get('lang'), (location.hash.match(/^#(zh|en|ja|ko|es|fr)-/) || [])[1], document.documentElement.dataset.searchLanguage, s, window.RM_DEFAULT_LANG].filter(function (x) { return ok.test(x); })[0];
@@ -29,7 +29,7 @@
       // Each CJK face is requested only when its language is shown: every page used to ask for Noto Sans SC, JP and KR (about 0.9 MB of fonts and
       // 210 KB of stylesheet that English, Spanish and French visitors never use). While the head is parsing, document.write keeps the link
       // render-blocking like a static one; i18n.js calls this again (late) when the visitor switches language.
-      var cjk = { zh: 'assets/fonts/noto-sans-sc.css?v=api-20261107', ja: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap', ko: 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap' };
+      var cjk = { zh: 'assets/fonts/noto-sans-sc.css?v=copy-20261125', ja: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap', ko: 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap' };
       c.fonts = function (l, late) {
         if (!cjk[l] || document.querySelector('link[data-cjk="' + l + '"]')) return;
         var h = /^https:/.test(cjk[l]) ? cjk[l] : up + cjk[l];
@@ -42,8 +42,8 @@
   <script src="../assets/i18n.js?v=search-locale-1" defer=""></script>
   <script src="../assets/guides.js?v=canonical-20261121" defer=""></script>
   <script src="../assets/knowledge-entry.js?v=knowledge-review-20261030" defer=""></script>
-  <script src="../assets/site-data.js?v=sample-2" defer=""></script>
-  <script src="../assets/footer.js?v=sample-3" defer=""></script>
+  <script src="../assets/site-data.js?v=copy-20261125" defer=""></script>
+  <script src="../assets/footer.js?v=copy-20261125" defer=""></script>
   <script src="../assets/nav-glide.js?v=glide-1" defer=""></script>
   <script src="../assets/support-motion.js?v=support-1" defer=""></script>
 
@@ -102,8 +102,8 @@
 
   <main class="guide-home-main" id="guideMain">
     <section class="guide-home-hero" aria-labelledby="guideTitle">
-      <h1 id="guideTitle" data-guide-text="" data-zh="选择你的使用角色" data-en="Choose your operating role">Choose your operating role</h1>
-      <p class="guide-home-lead" data-guide-text="" data-zh="日常管理、系统运维与安全配置，各有对应的操作指南。选择你的角色，从手头要做的事开始。" data-en="Find guidance for daily management, system operations, and security configuration. Choose your role and start with the task at hand.">Find guidance for daily management, system operations, and security configuration. Choose your role and start with the task at hand.</p>
+      <h1 id="guideTitle" data-guide-text="" data-zh="按你的角色，直达所需指南" data-en="Start from your role">Start from your role</h1>
+      <p class="guide-home-lead" data-guide-text="" data-zh="日常管理、系统运维与安全配置各有专册。选定你的角色，从手头的任务直接出发。" data-en="Dedicated guides for daily management, system operations, and security configuration. Pick your role and jump straight into the task at hand.">Dedicated guides for daily management, system operations, and security configuration. Pick your role and jump straight into the task at hand.</p>
     </section>
 
     <section class="guide-search" data-guide-search="">
@@ -129,7 +129,7 @@
     <a class="guide-card knowledge-entry" data-bevel="" href="#knowledgeDialog" id="knowledgeEntryLink" aria-haspopup="dialog" aria-controls="knowledgeDialog" aria-labelledby="knowledgeEntryTitle knowledgeEntryAction">
       <svg class="guide-card-icon" viewBox="0 0 11 11" aria-hidden="true" focusable="false"><path class="dim" d="M0.5 0.5h0M1.5 0.5h0M2.5 0.5h0M3.5 0.5h0M4.5 0.5h0M5.5 0.5h0M6.5 0.5h0M7.5 0.5h0M8.5 0.5h0M9.5 0.5h0M10.5 0.5h0M0.5 1.5h0M1.5 1.5h0M9.5 1.5h0M10.5 1.5h0M0.5 2.5h0M2.5 2.5h0M3.5 2.5h0M4.5 2.5h0M5.5 2.5h0M6.5 2.5h0M7.5 2.5h0M8.5 2.5h0M10.5 2.5h0M0.5 3.5h0M2.5 3.5h0M3.5 3.5h0M4.5 3.5h0M5.5 3.5h0M6.5 3.5h0M7.5 3.5h0M8.5 3.5h0M10.5 3.5h0M0.5 4.5h0M2.5 4.5h0M5.5 4.5h0M8.5 4.5h0M10.5 4.5h0M0.5 5.5h0M2.5 5.5h0M3.5 5.5h0M4.5 5.5h0M5.5 5.5h0M6.5 5.5h0M7.5 5.5h0M8.5 5.5h0M10.5 5.5h0M0.5 6.5h0M2.5 6.5h0M3.5 6.5h0M4.5 6.5h0M5.5 6.5h0M6.5 6.5h0M7.5 6.5h0M8.5 6.5h0M10.5 6.5h0M0.5 7.5h0M1.5 7.5h0M9.5 7.5h0M10.5 7.5h0M0.5 8.5h0M1.5 8.5h0M2.5 8.5h0M3.5 8.5h0M5.5 8.5h0M6.5 8.5h0M7.5 8.5h0M8.5 8.5h0M9.5 8.5h0M10.5 8.5h0M0.5 9.5h0M1.5 9.5h0M2.5 9.5h0M4.5 9.5h0M5.5 9.5h0M6.5 9.5h0M7.5 9.5h0M8.5 9.5h0M9.5 9.5h0M10.5 9.5h0M0.5 10.5h0M1.5 10.5h0M2.5 10.5h0M3.5 10.5h0M4.5 10.5h0M5.5 10.5h0M6.5 10.5h0M7.5 10.5h0M8.5 10.5h0M9.5 10.5h0M10.5 10.5h0"></path><path class="lit" d="M2.5 1.5h0M3.5 1.5h0M4.5 1.5h0M5.5 1.5h0M6.5 1.5h0M7.5 1.5h0M8.5 1.5h0M1.5 2.5h0M9.5 2.5h0M1.5 3.5h0M9.5 3.5h0M1.5 4.5h0M3.5 4.5h0M4.5 4.5h0M6.5 4.5h0M7.5 4.5h0M9.5 4.5h0M1.5 5.5h0M9.5 5.5h0M1.5 6.5h0M9.5 6.5h0M2.5 7.5h0M3.5 7.5h0M4.5 7.5h0M5.5 7.5h0M6.5 7.5h0M7.5 7.5h0M8.5 7.5h0M4.5 8.5h0M3.5 9.5h0"></path></svg>
       <h2 id="knowledgeEntryTitle"><span data-guide-text="" data-zh="让你的 Agent 帮你用好" data-en="Get more from">Get more from</span> <span class="rm-mark">RM-01</span><span data-guide-text="" data-zh="" data-en=" with your agent"> with your agent</span></h2>
-      <p class="guide-card-copy" data-guide-text="" data-zh="从了解产品、申请样机到配置系统、排查问题，让你的 Agent 根据官方资料提供帮助。" data-en="From exploring the product and requesting a demo unit to system setup and troubleshooting, let your agent help with guidance from official sources.">From exploring the product and requesting a demo unit to system setup and troubleshooting, let your agent help with guidance from official sources.</p>
+      <p class="guide-card-copy" data-guide-text="" data-zh="从了解产品、申请样机，到系统配置与故障排查，让你的 Agent 直接调用官方资料，随时为你效劳。" data-en="From exploring RM-01 and requesting a demo unit to system configuration and troubleshooting, let your agent draw directly on official documentation whenever you need a hand.">From exploring RM-01 and requesting a demo unit to system configuration and troubleshooting, let your agent draw directly on official documentation whenever you need a hand.</p>
       <div class="guide-card-bottom">
         <span class="guide-card-meta" id="knowledgeEntryAction" data-guide-text="" data-zh="查看接入说明" data-en="View setup instructions">View setup instructions</span>
         <span class="guide-card-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"></path></svg></span>
@@ -195,12 +195,12 @@
     <a class="guide-card guide-card-api" data-bevel="" href="api" id="apiGuideLink" aria-labelledby="apiGuideTitle">
   <svg class="guide-card-icon" viewBox="0 0 11 11" aria-hidden="true" focusable="false"><path class="dim" d="M0.5 0.5h0M0.5 1.5h0M0.5 2.5h0M0.5 3.5h0M0.5 4.5h0M0.5 5.5h0M0.5 6.5h0M0.5 7.5h0M0.5 8.5h0M0.5 9.5h0M0.5 10.5h0M1.5 0.5h0M1.5 1.5h0M1.5 9.5h0M1.5 10.5h0M2.5 0.5h0M2.5 1.5h0M2.5 3.5h0M2.5 4.5h0M2.5 5.5h0M2.5 6.5h0M2.5 7.5h0M2.5 9.5h0M2.5 10.5h0M3.5 0.5h0M3.5 1.5h0M3.5 3.5h0M3.5 4.5h0M3.5 5.5h0M3.5 6.5h0M3.5 7.5h0M3.5 9.5h0M3.5 10.5h0M4.5 0.5h0M4.5 1.5h0M4.5 2.5h0M4.5 3.5h0M4.5 4.5h0M4.5 5.5h0M4.5 6.5h0M4.5 7.5h0M4.5 8.5h0M4.5 9.5h0M4.5 10.5h0M5.5 0.5h0M5.5 1.5h0M5.5 2.5h0M5.5 3.5h0M5.5 4.5h0M5.5 5.5h0M5.5 6.5h0M5.5 7.5h0M5.5 8.5h0M5.5 9.5h0M5.5 10.5h0M6.5 0.5h0M6.5 1.5h0M6.5 2.5h0M6.5 3.5h0M6.5 4.5h0M6.5 5.5h0M6.5 6.5h0M6.5 7.5h0M6.5 8.5h0M6.5 9.5h0M6.5 10.5h0M7.5 0.5h0M7.5 1.5h0M7.5 3.5h0M7.5 4.5h0M7.5 5.5h0M7.5 6.5h0M7.5 7.5h0M7.5 9.5h0M7.5 10.5h0M8.5 0.5h0M8.5 1.5h0M8.5 3.5h0M8.5 4.5h0M8.5 5.5h0M8.5 6.5h0M8.5 7.5h0M8.5 9.5h0M8.5 10.5h0M9.5 0.5h0M9.5 1.5h0M9.5 9.5h0M9.5 10.5h0M10.5 0.5h0M10.5 1.5h0M10.5 2.5h0M10.5 3.5h0M10.5 4.5h0M10.5 5.5h0M10.5 6.5h0M10.5 7.5h0M10.5 8.5h0M10.5 9.5h0M10.5 10.5h0"></path><path class="lit" d="M1.5 2.5h0M1.5 3.5h0M1.5 4.5h0M1.5 5.5h0M1.5 6.5h0M1.5 7.5h0M1.5 8.5h0M2.5 2.5h0M2.5 8.5h0M3.5 2.5h0M3.5 8.5h0M7.5 2.5h0M7.5 8.5h0M8.5 2.5h0M8.5 8.5h0M9.5 2.5h0M9.5 3.5h0M9.5 4.5h0M9.5 5.5h0M9.5 6.5h0M9.5 7.5h0M9.5 8.5h0"></path></svg>
   <h2 id="apiGuideTitle" data-guide-text="" data-zh="API 接入" data-en="API integration">API integration</h2>
-  <p class="guide-card-copy" data-guide-text="" data-zh="用脚本或自己的系统读取设备状态、控制设备并接收实时消息。提供快速接入、任务示例与接口参考。" data-en="Connect your scripts and applications to read device status, control devices, and receive real-time updates. Start with a quickstart, task examples, or the API reference.">Connect your scripts and applications to read device status, control devices, and receive real-time updates. Start with a quickstart, task examples, or the API reference.</p>
+  <p class="guide-card-copy" data-guide-text="" data-zh="通过脚本或自有业务系统读取设备状态、下发控制指令并订阅实时事件，配套提供快速接入、任务示例与完整接口参考。" data-en="Read device status, send control commands, and subscribe to real-time events from your scripts or business systems—backed by a quickstart, task examples, and full API reference.">Read device status, send control commands, and subscribe to real-time events from your scripts or business systems—backed by a quickstart, task examples, and full API reference.</p>
   <div class="guide-card-bottom"><span class="guide-card-meta" data-guide-text="" data-zh="快速接入 · 任务示例 · 接口参考" data-en="Quickstart · Task examples · API reference">Quickstart · Task examples · API reference</span><span class="guide-card-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></span></div>
 </a>
     </section>
 
-    <p class="guide-home-note" data-guide-text="" data-zh="root 权限可能改变设备、远程主机和自动化流程。请根据实际职责选择指南。" data-en="root privileges can change devices, remote hosts, and automation workflows. Choose the guide that matches your responsibilities.">root privileges can change devices, remote hosts, and automation workflows. Choose the guide that matches your responsibilities.</p>
+    <p class="guide-home-note" data-guide-text="" data-zh="root 权限涉及设备底层、远程主机与自动化规则的变更，请按实际职责审慎选用对应指南。" data-en="root privileges modify low-level device settings, remote hosts, and automation rules—choose the guide that matches your actual responsibilities.">root privileges modify low-level device settings, remote hosts, and automation rules—choose the guide that matches your actual responsibilities.</p>
   </main>
 
   <!-- shared-footer:start -->
@@ -273,7 +273,7 @@
   <dialog class="knowledge-dialog" id="knowledgeDialog" aria-labelledby="knowledgeTitle" aria-describedby="knowledgeDescription">
     <div class="knowledge-dialog-top"><span>RMinte · Agent</span><button class="contact-close" type="button" data-knowledge-close="" aria-label="Close" data-i18n-aria-label-zh="关闭" data-i18n-aria-label-en="Close"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg></button></div>
     <h2 id="knowledgeTitle" tabindex="-1" autofocus="" data-guide-text="" data-zh="复制给你的 Agent" data-en="Copy this to your agent">Copy this to your agent</h2>
-    <p id="knowledgeDescription" class="knowledge-dialog-intro" data-guide-text="" data-zh="复制以下指令，发送给你的 Agent，让它帮你完成接入。" data-en="Copy the instructions below and send them to your agent to set up the connection.">Copy the instructions below and send them to your agent to set up the connection.</p>
+    <p id="knowledgeDescription" class="knowledge-dialog-intro" data-guide-text="" data-zh="复制下方指令发给你的 Agent，几秒即可完成官方资料接入。" data-en="Copy the prompt below and send it to your agent to connect official documentation in seconds.">Copy the prompt below and send it to your agent to connect official documentation in seconds.</p>
     <label id="knowledgePromptLabel" class="knowledge-prompt-label" for="knowledgePrompt" data-guide-text="" data-zh="接入指令" data-en="Setup instructions">Setup instructions</label>
     <textarea id="knowledgePrompt" rows="12" readonly="" spellcheck="false" lang="zh-CN" data-prompt-zh="请在你当前的运行环境中，添加并启用 RMinte 官方知识库 MCP 服务器：
 

@@ -8,8 +8,8 @@
       "en": "RM-01 Portable AI Supercomputer | Local LLM Inference & AI Agents | RMinte"
     },
     "description": {
-      "zh": "RM-01 是一款面向本地大模型推理与 AI Agent 部署的便携 AI 计算系统，集成专用推理计算、应用运行环境及整机管理能力。",
-      "en": "RM-01 is a portable AI computing system for local LLM inference and AI agent deployment, bringing dedicated inference, applications, and system management together."
+      "zh": "RM-01 是一款为本地大模型推理与 AI Agent 部署打造的便携 AI 超算，将独立推理算力、应用运行环境与整机系统管理融于一体。",
+      "en": "RM-01 is a portable AI supercomputer built for local LLM inference and AI agent deployment, uniting dedicated inference compute, an application runtime, and system-wide orchestration in one device."
     }
   },
   "models": {
@@ -21,8 +21,8 @@
       "en": "RMQ3x & RMQ4 Models | Specialized Reasoning & Inference | RMinte"
     },
     "description": {
-      "zh": "了解 RMinte 的 RMQ3x Dense 与 RMQ4 MoE 专业模型，以及自研 C++ 推理引擎、定制 vLLM、CUDA 优化与 Agent 工具执行能力。",
-      "en": "Explore the RMQ3x Dense and RMQ4 MoE specialist models, the RMinte C++ inference runtime, customized vLLM and CUDA optimizations for agent workflows."
+      "zh": "探索 RMinte 自研 RMQ3x Dense 与 RMQ4 MoE 专业模型，以及自研 C++ 及 Rust 推理引擎、深度定制 vLLM、CUDA 算子优化与专业 Agent 执行能力。",
+      "en": "Explore RMinte’s RMQ3x Dense and RMQ4 MoE specialist models, our dedicated C++ and Rust inference engines, custom vLLM, CUDA operator optimizations, and specialist agent execution."
     }
   },
   "gallery": {
@@ -54,8 +54,8 @@
     "file": "guides/admin.html",
     "path": "/guides/admin",
     "title": {
-      "zh": "TianshanOS Admin 使用指南 | RM-01 日常设备管理 | RMinte",
-      "en": "TianshanOS Admin Guide | Daily RM-01 Device Management | RMinte"
+      "zh": "TianshanOS admin 使用指南 | RM-01 日常设备管理 | RMinte",
+      "en": "TianshanOS admin Guide | Daily RM-01 Device Management | RMinte"
     },
     "description": {
       "zh": "了解 TianshanOS admin 日常管理操作，包括系统状态、设备面板、风扇、LED、网络、文件和 OTA 更新。",
@@ -66,8 +66,8 @@
     "file": "guides/root.html",
     "path": "/guides/root",
     "title": {
-      "zh": "TianshanOS Root 运维指南 | 终端、远程指令与自动化 | RMinte",
-      "en": "TianshanOS Root Guide | Terminal, Remote Commands & Automation | RMinte"
+      "zh": "TianshanOS root 运维指南 | 终端、远程指令与自动化 | RMinte",
+      "en": "TianshanOS root Guide | Terminal, Remote Commands & Automation | RMinte"
     },
     "description": {
       "zh": "查看 TianshanOS root 运维操作，了解终端、远程指令、自动化和高权限设备管理的操作说明。",

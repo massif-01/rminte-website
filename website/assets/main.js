@@ -58,7 +58,13 @@
     RM_I18N.apply(lang);
     $$('[data-ui]').forEach((el) => {
       const key = el.getAttribute('data-ui');
-      writeMarkedText(el, ui(key));
+      const text = ui(key);
+      const brandLine = key === 'productTitle' && text.match(/^TianshanOS\p{P}*/u)?.[0];
+      if (brandLine) {
+        el.replaceChildren(textEl('span', brandLine, 'system-title-brand'), text.slice(brandLine.length));
+      } else {
+        writeMarkedText(el, text);
+      }
     });
     const title = $('[data-hero-title]');
     if (title) {

@@ -56,20 +56,41 @@ function view3(aspect){
 }
 const effY=pi=>{if(pi===0)return ps[0].y;const c=ps[2].y;return c+(ps[pi].y-c)*(SPREAD_MIN+(1-SPREAD_MIN)*spread)};
 // the names follow the right-most corner of each plate and move with the camera
-function placeLabels(vp){
-  const W=stage.clientWidth,Hh=stage.clientHeight; // the canvas fills the figure; with the still shown it has no size of its own
-  labels.forEach(el2=>{const pi=+el2.dataset.plate,P=plates[pi],y=ps[pi].y,sc=ps[pi].s;
-    let best=null;for(const sx of[-1,1])for(const sz of[-1,1]){const wx=sx*P.w/2*sc,wz=sz*P.d/2*sc;
-      const c=[wx,y,wz,1],o=[0,0,0,0];for(let r=0;r<4;r++)o[r]=vp[r]*c[0]+vp[4+r]*c[1]+vp[8+r]*c[2]+vp[12+r]*c[3];
-      const X=(o[0]/o[3]*.5+.5)*W,Y=(1-(o[1]/o[3]*.5+.5))*Hh;if(!best||X>best[0])best=[X,Y]}
-    const lw=el2.offsetWidth||160,lx=Math.max(0,Math.min(best[0]+8,W-lw-2));el2.style.transform=`translate(${lx.toFixed(1)}px,${(best[1]-14).toFixed(1)}px)`});
+function placeLabels(vp, drawing = cv) {
+  const width = drawing.clientWidth;
+  const height = drawing.clientHeight;
+  const top = drawing.offsetTop;
+  const right = stage.clientWidth - 2;
+  for (const label of labels) {
+    const index = Number(label.dataset.plate);
+    const {w, d} = plates[index];
+    const {y, s} = ps[index];
+    let rightmostX = -Infinity;
+    let rightmostY = 0;
+    for (const sx of [-1, 1]) for (const sz of [-1, 1]) {
+      const x = sx * w * s / 2;
+      const z = sz * d * s / 2;
+      const clipW = vp[3] * x + vp[7] * y + vp[11] * z + vp[15];
+      const clipX = vp[0] * x + vp[4] * y + vp[8] * z + vp[12];
+      const screenX = (clipX / clipW * .5 + .5) * width;
+      if (screenX > rightmostX) {
+        const clipY = vp[1] * x + vp[5] * y + vp[9] * z + vp[13];
+        rightmostX = screenX;
+        rightmostY = top + (.5 - clipY / clipW * .5) * height;
+      }
+    }
+    // Keep the leader at the plate corner. Long translations wrap in the space to its right.
+    const x = rightmostX + 8;
+    label.style.setProperty('--engine-label-width', `${Math.floor(right - x)}px`);
+    label.style.transform = `translate(${x.toFixed(1)}px,${rightmostY.toFixed(1)}px) translateY(-50%)`;
+  }
 }
 
 if(!gl){
   // no WebGL2: the still of scene 0 stays, the names are placed once for it
   const still=stage.querySelector('.engine-still');still.src=still.dataset.src;
   stage.classList.add('is-still');stage.style.setProperty('--lab',1);
-  const place=()=>{if(stage.clientWidth&&stage.clientHeight)placeLabels(view3(stage.clientWidth/stage.clientHeight).vp)};
+  const place=()=>{if(still.clientWidth&&still.clientHeight)placeLabels(view3(still.clientWidth/still.clientHeight).vp,still)};
   place();new ResizeObserver(place).observe(stage);
   return{setScene};
 }

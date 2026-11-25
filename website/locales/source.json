@@ -52,8 +52,8 @@
     ]
   },
   {
-    "zh": "面向收费业务的 AI 应用，探索数字收费员参与业务服务的方式。",
-    "en": "An AI application for toll operations, exploring how a digital operator can take part in the service.",
+    "zh": "部署于高速收费站边缘现场，以多模态交互承接车道特情引导、费额问询与异常复核，让数字收费员真正融入一线通行服务。",
+    "en": "Deployed right at highway toll-station edges, using multimodal interaction to handle lane exceptions, fare inquiries, and anomaly checks—bringing digital toll operators into live frontline traffic service.",
     "sources": [
       "assets/case-catalog.mjs.cases.0.desc"
     ]
@@ -66,8 +66,8 @@
     ]
   },
   {
-    "zh": "围绕信息资产开展 AI 审计，辅助审阅与整理相关材料。",
-    "en": "AI-assisted audit of information assets, helping review and organise the related materials.",
+    "zh": "在内网离线环境下梳理与核验企业信息资产，自动比对权属台账、合规条款与风险缺口，沉淀结构化的审计底稿。",
+    "en": "Inventories and verifies enterprise information assets offline within your intranet, cross-checking ownership ledgers, compliance clauses, and risk gaps to produce structured audit workpapers.",
     "sources": [
       "assets/case-catalog.mjs.cases.1.desc"
     ]
@@ -80,8 +80,8 @@
     ]
   },
   {
-    "zh": "面向基层日常事务，探索 AI 辅助处理与信息整理。",
-    "en": "Exploring AI support for everyday community affairs, from handling to organising information.",
+    "zh": "贴合社区与基层一线的高频事务，辅助完成群众诉求归类、政策条文检索与台账文书整理，把工作人员从繁杂填报中解放出来。",
+    "en": "Built for high-frequency community and frontline public-service workflows—classifying resident requests, retrieving policy clauses, and organizing ledgers to free staff from repetitive paperwork.",
     "sources": [
       "assets/case-catalog.mjs.cases.2.desc"
     ]
@@ -94,8 +94,8 @@
     ]
   },
   {
-    "zh": "将 AI 应用于节能与调度场景，辅助分析业务中的能源使用与调度问题。",
-    "en": "AI for energy saving and dispatch, helping analyse energy use and scheduling in the business.",
+    "zh": "结合设备能耗数据与峰谷运行规律，实时研判用能异常并推演最优排程，辅助企业在不影响产出的前提下持续降本增效。",
+    "en": "Combines equipment energy telemetry with peak–off-peak load patterns to flag usage anomalies in real time and model optimal schedules—cutting energy costs without compromising output.",
     "sources": [
       "assets/case-catalog.mjs.cases.3.desc"
     ]
@@ -108,22 +108,22 @@
     ]
   },
   {
-    "zh": "结合 OCR、翻译与知识库，衔接文档识别、语言转换和知识查询。",
-    "en": "Combines OCR, translation and a knowledge base, linking document recognition, language conversion and lookup.",
+    "zh": "将高精度版面 OCR、多语种专业翻译与本地知识库融为一体，让扫描件与外文资料一键转化为可精准溯源的企业知识资产。",
+    "en": "Unites high-accuracy layout OCR, specialist multilingual translation, and a local knowledge base—turning scans and foreign-language files into traceable enterprise knowledge in one step.",
     "sources": [
       "assets/case-catalog.mjs.cases.4.desc"
     ]
   },
   {
-    "zh": "AI录音卡片会议总结",
+    "zh": "AI 录音卡片会议总结",
     "en": "AI Recording Card Meeting Summaries",
     "sources": [
       "assets/case-catalog.mjs.cases.5.name"
     ]
   },
   {
-    "zh": "将任何品类的数十个 AI 录音卡片接入 RM-01，形成录音自动转写和总结的软硬件一体服务",
-    "en": "Connect dozens of AI recording cards across any category to RM-01 for an integrated hardware and software service that automatically transcribes and summarizes recordings.",
+    "zh": "支持将多品类数十张 AI 录音卡片集中接入 RM-01，数据不出本地即可完成语音自动转写、发言归类与纪要提炼，形成开箱即用的软硬件一体方案。",
+    "en": "Connect dozens of AI recording cards across categories directly to RM-01 for on-premise transcription, speaker attribution, and meeting summaries—an out-of-the-box hardware-and-software solution that keeps every recording local.",
     "sources": [
       "assets/case-catalog.mjs.cases.5.desc"
     ]
@@ -136,8 +136,8 @@
     ]
   },
   {
-    "zh": "结合 OCR 与知识库，让企业档案进入可识别、可查询的工作流程。",
-    "en": "Uses OCR and a knowledge base to bring enterprise archives into a searchable workflow.",
+    "zh": "以本地 OCR 识别与语义索引盘活海量纸质及电子档案，实现自动归类、关键要素抽取与秒级检索，让沉睡卷宗真正为业务所用。",
+    "en": "Brings vast paper and digital archives back to life with local OCR and semantic indexing—automating classification, key-field extraction, and sub-second search so dormant records actively serve daily operations.",
     "sources": [
       "assets/case-catalog.mjs.cases.6.desc"
     ]
@@ -150,8 +150,8 @@
     ]
   },
   {
-    "zh": "面向森林防火误报与户外活动人员探测，开展无人机影像分析。",
-    "en": "Drone imagery analysis for false fire alarms in forests and detection of people in outdoor activity.",
+    "zh": "在无人机自动巡航现场本地解析航拍影像，精准甄别林区火情误报、及时定位户外活动人员，缩短应急研判的响应链路。",
+    "en": "Analyzes aerial footage locally at autonomous drone docks—filtering out false forest-fire alerts and locating people in outdoor areas to shorten emergency response times.",
     "sources": [
       "assets/case-catalog.mjs.cases.7.desc"
     ]
@@ -164,8 +164,8 @@
     ]
   },
   {
-    "zh": "覆盖零件平面图转 3D、装配建模、工业焊接机器人编程与汽车安全检测。",
-    "en": "Covers part drawings to 3D, assembly modelling, industrial welding-robot programming and automotive safety inspection.",
+    "zh": "深入汽车研发与产线工艺，覆盖零件二维图纸转 3D 建模、整机装配推演、工业焊接机器人离线编程与安全检测，全面提速工程迭代。",
+    "en": "Reaches deep into automotive R&D and shop-floor workflows—covering 2D part drawings to 3D modeling, assembly simulation, offline industrial welding-robot programming, and safety inspection to accelerate engineering iteration.",
     "sources": [
       "assets/case-catalog.mjs.cases.8.desc"
     ]
@@ -178,8 +178,8 @@
     ]
   },
   {
-    "zh": "面向刑事律师工作中的材料与线索整理，辅助组织已有信息。",
-    "en": "Helps criminal defence lawyers organise case materials and leads from existing information.",
+    "zh": "针对海量涉密卷宗在本地离线作业，辅助律师梳理案情时间线、交叉比对笔录供述与证据链矛盾点，高效沉淀辩护线索。",
+    "en": "Operates fully offline on confidential case dossiers, helping defence counsel map event timelines, cross-check witness transcripts, and surface contradictions across evidence chains to build stronger leads.",
     "sources": [
       "assets/case-catalog.mjs.cases.9.desc"
     ]
@@ -192,8 +192,8 @@
     ]
   },
   {
-    "zh": "聚焦汽车功能安全检测场景，展示 AI 在专业检测工作中的应用。",
-    "en": "Focused on functional safety inspection of vehicles, showing AI in professional inspection work.",
+    "zh": "紧扣车规级功能安全标准，在本地辅助完成安全需求核查、失效模式推演与测试报告审查，为研发合规提供严密把关。",
+    "en": "Aligned with automotive functional-safety standards, assisting teams locally with safety-requirement verification, failure-mode analysis, and test-report audits to uphold strict R&D compliance.",
     "sources": [
       "assets/case-catalog.mjs.cases.10.desc"
     ]
@@ -206,8 +206,8 @@
     ]
   },
   {
-    "zh": "面向收费站、隧道、桥梁与光伏场景，展示现场感知、智能研判和协同处置。",
-    "en": "Shows field sensing, intelligent assessment and coordinated response across toll stations, tunnels, bridges and solar sites.",
+    "zh": "扎根收费站、隧道、桥梁与路域光伏站点，打通本地多源感知、异常智能研判与应急联动处置，守护高速路网全天候平稳运行。",
+    "en": "Deployed across toll stations, tunnels, bridges, and roadside solar sites—linking local multi-source sensing, intelligent anomaly assessment, and coordinated emergency response to keep highway networks running smoothly around the clock.",
     "sources": [
       "assets/case-catalog.mjs.cases.11.desc"
     ]
@@ -427,8 +427,8 @@
     ]
   },
   {
-    "zh": "引脚、服务与系统行为，都可以通过 JSON 配置定义。现场调试所需的代码修改因此减少，设备配置也有据可查。",
-    "en": "JSON configuration defines pins, services, and system behavior. That means fewer code changes during on-site setup and a clear record of how the device is configured.",
+    "zh": "引脚、服务与系统行为皆可由 JSON 声明定义。现场部署不必反复改代码，每一项设备配置也清晰可溯。",
+    "en": "Pins, services, and system behavior are all defined declaratively in JSON. On-site deployment requires fewer code changes, and every device configuration stays clear and traceable.",
     "sources": [
       "assets/site-data.js.pillars.0.text"
     ]
@@ -441,8 +441,8 @@
     ]
   },
   {
-    "zh": "北向管理推理算力，南向管理通用计算与存储。TianshanOS 连接两端，协调内部设备，让各个模组各司其职。",
-    "en": "Northbound control manages inference compute; southbound control manages general-purpose compute and storage. TianshanOS links both sides and coordinates the internal devices, with each module serving its role.",
+    "zh": "北向调度推理算力，南向统筹通用计算与存储。TianshanOS 贯通两端，让机内每个模组各安其位、各尽其责。",
+    "en": "Northbound control orchestrates inference compute; southbound control manages general-purpose compute and storage. TianshanOS bridges both sides so every internal module stays in its lane and performs at its best.",
     "sources": [
       "assets/site-data.js.pillars.1.text"
     ]
@@ -455,8 +455,8 @@
     ]
   },
   {
-    "zh": "模型、密钥与现场参数的交付，需要清楚的安全边界。配置包支持 ECDH、AES-256-GCM 与 ECDSA 签名，为交付提供加密与签名支持。",
-    "en": "Delivering models, keys, and site parameters calls for a clear security boundary. Config packs support ECDH, AES-256-GCM, and ECDSA signatures, providing encryption and signatures for delivery.",
+    "zh": "模型、密钥与现场参数的下发，容不得模糊边界。配置包内置 ECDH、AES-256-GCM 加密与 ECDSA 签名校验，为每一次交付筑牢安全防线。",
+    "en": "Delivering models, keys, and site parameters leaves no room for ambiguity. Config packs combine ECDH, AES-256-GCM encryption, and ECDSA signature verification to establish a clear security boundary for every deployment.",
     "sources": [
       "assets/site-data.js.pillars.2.text"
     ]
@@ -469,8 +469,8 @@
     ]
   },
   {
-    "zh": "设备可以通过 HTTPS 或 SD 卡升级，升级异常时自动回滚。WebUI、CLI 与 API 提供管理入口，规则引擎接手重复操作，让日常运维少一些手动处理。",
-    "en": "Update your device through HTTPS or an SD card, with automatic rollback if an update fails. Manage it through WebUI, CLI, or API. The rule engine handles repeat operations, reducing manual work in day-to-day maintenance.",
+    "zh": "支持 HTTPS 与 SD 卡双通道升级，异常时自动回滚。WebUI、CLI 与 API 多入口齐备，规则引擎接管重复事务，把日常运维从繁琐的手动操作中解放出来。",
+    "en": "Update over HTTPS or SD card with automatic rollback if anything goes wrong. Manage the device via WebUI, CLI, or API while the rule engine takes over routine tasks—freeing daily operations from manual busywork.",
     "sources": [
       "assets/site-data.js.pillars.3.text"
     ]
@@ -490,8 +490,8 @@
     ]
   },
   {
-    "zh": "独立的 x86 计算机，为 Agent 与应用提供专属的运行资源。工具调用、代码执行与数据库访问在应用侧完成，模型推理由推理模组承担。兼容广泛的 x86 软件生态，让已有工具与业务应用更容易接入 Agent 工作流。",
-    "en": "A separate x86 computer provides dedicated resources for agents and applications. It handles tool calls, code execution, and database access, while the inference module runs the models. Broad compatibility with the x86 software ecosystem makes it easier to bring existing tools and business applications into agent workflows.",
+    "zh": "内置独立 x86 计算单元，为 Agent 与业务应用提供专属运行环境。工具调用、代码执行与数据库读写尽在应用侧完成，不抢占推理算力；完整兼容主流 x86 软件生态，现有业务系统与工具链可顺滑接入 Agent 工作流。",
+    "en": "An independent x86 computer gives agents and business applications their own dedicated runtime. Tool calls, code execution, and database access happen on the application side without competing for inference compute. Broad x86 software compatibility lets existing tools and business systems plug smoothly into agent workflows.",
     "sources": [
       "assets/site-data.js.modules.0.text"
     ]
@@ -504,8 +504,8 @@
     ]
   },
   {
-    "zh": "自研推理引擎与高速互联线路提高推理效率。资源集中用于模型推理与 KV Cache，为更大模型、更长上下文与更高并发留出空间。",
-    "en": "Our inference engine and high-speed interconnect improve inference efficiency. Resources focus on model inference and KV Cache, making room for larger models, longer contexts, and higher concurrency.",
+    "zh": "自研推理引擎配合高速内部互联，将全部算力与显存聚焦于模型推理及 KV Cache，为更大参数规模、更长上下文与更高并发留足余量。",
+    "en": "Our inference engine and high-speed internal interconnect focus every drop of compute and VRAM on model inference and KV Cache—leaving generous headroom for larger models, longer contexts, and higher concurrency.",
     "sources": [
       "assets/site-data.js.modules.1.text"
     ]
@@ -518,8 +518,8 @@
     ]
   },
   {
-    "zh": "你的后训练模型、RAG 知识库、业务数据与应用代码，都值得保护。独立安全模组隔离私钥，硬件级非对称密钥保护降低私钥导出与复制风险，为业务资产建立设备级安全边界。",
-    "en": "Your post-trained models, RAG knowledge bases, business data, and application code deserve protection. A dedicated security module isolates private keys. Hardware-backed asymmetric key protection reduces the risk of key export and duplication, creating a device-level security boundary for your business assets.",
+    "zh": "后训练模型、RAG 知识库、业务数据与应用代码，都是你的核心资产。独立安全模组在硬件层隔离私钥，严防导出与非法复制，为每一份数字资产划出设备级安全边界。",
+    "en": "Your post-trained models, RAG knowledge bases, business data, and application code are core assets. An independent security module isolates private keys in hardware, guarding against export and duplication to draw a device-level security boundary around every asset.",
     "sources": [
       "assets/site-data.js.modules.2.text"
     ]
@@ -539,8 +539,8 @@
     ]
   },
   {
-    "zh": "调用本地 AI，也可以沿用熟悉的云服务接口体验。内部交换、路由与统一 API 连接各个模组，减少系统扩展与维护所需的改动。",
-    "en": "Access local AI through a familiar cloud-service interface. Internal switching, routing, and unified APIs connect the modules, reducing the changes needed for system expansion and maintenance.",
+    "zh": "调用本地 AI，照样享受云服务般顺手的接口体验。板载交换、路由与统一 API 串联全机模组，无论是横向扩展还是日常维护，都无需大动干戈。",
+    "en": "Call local AI with the same effortless API experience you expect from the cloud. Onboard switching, routing, and unified APIs link every module so scaling out and routine maintenance stay simple.",
     "sources": [
       "assets/site-data.js.modules.3.text"
     ]
@@ -560,56 +560,56 @@
     ]
   },
   {
-    "zh": "统一供电、启动时序与 Z 型独立风道共同支撑整机运行，降低频繁启停、高负载和积尘的影响。减少停机与现场维护，让工作少受打扰。",
-    "en": "Unified power delivery, startup sequencing, and a dedicated Z-shaped air duct support system operation, reducing the impact of frequent restarts, high loads, and dust buildup. Less downtime and on-site maintenance mean fewer interruptions to your work.",
+    "zh": "统一供电、精准上电时序与 Z 型独立风道协同护航，从容抵御频繁启停、持续高负载与粉尘侵扰——少停机、少维护，工作自然少被打扰。",
+    "en": "Unified power delivery, precise startup sequencing, and an independent Z-shaped air duct safeguard operation against frequent power cycles, sustained heavy loads, and dust—meaning less downtime, less maintenance, and fewer interruptions to your work.",
     "sources": [
       "assets/site-data.js.modules.4.text"
     ]
   },
   {
-    "zh": "沿用生态，减少适配",
-    "en": "Familiar ecosystem, less integration work",
+    "zh": "沿用熟悉生态，省去重复适配",
+    "en": "Familiar ecosystem, zero rework",
     "sources": [
       "assets/site-data.js.engine.0.title"
     ]
   },
   {
-    "zh": "定制 vLLM 沿用 Hugging Face 模型生态，自研内核优化推理计算；C++ 专用引擎面向模型架构与硬件平台，组织权重加载、算子和运行时。两条路线支持 RMQ 模型，并通过兼容 OpenAI 等接口的服务连接应用，减少接入与适配工作。",
-    "en": "Custom vLLM retains the Hugging Face model ecosystem and uses our kernels for inference. The dedicated C++ engine tailors weight loading, kernels, and the runtime to model architectures and hardware. Both paths support RMQ models and connect applications through services with interfaces such as the OpenAI-compatible API, reducing integration work.",
+    "zh": "定制 vLLM 延续 Hugging Face 生态，以自研内核提速推理；C++ 及 Rust 专用引擎则紧贴模型架构与硬件特性，重构权重加载、算子与运行时。两条路线均支持 RMQ 模型，并兼容 OpenAI 及 Anthropic Messages 等主流接口，省去繁琐的迁移与适配。",
+    "en": "Custom vLLM preserves the Hugging Face ecosystem and accelerates inference with our own kernels, while our dedicated C++ and Rust engines tailor weight loading, operators, and runtime directly to model architectures and hardware. Both paths support RMQ models and expose OpenAI- and Anthropic Messages–compatible APIs, eliminating tedious migration and integration work.",
     "sources": [
       "assets/site-data.js.engine.0.text"
     ]
   },
   {
-    "zh": "容纳更长的上下文，处理更多并发",
-    "en": "Longer contexts. More concurrent tasks.",
+    "zh": "更长上下文，更高并发度",
+    "en": "Longer contexts. Higher concurrency.",
     "sources": [
       "assets/site-data.js.engine.1.title"
     ]
   },
   {
-    "zh": "分页缓存与递归状态管理承接上下文，前缀缓存复用已有计算。专用引擎通过内存与 SSD 分层存储扩展上下文容量，结合批量输入处理与连续批处理，减少权重重复读取，让文档分析、多轮交互和并发请求共用推理资源。",
-    "en": "Paged caching and recurrent-state management retain context, while prefix caching reuses prior computation. The dedicated engine extends context capacity through memory and SSD storage tiers. Batched input processing and continuous batching reduce repeated weight reads, sharing inference resources across document analysis, multi-turn interaction, and concurrent requests.",
+    "zh": "分页 KV Cache 与递归状态管理共同承接长文记忆，前缀缓存复用已有计算；专用引擎更以内存与 SSD 分层存储拓宽上下文边界。配合批量输入与连续批处理，大幅减少权重重复读取，让长文档分析、多轮交互与并发请求从容共享算力。",
+    "en": "Paged KV Cache and recurrent-state management preserve long-context memory, while prefix caching reuses prior computation. Our dedicated engines extend context capacity further through memory–SSD tiering. Paired with batched input processing and continuous batching, they cut repeated weight reads so document analysis, multi-turn dialogue, and concurrent requests share compute effortlessly.",
     "sources": [
       "assets/site-data.js.engine.1.text"
     ]
   },
   {
-    "zh": "从推理需求出发，设计整机",
-    "en": "A system shaped by inference",
+    "zh": "从推理出发，倒推整机设计",
+    "en": "Designed from inference out",
     "sources": [
       "assets/site-data.js.engine.2.title"
     ]
   },
   {
-    "zh": "主板与推理引擎协同设计，围绕 GPU、内存带宽和缓存安排计算与数据访问。投影合并、算子融合与专家归组减少搬运开销；MTP 与批量解码分别服务于单请求生成和并发任务，将硬件资源转化为模型执行效率。",
-    "en": "The motherboard and inference engine are designed together, organizing computation and data access around GPU compute, memory bandwidth, and caches. Merged projections, kernel fusion, and expert grouping reduce data movement. MTP serves single-request generation and batched decoding serves concurrent tasks, turning hardware resources into model execution efficiency.",
+    "zh": "主板与推理引擎从底层协同设计，围绕 GPU 算力、内存带宽与缓存结构重排计算与访存路径。投影合并、算子融合与专家归组削减数据搬运开销；MTP 与批量解码各司其职，兼顾单路极速生成与多路并发吞吐，把硬件规格真正转化为推理效率。",
+    "en": "The motherboard and inference engine are co-designed from the ground up, aligning computation and data access with GPU compute, memory bandwidth, and cache hierarchy. Merged projections, operator fusion, and expert grouping cut data movement; MTP and batched decoding work in tandem for fast single-stream generation and high-concurrency throughput—turning hardware specs into real inference speed.",
     "sources": [
       "assets/site-data.js.engine.2.text"
     ]
   },
   {
-    "zh": "为模型推理及AI应用原生设计",
+    "zh": "为模型推理与 AI 应用原生设计",
     "en": "PURPOSE-BUILT FOR MODEL INFERENCE AND AI APPLICATIONS",
     "sources": [
       "assets/site-data.js.ui.chapter0"
@@ -704,8 +704,8 @@
       "gallery/index.html:91",
       "gallery/index.html:180",
       "downloads/index.html:94",
-      "downloads/index.html:534",
-      "downloads/index.html:572",
+      "downloads/index.html:545",
+      "downloads/index.html:583",
       "guides/index.html:91",
       "guides/index.html:242",
       "guides/index.html:275",
@@ -735,8 +735,8 @@
     ]
   },
   {
-    "zh": "RM-01 为模型推理与 Agent 应用运行提供各自独立的计算空间，让智能在你的业务现场持续行动、交付结果。",
-    "en": "RM-01 gives model inference and AI agent applications their own dedicated computing resources, so agents can keep working and delivering results on site.",
+    "zh": "RM-01 为模型推理与 Agent 应用开辟各自独立的计算空间，让智能扎根业务现场，持续运转、交付结果。",
+    "en": "RM-01 gives model inference and AI agent applications their own dedicated compute spaces, so intelligence takes root on site—working continuously and delivering real results.",
     "sources": [
       "assets/site-data.js.ui.heroLead"
     ]
@@ -756,8 +756,8 @@
     ]
   },
   {
-    "zh": "TianshanOS 让整机协同有序",
-    "en": "TianshanOS Bringing the system together",
+    "zh": "TianshanOS，令整机运转如一",
+    "en": "TianshanOS, orchestrating the system as one",
     "sources": [
       "assets/site-data.js.ui.productTitle"
     ]
@@ -770,8 +770,8 @@
     ]
   },
   {
-    "zh": "一台设备的运行，离不开内部各个部分的配合。TianshanOS 管理 RM-01 的内部设备与系统行为，让推理、应用与存储共同工作。无需专门建设供电、网络与机房环境，RM-01 就能走进业务现场。",
-    "en": "A system depends on its parts working in concert. TianshanOS manages the devices and system behavior inside RM-01, coordinating inference, applications, and storage. Bring RM-01 to your business site without building dedicated power, network, or server-room infrastructure.",
+    "zh": "精密的硬件，需要统一的指挥。TianshanOS 统筹 RM-01 内部各模组与系统行为，令推理、应用与存储默契协作。无需改造供电、布线或搭建机房，RM-01 就能直接走进你的业务现场。",
+    "en": "Precision hardware calls for unified command. TianshanOS coordinates every module and system behavior inside RM-01, keeping inference, applications, and storage working in concert. Bring RM-01 straight to your business site—no dedicated power, rewiring, or server room required.",
     "sources": [
       "assets/site-data.js.ui.productLead"
     ]
@@ -791,8 +791,8 @@
     ]
   },
   {
-    "zh": "一个接口连接电源，一个接口连接网络。智能眼镜、电脑、路由器、手机与平板，都是访问本地 AI 的入口。你熟悉的设备，由此连接身边的算力。",
-    "en": "One port for power. One for the network. Smart glasses, computers, routers, phones, and tablets give you access to local AI. The devices you know bring local AI within reach.",
+    "zh": "一根线供电，一根线入网。智能眼镜、电脑、路由器、手机与平板，皆可成为通往本地 AI 的入口——让手边熟悉的设备，随时接通身旁的专属算力。",
+    "en": "One cable for power. One cable for the network. Smart glasses, laptops, routers, phones, and tablets all become gateways to local AI—connecting the devices you already use to dedicated compute right beside you.",
     "sources": [
       "assets/site-data.js.ui.agentLead"
     ]
@@ -826,8 +826,8 @@
     ]
   },
   {
-    "zh": "应用有自己的运行空间，推理有专属的计算资源。RM-01 将模型、应用与运行环境整合进一台设备，让各个模组的协作，服务于你的业务。",
-    "en": "Applications have their own space to run. Inference has dedicated compute. RM-01 brings models, applications, and their runtime into one device, with every module working to serve your business.",
+    "zh": "应用独享运行空间，推理独占核心算力。RM-01 将模型、应用与运行环境融于一台机身，让模组间的紧密协作，直接转化为业务生产力。",
+    "en": "Applications get their own runtime space; inference gets dedicated compute. RM-01 brings models, applications, and runtime into a single chassis, turning tight module collaboration directly into business productivity.",
     "sources": [
       "assets/site-data.js.ui.hardwareLead"
     ]
@@ -840,22 +840,22 @@
     ]
   },
   {
-    "zh": "紧凑机身之内，推理、应用、互联与散热各有其位。随着结构展开，模组之间的连接逐一显现，一套本地 AI 系统的构成也随之清晰。",
-    "en": "Inference, applications, connectivity, and cooling each have a place inside the compact chassis. As the structure unfolds, the connections between modules come into view, revealing how a complete local AI system takes shape.",
+    "zh": "方寸机身之内，推理、应用、互联与散热各安其位。随结构层层舒展，模组间的脉络逐一浮现，整套本地 AI 系统的精密构型一目了然。",
+    "en": "Inside the compact chassis, inference, applications, interconnect, and cooling each hold their own place. As the structure unfolds, the pathways between modules emerge—revealing the architecture of a complete local AI system at a glance.",
     "sources": [
       "assets/site-data.js.ui.filmLead"
     ]
   },
   {
-    "zh": "让算力，承载更多任务",
-    "en": "Compute that takes on more tasks",
+    "zh": "让每一份算力，承载更多任务",
+    "en": "Compute built to carry more",
     "sources": [
       "assets/site-data.js.ui.engineTitle"
     ]
   },
   {
-    "zh": "自研推理引擎提高算力与显存利用率，减少资源消耗。更大模型、更长上下文与更多并发任务，由此获得运行空间。",
-    "en": "Our inference engine improves compute and GPU memory utilization while reducing resource use. That creates room for larger models, longer contexts, and more concurrent tasks.",
+    "zh": "自研推理引擎深挖算力与显存效率，大幅压低运行开销——为更大模型、更长上下文与更高并发，腾出真正可用的空间。",
+    "en": "Our inference engine pushes compute and GPU memory efficiency further while cutting runtime overhead—opening real headroom for larger models, longer contexts, and higher concurrency.",
     "sources": [
       "assets/site-data.js.ui.engineLead"
     ]
@@ -880,8 +880,8 @@
     ]
   },
   {
-    "zh": "Hugging Face · OpenAI 兼容",
-    "en": "Hugging Face · OpenAI-compatible",
+    "zh": "Hugging Face · OpenAI / Anthropic 兼容",
+    "en": "Hugging Face · OpenAI & Anthropic compatible",
     "sources": [
       "assets/site-data.js.ui.egL0P3S"
     ]
@@ -894,8 +894,8 @@
     ]
   },
   {
-    "zh": "定制 vLLM · C++ 引擎",
-    "en": "Custom vLLM · C++ engine",
+    "zh": "定制 vLLM · C++ / Rust 引擎",
+    "en": "Custom vLLM · C++ / Rust engine",
     "sources": [
       "assets/site-data.js.ui.egL0P2S"
     ]
@@ -930,7 +930,7 @@
     ]
   },
   {
-    "zh": "分页 KV 缓存",
+    "zh": "分页 KV Cache",
     "en": "Paged KV Cache",
     "sources": [
       "assets/site-data.js.ui.egL1P2T",
@@ -1022,7 +1022,7 @@
     ]
   },
   {
-    "zh": "分页 KV 缓存与 SSD 分层存储示意：多路并发共享缓存",
+    "zh": "分页 KV Cache 与 SSD 分层存储示意：多路并发共享缓存",
     "en": "Paged KV cache and tiered SSD storage: concurrent requests share the cache",
     "sources": [
       "assets/site-data.js.ui.egAria1"
@@ -1043,15 +1043,15 @@
     ]
   },
   {
-    "zh": "EricLake 以特制叶片、定制电机与 Z 型独立风道共同导出热量，支撑高并发任务。风道经多轮计算流体力学仿真优化，封闭式结构有效减少灰尘进入核心器件区域，照顾高负载下的运行，也照顾日复一日的使用。",
-    "en": "EricLake carries the heat out with purpose-made blades, a custom motor and a dedicated Z-shaped air duct, supporting high-concurrency workloads. The duct is refined through multiple rounds of computational fluid dynamics simulation, and the closed structure keeps dust out of the core component area, caring for demanding loads and for everyday use alike.",
+    "zh": "EricLake 集特制超薄叶片、定制电机与 Z 型独立风道于一身，迅速导出高并发负载下的积热。风道历经多轮流体仿真调校，全封闭结构将灰尘隔绝在核心器件之外——既扛得住满载冲刺，也经得起日复一日的静默运转。",
+    "en": "EricLake pairs ultra-thin custom blades, a bespoke motor, and an independent Z-shaped air duct to exhaust heat under high-concurrency loads. Refined through rounds of CFD simulation, its closed structure seals dust away from core components—built for full-load sprints and quiet, day-after-day operation alike.",
     "sources": [
       "assets/site-data.js.ui.thermalLead"
     ]
   },
   {
-    "zh": "0.13mm",
-    "en": "0.13mm",
+    "zh": "0.13 mm",
+    "en": "0.13 mm",
     "sources": [
       "assets/site-data.js.ui.thermalPointBlade"
     ]
@@ -1078,8 +1078,8 @@
     ]
   },
   {
-    "zh": "光掠过切面，蓝宝石的轮廓从深色机身上浮现。外覆合工艺让蓝宝石贴合机身表面，保留多重锐角切面。高硬度让成型与镜面抛光更为艰难，良品率也随之降低。56 小时的雕琢与抛光，凝结在这一刻的光泽里。",
-    "en": "Light catches the facets, revealing the sapphire against the dark chassis. An exterior bonding process joins the gemstone to the surface while preserving its sharp facets. Its hardness makes shaping and mirror polishing a challenge and reduces production yields. Fifty-six hours of carving and polishing find their expression in this moment of light.",
+    "zh": "光掠过棱面，蓝宝石在银白机身上映出清晰的轮廓。外覆合工艺令其与机身严密贴合，完整保留每一道利落的锐角切面。蓝宝石硬度极高，成型与镜面抛光步步皆是考验；历经 56 小时细琢精抛，方凝结为此刻清冽通透的光泽。",
+    "en": "Light sweeps across the facets, tracing the sapphire’s crisp outline against the silver-white chassis. Exterior bonding joins the gemstone seamlessly to the surface while preserving every sharp, sculpted edge. Sapphire’s extreme hardness makes shaping and mirror polishing a test at every step—56 hours of carving and polishing distilled into this single moment of cool, crystalline brilliance.",
     "sources": [
       "assets/site-data.js.ui.sapphireLead"
     ]
@@ -1113,8 +1113,8 @@
     ]
   },
   {
-    "zh": "模型与应用存放在可更换的存储卡中。插入 RM-01，一套对应业务的本地 AI 方案随之装载。同一台设备，换一张卡，就能接手另一项工作。",
-    "en": "Models and applications live on replaceable storage cards. Insert one into RM-01 to load a local AI solution for your business. A different card gives the same device a new job.",
+    "zh": "将模型与业务应用封存于可更换存储卡中。轻轻插入 RM-01，一套专属本地 AI 方案随即就绪。同一台机身，换一张卡，便能从容切换至全新的工作场景。",
+    "en": "Models and business applications live inside replaceable storage cards. Slide one into RM-01 and a tailored local AI solution is ready on the spot. One chassis—swap a card, and step seamlessly into an entirely new workflow.",
     "sources": [
       "assets/site-data.js.ui.cartridgeLead"
     ]
@@ -1141,15 +1141,15 @@
     ]
   },
   {
-    "zh": "绒光玻璃，温润触感",
-    "en": "Velvet-touch glass. A warmth you can feel.",
+    "zh": "绒光玻璃，触手温润",
+    "en": "Velvet-touch glass, warm to the fingertips",
     "sources": [
       "assets/site-data.js.ui.glassTouchTitle"
     ]
   },
   {
-    "zh": "整面绒光肤感玻璃柔化光线，呈现温润触感。目光与指尖，都能感知 RM-01 的表面质感。",
-    "en": "A full face of velvet-touch glass softens the light and feels warm to the touch. The surface of RM-01 invites both a closer look and a touch.",
+    "zh": "一整面绒光肤感玻璃，将锋利的光线化为柔和漫射，指尖掠过，温润如玉。从入眼到上手，RM-01 的克制质感一以贯之。",
+    "en": "A full face of velvet-touch glass softens harsh light into a gentle glow and feels remarkably warm beneath your fingers. From first glance to first touch, RM-01’s restrained craft speaks for itself.",
     "sources": [
       "assets/site-data.js.ui.glassTouchLead"
     ]
@@ -1169,8 +1169,8 @@
     ]
   },
   {
-    "zh": "超高速射出成型叶片承担持续散热",
-    "en": "Blades made with ultra-high-speed injection molding sustain cooling.",
+    "zh": "超高速射出成型叶片，撑起全天候稳定散热",
+    "en": "Ultra-high-speed injection-molded blades built for sustained, round-the-clock cooling.",
     "sources": [
       "assets/site-data.js.ui.thermalDetailCaption"
     ]
@@ -1190,15 +1190,15 @@
     ]
   },
   {
-    "zh": "推理持续，散热也持续。TTI 通过 TTO 实时观测热状态，由神经网络模型预测未来 90 秒的功率变化，推演 15、45、90 秒后的温度。它不只看此刻的温度，也记得热是怎样积蓄起来的。热未起，风量已就位；热渐稳，转速自然回落。起伏更少，不同的环境与负载，都能从容应对。",
-    "en": "Inference keeps running, and so does cooling. Through TTO, TTI observes the thermal state in real time. A neural network model predicts power for the next 90 seconds, then projects the temperature at 15, 45 and 90 seconds. It looks beyond the temperature right now, and remembers how the heat built up. Before heat rises, airflow is already in place; as it settles, fan speed eases back on its own. Fewer swings, and it handles different environments and workloads with ease.",
+    "zh": "推理不止，散热亦不停歇。TTI 经由 TTO 实时感知热状态，以神经网络预判未来 90 秒的功率走势，提前推演 15、45、90 秒后的温升曲线。它不只盯着眼前的温度，更记得热量如何一步步积蓄——热未起，风量已先就位；热渐平，转速悄然回落。少一分骤起骤落的躁动，无论环境与负载如何流转，始终从容以对。",
+    "en": "Inference never pauses, and neither does cooling. Through TTO, TTI reads the thermal state in real time, while a neural network forecasts power shifts over the next 90 seconds and projects temperatures at 15, 45, and 90 seconds. It looks beyond the temperature of the moment—remembering how heat has been building. Before temperatures climb, airflow is already in place; as heat settles, fan speed eases back quietly. Fewer abrupt swings, effortless composure across any environment or workload.",
     "sources": [
       "assets/site-data.js.ui.ttiText1"
     ]
   },
   {
-    "zh": "该模型基于真实设备运行数据训练。突发任务无法预知，基础曲线、配置上限与独立保护策略始终托底。",
-    "en": "The model is trained on real device operating data. Sudden workloads can't be foreseen, so the base curve, configured limits and an independent protection policy always stand behind it.",
+    "zh": "模型源自真实设备的海量运行数据。面对难以预知的突发负载，基础温控曲线、配置上限与独立保护机制始终在底层稳稳托底。",
+    "en": "Trained on real operating data from live devices. For sudden, unpredictable workloads, the base thermal curve, configured limits, and independent protection policies always hold the line underneath.",
     "sources": [
       "assets/site-data.js.ui.ttiText2"
     ]
@@ -1274,8 +1274,8 @@
     ]
   },
   {
-    "zh": "6063 铝合金构成机身，握持时的扎实感，来自材料本身。",
-    "en": "The chassis is made from 6063 aluminium alloy. Its solid feel in your hand begins with the material itself.",
+    "zh": "整机以 6063 铝合金塑形，捧在手中的沉实与笃定，源自材料本身。",
+    "en": "Machined from 6063 aluminium alloy, its reassuring heft and solidity begin with the material itself.",
     "sources": [
       "assets/site-data.js.ui.craftStoryMaterialText"
     ]
@@ -1292,8 +1292,8 @@
     ]
   },
   {
-    "zh": "喷砂赋予金属细腻的表面。目光看见的纹理，指尖也能感知。",
-    "en": "Sandblasting gives the metal a fine texture you can see and feel.",
+    "zh": "260 目精细喷砂赋予金属丝绒般的微米肌理，眼见细腻，触之清雅。",
+    "en": "260-mesh fine sandblasting lends the metal a velvet-fine micro-texture—refined to the eye, crisp to the touch.",
     "sources": [
       "assets/site-data.js.ui.craftStoryFinishText"
     ]
@@ -1306,8 +1306,8 @@
     ]
   },
   {
-    "zh": "玻璃边缘采用 R0.2 mm 圆角，与铝合金机身精密贴合。两种材料在这里相接，也在这里体现装配的功夫。",
-    "en": "Glass edges with an R0.2 mm radius form a precision fit with the aluminium chassis. Where the two materials meet, the care in assembly comes into view.",
+    "zh": "玻璃边缘以 R0.25 mm 微弧收边，与铝合金机身精密咬合。异质材料在此交汇，最见装配的功力。",
+    "en": "Glass edges finished to an R0.25 mm radius meet the aluminium chassis in a precision fit. Where two distinct materials join, true assembly craft shows.",
     "sources": [
       "assets/site-data.js.ui.craftStoryRadiusText"
     ]
@@ -1320,15 +1320,15 @@
     ]
   },
   {
-    "zh": "工艺公差小于 0.03 mm。精度落实在接缝与收口，让每一处衔接都经得起细看。",
-    "en": "Manufacturing tolerances stay below 0.03 mm. That precision shapes the seams and edges, rewarding a closer look at every joint.",
+    "zh": "装配公差严控在 0.03 mm 以内。毫厘之间的执着藏在每一道接缝与收口里，经得起凑近细看。",
+    "en": "Assembly tolerances stay within 0.03 mm. That obsession with precision lives in every seam and edge, rewarding the closest inspection.",
     "sources": [
       "assets/site-data.js.ui.craftStoryToleranceText"
     ]
   },
   {
-    "zh": "从 6063 铝合金到 260 目精细喷砂，RM-01 对材料、表面处理与装配精度逐项把控。最终落到用户手上的，是细腻的触感、严密的接缝，以及从第一次上手就能感受到的整机品质。",
-    "en": "From 6063 aluminium alloy to a fine 260-mesh sandblasted finish, RM-01 controls material selection, surface treatment, and assembly precision. The result reflects both product quality and our ability to integrate the supply chain for consistent manufacturing.",
+    "zh": "从 6063 铝合金选材到 260 目精细喷砂，RM-01 对材料、肌理与公差层层把关。落到你掌心的，是细腻匀净的触感、严丝合缝的收口，以及初次上手便能读懂的整机分寸。",
+    "en": "From 6063 aluminium alloy to a fine 260-mesh sandblasted finish, RM-01 governs every detail of material, texture, and tolerance. What lands in your hands is a silky, even finish, razor-tight seams, and build quality you can sense on first touch.",
     "sources": [
       "assets/site-data.js.ui.craftLead"
     ]
@@ -1348,29 +1348,29 @@
     ]
   },
   {
-    "zh": "均匀细腻的喷砂表面，让光线在金属上呈现克制的层次。",
-    "en": "A fine, even finish gives light a restrained depth across the metal surface.",
+    "zh": "匀净细腻的喷砂肌理，令光线在金属表面流淌出克制的层次。",
+    "en": "An even, finely blasted texture lets light flow across the metal with restrained depth.",
     "sources": [
       "assets/site-data.js.ui.craftCaptionSurface"
     ]
   },
   {
-    "zh": "严密的接缝与干净的收口，让设计精度落到真实装配。",
-    "en": "Tight seams and clean edges carry design precision into real assembly.",
+    "zh": "严密接缝与利落收口，将图纸上的精度完整落于真实机身。",
+    "en": "Tight seams and crisp edges carry engineering precision straight into physical assembly.",
     "sources": [
       "assets/site-data.js.ui.craftCaptionFit"
     ]
   },
   {
-    "zh": "从结构边缘到散热开槽，保持一致的加工与表面标准。",
-    "en": "Structural edges and cooling slots share one consistent manufacturing standard.",
+    "zh": "自结构边缘至散热开槽，每一处倒角与表面皆遵循同一加工标准。",
+    "en": "From structural edges to cooling vents, every chamfer and surface follows one exacting standard.",
     "sources": [
       "assets/site-data.js.ui.craftCaptionEdge"
     ]
   },
   {
-    "zh": "卡槽开口、结构边缘与机身表面，保持一致的加工精度。",
-    "en": "The card opening, structural edges, and chassis surface share the same machining precision.",
+    "zh": "卡槽开口、机身棱线与表面肌理，一以贯之的高精度呈现。",
+    "en": "Card slot opening, chassis lines, and surface finish—unified by the same machining precision.",
     "sources": [
       "assets/site-data.js.ui.craftCaptionSlot"
     ]
@@ -1467,7 +1467,7 @@
     ]
   },
   {
-    "zh": "整机实拍·3/4视角",
+    "zh": "整机实拍 · 3/4 视角",
     "en": "Product photography · three-quarter view",
     "sources": [
       "assets/gallery.js.galleryItems.0.label"
@@ -1481,7 +1481,7 @@
     ]
   },
   {
-    "zh": "整机实拍·正面",
+    "zh": "整机实拍 · 正面",
     "en": "Product photography · front view",
     "sources": [
       "assets/gallery.js.galleryItems.1.label"
@@ -1495,7 +1495,7 @@
     ]
   },
   {
-    "zh": "整机实拍·亮场",
+    "zh": "整机实拍 · 亮场",
     "en": "Product photography · light studio",
     "sources": [
       "assets/gallery.js.galleryItems.2.label"
@@ -1509,7 +1509,7 @@
     ]
   },
   {
-    "zh": "整机实拍·侧后方",
+    "zh": "整机实拍 · 侧后方",
     "en": "Product photography · rear-side view",
     "sources": [
       "assets/gallery.js.galleryItems.3.label"
@@ -1537,7 +1537,7 @@
     ]
   },
   {
-    "zh": "CFe卡槽细节",
+    "zh": "CFe 卡槽细节",
     "en": "CFe card slot detail",
     "sources": [
       "assets/gallery.js.galleryItems.5.label"
@@ -1607,15 +1607,15 @@
     ]
   },
   {
-    "zh": "R0.25圆角与装配工艺",
-    "en": "R0.25 corner radius and assembly",
+    "zh": "R0.25 mm 圆角与装配工艺",
+    "en": "R0.25 mm corner radius and assembly",
     "sources": [
       "assets/gallery.js.galleryItems.10.label"
     ]
   },
   {
-    "zh": "RM-01 R0.25 圆角与装配工艺细节",
-    "en": "Close-up of the RM-01 R0.25 corner radius and assembly",
+    "zh": "RM-01 R0.25 mm 圆角与装配工艺细节",
+    "en": "Close-up of the RM-01 R0.25 mm corner radius and assembly",
     "sources": [
       "assets/gallery.js.galleryItems.10.alt"
     ]
@@ -1628,8 +1628,8 @@
     ]
   },
   {
-    "zh": "推进案件研究\n与诉讼准备",
-    "en": "Research cases and prepare for trial",
+    "zh": "推进案件研判\n夯实诉讼准备",
+    "en": "Deepen case analysis\nand trial preparation",
     "sources": [
       "models/models.js.cases.0.task"
     ]
@@ -1656,8 +1656,8 @@
     ]
   },
   {
-    "zh": "检索依据，建立证据与法律要件的联系，起草文书并交叉验证引用。",
-    "en": "Find legal authorities, map evidence to legal elements, draft documents, and cross-check citations.",
+    "zh": "精准检索法条与判例，锚定证据与法律要件的对应关系，起草文书并逐条核验引注。",
+    "en": "Retrieve statutes and precedents with precision, anchor evidence to legal elements, draft filings, and verify every citation.",
     "sources": [
       "models/models.js.cases.0.stages.1"
     ]
@@ -1677,8 +1677,8 @@
     ]
   },
   {
-    "zh": "追踪关键线索\n重建事件关联",
-    "en": "Trace key leads and reconstruct event links",
+    "zh": "深挖隐秘线索\n还原事件全貌",
+    "en": "Uncover hidden leads\nand reconstruct events",
     "sources": [
       "models/models.js.cases.1.task"
     ]
@@ -1705,8 +1705,8 @@
     ]
   },
   {
-    "zh": "联查实体和事件，检验竞争性解释，生成取证查询与后续核查任务。",
-    "en": "Cross-reference entities and events, test competing explanations, and generate forensic queries and follow-up verification tasks.",
+    "zh": "交叉比对人物、实体与时序，逐一推敲竞争性假设，生成取证查询语句与后续核查清单。",
+    "en": "Cross-reference people, entities, and timelines, test competing hypotheses one by one, and generate forensic queries alongside follow-up verification checklists.",
     "sources": [
       "models/models.js.cases.1.stages.1"
     ]
@@ -1726,8 +1726,8 @@
     ]
   },
   {
-    "zh": "发现威胁\n推进响应处置",
-    "en": "Detect threats and drive incident response",
+    "zh": "洞悉潜伏威胁\n闭环响应处置",
+    "en": "Spot hidden threats\nand close the response loop",
     "sources": [
       "models/models.js.cases.2.task"
     ]
@@ -1754,8 +1754,8 @@
     ]
   },
   {
-    "zh": "执行告警分诊，追踪攻击路径，编写检测查询与处置脚本。",
-    "en": "Triage alerts, trace attack paths, and write detection queries and response scripts.",
+    "zh": "快速分诊海量告警，溯源完整攻击链，实时编写检测规则与自动化处置脚本。",
+    "en": "Rapidly triage high-volume alerts, trace full attack chains, and write detection rules and automated remediation scripts in real time.",
     "sources": [
       "models/models.js.cases.2.stages.1"
     ]
@@ -1775,8 +1775,8 @@
     ]
   },
   {
-    "zh": "执行治理规则\n处理复杂争议",
-    "en": "Apply policies and handle complex disputes",
+    "zh": "精准裁量规则\n化解复杂争议",
+    "en": "Apply policies accurately\nand resolve complex disputes",
     "sources": [
       "models/models.js.cases.3.task"
     ]
@@ -1803,8 +1803,8 @@
     ]
   },
   {
-    "zh": "识别语境与行为关联，完成风险分级，结合历史案例生成复核依据。",
-    "en": "Examine context and links between behaviors, classify risks by severity, and use prior cases to support review decisions.",
+    "zh": "穿透语境与隐蔽行为关联，完成多维风险定级，援引历史判例输出清晰的复核依据。",
+    "en": "Look past surface phrasing to uncover context and linked behaviors, classify risk across dimensions, and cite precedent cases to produce clear review rationales.",
     "sources": [
       "models/models.js.cases.3.stages.1"
     ]
@@ -1824,8 +1824,8 @@
     ]
   },
   {
-    "zh": "穿透交易关系\n推进疑点核查",
-    "en": "Uncover transaction links and investigate anomalies",
+    "zh": "穿透隐蔽关联\n锁定舞弊疑点",
+    "en": "Pierce hidden links\nand pinpoint fraud anomalies",
     "sources": [
       "models/models.js.cases.4.task"
     ]
@@ -1852,8 +1852,8 @@
     ]
   },
   {
-    "zh": "交叉核验异常交易和实体关联，制定调查计划与访谈提纲。",
-    "en": "Cross-check unusual transactions and entity relationships, and prepare investigation plans and interview outlines.",
+    "zh": "核验异常资金流向与隐性股权关系，拟定调查路径与针对性访谈提纲。",
+    "en": "Verify unusual fund flows and hidden ownership ties, map investigation paths, and draft targeted interview outlines.",
     "sources": [
       "models/models.js.cases.4.stages.1"
     ]
@@ -1873,8 +1873,8 @@
     ]
   },
   {
-    "zh": "推演发生机制\n设计验证路径",
-    "en": "Explain mechanisms and plan tests",
+    "zh": "还原致因机制\n规划鉴别验证",
+    "en": "Reconstruct causal mechanisms\nand plan differential tests",
     "sources": [
       "models/models.js.cases.5.task"
     ]
@@ -1901,8 +1901,8 @@
     ]
   },
   {
-    "zh": "构建竞争性解释，推演因果链条，识别可区分不同机制的关键证据。",
-    "en": "Develop competing explanations, examine causal chains, and identify evidence that distinguishes possible mechanisms.",
+    "zh": "平行构建多种致因假设，推演完整因果链条，锁定足以辨明真伪的关键鉴别证据。",
+    "en": "Build parallel causal hypotheses, trace complete causal chains, and pinpoint the decisive evidence that separates one mechanism from another.",
     "sources": [
       "models/models.js.cases.5.stages.1"
     ]
@@ -1922,8 +1922,8 @@
     ]
   },
   {
-    "zh": "探索材料工艺\n推动研发迭代",
-    "en": "Explore materials and processes. Advance R&D.",
+    "zh": "探索配方工艺\n加速研发迭代",
+    "en": "Explore formulations\nand accelerate R&D iteration",
     "sources": [
       "models/models.js.cases.6.task"
     ]
@@ -1950,8 +1950,8 @@
     ]
   },
   {
-    "zh": "提出配方和机理假设，编写仿真脚本，设计实验矩阵并据结果修订方案。",
-    "en": "Propose formulations and hypotheses about mechanisms, write simulation scripts, design experimental matrices, and revise plans based on the results.",
+    "zh": "提出配方构想与反应机理假设，编写仿真脚本、规划实验矩阵，并依据实测数据持续迭代方案。",
+    "en": "Propose formulation concepts and reaction mechanism hypotheses, write simulation scripts, design experimental matrices, and iterate continuously on lab results.",
     "sources": [
       "models/models.js.cases.6.stages.1"
     ]
@@ -1971,8 +1971,8 @@
     ]
   },
   {
-    "zh": "形成研究假设\n推进实验验证",
-    "en": "Develop hypotheses and test them through experiments",
+    "zh": "凝练科学假设\n推进实验求证",
+    "en": "Sharpen scientific hypotheses\nand advance experimental proof",
     "sources": [
       "models/models.js.cases.7.task"
     ]
@@ -1999,8 +1999,8 @@
     ]
   },
   {
-    "zh": "建立机制假设和研究优先级，设计实验与数据处理流程，随反馈迭代。",
-    "en": "Develop mechanistic hypotheses, set research priorities, design experiments and data-processing workflows, and refine them based on feedback.",
+    "zh": "梳理作用机制假设与研究优先级，搭建实验设计与数据分析流程，随实验反馈持续演进。",
+    "en": "Structure mechanistic hypotheses and research priorities, build experimental designs and data analysis pipelines, and evolve them with experimental feedback.",
     "sources": [
       "models/models.js.cases.7.stages.1"
     ]
@@ -2020,8 +2020,8 @@
     ]
   },
   {
-    "zh": "构建研究设计\n检验制度影响",
-    "en": "Design studies and examine institutional effects",
+    "zh": "夯实研究设计\n检验制度效用",
+    "en": "Strengthen study design\nand test institutional impact",
     "sources": [
       "models/models.js.cases.8.task"
     ]
@@ -2048,8 +2048,8 @@
     ]
   },
   {
-    "zh": "制定抽样方案，执行质性编码与统计建模，检验解释并推演制度影响。",
-    "en": "Develop sampling plans, code qualitative data, build statistical models, test explanations, and examine the effects of institutions.",
+    "zh": "拟定严谨抽样方案，完成质性编码与统计建模，验证理论解释并推演制度的长远影响。",
+    "en": "Design rigorous sampling plans, execute qualitative coding and statistical modeling, test theoretical explanations, and trace long-term institutional effects.",
     "sources": [
       "models/models.js.cases.8.stages.1"
     ]
@@ -2069,29 +2069,29 @@
     ]
   },
   {
-    "zh": "以递归状态承接历史信息，减少缓存占用，并通过分块计算加快输入处理。",
-    "en": "Carry history in recurrent state to reduce cache use, with chunked computation to accelerate input processing.",
+    "zh": "以固定规模的递归状态沉淀历史记忆，大幅压低缓存占用，并借分块并行加速输入处理。",
+    "en": "Distill history into fixed-size recurrent state to slash cache overhead, while chunked parallelism speeds up input processing.",
     "sources": [
       "models/models.js.optimizationItems.0.benefit"
     ]
   },
   {
-    "zh": "Gated DeltaNet 将遗忘门控与 Delta 更新规则结合：门控调节旧状态的保留程度，Delta 规则用新信息修正当前状态的预测误差。GDN 层以固定规模的状态承接历史信息，避免逐 token 累积完整的键值缓存。",
-    "en": "Gated DeltaNet combines a forget gate with the delta update rule. The gate controls how much of the previous state is retained; the delta rule uses new information to correct the state’s prediction error. Each GDN layer stores history in a fixed-size state rather than growing a full key-value cache with every token.",
+    "zh": "Gated DeltaNet 将遗忘门控与 Delta 更新规则融为一体：门控调节旧记忆的留存比例，Delta 规则则以新信息即时修正当前状态的预测误差。每个 GDN 层只需维护固定规模的状态，即可承接历史脉络，免去逐 token 累积庞大 KV Cache 的负担。",
+    "en": "Gated DeltaNet unites a forget gate with the delta update rule: the gate governs how much prior memory to retain, while the delta rule uses incoming information to correct the state’s prediction error on the fly. Each GDN layer maintains a fixed-size state to carry context forward—eliminating the burden of growing a full KV Cache token by token.",
     "sources": [
       "models/models.js.optimizationItems.0.detail.0"
     ]
   },
   {
-    "zh": "两款模型都以三个 GDN 层搭配一个注意力层。GDN 支持预填充阶段的分块并行与解码阶段的递归更新；注意力层保留对上下文细节的检索路径。状态记忆与注意力检索互补，共同处理长文档与多轮任务。",
-    "en": "Both models pair three GDN layers with one attention layer. GDN supports chunk-parallel prefill and recurrent updates during decode; attention retrieves details from the context. Recurrent memory and attention-based retrieval work together to process long documents and multi-turn tasks.",
+    "zh": "两款模型均以「三个 GDN 层搭配一个注意力层」交替排布。GDN 在预填充阶段支持分块并行、在解码阶段执行高效递归更新，注意力层则保留直达上下文细节的精准检索路径——状态记忆与注意力检索优势互补，从容驾驭长文档与多轮复杂任务。",
+    "en": "Both models interleave three GDN layers with one attention layer. GDN delivers chunk-parallel prefill and fast recurrent updates during decode, while attention preserves direct, pinpoint retrieval across context details—state memory and attention retrieval complement each other to handle long documents and complex multi-turn tasks with ease.",
     "sources": [
       "models/models.js.optimizationItems.0.detail.1"
     ]
   },
   {
-    "zh": "引擎采用 WY 分块计算组织预填充，复用块内状态与输入，减少逐 token 更新中的重复访问。递归状态以 BF16 存储，在 FP32 中完成更新与累加，降低状态读写和并发请求的内存占用。",
-    "en": "The engine uses WY chunked computation for prefill, reusing state and inputs within each chunk to reduce repeated access during token-by-token updates. Recurrent state is stored in BF16, with updates and accumulation performed in FP32, reducing state traffic and memory use across concurrent requests.",
+    "zh": "引擎以 WY 分块计算组织预填充，复用块内状态与输入，消除了逐 token 更新带来的重复访存。递归状态以 BF16 存储、在 FP32 中完成更新与累加，兼顾数值精度，同时显著压低状态读写与高并发下的内存占用。",
+    "en": "The engine organizes prefill with WY chunked computation, reusing state and inputs within each chunk to eliminate redundant memory traffic from token-by-token updates. Recurrent state is stored in BF16 and updated and accumulated in FP32—preserving numerical precision while sharply reducing state I/O and memory footprint under concurrency.",
     "sources": [
       "models/models.js.optimizationItems.0.detail.2"
     ]
@@ -2104,22 +2104,22 @@
     ]
   },
   {
-    "zh": "全局检索连接上下文细节，规整的前馈计算便于持续执行与算子融合。",
-    "en": "Global attention retrieves details across the context; a regular feed-forward path supports sustained execution and operator fusion.",
+    "zh": "全局检索精准回溯上下文细节，规整的稠密前馈路径更利于持续吞吐与深度算子融合。",
+    "en": "Global retrieval recalls fine context details accurately, while a clean dense feed-forward path enables sustained throughput and deep operator fusion.",
     "sources": [
       "models/models.js.optimizationItems.1.benefit"
     ]
   },
   {
-    "zh": "RMQ3x 在 GDN 之间保留 Gated Attention 层，对因果范围内的上下文计算全局注意力，再通过输出门控调节检索结果的贡献。每个 token 经过完整的稠密前馈网络，计算路径无需专家路由与重排。",
-    "en": "RMQ3x retains Gated Attention layers between GDN layers. These attend across the causal context, with an output gate controlling the contribution of retrieved information. Every token passes through the full dense feed-forward network, without expert routing or token reordering.",
+    "zh": "RMQ3x 在 GDN 层之间保留了 Gated Attention 层，对因果范围内的全部上下文执行全局注意力，再由输出门控精细调节检索信息的权重。每个 token 均完整流经稠密前馈网络，计算路径规整纯粹，无需专家路由与重排开销。",
+    "en": "RMQ3x keeps Gated Attention layers between GDN blocks, attending across the full causal context while an output gate finely weights the retrieved signal. Every token flows cleanly through the dense feed-forward network—no expert routing or token reordering overhead.",
     "sources": [
       "models/models.js.optimizationItems.1.detail.0"
     ]
   },
   {
-    "zh": "引擎将 Q、K、V 投影合并为一次矩阵运算，将 QK 归一化与 RoPE 位置编码融合执行。单 token 解码中，输入 RMSNorm 与投影计算共用片上数据；SwiGLU、输出投影和残差相加按执行路径融合，减少中间张量的写回、读取与算子启动。",
-    "en": "The engine merges Q, K, and V projections into one matrix operation and fuses QK normalization with RoPE positional encoding. During single-token decoding, input RMSNorm and projection computation share on-chip data. SwiGLU, output projections, and residual addition are fused where the execution path allows, reducing intermediate tensor writes, reads, and kernel launches.",
+    "zh": "引擎将 Q、K、V 投影合并为单次矩阵运算，并将 QK 归一化与 RoPE 位置编码融合执行。在单 token 解码阶段，输入 RMSNorm 与投影计算直接共用片上数据；SwiGLU、输出投影与残差相加沿执行路径深度融合，大幅削减中间张量的写回、读取与算子启动开销。",
+    "en": "The engine merges Q, K, and V projections into a single matrix operation and fuses QK normalization with RoPE positional encoding. During single-token decoding, input RMSNorm and projection share on-chip data directly; SwiGLU, output projection, and residual addition are deeply fused along the execution path, sharply cutting intermediate tensor reads, writes, and kernel launches.",
     "sources": [
       "models/models.js.optimizationItems.1.detail.1"
     ]
@@ -2132,22 +2132,22 @@
     ]
   },
   {
-    "zh": "先定位相关上下文，再读取原始 token，将注意力计算集中到选中的内容。",
-    "en": "Find relevant context blocks, then attend to their original tokens to focus computation on selected content.",
+    "zh": "先以块级索引锁定关键片段，再回读原始 token，让宝贵的注意力算力尽数聚焦核心内容。",
+    "en": "Locate key segments with block-level indexing before attending to original tokens—focusing precious attention compute squarely on what matters.",
     "sources": [
       "models/models.js.optimizationItems.2.benefit"
     ]
   },
   {
-    "zh": "QSA（Qwen Sparse Attention）通过轻量索引器，将历史键压缩为微块表示并评估相关性。选中的微块展开为原始 token 位置，交由主注意力模块计算；当前尚未填满的尾部块也参与计算。块级索引缩短了候选序列，细粒度注意力则保留对原始内容的读取。",
-    "en": "QSA (Qwen Sparse Attention) uses a lightweight indexer to compress past keys into micro-block representations and score their relevance. Selected blocks are mapped back to their original token positions for the main attention computation, along with the current incomplete tail block. Block indexing shortens the candidate sequence; token-level attention preserves access to the original content.",
+    "zh": "QSA（Qwen Sparse Attention）借助轻量索引器，将历史键向量压缩为微块表示并评估相关性。被选中的微块随即展开为原始 token 位置，与尚未填满的当前尾部块一同交由主注意力模块计算——块级索引大幅收窄候选范围，细粒度注意力则完整保留对原文细节的精准读取。",
+    "en": "QSA (Qwen Sparse Attention) uses a lightweight indexer to compress past key vectors into micro-block representations and score relevance. Selected micro-blocks expand back to their original token positions and join the active tail block in the main attention module—block indexing narrows the candidate pool dramatically, while token-level attention preserves exact access to original details.",
     "sources": [
       "models/models.js.optimizationItems.2.detail.0"
     ]
   },
   {
-    "zh": "RMQ4 用 QSA 承担 GDN 之外的上下文检索。工程重点贯穿块级索引、Top-k 选择、稀疏键值访问与注意力计算，控制索引成本和访存开销，使长上下文中的检索更有针对性。",
-    "en": "QSA handles context retrieval alongside GDN in RMQ4. Optimization covers block indexing, top-k selection, sparse key-value access, and attention computation to control indexing and memory-access costs while focusing retrieval on relevant context.",
+    "zh": "RMQ4 以 QSA 承接 GDN 之外的长程上下文检索。工程优化贯穿块级索引、Top-k 筛选、稀疏键值访存与注意力计算全链路，严控索引与访存成本，让超长上下文中的每一次检索都直击要害。",
+    "en": "In RMQ4, QSA handles long-range retrieval alongside GDN. End-to-end engineering spans block indexing, Top-k selection, sparse key-value memory access, and attention math—keeping indexing and bandwidth costs tight so every retrieval across ultra-long contexts hits the mark.",
     "sources": [
       "models/models.js.optimizationItems.2.detail.1"
     ]
@@ -2160,29 +2160,29 @@
     ]
   },
   {
-    "zh": "每个 token 调用部分路由专家与共享专家，让模型容量与单次计算成本分开扩展。",
-    "en": "Each token activates selected routed experts and a shared expert, allowing model capacity to scale separately from per-token computation.",
+    "zh": "每个 token 仅激活部分路由专家与共享专家，将模型知识容量与单步计算开销彻底解耦。",
+    "en": "Each token activates only selected routed experts plus a shared expert—cleanly decoupling model knowledge capacity from per-step compute cost.",
     "sources": [
       "models/models.js.optimizationItems.3.benefit"
     ]
   },
   {
-    "zh": "RMQ4 的路由器根据 token 表征选择专家，由被选中的专家与共享专家参与前馈计算，再将结果加权汇总。稀疏激活让模型容纳更多专家，同时控制每个 token 的计算量；完整权重仍需相应的存储与访问机制。",
-    "en": "RMQ4 selects experts based on each token’s representation. The selected experts and a shared expert perform feed-forward computation, and a weighted sum combines their outputs. Sparse activation supports a larger expert pool while limiting per-token computation. The full set of weights still needs storage and an access mechanism.",
+    "zh": "RMQ4 的路由器依据每个 token 的表征动态挑选对应专家，由选中专家与共享专家共同完成前馈计算，再加权汇聚输出。稀疏激活让模型得以容纳庞大的专家池，同时把单 token 计算量牢牢锁在低位；而完整权重的高效存储与调度，则交由底层运行时精准承接。",
+    "en": "RMQ4’s router dynamically assigns experts from each token’s representation; the selected experts and a shared expert run feed-forward math and merge results via weighted aggregation. Sparse activation unlocks a vast expert pool while keeping per-token compute low, with the runtime engineered to store and schedule the full weight set efficiently.",
     "sources": [
       "models/models.js.optimizationItems.3.detail.0"
     ]
   },
   {
-    "zh": "Fused MoE 按专家归组与重排 token，将共享同一专家的输入合并计算，复用专家权重。引擎根据专家负载选择 GEMV 或 GEMM，并融合门控激活与加权归并，减少零散的小规模计算和中间结果搬运，保持路由关系与专家计算的语义。",
-    "en": "Fused MoE groups and reorders tokens by expert, combining inputs assigned to the same expert to reuse its weights. The engine selects GEMV or GEMM according to expert workload and fuses gated activation and weighted reduction. This reduces fragmented small operations and movement of intermediate results while preserving routing and expert-computation semantics.",
+    "zh": "Fused MoE 按专家归组并重排 token，将命中同一专家的输入合并计算，充分复用专家权重。引擎依据专家负载动态择优 GEMV 或 GEMM，并将门控激活与加权归并融合执行，在严守路由语义与计算精度的前提下，大幅消除零散小算子与中间数据搬运。",
+    "en": "Fused MoE groups and reorders tokens by expert, batching inputs routed to the same expert to maximize weight reuse. The engine chooses GEMV or GEMM dynamically by workload and fuses gated activation with weighted reduction—eliminating fragmented small ops and intermediate transfers while strictly preserving routing and numerical semantics.",
     "sources": [
       "models/models.js.optimizationItems.3.detail.1"
     ]
   },
   {
-    "zh": "量化专家权重在加载时写入预分配的打包缓冲区，避免逐张量分配后再次搬运。专家的 Gate 与 Up 投影共享布局，让模型加载与推理计算使用同一套数据组织，缩短启动准备并减少内存开销。",
-    "en": "Quantized expert weights load into preallocated packed buffers, avoiding separate allocations and a second round of copies for each tensor. Gate and up projections share a layout, so loading and inference use the same data organization to reduce startup preparation and memory overhead.",
+    "zh": "量化后的专家权重在加载阶段即直接写入预分配的打包缓冲区，省去逐张量分配与二次搬运。专家的 Gate 与 Up 投影共享统一内存布局，使模型加载与推理计算无缝沿用同一套数据组织，既缩短冷启动时间，又压低常驻内存开销。",
+    "en": "Quantized expert weights stream straight into preallocated packed buffers at load time, eliminating per-tensor allocations and redundant copies. Gate and Up projections share a unified memory layout so loading and inference operate on the exact same structure—shortening cold starts and trimming resident memory.",
     "sources": [
       "models/models.js.optimizationItems.3.detail.2"
     ]
@@ -2195,22 +2195,22 @@
     ]
   },
   {
-    "zh": "通过多分支残差与动态读写门控，调节各层接收和保留的信息。",
-    "en": "Use multiple residual branches and dynamic read-write gates to control what each layer receives and retains.",
+    "zh": "以多分支残差配合动态读写门控，精细调控每一层吸收与沉淀的信息流。",
+    "en": "Multi-branch residuals paired with dynamic read–write gates finely regulate what each layer absorbs and retains.",
     "sources": [
       "models/models.js.optimizationItems.4.benefit"
     ]
   },
   {
-    "zh": "Gated Residual 将残差流扩展为多个分支。读取时，各分支分别归一化，按输入生成逐通道门控，再聚合为当前计算模块的输入；写入时，为每个分支生成标量权重，控制模块输出加入该分支的程度。",
-    "en": "Gated Residual widens the residual stream into multiple branches. Each read normalizes the branches, applies input-dependent gates to their channels, and aggregates them into the current block’s input. Each write assigns a scalar weight to each branch to control how much of the block output it receives.",
+    "zh": "Gated Residual 将单一残差流拓展为多条并行分支。读取时，各分支独立归一化并按当前输入生成逐通道门控，再聚合为模块输入；写入时，为每条分支赋予动态标量权重，精准控制模块输出汇入各分支的比例。",
+    "en": "Gated Residual expands a single residual stream into multiple parallel branches. On read, each branch is normalized independently, modulated by input-dependent channel gates, and aggregated into the block input; on write, dynamic scalar weights control exactly how much block output merges into each branch.",
     "sources": [
       "models/models.js.optimizationItems.4.detail.0"
     ]
   },
   {
-    "zh": "这种结构把跨层信息选择细化到分支与通道，增强深层网络的信息传递能力。读门控与归一化共用计算路径，分支不再经过额外的残差混合矩阵，减少宽残差流的重复读取。",
-    "en": "Branch- and channel-level selection improves information flow through deep networks. Read gating shares a computation path with normalization. Removing the additional residual-mixing matrix reduces repeated reads of the widened residual stream.",
+    "zh": "这种机制将跨层信息筛选细化到分支与通道维度，显著增强深层网络的信息保真度与传递效率。读门控与归一化共用同一计算路径，并省去额外的残差混合矩阵，避免了宽残差流的反复读取。",
+    "en": "Bringing cross-layer selection down to branches and channels strengthens signal fidelity across deep networks. Read gating shares a compute path with normalization and drops extra residual-mixing matrices, avoiding repeated reads of the widened stream.",
     "sources": [
       "models/models.js.optimizationItems.4.detail.1"
     ]
@@ -2223,22 +2223,22 @@
     ]
   },
   {
-    "zh": "用局部 token 组合检索嵌入表，以较少的额外计算扩展模型表达容量。",
-    "en": "Look up local token combinations in an embedding table to expand representational capacity with little extra computation.",
+    "zh": "以局部 token 组合直接查表检索，用极小的额外算力换取模型表达容量的跃升。",
+    "en": "Look up local token combinations directly in an embedding table—expanding representational capacity at minimal compute cost.",
     "sources": [
       "models/models.js.optimizationItems.5.benefit"
     ]
   },
   {
-    "zh": "N-gram 嵌入以当前 token 及其相邻前文构成短序列，生成确定的查表索引。取出的向量经投影与门控注入模型表征，让输入同时携带单 token 信息与局部组合特征。嵌入表中的知识来自训练，推理时按索引读取。",
-    "en": "N-gram embeddings combine the current token with nearby preceding tokens to form short sequences and deterministic lookup indices. Retrieved vectors are projected and gated into the model representation, adding features from local token combinations to individual-token information. The embedding table is learned during training and read by index during inference.",
+    "zh": "N-gram 嵌入将当前 token 与相邻前文组合成短序列，生成确定的查表索引；取出的向量经投影与门控注入模型表征，让输入同时兼具单 token 语义与局部搭配特征。嵌入表中的海量知识沉淀于训练阶段，推理时只需按索引直接读取。",
+    "en": "N-gram embeddings pair the current token with nearby preceding tokens to form short sequences and deterministic lookup indices. Retrieved vectors are projected and gated into the model representation, enriching single-token semantics with local phrase features—knowledge learned during training and read directly by index at inference.",
     "sources": [
       "models/models.js.optimizationItems.5.detail.0"
     ]
   },
   {
-    "zh": "这类容量扩展主要增加查表与投影开销，无需为每次访问执行完整专家网络。确定的索引便于将嵌入预取与前序层计算重叠。工程重点是查表带宽、数据布局和存储调度，控制大容量嵌入带来的访问成本。",
-    "en": "Most of the added cost comes from lookup and projection, without running a full expert network for each access. Deterministic indices let embedding prefetch overlap with computation in earlier layers. Optimization focuses on lookup bandwidth, data layout, and memory scheduling to control the cost of accessing a large embedding table.",
+    "zh": "这种容量扩展几乎只带来轻量的查表与投影开销，无需每次都调用完整专家网络；确定性的索引更便于将嵌入预取与前序层计算并行重叠。工程上重点攻坚查表带宽、内存布局与存储调度，把大容量嵌入表的访问代价压至最低。",
+    "en": "This capacity boost adds only lightweight lookup and projection work without invoking a full expert network, and deterministic indices let embedding prefetch overlap with earlier layers. Engineering focuses on lookup bandwidth, memory layout, and storage scheduling to keep large-table access costs minimal.",
     "sources": [
       "models/models.js.optimizationItems.5.detail.1"
     ]
@@ -2251,22 +2251,22 @@
     ]
   },
   {
-    "zh": "按计算规模组织算子与数据，让 GPU、内存带宽和缓存共同服务于模型推理。",
-    "en": "Organize kernels and data by workload size to put GPU compute, memory bandwidth, and caches to work on inference.",
+    "zh": "依矩阵规模动态编排算子与数据布局，令 GPU 算力、内存带宽与多级缓存默契共振。",
+    "en": "Orchestrate kernels and data layouts by matrix scale so GPU compute, memory bandwidth, and caches work in lockstep.",
     "sources": [
       "models/models.js.optimizationItems.6.benefit"
     ]
   },
   {
-    "zh": "单 token 解码、小批量验证与大批量输入采用不同的计算路径。引擎按矩阵规模选择专用 GEMV、cuBLAS 或 CUTLASS GEMM，结合线程布局、向量化访存与缓存复用，匹配 RM-01 的 GPU 执行和内存结构。小批量计算利用 L2 缓存复用输入，减少共享内存占用对并行度的影响。",
-    "en": "Single-token decoding, small-batch verification, and large input batches use different computation paths. The engine selects specialized GEMV, cuBLAS, or CUTLASS GEMM by matrix size, combining thread layouts, vectorized memory access, and cache reuse to match RM-01’s GPU and memory architecture. Small batches reuse inputs through the L2 cache, reducing the impact of shared-memory use on parallelism.",
+    "zh": "面对单 token 解码、小批量验证与大批量预填充等迥异负载，引擎分别启用专属计算路径——依矩阵规模动态切换定制 GEMV、cuBLAS 或 CUTLASS GEMM，配合精细的线程排布、向量化访存与缓存复用，丝丝入扣地贴合 RM-01 的 GPU 与内存架构。小批量场景更善用 L2 缓存复用输入，避免共享内存占用拖累并行度。",
+    "en": "Single-token decode, small-batch verification, and large prefill batches each follow a dedicated path—switching dynamically between custom GEMV, cuBLAS, and CUTLASS GEMM by matrix scale, with thread layouts, vectorized loads, and cache reuse tuned tightly to RM-01’s GPU and memory architecture. Small batches reuse inputs via L2 cache so shared-memory pressure never stalls parallelism.",
     "sources": [
       "models/models.js.optimizationItems.6.detail.0"
     ]
   },
   {
-    "zh": "NVFP4（W4A16）以 4 位格式存储权重，配合 16 位激活参与计算。专用算子通过查表解码、向量化加载与投影合并降低权重访问成本。模型加载根据可用内存和权重分片大小选择映射与预读方式，使精度、容量和访问开销共同纳入推理设计。",
-    "en": "NVFP4 (W4A16) stores weights in a 4-bit format for computation with 16-bit activations. Specialized kernels use lookup-table decoding, vectorized loads, and merged projections to reduce weight-access costs. Loading selects memory-mapping and prefetch strategies according to available memory and shard size, bringing precision, capacity, and access costs into the inference design.",
+    "zh": "NVFP4（W4A16）以 4 位紧凑格式存放权重，搭配 16 位高精度激活参与计算；专用算子融合查表解码、向量化加载与投影合并，大幅降低权重访存代价。加载阶段则根据可用内存与分片尺寸灵活匹配内存映射与预读策略，将精度、容量与访存效率纳入同一盘棋统筹设计。",
+    "en": "NVFP4 (W4A16) packs weights in compact 4-bit format paired with 16-bit activations; custom kernels fuse lookup-table decoding, vectorized loads, and merged projections to slash weight-access costs. During loading, memory-mapping and prefetch strategies adapt to available memory and shard size—balancing precision, capacity, and bandwidth in one unified design.",
     "sources": [
       "models/models.js.optimizationItems.6.detail.1"
     ]
@@ -2279,22 +2279,22 @@
     ]
   },
   {
-    "zh": "一次验证处理多个候选 token，减少生成过程中的重复计算与同步等待。",
-    "en": "Verify multiple candidate tokens in one pass to reduce repeated computation and synchronization during generation.",
+    "zh": "单次前向并行校验多个候选 token，大幅压缩生成阶段的重复计算与同步等待。",
+    "en": "Validate multiple candidate tokens in a single forward pass, sharply cutting redundant compute and sync stalls during generation.",
     "sources": [
       "models/models.js.optimizationItems.7.benefit"
     ]
   },
   {
-    "zh": "MTP 在 GPU 上生成候选 token，草稿链中的后续步骤使用前一步结果，减少 CPU 与 GPU 之间的同步。主模型批量验证草稿，接受匹配的连续前缀，再输出修正或追加的 token。小批量验证使用多行 GEMV，共享权重读取，降低验证开销。",
-    "en": "MTP generates candidate tokens on the GPU, feeding each draft step from the previous result to reduce CPU–GPU synchronization. The main model verifies the drafts in a batch, accepts the matching prefix, and emits a corrected or additional token. Small-batch verification uses multi-row GEMV to share weight reads and reduce verification overhead.",
+    "zh": "MTP 直接在 GPU 侧连续生成候选 token，草稿链环环相扣，省去频繁的 CPU–GPU 同步等待。随后由主模型批量校验草稿，整段采纳命中的连续前缀，并顺势输出修正或追加的 token；小批量校验更借助多行 GEMV 共享权重读取，将验证开销压到极低。",
+    "en": "MTP drafts candidate tokens directly on the GPU in a continuous chain, eliminating frequent CPU–GPU sync stalls. The main model verifies the draft batch in one pass, accepts the matching prefix, and emits a corrected or bonus token—while multi-row GEMV shares weight reads during small-batch verification to keep overhead negligible.",
     "sources": [
       "models/models.js.optimizationItems.7.detail.0"
     ]
   },
   {
-    "zh": "对于 GDN 等有状态结构，引擎在验证过程中保存递归状态与卷积状态的检查点。当草稿部分通过时，恢复对应位置的状态，再继续生成。单请求采用投机解码，多请求切换批量解码，使预测、验证与权重复用匹配当前负载。",
-    "en": "For stateful architectures such as GDN, the engine checkpoints recurrent and convolution states during verification. When only part of a draft is accepted, it restores the state at that position before continuing. Single requests use speculative decoding; multiple requests switch to batched decoding, matching prediction, verification, and weight reuse to the workload.",
+    "zh": "针对 GDN 等有状态架构，引擎会在验证沿途为递归状态与卷积状态留存检查点；一旦草稿仅部分命中，便瞬时回溯至对应位置的状态继续生成。单路请求自动启用推测解码，多路并发无缝切换至批量解码，让预测、校验与权重复用始终贴合当下负载。",
+    "en": "For stateful layers such as GDN, the engine checkpoints recurrent and convolution states along the verification path; if a draft is only partially accepted, it rolls back instantly to the exact checkpoint and keeps generating. Single requests run speculative decoding while concurrent loads switch seamlessly to batched decoding—keeping prediction, verification, and weight reuse matched to live demand.",
     "sources": [
       "models/models.js.optimizationItems.7.detail.1"
     ]
@@ -2307,22 +2307,22 @@
     ]
   },
   {
-    "zh": "复用前序计算，合并并发请求，让内存与带宽承接更多任务。",
-    "en": "Reuse prior computation and batch concurrent requests so memory and bandwidth can serve more tasks.",
+    "zh": "复用前序计算、合并并发请求，令有限的内存与带宽从容托起高并发长文任务。",
+    "en": "Reuse prior computation and batch concurrent requests so finite memory and bandwidth handle demanding multi-user workloads.",
     "sources": [
       "models/models.js.optimizationItems.8.benefit"
     ]
   },
   {
-    "zh": "分页 KV Cache 与递归状态管理保存各请求的计算进度，前缀缓存复用重复输入。长上下文采用分块预填充，并通过内存与 SSD 分层存储管理历史状态；流式注意力分批读取 SSD 中的键值块，合并各部分的注意力结果，扩展上下文容量。",
-    "en": "Paged KV cache and recurrent-state management retain each request’s progress, while prefix caching reuses repeated input. Long contexts use chunked prefill and memory–SSD storage tiers to manage historical state. Streaming attention reads key-value blocks from SSD in batches and merges partial attention results to extend context capacity.",
+    "zh": "分页 KV Cache 与递归状态管理分别留存各路请求的计算进度，前缀缓存高效复用重复输入。面对超长上下文，引擎采用分块预填充并以内存与 SSD 分层存储承接历史状态；流式注意力分批从 SSD 读取键值块并实时归并结果，大幅拓宽上下文容量边界。",
+    "en": "Paged KV Cache and recurrent-state management preserve each request’s progress while prefix caching reuses shared input. Ultra-long contexts rely on chunked prefill and memory–SSD tiering for historical state, with streaming attention reading key-value blocks from SSD in batches and merging partial results to stretch context boundaries.",
     "sources": [
       "models/models.js.optimizationItems.8.detail.0"
     ]
   },
   {
-    "zh": "等长短输入可合并为一次批量 prefill，多个请求的输出投影也合并计算，减少权重重复读取和首字等待。连续批处理在生成阶段复用计算资源，各请求保留自己的上下文与状态，让文档处理、多轮交互和并发任务共用一套推理服务。",
-    "en": "Short inputs of equal length can share one batched prefill pass. Output projections are also combined across requests, reducing repeated weight reads and time to first token. Continuous batching shares compute resources during generation while each request retains its own context and state, bringing document processing, multi-turn interaction, and concurrent tasks into one inference service.",
+    "zh": "等长短输入自动合并为单次批量 prefill，多路请求的输出投影亦可合批计算，双管齐下压低权重重复读取与首字延迟。生成阶段借助连续批处理充分复用算力，各路请求依然保有独立上下文与状态，让长文档研读、多轮交互与高并发任务稳稳共用同一套推理服务。",
+    "en": "Equal-length short inputs merge into a single batched prefill, and output projections batch across requests—cutting repeated weight reads and time to first token together. During generation, continuous batching shares compute while keeping every request’s context and state isolated, letting document analysis, multi-turn dialogue, and high concurrency run smoothly on one inference service.",
     "sources": [
       "models/models.js.optimizationItems.8.detail.1"
     ]
@@ -2335,22 +2335,22 @@
     ]
   },
   {
-    "zh": "围绕专业材料、任务轨迹与执行反馈，训练分析、工具使用和结果核查能力。",
-    "en": "Train analysis, tool use, and result verification with domain material, task trajectories, and execution feedback.",
+    "zh": "基于真实专业语料、任务轨迹与执行反馈定向打磨，锻造深度分析、工具调用与自我核查能力。",
+    "en": "Honed on real domain material, task trajectories, and execution feedback to build deep analysis, tool mastery, and self-verification.",
     "sources": [
       "models/models.js.optimizationItems.9.benefit"
     ]
   },
   {
-    "zh": "监督微调（SFT）将专业材料组织为问题分析、证据关联、工具调用与成果交付的任务轨迹。训练覆盖多轮对话、结构化输出与执行失败后的修正，对助手回答和动作施加监督，让模型学习完整的任务过程。LoRA 低秩适配与全参微调用于不同范围的权重更新。",
-    "en": "Supervised fine-tuning (SFT) uses task trajectories built from domain material, covering problem analysis, evidence synthesis, tool calls, and delivery. Training supervises assistant responses and actions across multi-turn dialogue, structured outputs, and recovery from execution failures to teach the full task process. Low-rank adaptation (LoRA) and full-parameter fine-tuning offer different approaches to updating weights.",
+    "zh": "监督微调（SFT）将真实专业材料编织为覆盖问题剖析、证据关联、工具调用与成果交付的完整任务轨迹。训练横跨多轮对话、结构化输出与失败自愈场景，对助手的回答与行动全程施加监督，让模型真正习得端到端的专业作业流程；并视目标范围灵活选用 LoRA 低秩适配或全参微调。",
+    "en": "Supervised fine-tuning (SFT) weaves real domain materials into end-to-end task trajectories spanning problem analysis, evidence linking, tool calls, and final delivery. Training supervises both responses and actions across multi-turn dialogue, structured outputs, and recovery from execution failures—using LoRA or full-parameter fine-tuning depending on update scope.",
     "sources": [
       "models/models.js.optimizationItems.9.detail.0"
     ]
   },
   {
-    "zh": "直接偏好优化（DPO）比较同一问题下的候选结果，将证据充分性、推理一致性和指令遵循纳入训练目标。对代码、计算与工具执行等可验证任务，GRPO 类强化学习利用结果反馈优化策略，并通过保留集检查专业能力与通用能力的变化。",
-    "en": "Direct Preference Optimization (DPO) uses preferences between responses to the same problem, with evidence quality, reasoning consistency, and instruction following as training criteria. For coding, computation, and tool tasks with verifiable outcomes, GRPO-style reinforcement learning uses result feedback to refine the policy. Held-out evaluations track changes in domain and general capabilities.",
+    "zh": "直接偏好优化（DPO）通过同一课题下的候选方案对比，将证据充分性、推理严密性与指令遵循度直接写进优化目标。针对代码、计算与工具执行等结果可验证的任务，则引入 GRPO 类强化学习以真实执行反馈打磨策略，并依托保留测试集持续检验专业能力与通用能力的同步演进。",
+    "en": "Direct Preference Optimization (DPO) compares candidate solutions to the same task, baking evidence rigor, reasoning consistency, and instruction fidelity straight into the objective. For coding, computation, and tool tasks with verifiable outcomes, GRPO-style reinforcement learning sharpens policies from real execution feedback, while held-out suites track domain and general capability gains side by side.",
     "sources": [
       "models/models.js.optimizationItems.9.detail.1"
     ]
@@ -2363,29 +2363,29 @@
     ]
   },
   {
-    "zh": "结合偏好重塑与拒答表征干预，解除预设对齐对专业问题的响应限制，并控制对原有能力的扰动。",
-    "en": "Reshape preferences and edit refusal-related representations to remove preset alignment constraints on professional tasks and limit disruption to existing capabilities.",
+    "zh": "结合偏好重塑与拒答表征定向干预，解除泛化拒答对专业课题的掣肘，同时严控对通用能力的扰动。",
+    "en": "Combine preference reshaping with targeted refusal-representation edits to lift overbroad refusals on specialist tasks while keeping core capabilities intact.",
     "sources": [
       "models/models.js.optimizationItems.10.benefit"
     ]
   },
   {
-    "zh": "RMQ3x 与 RMQ4 针对基座模型的价值观与安全对齐进行后训练。SFT 通过任务示范训练直接回答、证据辨析和指令执行；DPO 通过回答对的偏好关系，调整预设立场、回避表达与泛化拒答。训练目标围绕问题证据和用户任务设定，使模型能够讨论争议内容、比较不同观点并完成专业分析。",
-    "en": "RMQ3x and RMQ4 use post-training to adjust their base models’ value and safety alignment. SFT uses task demonstrations to teach direct answers, evidence analysis, and instruction following. DPO uses preferences between paired responses to adjust predefined stances, evasive language, and overgeneralized refusals. Training objectives center on the evidence and the user’s task so models can discuss contested topics, compare viewpoints, and conduct professional analysis.",
+    "zh": "RMQ3x 与 RMQ4 针对基座模型的价值观与安全对齐实施了定向后训练。SFT 以高质量任务示范教会模型直面问题、辨析证据并忠实执行指令；DPO 则借由回答对的偏好排序，消除刻板的预设立场、回避话术与泛化拒答。一切训练目标皆锚定于事实证据与用户任务本身，使模型得以坦诚探讨争议议题、公允比对多元观点并扎实推进专业分析。",
+    "en": "RMQ3x and RMQ4 apply targeted post-training to recalibrate base-model value and safety alignment. SFT teaches direct answers, evidence examination, and faithful instruction execution through high-quality demonstrations, while DPO uses paired preferences to strip away rigid stances, evasive hedging, and overbroad refusals—anchoring every objective to evidence and the user’s task so models can examine contested topics, weigh viewpoints fairly, and carry out rigorous professional analysis.",
     "sources": [
       "models/models.js.optimizationItems.10.detail.0"
     ]
   },
   {
-    "zh": "Abliteration 从对照样本的中间激活中提取拒答相关方向，对写入残差流的权重实施定向编辑。按层与表征结构采用单方向投影、SVD 多方向子空间及 LEACE 线性概念擦除；结合分层强度搜索、投影修正、范数保持与权重融合控制干预，并针对残余拒答行为迭代校正。",
-    "en": "Abliteration extracts refusal-related directions from intermediate activations of contrasting examples and edits weights that write into the residual stream. We select single-direction projection, SVD-based multidirectional subspaces, and LEACE linear concept erasure to suit each layer and representation structure. Layer-wise strength search, projection refinement, norm preservation, and weight blending control the intervention. Successive edits target remaining refusal behavior.",
+    "zh": "Abliteration 从对照样本的中间激活中精准析出拒答方向，对写入残差流的权重实施外科手术式的定向编辑。我们依各层与表征结构灵活组合单方向投影、SVD 多方向子空间及 LEACE 线性概念擦除，并辅以分层强度搜索、投影修正、范数保持与权重融合精细控幅，对残余拒答行为持续迭代校正。",
+    "en": "Abliteration isolates refusal directions from intermediate activations of contrasting examples and applies surgical edits to weights writing into the residual stream. We pair single-direction projection, SVD multi-direction subspaces, and LEACE linear concept erasure to fit each layer’s representation—guided by layer-wise strength search, projection refinement, norm preservation, and weight blending, then refined iteratively against residual refusals.",
     "sources": [
       "models/models.js.optimizationItems.10.detail.1"
     ]
   },
   {
-    "zh": "干预位置按架构适配：RMQ3x 处理注意力与稠密前馈输出；RMQ4 处理融合专家张量、共享专家与多分支残差，并区分嵌入投影和门控路径。以响应表现、KL 散度和任务评测共同选择编辑强度，通过中文、推理、代码、工具调用与长任务评测检查能力保持。",
-    "en": "Edit targets follow each architecture: attention and dense feed-forward outputs in RMQ3x; fused expert tensors, shared experts, and multiple residual branches in RMQ4. Embedding projections are treated separately from gating paths. Response behavior, KL divergence, and task evaluations guide edit strength. Evaluations of Chinese-language performance, reasoning, coding, tool use, and long-horizon tasks check capability retention.",
+    "zh": "干预落点严丝合缝地适配两款架构：RMQ3x 聚焦注意力与稠密前馈输出；RMQ4 则深入融合专家张量、共享专家与多分支残差，并将嵌入投影与门控路径区别对待。编辑强度由实际响应表现、KL 散度与多维任务评测共同标定，再经中文理解、逻辑推理、代码编写、工具调用与长程任务全套评测，确保模型原有实力稳如磐石。",
+    "en": "Intervention targets fit each architecture tightly: attention and dense feed-forward outputs in RMQ3x; fused expert tensors, shared experts, and multi-branch residuals in RMQ4, keeping embedding projections distinct from gating paths. Edit strength is calibrated jointly by response behavior, KL divergence, and task benchmarks—verified across Chinese comprehension, reasoning, coding, tool use, and long-horizon suites to ensure core strength holds rock-steady.",
     "sources": [
       "models/models.js.optimizationItems.10.detail.2"
     ]
@@ -2513,8 +2513,8 @@
     ]
   },
   {
-    "zh": "继续阅读 Admin 指南",
-    "en": "Continue to the Admin guide",
+    "zh": "继续阅读 admin 指南",
+    "en": "Continue to the admin guide",
     "sources": [
       "scripts/build-guides.mjs.guideConfig.security.next",
       "scripts/build-guides.mjs.guideConfig.network.next",
@@ -2653,7 +2653,7 @@
     "sources": [
       "cases/cases.js.COPY.signToDownload",
       "assets/dealer-downloads.js.COPY.login.title",
-      "downloads/index.html:584"
+      "downloads/index.html:595"
     ],
     "zhVariants": [
       "下载前请先登录"
@@ -2714,8 +2714,8 @@
     ]
   },
   {
-    "zh": "使用官方分发的账号登录。登录后，可直接进入获准的演示或下载资料。",
-    "en": "Sign in with the account we issued. Afterwards you can open the demos and materials you are authorised to use.",
+    "zh": "请使用 RMinte 分发的专属账号登录，即可体验已授权的交互演示并下载相关资料。",
+    "en": "Sign in with your RMinte-issued account to explore authorised interactive demos and download related materials.",
     "sources": [
       "cases/cases.js.COPY.loginLead"
     ]
@@ -2757,8 +2757,8 @@
     ]
   },
   {
-    "zh": "介绍你的应用，以及它与 RM-01 结合的构想。我们将在审核后通过邮箱联系你。",
-    "en": "Tell us about your application and how you would combine it with RM-01. We will contact you by email after review.",
+    "zh": "聊聊你的应用，以及它与 RM-01 结合的落地构想。团队评估后会第一时间通过邮箱与你联系。",
+    "en": "Tell us about your application and how you envision pairing it with RM-01. Our team will review your submission and get back to you by email promptly.",
     "sources": [
       "cases/cases.js.COPY.partnerLead"
     ]
@@ -2785,15 +2785,15 @@
     ]
   },
   {
-    "zh": "你的应用解决什么问题？如何与 RM-01 结合？",
-    "en": "What problem does your application solve, and how would it combine with RM-01?",
+    "zh": "你的应用直击什么业务痛点？计划如何与 RM-01 结合落地？",
+    "en": "What core business pain point does your application solve, and how do you plan to deploy it with RM-01?",
     "sources": [
       "cases/cases.js.COPY.reason"
     ]
   },
   {
-    "zh": "你如何理解 RM-01？团队有哪些模型与应用开发经验？",
-    "en": "How do you understand RM-01? What model and application development experience does your team have?",
+    "zh": "你如何看待 RM-01 的产品定位？团队在模型或行业应用上有哪些实战积累？",
+    "en": "How do you view RM-01’s positioning, and what hands-on experience does your team have with models or industry applications?",
     "sources": [
       "cases/cases.js.COPY.ability"
     ]
@@ -2806,29 +2806,29 @@
     ]
   },
   {
-    "zh": "提交后由团队审核，并通过你填写的邮箱联系。合作申请不自动获得演示与下载权限。",
-    "en": "The team reviews every application and replies by email. An application does not grant access to demos or downloads.",
+    "zh": "提交后团队将尽快评估，并通过你预留的邮箱回复。说明：提交合作申请不会自动开通演示与资料下载权限。",
+    "en": "Our team will review your submission and reply to the email you provide. Note: submitting a partnership application does not automatically grant access to demos or downloads.",
     "sources": [
       "cases/cases.js.COPY.review"
     ]
   },
   {
-    "zh": "申请已收到。团队将通过邮箱与你联系。",
-    "en": "Application received. The team will contact you by email.",
+    "zh": "申请已收到，感谢你的分享。团队评估后会通过邮箱与你联系。",
+    "en": "Application received—thank you for sharing. Our team will follow up by email after review.",
     "sources": [
       "cases/cases.js.COPY.received"
     ]
   },
   {
-    "zh": "此账号尚未获得查看演示权限，请联系账号发放人。",
-    "en": "This account is not yet authorised to view demos. Please contact whoever issued it.",
+    "zh": "当前账号暂未开通演示体验权限，请联系对接人员协助开启。",
+    "en": "This account does not yet have demo access. Please contact your RMinte representative to enable it.",
     "sources": [
       "cases/cases.js.COPY.noDemo"
     ]
   },
   {
-    "zh": "此账号尚未获得下载资料权限，请联系账号发放人。",
-    "en": "This account is not yet authorised to download materials. Please contact whoever issued it.",
+    "zh": "当前账号暂未开通资料下载权限，请联系对接人员协助开启。",
+    "en": "This account does not yet have download access. Please contact your RMinte representative to enable it.",
     "sources": [
       "cases/cases.js.COPY.noDownload"
     ]
@@ -2870,19 +2870,19 @@
     ]
   },
   {
-    "zh": "未登录，需要登录后才能下载。",
-    "en": "You are not signed in. Please sign in before downloading.",
+    "zh": "请先登录，再下载经销商资料。",
+    "en": "Please sign in first to download dealer resources.",
     "sources": [
       "assets/dealer-downloads.js.COPY.login.message",
-      "downloads/index.html:585"
+      "downloads/index.html:596"
     ]
   },
   {
-    "zh": "请前往案例页面，使用已有账号登录。",
-    "en": "Go to the cases page and sign in with your existing account.",
+    "zh": "前往应用案例页，使用 RMinte 专属账号即可登录。",
+    "en": "Head to the Application Cases page and sign in with your RMinte account.",
     "sources": [
       "assets/dealer-downloads.js.COPY.login.help",
-      "downloads/index.html:591"
+      "downloads/index.html:602"
     ]
   },
   {
@@ -2893,8 +2893,8 @@
     ]
   },
   {
-    "zh": "此账号尚未获得经销商资料下载权限，请联系账号发放人。",
-    "en": "This account is not authorised to download dealer resources. Please contact the person who issued your account.",
+    "zh": "当前账号暂未开通经销商资料下载权限，请联系对接人员协助开启。",
+    "en": "This account does not yet have access to dealer downloads. Please contact your RMinte representative to enable it.",
     "sources": [
       "assets/dealer-downloads.js.COPY.forbidden.message"
     ]
@@ -2921,8 +2921,8 @@
     ]
   },
   {
-    "zh": "如需帮助，请联系账号发放人。",
-    "en": "For help, contact the person who issued your account.",
+    "zh": "如需协助，请联系对接人员。",
+    "en": "For assistance, please contact your RMinte representative.",
     "sources": [
       "assets/dealer-downloads.js.COPY.unavailable.help",
       "assets/dealer-downloads.js.COPY.password.help"
@@ -2950,8 +2950,8 @@
     ]
   },
   {
-    "zh": "已有官方分发的账号？登录后可进入获准的演示与下载资料。",
-    "en": "Have an account issued by us? Sign in to open the demos and materials you are authorised to use.",
+    "zh": "已有 RMinte 专属账号？登录后即可体验已授权演示并下载资料。",
+    "en": "Already have an RMinte account? Sign in to access authorised demos and downloads.",
     "sources": [
       "assets/case-auth.js.PANEL.hint"
     ]
@@ -3014,8 +3014,8 @@
     ]
   },
   {
-    "zh": "RM-01 是一款面向本地大模型推理与 AI Agent 部署的便携 AI 计算系统，集成专用推理计算、应用运行环境及整机管理能力。",
-    "en": "RM-01 is a portable AI computing system for local LLM inference and AI agent deployment, bringing dedicated inference, applications, and system management together.",
+    "zh": "RM-01 是一款为本地大模型推理与 AI Agent 部署打造的便携 AI 超算，将独立推理算力、应用运行环境与整机系统管理融于一体。",
+    "en": "RM-01 is a portable AI supercomputer built for local LLM inference and AI agent deployment, uniting dedicated inference compute, an application runtime, and system-wide orchestration in one device.",
     "sources": [
       "index.html:76",
       "index.html:79"
@@ -3182,8 +3182,8 @@
     ]
   },
   {
-    "zh": "工艺公差工艺细节",
-    "en": "Manufacturing tolerance detail",
+    "zh": "精密装配与公差细节",
+    "en": "Precision assembly and tolerance detail",
     "sources": [
       "index.html:361"
     ]
@@ -3203,7 +3203,7 @@
     ]
   },
   {
-    "zh": "天山OS 界面预览",
+    "zh": "TianshanOS 界面预览",
     "en": "TianshanOS interface preview",
     "sources": [
       "index.html:411"
@@ -3225,8 +3225,8 @@
     ]
   },
   {
-    "zh": "了解 RMinte 的 RMQ3x Dense 与 RMQ4 MoE 专业模型，以及自研 C++ 推理引擎、定制 vLLM、CUDA 优化与 Agent 工具执行能力。",
-    "en": "Explore the RMQ3x Dense and RMQ4 MoE specialist models, the RMinte C++ inference runtime, customized vLLM and CUDA optimizations for agent workflows.",
+    "zh": "探索 RMinte 自研 RMQ3x Dense 与 RMQ4 MoE 专业模型，以及自研 C++ 及 Rust 推理引擎、深度定制 vLLM、CUDA 算子优化与专业 Agent 执行能力。",
+    "en": "Explore RMinte’s RMQ3x Dense and RMQ4 MoE specialist models, our dedicated C++ and Rust inference engines, custom vLLM, CUDA operator optimizations, and specialist agent execution.",
     "sources": [
       "models/index.html:22",
       "models/index.html:25"
@@ -3247,22 +3247,22 @@
     ]
   },
   {
-    "zh": "专业分析，更深入。",
-    "en": "Deeper analysis.",
+    "zh": "分析，直抵专业深处。",
+    "en": "Analysis that goes all the way down.",
     "sources": [
       "models/index.html:54"
     ]
   },
   {
-    "zh": "模型推理，更高效。",
-    "en": "More efficient inference.",
+    "zh": "推理，释放硬件潜能。",
+    "en": "Inference that unlocks the hardware.",
     "sources": [
       "models/index.html:54"
     ]
   },
   {
-    "zh": "RMQ3x 与 RMQ4，RMinte 专业模型系列。为法律、调查、安全治理、科研与社会研究打造，连接领域知识、深度推理与工具执行，让 Agent 从理解问题、形成判断走向持续行动，交付文书、代码与研究成果。",
-    "en": "RMQ3x and RMQ4 are RMinte’s specialist models for law, investigations, security and governance, and scientific and social research. They combine domain knowledge, deep reasoning, and tool use so agents can understand problems, form judgments, and act on them to produce documents, code, and research findings.",
+    "zh": "RMQ3x 与 RMQ4 是 RMinte 面向高专业度场景打造的模型系列，覆盖法律、调查、安全治理、前沿科研与社会研究。它们打通领域知识、深度推理与工具调用，让 Agent 从厘清问题、确立判断走向持续行动，直接交付严谨的文书、代码与研究成果。",
+    "en": "RMQ3x and RMQ4 are RMinte’s specialist model series for high-stakes domains—spanning law, investigations, security governance, frontier science, and social research. By uniting domain knowledge, deep reasoning, and tool execution, they carry agents from clarifying the problem and forming judgment straight into sustained action—delivering rigorous documents, code, and research findings.",
     "sources": [
       "models/index.html:55"
     ]
@@ -3312,64 +3312,64 @@
     ]
   },
   {
-    "zh": "专业推理，",
-    "en": "Expert reasoning.",
+    "zh": "缜密推理，",
+    "en": "Rigorous reasoning.",
     "sources": [
       "models/index.html:105"
     ]
   },
   {
-    "zh": "驱动实际行动。",
-    "en": "Driving action.",
+    "zh": "落于实际行动。",
+    "en": "Grounded in real action.",
     "sources": [
       "models/index.html:105"
     ]
   },
   {
-    "zh": "针对法律、调查、安全治理、科研与社会研究打造的专业模型。连接方案设计、代码生成、工具调用与结果验证，让 Agent 将专业判断转化为行动，交付文书、代码与研究成果。",
-    "en": "A specialist model for law, investigations, security and governance, and scientific and social research. It combines planning, code generation, tool use, and verification so agents can turn professional judgment into action and produce documents, code, and research findings.",
+    "zh": "面向高密度专业任务的稠密模型。打通方案构思、代码编写、工具调用与结果校验，把每一步专业判断化为扎实行动，高效交付文书、代码与分析报告。",
+    "en": "A dense specialist model built for high-intensity professional tasks. It links planning, code generation, tool execution, and verification—turning every step of professional judgment into concrete action to deliver documents, code, and analytical reports.",
     "sources": [
       "models/index.html:106"
     ]
   },
   {
-    "zh": "理解专业问题",
-    "en": "Understand domain problems",
+    "zh": "厘清专业问题",
+    "en": "Clarify domain problems",
     "sources": [
       "models/index.html:108"
     ]
   },
   {
-    "zh": "联系事实、证据与领域知识，推演因果、检验假设，形成有依据的判断与方案。",
-    "en": "Connect facts, evidence, and domain knowledge to examine cause and effect, test hypotheses, and develop sound judgments and plans.",
+    "zh": "串联事实、证据与领域知识，推演因果、检验假设，给出有据可依的判断与方案。",
+    "en": "Connect facts, evidence, and domain knowledge to trace causality, test hypotheses, and establish well-grounded judgments and plans.",
     "sources": [
       "models/index.html:108"
     ]
   },
   {
-    "zh": "完成实际工作",
-    "en": "Execute tasks",
+    "zh": "亲手推进执行",
+    "en": "Drive hands-on execution",
     "sources": [
       "models/index.html:109"
     ]
   },
   {
-    "zh": "制定检索策略，生成数据查询与验证代码，调用专业工具执行任务、检验结果。",
-    "en": "Develop search strategies, generate data queries and validation code, and use specialist tools to execute tasks and verify results.",
+    "zh": "规划检索路径，编写数据查询与验证代码，直接调用专业工具落地执行并复核结果。",
+    "en": "Map retrieval strategies, write data queries and verification code, and invoke specialist tools directly to execute tasks and double-check results.",
     "sources": [
       "models/index.html:109"
     ]
   },
   {
-    "zh": "延续任务进程",
-    "en": "Carry tasks forward",
+    "zh": "承接连续作业",
+    "en": "Sustain continuous workflows",
     "sources": [
       "models/index.html:110"
     ]
   },
   {
-    "zh": "承接前序发现与执行反馈，修订方案、推进验证，完成调查、研究与业务工作。",
-    "en": "Use prior findings and execution feedback to revise plans, verify results, and complete investigations, research, and business tasks.",
+    "zh": "吸纳前序发现与执行反馈，动态修订方案、推进交叉验证，一气呵成完成专业交付。",
+    "en": "Absorb prior findings and execution feedback to revise plans on the fly, run cross-checks, and see professional deliverables through from start to finish.",
     "sources": [
       "models/index.html:110"
     ]
@@ -3398,50 +3398,50 @@
     ]
   },
   {
-    "zh": "为跨领域、多阶段、需要反复验证的专业工作打造，覆盖法律、调查、安全治理、科研与社会研究。衔接任务规划、代码计算、工具使用与研究迭代，保持目标、约束和阶段成果的连续性，让 Agent 推进复杂调查与研究项目，完成从问题到成果的交付。",
-    "en": "Built for complex work in law, investigations, security and governance, and scientific and social research. It connects planning, code execution, tool use, and iterative research across disciplines and stages, retaining goals, constraints, and findings through repeated verification. Agents can carry investigations and research projects from the initial question to the final deliverable.",
+    "zh": "专为跨学科、多阶段、需反复推敲的复杂课题而生。贯通全局规划、代码计算、工具协作与多轮迭代，在漫长任务链中牢牢守住目标、约束与阶段发现，驱动 Agent 将棘手的调查与研究一推到底，交付可检验的最终成果。",
+    "en": "Engineered for cross-disciplinary, multi-stage challenges that demand repeated verification. It connects high-level planning, computational code, tool collaboration, and iterative refinement—holding onto goals, constraints, and intermediate findings across long chains so agents can drive tough investigations and research all the way to verifiable results.",
     "sources": [
       "models/index.html:118"
     ]
   },
   {
-    "zh": "建立完整论证",
-    "en": "Build a complete argument",
+    "zh": "构筑严密论证",
+    "en": "Build airtight arguments",
     "sources": [
       "models/index.html:120"
     ]
   },
   {
-    "zh": "联结不同领域的知识与证据，解释问题机制，检验竞争性假设，形成逻辑严密的专业判断。",
-    "en": "Connect knowledge and evidence across disciplines, explain underlying mechanisms, and test competing hypotheses to reach sound professional judgments.",
+    "zh": "融汇跨领域知识与多源证据，剖析底层机制，逐一检验竞争性假设，建立无懈可击的论证链条。",
+    "en": "Synthesize cross-disciplinary knowledge and multi-source evidence, dissect underlying mechanisms, and test competing hypotheses to build rigorous chains of reasoning.",
     "sources": [
       "models/index.html:120"
     ]
   },
   {
-    "zh": "贯通复杂任务",
-    "en": "Coordinate complex tasks",
+    "zh": "驾驭长程协同",
+    "en": "Orchestrate long-horizon work",
     "sources": [
       "models/index.html:121"
     ]
   },
   {
-    "zh": "统筹调查规划、信息检索、代码计算与结果复核，将阶段性发现转化为后续行动。",
-    "en": "Coordinate investigation planning, information retrieval, code execution, and result verification. Use findings at each stage to guide the next action.",
+    "zh": "统筹路径规划、深度检索、代码计算与结果复核，让每一次阶段性发现自然牵引下一步行动。",
+    "en": "Coordinate planning, deep retrieval, code computation, and verification so each milestone finding naturally steers the next move.",
     "sources": [
       "models/index.html:121"
     ]
   },
   {
-    "zh": "推进研究迭代",
-    "en": "Refine the research",
+    "zh": "驱动持续迭代",
+    "en": "Drive continuous iteration",
     "sources": [
       "models/index.html:122"
     ]
   },
   {
-    "zh": "吸收新增证据、计算结果与实验反馈，修订假设、完善方案，产出可检验的研究成果。",
-    "en": "Incorporate new evidence, computational results, and experimental feedback to revise hypotheses, refine plans, and produce testable research findings.",
+    "zh": "实时吸收新增证据、算力推演与实验反馈，动态修正假设、打磨方案，产出经得起推敲的研究成果。",
+    "en": "Incorporate new evidence, computational runs, and experimental feedback in real time—updating hypotheses, sharpening plans, and producing findings that stand up to scrutiny.",
     "sources": [
       "models/index.html:122"
     ]
@@ -3454,7 +3454,7 @@
     ]
   },
   {
-    "zh": "测评结果即将推出",
+    "zh": "评测结果即将公布",
     "en": "Benchmark results coming soon",
     "sources": [
       "models/index.html:133"
@@ -3482,24 +3482,25 @@
     ]
   },
   {
-    "zh": "专用引擎，释放模型性能。",
-    "en": "Dedicated engines. Unlock model performance.",
+    "zh": "专用引擎，释放模型全部潜能。",
+    "en": "Dedicated engines. Full model potential unlocked.",
     "sources": [
       "models/index.html:145"
     ]
   },
   {
-    "zh": "RMQ3x 与 RMQ4 已运行于 RMinte 自研 C++ 推理引擎和深度定制的 vLLM。围绕模型结构与 RM-01 的硬件平台，我们深入优化算子、执行路径与运行时，让模型能力建立在高效的推理实现之上。",
-    "en": "RMQ3x and RMQ4 run on RMinte’s C++ inference engine and a custom vLLM implementation. We tailor kernels, execution paths, and runtimes to the model architectures and RM-01 hardware to turn model capability into efficient inference.",
+    "zh": "RMQ3x 与 RMQ4 现已全面运行于 RMinte 自研 C++ 及 Rust 推理引擎与深度定制 vLLM。紧贴模型架构与 RM-01 硬件特性，我们从底层重构算子、执行路径与运行时，让卓越的模型能力，扎实落地为极速流畅的推理体验。",
+    "en": "RMQ3x and RMQ4 run on RMinte’s dedicated C++ and Rust inference engines alongside our deeply customized vLLM. Tailored to each model architecture and RM-01’s hardware, we rebuild operators, execution paths, and runtimes from the ground up—turning model capability into fast, fluid inference.",
     "sources": [
       "models/index.html:146"
     ]
   },
   {
-    "zh": "自研 C++ 推理实现示意",
-    "en": "Diagram of the dedicated C++ inference engine",
+    "zh": "自研 C++ / Rust 推理实现示意",
+    "en": "Diagram of the dedicated C++ and Rust inference engine",
     "sources": [
-      "models/index.html:149"
+      "models/index.html:149",
+      "assets/i18n-ui.json"
     ]
   },
   {
@@ -3517,8 +3518,8 @@
     ]
   },
   {
-    "zh": "不含权重、KV 缓存与上下文",
-    "en": "Excludes weights, KV cache and context",
+    "zh": "不含权重、KV Cache 与上下文",
+    "en": "Excludes weights, KV Cache, and context",
     "sources": [
       "models/index.html:155"
     ]
@@ -3532,8 +3533,8 @@
     ]
   },
   {
-    "zh": "自研 C++",
-    "en": "Our C++ engine",
+    "zh": "自研 C++ / Rust",
+    "en": "Our C++ / Rust engine",
     "sources": [
       "models/index.html:158"
     ]
@@ -3546,36 +3547,36 @@
     ]
   },
   {
-    "zh": "自研 C++ 推理引擎",
-    "en": "Our C++ inference engine",
+    "zh": "自研 C++ 及 Rust 推理引擎",
+    "en": "Our C++ and Rust inference engines",
     "sources": [
       "models/index.html:164"
     ]
   },
   {
-    "zh": "更低的运行开销，更高的执行效率。",
-    "en": "Lower runtime overhead. More efficient execution.",
+    "zh": "极低运行开销，更高执行效率。",
+    "en": "Minimal runtime overhead. Faster execution.",
     "sources": [
       "models/index.html:165"
     ]
   },
   {
-    "zh": "RMinte 自研 C++ 引擎的 Runner 自身内存开销约为 2 MB，不含模型权重、KV Cache 与上下文等占用。在相同模型、精度与量化配置下，prefill 与 decode 性能均优于我们已优化的 vLLM 实现，兼顾输入处理与逐 token 生成的效率。",
-    "en": "The runner in RMinte’s C++ engine uses about 2 MB of memory, excluding model weights, KV cache, context, and other model allocations. With identical model, precision, and quantization settings, it outperforms our optimized vLLM implementation in both input processing (prefill) and token-by-token generation (decode).",
+    "zh": "RMinte 自研 C++ 及 Rust 引擎极其轻量，Runner 自身常驻内存仅约 2 MB（不含模型权重、KV Cache 与上下文）。同等模型、精度与量化配置下，无论是输入处理（prefill）还是逐 token 生成（decode），性能均领先于我们深度优化后的 vLLM 实现。",
+    "en": "RMinte’s C++ and Rust engines are remarkably lightweight, with the runner itself using only about 2 MB of resident memory (excluding model weights, KV Cache, and context). Under identical model, precision, and quantization settings, they outperform our deeply optimized vLLM implementation in both input processing (prefill) and token-by-token generation (decode).",
     "sources": [
       "models/index.html:166"
     ]
   },
   {
-    "zh": "匹配硬件，减少数据搬运。",
-    "en": "Match the hardware. Move less data.",
+    "zh": "贴合硬件脉络，削减数据搬运。",
+    "en": "Built for the hardware. Less data movement.",
     "sources": [
       "models/index.html:167"
     ]
   },
   {
-    "zh": "针对 RM-01 的 GPU、统一内存与缓存结构，我们设计 CUDA 算子，合并投影与相邻运算，并按矩阵规模选择计算路径。权重加载、量化存储与运行时布局共同减少内存分配和中间结果搬运，将资源留给模型计算。",
-    "en": "We design CUDA kernels for RM-01’s GPU, unified memory, and caches, merge projections and adjacent operations, and select computation paths by matrix size. Weight loading, quantized storage, and runtime layouts reduce memory allocations and movement of intermediate results, leaving more resources for model computation.",
+    "zh": "针对 RM-01 的 GPU、统一内存与多级缓存结构，我们量身打造 CUDA 算子，融合投影与相邻运算，并依矩阵规模动态择优计算路径。从权重加载、量化存储到运行时内存布局，层层压缩冗余分配与中间搬运，把宝贵带宽尽数留给模型计算。",
+    "en": "We craft custom CUDA kernels for RM-01’s GPU, unified memory, and cache hierarchy—fusing projections with adjacent operations and selecting compute paths dynamically by matrix size. From weight loading and quantized storage to runtime layouts, every layer trims redundant allocations and intermediate transfers so bandwidth goes straight to model math.",
     "sources": [
       "models/index.html:168"
     ]
@@ -3588,15 +3589,15 @@
     ]
   },
   {
-    "zh": "引擎支持连续追加输入，将输入处理与回答生成分开调度。前缀缓存与递归状态管理复用已有计算，内存与 SSD 分层存储承接上下文。模型随新消息、文档与任务反馈推进处理，在需要输出时启动 decode。",
-    "en": "The engine accepts incremental input and schedules input processing separately from response generation. Prefix caching and recurrent-state management reuse prior computation, while memory and SSD tiers hold context. Models process new messages, documents, and task feedback, then decode when output is needed.",
+    "zh": "引擎支持持续追加上下文，将输入消化与回答生成解耦调度。前缀缓存与递归状态管理复用前序计算，内存与 SSD 分层存储承接长程记忆——新消息、新文档与任务反馈源源不断进入，模型静默消化，只在需要发声时瞬间启动 decode。",
+    "en": "The engine accepts continuous context appends, decoupling input ingestion from response generation. Prefix caching and recurrent-state management reuse prior computation while memory–SSD tiering holds long-term context—new messages, documents, and task feedback stream in quietly, and decode fires the instant output is needed.",
     "sources": [
       "models/index.html:170"
     ]
   },
   {
-    "zh": "这种执行方式让 Agent 能够持续接收上下文，无须每次输入都触发回答。从会议中的持续聆听，到案件材料的增量分析，模型随信息更新推进处理，在需要时参与判断与行动。",
-    "en": "Agents can keep receiving context without responding to every input. Whether listening throughout a meeting or analyzing new case material, models process information as it arrives and contribute to decisions and actions when needed.",
+    "zh": "这种机制赋予 Agent「边听边想」的能力，无需每次输入都仓促作答。无论是全程静听一场会议，还是增量研读陆续抵达的卷宗，模型都随信息流同步推演，在关键时刻精准介入判断与行动。",
+    "en": "This lets agents listen and think continuously without rushing to answer every prompt. Whether sitting silently through a full meeting or digesting incoming case files incrementally, the model reasons along with the stream and steps in precisely when judgment or action is called for.",
     "sources": [
       "models/index.html:171"
     ]
@@ -3609,36 +3610,36 @@
     ]
   },
   {
-    "zh": "从算子到工具链，深入优化推理实现。",
-    "en": "Inference optimization, from kernels to toolchains.",
+    "zh": "从底层算子到工具链，全栈深度调优。",
+    "en": "Full-stack tuning, from kernels to toolchains.",
     "sources": [
       "models/index.html:175"
     ]
   },
   {
-    "zh": "RMinte 围绕模型执行与硬件特性，完成 GPU 算子的移植与重写，处理 PTX 与编译工具链的兼容问题，并推进 FlashInfer 推理内核库、Transformers 5 模型库的适配与集成。",
-    "en": "RMinte has ported and rewritten GPU kernels to match model execution and hardware requirements, and resolved compatibility issues with PTX and the compiler toolchain. We adapt and integrate the FlashInfer inference kernel library and the Transformers 5 model library.",
+    "zh": "围绕模型执行特征与 RM-01 硬件平台，我们完整移植并重写了核心 GPU 算子，攻克 PTX 与编译工具链的兼容壁垒，顺利完成 FlashInfer 推理内核库与 Transformers 5 的深度适配集成。",
+    "en": "Tailored to model execution patterns and RM-01’s hardware, we ported and rewrote core GPU kernels, cleared PTX and compiler-toolchain compatibility hurdles, and deeply integrated the FlashInfer kernel library alongside Transformers 5.",
     "sources": [
       "models/index.html:176"
     ]
   },
   {
-    "zh": "在 Fused MoE 内核调优中，我们解决了相关流程中的 Triton 兼容问题，使内核参数能够针对模型配置与硬件特性进行调优。同时，对推测解码等执行流程进行定制优化，提升模型推理效率。",
-    "en": "We resolved Triton compatibility issues in the Fused MoE tuning workflow so kernel parameters can be tuned for each model configuration and hardware platform. We also optimize execution paths, including speculative decoding, to improve inference efficiency.",
+    "zh": "在 Fused MoE 内核调优中，我们打通了 Triton 工具链的兼容瓶颈，令内核参数得以紧贴具体模型与硬件特性精细寻优；同时对推测解码等关键路径实施专项定制，进一步推高推理吞吐。",
+    "en": "For Fused MoE tuning, we resolved Triton toolchain bottlenecks so kernel parameters can be finely tuned to each model configuration and hardware profile—paired with custom optimizations across critical paths such as speculative decoding to push throughput even higher.",
     "sources": [
       "models/index.html:177"
     ]
   },
   {
-    "zh": "支撑 RMQ，保留开放的模型选择。",
-    "en": "Built for RMQ. Open to more models.",
+    "zh": "专精 RMQ，亦向开源生态敞开大门。",
+    "en": "Built for RMQ. Open to the wider ecosystem.",
     "sources": [
       "models/index.html:178"
     ]
   },
   {
-    "zh": "定制 vLLM 已支持 RMQ3x 与 RMQ4，也为 RM-01 运行其他适配的开源模型提供推理基础。用户可以围绕任务选择模型，在同一台设备上构建不同的专业应用与 Agent 工作流。",
-    "en": "Our custom vLLM supports RMQ3x and RMQ4, as well as other compatible open-source models on RM-01. Choose models to suit each task and build specialist applications and agent workflows on the same device.",
+    "zh": "定制 vLLM 在原生支撑 RMQ3x 与 RMQ4 的同时，也为 RM-01 运行各类适配开源模型筑牢底座。你可以随任务自由挑选模型，在同一台设备上灵活搭建多元的专业应用与 Agent 工作流。",
+    "en": "Alongside native support for RMQ3x and RMQ4, our custom vLLM provides a rock-solid foundation for running other compatible open-source models on RM-01. Pick the right model for each task and build diverse specialist apps and agent workflows on the same device.",
     "sources": [
       "models/index.html:179"
     ]
@@ -3651,8 +3652,8 @@
     ]
   },
   {
-    "zh": "构建专业能力。",
-    "en": "Built for professional work.",
+    "zh": "锻造专业能力。",
+    "en": "Forged for specialist work.",
     "sources": [
       "models/index.html:187"
     ]
@@ -3665,15 +3666,15 @@
     ]
   },
   {
-    "zh": "释放模型性能。",
-    "en": "Unlock model performance.",
+    "zh": "释放模型潜能。",
+    "en": "Unlock full model potential.",
     "sources": [
       "models/index.html:187"
     ]
   },
   {
-    "zh": "RMQ3x 与 RMQ4 结合递归记忆、注意力检索与针对性训练，构建专业分析和工具执行能力。自研推理引擎围绕模型结构与硬件特性，优化计算路径、数据访问和任务调度，让这些能力服务于长文档、多轮交互与持续运行的 Agent。",
-    "en": "RMQ3x and RMQ4 combine recurrent memory, attention-based retrieval, and targeted training for professional analysis and tool use. Our inference engine tailors computation paths, data access, and task scheduling to the model architectures and hardware, supporting long documents, multi-turn interaction, and agents that keep working.",
+    "zh": "RMQ3x 与 RMQ4 融汇递归记忆、注意力检索与定向后训练，锻造出扎实的专业洞察与工具执行力；自研推理引擎则紧贴架构与硬件，重塑计算路径、访存效率与并发调度，让这份智能真正扛起长文档研读、多轮推演与全天候运行的 Agent 重任。",
+    "en": "RMQ3x and RMQ4 combine recurrent memory, attention-based retrieval, and targeted post-training to build deep professional insight and dependable tool execution. Our inference engines reshape compute paths, memory access, and concurrency scheduling around architecture and hardware—powering long-document analysis, multi-turn reasoning, and always-on agents.",
     "sources": [
       "models/index.html:188"
     ]
@@ -3733,15 +3734,15 @@
     ]
   },
   {
-    "zh": "11 张实拍影像，呈现 RM-01 的外观、结构与工艺细节。",
-    "en": "11 product images present RM-01's exterior, structure, and material details.",
+    "zh": "11 帧实拍影像，近观 RM-01 的廓形比例、内部结构与工艺细节。",
+    "en": "11 photographs offering an up-close look at RM-01’s proportions, internal structure, and craftsmanship.",
     "sources": [
       "gallery/index.html:108"
     ]
   },
   {
-    "zh": "本图册支持 HDR 浏览，兼容设备可呈现更丰富的明暗细节。",
-    "en": "HDR images. Enjoy richer highlight and shadow detail on compatible displays and browsers.",
+    "zh": "支持 HDR 高动态范围浏览，在兼容屏幕上可尽览更细腻的高光与暗部层次。",
+    "en": "HDR viewing supported—experience finer highlight and shadow nuance on compatible displays.",
     "sources": [
       "gallery/index.html:112"
     ]
@@ -3804,12 +3805,12 @@
     "en": "Download center",
     "sources": [
       "downloads/index.html:109",
-      "downloads/index.html:570"
+      "downloads/index.html:581"
     ]
   },
   {
-    "zh": "获取 RM-01 产品文档、技术资料、固件与软件发布包，并直接使用在线工具。",
-    "en": "Get RM-01 product documentation, technical materials, firmware and software releases, plus browser-based online tools.",
+    "zh": "一站获取 RM-01 产品文档、宣介资料、TianshanOS 固件与配套软件，或直接打开在线工具。",
+    "en": "Your hub for RM-01 product documentation, brochures, TianshanOS firmware, companion software, and browser-based tools.",
     "sources": [
       "downloads/index.html:110",
       "assets/i18n-ui.json"
@@ -3851,7 +3852,7 @@
     "en": "Online tools",
     "sources": [
       "downloads/index.html:129",
-      "downloads/index.html:453"
+      "downloads/index.html:464"
     ]
   },
   {
@@ -3859,7 +3860,7 @@
     "en": "Dealer resources",
     "sources": [
       "downloads/index.html:131",
-      "downloads/index.html:483"
+      "downloads/index.html:494"
     ]
   },
   {
@@ -3901,10 +3902,11 @@
       "downloads/index.html:339",
       "downloads/index.html:372",
       "downloads/index.html:383",
-      "downloads/index.html:405",
+      "downloads/index.html:394",
       "downloads/index.html:416",
       "downloads/index.html:427",
-      "downloads/index.html:438"
+      "downloads/index.html:438",
+      "downloads/index.html:449"
     ]
   },
   {
@@ -3922,15 +3924,15 @@
     ]
   },
   {
-    "zh": "TianshanOS Admin 日常使用指南（中英双语）",
-    "en": "TianshanOS Admin User Guide (Bilingual)",
+    "zh": "TianshanOS admin 日常使用指南（中英双语）",
+    "en": "TianshanOS admin User Guide (Bilingual)",
     "sources": [
       "downloads/index.html:168"
     ]
   },
   {
-    "zh": "Admin 用户日常操作指南 · 中英双语 · 31 页 · PDF · 616 KB · 2026-11-03",
-    "en": "Daily operations guide for Admin users · Chinese and English · 31 pages · PDF · 616 KB · 2026-11-03",
+    "zh": "admin 用户日常操作指南 · 中英双语 · 31 页 · PDF · 616 KB · 2026-11-03",
+    "en": "Daily operations guide for admin users · Chinese and English · 31 pages · PDF · 616 KB · 2026-11-03",
     "sources": [
       "downloads/index.html:169"
     ]
@@ -3950,8 +3952,8 @@
     ]
   },
   {
-    "zh": "TianShanOS 安全页面完整操作指南（中文）",
-    "en": "TianShanOS Complete Security Page Guide (Chinese)",
+    "zh": "TianshanOS 安全页面完整操作指南（中文）",
+    "en": "TianshanOS Complete Security Page Guide (Chinese)",
     "sources": [
       "downloads/index.html:190"
     ]
@@ -3964,8 +3966,8 @@
     ]
   },
   {
-    "zh": "TianShanOS 安全页面完整操作指南（英文）",
-    "en": "TianShanOS Complete Security Page Guide (English)",
+    "zh": "TianshanOS 安全页面完整操作指南（英文）",
+    "en": "TianshanOS Complete Security Page Guide (English)",
     "sources": [
       "downloads/index.html:201"
     ]
@@ -4167,8 +4169,8 @@
     ]
   },
   {
-    "zh": "刷写固件时必须同时准备 TianShanOS.bin 和 www.bin。",
-    "en": "Both TianShanOS.bin and www.bin are required when flashing the firmware.",
+    "zh": "刷写固件须同时准备 TianShanOS.bin 与 www.bin 两个镜像文件。",
+    "en": "Both TianShanOS.bin and www.bin image files are required when flashing firmware.",
     "sources": [
       "downloads/index.html:358"
     ]
@@ -4178,7 +4180,7 @@
     "en": "Release notes",
     "sources": [
       "downloads/index.html:361",
-      "downloads/index.html:394"
+      "downloads/index.html:405"
     ]
   },
   {
@@ -4196,129 +4198,129 @@
     ]
   },
   {
-    "zh": "RM-01 联网工具 · v1.1.5 · 选择与你的操作系统和使用方式匹配的版本。",
+    "zh": "RM-01 联网工具 · v1.1.5 · 请按你的操作系统与使用习惯选择对应版本。",
     "en": "RM-01 network connectivity tool · v1.1.5 · Choose the build that matches your operating system and workflow.",
     "sources": [
-      "downloads/index.html:391"
+      "downloads/index.html:402"
     ]
   },
   {
     "zh": "Linux x86_64 · AppImage · v1.1.5 · 47.1 MB",
     "en": "Linux x86_64 · AppImage · v1.1.5 · 47.1 MB",
     "sources": [
-      "downloads/index.html:402"
+      "downloads/index.html:413"
     ]
   },
   {
     "zh": "macOS 应用包 · ZIP 压缩包 · v1.1.5 · 3.9 MB",
     "en": "macOS app bundle · ZIP archive · v1.1.5 · 3.9 MB",
     "sources": [
-      "downloads/index.html:413"
+      "downloads/index.html:424"
     ]
   },
   {
     "zh": "macOS Apple 芯片命令行工具 · arm64 · v1.1.5 · 7.3 MB",
     "en": "macOS command-line tool for Apple silicon · arm64 · v1.1.5 · 7.3 MB",
     "sources": [
-      "downloads/index.html:424"
+      "downloads/index.html:435"
     ]
   },
   {
     "zh": "Windows 压缩包 · ZIP · v1.1.5 · 69.7 MB",
     "en": "Windows package · ZIP archive · v1.1.5 · 69.7 MB",
     "sources": [
-      "downloads/index.html:435"
+      "downloads/index.html:446"
     ]
   },
   {
     "zh": "发布原则",
     "en": "RELEASE POLICY",
     "sources": [
-      "downloads/index.html:444"
+      "downloads/index.html:455"
     ]
   },
   {
-    "zh": "固件与软件只会在完成签名、适配性验证和完整性校验后开放下载，请根据发布说明选择与设备匹配的版本。",
-    "en": "Firmware and software downloads open only after signing, compatibility validation, and integrity checks. Select the release that matches your device according to its release notes.",
+    "zh": "所有固件与软件均在通过数字签名、适配验证及完整性校验后方可发布，请对照发布说明选择与设备匹配的版本。",
+    "en": "Every firmware and software release opens for download only after digital signing, compatibility validation, and integrity verification. Check the release notes to choose the version that matches your device.",
     "sources": [
-      "downloads/index.html:445"
+      "downloads/index.html:456"
     ]
   },
   {
     "zh": "RM-01 灯板图形转换工具",
     "en": "RM-01 LED matrix graphics converter",
     "sources": [
-      "downloads/index.html:460"
+      "downloads/index.html:471"
     ]
   },
   {
-    "zh": "Emoji2Pixel · 将 Emoji 或图片转换为适配 RM-01 灯板的像素图与动画。",
-    "en": "Emoji2Pixel · Convert emojis or images into pixel art and animations for the RM-01 LED matrix.",
+    "zh": "Emoji2Pixel · 一键将 Emoji 或图片转化为适配 RM-01 灯板的像素画面与动效。",
+    "en": "Emoji2Pixel · Turn emojis or images into pixel graphics and animations tailored for the RM-01 LED matrix in one click.",
     "sources": [
-      "downloads/index.html:461"
+      "downloads/index.html:472"
     ]
   },
   {
     "zh": "打开工具",
     "en": "Open tool",
     "sources": [
-      "downloads/index.html:464"
+      "downloads/index.html:475"
     ]
   },
   {
-    "zh": "TianShanOS OTA 更新服务",
-    "en": "TianShanOS OTA update service",
+    "zh": "TianshanOS OTA 更新服务",
+    "en": "TianshanOS OTA update service",
     "sources": [
-      "downloads/index.html:471"
+      "downloads/index.html:482"
     ]
   },
   {
-    "zh": "为 RM-01 本机 OTA 页面提供 TianShanOS 正式固件与 WebUI 更新文件。",
-    "en": "Provides official TianShanOS firmware and WebUI updates to the OTA page hosted on your RM-01.",
+    "zh": "为 RM-01 本机 OTA 页面提供 TianshanOS 正式固件与 WebUI 更新包。",
+    "en": "Delivers official TianshanOS firmware and WebUI update packages directly to the OTA page on your RM-01.",
     "sources": [
-      "downloads/index.html:472"
+      "downloads/index.html:483"
     ]
   },
   {
     "zh": "打开服务",
     "en": "Open service",
     "sources": [
-      "downloads/index.html:475"
+      "downloads/index.html:486"
     ]
   },
   {
     "zh": "需在案例页登录后下载",
     "en": "Sign in on the cases page to download",
     "sources": [
-      "downloads/index.html:489"
+      "downloads/index.html:500"
     ]
   },
   {
     "zh": "面向经销商的产品与技术资料。",
     "en": "Product and technical materials for dealers.",
     "sources": [
-      "downloads/index.html:492"
+      "downloads/index.html:503"
     ]
   },
   {
     "zh": "下载资料",
     "en": "Requested file",
     "sources": [
-      "downloads/index.html:587"
+      "downloads/index.html:598"
     ]
   },
   {
     "zh": "暂不下载",
     "en": "Cancel",
     "sources": [
-      "downloads/index.html:593"
+      "downloads/index.html:604"
     ]
   },
   {
     "zh": "前往案例登录",
     "en": "Go to sign in",
     "sources": [
-      "downloads/index.html:595"
+      "downloads/index.html:606"
     ]
   },
   {
@@ -4354,15 +4356,15 @@
     ]
   },
   {
-    "zh": "选择你的使用角色",
-    "en": "Choose your operating role",
+    "zh": "按你的角色，直达所需指南",
+    "en": "Start from your role",
     "sources": [
       "guides/index.html:106"
     ]
   },
   {
-    "zh": "日常管理、系统运维与安全配置，各有对应的操作指南。选择你的角色，从手头要做的事开始。",
-    "en": "Find guidance for daily management, system operations, and security configuration. Choose your role and start with the task at hand.",
+    "zh": "日常管理、系统运维与安全配置各有专册。选定你的角色，从手头的任务直接出发。",
+    "en": "Dedicated guides for daily management, system operations, and security configuration. Pick your role and jump straight into the task at hand.",
     "sources": [
       "guides/index.html:107"
     ]
@@ -4447,8 +4449,8 @@
     ]
   },
   {
-    "zh": "从了解产品、申请样机到配置系统、排查问题，让你的 Agent 根据官方资料提供帮助。",
-    "en": "From exploring the product and requesting a demo unit to system setup and troubleshooting, let your agent help with guidance from official sources.",
+    "zh": "从了解产品、申请样机，到系统配置与故障排查，让你的 Agent 直接调用官方资料，随时为你效劳。",
+    "en": "From exploring RM-01 and requesting a demo unit to system configuration and troubleshooting, let your agent draw directly on official documentation whenever you need a hand.",
     "sources": [
       "guides/index.html:133"
     ]
@@ -4554,8 +4556,8 @@
     ]
   },
   {
-    "zh": "用脚本或自己的系统读取设备状态、控制设备并接收实时消息。提供快速接入、任务示例与接口参考。",
-    "en": "Connect your scripts and applications to read device status, control devices, and receive real-time updates. Start with a quickstart, task examples, or the API reference.",
+    "zh": "通过脚本或自有业务系统读取设备状态、下发控制指令并订阅实时事件，配套提供快速接入、任务示例与完整接口参考。",
+    "en": "Read device status, send control commands, and subscribe to real-time events from your scripts or business systems—backed by a quickstart, task examples, and full API reference.",
     "sources": [
       "guides/index.html:199"
     ]
@@ -4568,8 +4570,8 @@
     ]
   },
   {
-    "zh": "root 权限可能改变设备、远程主机和自动化流程。请根据实际职责选择指南。",
-    "en": "root privileges can change devices, remote hosts, and automation workflows. Choose the guide that matches your responsibilities.",
+    "zh": "root 权限涉及设备底层、远程主机与自动化规则的变更，请按实际职责审慎选用对应指南。",
+    "en": "root privileges modify low-level device settings, remote hosts, and automation rules—choose the guide that matches your actual responsibilities.",
     "sources": [
       "guides/index.html:204"
     ]
@@ -4582,8 +4584,8 @@
     ]
   },
   {
-    "zh": "复制以下指令，发送给你的 Agent，让它帮你完成接入。",
-    "en": "Copy the instructions below and send them to your agent to set up the connection.",
+    "zh": "复制下方指令发给你的 Agent，几秒即可完成官方资料接入。",
+    "en": "Copy the prompt below and send it to your agent to connect official documentation in seconds.",
     "sources": [
       "guides/index.html:277"
     ]
@@ -4610,8 +4612,8 @@
     ]
   },
   {
-    "zh": "TianshanOS Admin 使用指南 | RM-01 日常设备管理 | RMinte",
-    "en": "TianshanOS Admin Guide | Daily RM-01 Device Management | RMinte",
+    "zh": "TianshanOS admin 使用指南 | RM-01 日常设备管理 | RMinte",
+    "en": "TianshanOS admin Guide | Daily RM-01 Device Management | RMinte",
     "sources": [
       "guides/admin.html:12",
       "guides/admin.html:15"
@@ -4693,8 +4695,8 @@
     ]
   },
   {
-    "zh": "设备型号、硬件配置和当前状态会影响页面显示。以设备实际界面为准。",
-    "en": "Device model, hardware configuration, and current state affect what the interface displays.",
+    "zh": "界面展示可能随设备型号、硬件配置与实时状态略有差异，请以设备实际显示为准。",
+    "en": "What you see on screen may vary slightly by device model, hardware configuration, and live status—refer to your device’s actual interface.",
     "sources": [
       "guides/admin.html:1786",
       "guides/root.html:2464",
@@ -4705,8 +4707,8 @@
     ]
   },
   {
-    "zh": "TianshanOS Root 运维指南 | 终端、远程指令与自动化 | RMinte",
-    "en": "TianshanOS Root Guide | Terminal, Remote Commands & Automation | RMinte",
+    "zh": "TianshanOS root 运维指南 | 终端、远程指令与自动化 | RMinte",
+    "en": "TianshanOS root Guide | Terminal, Remote Commands & Automation | RMinte",
     "sources": [
       "guides/root.html:12",
       "guides/root.html:15"
@@ -4798,8 +4800,8 @@
     ]
   },
   {
-    "zh": "从日常事务到工业研发，探索 AI 在真实业务中的应用。找到与你相关的场景，进一步了解资料与演示。",
-    "en": "From everyday tasks to industrial R&D, explore how AI is used in real business. Find the scenarios relevant to you and learn more about materials and demos.",
+    "zh": "从日常办公到工业研发，看本地 AI 如何在真实业务现场落地生根。挑选与你契合的行业场景，深入了解方案资料与交互演示。",
+    "en": "From everyday office operations to industrial R&D, see how local AI takes root in real business sites. Pick the scenarios that match your field and explore detailed materials and interactive demos.",
     "sources": [
       "cases/index.html:100"
     ]
@@ -4812,8 +4814,8 @@
     ]
   },
   {
-    "zh": "与我们共同探索基于 RM-01 的软件应用与交付。",
-    "en": "Explore software applications and delivery built on RM-01 with us.",
+    "zh": "携手 RM-01，将你的软件能力封装为即插即用的本地 AI 交付方案。",
+    "en": "Partner with RM-01 to package your software into ready-to-deploy local AI solutions.",
     "sources": [
       "cases/index.html:106"
     ]
@@ -4959,13 +4961,6 @@
     ]
   },
   {
-    "zh": "自研 C++ 推理实现示意",
-    "en": "RMinte C++ inference diagram",
-    "sources": [
-      "assets/i18n-ui.json"
-    ]
-  },
-  {
     "zh": "vLLM 定制推理实现示意",
     "en": "Custom vLLM inference diagram",
     "sources": [
@@ -5078,8 +5073,8 @@
     ]
   },
   {
-    "zh": "RMinte C++ 运行时",
-    "en": "RMinte C++ Runtime",
+    "zh": "RMinte C++ / Rust 运行时",
+    "en": "RMinte C++ / Rust Runtime",
     "sources": [
       "assets/i18n-ui.json"
     ]

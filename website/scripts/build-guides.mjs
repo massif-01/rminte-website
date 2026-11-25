@@ -71,7 +71,7 @@ const guideConfig = {
       en: 'For individual users, security administrators, and device operators. Learn what the Security page can and cannot do, and how to verify every critical action.'
     },
     chapterCount: { zh: '8 个章节', en: '8 chapters' },
-    next: { href: 'admin', zh: '继续阅读 Admin 指南', en: 'Continue to the Admin guide' }
+    next: { href: 'admin', zh: '继续阅读 admin 指南', en: 'Continue to the admin guide' }
   },
   network: {
     source: join(guidesDir, 'content', 'network.md'),
@@ -90,7 +90,7 @@ const guideConfig = {
       zh: '在 GitHub 查看网络自动化项目',
       en: 'View the network automation project on GitHub'
     },
-    next: { href: 'admin', zh: '继续阅读 Admin 指南', en: 'Continue to the Admin guide' }
+    next: { href: 'admin', zh: '继续阅读 admin 指南', en: 'Continue to the admin guide' }
   }
 };
 
@@ -486,8 +486,8 @@ function siteNavigationTemplate() {
 
 function pageTemplate(config, rendered) {
   const guideAssetVersion = 'api-readable-20261107';
-  const catalogVersion = config.accent === 'network' ? 'guides-063-20261028' : 'api-20261107';
-  const scFontVersion = config.accent === 'network' ? '?v=cases-20261013' : '?v=api-20261107';
+  const catalogVersion = 'copy-20261125';
+  const scFontVersion = '?v=copy-20261125';
   const pageData = JSON.stringify({
     title: config.title,
     copy: { zh: '已复制', en: 'Copied' },
@@ -539,8 +539,8 @@ function pageTemplate(config, rendered) {
   </script>
   <script src="../assets/i18n.js?v=catalogs-20261004" defer></script>
   <script src="../assets/guides.js?v=canonical-20261121" defer></script>
-  <script src="../assets/site-data.js?v=sample-2" defer></script>
-  <script src="../assets/footer.js?v=sample-3" defer></script>
+  <script src="../assets/site-data.js?v=copy-20261125" defer></script>
+  <script src="../assets/footer.js?v=copy-20261125" defer></script>
   <script src="../assets/nav-glide.js?v=glide-1" defer></script>
 </head>
 <body class="guide-body guide-doc-body guide-accent-${config.accent}">
@@ -593,7 +593,7 @@ ${languages.map(lang => renderLanguagePane(lang, rendered[lang], config)).join('
 
       <aside class="guide-rail">
         <p data-guide-text data-zh="阅读提示" data-en="Reading note">阅读提示</p>
-        <span data-guide-text data-zh="设备型号、硬件配置和当前状态会影响页面显示。以设备实际界面为准。" data-en="Device model, hardware configuration, and current state affect what the interface displays.">设备型号、硬件配置和当前状态会影响页面显示。以设备实际界面为准。</span>
+        <span data-guide-text data-zh="界面展示可能随设备型号、硬件配置与实时状态略有差异，请以设备实际显示为准。" data-en="What you see on screen may vary slightly by device model, hardware configuration, and live status—refer to your device’s actual interface.">界面展示可能随设备型号、硬件配置与实时状态略有差异，请以设备实际显示为准。</span>
       </aside>
     </div>
   </main>

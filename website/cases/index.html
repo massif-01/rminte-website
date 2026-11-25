@@ -20,7 +20,7 @@
   <script>
     // ja/ko/es/fr carry their own catalog file; zh and en need none. Resolve the language the way i18n.js does and load only that file.
     (function (up) {
-      var ok = /^(zh|en|ja|ko|es|fr)$/, c = window.RM_CATALOG = { base: up + 'assets/translations/', v: 'case-details-1' };
+      var ok = /^(zh|en|ja|ko|es|fr)$/, c = window.RM_CATALOG = { base: up + 'assets/translations/', v: 'copy-20261125' };
       c.load = function () {
         var s; try { s = localStorage.getItem('rm-soft-lang'); } catch (e) {}
         var l = [new URLSearchParams(location.search).get('lang'), (location.hash.match(/^#(zh|en|ja|ko|es|fr)-/) || [])[1], s, window.RM_DEFAULT_LANG].filter(function (x) { return ok.test(x); })[0];
@@ -31,7 +31,7 @@
       // Each CJK face is requested only when its language is shown: every page used to ask for Noto Sans SC, JP and KR (about 0.9 MB of fonts and
       // 210 KB of stylesheet that English, Spanish and French visitors never use). While the head is parsing, document.write keeps the link
       // render-blocking like a static one; i18n.js calls this again (late) when the visitor switches language.
-      var cjk = { zh: 'assets/fonts/noto-sans-sc.css?v=sample-20261026', ja: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap', ko: 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap' };
+      var cjk = { zh: 'assets/fonts/noto-sans-sc.css?v=copy-20261125', ja: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap', ko: 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap' };
       c.fonts = function (l, late) {
         if (!cjk[l] || document.querySelector('link[data-cjk="' + l + '"]')) return;
         var h = /^https:/.test(cjk[l]) ? cjk[l] : up + cjk[l];
@@ -42,13 +42,13 @@
     })('../');
   </script>
   <script src="../assets/i18n.js?v=catalogs-20261004" defer></script>
-  <script src="../assets/case-auth.js?v=library-2" defer></script>
-  <script src="../assets/site-data.js?v=sample-2" defer></script>
-  <script src="../assets/footer.js?v=sample-3" defer></script>
+  <script src="../assets/case-auth.js?v=copy-20261125" defer></script>
+  <script src="../assets/site-data.js?v=copy-20261125" defer></script>
+  <script src="../assets/footer.js?v=copy-20261125" defer></script>
   <script src="../assets/nav-glide.js?v=glide-1" defer></script>
   <script src="case-demo.js?v=voxdock-case-1" defer></script>
   <link rel="stylesheet" href="case-demo.css?v=preview-review-20261019-merged22">
-  <script type="module" src="cases.js?v=case-details-1" defer></script>
+  <script type="module" src="cases.js?v=copy-20261125" defer></script>
   <script type="module" src="wave.js?v=cases-wave-20261013"></script>
 </head>
 <body class="brand-page cases-body">
@@ -97,13 +97,13 @@
       <img class="cs-hero-art" src="intent.svg" alt="" aria-hidden="true">
       <p class="cs-eyebrow" data-case-text data-zh="应用案例" data-en="Application cases">应用案例</p>
       <h1><span data-case-text data-zh="让 AI 走进" data-en="Bringing AI into">让 AI 走进</span><span data-case-text data-zh="具体的工作。" data-en="real work.">具体的工作。</span></h1>
-      <p class="cs-lead" data-case-text data-zh="从日常事务到工业研发，探索 AI 在真实业务中的应用。找到与你相关的场景，进一步了解资料与演示。" data-en="From everyday tasks to industrial R&amp;D, explore how AI is used in real business. Find the scenarios relevant to you and learn more about materials and demos.">从日常事务到工业研发，探索 AI 在真实业务中的应用。找到与你相关的场景，进一步了解资料与演示。</p>
+      <p class="cs-lead" data-case-text data-zh="从日常办公到工业研发，看本地 AI 如何在真实业务现场落地生根。挑选与你契合的行业场景，深入了解方案资料与交互演示。" data-en="From everyday office operations to industrial R&amp;D, see how local AI takes root in real business sites. Pick the scenarios that match your field and explore detailed materials and interactive demos.">从日常办公到工业研发，看本地 AI 如何在真实业务现场落地生根。挑选与你契合的行业场景，深入了解方案资料与交互演示。</p>
     </section>
     <div id="cases"></div>
     <section class="cs-band">
       <div>
         <h2 data-case-text data-zh="让你的应用，被更多人看见。" data-en="Let more people see your application.">让你的应用，被更多人看见。</h2>
-        <p class="sub" data-case-text data-zh="与我们共同探索基于 RM-01 的软件应用与交付。" data-en="Explore software applications and delivery built on RM-01 with us.">与我们共同探索基于 <span class="rm-mark">RM-01</span> 的软件应用与交付。</p>
+        <p class="sub" data-case-text data-zh="携手 RM-01，将你的软件能力封装为即插即用的本地 AI 交付方案。" data-en="Partner with RM-01 to package your software into ready-to-deploy local AI solutions.">携手 <span class="rm-mark">RM-01</span>，将你的软件能力封装为即插即用的本地 AI 交付方案。</p>
         <button class="cs-pill primary" type="button" data-action="partner"><span data-case-text data-zh="成为软件合作伙伴" data-en="Become a software partner">成为软件合作伙伴</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
       </div>
       <div class="cs-access" id="access" aria-live="polite"></div>

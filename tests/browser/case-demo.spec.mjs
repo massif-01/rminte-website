@@ -94,7 +94,7 @@ if(active('cases'))test.describe('unified case preview',()=>{
   await boot(page,'en','/early');await trigger(page).click();await ready(page);const geometry=await dimensions(page);
   await page.waitForTimeout(800);await ready(page); // load arriving later does not reset ready.
   await page.locator('[data-case-demo-close]').click();
-  for(const [code,copy] of [[401,'expired'],[403,'not yet authorised'],[503,'not connected yet'],[500,'try again later']]){
+  for(const [code,copy] of [[401,'expired'],[403,'does not yet have demo access'],[503,'not connected yet'],[500,'try again later']]){
    await page.route('**/api/resources/*/preview',route=>route.fulfill({status:code,json:{error:'SECRET https://should-never-display.invalid/path'}}));
    await trigger(page).click();await expect(modal(page)).toContainText(copy);equalGeometry(await dimensions(page),geometry);
    await expect(page.locator('#case-demo-frame')).toHaveCount(0);expect(await modal(page).innerText()).not.toMatch(/https?:|SECRET|should-never/);

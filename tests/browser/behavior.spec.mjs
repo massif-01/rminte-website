@@ -212,7 +212,7 @@ for(const descriptor of run.scope.pages)for(const language of operationLanguages
           expect((await page.request.get(missing+'/demo')).status()).toBe(403);
           expect((await page.request.get(missing+'/download')).status()).toBe(403);
           await account.setPermissions([]);
-          await demo.click();await expect(page.locator('#case-demo-modal [role=status]')).toContainText(language==='zh'?'尚未获得查看演示权限':'not yet authorised');
+          await demo.click();await expect(page.locator('#case-demo-modal [role=status]')).toContainText(language==='zh'?'暂未开通演示体验权限':'does not yet have demo access');
           await expect(page.locator('#access li').first()).not.toHaveAttribute('data-state','ok');
           for(const url of assetURLs)expect((await page.request.get(afterURL+url)).status(),url).toBe(403);
           expect((await page.request.get(missing+'/demo')).status()).toBe(403);

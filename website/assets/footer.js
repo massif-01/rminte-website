@@ -76,7 +76,7 @@
     applicationError.hidden = true;
     applicationLink.setAttribute('aria-disabled', 'true');
     try {
-      const {openApplication} = await import('/sample-loan/application.mjs?v=sample-3');
+      const {openApplication} = await import('/sample-loan/application.mjs?v=copy-20261125');
       await openApplication(toggle);
       setOpen(false);
     } catch {

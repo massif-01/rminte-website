@@ -2,7 +2,7 @@ import {expect} from '@playwright/test';
 import {readFile} from 'node:fs/promises';
 
 export default async function({page,frame,caseName,reopen,language,width}){
-  expect(caseName).toBe(language==='zh'?'AI录音卡片会议总结':'AI Recording Card Meeting Summaries');
+  expect(caseName).toBe(language==='zh'?'AI 录音卡片会议总结':'AI Recording Card Meeting Summaries');
   const heading=frame.locator('h1');
   const dialog=frame.locator('#dialog');
   const details=frame.locator('#recordDialog');

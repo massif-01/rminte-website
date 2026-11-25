@@ -2,22 +2,22 @@
   const galleryItems = [
     {
       src: '../assets/gallery/DSC00043.jpg', tone: 'dark', layout: 'portrait',
-      label: { zh: '整机实拍·3/4视角', en: 'Product photography · three-quarter view' },
+      label: { zh: '整机实拍 · 3/4 视角', en: 'Product photography · three-quarter view' },
       alt: { zh: 'RM-01 整机实拍 3/4 视角', en: 'Three-quarter product photograph of RM-01' }
     },
     {
       src: '../assets/gallery/DSC00010.jpg', tone: 'light', layout: 'portrait',
-      label: { zh: '整机实拍·正面', en: 'Product photography · front view' },
+      label: { zh: '整机实拍 · 正面', en: 'Product photography · front view' },
       alt: { zh: 'RM-01 整机正面实拍', en: 'Front product photograph of RM-01' }
     },
     {
       src: '../assets/gallery/DSC00020.jpg', tone: 'light', layout: 'portrait',
-      label: { zh: '整机实拍·亮场', en: 'Product photography · light studio' },
+      label: { zh: '整机实拍 · 亮场', en: 'Product photography · light studio' },
       alt: { zh: '亮场中的 RM-01 整机实拍', en: 'RM-01 product photograph in a light studio' }
     },
     {
       src: '../assets/gallery/DSC00030.jpg', tone: 'light', layout: 'portrait',
-      label: { zh: '整机实拍·侧后方', en: 'Product photography · rear-side view' },
+      label: { zh: '整机实拍 · 侧后方', en: 'Product photography · rear-side view' },
       alt: { zh: 'RM-01 整机侧后方实拍', en: 'Rear-side product photograph of RM-01' }
     },
     {
@@ -27,7 +27,7 @@
     },
     {
       src: '../assets/gallery/DSC00094.jpg', tone: 'dark', layout: 'landscape',
-      label: { zh: 'CFe卡槽细节', en: 'CFe card slot detail' },
+      label: { zh: 'CFe 卡槽细节', en: 'CFe card slot detail' },
       alt: { zh: 'RM-01 CFe 卡槽细节', en: 'Close-up of the RM-01 CFe card slot' }
     },
     {
@@ -52,8 +52,8 @@
     },
     {
       src: '../assets/gallery/DSC00196.jpg', tone: 'dark', layout: 'landscape',
-      label: { zh: 'R0.25圆角与装配工艺', en: 'R0.25 corner radius and assembly' },
-      alt: { zh: 'RM-01 R0.25 圆角与装配工艺细节', en: 'Close-up of the RM-01 R0.25 corner radius and assembly' }
+      label: { zh: 'R0.25 mm 圆角与装配工艺', en: 'R0.25 mm corner radius and assembly' },
+      alt: { zh: 'RM-01 R0.25 mm 圆角与装配工艺细节', en: 'Close-up of the RM-01 R0.25 mm corner radius and assembly' }
     }
   ];
 

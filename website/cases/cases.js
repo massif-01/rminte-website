@@ -1,5 +1,5 @@
 import {enhancePasswords,refreshPasswordButtons} from '../assets/password-field.mjs';
-import {groups,cases,caseIds} from '../assets/case-catalog.mjs?v=case-details-1';
+import {groups,cases,caseIds} from '../assets/case-catalog.mjs?v=copy-20261125';
 // Cases page, design system v2 (D10). The cards, the dialogs and the authorised-access panel are drawn here. Every visible string is a zh/en pair that is
 // painted in the visitor's language (RM_I18N.text: zh and en from the pair, ja/ko/es/fr from the catalogs by the English text) and painted again on a
 // language switch, so a dialog that is open keeps what was typed into it.
@@ -26,23 +26,23 @@ import {groups,cases,caseIds} from '../assets/case-catalog.mjs?v=case-details-1'
     many: {zh: '{n} 个场景', en: '{n} scenarios'},
     signIn: {zh: '授权登录', en: 'Sign in'},
     signInSubmit: {zh: '登录', en: 'Sign in'},
-    loginLead: {zh: '使用官方分发的账号登录。登录后，可直接进入获准的演示或下载资料。', en: 'Sign in with the account we issued. Afterwards you can open the demos and materials you are authorised to use.'},
+    loginLead: {zh: '请使用 RMinte 分发的专属账号登录，即可体验已授权的交互演示并下载相关资料。', en: 'Sign in with your RMinte-issued account to explore authorised interactive demos and download related materials.'},
     username: {zh: '用户名', en: 'Username'},
     password: {zh: '密码', en: 'Password'},
     loginFailed: {zh: '未能登录', en: 'COULD NOT SIGN IN'},
     badLogin: {zh: '用户名或密码不正确', en: 'The username or password is incorrect'},
     partner: {zh: '成为软件合作伙伴', en: 'Become a software partner'},
-    partnerLead: {zh: '介绍你的应用，以及它与 RM-01 结合的构想。我们将在审核后通过邮箱联系你。', en: 'Tell us about your application and how you would combine it with RM-01. We will contact you by email after review.'},
+    partnerLead: {zh: '聊聊你的应用，以及它与 RM-01 结合的落地构想。团队评估后会第一时间通过邮箱与你联系。', en: 'Tell us about your application and how you envision pairing it with RM-01. Our team will review your submission and get back to you by email promptly.'},
     name: {zh: '姓名', en: 'Name'},
     company: {zh: '公司／机构', en: 'Company / organisation'},
     email: {zh: '工作邮箱', en: 'Work email'},
-    reason: {zh: '你的应用解决什么问题？如何与 RM-01 结合？', en: 'What problem does your application solve, and how would it combine with RM-01?'},
-    ability: {zh: '你如何理解 RM-01？团队有哪些模型与应用开发经验？', en: 'How do you understand RM-01? What model and application development experience does your team have?'},
+    reason: {zh: '你的应用直击什么业务痛点？计划如何与 RM-01 结合落地？', en: 'What core business pain point does your application solve, and how do you plan to deploy it with RM-01?'},
+    ability: {zh: '你如何看待 RM-01 的产品定位？团队在模型或行业应用上有哪些实战积累？', en: 'How do you view RM-01’s positioning, and what hands-on experience does your team have with models or industry applications?'},
     submit: {zh: '提交申请', en: 'Submit'},
-    review: {zh: '提交后由团队审核，并通过你填写的邮箱联系。合作申请不自动获得演示与下载权限。', en: 'The team reviews every application and replies by email. An application does not grant access to demos or downloads.'},
-    received: {zh: '申请已收到。团队将通过邮箱与你联系。', en: 'Application received. The team will contact you by email.'},
-    noDemo: {zh: '此账号尚未获得查看演示权限，请联系账号发放人。', en: 'This account is not yet authorised to view demos. Please contact whoever issued it.'},
-    noDownload: {zh: '此账号尚未获得下载资料权限，请联系账号发放人。', en: 'This account is not yet authorised to download materials. Please contact whoever issued it.'},
+    review: {zh: '提交后团队将尽快评估，并通过你预留的邮箱回复。说明：提交合作申请不会自动开通演示与资料下载权限。', en: 'Our team will review your submission and reply to the email you provide. Note: submitting a partnership application does not automatically grant access to demos or downloads.'},
+    received: {zh: '申请已收到，感谢你的分享。团队评估后会通过邮箱与你联系。', en: 'Application received—thank you for sharing. Our team will follow up by email after review.'},
+    noDemo: {zh: '当前账号暂未开通演示体验权限，请联系对接人员协助开启。', en: 'This account does not yet have demo access. Please contact your RMinte representative to enable it.'},
+    noDownload: {zh: '当前账号暂未开通资料下载权限，请联系对接人员协助开启。', en: 'This account does not yet have download access. Please contact your RMinte representative to enable it.'},
     notConnected: {zh: '该案例的演示或资料尚未接入。', en: 'The demo or materials for this case are not connected yet.'},
     notConnectedLabel: {zh: '尚未接入', en: 'NOT YET CONNECTED'},
     noAccess: {zh: '此账号没有访问权限。', en: 'This account has no access.'},

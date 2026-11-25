@@ -11,19 +11,19 @@
     login: {
       title: { zh: "下载前请先登录", en: "Sign in to download" },
       message: {
-        zh: "未登录，需要登录后才能下载。",
-        en: "You are not signed in. Please sign in before downloading.",
+        zh: "请先登录，再下载经销商资料。",
+        en: "Please sign in first to download dealer resources.",
       },
       help: {
-        zh: "请前往案例页面，使用已有账号登录。",
-        en: "Go to the cases page and sign in with your existing account.",
+        zh: "前往应用案例页，使用 RMinte 专属账号即可登录。",
+        en: "Head to the Application Cases page and sign in with your RMinte account.",
       },
     },
     forbidden: {
       title: { zh: "没有权限", en: "Access denied" },
       message: {
-        zh: "此账号尚未获得经销商资料下载权限，请联系账号发放人。",
-        en: "This account is not authorised to download dealer resources. Please contact the person who issued your account.",
+        zh: "当前账号暂未开通经销商资料下载权限，请联系对接人员协助开启。",
+        en: "This account does not yet have access to dealer downloads. Please contact your RMinte representative to enable it.",
       },
       help: {
         zh: "权限开通后，可直接重新下载，无需再次登录。",
@@ -37,8 +37,8 @@
         en: "This document is temporarily unavailable. Please try again later.",
       },
       help: {
-        zh: "如需帮助，请联系账号发放人。",
-        en: "For help, contact the person who issued your account.",
+        zh: "如需协助，请联系对接人员。",
+        en: "For assistance, please contact your RMinte representative.",
       },
     },
     password: {
@@ -51,8 +51,8 @@
         en: "Change your initial password in the admin console, then sign in again to download.",
       },
       help: {
-        zh: "如需帮助，请联系账号发放人。",
-        en: "For help, contact the person who issued your account.",
+        zh: "如需协助，请联系对接人员。",
+        en: "For assistance, please contact your RMinte representative.",
       },
     },
   };

@@ -41,7 +41,7 @@ async function mount() {
   if (!document.querySelector("link[data-sample-font]")) {
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = "/assets/fonts/noto-sans-sc.css?v=sample-20261026";
+    link.href = "/assets/fonts/noto-sans-sc.css?v=copy-20261125";
     link.dataset.sampleFont = "";
     document.head.append(link);
   }
@@ -123,7 +123,7 @@ async function mount() {
   function validateApplication() {
     if (!validateForm(form)) return false;
     if (Number(form.elements.days.value) <= 30) return true;
-    error({ fieldErrors: { requestedDays: "申请天数须为1—30天的整数" } });
+    error({ fieldErrors: { requestedDays: "请输入 1–30 之间的整数天数。" } });
     return false;
   }
   function entity() {
@@ -161,12 +161,12 @@ async function mount() {
     notice.dataset.available = String(availability === "available");
     notice.textContent =
       availability === "available"
-        ? t("该型号目前有空闲样机，实际出借以管理员批复为准")
+        ? t("该型号当前有空闲样机，最终出借安排以管理员批复为准。")
         : availability === "unavailable"
           ? t(
-              "该样机目前仓库无空闲机器，是否仍继续申请？工作人员将根据后续库存安排批复",
+              "该型号当前暂无空闲样机，仍可提交申请，工作人员将按后续库存排期批复。",
             )
-          : t("暂时无法查询库存，仍可提交申请，由工作人员核对");
+          : t("当前暂无法查询实时库存，你仍可先提交申请，由工作人员人工核对。");
   }
   form.elements.model.addEventListener("change", stock);
   async function loadTerms() {
@@ -211,7 +211,7 @@ async function mount() {
       $("#confirmation-version").textContent = t("条款版本：") + terms.version;
       $("#confirmation-stock").hidden = availability !== "unavailable";
       $("#confirmation-stock").textContent = t(
-        "该样机目前仓库无空闲机器，确认后仍提交申请，等待工作人员安排",
+        "该型号当前暂无空闲样机；确认后申请将正常提交，待工作人员按库存排期安排。",
       );
       $("#confirm-application").disabled = false;
       showDialog(confirmation);

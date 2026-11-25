@@ -91,7 +91,7 @@ if (run.scope.sampleLoan)
       "aria-invalid",
       "true",
     );
-    await expect(app.locator(".field-error[data-auto]")).toContainText("1—30");
+    await expect(app.locator(".field-error[data-auto]")).toContainText("1–30");
     await app.locator("[name=days]").fill("1");
     await app.locator("#application-form button[type=submit]").click();
     await expect(app.locator("#confirmation-dialog")).toBeVisible();

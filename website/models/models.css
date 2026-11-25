@@ -331,4 +331,5 @@
     @media(max-width:820px) { .mp-model-capabilities > li { grid-template-columns:1fr; row-gap:4px; } }
     @media(max-width:560px) { .mp-led-grid { padding:10px 10px; } }
     @media(max-width:360px) { .mp-hero h1 { font-size:29px; } .mp-model-card { padding:25px 21px; } .mp-model-card h2 { font-size:34px; } .mp-architecture-tag { font-size:var(--fs-caption); gap:5px; } .mp-heading { font-size:29px; } .mp-engine-tabs button { padding:10px 13px; } }
+    @media(max-width:320px) { .mp-engine-art[data-engine="cpp"] #runtimeLabel { font-size:var(--fs-label); } }
     @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .models-page *, .models-page *::before,.models-page *::after { transition:none; animation:none; } .mp-pill:hover, .mp-pill:active { transform:none; } .mp-led[data-led="dense"] .mp-led-grid i::before { animation:none; opacity:.7; } }

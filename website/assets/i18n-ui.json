@@ -156,8 +156,8 @@
     "en": "{count} most relevant sections"
   },
   {
-    "zh": "自研 C++ 推理实现示意",
-    "en": "RMinte C++ inference diagram"
+    "zh": "自研 C++ / Rust 推理实现示意",
+    "en": "Diagram of the dedicated C++ and Rust inference engine"
   },
   {
     "zh": "vLLM 定制推理实现示意",
@@ -212,8 +212,8 @@
     "en": "Deliver results"
   },
   {
-    "zh": "获取 RM-01 产品文档、技术资料、固件与软件发布包，并直接使用在线工具。",
-    "en": "Get RM-01 product documentation, technical materials, firmware and software releases, plus browser-based online tools."
+    "zh": "一站获取 RM-01 产品文档、宣介资料、TianshanOS 固件与配套软件，或直接打开在线工具。",
+    "en": "Your hub for RM-01 product documentation, brochures, TianshanOS firmware, companion software, and browser-based tools."
   },
   {
     "zh": "重要提示",
@@ -228,12 +228,12 @@
     "en": "RMinte Inference"
   },
   {
-    "zh": "分页 KV 缓存",
+    "zh": "分页 KV Cache",
     "en": "Paged KV Cache"
   },
   {
-    "zh": "RMinte C++ 运行时",
-    "en": "RMinte C++ Runtime"
+    "zh": "RMinte C++ / Rust 运行时",
+    "en": "RMinte C++ / Rust Runtime"
   },
   {
     "zh": "已复制，发送给你的 Agent 即可。",

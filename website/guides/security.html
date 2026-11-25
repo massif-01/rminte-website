@@ -31,7 +31,7 @@
   <script>
     // ja/ko/es/fr carry their own catalog file; zh and en need none. Resolve the language the way i18n.js does and load only that file.
     (function (up) {
-      var ok = /^(zh|en|ja|ko|es|fr)$/, c = window.RM_CATALOG = { base: up + 'assets/translations/', v: 'api-20261107' };
+      var ok = /^(zh|en|ja|ko|es|fr)$/, c = window.RM_CATALOG = { base: up + 'assets/translations/', v: 'copy-20261125' };
       c.load = function () {
         var s; try { s = localStorage.getItem('rm-soft-lang'); } catch (e) {}
         var l = [new URLSearchParams(location.search).get('lang'), (location.hash.match(/^#(zh|en|ja|ko|es|fr)-/) || [])[1], s, window.RM_DEFAULT_LANG].filter(function (x) { return ok.test(x); })[0];
@@ -42,7 +42,7 @@
       // Each CJK face is requested only when its language is shown: every page used to ask for Noto Sans SC, JP and KR (about 0.9 MB of fonts and
       // 210 KB of stylesheet that English, Spanish and French visitors never use). While the head is parsing, document.write keeps the link
       // render-blocking like a static one; i18n.js calls this again (late) when the visitor switches language.
-      var cjk = { zh: 'assets/fonts/noto-sans-sc.css?v=api-20261107', ja: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap', ko: 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap' };
+      var cjk = { zh: 'assets/fonts/noto-sans-sc.css?v=copy-20261125', ja: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap', ko: 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap' };
       c.fonts = function (l, late) {
         if (!cjk[l] || document.querySelector('link[data-cjk="' + l + '"]')) return;
         var h = /^https:/.test(cjk[l]) ? cjk[l] : up + cjk[l];
@@ -54,8 +54,8 @@
   </script>
   <script src="../assets/i18n.js?v=catalogs-20261004" defer></script>
   <script src="../assets/guides.js?v=canonical-20261121" defer></script>
-  <script src="../assets/site-data.js?v=sample-2" defer></script>
-  <script src="../assets/footer.js?v=sample-3" defer></script>
+  <script src="../assets/site-data.js?v=copy-20261125" defer></script>
+  <script src="../assets/footer.js?v=copy-20261125" defer></script>
   <script src="../assets/nav-glide.js?v=glide-1" defer></script>
 </head>
 <body class="guide-body guide-doc-body guide-accent-security">
@@ -1626,14 +1626,14 @@
           </article>
         <a class="guide-next" href="admin">
           <span data-guide-text data-zh="下一步" data-en="Next">下一步</span>
-          <strong data-guide-text data-zh="继续阅读 Admin 指南" data-en="Continue to the Admin guide">继续阅读 Admin 指南</strong>
+          <strong data-guide-text data-zh="继续阅读 admin 指南" data-en="Continue to the admin guide">继续阅读 admin 指南</strong>
           <span aria-hidden="true" style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;pointer-events:none" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
         </a>
       </div>
 
       <aside class="guide-rail">
         <p data-guide-text data-zh="阅读提示" data-en="Reading note">阅读提示</p>
-        <span data-guide-text data-zh="设备型号、硬件配置和当前状态会影响页面显示。以设备实际界面为准。" data-en="Device model, hardware configuration, and current state affect what the interface displays.">设备型号、硬件配置和当前状态会影响页面显示。以设备实际界面为准。</span>
+        <span data-guide-text data-zh="界面展示可能随设备型号、硬件配置与实时状态略有差异，请以设备实际显示为准。" data-en="What you see on screen may vary slightly by device model, hardware configuration, and live status—refer to your device’s actual interface.">界面展示可能随设备型号、硬件配置与实时状态略有差异，请以设备实际显示为准。</span>
       </aside>
     </div>
   </main>

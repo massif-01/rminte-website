@@ -4,7 +4,7 @@ window.CASE_AUTH = (()=>{
  // the admin console is Chinese only and has no #access, so render() does nothing there.
  const PANEL={
   label:{zh:'授权访问',en:'AUTHORISED ACCESS'},
-  hint:{zh:'已有官方分发的账号？登录后可进入获准的演示与下载资料。',en:'Have an account issued by us? Sign in to open the demos and materials you are authorised to use.'},
+  hint:{zh:'已有 RMinte 专属账号？登录后即可体验已授权演示并下载资料。',en:'Already have an RMinte account? Sign in to access authorised demos and downloads.'},
   signIn:{zh:'授权登录',en:'Sign in'},
   cases:{zh:'案例访问',en:'Case access'},
   all:{zh:'全部案例',en:'All cases'},
