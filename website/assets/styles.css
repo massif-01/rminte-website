@@ -2537,8 +2537,17 @@ html:lang(zh) .home-body #engineTitle{word-break:keep-all}
 .home-body .system-tabs button[aria-selected=true]::after{opacity:1}
 .home-body .system-panels{padding-top:18px;min-height:123px}
 .home-body .system-panel p{margin:0;font-size:var(--fs-small);line-height:1.75;color:var(--muted);text-wrap:pretty}
-.home-body .network-graph{grid-area:art;margin:0 -10px 0 0;align-self:center;min-width:0}
+.home-body .system-visual{grid-area:art;align-self:center;min-width:0;display:flex;flex-direction:column}
+.home-body .network-graph{margin:0 -10px 0 0;min-width:0}
 .home-body .network-graph svg{display:block;width:100%;height:auto;overflow:visible}
+.home-body .system-spotlight{margin:4px 0 0;padding-inline:12px;text-align:center}
+.home-body .system-spotlight-link{display:inline-block;max-width:100%;padding:6px 2px;color:var(--text-3);font:400 var(--fs-note)/1.65 var(--font-ui);letter-spacing:.01em;text-decoration:none;text-wrap:pretty;transition:color var(--dur-hover) var(--ease-settle)}
+.home-body .system-spotlight-text{text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:1px;text-underline-offset:4px;transition:text-decoration-color var(--dur-hover) var(--ease-settle)}
+.home-body .system-spotlight-arrow{display:inline-block;width:13px;height:13px;margin-inline-start:4px;vertical-align:-.17em;color:currentColor;transition:transform var(--dur-hover) var(--ease-settle)}
+.home-body .system-spotlight-link:hover,.home-body .system-spotlight-link:focus-visible{color:var(--text-1)}
+.home-body .system-spotlight-link:hover .system-spotlight-text,.home-body .system-spotlight-link:focus-visible .system-spotlight-text{text-decoration-color:color-mix(in srgb,var(--text-1) 42%,transparent)}
+.home-body .system-spotlight-link:hover .system-spotlight-arrow,.home-body .system-spotlight-link:focus-visible .system-spotlight-arrow{transform:translate(2px,-2px)}
+.home-body .system-spotlight-link:focus-visible{outline:2px solid var(--focus-ring);outline-offset:4px;border-radius:2px}
 .home-body .network-scene{position:relative;container-type:inline-size}
 .home-body .network-mobile{display:none}
 
@@ -2618,7 +2627,9 @@ html:lang(zh) .home-body #engineTitle{word-break:keep-all}
   .home-body .system-experience{grid-template-columns:1fr;grid-template-areas:"heading" "art" "reading";gap:30px}
   .home-body .system-heading h2{max-width:600px;font-size:var(--chapter-title)}
   .home-body .system-heading>p:last-child{font-size:var(--fs-compact);max-width:650px}
-  .home-body .network-graph{width:100%;max-width:670px;justify-self:center;margin:0}
+  .home-body .system-visual{width:100%;max-width:670px;justify-self:center}
+  .home-body .network-graph{margin:0}
+  .home-body .system-spotlight{margin-top:8px;padding-inline:0}
   .home-body .system-tabs{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
   .home-body .system-panels{min-height:110px;max-width:650px}
   .home-body .system-panel p{font-size:var(--fs-compact)}
@@ -2626,7 +2637,8 @@ html:lang(zh) .home-body #engineTitle{word-break:keep-all}
 @media(max-width:520px){
   .home-body .system-tabs{grid-template-columns:1fr 1fr;gap:0 20px}
   .home-body .network-desktop{display:none}.home-body .network-mobile{display:block}
-  .home-body .network-graph{max-width:420px}
+  .home-body .system-visual{max-width:420px}
+  .home-body .system-spotlight{text-align:left}
   .home-body .system-experience{gap:26px}.home-body .system-panels{min-height:155px}
   .home-body .network-mobile .part-name{font-size:calc(var(--part-unit) * 16);left:calc(var(--part-unit) * 12);bottom:calc(var(--part-unit) * 12)}
   .home-body .network-mobile .part-management .part-name{font-size:calc(var(--part-unit) * 12);left:calc(var(--part-unit) * 10);bottom:calc(var(--part-unit) * 11)}
@@ -2634,8 +2646,12 @@ html:lang(zh) .home-body #engineTitle{word-break:keep-all}
   .home-body .network-mobile .part-switch .part-name{font-size:calc(var(--part-unit) * 12);left:calc(var(--part-unit) * 12);bottom:calc(var(--part-unit) * 11)}
   .home-body .network-mobile .label-small{font-size:var(--fs-caption)}.home-body .network-mobile .label-brand{font-size:var(--fs-lead-l)}
 }
+@media(pointer:coarse){
+  .home-body .system-spotlight-link{padding-block:10px}
+}
 @media(prefers-reduced-motion:reduce){
-  .home-body .part-frost,.home-body .part-interior,.home-body .system-network-wire,.home-body .system-bus-wire,.home-body .engine-label,.home-body .engine-topic-toggle,.home-body .topic-chevron,.home-body .system-tabs button,.home-body .system-tabs button::after{transition:none}
+  .home-body .part-frost,.home-body .part-interior,.home-body .system-network-wire,.home-body .system-bus-wire,.home-body .engine-label,.home-body .engine-topic-toggle,.home-body .topic-chevron,.home-body .system-tabs button,.home-body .system-tabs button::after,.home-body .system-spotlight-link,.home-body .system-spotlight-text,.home-body .system-spotlight-arrow{transition:none}
+  .home-body .system-spotlight-link:hover .system-spotlight-arrow,.home-body .system-spotlight-link:focus-visible .system-spotlight-arrow{transform:none}
 }
 
 /* Home hero and hardware modules, design system v2 (boards 04 to 06). Geist Mono carries data and Geist Pixel (Circle) the

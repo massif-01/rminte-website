@@ -19,7 +19,7 @@
   <script>
     // ja/ko/es/fr carry their own catalog file; zh and en need none. Resolve the language the way i18n.js does and load only that file.
     (function (up) {
-      var ok = /^(zh|en|ja|ko|es|fr)$/, c = window.RM_CATALOG = { base: up + 'assets/translations/', v: 'copy-20261125' };
+      var ok = /^(zh|en|ja|ko|es|fr)$/, c = window.RM_CATALOG = { base: up + 'assets/translations/', v: 'wiznet-spotlight-1' };
       c.load = function () {
         var s; try { s = localStorage.getItem('rm-soft-lang'); } catch (e) {}
         var l = [new URLSearchParams(location.search).get('lang'), (location.hash.match(/^#(zh|en|ja|ko|es|fr)-/) || [])[1], s, window.RM_DEFAULT_LANG].filter(function (x) { return ok.test(x); })[0];
@@ -58,9 +58,9 @@
   <script src="assets/input-mode.js?v=input-2" defer></script>
   <link rel="preload" href="assets/fonts/GeistPixel-Circle.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/brand.css?v=v2-core-2">
-  <link rel="stylesheet" href="assets/styles.css?v=engine-label-layout-1">
+  <link rel="stylesheet" href="assets/styles.css?v=wiznet-spotlight-1">
   <link rel="stylesheet" href="assets/tianshanos-demo-modal.css?v=demo-062-wide-1">
-  <script src="assets/site-data.js?v=copy-20261125" defer></script>
+  <script src="assets/site-data.js?v=wiznet-spotlight-1" defer></script>
   <script src="assets/home-architecture.js?v=motion-d9-1" defer></script>
   <script src="assets/engine-glass.js?v=label-layout-1" defer></script>
   <script src="assets/main.js?v=system-title-layout-1" defer></script>
@@ -172,7 +172,10 @@
           <p data-ui="productLead">精密的硬件，需要统一的指挥。TianshanOS 统筹 RM-01 内部各模组与系统行为，令推理、应用与存储默契协作。无需改造供电、布线或搭建机房，RM-01 就能直接走进你的业务现场。</p>
           <button class="cta-button system-demo-action" type="button" data-bevel aria-haspopup="dialog" aria-controls="tsDemoModal" data-demo-open><span data-ui="systemDemoAction">查看界面演示</span><svg class="cta-dot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></button>
         </div>
-        <figure class="network-graph" id="networkGraph" aria-label="两台计算机分别经以太网控制器和 PHY 接入板载交换机，ESP32 经 W5500 接入并拥有配置存储；两台计算机各有独立存储。" data-i18n-aria-label-zh="两台计算机分别经以太网控制器和 PHY 接入板载交换机，ESP32 经 W5500 接入并拥有配置存储；两台计算机各有独立存储。" data-i18n-aria-label-en="Both computers connect to the onboard switch through Ethernet controllers and PHYs. ESP32 connects through W5500 and has configuration storage. Each computer has its own storage."></figure>
+        <div class="system-visual">
+          <figure class="network-graph" id="networkGraph" aria-label="两台计算机分别经以太网控制器和 PHY 接入板载交换机，ESP32 经 W5500 接入并拥有配置存储；两台计算机各有独立存储。" data-i18n-aria-label-zh="两台计算机分别经以太网控制器和 PHY 接入板载交换机，ESP32 经 W5500 接入并拥有配置存储；两台计算机各有独立存储。" data-i18n-aria-label-en="Both computers connect to the onboard switch through Ethernet controllers and PHYs. ESP32 connects through W5500 and has configuration storage. Each computer has its own storage."></figure>
+          <p class="system-spotlight"><a class="system-spotlight-link" href="https://maker.wiznet.io/Aimee0/resellers/rm-mb-v1/" target="_blank" rel="noopener noreferrer"><span class="system-spotlight-text" data-ui="systemSpotlight">技术报道：获 WIZnet Makers 专题推荐，解析 <span class="rm-mark">RM-01</span> 基于 W5500 的带外管理架构</span><svg class="system-spotlight-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a></p>
+        </div>
         <div class="system-reading" id="systemReading"></div>
       </div>
     </section>

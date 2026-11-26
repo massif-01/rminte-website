@@ -697,5 +697,6 @@
   "Diagram of the dedicated C++ and Rust inference engine": "자체 C++ / Rust 추론 엔진 구성도",
   "Our C++ and Rust inference engines": "자체 C++ 및 Rust 추론 엔진",
   "RMinte’s C++ and Rust engines are remarkably lightweight, with the runner itself using only about 2 MB of resident memory (excluding model weights, KV Cache, and context). Under identical model, precision, and quantization settings, they outperform our deeply optimized vLLM implementation in both input processing (prefill) and token-by-token generation (decode).": "RMinte 자체 C++ 및 Rust 엔진은 매우 가벼워 Runner 자체 상주 메모리가 약 2 MB에 불과합니다(모델 가중치·KV Cache·컨텍스트 제외). 동일한 모델·정밀도·양자화 조건에서 입력 처리(prefill)와 토큰 생성(decode) 모두 깊게 최적화한 자사 vLLM 구현을 앞서는 성능을 발휘합니다.",
-  "Delivers official TianshanOS firmware and WebUI update packages directly to the OTA page on your RM-01.": "RM-01 본체의 OTA 페이지로 TianshanOS 공식 펌웨어와 WebUI 업데이트 패키지를 직접 제공합니다."
+  "Delivers official TianshanOS firmware and WebUI update packages directly to the OTA page on your RM-01.": "RM-01 본체의 OTA 페이지로 TianshanOS 공식 펌웨어와 WebUI 업데이트 패키지를 직접 제공합니다.",
+  "Featured by WIZnet Makers — Read how RM-01 builds out-of-band management with W5500": "기술 소개: WIZnet Makers 특집 기사 — W5500 기반 RM-01 대역 외 관리 아키텍처 보기"
 }

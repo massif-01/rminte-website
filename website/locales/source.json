@@ -698,7 +698,7 @@
     "sources": [
       "assets/site-data.js.ui.closeMenu",
       "index.html:107",
-      "index.html:427",
+      "index.html:430",
       "models/index.html:229",
       "models/index.html:262",
       "gallery/index.html:91",
@@ -781,6 +781,13 @@
     "en": "View interface demo",
     "sources": [
       "assets/site-data.js.ui.systemDemoAction"
+    ]
+  },
+  {
+    "zh": "技术报道：获 WIZnet Makers 专题推荐，解析 RM-01 基于 W5500 的带外管理架构",
+    "en": "Featured by WIZnet Makers — Read how RM-01 builds out-of-band management with W5500",
+    "sources": [
+      "assets/site-data.js.ui.systemSpotlight"
     ]
   },
   {
@@ -3115,105 +3122,105 @@
     "zh": "两台计算机分别经以太网控制器和 PHY 接入板载交换机，ESP32 经 W5500 接入并拥有配置存储；两台计算机各有独立存储。",
     "en": "Both computers connect to the onboard switch through Ethernet controllers and PHYs. ESP32 connects through W5500 and has configuration storage. Each computer has its own storage.",
     "sources": [
-      "index.html:175"
+      "index.html:176"
     ]
   },
   {
     "zh": "RM-01 硬件结构滚动帧动画",
     "en": "Scroll-driven animation of the RM-01 hardware structure",
     "sources": [
-      "index.html:201"
+      "index.html:204"
     ]
   },
   {
     "zh": "RM-01 硬件结构动态分解",
     "en": "Animated exploded view of the RM-01 hardware structure",
     "sources": [
-      "index.html:211"
+      "index.html:214"
     ]
   },
   {
     "zh": "TTI 工作示意：TTO 观测，神经网络预测，TTI 调节，EricLake 散热",
     "en": "How TTI works: TTO observes, the neural network predicts, TTI regulates, EricLake cools",
     "sources": [
-      "index.html:227"
+      "index.html:230"
     ]
   },
   {
     "zh": "EricLake 定制风扇叶片微距特写",
     "en": "Macro photograph of an EricLake custom fan blade",
     "sources": [
-      "index.html:247"
+      "index.html:250"
     ]
   },
   {
     "zh": "RM-01 中央绒光肤感玻璃面板特写",
     "en": "Close-up of the central soft-touch glass panel on RM-01",
     "sources": [
-      "index.html:269"
+      "index.html:272"
     ]
   },
   {
     "zh": "RM-01 机身侧后方的数据连接与电源输入接口",
     "en": "Data connections and power input on the rear side of RM-01",
     "sources": [
-      "index.html:283"
+      "index.html:286"
     ]
   },
   {
     "zh": "铝合金机身工艺细节",
     "en": "Aluminium chassis craftsmanship detail",
     "sources": [
-      "index.html:331"
+      "index.html:334"
     ]
   },
   {
     "zh": "精细喷砂工艺细节",
     "en": "Fine bead-blasted finish detail",
     "sources": [
-      "index.html:341"
+      "index.html:344"
     ]
   },
   {
     "zh": "玻璃圆角与铝合金机身装配细节",
     "en": "Detail of the rounded glass corners and aluminium chassis assembly",
     "sources": [
-      "index.html:351"
+      "index.html:354"
     ]
   },
   {
     "zh": "精密装配与公差细节",
     "en": "Precision assembly and tolerance detail",
     "sources": [
-      "index.html:361"
+      "index.html:364"
     ]
   },
   {
     "zh": "关闭演示",
     "en": "Close demo",
     "sources": [
-      "index.html:406"
+      "index.html:409"
     ]
   },
   {
     "zh": "以下为 TianshanOS 界面演示，数据仅供展示，不代表真实设备状态。",
     "en": "This is a TianshanOS interface demo. All data is illustrative and does not represent a real device.",
     "sources": [
-      "index.html:409"
+      "index.html:412"
     ]
   },
   {
     "zh": "TianshanOS 界面预览",
     "en": "TianshanOS interface preview",
     "sources": [
-      "index.html:411"
+      "index.html:414"
     ]
   },
   {
     "zh": "请用电脑查看完整演示。",
     "en": "Please use a computer to view the full demo.",
     "sources": [
-      "index.html:413"
+      "index.html:416"
     ]
   },
   {
